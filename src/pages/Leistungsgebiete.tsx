@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, ArrowRight, MessageCircle, Phone, Calendar, Target, Globe, Video } from 'lucide-react';
+import { MapPin, ArrowRight, MessageCircle, Phone, Workflow, Globe, Search } from 'lucide-react';
 import { businessInfo } from '../data/businessInfo';
 import { LEISTUNGSGEBIETE_CITIES } from '../data/leistungsgebiete';
 import { getRegionServiceLinkText } from '../data/services';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
+import BreadcrumbSchemaLeistungsgebiete from '../components/BreadcrumbSchemaLeistungsgebiete';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 
 const regionDescriptions: Record<string, string> = {
@@ -36,6 +37,7 @@ const regions = LEISTUNGSGEBIETE_CITIES.map(({ slug, name, subtitle }) => ({
 const Leistungsgebiete: React.FC = () => {
   return (
     <div className="bg-dark-500">
+      <BreadcrumbSchemaLeistungsgebiete />
       <LocalBusinessSchema pageType="homepage" customDescription="KI-Automatisierung und Chatbots für Unternehmen in Leipzig, Markkleeberg, Zwenkau, Borna, Böhlen, Rötha, Neukieritzsch, Pegau, Lucka, Meuselwitz, Regis-Breitingen, Elstertrebnitz und Groitzsch." />
 
       <section className="relative pt-32 pb-24 bg-dark-500 overflow-hidden">
@@ -117,10 +119,10 @@ const Leistungsgebiete: React.FC = () => {
               {[
                 { icon: <MessageCircle size={20} />, regionSlug: 'leipzig', regionName: 'Leipzig', serviceSlug: 'ki-chatbots' as const, variant: 0 },
                 { icon: <Phone size={20} />, regionSlug: 'groitzsch', regionName: 'Groitzsch', serviceSlug: 'telefonassistenten' as const, variant: 1 },
-                { icon: <Calendar size={20} />, regionSlug: 'meuselwitz', regionName: 'Meuselwitz', serviceSlug: 'termine-buchungen' as const, variant: 0 },
-                { icon: <Target size={20} />, regionSlug: 'borna', regionName: 'Borna', serviceSlug: 'crm-lead-management' as const, variant: 1 },
-                { icon: <Globe size={20} />, regionSlug: 'markkleeberg', regionName: 'Markkleeberg', serviceSlug: 'website-seo' as const, variant: 0 },
-                { icon: <Video size={20} />, regionSlug: 'zwenkau', regionName: 'Zwenkau', serviceSlug: 'content-video' as const, variant: 1 },
+                { icon: <Workflow size={20} />, regionSlug: 'meuselwitz', regionName: 'Meuselwitz', serviceSlug: 'automatisierungen' as const, variant: 0 },
+                { icon: <Workflow size={20} />, regionSlug: 'borna', regionName: 'Borna', serviceSlug: 'automatisierungen' as const, variant: 1 },
+                { icon: <Globe size={20} />, regionSlug: 'markkleeberg', regionName: 'Markkleeberg', serviceSlug: 'webseiten' as const, variant: 0 },
+                { icon: <Search size={20} />, regionSlug: 'zwenkau', regionName: 'Zwenkau', serviceSlug: 'seo-top-3' as const, variant: 0 },
               ].map((item, i) => (
                 <a
                   key={`${item.regionSlug}-${item.serviceSlug}`}

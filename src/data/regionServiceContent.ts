@@ -74,14 +74,105 @@ function getTemplateRegionServiceContent(
       ? 'KI-Chatbots und digitale Kundenassistenz'
       : serviceSlug === 'telefonassistenten'
         ? 'automatisierte Telefonassistenten und Anrufannahme'
-        : serviceSlug === 'website-seo'
-          ? 'moderne Websites mit SEO-Fokus'
-          : serviceSlug === 'termine-buchungen'
-            ? 'intelligente Terminbuchungs- und Planungssysteme'
-            : serviceSlug === 'crm-lead-management'
-              ? 'CRM- und Lead-Management-Automatisierung'
-              : 'Content- und KI-Video-Produktion';
+        : serviceSlug === 'webseiten'
+          ? 'moderne Webseiten im Mietmodell und lokale Präsenz'
+          : serviceSlug === 'seo-top-3'
+            ? 'SEO und Top-3-Platzierung in Google für lokale Sichtbarkeit'
+            : serviceSlug === 'automatisierungen'
+              ? 'Automatisierungen für Anfragen, Vertrieb und Terminplanung'
+              : 'maßgeschneiderte digitale Lösungen';
 
+  // Service-spezifische Inhalte für Webseiten (ohne Anruf-/Anfragen-Automatisierung)
+  if (serviceSlug === 'webseiten') {
+    return {
+      regionSlug,
+      regionName,
+      serviceSlug,
+      serviceLabel,
+      metaDescription: `${baseMeta} – ${serviceFocus} für Unternehmen in ${regionName} und Umgebung durch Pixel Kraftwerk aus Groitzsch.`,
+      intro: `${baseMeta} für Unternehmen in ${regionName} und der Region: Wir erstellen und betreuen moderne, mobiloptimierte Webseiten – im Mietmodell ohne hohe Startkosten. So haben Sie eine professionelle Präsenz und bleiben für Kundinnen und Kunden in Ihrer Region sichtbar.`,
+      paragraphs: [
+        `In ${regionName} und Umgebung suchen Kunden zunehmend online nach lokalen Anbietern. Eine klare, moderne Webseite ist oft der erste Eindruck Ihres Unternehmens. ${baseMeta} hilft Ihnen dabei, sich professionell zu präsentieren: mit übersichtlicher Struktur, schneller Ladezeit und Darstellung auf allen Geräten – ohne dass Sie sich um Technik oder Hosting kümmern müssen.`,
+        `Gemeinsam mit Ihnen entwickeln wir Konzept und Design für Ihre Webseite: Welche Inhalte sind wichtig? Wen wollen Sie erreichen? Auf dieser Basis setzen wir Ihre Seite um – mit optionaler Anbindung an Formulare, Kalender oder Buchungssysteme. Das Mietmodell ermöglicht planbare monatliche Kosten und laufende Betreuung inklusive.`,
+        `Nach dem Launch bleiben wir an Ihrer Seite. Änderungen an Texten, Bildern oder Angeboten erledigen wir auf Wunsch in kurzer Frist. So bleibt Ihre Webseite aktuell und unterstützt Ihre Sichtbarkeit in ${regionName} und der Region dauerhaft.`,
+      ],
+      faqs: [
+        {
+          q: `Für welche Unternehmen in ${regionName} eignet sich eine Webseite im Mietmodell?`,
+          a: `Vor allem für Praxen, Handwerksbetriebe, Dienstleister, Agenturen und lokale Händler in ${regionName}, die eine professionelle Präsenz ohne hohe Einmalkosten wünschen. Das Mietmodell enthält Hosting, Sicherheit, Updates und auf Wunsch regelmäßige Anpassungen.`,
+        },
+        {
+          q: `Müssen wir für eine neue Webseite unsere bestehende Domain oder E-Mails aufgeben?`,
+          a: 'Nein. Bestehende Domains und E-Mail-Adressen können übernommen werden. Wir kümmern uns um den technischen Wechsel, sodass Ihre Kommunikation weiterläuft.',
+        },
+        {
+          q: `Wie schnell ist eine Webseite für ${regionName} live?`,
+          a: 'Je nach Umfang und gewünschten Inhalten meist innerhalb von wenigen Wochen. Ein klar definierter Startumfang beschleunigt die Umsetzung; Erweiterungen sind später jederzeit möglich.',
+        },
+        {
+          q: 'Was passiert bei Änderungswünschen nach dem Launch?',
+          a: 'Im Mietmodell sind regelmäßige Anpassungen eingeplant. Texte, Bilder oder neue Seiten können wir schrittweise ergänzen – ohne dass Sie in Technik investieren müssen.',
+        },
+        {
+          q: 'Gibt es laufende Kosten für Hosting und Betreuung?',
+          a: 'Ja. Das Mietmodell umfasst Hosting, Sicherheit, Backups und auf Wunsch inhaltliche Betreuung. Die monatlichen Kosten sind planbar; das genaue Modell klären wir im Angebot.',
+        },
+      ],
+      highlights: [
+        `${serviceLabel} speziell für Unternehmen in ${regionName}`,
+        'Mietmodell ohne hohe Startkosten',
+        'Mobiloptimiert, schnell und sicher',
+        'Laufende Betreuung und Anpassungen auf Wunsch',
+      ],
+    };
+  }
+
+  // Service-spezifische Inhalte für SEO / Top 3 in Google
+  if (serviceSlug === 'seo-top-3') {
+    return {
+      regionSlug,
+      regionName,
+      serviceSlug,
+      serviceLabel,
+      metaDescription: `${baseMeta} – ${serviceFocus} für Unternehmen in ${regionName} und Umgebung durch Pixel Kraftwerk aus Groitzsch.`,
+      intro: `${baseMeta} für Unternehmen in ${regionName} und der Region: Wir optimieren Ihre Sichtbarkeit in Suchmaschinen – mit Fokus auf lokale Suchanfragen und die wichtigsten Suchbegriffe für Ihr Geschäft. Ziel ist, dass Sie gefunden werden, wenn Kundinnen und Kunden in Ihrer Region suchen.`,
+      paragraphs: [
+        `In ${regionName} und Umgebung suchen potenzielle Kunden bei Google nach Leistungen wie den Ihren. Wer oben in den Suchergebnissen steht, erhält die meisten Anfragen. ${baseMeta} hilft Ihnen, Ihre Webseite und Ihre lokalen Signale so zu stärken, dass Sie für relevante Suchbegriffe sichtbar werden – mit transparentem Vorgehen und Fokus auf messbare Verbesserungen.`,
+        `Gemeinsam analysieren wir, wonach in Ihrer Branche und Region gesucht wird, wie Ihre Konkurrenz dasteht und wo Ihre Stärken liegen. Darauf aufbauend optimieren wir Ihre Webseite, lokale Einträge und Inhalte. Das Ziel sind bessere Platzierungen für die Begriffe, die für Ihr Geschäft wirklich zählen – ohne leere Versprechen, aber mit klarem Fokus auf die Top 3, wo es realistisch ist.`,
+        `SEO ist kein einmaliges Projekt, sondern ein laufender Prozess. Wir begleiten Sie über mindestens 90 Tage mit Monitoring und Feintuning, damit die Verbesserungen nachhaltig wirken. Auf Wunsch erweitern wir die Optimierung schrittweise auf weitere Suchbegriffe oder Regionen.`,
+      ],
+      faqs: [
+        {
+          q: `Für welche Unternehmen in ${regionName} lohnt sich SEO / Top 3 in Google?`,
+          a: `Vor allem für lokale Dienstleister, Praxen, Handwerksbetriebe und Händler in ${regionName}, bei denen Kunden gezielt nach Leistungen vor Ort suchen. In einem kurzen Gespräch prüfen wir, ob und für welche Suchbegriffe Potenzial besteht.`,
+        },
+        {
+          q: 'Ist eine Top-3-Platzierung garantiert?',
+          a: 'Wir arbeiten mit klarem Fokus auf Ihre wichtigsten Keywords; das Ziel ist die Top 3, wo es wettbewerbs- und technisch realistisch ist. Vorab sprechen wir offen über Ausgangslage, Konkurrenz und erwartbare Zeiträume.',
+        },
+        {
+          q: `Brauche ich für SEO in ${regionName} eine neue Webseite?`,
+          a: 'Nicht zwingend. Oft lässt sich mit der bestehenden Webseite arbeiten. Bei ungünstiger Struktur oder Technik empfehlen wir eine Anpassung oder Modernisierung – die setzen wir auf Wunsch mit um.',
+        },
+        {
+          q: 'Wie lange dauert es, bis sich SEO auswirkt?',
+          a: 'Sichtbare Verbesserungen zeigen sich typischerweise über mehrere Wochen bis wenige Monate. Wir begleiten Sie mindestens 90 Tage mit Analyse, Optimierung und Monitoring, damit die Maßnahmen greifen.',
+        },
+        {
+          q: 'Gibt es laufende Kosten für Betreuung und Optimierung?',
+          a: 'Ja. Für nachhaltige Ergebnisse ist ein laufendes Betreuungspaket sinnvoll – mit regelmäßigem Monitoring, Anpassungen und technischem Support. Das genaue Modell klären wir im Angebot.',
+        },
+      ],
+      highlights: [
+        `${serviceLabel} speziell für Unternehmen in ${regionName}`,
+        'Fokus auf lokale Suchanfragen und relevante Keywords',
+        'Transparentes Vorgehen, keine leeren Versprechen',
+        'Monitoring und Feintuning über mindestens 90 Tage',
+      ],
+    };
+  }
+
+  // Generisches Template für ki-chatbots, telefonassistenten, automatisierungen
   return {
     regionSlug,
     regionName,

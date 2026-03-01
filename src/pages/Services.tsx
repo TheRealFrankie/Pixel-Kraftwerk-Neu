@@ -5,10 +5,8 @@ import { motion } from 'framer-motion';
 import {
   MessageSquare,
   Phone,
-  Calendar,
   Target,
   Globe,
-  Video,
   CheckCircle,
   ArrowRight,
   Clock,
@@ -41,11 +39,9 @@ const Services: React.FC = () => {
   const coreServices = [
     { icon: <MessageSquare size={24} />, title: "Digitale Kundenassistenz für Ihre Website", slug: "ki-chatbots" },
     { icon: <Phone size={24} />, title: "Telefonische Kundenassistenz", slug: "telefonassistenten" },
-    { icon: <Calendar size={24} />, title: "Terminplanung & Buchungssysteme", slug: "termine-buchungen" },
-    { icon: <Target size={24} />, title: "Lead-Management & CRM-Automatisierung", slug: "crm-lead-management" },
+    { icon: <Target size={24} />, title: "Automatisierungen für Anfragen, Vertrieb & Terminplanung", slug: "automatisierungen" },
     { icon: <Globe size={24} />, title: "Webseiten im Mietmodell", slug: "webseite" },
     { icon: <Search size={24} />, title: "SEO: Top 3 in Google", slug: "seo-top-3-in-google" },
-    { icon: <Video size={24} />, title: "Content-Produktion & KI-Videos", slug: "content-video" },
   ];
 
   const serviceDetails: ServiceDetail[] = [
@@ -72,26 +68,15 @@ const Services: React.FC = () => {
       slug: "telefonassistenten"
     },
     {
-      icon: <Calendar size={40} strokeWidth={1.5} />,
-      title: "Terminplanung & Buchungssysteme",
-      description: "Wir erstellen intelligente Buchungssysteme, die Verfügbarkeiten automatisch verwalten, Termine koordinieren und Kunden selbstständig bestätigen sowie erinnern. Ihr Kalender organisiert sich dadurch weitgehend selbst.",
-      benefits: [
-        "Keine Doppelbuchungen oder Terminlücken",
-        "Deutlich weniger Verwaltungsaufwand",
-        "Spürbar höhere Termintreue Ihrer Kunden"
-      ],
-      slug: "termine-buchungen"
-    },
-    {
       icon: <Target size={40} strokeWidth={1.5} />,
-      title: "Lead-Management & CRM-Automatisierung",
-      description: "Wir entwickeln individuelle CRM-Systeme und Lead-Management-Lösungen, die eingehende Anfragen automatisch erfassen, strukturieren, bewerten und an die zuständigen Ansprechpartner weiterleiten. So geht kein Kontakt verloren und kein Interessent bleibt unbeachtet.",
+      title: "Automatisierungen für Anfragen, Vertrieb & Terminplanung",
+      description: "Wir bauen Abläufe, die Anfragen automatisch erfassen, sortieren und zuweisen, Termine buchen und bestätigen sowie Follow-ups und Erinnerungen übernehmen – ohne dass Ihr Team ständig manuell nachhaken muss.",
       benefits: [
-        "Klare Übersicht über alle Kontakte",
-        "Schnellere Reaktionszeiten im Vertrieb",
-        "Höhere Abschlussquote durch bessere Struktur"
+        "Anfragen zentral erfasst, priorisiert und zugewiesen",
+        "Terminplanung, Bestätigung und Reminder automatisch",
+        "Mehr Überblick, weniger Stress, weniger verpasste Chancen"
       ],
-      slug: "crm-lead-management"
+      slug: "automatisierungen"
     },
     {
       icon: <Globe size={40} strokeWidth={1.5} />,
@@ -115,17 +100,6 @@ const Services: React.FC = () => {
       ],
       slug: "seo-top-3-in-google"
     },
-    {
-      icon: <Video size={40} strokeWidth={1.5} />,
-      title: "Content-Produktion & KI-Videos",
-      description: "Wir erstellen professionelle Texte, Bilder und Videos mit moderner KI-Technologie – individuell auf Ihre Marke abgestimmt und in kürzester Zeit verfügbar. So bleibt Ihr Unternehmen sichtbar und präsent.",
-      benefits: [
-        "Stärkere Markenwirkung",
-        "Höhere Reichweite auf allen Kanälen",
-        "Deutlich geringere Produktionskosten"
-      ],
-      slug: "content-video"
-    }
   ];
 
   const companyBenefits = [

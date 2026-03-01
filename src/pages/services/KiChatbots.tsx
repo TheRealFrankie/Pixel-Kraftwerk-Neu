@@ -541,10 +541,7 @@ const KiChatbots: React.FC = () => {
         </div>
       </section>
 
-      <RelatedServices
-        currentSlug="ki-chatbots"
-        relatedSlugs={['telefonassistenten', 'termine-buchungen', 'crm-lead-management', 'webseite', 'seo-top-3-in-google']}
-      />
+      <RelatedServices currentSlug="ki-chatbots" />
 
       <section className="py-20 bg-dark-500">
         <div className="container mx-auto px-4">

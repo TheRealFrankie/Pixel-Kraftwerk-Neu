@@ -57,8 +57,8 @@ const VorherNachherSection: React.FC = () => {
   const kpis = activeTab === 'vorher' ? KPI_VORHER : KPI_NACHHER;
   const isVorher = activeTab === 'vorher';
   const badgeColor = isVorher
-    ? 'bg-red-500/20 border-red-400/50 text-red-200'
-    : 'bg-primary-500/20 border-primary-400/50 text-primary-200';
+    ? 'bg-red-500/25 border-red-400 text-red-100'
+    : 'bg-primary-500/25 border-primary-400 text-primary-100';
 
   const title = isVorher ? 'Ihr Unternehmen – Vorher' : 'Ihr Unternehmen – Nachher';
   const conclusion = isVorher
@@ -71,7 +71,7 @@ const VorherNachherSection: React.FC = () => {
       : 'Karte mit grünen Markierungen – Unternehmen in den Top 3 bei Google Maps';
 
   return (
-    <section className="py-20 bg-dark-400" aria-labelledby="vorher-nachher-heading">
+    <section className="vorher-nachher-section py-20 bg-dark-400" aria-labelledby="vorher-nachher-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Einleitende Copy – reduziert */}
@@ -88,7 +88,7 @@ const VorherNachherSection: React.FC = () => {
             >
               Der Unterschied, wenn Sie in den <span className="text-primary-500">Top 3</span> sind
             </h2>
-            <p className="text-light-200 max-w-2xl mx-auto">
+            <p className="text-light-100 max-w-2xl mx-auto">
               Top 3 bei Google in 90 Tagen – garantiert. Die Grafik zeigt Vorher vs. Nachher.
             </p>
           </motion.div>
@@ -106,10 +106,10 @@ const VorherNachherSection: React.FC = () => {
               aria-controls="vorher-nachher-panel"
               id="tab-vorher"
               onClick={() => setActiveTab('vorher')}
-              className={`px-6 py-3 font-heading font-bold transition-colors ${
+              className={`px-6 py-3 font-heading font-bold transition-colors rounded-lg ${
                 activeTab === 'vorher'
-                  ? 'bg-red-500/20 border-2 border-red-400 text-red-200'
-                  : 'bg-dark-500 border border-dark-100 text-light-400 hover:border-dark-200'
+                  ? 'bg-red-500/25 border-2 border-red-400 text-red-100'
+                  : 'bg-dark-500 border border-dark-200 text-light-200 hover:border-dark-100 hover:text-light-100'
               }`}
             >
               Vorher
@@ -121,10 +121,10 @@ const VorherNachherSection: React.FC = () => {
               aria-controls="vorher-nachher-panel"
               id="tab-nachher"
               onClick={() => setActiveTab('nachher')}
-              className={`px-6 py-3 font-heading font-bold transition-colors ${
+              className={`px-6 py-3 font-heading font-bold transition-colors rounded-lg ${
                 activeTab === 'nachher'
-                  ? 'bg-primary-500/20 border-2 border-primary-400 text-primary-200'
-                  : 'bg-dark-500 border border-dark-100 text-light-400 hover:border-dark-200'
+                  ? 'bg-primary-500/25 border-2 border-primary-400 text-primary-100'
+                  : 'bg-dark-500 border border-dark-200 text-light-200 hover:border-dark-100 hover:text-light-100'
               }`}
             >
               Nachher
@@ -133,7 +133,7 @@ const VorherNachherSection: React.FC = () => {
 
           {/* Karten-Box: Links KPIs, rechts Karte – Grafikbereich volle Breite, nicht abgeschnitten */}
           <motion.div
-            className="bg-dark-500 border border-dark-100 rounded-lg shadow-card"
+            className="bg-dark-500 border border-dark-200 rounded-xl shadow-card"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -145,8 +145,8 @@ const VorherNachherSection: React.FC = () => {
               aria-labelledby={activeTab === 'vorher' ? 'tab-vorher' : 'tab-nachher'}
               className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 md:p-8"
             >
-              {/* Linke Spalte: KPIs & Copy */}
-              <div className="min-w-0">
+              {/* Linke Spalte: KPIs & Copy – fester Hintergrund für Lesbarkeit */}
+              <div className="min-w-0 bg-dark-500 rounded-lg p-1">
                 <h3 className="text-xl font-heading font-bold text-light-100 mb-2">{title}</h3>
                 <div className="flex flex-wrap gap-2 mb-3">
                   <AnimatePresence mode="wait">
@@ -157,7 +157,7 @@ const VorherNachherSection: React.FC = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2, delay: index * 0.05 }}
-                        className={`inline-block px-3 py-1.5 rounded border text-sm font-medium ${badgeColor}`}
+                        className={`inline-block px-3 py-1.5 rounded-lg border text-sm font-semibold ${badgeColor}`}
                       >
                         {kpi.label}: {kpi.value}
                       </motion.span>
@@ -165,16 +165,16 @@ const VorherNachherSection: React.FC = () => {
                   </AnimatePresence>
                 </div>
                 <p
-                  className={`text-sm ${
-                    isVorher ? 'text-red-300' : 'text-primary-300'
-                  } font-medium`}
+                  className={`text-base font-medium ${
+                    isVorher ? 'text-red-100' : 'text-primary-100'
+                  }`}
                 >
                   {conclusion}
                 </p>
               </div>
 
-              {/* Rechte Spalte: Karte – vollständig sichtbar, object-contain, keine Filter (Original-Assets: Not_Top_3 / Top_3) */}
-              <div className="rounded-lg border border-dark-100 bg-dark-400 min-h-[260px] lg:min-h-[320px] relative flex items-center justify-center w-full">
+              {/* Rechte Spalte: Karte – vollständig sichtbar, object-contain (Original-Assets: Not_Top_3 / Top_3) */}
+              <div className="rounded-lg border border-dark-200 bg-dark-400 min-h-[260px] lg:min-h-[320px] relative flex items-center justify-center w-full">
                 <img
                   src={activeTab === 'vorher' ? IMG_VORHER : IMG_NACHHER}
                   alt={mapAlt}
@@ -210,7 +210,7 @@ const VorherNachherSection: React.FC = () => {
                         />
                       ))}
                     </div>
-                    <span className="text-light-500 text-xs mt-2 text-center">
+                    <span className="text-light-300 text-xs mt-2 text-center">
                       {isVorher ? 'Rote Markierungen (nicht Top 3)' : 'Grüne Markierungen (Top 3)'}
                     </span>
                   </div>
@@ -230,12 +230,12 @@ const VorherNachherSection: React.FC = () => {
             {NUTZENPUNKTE.map((item) => (
               <div
                 key={item.title}
-                className="bg-dark-500 p-4 border border-dark-100 rounded-lg hover:border-primary-500/30 transition-colors flex items-center gap-3"
+                className="bg-dark-500 p-4 border border-dark-200 rounded-lg hover:border-primary-500/30 transition-colors flex items-center gap-3"
               >
-                <div className="text-primary-500 flex-shrink-0">{<item.icon size={20} />}</div>
+                <div className="text-primary-400 flex-shrink-0">{<item.icon size={20} />}</div>
                 <div>
                   <h4 className="font-heading font-bold text-light-100 text-sm">{item.title}</h4>
-                  <p className="text-light-400 text-xs">{item.text}</p>
+                  <p className="text-light-200 text-sm">{item.text}</p>
                 </div>
               </div>
             ))}

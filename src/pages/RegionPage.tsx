@@ -7,6 +7,7 @@ import { businessInfo } from '../data/businessInfo';
 import { getRegionContent, getValidRegionSlug } from '../data/regionContent';
 import { SERVICES, getRegionServiceLinkText } from '../data/services';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
+import BreadcrumbSchemaRegion from '../components/BreadcrumbSchemaRegion';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 
@@ -16,6 +17,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
 
   return (
     <div className="bg-dark-500">
+      <BreadcrumbSchemaRegion regionName={content.name} regionSlug={slug} />
       <LocalBusinessSchema pageType="homepage" customDescription={content.metaDescription} />
 
       <section className="relative pt-32 pb-24 bg-dark-500 overflow-hidden">

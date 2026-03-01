@@ -699,10 +699,7 @@ const WebsiteSeo: React.FC = () => {
         </div>
       </section>
 
-      <RelatedServices
-        currentSlug="website-seo"
-        relatedSlugs={['content-video', 'ki-chatbots', 'telefonassistenten']}
-      />
+      <RelatedServices currentSlug="website-seo" />
 
       <section className="py-20 bg-dark-500">
         <div className="container mx-auto px-4">
@@ -746,7 +743,8 @@ const WebsiteSeo: React.FC = () => {
               Kostenlose Analyse anfordern
             </motion.button>
             <ServicedRegionsBlock />
-            <RegionServiceLinksBlock serviceSlug="website-seo" title="Websites & SEO in Ihrem Gebiet" />
+            <RegionServiceLinksBlock serviceSlug="webseiten" title="Webseiten in Ihrem Gebiet" />
+            <RegionServiceLinksBlock serviceSlug="seo-top-3" title="SEO: Top 3 in Google in Ihrem Gebiet" />
           </div>
         </div>
       </section>

@@ -76,7 +76,6 @@ const customRegionContent: Partial<Record<string, RegionContent>> = {
       'Intelligente Terminbuchungssysteme und Online-Terminvergabe',
       'CRM- und Lead-Management-Automatisierung für Vertriebsteams',
       'Websites & SEO mit Fokus auf regionale Sichtbarkeit in Leipzig',
-      'Content- und KI-Video-Produktion für moderne Außenwirkung',
     ],
   },
   groitzsch: {
@@ -140,7 +139,6 @@ const customRegionContent: Partial<Record<string, RegionContent>> = {
       'Terminbuchung und smarte Kalenderlösungen für lokale Dienstleister',
       'CRM- und Lead-Management-Automatisierung für mehr Struktur im Vertrieb',
       'Websites & SEO für Unternehmen in Groitzsch und Landkreis Leipzig',
-      'Content- & KI-Video-Produktion für eine moderne regionale Außendarstellung',
     ],
   },
 };
@@ -196,7 +194,7 @@ function getTemplateRegionContent(cityName: string): RegionContent {
       },
       {
         q: 'Welche Leistungen bietet ihr insgesamt an?',
-        a: 'Wir kombinieren KI-Chatbots, Telefonassistenten, Terminbuchung, CRM- und Lead-Management-Automatisierung, Website-Entwicklung mit SEO sowie Content- und KI-Video-Produktion. So lassen sich Kundenkommunikation, Vertrieb und Außenwirkung ganzheitlich weiterentwickeln.',
+        a: 'Wir kombinieren KI-Chatbots, Telefonassistenten, Terminbuchung, CRM- und Lead-Management-Automatisierung sowie Website-Entwicklung mit SEO. So lassen sich Kundenkommunikation, Vertrieb und Außenwirkung ganzheitlich weiterentwickeln.',
       },
       {
         q: 'Wie stellt ihr Datenschutz und Sicherheit sicher?',
@@ -221,7 +219,6 @@ function getTemplateRegionContent(cityName: string): RegionContent {
       'Intelligente Terminbuchungs- und Planungssysteme',
       'CRM- und Lead-Management-Automatisierung für Vertriebsteams',
       'Websites & SEO mit Fokus auf regionale Sichtbarkeit',
-      'Content- & KI-Video-Produktion für moderne Außendarstellung',
     ],
   };
 }

@@ -358,8 +358,17 @@ const Website: React.FC = () => {
               <ArrowRight className="mr-2" size={24} />
               Gespräch anfragen
             </motion.button>
+          </div>
+        </div>
+      </section>
+
+      <RelatedServices currentSlug="webseite" />
+
+      <section className="py-20 bg-dark-400">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
             <ServicedRegionsBlock />
-            <RegionServiceLinksBlock serviceSlug="website-seo" title="Webseiten in Ihrem Gebiet" />
+            <RegionServiceLinksBlock serviceSlug="webseiten" title="Webseiten in Ihrem Gebiet" />
           </div>
         </div>
       </section>
@@ -367,11 +376,6 @@ const Website: React.FC = () => {
       <ContactForm />
 
       <GoogleMapsSection />
-
-      <RelatedServices
-        currentSlug="webseite"
-        relatedSlugs={['ki-chatbots', 'telefonassistenten', 'termine-buchungen', 'seo-top-3-in-google', 'content-video']}
-      />
     </div>
   );
 };

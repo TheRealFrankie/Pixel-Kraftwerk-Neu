@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, MessageSquare, Phone, Calendar, Target, Globe, Video, Settings, Search } from 'lucide-react';
+import { Menu, X, ChevronDown, MessageSquare, Phone, Workflow, Globe, Settings, Search } from 'lucide-react';
 import Logo from './Logo';
 import ThemeToggle from './ThemeToggle';
 import { NavItem } from '../types';
@@ -15,11 +15,9 @@ interface ServiceLink {
 const serviceLinks: ServiceLink[] = [
   { title: 'KI-Chatbots', path: '/ki-chatbots', icon: <MessageSquare size={18} /> },
   { title: 'KI-Telefonassistent', path: '/telefonassistenten', icon: <Phone size={18} /> },
-  { title: 'Terminbuchungssysteme', path: '/termine-buchungen', icon: <Calendar size={18} /> },
-  { title: 'CRM / Lead-Management', path: '/crm-lead-management', icon: <Target size={18} /> },
+  { title: 'Automatisierungen', path: '/automatisierungen', icon: <Workflow size={18} /> },
   { title: 'Webseiten', path: '/webseite', icon: <Globe size={18} /> },
   { title: 'SEO: Top 3 in Google', path: '/seo-top-3-in-google', icon: <Search size={18} /> },
-  { title: 'Content & KI-Videos', path: '/content-video', icon: <Video size={18} /> },
 ];
 
 const navItems: NavItem[] = [

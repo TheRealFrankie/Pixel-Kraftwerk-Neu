@@ -56,13 +56,11 @@ const Contact: React.FC = () => {
             {' · '}
             <a href="/telefonassistenten" className="text-primary-400 hover:underline">Telefonassistenten</a>
             {' · '}
-            <a href="/termine-buchungen" className="text-primary-400 hover:underline">Terminbuchung</a>
+            <a href="/automatisierungen" className="text-primary-400 hover:underline">Automatisierungen</a>
             {' · '}
-            <a href="/crm-lead-management" className="text-primary-400 hover:underline">CRM & Lead-Management</a>
+            <a href="/webseite" className="text-primary-400 hover:underline">Webseiten</a>
             {' · '}
-            <a href="/website-seo" className="text-primary-400 hover:underline">Website & SEO</a>
-            {' · '}
-            <a href="/content-video" className="text-primary-400 hover:underline">Content & Video</a>
+            <a href="/seo-top-3-in-google" className="text-primary-400 hover:underline">SEO: Top 3 in Google</a>
             {' · '}
             <a href="/services" className="text-primary-400 hover:underline font-heading font-bold">Alle Leistungen</a>
           </p>

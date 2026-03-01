@@ -13,14 +13,9 @@ const ServiceItemListSchema: React.FC = () => {
       description: "KI-Telefonassistent für automatische Anrufannahme. Nie wieder verpasste Anrufe – professioneller Service rund um die Uhr."
     },
     {
-      name: "Terminbuchungssysteme",
-      url: "https://pixelkraftwerk-ai.com/termine-buchungen",
-      description: "Terminbuchungssysteme mit intelligenter Online-Terminvergabe für Ihr Unternehmen. Automatische Kalenderplanung, Erinnerungen und Kundenverwaltung – ohne Telefonmarathon."
-    },
-    {
-      name: "CRM / Lead-Management",
-      url: "https://pixelkraftwerk-ai.com/crm-lead-management",
-      description: "CRM- und Lead-Management-Lösungen für strukturierte Kundenverwaltung. Automatische Lead-Erfassung, Qualifizierung und Follow-ups für mehr Abschlüsse."
+      name: "Automatisierungen für Anfragen, Vertrieb & Terminplanung",
+      url: "https://pixelkraftwerk-ai.com/automatisierungen",
+      description: "Wir bauen Automatisierungen, die Anfragen sortieren, nachfassen und Termine buchen – automatisch. Mehr Überblick, weniger Stress. Leipzig & Region."
     },
     {
       name: "Webseiten",
@@ -32,11 +27,6 @@ const ServiceItemListSchema: React.FC = () => {
       url: "https://pixelkraftwerk-ai.com/seo-top-3-in-google",
       description: "SEO-Angebot mit Fokus auf Top-3-Platzierungen bei Google für Suchbegriffe, die wirklich Kunden bringen – speziell für Leipzig, Groitzsch und Region."
     },
-    {
-      name: "Content & KI-Videos",
-      url: "https://pixelkraftwerk-ai.com/content-video",
-      description: "Content-Produktion und KI-Videos mit professionellen Texten, Bildern und Videos. Schnelle Content-Erstellung für Website, Social Media und Marketing."
-    }
   ];
 
   const schema = {

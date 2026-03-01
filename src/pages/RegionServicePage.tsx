@@ -22,14 +22,12 @@ const SERVICE_INTROS: Record<ServiceSlug, string> = {
     'Unsere digitale Kundenassistenz beantwortet Anfragen auf Ihrer Website und in Messengern – automatisch, zuverlässig und rund um die Uhr.',
   telefonassistenten:
     'Die telefonische Kundenassistenz nimmt Anrufe entgegen, beantwortet häufige Fragen und erfasst Anliegen professionell.',
-  'termine-buchungen':
-    'Intelligente Buchungssysteme verwalten Ihre Verfügbarkeiten, koordinieren Termine und bestätigen Kunden automatisch.',
-  'crm-lead-management':
-    'CRM und Lead-Management erfassen Anfragen, bewerten sie und leiten sie an die richtigen Ansprechpartner weiter.',
-  'website-seo':
-    'Moderne Websites mit SEO und optionaler Automatisierung – für mehr Sichtbarkeit und klare Außenwirkung.',
-  'content-video':
-    'Texte, Bilder und Videos mit KI – individuell auf Ihre Marke abgestimmt und schnell einsatzbereit.',
+  automatisierungen:
+    'Anfragen erfassen, sortieren, nachfassen und Termine buchen – automatisch. Mehr Überblick, weniger Stress, ohne dass jemand dran denken muss.',
+  webseiten:
+    'Moderne Webseiten im Mietmodell – mobiloptimiert, sicher und ohne hohe Startkosten. Professionelle Präsenz für Ihre Region.',
+  'seo-top-3':
+    'Mehr Sichtbarkeit in Google: Wir optimieren Ihre Webseite und lokalen Signale, damit Sie für relevante Suchanfragen in Ihrer Region gefunden werden.',
 };
 
 interface RegionServicePageProps {
@@ -42,6 +40,12 @@ interface RegionServicePageProps {
 /** Anzahl anderer Region-Service-Links (gleicher Service) auf der Seite – Plan: 4–6. */
 const OTHER_REGION_SERVICE_LINKS = 6;
 
+/** Region-Slugs zu globalen Service-URLs (wo abweichend von /[slug]). */
+const REGION_SLUG_TO_GLOBAL_URL: Partial<Record<ServiceSlug, string>> = {
+  webseiten: '/webseite',
+  'seo-top-3': '/seo-top-3-in-google',
+};
+
 export default function RegionServicePage({
   regionSlug,
   regionName,
@@ -49,7 +53,7 @@ export default function RegionServicePage({
   serviceLabel,
 }: RegionServicePageProps) {
   const service = getServiceBySlug(serviceSlug);
-  const globalServiceUrl = `/${serviceSlug}`;
+  const globalServiceUrl = REGION_SLUG_TO_GLOBAL_URL[serviceSlug] ?? `/${serviceSlug}`;
   const regionUrl = `/leistungsgebiete/${regionSlug}`;
   const currentPageUrl = `${baseUrl}/leistungsgebiete/${regionSlug}/${serviceSlug}`;
 

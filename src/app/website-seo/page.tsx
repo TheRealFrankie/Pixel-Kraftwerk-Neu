@@ -1,12 +1,16 @@
-import type { Metadata } from 'next';
-import WebsiteSeo from '@/pages/services/WebsiteSeo';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Websites & SEO, die Ihnen Kunden bringen – nicht Ihrer Konkurrenz',
-  description: 'Website & SEO im Mietmodell. Kostenlose Analyse · Top-5 bei Google in 90 Tagen – sonst Geld zurück. Keine hohen Startkosten, Full-Service inklusive.',
-  alternates: { canonical: 'https://pixelkraftwerk-ai.com/website-seo' },
-};
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function Page() {
-  return <WebsiteSeo />;
+/**
+ * Website+SEO wurde in "Webseite" und "SEO: Top 3 in Google" aufgeteilt.
+ * Weiterleitung zur Leistungsübersicht, wo beide Angebote verlinkt sind.
+ */
+export default function WebsiteSeoRedirect() {
+  const router = useRouter();
+  useEffect(() => {
+    router.replace('/services');
+  }, [router]);
+  return null;
 }

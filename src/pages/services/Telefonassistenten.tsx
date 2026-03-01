@@ -384,10 +384,7 @@ const Telefonassistenten: React.FC = () => {
         </div>
       </section>
 
-      <RelatedServices
-        currentSlug="telefonassistenten"
-        relatedSlugs={['ki-chatbots', 'termine-buchungen', 'crm-lead-management', 'webseite', 'seo-top-3-in-google']}
-      />
+      <RelatedServices currentSlug="telefonassistenten" />
 
       <section className="py-20 bg-dark-500">
         <div className="container mx-auto px-4">

@@ -18,28 +18,14 @@ const BreadcrumbSchema: React.FC<BreadcrumbSchemaProps> = ({ serviceName, servic
       document.head.appendChild(scriptElement);
     }
 
+    const baseUrl = 'https://pixelkraftwerk-ai.com';
     const breadcrumbSchema = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Startseite",
-          "item": "https://pixelkraftwerk-ai.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Alle Leistungen",
-          "item": "https://pixelkraftwerk-ai.com/services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": serviceName,
-          "item": serviceUrl
-        }
+        { "@type": "ListItem", "position": 1, "name": "Pixel Kraftwerk", "item": baseUrl + "/" },
+        { "@type": "ListItem", "position": 2, "name": "Pixel Kraftwerk – Leistungen", "item": baseUrl + "/services" },
+        { "@type": "ListItem", "position": 3, "name": "Pixel Kraftwerk – " + serviceName, "item": serviceUrl }
       ]
     };
 

@@ -5,10 +5,9 @@
 export const SERVICE_SLUGS = [
   'ki-chatbots',
   'telefonassistenten',
-  'termine-buchungen',
-  'crm-lead-management',
-  'website-seo',
-  'content-video',
+  'automatisierungen',
+  'webseiten',
+  'seo-top-3',
 ] as const;
 
 export type ServiceSlug = (typeof SERVICE_SLUGS)[number];
@@ -33,24 +32,19 @@ export const SERVICES: ServiceInfo[] = [
     linkTextVariants: ['Telefonassistenten in', 'Telefonische Kundenassistenz für', 'Telefonassistenten für'],
   },
   {
-    slug: 'termine-buchungen',
-    label: 'Terminbuchung',
-    linkTextVariants: ['Terminbuchung in', 'Terminplanung in', 'Buchungssysteme für'],
+    slug: 'automatisierungen',
+    label: 'Anfragen, Vertrieb & Terminplanung',
+    linkTextVariants: ['Automatisierungen in', 'Anfragen & Terminplanung in', 'Automatisierungen für'],
   },
   {
-    slug: 'crm-lead-management',
-    label: 'CRM & Lead-Management',
-    linkTextVariants: ['CRM & Lead-Management in', 'Lead-Management in', 'CRM für'],
+    slug: 'webseiten',
+    label: 'Webseiten',
+    linkTextVariants: ['Webseiten in', 'Webseiten für'],
   },
   {
-    slug: 'website-seo',
-    label: 'Websites & SEO',
-    linkTextVariants: ['Websites & SEO in', 'SEO in', 'Websites & SEO für'],
-  },
-  {
-    slug: 'content-video',
-    label: 'Content & KI-Videos',
-    linkTextVariants: ['Content & KI-Videos in', 'KI-Videos in', 'Content & KI-Videos für'],
+    slug: 'seo-top-3',
+    label: 'SEO: Top 3 in Google',
+    linkTextVariants: ['SEO: Top 3 in Google in', 'Top 3 in Google für', 'SEO in'],
   },
 ];
 

@@ -30,14 +30,16 @@ const BreadcrumbSchemaRegionService: React.FC<BreadcrumbSchemaRegionServiceProps
       document.head.appendChild(scriptElement);
     }
 
+    const regionItem = regionUrl.startsWith('http') ? regionUrl : baseUrl + regionUrl;
+    const serviceItem = serviceUrl.startsWith('http') ? serviceUrl : baseUrl + (serviceUrl.startsWith('/') ? serviceUrl : '/' + serviceUrl);
     const breadcrumbSchema = {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Startseite', item: baseUrl + '/' },
-        { '@type': 'ListItem', position: 2, name: 'Leistungsgebiete', item: baseUrl + '/leistungsgebiete' },
-        { '@type': 'ListItem', position: 3, name: regionName, item: regionUrl.startsWith('http') ? regionUrl : baseUrl + regionUrl },
-        { '@type': 'ListItem', position: 4, name: serviceName, item: serviceUrl.startsWith('http') ? serviceUrl : baseUrl + serviceUrl },
+        { '@type': 'ListItem', position: 1, name: 'Pixel Kraftwerk', item: baseUrl + '/' },
+        { '@type': 'ListItem', position: 2, name: 'Pixel Kraftwerk – Leistungsgebiete', item: baseUrl + '/leistungsgebiete' },
+        { '@type': 'ListItem', position: 3, name: 'Pixel Kraftwerk – ' + regionName, item: regionItem },
+        { '@type': 'ListItem', position: 4, name: 'Pixel Kraftwerk – ' + regionName + ' – ' + serviceName, item: serviceItem },
       ],
     };
 

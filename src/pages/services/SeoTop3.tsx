@@ -327,10 +327,7 @@ const SeoTop3: React.FC = () => {
         </div>
       </section>
 
-      <RelatedServices
-        currentSlug="seo-top-3-in-google"
-        relatedSlugs={['ki-chatbots', 'telefonassistenten', 'termine-buchungen', 'webseite', 'content-video']}
-      />
+      <RelatedServices currentSlug="seo-top-3-in-google" />
 
       <section className="py-20 bg-dark-500">
         <div className="container mx-auto px-4">
@@ -396,7 +393,7 @@ const SeoTop3: React.FC = () => {
               </p>
             </div>
             <RegionServiceLinksBlock
-              serviceSlug="website-seo"
+              serviceSlug="seo-top-3"
               title="SEO: Top 3 in Google in Ihrem Gebiet"
             />
           </div>

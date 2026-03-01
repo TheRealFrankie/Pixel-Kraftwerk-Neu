@@ -28,13 +28,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Kernleistungen in gewünschter Reihenfolge
     { url: baseUrl + '/ki-chatbots', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
     { url: baseUrl + '/telefonassistenten', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
-    { url: baseUrl + '/termine-buchungen', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
-    { url: baseUrl + '/crm-lead-management', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
+    { url: baseUrl + '/automatisierungen', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
     { url: baseUrl + '/webseite', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
     { url: baseUrl + '/seo-top-3-in-google', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
-    { url: baseUrl + '/content-video', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
-    // Kombi-Angebot Websites & SEO bleibt bestehen
-    { url: baseUrl + '/website-seo', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
     { url: baseUrl + '/leistungsgebiete', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
     ...LEISTUNGSGEBIETE_SLUGS.map((slug) => ({
       url: baseUrl + `/leistungsgebiete/${slug}`,

@@ -56,12 +56,12 @@ export const businessInfo = {
   services: [
     "KI-Chatbot Entwicklung",
     "Automatisierte Telefonassistenten",
-    "Terminplanung-Automatisierung",
-    "Lead-Management Systeme",
+    "Automatisierungen für Anfragen, Vertrieb & Terminplanung",
+    "Prozessautomatisierung",
+    "Vertriebsautomatisierung",
     "Website-Entwicklung",
     "KI-Video-Produktion",
     "Workflow-Automatisierung",
-    "CRM-Integration",
     "SEO-Optimierungen"
   ],
 
@@ -103,8 +103,8 @@ export const businessInfo = {
   "Automatisierung Leipzig",
   "KI-Agentur Leipzig",
   "KI Lösungen Leipzig",
-  "CRM Automatisierung Leipzig",
-  "CRM Automatisierungen Groitzsch",
+  "Automatisierungen Anfragen Vertrieb Terminplanung Leipzig",
+  "Prozessautomatisierung Leipzig",
   "Terminplanung automatisieren Leipzig",
   "Content Creation Leipzig",
   "Video Marketing Leipzig",

@@ -20,11 +20,9 @@ const navItems: NavItem[] = [
 const serviceLinks = [
   { title: 'KI-Chatbots', path: '/ki-chatbots' },
   { title: 'KI-Telefonassistent', path: '/telefonassistenten' },
-  { title: 'Terminbuchungssysteme', path: '/termine-buchungen' },
-  { title: 'CRM / Lead-Management', path: '/crm-lead-management' },
+  { title: 'Automatisierungen', path: '/automatisierungen' },
   { title: 'Webseiten', path: '/webseite' },
   { title: 'SEO: Top 3 in Google', path: '/seo-top-3-in-google' },
-  { title: 'Content & KI-Videos', path: '/content-video' },
 ];
 
 const legalItems: NavItem[] = [

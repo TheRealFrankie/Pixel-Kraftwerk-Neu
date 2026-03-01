@@ -230,3 +230,19 @@ iframe[src*="voiceflow"] {
   --tw-prose-headings: #0a0a0a;
   --tw-prose-links: #00998f;
 }
+
+/* Vorher/Nachher-Sektion: Im Hellmodus dunkle Textfarben für Lesbarkeit auf hellem Hintergrund */
+[data-theme="light"] .vorher-nachher-section .text-red-100,
+[data-theme="light"] .vorher-nachher-section span.text-red-100 {
+  color: #b91c1c !important;
+}
+[data-theme="light"] .vorher-nachher-section .text-primary-100,
+[data-theme="light"] .vorher-nachher-section span.text-primary-100 {
+  color: #007f77 !important;
+}
+[data-theme="light"] .vorher-nachher-section button.text-red-100 {
+  color: #b91c1c !important;
+}
+[data-theme="light"] .vorher-nachher-section button.text-primary-100 {
+  color: #007f77 !important;
+}
