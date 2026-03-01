@@ -76,12 +76,36 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   @apply animate-cursor-blink;
 }
 
+/* Proven Expert: Desktop – verkleinert, links unten */
 @media (min-width: 768px) {
   #pe-proseal-container,
   .pe-pro-seal,
   [id^="pe-proseal"] {
     transform: scale(0.455);
     transform-origin: bottom left;
+  }
+}
+
+/* Proven Expert: Nur Mobile – 2 Sekunden sichtbar, dann wegfaden */
+@media (max-width: 767px) {
+  #pe-proseal-container,
+  .pe-pro-seal,
+  [id^="pe-proseal"] {
+    transform: scale(0.42);
+    transform-origin: bottom left;
+    animation: pe-fade-out-mobile 0.45s ease-out 2s forwards;
+  }
+}
+
+@keyframes pe-fade-out-mobile {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 }
 

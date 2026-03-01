@@ -109,21 +109,6 @@ const KiChatbots: React.FC = () => {
               Digitale Kundenassistenz für Ihre Website
             </motion.h1>
 
-            <motion.p
-              className="text-sm text-light-300 mb-4"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <a href="/" className="text-primary-400 hover:underline">
-                Zurück zur Startseite
-              </a>
-              {' · '}
-              <a href="/telefonassistenten" className="text-primary-400 hover:underline">
-                Mehr zu unseren KI-Telefonassistenten
-              </a>
-            </motion.p>
-
             <motion.h2
               className="text-2xl md:text-3xl font-heading font-bold text-primary-500 mb-6"
               initial={{ opacity: 0, y: 20 }}
