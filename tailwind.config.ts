@@ -54,8 +54,16 @@ const config: Config = {
       },
       boxShadow: {
         'primary-glow': '0 0 20px -2px rgba(0, 230, 212, 0.35)',
-        'card': '0 4px 24px -4px rgba(0, 0, 0, 0.4)',
-        'card-hover': '0 8px 32px -4px rgba(0, 0, 0, 0.5), 0 0 20px -4px rgba(0, 230, 212, 0.15)',
+        'primary-glow-lg': '0 0 40px -4px rgba(0, 230, 212, 0.25)',
+        'card': '0 4px 24px -4px rgba(0, 0, 0, 0.5), 0 1px 0 0 rgba(255, 255, 255, 0.03)',
+        'card-hover': '0 8px 32px -4px rgba(0, 0, 0, 0.6), 0 0 24px -4px rgba(0, 230, 212, 0.12), 0 1px 0 0 rgba(255, 255, 255, 0.04)',
+        'elevation': '0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.06)',
+        'elevation-lg': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 24px -4px rgba(0, 0, 0, 0.08)',
+        'inner-subtle': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.03)',
+      },
+      backgroundImage: {
+        'gradient-radial-subtle': 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 230, 212, 0.06) 0%, transparent 70%)',
+        'gradient-mesh-dark': 'radial-gradient(at 40% 20%, rgba(0, 230, 212, 0.04) 0px, transparent 50%), radial-gradient(at 80% 0%, rgba(0, 230, 212, 0.03) 0px, transparent 50%)',
       },
       animation: {
         'cursor-blink': 'blink 1s step-start infinite',

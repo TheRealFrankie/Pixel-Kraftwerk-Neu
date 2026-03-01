@@ -8,7 +8,6 @@ import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import WebSiteSchema from '../components/WebSiteSchema';
-import { LEISTUNGSGEBIETE_CITIES } from '../data/leistungsgebiete';
 
 const Home: React.FC = () => {
   const [openExample, setOpenExample] = React.useState<number | null>(null);
@@ -263,9 +262,6 @@ const Home: React.FC = () => {
               <p className="text-lg text-light-200 max-w-3xl mx-auto mb-4">
                 Digitale Lösungen, die Ihr Unternehmen entlasten und den Arbeitsalltag deutlich vereinfachen.
               </p>
-              <p className="text-light-300 text-sm">
-                <a href="/leistungsgebiete" className="text-primary-400 hover:underline">Leistungsgebiete: Leipzig, Markkleeberg, Zwenkau, Borna, Böhlen, Rötha, Neukieritzsch, Pegau, Lucka, Meuselwitz, Regis-Breitingen, Elstertrebnitz, Groitzsch</a>
-              </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -519,57 +515,6 @@ const Home: React.FC = () => {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* REGION SEO SECTION – Gebiete, die wir bedienen */}
-      <section className="section-padding bg-dark-500 border-t border-dark-200/30">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h2
-              className="text-3xl md:text-4xl font-heading font-bold mb-10 text-light-100"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-primary-500">Gebiete, die wir bedienen</span> – KI-Automatisierung aus Groitzsch für Leipzig & Region
-            </motion.h2>
-
-            <motion.p
-              className="text-lg text-light-200 leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Von unserem Standort in Groitzsch betreuen wir Unternehmen in Leipzig, Markkleeberg, Zwenkau, Borna, Böhlen, Rötha, Neukieritzsch, Pegau, Lucka, Meuselwitz, Regis-Breitingen, Elstertrebnitz und der gesamten Region. Wir verbinden lokale Nähe mit moderner Technologie.
-            </motion.p>
-
-            <motion.div
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mt-12"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              {LEISTUNGSGEBIETE_CITIES.map((city) => (
-                <a
-                  key={city.slug}
-                  href={`/leistungsgebiete/${city.slug}`}
-                  className="rounded-xl bg-dark-400/90 p-4 border border-dark-200 shadow-card hover:border-primary-500/50 hover:bg-dark-300 transition-all duration-300 text-left block"
-                >
-                  <p className="text-primary-500 font-bold mb-0.5">{city.name}</p>
-                  <p className="text-light-300 text-xs">{city.subtitle}</p>
-                </a>
-              ))}
-            </motion.div>
-            <p className="mt-6 text-light-300 text-sm">
-              <a href="/leistungsgebiete" className="text-primary-400 hover:underline font-heading font-bold">Alle Leistungsgebiete ansehen</a>
-              {' · '}
-              <a href="/services" className="text-primary-400 hover:underline font-heading font-bold">Unsere Leistungen</a>
-            </p>
           </div>
         </div>
       </section>
