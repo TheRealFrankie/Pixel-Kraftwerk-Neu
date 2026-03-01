@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   MessageSquare,
@@ -83,16 +84,32 @@ const KiChatbots: React.FC = () => {
     <div className="bg-dark-500">
       <BreadcrumbSchema serviceName="Digitale Kundenassistenz" serviceUrl="https://pixelkraftwerk-ai.com/ki-chatbots" />
 
-      <section className="relative pt-32 pb-20 bg-dark-500 overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
+      {/* Hero mit Premium-Hintergrundbild – Bild beginnt unterhalb der Header-Leiste */}
+      <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+        {/* Bild-Container: erst ab Header-Höhe, geht nicht über die Menüleiste */}
+        <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
+          <Image
+            src="/images/Chatbot - digitaleKundenassitenz.png"
+            alt="Digitale Kundenassistenz – KI-Chatbot im Einsatz"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          {/* Mehrschichtiger Overlay: Lesbarkeit + Premium-Look */}
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-dark-500/70 via-dark-500/50 to-dark-500/95"
+            aria-hidden
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-dark-500/30 via-transparent to-dark-500/40" aria-hidden />
+          {/* Dezenter Primary-Glow unten */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/15 to-transparent" aria-hidden />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 py-24">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
-              className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/10 border border-primary-500/30 mb-8"
+              className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/20 border border-primary-500/40 backdrop-blur-sm mb-8 shadow-primary-glow"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
@@ -100,8 +117,14 @@ const KiChatbots: React.FC = () => {
               <MessageSquare size={40} className="text-primary-500" strokeWidth={1.5} />
             </motion.div>
 
+            {/* Headline: Typografie nur – weiches Weiß, Schatten, optionaler Stroke für Lesbarkeit */}
             <motion.h1
-              className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-light-100 mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold mb-6 leading-tight"
+              style={{
+                color: '#F5F7FA',
+                textShadow: '0 10px 30px rgba(0,0,0,0.65)',
+                WebkitTextStroke: '1px rgba(0,0,0,0.25)',
+              }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -110,7 +133,7 @@ const KiChatbots: React.FC = () => {
             </motion.h1>
 
             <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-primary-500 mb-6"
+              className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-primary-400 mb-6 drop-shadow-md"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
@@ -119,29 +142,49 @@ const KiChatbots: React.FC = () => {
             </motion.h2>
 
             <motion.p
-              className="text-xl text-light-200 mb-6 max-w-3xl mx-auto"
+              className="text-lg sm:text-xl max-w-3xl mx-auto mb-6 leading-relaxed font-sans"
+              style={{
+                color: '#F5F7FA',
+                textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
+                WebkitTextStroke: '0.5px rgba(0,0,0,0.2)',
+              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Unsere digitale Kundenassistenz übernimmt Kundenanfragen, beantwortet häufige Fragen und erfasst Termine oder Anliegen – <strong>automatisch, zuverlässig und 24/7</strong>.
+              Unsere digitale Kundenassistenz übernimmt Kundenanfragen, beantwortet häufige Fragen und erfasst Termine oder Anliegen – <strong style={{ color: '#F5F7FA' }}>automatisch, zuverlässig und 24/7</strong>.
             </motion.p>
 
             <motion.div
-              className="bg-primary-500/10 border border-primary-500/30 p-4 mb-8 max-w-2xl mx-auto"
+              className="border border-primary-500/40 rounded-xl px-4 py-4 sm:px-5 sm:py-4 mb-8 max-w-2xl mx-auto text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <p className="text-light-200">
-                👉 <strong>Erleben Sie die digitale Kundenassistenz live</strong> – direkt hier auf der Website.<br />
-                <em className="text-light-300 text-sm">Hinweis: Die Assistenz auf dieser Seite ist eine Live-Demo unseres Systems.</em>
+              <p
+                className="text-base sm:text-lg leading-relaxed"
+                style={{
+                  color: '#F5F7FA',
+                  textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
+                  WebkitTextStroke: '0.5px rgba(0,0,0,0.2)',
+                }}
+              >
+                👉 <strong>Erleben Sie die digitale Kundenassistenz live</strong> – direkt hier auf der Website.
+              </p>
+              <p
+                className="mt-2 text-sm sm:text-base"
+                style={{
+                  color: '#E8EAED',
+                  textShadow: '0 2px 8px rgba(0,0,0,0.5)',
+                }}
+              >
+                <em>Hinweis: Die Assistenz auf dieser Seite ist eine Live-Demo unseres Systems.</em>
               </p>
             </motion.div>
 
             <motion.button
               onClick={scrollToContact}
-              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
+              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -151,6 +194,8 @@ const KiChatbots: React.FC = () => {
             </motion.button>
           </div>
         </div>
+        {/* Feine Trennlinie am unteren Hero-Rand */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
       </section>
 
       <section className="py-20 bg-dark-400">

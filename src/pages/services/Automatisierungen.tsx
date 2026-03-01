@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   Workflow,
@@ -137,48 +138,84 @@ const Automatisierungen: React.FC = () => {
         serviceUrl="https://pixelkraftwerk-ai.com/automatisierungen"
       />
 
-      <section className="relative pt-32 pb-20 bg-dark-500 overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-500 rounded-full blur-3xl" />
+      {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
+      <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+        <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
+          <Image
+            src="/images/automtatisierung.png"
+            alt="Automatisierungen für Anfragen, Vertrieb und Terminplanung"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-dark-500/70 via-dark-500/50 to-dark-500/95" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-r from-dark-500/30 via-transparent to-dark-500/40" aria-hidden />
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/15 to-transparent" aria-hidden />
         </div>
-        <div className="container mx-auto px-4 relative z-10">
+
+        <div className="container mx-auto px-4 relative z-10 py-24">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
-              className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/10 border border-primary-500/30 mb-8"
+              className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/20 border border-primary-500/40 backdrop-blur-sm mb-8 shadow-primary-glow"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
             >
               <Workflow size={40} className="text-primary-500" strokeWidth={1.5} />
             </motion.div>
+
             <motion.h1
-              className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-light-100 mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold mb-6 leading-tight"
+              style={{
+                color: '#F5F7FA',
+                textShadow: '0 10px 30px rgba(0,0,0,0.65)',
+                WebkitTextStroke: '1px rgba(0,0,0,0.25)',
+              }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Automatisierungen für Anfragen, Vertrieb & Terminplanung – damit Abläufe automatisch laufen
+              Automatisierungen für Anfragen, Vertrieb & Terminplanung
             </motion.h1>
+
+            <motion.h2
+              className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-primary-400 mb-6 drop-shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+              Damit Abläufe automatisch laufen
+            </motion.h2>
+
             <motion.p
-              className="text-xl text-light-200 mb-8 max-w-3xl mx-auto"
+              className="text-lg sm:text-xl max-w-3xl mx-auto mb-6 leading-relaxed"
+              style={{
+                color: '#F5F7FA',
+                textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
+                WebkitTextStroke: '0.5px rgba(0,0,0,0.2)',
+              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Stell dir vor, neue Anfragen gehen nicht mehr im E-Mail-Chaos unter. Niemand muss mehr „irgendwann mal“ zurückrufen. Und Termine werden nicht mehr per Ping-Pong am Telefon abgestimmt – sondern laufen sauber, automatisch und zuverlässig im Hintergrund.
+              Stell dir vor, neue Anfragen gehen nicht mehr im E-Mail-Chaos unter. Niemand muss mehr „irgendwann mal“ zurückrufen. Und Termine laufen sauber, automatisch und zuverlässig im Hintergrund.
             </motion.p>
             <motion.p
-              className="text-lg text-light-300 mb-8 max-w-3xl mx-auto"
+              className="text-base sm:text-lg max-w-3xl mx-auto mb-8 leading-relaxed"
+              style={{
+                color: '#E8EAED',
+                textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
+              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.25 }}
             >
-              Genau darum geht es bei Automatisierungen für Anfragen, Vertrieb & Terminplanung: Wir bauen Abläufe, die Arbeit abnehmen, Fehler reduzieren und für Überblick sorgen – ohne dass dein Team ständig manuell nachhaken muss.
+              Wir bauen Abläufe, die Arbeit abnehmen, Fehler reduzieren und für Überblick sorgen – <strong style={{ color: '#F5F7FA' }}>ohne dass dein Team ständig manuell nachhaken muss</strong>.
             </motion.p>
             <motion.button
               onClick={scrollToContact}
-              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
+              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -188,6 +225,7 @@ const Automatisierungen: React.FC = () => {
             </motion.button>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
       </section>
 
       <section className="py-20 bg-dark-400">
