@@ -53,7 +53,7 @@ export function BackgroundPaths() {
     return (
         <div className="absolute inset-0 overflow-hidden">
             <FloatingPaths position={1} color="#00B3A6" />
-            <FloatingPaths position={-1} color="#008078" />
+            <FloatingPaths position={-1} color="#007F77" />
         </div>
     );
 }

@@ -8,16 +8,16 @@ export default {
       },
       colors: {
         primary: {
-          50: '#E6FFFD',
-          100: '#B3FFF8',
-          200: '#80FFF4',
-          300: '#4DFFF0',
-          400: '#1AFFEC',
-          500: '#00E6D4', // Main turquoise
-          600: '#00B3A6',
-          700: '#008078',
-          800: '#004D49',
-          900: '#001A1B',
+          50: '#CCF5F2',
+          100: '#99EBE6',
+          200: '#66E0D9',
+          300: '#33D6CC',
+          400: '#00C9BD',
+          500: '#00B3A6',
+          600: '#00998F',
+          700: '#007F77',
+          800: '#00665F',
+          900: '#004C47',
         },
         dark: {
           100: '#262626',
@@ -52,10 +52,10 @@ export default {
         'body-lg': ['1.125rem', { lineHeight: '1.75' }], // 18px
       },
       boxShadow: {
-        'primary-glow': '0 0 20px -2px rgba(0, 230, 212, 0.35)',
-        'primary-glow-lg': '0 0 30px -4px rgba(0, 230, 212, 0.4)',
+        'primary-glow': '0 0 20px -2px rgba(0, 179, 166, 0.35)',
+        'primary-glow-lg': '0 0 30px -4px rgba(0, 179, 166, 0.4)',
         'card': '0 4px 24px -4px rgba(0, 0, 0, 0.4)',
-        'card-hover': '0 8px 32px -4px rgba(0, 0, 0, 0.5), 0 0 20px -4px rgba(0, 230, 212, 0.15)',
+        'card-hover': '0 8px 32px -4px rgba(0, 0, 0, 0.5), 0 0 20px -4px rgba(0, 179, 166, 0.15)',
       },
       animation: {
         'cursor-blink': 'blink 1s step-start infinite',

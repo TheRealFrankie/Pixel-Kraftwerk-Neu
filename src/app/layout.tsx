@@ -42,7 +42,7 @@ export default function RootLayout({
         />
         <link rel="icon" type="image/png" href="/pixelkraftwerk-logo-quadrat.png" />
         <link rel="apple-touch-icon" href="/pixelkraftwerk-logo-quadrat.png" />
-        <meta name="theme-color" content="#00E6D4" />
+        <meta name="theme-color" content="#00B3A6" />
         <meta name="msapplication-TileColor" content="#0A0A0A" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />

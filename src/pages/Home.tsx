@@ -96,7 +96,7 @@ const Home: React.FC = () => {
 
         <div className="container mx-auto px-4 z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl text-light-100 font-heading font-extrabold tracking-tight mb-4 -mt-8 drop-shadow-[0_0_24px_rgba(0,230,212,0.15)]">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl text-light-100 font-heading font-extrabold tracking-tight mb-4 -mt-8 drop-shadow-[0_0_24px_rgba(0,179,166,0.15)]">
               <motion.span
                 className="block"
                 initial={{ opacity: 0, y: 20 }}
