@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, MessageSquare, Phone, Calendar, Target, Globe, Video, Settings, Search } from 'lucide-react';
 import Logo from './Logo';
+import ThemeToggle from './ThemeToggle';
 import { NavItem } from '../types';
 
 interface ServiceLink {
@@ -142,6 +143,9 @@ const Header: React.FC = () => {
             ))}
 
             <li>
+              <ThemeToggle />
+            </li>
+            <li>
               <a
                 href="/privacy-settings"
                 className="text-light-100 hover:text-primary-400 transition-colors duration-200 p-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500"
@@ -217,7 +221,8 @@ const Header: React.FC = () => {
               </li>
             ))}
 
-            <li>
+            <li className="flex items-center gap-2">
+              <ThemeToggle />
               <a
                 href="/privacy-settings"
                 className="block text-light-100 hover:text-primary-400 font-heading py-3 px-3 rounded-lg transition-colors duration-200 min-h-[44px] flex items-center"

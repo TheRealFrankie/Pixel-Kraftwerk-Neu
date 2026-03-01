@@ -82,3 +82,52 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 iframe[src*="voiceflow"] {
   z-index: 9998 !important;
 }
+
+/* ========== Hellmodus (data-theme="light") ========== */
+[data-theme="light"] body {
+  background-color: #f2f2f2 !important;
+  color: #0a0a0a !important;
+}
+
+[data-theme="light"] .bg-dark-100 { background-color: #e6e6e6 !important; }
+[data-theme="light"] .bg-dark-200 { background-color: #e6e6e6 !important; }
+[data-theme="light"] .bg-dark-300 { background-color: #d9d9d9 !important; }
+[data-theme="light"] .bg-dark-400 { background-color: #e6e6e6 !important; }
+[data-theme="light"] .bg-dark-500 { background-color: #f2f2f2 !important; }
+[data-theme="light"] .bg-dark-600 { background-color: #e6e6e6 !important; }
+[data-theme="light"] .bg-dark-700 { background-color: #d9d9d9 !important; }
+[data-theme="light"] .bg-dark-800 { background-color: #cccccc !important; }
+[data-theme="light"] .bg-dark-900 { background-color: #bfbfbf !important; }
+
+[data-theme="light"] .text-light-100 { color: #0a0a0a !important; }
+[data-theme="light"] .text-light-200 { color: #171717 !important; }
+[data-theme="light"] .text-light-300 { color: #262626 !important; }
+[data-theme="light"] .text-light-400 { color: #404040 !important; }
+
+[data-theme="light"] .bg-dark-500\/95 { background-color: rgba(242, 242, 242, 0.95) !important; }
+[data-theme="light"] .bg-dark-500\/90 { background-color: rgba(242, 242, 242, 0.9) !important; }
+[data-theme="light"] .bg-dark-500\/50 { background-color: rgba(242, 242, 242, 0.5) !important; }
+[data-theme="light"] .bg-dark-400\/90 { background-color: rgba(230, 230, 230, 0.9) !important; }
+[data-theme="light"] .bg-dark-400\/50 { background-color: rgba(230, 230, 230, 0.5) !important; }
+
+[data-theme="light"] .border-dark-100 { border-color: #d9d9d9 !important; }
+[data-theme="light"] .border-dark-200 { border-color: #e6e6e6 !important; }
+[data-theme="light"] .border-dark-200\/50 { border-color: rgba(230, 230, 230, 0.5) !important; }
+[data-theme="light"] .border-dark-300 { border-color: #e6e6e6 !important; }
+
+[data-theme="light"] .ring-offset-dark-500 { --tw-ring-offset-color: #f2f2f2 !important; }
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background-color: #e6e6e6 !important;
+}
+
+[data-theme="light"] ::selection {
+  background-color: rgba(0, 230, 212, 0.35);
+  color: #0a0a0a !important;
+}
+
+[data-theme="light"] .prose-invert {
+  --tw-prose-body: #171717;
+  --tw-prose-headings: #0a0a0a;
+  --tw-prose-links: #00b3a6;
+}

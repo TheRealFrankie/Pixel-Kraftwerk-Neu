@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
 import VoiceflowChat from '@/components/VoiceflowChat';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -32,8 +33,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
+    <html lang="de" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('pixelkraftwerk-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);return;}document.documentElement.setAttribute('data-theme','light');})();`,
+          }}
+        />
         <link rel="icon" type="image/png" href="/pixelkraftwerk-logo-quadrat.png" />
         <link rel="apple-touch-icon" href="/pixelkraftwerk-logo-quadrat.png" />
         <meta name="theme-color" content="#00E6D4" />
@@ -58,11 +64,13 @@ export default function RootLayout({
           {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','724323713697647');fbq('track','PageView');`}
         </Script>
         <noscript><img height="1" width="1" style={{ display: 'none' }} src="https://www.facebook.com/tr?id=724323713697647&ev=PageView&noscript=1" alt="" /></noscript>
-        <Header />
-        <main id="main" className="flex-grow">{children}</main>
-        <Footer />
-        <CookieBanner />
-        <VoiceflowChat />
+        <ThemeProvider>
+          <Header />
+          <main id="main" className="flex-grow">{children}</main>
+          <Footer />
+          <CookieBanner />
+          <VoiceflowChat />
+        </ThemeProvider>
       </body>
     </html>
   );
