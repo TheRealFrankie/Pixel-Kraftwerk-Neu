@@ -128,54 +128,54 @@ iframe[src*="voiceflow"] {
 }
 
 /* ========== Hellmodus (data-theme="light") – Türkis-Akzent, kühler Hintergrund ========== */
-/* Leicht kühler Grauton: Türkis (#00E6D4) bleibt Akzentfarbe und wirkt gut lesbar */
+/* Gräulicherer Hintergrund: mehr Kontrast, Türkis (#00E6D4) wirkt klarer */
 [data-theme="light"] body {
-  background-color: #f2f4f6 !important;
-  background-image: radial-gradient(ellipse 100% 50% at 50% 0%, rgba(0, 230, 212, 0.04) 0%, transparent 50%);
+  background-color: #e2e5ea !important;
+  background-image: radial-gradient(ellipse 100% 50% at 50% 0%, rgba(0, 230, 212, 0.06) 0%, transparent 50%);
   color: #0a0a0a !important;
 }
 
-[data-theme="light"] .bg-dark-100 { background-color: #e8eaee !important; }
-[data-theme="light"] .bg-dark-200 { background-color: #e2e5ea !important; }
-[data-theme="light"] .bg-dark-300 { background-color: #dce0e6 !important; }
-[data-theme="light"] .bg-dark-400 { background-color: #e8eaee !important; }
-[data-theme="light"] .bg-dark-500 { background-color: #f2f4f6 !important; }
-[data-theme="light"] .bg-dark-600 { background-color: #eceef2 !important; }
-[data-theme="light"] .bg-dark-700 { background-color: #e2e5ea !important; }
-[data-theme="light"] .bg-dark-800 { background-color: #d8dce2 !important; }
-[data-theme="light"] .bg-dark-900 { background-color: #ced2d9 !important; }
+[data-theme="light"] .bg-dark-100 { background-color: #dce0e6 !important; }
+[data-theme="light"] .bg-dark-200 { background-color: #d6dae0 !important; }
+[data-theme="light"] .bg-dark-300 { background-color: #d0d4da !important; }
+[data-theme="light"] .bg-dark-400 { background-color: #dce0e6 !important; }
+[data-theme="light"] .bg-dark-500 { background-color: #e2e5ea !important; }
+[data-theme="light"] .bg-dark-600 { background-color: #dce0e6 !important; }
+[data-theme="light"] .bg-dark-700 { background-color: #d6dae0 !important; }
+[data-theme="light"] .bg-dark-800 { background-color: #ced2d9 !important; }
+[data-theme="light"] .bg-dark-900 { background-color: #c4c8d0 !important; }
 
 [data-theme="light"] .text-light-100 { color: #0a0a0a !important; }
 [data-theme="light"] .text-light-200 { color: #171717 !important; }
 [data-theme="light"] .text-light-300 { color: #374151 !important; }
 [data-theme="light"] .text-light-400 { color: #4b5563 !important; }
 
-[data-theme="light"] .bg-dark-500\/95 { background-color: rgba(242, 244, 246, 0.97) !important; }
-[data-theme="light"] .bg-dark-500\/90 { background-color: rgba(242, 244, 246, 0.92) !important; }
-[data-theme="light"] .bg-dark-500\/50 { background-color: rgba(242, 244, 246, 0.6) !important; }
-[data-theme="light"] .bg-dark-400\/90 { background-color: rgba(232, 234, 238, 0.92) !important; }
-[data-theme="light"] .bg-dark-400\/50 { background-color: rgba(232, 234, 238, 0.6) !important; }
+[data-theme="light"] .bg-dark-500\/95 { background-color: rgba(226, 229, 234, 0.97) !important; }
+[data-theme="light"] .bg-dark-500\/90 { background-color: rgba(226, 229, 234, 0.92) !important; }
+[data-theme="light"] .bg-dark-500\/50 { background-color: rgba(226, 229, 234, 0.6) !important; }
+[data-theme="light"] .bg-dark-400\/90 { background-color: rgba(220, 224, 230, 0.92) !important; }
+[data-theme="light"] .bg-dark-400\/50 { background-color: rgba(220, 224, 230, 0.6) !important; }
 
 [data-theme="light"] .border-dark-100 { border-color: #d8dce2 !important; }
 [data-theme="light"] .border-dark-200 { border-color: #d0d4da !important; }
 [data-theme="light"] .border-dark-200\/50 { border-color: rgba(208, 212, 218, 0.6) !important; }
 [data-theme="light"] .border-dark-300 { border-color: #ced2d9 !important; }
 
-[data-theme="light"] .ring-offset-dark-500 { --tw-ring-offset-color: #f2f4f6 !important; }
+[data-theme="light"] .ring-offset-dark-500 { --tw-ring-offset-color: #e2e5ea !important; }
 
 [data-theme="light"] ::-webkit-scrollbar {
   width: 10px;
 }
 
 [data-theme="light"] ::-webkit-scrollbar-track {
-  background-color: #e8eaee !important;
+  background-color: #dce0e6 !important;
   border-radius: 10px;
 }
 
 [data-theme="light"] ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #00B3A6 0%, #008078 100%) !important;
   border-radius: 10px;
-  border: 2px solid #e8eaee;
+  border: 2px solid #dce0e6;
 }
 
 [data-theme="light"] ::-webkit-scrollbar-thumb:hover {
