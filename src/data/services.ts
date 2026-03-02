@@ -24,12 +24,20 @@ export const SERVICES: ServiceInfo[] = [
   {
     slug: 'ki-chatbots',
     label: 'KI-Chatbots',
-    linkTextVariants: ['KI-Chatbots in', 'Digitale Kundenassistenz für', 'KI-Chatbots für'],
+    linkTextVariants: [
+      'KI-Chatbots in',
+      'Digitale Kundenassistenz für Unternehmen in',
+      'KI-Chatbots für Unternehmen in',
+    ],
   },
   {
     slug: 'telefonassistenten',
     label: 'Telefonassistenten',
-    linkTextVariants: ['Telefonassistenten in', 'Telefonische Kundenassistenz für', 'Telefonassistenten für'],
+    linkTextVariants: [
+      'Telefonassistenten in',
+      'Telefonische Kundenassistenz für Unternehmen in',
+      'Telefonassistenten für Unternehmen in',
+    ],
   },
   {
     slug: 'automatisierungen',

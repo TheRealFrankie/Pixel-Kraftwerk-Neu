@@ -322,6 +322,49 @@ Copywriter-Prompt für einheitliche Qualität (Beispiel für eine Leistung):
 
 ---
 
+## 11a. On-Page SEO – Stadtseite Leipzig (Leistungsgebiet)
+
+- **SEO Title (Leipzig)**  
+  `KI-Agentur Leipzig – Automatisierung, Chatbots & SEO | Pixel Kraftwerk`
+
+- **Meta Description (Leipzig)**  
+  `KI-Chatbots, Telefonassistenz, Automatisierungen und SEO für Leipzig. Pixel Kraftwerk aus Groitzsch – regional, verständlich, messbar.`
+
+- **Primary Keyword (Leipzig)**  
+  - Haupt-Keyword: `KI-Agentur Leipzig`  
+  - Ergänzende Varianten im Text: `Automatisierung Leipzig`, `KI-Chatbot Leipzig`, `Telefonassistenz Leipzig`, `Local SEO Leipzig`
+
+- **Schema-Empfehlung (Leipzig-Seite)**  
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareCompany",
+  "name": "Pixel Kraftwerk",
+  "telephone": "+491785844460",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Neuer Weg 9a",
+    "postalCode": "04539",
+    "addressLocality": "Groitzsch",
+    "addressCountry": "DE"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Leipzig" }
+  ]
+}
+```
+
+- **Image Alt-Texte (Leipzig, sachlich)**  
+  - „KI-Agentur für Leipzig – Pixel Kraftwerk“  
+  - „KI-Chatbot für Website in Leipzig“  
+  - „Telefonische Kundenassistenz für Leipziger Unternehmen“  
+  - „Automatisierung von Terminbuchung und Lead-Workflows in Leipzig“  
+  - „Webseite im Mietmodell für Unternehmen in Leipzig“  
+  - „Local SEO und Google-Sichtbarkeit in Leipzig“
+
+---
+
 ## 12. Nächste Schritte (ohne sofortige Code-Änderung)
 
 1. **Keyword-/Recherche:** „KI Agentur Leipzig“, „Chatbot Leipzig“, „SEO Agentur [Stadt]“ für alle 12 Städte prüfen; Konkurrenz-H1/H2 ansehen; GMB/„in meiner Nähe“ einbeziehen.

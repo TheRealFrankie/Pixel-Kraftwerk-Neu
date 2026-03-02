@@ -62,6 +62,7 @@ export default function RegionServicePage({
 
   const otherRegions = LEISTUNGSGEBIETE_CITIES.filter((c) => c.slug !== regionSlug);
   const linksToShow = otherRegions.slice(0, OTHER_REGION_SERVICE_LINKS);
+  const hasFaq = content.faqs.length > 0;
 
   return (
     <div className="bg-dark-500">
@@ -151,6 +152,58 @@ export default function RegionServicePage({
         </div>
       </section>
 
+      {hasFaq && (
+        <section className="py-16 bg-dark-400">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl font-heading font-bold text-light-100 mb-8">
+                Häufige Fragen zu {serviceLabel} in {regionName}
+              </h2>
+              <div className="space-y-6">
+                {content.faqs.map((faq, i) => (
+                  <div key={i} className="border-b border-dark-100 pb-6">
+                    <h3 className="text-lg font-heading font-bold text-light-100 mb-2">
+                      {faq.q}
+                    </h3>
+                    <p className="text-light-200">{faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="py-16 bg-dark-400">
+        <div className="container mx-auto px-4 text-center">
+          <motion.p
+            className="text-light-200 mb-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <a href={regionUrl} className="text-primary-400 hover:underline">
+              Leistungen in {regionName}
+            </a>
+            {' · '}
+            <a href="/leistungsgebiete" className="text-primary-400 hover:underline">
+              Alle Leistungsgebiete
+            </a>
+            {' · '}
+            <a href="/contact" className="text-primary-400 hover:underline">
+              Kontakt
+            </a>
+          </motion.p>
+          <a
+            href="/contact"
+            className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
+          >
+            Kostenloses Erstgespräch anfragen
+            <ArrowRight size={20} className="ml-2" />
+          </a>
+        </div>
+      </section>
+
       <section className="py-16 bg-dark-500">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
@@ -198,58 +251,6 @@ export default function RegionServicePage({
           </div>
         </div>
       </section>
-
-      <section className="py-16 bg-dark-400">
-        <div className="container mx-auto px-4 text-center">
-          <motion.p
-            className="text-light-200 mb-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <a href={regionUrl} className="text-primary-400 hover:underline">
-              Leistungen in {regionName}
-            </a>
-            {' · '}
-            <a href="/leistungsgebiete" className="text-primary-400 hover:underline">
-              Alle Leistungsgebiete
-            </a>
-            {' · '}
-            <a href="/contact" className="text-primary-400 hover:underline">
-              Kontakt
-            </a>
-          </motion.p>
-          <a
-            href="/contact"
-            className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
-          >
-            Kostenloses Erstgespräch anfragen
-            <ArrowRight size={20} className="ml-2" />
-          </a>
-        </div>
-      </section>
-
-      {content.faqs.length > 0 && (
-        <section className="py-16 bg-dark-400">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl font-heading font-bold text-light-100 mb-8">
-                Häufige Fragen zu {serviceLabel} in {regionName}
-              </h2>
-              <div className="space-y-6">
-                {content.faqs.map((faq, i) => (
-                  <div key={i} className="border-b border-dark-100 pb-6">
-                    <h3 className="text-lg font-heading font-bold text-light-100 mb-2">
-                      {faq.q}
-                    </h3>
-                    <p className="text-light-200">{faq.a}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       <ContactForm />
       <GoogleMapsSection />
