@@ -6,7 +6,7 @@ export const dynamic = 'force-static';
 const baseUrl = 'https://pixelkraftwerk-ai.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastMod = new Date('2025-05-29');
+  const lastMod = new Date('2026-03-02');
   const regionServiceEntries: MetadataRoute.Sitemap = [];
   for (const region of LEISTUNGSGEBIETE_SLUGS) {
     for (const service of SERVICE_SLUGS) {

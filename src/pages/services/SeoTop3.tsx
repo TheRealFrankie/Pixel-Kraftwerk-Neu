@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -19,6 +20,7 @@ import RelatedServices from '../../components/RelatedServices';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
+import ServiceJsonLd from '../../components/ServiceJsonLd';
 import VorherNachherSection from '../../components/VorherNachherSection';
 import WieFunktioniertEsSection from '../../components/WieFunktioniertEsSection';
 
@@ -90,12 +92,28 @@ const SeoTop3: React.FC = () => {
     },
   ];
 
+  const canonicalUrl = 'https://pixelkraftwerk-ai.com/seo-top-3-in-google';
+
   return (
-    <div className="bg-dark-500">
-      <BreadcrumbSchema
-        serviceName="Top 3 in Google in 90 Tagen"
-        serviceUrl="https://pixelkraftwerk-ai.com/seo-top-3-in-google"
-      />
+    <>
+      <Head>
+        <ServiceJsonLd
+          name="SEO: Top 3 in Google"
+          serviceType="SEO"
+          description="Lokales SEO-Angebot mit Fokus auf Top-3-Platzierungen in Google für Suchbegriffe, die wirklich Kunden bringen – speziell für Unternehmen aus Leipzig, Groitzsch, Markkleeberg und der Region."
+          url={canonicalUrl}
+          pageName="SEO Top 3 in Google"
+          faqs={faqs.map((item) => ({
+            question: item.question,
+            answer: item.answer,
+          }))}
+        />
+      </Head>
+      <div className="bg-dark-500">
+        <BreadcrumbSchema
+          serviceName="Top 3 in Google in 90 Tagen"
+          serviceUrl={canonicalUrl}
+        />
 
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
       <section id="lokale-sichtbarkeit-ausbauen" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
@@ -625,10 +643,11 @@ const SeoTop3: React.FC = () => {
         </div>
       </section>
 
-      <ContactForm />
+        <ContactForm />
 
-      <GoogleMapsSection />
-    </div>
+        <GoogleMapsSection />
+      </div>
+    </>
   );
 };
 

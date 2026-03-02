@@ -1,5 +1,6 @@
 import React from 'react';
 import { businessInfo } from '../data/businessInfo';
+import { BUSINESS_ID } from '@/lib/jsonld';
 
 const WebSiteSchema: React.FC = () => {
   const schema = {
@@ -10,7 +11,7 @@ const WebSiteSchema: React.FC = () => {
     "name": businessInfo.name,
     "description": businessInfo.description,
     "publisher": {
-      "@id": `${businessInfo.url}/#organization`
+      "@id": BUSINESS_ID
     },
     "potentialAction": {
       "@type": "SearchAction",

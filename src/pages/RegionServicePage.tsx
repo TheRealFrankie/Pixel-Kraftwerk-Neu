@@ -13,6 +13,7 @@ import { getRegionServiceContent } from '@/data/regionServiceContent';
 import BreadcrumbSchemaRegionService from '@/components/BreadcrumbSchemaRegionService';
 import ContactForm from '@/components/ContactForm';
 import GoogleMapsSection from '@/components/GoogleMapsSection';
+import ServiceJsonLd from '@/components/ServiceJsonLd';
 
 const baseUrl = 'https://pixelkraftwerk-ai.com';
 
@@ -64,6 +65,17 @@ export default function RegionServicePage({
 
   return (
     <div className="bg-dark-500">
+      <ServiceJsonLd
+        name={`${serviceLabel} in ${regionName}`}
+        serviceType={service?.label || serviceLabel}
+        description={
+          content.intro ||
+          `Für Unternehmen in ${regionName} und Umgebung: ${SERVICE_INTROS[serviceSlug]}`
+        }
+        url={currentPageUrl}
+        areaServed={[regionName]}
+        pageName={`Region-Service: ${serviceLabel} in ${regionName}`}
+      />
       <BreadcrumbSchemaRegionService
         regionName={regionName}
         regionUrl={regionUrl}

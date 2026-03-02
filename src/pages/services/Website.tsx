@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
@@ -22,6 +23,7 @@ import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import RelatedServices from '../../components/RelatedServices';
+import ServiceJsonLd from '../../components/ServiceJsonLd';
 
 const Website: React.FC = () => {
   const scrollToContact = () => {
@@ -111,9 +113,25 @@ const Website: React.FC = () => {
     { question: 'Wann brauche ich einen Software-Entwickler?', answer: 'Wenn Sie spezielle Funktionen oder Integrationen brauchen (z. B. CRM, Automatisierungen, komplexe Formulare). Für Standard-Websites meist nicht.' },
   ];
 
+  const canonicalUrl = 'https://pixelkraftwerk-ai.com/webseite';
+
   return (
-    <div className="bg-dark-500">
-      <BreadcrumbSchema serviceName="Webseiten" serviceUrl="https://pixelkraftwerk-ai.com/webseite" />
+    <>
+      <Head>
+        <ServiceJsonLd
+          name="Webseiten im Mietmodell"
+          serviceType="Web Design"
+          description="Moderne, schnelle Webseiten im Mietmodell – inklusive Technik, Betreuung und laufenden Anpassungen. Ideal für lokale Unternehmen, die ohne hohe Startkosten professionell auftreten wollen."
+          url={canonicalUrl}
+          pageName="Webseiten"
+          faqs={faqItems.map((item) => ({
+            question: item.question,
+            answer: item.answer,
+          }))}
+        />
+      </Head>
+      <div className="bg-dark-500">
+        <BreadcrumbSchema serviceName="Webseiten" serviceUrl={canonicalUrl} />
 
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
       <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
@@ -641,10 +659,11 @@ const Website: React.FC = () => {
         </div>
       </section>
 
-      <ContactForm />
+        <ContactForm />
 
-      <GoogleMapsSection />
-    </div>
+        <GoogleMapsSection />
+      </div>
+    </>
   );
 };
 

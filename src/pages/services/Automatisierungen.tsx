@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
@@ -16,6 +17,7 @@ import RelatedServices from '../../components/RelatedServices';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
+import ServiceJsonLd from '../../components/ServiceJsonLd';
 
 const Automatisierungen: React.FC = () => {
   const scrollToContact = () => {
@@ -131,12 +133,28 @@ const Automatisierungen: React.FC = () => {
     },
   ];
 
+  const canonicalUrl = 'https://pixelkraftwerk-ai.com/automatisierungen';
+
   return (
-    <div className="bg-dark-500">
-      <BreadcrumbSchema
-        serviceName="Automatisierungen für Anfragen, Vertrieb & Terminplanung"
-        serviceUrl="https://pixelkraftwerk-ai.com/automatisierungen"
-      />
+    <>
+      <Head>
+        <ServiceJsonLd
+          name="Automatisierungen für Anfragen, Vertrieb & Terminplanung"
+          serviceType="BusinessProcessAutomation"
+          description="Anfragen erfassen, sortieren, nachfassen und Termine buchen – automatisch. Mehr Überblick, weniger Stress und klarere Abläufe für Vertrieb und Service-Teams."
+          url={canonicalUrl}
+          pageName="Automatisierungen"
+          faqs={faqs.map((item) => ({
+            question: item.q,
+            answer: item.a,
+          }))}
+        />
+      </Head>
+      <div className="bg-dark-500">
+        <BreadcrumbSchema
+          serviceName="Automatisierungen für Anfragen, Vertrieb & Terminplanung"
+          serviceUrl={canonicalUrl}
+        />
 
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
       <section id="ki-automatisierung-fur-anfragen-termine" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
