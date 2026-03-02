@@ -73,7 +73,7 @@ const ContactForm: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-primary-500">
-            Jetzt starten_
+            Jetzt starten
           </h2>
           <p className="text-light-200 mb-8 leading-relaxed">
             <strong>Lassen Sie uns gemeinsam besprechen, wie wir Ihr Unternehmen gezielt entlasten können.</strong><br />

@@ -56,14 +56,21 @@ const slugToService = new Map(allServices.map((s) => [s.slug, s]));
 
 interface RelatedServicesProps {
   currentSlug: string;
+  /** Optionale Anker-Hashes pro Slug (z. B. { 'ki-chatbots': '#ki-chatbot-fur-ihre-website' }) */
+  anchorBySlug?: Record<string, string>;
 }
 
-const RelatedServices: React.FC<RelatedServicesProps> = ({ currentSlug }) => {
+const RelatedServices: React.FC<RelatedServicesProps> = ({ currentSlug, anchorBySlug }) => {
   const relatedServices = RELATED_ORDER.filter((slug) => slug !== currentSlug)
     .map((slug) => slugToService.get(slug))
     .filter((s): s is ServiceInfo => !!s);
 
   if (relatedServices.length === 0) return null;
+
+  const getHref = (slug: string) => {
+    const hash = anchorBySlug?.[slug];
+    return hash ? `/${slug}${hash}` : `/${slug}`;
+  };
 
   return (
     <section className="py-24 bg-dark-400">
@@ -88,7 +95,7 @@ const RelatedServices: React.FC<RelatedServicesProps> = ({ currentSlug }) => {
             {relatedServices.map((service, index) => (
               <motion.a
                 key={service.slug}
-                href={`/${service.slug}`}
+                href={getHref(service.slug)}
                 className="group bg-dark-500 border border-dark-100 overflow-hidden hover:border-primary-500/50 transition-all duration-300 flex flex-col"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

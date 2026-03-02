@@ -9,11 +9,17 @@ import { LEISTUNGSGEBIETE_CITIES } from '@/data/leistungsgebiete';
  */
 const PICK_COUNT = 5;
 
-const ServicedRegionsBlock: React.FC = () => {
+interface ServicedRegionsBlockProps {
+  /** Überschrift als H2 (z. B. für Webseiten-Seite) oder H3 (Standard) */
+  headingTag?: 'h2' | 'h3';
+}
+
+const ServicedRegionsBlock: React.FC<ServicedRegionsBlockProps> = ({ headingTag = 'h3' }) => {
   const links = LEISTUNGSGEBIETE_CITIES.slice(0, PICK_COUNT);
+  const Heading = headingTag;
   return (
     <div className="bg-dark-500 border border-dark-100 p-6 mt-8">
-      <h3 className="text-lg font-heading font-bold text-light-100 mb-3">Diese Gebiete bedienen wir</h3>
+      <Heading className="text-lg font-heading font-bold text-light-100 mb-3">Diese Gebiete bedienen wir</Heading>
       <p className="text-light-300 text-sm mb-3">
         Wir unterstützen Unternehmen in Leipzig, Markkleeberg, Zwenkau, Borna, Böhlen, Rötha, Neukieritzsch, Pegau, Lucka, Meuselwitz, Regis-Breitingen, Elstertrebnitz und Groitzsch.
       </p>

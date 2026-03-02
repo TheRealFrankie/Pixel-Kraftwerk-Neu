@@ -19,7 +19,6 @@ import RelatedServices from '../../components/RelatedServices';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
-import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
 import VorherNachherSection from '../../components/VorherNachherSection';
 import WieFunktioniertEsSection from '../../components/WieFunktioniertEsSection';
 
@@ -67,27 +66,27 @@ const SeoTop3: React.FC = () => {
     {
       question: 'Ist die Top-3-Platzierung bei Google garantiert?',
       answer:
-        'Wir arbeiten mit 90-Tage-Fokus auf Ihre wichtigsten Keywords; Ziel ist die Top 3, wo realistisch. Vorab sprechen wir offen über Wettbewerb, Region und Ausgangslage.',
+        'Wir garantieren Top-3-Rankings in 90 Tagen – aber nicht „für jedes Fantasie-Keyword“. Entscheidend ist, dass wir gemeinsam Suchbegriffe wählen, die echtes Auftragspotenzial haben, in Ihrem Gebiet realistisch zu gewinnen sind und zu Ihrem Angebot passen. Genau dafür startet alles mit der kostenlosen Analyse.',
     },
     {
       question: 'Für wen lohnt sich dieses SEO-Angebot?',
       answer:
-        'Vor allem für lokale Dienstleister, Praxen und Betriebe, bei denen Kunden nach Leistungen vor Ort suchen. In einem kurzen Potenzialgespräch prüfen wir, ob SEO für Sie Sinn ergibt.',
+        'Für lokale Unternehmen, die regelmäßig Aufträge über Google gewinnen wollen – besonders: Dienstleister & Handwerk, Praxen, Kanzleien, Beratung, lokale Betriebe mit klaren Leistungen und Einzugsgebiet.',
     },
     {
       question: 'Brauche ich zwingend eine neue Website?',
       answer:
-        'Nicht unbedingt. Oft bauen wir auf Ihrer bestehenden Website auf. Bei ungeeigneter Struktur oder Technik empfehlen wir eine Modernisierung – die setzen wir auf Wunsch mit um.',
+        'Nicht zwingend. Aber: Wenn die Website langsam ist, unklar aufgebaut ist oder keine sauberen Leistungsseiten hat, bremst sie SEO aus. Oft reichen gezielte Verbesserungen – manchmal lohnt ein Neustart im Mietmodell.',
     },
     {
       question: 'Wie lange dauert es, bis Ergebnisse sichtbar werden?',
       answer:
-        'Viele sehen innerhalb weniger Wochen erste Bewegungen. Unser Zielzeitraum für stabile, bessere Rankings liegt bei rund 90 Tagen.',
+        'Oft sieht man erste Bewegungen nach wenigen Wochen – echte Stabilität baut sich über Monate auf. Die ersten 90 Tage sind das Fundament: Setup + Maßnahmen + Feintuning.',
     },
     {
       question: 'Wie misst Pixel Kraftwerk den Erfolg?',
       answer:
-        'Wir beobachten Ihre wichtigsten Keywords, die Sichtbarkeit Ihrer Website und die Anzahl der Anfragen. Sie erhalten regelmäßig eine verständliche Zusammenfassung.',
+        'Wir messen nicht nur Rankings, sondern das, was zählt: Sichtbarkeit in Ihrem Gebiet, Klicks/Anrufe/Nachrichten, Anfragen über Website/GBP, Entwicklung der wichtigsten Suchbegriffe. Wenn gewünscht, kann ein Softwareentwickler Tracking/Events so umsetzen, dass Sie genau sehen, welche Seiten/Keywords Umsatz bringen.',
     },
   ];
 
@@ -99,7 +98,7 @@ const SeoTop3: React.FC = () => {
       />
 
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
-      <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+      <section id="lokale-sichtbarkeit-ausbauen" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
             src="/images/top 3 in google suche.png"
@@ -180,7 +179,81 @@ const SeoTop3: React.FC = () => {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
       </section>
 
+      <section className="py-20 bg-dark-400">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Kurz erklärt: Was „Top 3 in Google“ bei lokalen Unternehmen wirklich heißt
+            </motion.h2>
+            <motion.div
+              className="space-y-4 text-light-200 text-sm md:text-base leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <p>
+                Wenn lokale Unternehmen „Top 3“ sagen, meinen sie fast immer die sichtbaren Top-Ergebnisse in der lokalen Suche (Google Maps/Local Pack) – dort, wo Kunden direkt klicken: <strong className="text-light-100">Anrufen, Route, Website</strong>.
+              </p>
+              <p>
+                Das Ziel ist nicht „Traffic um jeden Preis“, sondern:
+              </p>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>mehr qualifizierte Anfragen</li>
+                <li>mehr Anrufe und Nachrichten</li>
+                <li>mehr Termine</li>
+                <li>weniger Abhängigkeit von Ads</li>
+              </ul>
+              <p>
+                Und genau deshalb setzen wir nicht auf Tricks, sondern auf die Signale, die langfristig wirken: <strong className="text-light-100">Relevanz, Vertrauen und lokale Stärke</strong>.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <VorherNachherSection />
+
+      <section className="py-20 bg-dark-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Warum Top 3 so viel verändert (ohne dass Sie mehr arbeiten müssen)
+            </motion.h2>
+            <motion.div
+              className="space-y-4 text-light-200 text-sm md:text-base leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <p>
+                Wenn Sie sichtbar sind, passiert Folgendes automatisch:
+              </p>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>Kunden finden Sie genau dann, wenn Bedarf da ist</li>
+                <li>die Konkurrenz verliert Anteile, ohne dass Sie „lauter“ werden müssen</li>
+                <li>Ihre Website/Telefon klingelt, ohne dass Sie pro Klick bezahlen</li>
+              </ul>
+              <p>
+                SEO ist damit ein <strong className="text-light-100">Planbarkeits-Hebel</strong> – besonders für Dienstleister und lokale Betriebe.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       <WieFunktioniertEsSection onCtaClick={scrollToContact} />
 
@@ -252,6 +325,34 @@ const SeoTop3: React.FC = () => {
               ))}
             </div>
 
+            <motion.div
+              className="mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-lg font-heading font-bold text-light-100 mb-3">Was das in Kundensprache bedeutet</h3>
+              <ul className="space-y-2 text-light-200 text-sm">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={16} />
+                  <span>Google versteht klar, <strong className="text-light-100">was Sie anbieten</strong> und <strong className="text-light-100">für wen</strong></span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={16} />
+                  <span>Kunden sehen Sie dort, wo sie klicken</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={16} />
+                  <span>Anfragen kommen nicht „zufällig“, sondern planbarer</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={16} />
+                  <span>Ihre Sichtbarkeit baut sich auf – und bleibt stabil</span>
+                </li>
+              </ul>
+            </motion.div>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {benefits.map((benefit, index) => (
                 <motion.div
@@ -272,6 +373,109 @@ const SeoTop3: React.FC = () => {
         </div>
       </section>
 
+      <section className="py-20 bg-dark-400">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Wie wir Keywords auswählen (damit es wirklich Kunden bringt)
+            </motion.h2>
+            <motion.div
+              className="space-y-4 text-light-200 text-sm md:text-base leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <p>
+                Viele SEO-Anbieter schießen auf „viel Suchvolumen“. Wir fokussieren auf Suchbegriffe, die <strong className="text-light-100">zu Aufträgen führen</strong>.
+              </p>
+              <p>Beispiel-Logik:</p>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>Leistung + Ort (z. B. „[Leistung] Leipzig“)</li>
+                <li>„in der Nähe“ / „Notdienst“ / „Termin“ (wenn passend)</li>
+                <li>konkrete Probleme („[Problem] beheben“, „Kosten“, „Ablauf“)</li>
+                <li>Longtail, der leichter zu gewinnen ist – aber extrem qualifiziert</li>
+              </ul>
+              <p>
+                So entsteht ein Keyword-Set, das realistisch zu ranken ist und trotzdem Umsatz bringt. Als Online-Marketing-Unternehmen arbeiten wir hier nicht mit „Gefühl“, sondern mit klarer Priorisierung: schnelle Wins zuerst, dann Ausbau.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Was in den Top 3 wirklich zählt (die 3 Hebel)
+            </motion.h2>
+            <motion.p
+              className="text-light-200 text-sm md:text-base mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+              viewport={{ once: true }}
+            >
+              Damit Google Sie oben zeigt, braucht es vor allem:
+            </motion.p>
+            <div className="space-y-4">
+              <motion.div
+                className="bg-dark-400 p-5 border border-dark-100 rounded-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-base font-heading font-bold text-light-100 mb-2">1) Relevanz</h3>
+                <p className="text-light-200 text-sm">Ihr Profil und Ihre Website müssen klar signalisieren, welche Leistungen Sie anbieten (und in welchem Gebiet).</p>
+              </motion.div>
+              <motion.div
+                className="bg-dark-400 p-5 border border-dark-100 rounded-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-base font-heading font-bold text-light-100 mb-2">2) Vertrauen / Prominenz</h3>
+                <p className="text-light-200 text-sm">Bewertungen, Referenzen, echte Aktivität, starke Inhalte – damit Google und Kunden Ihnen glauben.</p>
+              </motion.div>
+              <motion.div
+                className="bg-dark-400 p-5 border border-dark-100 rounded-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-base font-heading font-bold text-light-100 mb-2">3) Konsistenz</h3>
+                <p className="text-light-200 text-sm">Daten, Standortsignale, Inhalte und Verlinkungen müssen zusammenpassen – ohne Chaos.</p>
+              </motion.div>
+            </div>
+            <motion.p
+              className="text-light-200 text-sm mt-4"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              viewport={{ once: true }}
+            >
+              Genau diese drei Punkte bildet unser 90-Tage-Programm ab.
+            </motion.p>
+          </div>
+        </div>
+      </section>
+
       <section className="py-12 bg-dark-500">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
@@ -284,7 +488,7 @@ const SeoTop3: React.FC = () => {
             >
               Für starke Rankings braucht es eine ebenso starke Website.&nbsp;
               <a href="/webseite" className="text-primary-400 hover:underline">
-                Hier erfahren Sie mehr zu unseren Webseiten im Mietmodell.
+                Webseiten im Mietmodell – starke Website als SEO-Basis
               </a>
             </motion.p>
           </div>
@@ -357,7 +561,15 @@ const SeoTop3: React.FC = () => {
         </div>
       </section>
 
-      <RelatedServices currentSlug="seo-top-3-in-google" />
+      <RelatedServices
+        currentSlug="seo-top-3-in-google"
+        anchorBySlug={{
+          'ki-chatbots': '#ki-chatbot-fur-website-anfragen',
+          'telefonassistenten': '#ki-telefonagent-fur-anrufe',
+          'automatisierungen': '#automatisierungen-fur-follow-ups-terminplanung',
+          'webseite': '#website-als-seo-basis',
+        }}
+      />
 
       <section className="py-20 bg-dark-500">
         <div className="container mx-auto px-4">
@@ -405,23 +617,6 @@ const SeoTop3: React.FC = () => {
               .
             </motion.p>
             <ServicedRegionsBlock />
-            <div className="bg-dark-400 border border-dark-100 p-6 mt-8 text-center">
-              <h3 className="text-lg font-heading font-bold text-light-100 mb-3">Diese Gebiete bedienen wir</h3>
-              <p className="text-sm text-light-300 mb-3">
-                {LEISTUNGSGEBIETE_CITIES.slice(0, 5).map((city, i) => (
-                  <React.Fragment key={city.slug}>
-                    <a href={`/leistungsgebiete/${city.slug}`} className="text-primary-400 hover:underline">
-                      {city.name}
-                    </a>
-                    {i < 4 ? ' · ' : ''}
-                  </React.Fragment>
-                ))}
-                {' · '}
-                <a href="/leistungsgebiete" className="text-primary-400 hover:underline font-heading font-bold">
-                  Alle Leistungsgebiete
-                </a>
-              </p>
-            </div>
             <RegionServiceLinksBlock
               serviceSlug="seo-top-3"
               title="SEO: Top 3 in Google in Ihrem Gebiet"

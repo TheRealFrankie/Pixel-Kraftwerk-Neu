@@ -9,25 +9,25 @@ const STEPS = [
     step: '01',
     title: 'Kostenlose Analyse',
     description:
-      'Wir prüfen, ob Top-3-Rankings für Ihr Unternehmen und Ihre Region realistisch sind und wie groß das Potenzial ist.',
+      'Wir prüfen, ob Top-3-Rankings für Ihr Unternehmen und Ihre Region realistisch sind und wie groß das Potenzial ist. Was wir dabei anschauen: aktuelle Sichtbarkeit (Maps + organische Suche), Wettbewerb in Ihrem Gebiet (Leipzig, Groitzsch, Markkleeberg …), Suchbegriffe mit echtem Auftragspotenzial, größte Hebel (Profil, Website, Bewertungen, Inhalte, lokale Signale).',
   },
   {
     step: '02',
     title: 'Onboarding',
     description:
-      'Sie erhalten klare Anweisungen, wie wir sicheren Zugriff auf Ihr Profil und die notwendigen Daten bekommen.',
+      'Sie erhalten klare Anweisungen, wie wir sicheren Zugriff auf Ihr Profil und die notwendigen Daten bekommen. Wichtig: Wir arbeiten sauber und transparent – ohne „Tricks“, die später Probleme machen.',
   },
   {
     step: '03',
     title: 'Umsetzung',
     description:
-      'Wir setzen alle vereinbarten Maßnahmen um – von der Optimierung Ihres Profils bis zu den entscheidenden Signalen für Google.',
+      'Wir setzen alle vereinbarten Maßnahmen um – von der Optimierung Ihres Profils bis zu den entscheidenden Signalen für Google. Das umfasst typischerweise: Google Business Profil (Kategorien, Leistungen, Inhalte, Fotos), Website-Onpage (Struktur, Texte, interne Verlinkung, lokale Relevanz), lokale Signale (Standort, NAP-Konsistenz, Citations), Bewertungssystem (sauber & regelkonform), Tracking/Messbarkeit. Wenn technische Themen anstehen (Performance, Tracking, strukturierte Daten), ist ein Softwareentwickler oft der Unterschied zwischen „läuft irgendwie“ und „läuft stabil“.',
   },
   {
     step: '04',
     title: 'Feintuning',
     description:
-      'Wir tracken, welche Maßnahmen die größte Wirkung haben, und verstärken genau diese Hebel.',
+      'Wir tracken, welche Maßnahmen die größte Wirkung haben, und verstärken genau diese Hebel. SEO ist kein „Einmal-Fix“. In den ersten 90 Tagen passiert das Entscheidende: wir sehen, welche Keywords steigen, wir erkennen, was im Gebiet wirklich zieht, wir verbessern genau die Seiten/Signale, die Ranking + Anfragen pushen.',
   },
 ];
 

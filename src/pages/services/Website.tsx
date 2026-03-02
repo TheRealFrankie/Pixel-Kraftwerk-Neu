@@ -32,27 +32,27 @@ const Website: React.FC = () => {
     {
       step: '01',
       title: 'Analyse',
-      description: 'Analyse Ihres aktuellen Auftritts und Ihrer Zielgruppe',
+      description: 'Analyse Ihres aktuellen Auftritts und Ihrer Zielgruppe. Wir klären u. a.: welche Leistungen wirklich verkauft werden sollen, welche Fragen Kunden immer stellen, welche Orte/Servicegebiete wichtig sind (z. B. Leipzig & Umland).',
     },
     {
       step: '02',
       title: 'Design',
-      description: 'Modernes Design, abgestimmt auf Ihr Unternehmen',
+      description: 'Modernes Design, abgestimmt auf Ihr Unternehmen. Fokus: klare Struktur, mobile-first, „ruhige“ Professionalität statt überladenem Look, sichtbare Kontaktpunkte (CTA) an den richtigen Stellen.',
     },
     {
       step: '03',
       title: 'Umsetzung',
-      description: 'Technische Umsetzung (schnell, sicher, mobiloptimiert)',
+      description: 'Technische Umsetzung (schnell, sicher, mobiloptimiert). Dazu gehören: schnelle Ladezeiten, saubere Darstellung auf Handy/Tablet, technische Basis für Local SEO (Struktur, Überschriften, Seitenlogik). Bei Sonderfunktionen (z. B. komplexe Formulare, Konfiguratoren, Integrationen) arbeitet der Software-Entwickler mit – damit es sauber und wartbar bleibt.',
     },
     {
       step: '04',
       title: 'Livegang',
-      description: 'Livegang Ihrer neuen Website',
+      description: 'Livegang Ihrer neuen Website.',
     },
     {
       step: '05',
       title: 'Betreuung',
-      description: 'Laufende Betreuung, Pflege und Anpassungen im Mietmodell',
+      description: 'Laufende Betreuung, Pflege und Anpassungen im Mietmodell.',
     },
   ];
 
@@ -100,6 +100,15 @@ const Website: React.FC = () => {
       title: 'Praxen & Kanzleien',
       description: 'Professioneller Auftritt mit klarer Struktur für Patienten und Mandanten.',
     },
+  ];
+
+  const faqItems = [
+    { question: 'Was kostet eine Website im Mietmodell?', answer: 'Sie zahlen einen festen monatlichen Betrag. Der genaue Preis hängt vom Umfang ab – das klären wir im kurzen Gespräch.' },
+    { question: 'Was ist im Mietmodell enthalten?', answer: 'Betreuung, Technik, Updates und laufende Anpassungen – damit die Website nicht „nach dem Launch“ liegen bleibt.' },
+    { question: 'Kann ich später Texte/Bilder/Leistungen ändern lassen?', answer: 'Ja. Änderungen sind jederzeit möglich – genau dafür ist das Mietmodell gedacht.' },
+    { question: 'Ist die Website für Google optimiert?', answer: 'Die technische Basis ist SEO-freundlich (mobil, schnell, sauberer Aufbau). Für Top-Platzierungen empfehlen wir zusätzlich „Top 3 in Google“.' },
+    { question: 'Können Formulare, WhatsApp oder Terminbuchung eingebaut werden?', answer: 'Ja. Wir integrieren die Kontaktwege, die zu Ihrer Zielgruppe passen – kurz, schnell, ohne unnötige Hürden.' },
+    { question: 'Wann brauche ich einen Software-Entwickler?', answer: 'Wenn Sie spezielle Funktionen oder Integrationen brauchen (z. B. CRM, Automatisierungen, komplexe Formulare). Für Standard-Websites meist nicht.' },
   ];
 
   return (
@@ -202,6 +211,34 @@ const Website: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+                Warum moderne Webseiten heute Kunden bringen (oder eben nicht)
+              </h2>
+              <p className="text-light-200 mb-4">
+                Viele Websites sehen „okay“ aus – aber sie bringen kaum Anfragen. Meist liegt das nicht am Design, sondern daran, dass drei Dinge fehlen:
+              </p>
+              <ul className="list-disc list-inside text-light-200 space-y-2 mb-4">
+                <li><strong className="text-light-100">Klarheit:</strong> Was genau bieten Sie an – und für wen?</li>
+                <li><strong className="text-light-100">Vertrauen:</strong> Warum sollte ein Kunde Ihnen glauben / Sie wählen?</li>
+                <li><strong className="text-light-100">Nächster Schritt:</strong> Wie kommt der Besucher schnell zum Kontakt oder Termin?</li>
+              </ul>
+              <p className="text-light-200">
+                Unsere Webseiten sind deshalb nicht nur „schön“, sondern so aufgebaut, dass sie <strong className="text-light-100">Verstehen → Vertrauen → Kontakt</strong> sauber führen.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
               className="text-center mb-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -263,6 +300,27 @@ const Website: React.FC = () => {
               </motion.div>
             </div>
 
+            <motion.div
+              className="mt-10"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Was am Mietmodell besonders stark ist</h3>
+              <p className="text-light-200 mb-4">
+                Viele Websites veralten, weil nach dem Launch niemand mehr Zeit hat. Im Mietmodell passiert das nicht:
+              </p>
+              <ul className="list-disc list-inside text-light-200 space-y-2 mb-4">
+                <li>Inhalte können schnell aktualisiert werden (Leistungen, Preise, Team, Öffnungszeiten)</li>
+                <li>neue Bereiche/Seiten lassen sich ergänzen (z. B. neue Leistungen oder Orte)</li>
+                <li>Technik bleibt aktuell (Sicherheit, Performance, Mobiloptimierung)</li>
+              </ul>
+              <p className="text-light-200">
+                Wenn Sie zusätzlich individuelle Funktionen oder Integrationen brauchen, hilft ein <strong className="text-light-100">Software-Entwickler</strong> dabei, dass alles stabil läuft – z. B. Terminlogik, CRM-Anbindungen oder automatisierte Lead-Flows.
+              </p>
+            </motion.div>
+
             <motion.p
               className="text-center text-light-300 text-sm mt-6"
               initial={{ opacity: 0, y: 10 }}
@@ -279,7 +337,86 @@ const Website: React.FC = () => {
         </div>
       </section>
 
+      <section className="py-20 bg-dark-400">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
+                Was ist im Mietmodell enthalten?
+              </h2>
+              <ul className="list-disc list-inside text-light-200 space-y-3">
+                <li>Hosting & technische Basis (schnell, sicher, mobiloptimiert)</li>
+                <li>Updates & Wartung (damit alles stabil und aktuell bleibt)</li>
+                <li>Kleine Änderungen inklusive (Texte, Bilder, Leistungen, Öffnungszeiten)</li>
+                <li>Support & Betreuung (kurzer Draht, schnelle Anpassungen)</li>
+                <li>Laufende Optimierung nach Bedarf (z. B. Struktur/CTAs/Performance)</li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-dark-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+                Was eine Website „vertrauensstark“ macht (die wichtigsten Bausteine)
+              </h2>
+              <p className="text-light-200 mb-4">
+                Eine Website schafft Vertrauen, wenn Kunden in Sekunden das Gefühl bekommen: „Die wirken professionell. Die haben Struktur. Da kann ich anfragen.“ Typische Bausteine, die bei lokalen Unternehmen besonders gut wirken:
+              </p>
+              <ul className="list-disc list-inside text-light-200 space-y-2">
+                <li><strong className="text-light-100">Klare Leistungssätze in Kundensprache</strong> (kein Fachjargon)</li>
+                <li><strong className="text-light-100">Echte Bilder</strong> (Team, Betrieb, Projekte) statt austauschbarer Stockfotos</li>
+                <li><strong className="text-light-100">Bewertungen / Referenzen</strong> (z. B. Google Bewertungen, Ergebnisse, Projekte)</li>
+                <li><strong className="text-light-100">Transparenter Ablauf</strong> („So läuft’s ab“ in 3–5 Schritten)</li>
+                <li><strong className="text-light-100">Einfache Kontaktwege</strong> (Formular, Telefon, WhatsApp, Termin – je nach Zielgruppe)</li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+                KI, Automatisierung & moderne Webseiten: Was sinnvoll ist (und was nicht)
+              </h2>
+              <p className="text-light-200 mb-4">
+                „KI“ muss nicht groß angekündigt werden – sie soll im Hintergrund helfen. Sinnvolle Beispiele:
+              </p>
+              <ul className="list-disc list-inside text-light-200 space-y-2 mb-4">
+                <li><strong className="text-light-100">KI-Automatisierung</strong> für Anfragen: Kontaktformular → Lead → Zuständigkeit → Follow-up → Termin</li>
+                <li><strong className="text-light-100">Digitale Kundenassistenz</strong> (Website-Chat), die Fragen beantwortet und Anfragen vorqualifiziert</li>
+                <li><strong className="text-light-100">Telefonische Kundenassistenz</strong>, die Anrufe annimmt und Rückrufe strukturiert erfasst</li>
+              </ul>
+              <p className="text-light-200">
+                Das Ergebnis: Besucher bekommen schneller Antworten, Anfragen gehen nicht verloren, und Ihr Team arbeitet strukturierter. Hier nutzen wir künstliche Intelligenz pragmatisch – nicht als Buzzword, sondern als Hebel für bessere Abläufe.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-400">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -318,7 +455,7 @@ const Website: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-dark-400">
+      <section className="py-20 bg-dark-500">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -348,6 +485,99 @@ const Website: React.FC = () => {
                     <h3 className="text-lg font-heading font-bold text-light-100 mb-2">{audience.title}</h3>
                     <p className="text-light-300 text-sm">{audience.description}</p>
                   </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-400">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              className="mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
+                Mini-Vergleich: Einmal-Projekt vs. Mietmodell
+              </h2>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse bg-dark-400 border border-dark-100">
+                  <thead>
+                    <tr>
+                      <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Thema</th>
+                      <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Einmal-Projekt</th>
+                      <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Mietmodell</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-light-200 text-sm">
+                    <tr><td className="border border-dark-100 p-3">Updates</td><td className="border border-dark-100 p-3">oft „später“</td><td className="border border-dark-100 p-3">inklusive & regelmäßig</td></tr>
+                    <tr><td className="border border-dark-100 p-3">Anpassungen</td><td className="border border-dark-100 p-3">extra Aufwand</td><td className="border border-dark-100 p-3">jederzeit möglich</td></tr>
+                    <tr><td className="border border-dark-100 p-3">Technik</td><td className="border border-dark-100 p-3">wird oft alt</td><td className="border border-dark-100 p-3">technisch immer aktuell</td></tr>
+                    <tr><td className="border border-dark-100 p-3">Betreuung</td><td className="border border-dark-100 p-3">endet nach Launch</td><td className="border border-dark-100 p-3">dauerhaft dabei</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+                Häufige Verbesserungen, die sofort mehr Anfragen bringen
+              </h2>
+              <p className="text-light-200 mb-4">
+                Wenn eine Website „nicht zieht“, sind es oft diese Hebel:
+              </p>
+              <ul className="list-disc list-inside text-light-200 space-y-2">
+                <li>Hero-Text klarer (Problem + Lösung + CTA)</li>
+                <li>Leistungen besser strukturieren (nicht zu viel auf einmal)</li>
+                <li>mehr Vertrauen (Bewertungen, Referenzen, echte Bilder)</li>
+                <li>Kontaktwege vereinfachen (weniger Felder, schneller erreichbar)</li>
+                <li>Servicegebiete sauber einbauen (ohne Keyword-Spam)</li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="py-20 bg-dark-400">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Kurze FAQ (Webseiten im Mietmodell)
+            </motion.h2>
+            <div className="space-y-6">
+              {faqItems.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-dark-500 p-6 border border-dark-100"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-lg font-heading font-bold text-light-100 mb-3">{item.question}</h3>
+                  <p className="text-light-200">{item.answer}</p>
                 </motion.div>
               ))}
             </div>
@@ -392,12 +622,20 @@ const Website: React.FC = () => {
         </div>
       </section>
 
-      <RelatedServices currentSlug="webseite" />
+      <RelatedServices
+        currentSlug="webseite"
+        anchorBySlug={{
+          'ki-chatbots': '#ki-chatbot-fur-ihre-website',
+          'telefonassistenten': '#ki-telefonagent-fur-ihr-unternehmen',
+          'automatisierungen': '#ki-automatisierung-fur-anfragen-termine',
+          'seo-top-3-in-google': '#lokale-sichtbarkeit-ausbauen',
+        }}
+      />
 
       <section className="py-20 bg-dark-400">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <ServicedRegionsBlock />
+            <ServicedRegionsBlock headingTag="h2" />
             <RegionServiceLinksBlock serviceSlug="webseiten" title="Webseiten in Ihrem Gebiet" />
           </div>
         </div>

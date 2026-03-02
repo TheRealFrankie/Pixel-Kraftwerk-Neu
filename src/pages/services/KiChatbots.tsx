@@ -35,23 +35,50 @@ const KiChatbots: React.FC = () => {
   const processSteps = [
     {
       step: '01',
-      title: 'Live-Demo erleben',
+      title: 'Schritt 1 – Live-Demo erleben',
       description: 'Testen Sie die digitale Kundenassistenz direkt auf unserer Website.'
     },
     {
       step: '02',
-      title: 'Unverbindliches Gespräch',
+      title: 'Schritt 2 – Unverbindliches Gespräch',
       description: 'Wir besprechen kurz Ihre Anforderungen und Ziele.'
     },
     {
       step: '03',
-      title: 'Individuelle Einrichtung',
+      title: 'Schritt 3 – Individuelle Einrichtung',
       description: 'Die digitale Kundenassistenz wird speziell auf Ihr Unternehmen angepasst.'
     },
     {
       step: '04',
-      title: 'Live-Schaltung & Optimierung',
+      title: 'Schritt 4 – Live-Schaltung & Optimierung',
       description: 'Wir begleiten den laufenden Betrieb und optimieren kontinuierlich.'
+    }
+  ];
+
+  const faqItems = [
+    {
+      question: 'Ersetzt das meinen Support oder Vertrieb?',
+      answer: 'Nein. Es entlastet. Die Assistenz übernimmt Standardfragen und sammelt Infos – Ihr Team kümmert sich um die wichtigen Fälle.'
+    },
+    {
+      question: 'Funktioniert das auch bei komplexen Leistungen?',
+      answer: 'Ja, wenn man die Wissensbasis sauber aufbaut und klare Grenzen setzt (wann an Menschen übergeben wird).'
+    },
+    {
+      question: 'Wie schnell kann das live gehen?',
+      answer: 'Ein MVP kann sehr schnell starten. Individuelle Einrichtung + Integrationen brauchen etwas mehr Setup – dafür kommt es dann perfekt bei Ihnen an.'
+    },
+    {
+      question: 'Kann man das mehrsprachig nutzen?',
+      answer: 'Ja, optional mehrsprachig.'
+    },
+    {
+      question: 'Was ist mit Datenschutz / DSGVO?',
+      answer: 'Wir achten auf Datenminimierung, Transparenz und saubere Prozesse (z. B. welche Daten abgefragt werden und wohin sie gehen).'
+    },
+    {
+      question: 'Brauche ich dafür einen Softwareentwickler?',
+      answer: 'Nicht zwingend. Für einfache FAQ/Lead-Erfassung reicht oft ein Standard-Setup. Für tiefe Integrationen (CRM, Kalender, Ticket-System) ist ein Software-Entwickler / Softwareentwickler sinnvoll.'
     }
   ];
 
@@ -85,7 +112,8 @@ const KiChatbots: React.FC = () => {
       <BreadcrumbSchema serviceName="Digitale Kundenassistenz" serviceUrl="https://pixelkraftwerk-ai.com/ki-chatbots" />
 
       {/* Hero mit Premium-Hintergrundbild – Bild beginnt unterhalb der Header-Leiste */}
-      <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+      <section id="digitale-kundenassistenz" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+        <span id="ki-chatbot-fur-ihre-website" className="absolute top-0 left-0" aria-hidden="true" />
         {/* Bild-Container: erst ab Header-Höhe, geht nicht über die Menüleiste */}
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
@@ -129,7 +157,7 @@ const KiChatbots: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Digitale Kundenassistenz für Ihre Website
+              Digitale Kundenassistenz für Ihre Website (KI-Chatbot)
             </motion.h1>
 
             <motion.h2
@@ -142,6 +170,19 @@ const KiChatbots: React.FC = () => {
             </motion.h2>
 
             <motion.p
+              className="text-lg sm:text-xl max-w-3xl mx-auto mb-4 leading-relaxed font-sans"
+              style={{
+                color: '#F5F7FA',
+                textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
+                WebkitTextStroke: '0.5px rgba(0,0,0,0.2)',
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Ihre Website kann mehr als nur schön aussehen und Leistungen aufzählen: Sie kann <strong style={{ color: '#F5F7FA' }}>Anfragen annehmen, Fragen beantworten und Termine erfassen</strong> – automatisch, zuverlässig und <strong style={{ color: '#F5F7FA' }}>24/7</strong>.
+            </motion.p>
+            <motion.p
               className="text-lg sm:text-xl max-w-3xl mx-auto mb-6 leading-relaxed font-sans"
               style={{
                 color: '#F5F7FA',
@@ -152,7 +193,7 @@ const KiChatbots: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Unsere digitale Kundenassistenz übernimmt Kundenanfragen, beantwortet häufige Fragen und erfasst Termine oder Anliegen – <strong style={{ color: '#F5F7FA' }}>automatisch, zuverlässig und 24/7</strong>.
+              Unsere digitale Kundenassistenz übernimmt die erste Kommunikation mit Ihren Website-Besuchern, beantwortet häufige Fragen und erfasst Termine oder Anliegen – so, dass bei Ihnen <strong style={{ color: '#F5F7FA' }}>nur die wirklich relevanten Anfragen</strong> ankommen.
             </motion.p>
 
             <motion.div
@@ -169,7 +210,7 @@ const KiChatbots: React.FC = () => {
                   WebkitTextStroke: '0.5px rgba(0,0,0,0.2)',
                 }}
               >
-                👉 <strong>Erleben Sie die digitale Kundenassistenz live</strong> – direkt hier auf der Website.
+                👉 <strong>Erleben Sie die digitale Kundenassistenz live – direkt hier auf der Website.</strong>
               </p>
               <p
                 className="mt-2 text-sm sm:text-base"
@@ -212,7 +253,7 @@ const KiChatbots: React.FC = () => {
                 Das Problem: <span className="text-primary-500">Anfragen kommen – aber nicht an</span>
               </h2>
               <p className="text-light-200 mb-8">
-                Jeden Tag gehen potenzielle Kunden verloren, weil:
+                Jeden Tag gehen potenzielle Kunden verloren, weil …
               </p>
             </motion.div>
 
@@ -241,6 +282,38 @@ const KiChatbots: React.FC = () => {
             >
               Das kostet Zeit, Geld und Nerven.
             </motion.p>
+
+            <motion.div
+              className="mt-12 bg-dark-500 p-8 border border-dark-100"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Warum Besucher abspringen</h3>
+              <p className="text-light-200 mb-4">
+                Viele Besucher sind nicht „nur neugierig“. Sie haben eine konkrete Frage – und wenn sie nicht sofort eine Antwort bekommen, schließen sie den Tab. Das passiert besonders häufig bei:
+              </p>
+              <ul className="space-y-2 text-light-200">
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Preis-/Kostenfragen („Was kostet das ungefähr?“)</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Verfügbarkeiten („Wann wäre der nächste Termin?“)</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Einzugsgebiet/Ort („Kommt ihr auch nach …?“)</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Ablauf („Wie läuft das ab?“)</li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              className="mt-8 bg-dark-500 p-8 border border-dark-100"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Was das Sie täglich kostet (Zeit, Geld, Nerven)</h3>
+              <p className="text-light-200">
+                Jede unbeantwortete Anfrage ist ein möglicher Auftrag, der gar nicht erst in Ihrem System ankommt. Und jede Standardfrage bindet Zeit, die Sie eigentlich für Kunden, Projekte oder Teamführung brauchen.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -291,6 +364,43 @@ const KiChatbots: React.FC = () => {
               </ul>
             </motion.div>
 
+            <motion.div
+              className="bg-dark-400 p-8 border border-dark-100 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Was die Assistenz konkret übernimmt</h3>
+              <p className="text-light-200 mb-4">Je nach Unternehmen übernehmen wir z. B.:</p>
+              <ul className="space-y-2 text-light-200">
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Erste Fragen klären (Ort, Anliegen, Dringlichkeit)</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Infos geben (Ablauf, Verfügbarkeit, Einzugsgebiet)</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Kontaktdaten erfassen (Name, Telefon, E-Mail)</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Terminwünsche abfragen oder direkt zur Buchung führen</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Übergabe an Ihr Team (E-Mail/CRM/Übersicht)</li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              className="bg-dark-400 p-8 border border-dark-100 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Was bei Ihrem Team landet (nur relevante Anliegen)</h3>
+              <p className="text-light-200 mb-4">Statt „Hi, ich hab da mal ne Frage…“ bekommt Ihr Team strukturierte Infos, z. B.:</p>
+              <ul className="space-y-2 text-light-200">
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Name + Telefonnummer</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Anliegen in Klartext</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Ort / Einsatzgebiet</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Wunschzeitpunkt / Dringlichkeit</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Kontext (welche Seite besucht wurde, welche Auswahl getroffen wurde)</li>
+              </ul>
+              <p className="text-light-200 mt-4">So können Sie schneller entscheiden, wer wann zurückruft – und verlieren weniger Leads.</p>
+            </motion.div>
+
             <motion.p
               className="text-center text-primary-500 text-lg font-bold"
               initial={{ opacity: 0 }}
@@ -300,6 +410,59 @@ const KiChatbots: React.FC = () => {
             >
               ➡️ Weniger Unterbrechungen. Mehr qualifizierte Anfragen.
             </motion.p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+                Kurz erklärt: Was ist eine digitale Kundenassistenz (KI-Chatbot)?
+              </h2>
+              <p className="text-light-200 max-w-3xl mx-auto mb-8">
+                Eine digitale Kundenassistenz ist ein KI-gestützter Website-Chat, der Besucher:innen <strong>sofort</strong> hilft – auch abends, am Wochenende oder wenn Ihr Team gerade im Kundentermin steckt.
+              </p>
+              <p className="text-light-200 max-w-3xl mx-auto mb-8">
+                Statt „Schreiben Sie uns eine Mail“ bekommen Besucher direkt Antworten wie:
+              </p>
+              <ul className="text-light-200 max-w-3xl mx-auto mb-8 space-y-2 list-disc list-inside">
+                <li>„Ja, wir sind in Ihrem Gebiet unterwegs.“</li>
+                <li>„So läuft der Ablauf – in 3 Schritten.“</li>
+                <li>„Ich nehme kurz die Infos auf und melde mich mit einem Terminvorschlag.“</li>
+              </ul>
+            </motion.div>
+            <motion.div
+              className="bg-dark-400 p-8 border border-dark-100 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Für wen das gedacht ist</h3>
+              <p className="text-light-200">
+                Besonders sinnvoll ist das für Unternehmen mit: regelmäßig wiederkehrenden Kundenfragen, vielen Kontaktanfragen über Website oder Telefon, hohem „Orga“-Anteil (Terminabsprachen, Rückrufwünsche, Vorqualifizierung) sowie mehreren Leistungen / Standorten / Einsatzgebieten.
+              </p>
+            </motion.div>
+            <motion.div
+              className="bg-dark-400 p-8 border border-dark-100"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Was sie nicht ist (kein Ersatz für Fachpersonal)</h3>
+              <p className="text-light-200">
+                <strong>Wichtig:</strong> Die digitale Kundenassistenz ersetzt kein Fachpersonal – sie entlastet, filtert und strukturiert die Kommunikation. Bei komplexen Fällen wird sauber an Ihr Team übergeben.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -315,7 +478,7 @@ const KiChatbots: React.FC = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
-                Erleben Sie die <span className="text-primary-500">Kundenassistenz live</span>
+                Erleben Sie die <span className="text-primary-500">Kundenassistenz live (Demo)</span>
               </h2>
               <p className="text-light-200 max-w-3xl mx-auto mb-8">
                 Die Kundenassistenz auf dieser Website zeigt Ihnen <strong>live</strong>, wie das System arbeitet.
@@ -323,7 +486,7 @@ const KiChatbots: React.FC = () => {
             </motion.div>
 
             <motion.div
-              className="bg-dark-500 p-8 border border-dark-100"
+              className="bg-dark-500 p-8 border border-dark-100 mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -344,9 +507,41 @@ const KiChatbots: React.FC = () => {
                   <span className="text-light-200">sehen, wie Anfragen strukturiert aufgenommen werden</span>
                 </li>
               </ul>
-              <p className="text-light-200 mt-6">
-                <strong>So würde die Kundenassistenz auch bei Ihnen funktionieren</strong> – angepasst auf Ihr Unternehmen.
-              </p>
+              <p className="text-light-200 mt-6">So würde die Kundenassistenz auch bei Ihnen funktionieren – angepasst auf Ihr Unternehmen.</p>
+            </motion.div>
+
+            <motion.div
+              className="bg-dark-500 p-8 border border-dark-100 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-lg font-heading font-bold text-light-100 mb-4">Was Sie testen können</h3>
+              <p className="text-light-200 mb-4">Probieren Sie z. B.:</p>
+              <ul className="space-y-2 text-light-200">
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>„Was kostet das ungefähr?“</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>„Kommt ihr auch nach [Ort]?“</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>„Ich brauche einen Termin nächste Woche.“</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>„Wie läuft das ab?“</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>„Kann ich zurückgerufen werden?“</li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              className="bg-dark-500 p-8 border border-dark-100"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-lg font-heading font-bold text-light-100 mb-4">So würde es bei Ihnen aussehen (individuell angepasst)</h3>
+              <p className="text-light-200 mb-4">Wir richten die Assistenz so ein, dass sie:</p>
+              <ul className="space-y-2 text-light-200">
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>zu Ihrer Branche passt (Wording, typische Fragen)</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Ihre Leistungen korrekt erklärt (ohne zu viel zu versprechen)</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Leads so erfasst, wie Ihr Team sie wirklich braucht</li>
+              </ul>
             </motion.div>
 
             <motion.p
@@ -395,11 +590,152 @@ const KiChatbots: React.FC = () => {
               </div>
 
               <div className="mt-8 pt-8 border-t border-dark-100">
-                <p className="text-light-200 text-center">
+                <p className="text-light-200 text-center mb-8">
                   <strong>Wichtig:</strong> Die digitale Kundenassistenz ersetzt kein Fachpersonal – sie <strong>entlastet</strong>, filtert und strukturiert die Kommunikation.
                 </p>
+                <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Funktionen im Überblick</h3>
+                <p className="text-light-200 mb-4">Je nach Setup kann die Assistenz:</p>
+                <ul className="space-y-2 text-light-200">
+                  <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Antworten aus Ihrer Wissensbasis geben (FAQ, Leistungen, Ablauf)</li>
+                  <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Besucher durch klare Optionen führen (Buttons statt Textwände)</li>
+                  <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>bei Unsicherheit nachfragen (statt irgendwas zu erfinden)</li>
+                  <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>bei „kritischen“ Anliegen an Menschen übergeben</li>
+                </ul>
+                <h3 className="text-xl font-heading font-bold text-light-100 mt-8 mb-4">Optional: Mehrsprachigkeit & Regeln</h3>
+                <p className="text-light-200 mb-4">Optional kann die Assistenz:</p>
+                <ul className="space-y-2 text-light-200">
+                  <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>mehrere Sprachen sprechen</li>
+                  <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>feste Regeln berücksichtigen (z. B. Einzugsgebiet, Öffnungszeiten, Terminlogik)</li>
+                  <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Anfragen nach Kategorien sortieren (Support, Angebot, Termin, Rückruf)</li>
+                </ul>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-400">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+                Was passiert mit den Anfragen – und wie kommt das bei Ihnen an?
+              </h2>
+              <p className="text-light-200 max-w-3xl mx-auto mb-8">
+                Damit es nicht bei „Chatverlauf irgendwo“ bleibt, sorgen wir für klare Übergaben. Beispiele: E-Mail mit allen Infos (Name, Anliegen, Ort, Wunschzeit), CRM / Tabellen-Übersicht für strukturierte Nachverfolgung, automatische Terminlogik (wenn gewünscht). Wenn Integrationen tiefer gehen (z. B. CRM, Kalender, Ticket-System), setzen wir das sauber um – je nach Setup auch gemeinsam mit einem Software-Entwickler / Softwareentwickler in Ihrem Team oder bei uns.
+              </p>
+            </motion.div>
+            <motion.div
+              className="bg-dark-500 p-8 border border-dark-100 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Übergabe per E-Mail / CRM / Tabelle</h3>
+              <p className="text-light-200 mb-4">Sie entscheiden, wie Ihr Team am liebsten arbeitet:</p>
+              <ul className="space-y-2 text-light-200">
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>E-Mail an eine oder mehrere Adressen</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>zentrale Übersicht (z. B. für Vertrieb/Backoffice)</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>CRM-Eintrag mit Tags und Feldern</li>
+              </ul>
+            </motion.div>
+            <motion.div
+              className="bg-dark-500 p-8 border border-dark-100"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Integrationen & Automatisierung (wenn nötig mit Software-Entwickler / Softwareentwickler)</h3>
+              <p className="text-light-200">
+                Wenn Sie mehr Automatisierung wollen (z. B. „Lead kommt rein → wird zugewiesen → wird nachgefasst“), dann ist das genau der Punkt, wo eine technische Umsetzung durch erfahrene Automations-Teams oder Softwareentwickler den größten Unterschied macht.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+                Baukasten vs. individuelle Einrichtung (Mini-Vergleich)
+              </h2>
+            </motion.div>
+            <motion.div
+              className="overflow-x-auto mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <table className="w-full border-collapse bg-dark-400 border border-dark-100">
+                <thead>
+                  <tr>
+                    <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Setup</th>
+                    <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Gut, wenn…</th>
+                    <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Ergebnis</th>
+                  </tr>
+                </thead>
+                <tbody className="text-light-200 text-sm">
+                  <tr>
+                    <td className="border border-dark-100 p-3">Schnell-Setup (MVP)</td>
+                    <td className="border border-dark-100 p-3">Sie wollen testen & schnell live gehen</td>
+                    <td className="border border-dark-100 p-3">Sofort weniger Standardfragen</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-dark-100 p-3">Individuelle Einrichtung</td>
+                    <td className="border border-dark-100 p-3">Sie wollen sauberes Routing + echte Prozesse</td>
+                    <td className="border border-dark-100 p-3">Mehr qualifizierte Leads & weniger Aufwand</td>
+                  </tr>
+                </tbody>
+              </table>
+            </motion.div>
+            <motion.div
+              className="bg-dark-400 p-8 border border-dark-100 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Schnell-Setup (MVP)</h3>
+              <p className="text-light-200 mb-4">Ideal, wenn Sie:</p>
+              <ul className="space-y-2 text-light-200">
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>erstmal live testen möchten</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>schnell sehen wollen, welche Fragen wirklich kommen</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>ohne großen Aufwand starten wollen</li>
+              </ul>
+            </motion.div>
+            <motion.div
+              className="bg-dark-400 p-8 border border-dark-100"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Individuelle Einrichtung (Integrationen & Prozesse)</h3>
+              <p className="text-light-200 mb-4">Ideal, wenn Sie:</p>
+              <ul className="space-y-2 text-light-200">
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Leads strukturiert ins CRM bringen möchten</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Terminlogik automatisieren wollen</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>mehrere Leistungen/Teams/Standorte haben</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>messbar mehr Anfragen und weniger Chaos wollen</li>
+              </ul>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -448,9 +784,24 @@ const KiChatbots: React.FC = () => {
                   <span className="text-light-200">Betrieb, Wartung und laufende Optimierung inklusive</span>
                 </div>
               </div>
-              <p className="text-light-200 mt-6 text-center">
+              <p className="text-light-200 mt-6 text-center mb-8">
                 Sie bleiben flexibel – wir sorgen dafür, dass die Kundenassistenz dauerhaft Mehrwert liefert.
               </p>
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Ihre Vorteile im Mietmodell</h3>
+              <p className="text-light-200 mb-4">Sie haben keinen „Projekt-Klotz“, der nach dem Go-Live liegen bleibt. Stattdessen:</p>
+              <ul className="space-y-2 text-light-200 mb-8">
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>laufende Anpassungen an echte Kundenfragen</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Verbesserungen anhand der Chat-Auswertung</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>klare Weiterentwicklung statt Stillstand</li>
+              </ul>
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Laufende Optimierung inklusive</h3>
+              <p className="text-light-200 mb-4">Wir schauen regelmäßig:</p>
+              <ul className="space-y-2 text-light-200">
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Welche Fragen kommen am häufigsten?</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Wo brechen Besucher ab?</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Welche Einstiegsfrage konvertiert besser?</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Welche Übergabe bringt die meisten Termine?</li>
+              </ul>
             </motion.div>
           </div>
         </div>
@@ -475,7 +826,7 @@ const KiChatbots: React.FC = () => {
             </motion.div>
 
             <motion.div
-              className="bg-dark-400 p-8 border border-dark-100 mb-12"
+              className="bg-dark-400 p-8 border border-dark-100 mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -491,8 +842,24 @@ const KiChatbots: React.FC = () => {
               </div>
             </motion.div>
 
+            <motion.div
+              className="bg-dark-400 p-8 border border-dark-100 mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Typische Situationen, wo es sofort hilft</h3>
+              <ul className="space-y-2 text-light-200">
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Viele „kurze“ Fragen → ständig Unterbrechungen</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Viele Leads „versickern“ → wenig Rücklauf</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Viele Anfragen außerhalb der Zeiten → Leads weg</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Telefon + Website parallel → Team kommt nicht hinterher</li>
+              </ul>
+            </motion.div>
+
             <div className="text-center mb-8">
-              <h3 className="text-xl font-heading font-bold text-light-100">Typische Einsatzbereiche:</h3>
+              <h3 className="text-xl font-heading font-bold text-light-100">Typische Einsatzbereiche (Dienstleister, Handwerk, Praxen, E-Commerce)</h3>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -515,6 +882,31 @@ const KiChatbots: React.FC = () => {
       </section>
 
       <section className="py-20 bg-dark-400">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-8">
+                5 schnelle Gründe, warum Unternehmen das lieben
+              </h2>
+              <ul className="space-y-3 text-light-200 text-left max-w-2xl mx-auto">
+                <li className="flex items-start"><span className="text-primary-500 mr-3 flex-shrink-0">•</span><strong className="text-light-100">24/7 erreichbar</strong>, ohne „abends noch Mails“</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-3 flex-shrink-0">•</span><strong className="text-light-100">Sofort Antworten</strong>, statt Wartezeit</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-3 flex-shrink-0">•</span><strong className="text-light-100">Weniger Unterbrechungen</strong> im Tagesgeschäft</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-3 flex-shrink-0">•</span><strong className="text-light-100">Bessere Leads</strong>, weil sauber vorqualifiziert</li>
+                <li className="flex items-start"><span className="text-primary-500 mr-3 flex-shrink-0">•</span><strong className="text-light-100">Weniger Chaos</strong>, weil Anfragen strukturiert ankommen</li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-500">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -607,8 +999,7 @@ const KiChatbots: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              Wenn Sie möchten, zeigen wir Ihnen <strong>individuell</strong>,<br />
-              wie die digitale Kundenassistenz in Ihrem Unternehmen eingesetzt werden kann.
+              Wenn Sie möchten, zeigen wir Ihnen individuell, wie die digitale Kundenassistenz in Ihrem Unternehmen eingesetzt werden kann.
             </motion.p>
             <motion.div
               className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6"
@@ -647,6 +1038,44 @@ const KiChatbots: React.FC = () => {
               </a>
               .
             </motion.p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-400">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              FAQ – häufige Fragen
+            </motion.h2>
+            <div className="space-y-6">
+              {faqItems.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-dark-500 p-6 border border-dark-100"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-lg font-heading font-bold text-light-100 mb-3">{item.question}</h3>
+                  <p className="text-light-200">{item.answer}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
             <ServicedRegionsBlock />
             <RegionServiceLinksBlock serviceSlug="ki-chatbots" title="KI-Chatbots in Ihrem Gebiet" />
           </div>

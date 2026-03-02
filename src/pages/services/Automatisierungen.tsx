@@ -31,7 +31,7 @@ const Automatisierungen: React.FC = () => {
     {
       title: 'Automatisch sortieren, priorisieren & zuständig zuweisen',
       description:
-        'Statt „alle bekommen alles“ entscheidet ein Workflow automatisch: Worum geht es? Wie dringend? Wer ist zuständig? Das kann simpel sein (Regeln & Tags) oder smarter mit KI-gestützter Klassifizierung. Beispiel: „Angebot Photovoltaik“ → Tag „PV“ → Zuständig: Max → Aufgabe: Rückruf heute → optional Terminlink schicken.',
+        'Statt „alle bekommen alles“ entscheidet ein Workflow automatisch: Worum geht es? Wie dringend? Wer ist zuständig? Das kann simpel sein (Regeln & Tags) oder smarter mit künstlicher Intelligenz zur Klassifizierung. Beispiel: „Angebot Photovoltaik“ → Tag „PV“ → Zuständig: Max → Aufgabe: Rückruf heute → optional Terminlink schicken.',
     },
     {
       title: 'Nachfassen & Erinnern – ohne dass jemand dran denken muss',
@@ -55,11 +55,11 @@ const Automatisierungen: React.FC = () => {
       points: ['System erkennt: „Angebot“', '3–5 kurze Rückfragen (Mail/Formular)', 'Wenn passend: Terminlink anbieten', 'Wenn unklar: Rückruf-Aufgabe erstellen'],
     },
     {
-      title: '„Kein Rückruf“ vermeiden: Rückruf-Workflow',
+      title: 'Rückruf-Workflow',
       points: ['Telefonnotiz / verpasster Anruf wird erfasst', 'Aufgabe „Rückruf“ mit Deadline', 'Wenn nicht erledigt: Reminder an Team/Owner'],
     },
     {
-      title: 'Follow-up nach Angebot (ohne peinliches Nachhaken)',
+      title: 'Follow-up nach Angebot',
       points: ['Angebot gesendet → Status „Angebot raus“', 'Nach 48h: freundliche Nachfrage', 'Nach 5 Tagen: „Soll ich\'s für Sie parken?“ (sauberer Exit)'],
     },
     {
@@ -139,7 +139,7 @@ const Automatisierungen: React.FC = () => {
       />
 
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
-      <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+      <section id="ki-automatisierung-fur-anfragen-termine" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
             src="/images/automtatisierung.png"
@@ -226,6 +226,53 @@ const Automatisierungen: React.FC = () => {
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
+      </section>
+
+      <section className="py-20 bg-dark-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Kurz erklärt: Was wir mit „KI-Automatisierung“ wirklich meinen
+            </motion.h2>
+            <motion.p
+              className="text-light-200 mb-4"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              Wenn wir von <strong className="text-light-100">KI-Automatisierung</strong> sprechen, geht es nicht um „noch ein Tool“. Es geht darum, dass eure Systeme so miteinander verbunden sind, dass Abläufe automatisch passieren.
+            </motion.p>
+            <p className="text-light-200 mb-2">Typisch ist ein Setup wie:</p>
+            <ul className="space-y-2 text-light-200 mb-6">
+              <li><strong className="text-light-100">Eingänge</strong> (Website, E-Mail, Telefonnotiz, WhatsApp, Ads, Google Business Profile)</li>
+              <li><strong className="text-light-100">Logik</strong> (Regeln, Prioritäten, Zuständigkeiten – optional mit künstlicher Intelligenz zur Klassifizierung)</li>
+              <li><strong className="text-light-100">Aktionen</strong> (Sofortantwort, Aufgaben, CRM-Eintrag, Terminbuchung, Follow-up, Reminder)</li>
+            </ul>
+            <motion.p
+              className="text-light-200 mb-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              Technisch bauen wir das häufig mit <strong className="text-light-100">n8n</strong>, APIs und Webhooks. Für dich zählt aber nur: Anfragen werden erfasst, sortiert, bearbeitet und nachverfolgt – automatisch.
+            </motion.p>
+            <motion.p
+              className="text-light-200"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              <strong className="text-light-100">Wichtig:</strong> Sobald es um komplexe Integrationen (CRM, Kalenderlogik, mehrere Standorte, Datenqualität) geht, ist ein <strong className="text-light-100">Software-Entwickler</strong> ein echter Hebel: stabiler, sauberer, weniger Fehler.
+            </motion.p>
+          </div>
+        </div>
       </section>
 
       <section className="py-20 bg-dark-400">
@@ -516,8 +563,29 @@ const Automatisierungen: React.FC = () => {
             <p className="text-light-200 mb-4">
               Im Hintergrund werden dafür Tools über Schnittstellen verbunden (APIs). Für dich als Kunde zählt aber nur: Es läuft automatisch und dein Team hat Überblick.
             </p>
-            <p className="text-light-200">
+            <p className="text-light-200 mb-6">
               Gute Automatisierungen müssen: stabil laufen, verständlich für dein Team sein, sauber dokumentiert sein und skalieren können (wenn mehr Anfragen kommen).
+            </p>
+            <motion.h3
+              className="text-lg font-heading font-bold text-light-100 mb-3"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              Wann ein Software-Entwickler sinnvoll ist
+            </motion.h3>
+            <p className="text-light-200 mb-2">
+              Ein MVP kann schlank starten. Aber sobald ihr:
+            </p>
+            <ul className="space-y-2 text-light-200 mb-3 list-disc list-inside">
+              <li>mehrere Systeme sauber synchronisieren wollt,</li>
+              <li>komplexe Regeln (Teams, Standorte, Kalender) habt,</li>
+              <li>Datenqualität wichtig ist (Dubletten, Felder, Validierung),</li>
+              <li>oder Monitoring/Fehler-Handling braucht,</li>
+            </ul>
+            <p className="text-light-200">
+              … ist ein <strong className="text-light-100">Software-Entwickler</strong> (bzw. Softwareentwickler) extrem wertvoll, weil der Unterschied dann im Detail steckt.
             </p>
           </div>
         </div>
