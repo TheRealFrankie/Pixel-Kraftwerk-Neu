@@ -802,6 +802,7 @@ const Automatisierungen: React.FC = () => {
       <ContactForm />
       <GoogleMapsSection />
     </div>
+  </>
   );
 };
 
