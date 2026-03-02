@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-dark-500 font-sans text-body leading-relaxed antialiased;
+    @apply bg-light-100 font-sans text-body leading-relaxed antialiased;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

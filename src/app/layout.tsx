@@ -49,7 +49,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <meta name="p:domain_verify" content="10eae38c84b0c276cac28f102b415b2e" />
       </head>
-      <body className="bg-dark-500 text-light-100 min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-3 focus:bg-primary-500 focus:text-dark-500 focus:font-heading focus:font-bold focus:rounded-lg focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-dark-500"
