@@ -3,6 +3,7 @@
  * Shared für generateMetadata (Server) und RegionPage (Client).
  */
 import { LEISTUNGSGEBIETE_SLUGS } from './leistungsgebiete';
+import type { LeistungsgebietSlug } from './leistungsgebiete';
 import type { ServiceSlug } from './services';
 
 export type RegionContent = {
@@ -1018,6 +1019,8 @@ export function getRegionContent(slug: string): RegionContent {
   return getTemplateRegionContent(name);
 }
 
-export function getValidRegionSlug(region: string): string {
-  return (LEISTUNGSGEBIETE_SLUGS as readonly string[]).includes(region) ? region : 'leipzig';
+export function getValidRegionSlug(region: string): LeistungsgebietSlug {
+  return LEISTUNGSGEBIETE_SLUGS.includes(region as LeistungsgebietSlug)
+    ? (region as LeistungsgebietSlug)
+    : 'leipzig';
 }

@@ -662,6 +662,42 @@ const KiChatbots: React.FC = () => {
         </div>
       </section>
 
+      <section className="py-16 bg-dark-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.h2
+              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Passt eine digitale Kundenassistenz zu Ihrem Alltag?
+            </motion.h2>
+            <motion.p
+              className="text-light-200 mb-6"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              In einem kurzen Gespräch schauen wir gemeinsam, ob ein KI-Chatbot auf Ihrer Website wirklich hilft – oder ob an anderer Stelle mehr Hebel liegt.
+            </motion.p>
+            <motion.button
+              onClick={scrollToContact}
+              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors	duration-300"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Gespräch zur digitalen Kundenassistenz anfragen
+              <ArrowRight className="ml-2" size={22} />
+            </motion.button>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-dark-500">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">

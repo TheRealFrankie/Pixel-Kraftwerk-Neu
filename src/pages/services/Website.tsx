@@ -355,6 +355,42 @@ const Website: React.FC = () => {
         </div>
       </section>
 
+      <section className="py-16 bg-dark-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.h2
+              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Passt eine Website im Mietmodell zu Ihrem Unternehmen?
+            </motion.h2>
+            <motion.p
+              className="text-light-200 mb-6"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              In einem kurzen Gespräch klären wir, wie Ihre aktuelle Website aufgestellt ist – und ob ein Mietmodell mit laufender Betreuung für Sie wirklich Sinn ergibt.
+            </motion.p>
+            <motion.button
+              onClick={scrollToContact}
+              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Gespräch zu Ihrer Website anfragen
+              <ArrowRight className="ml-2" size={22} />
+            </motion.button>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-dark-400">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
