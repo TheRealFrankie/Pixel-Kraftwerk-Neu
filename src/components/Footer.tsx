@@ -106,7 +106,7 @@ const Footer: React.FC = () => {
     <footer className="bg-dark-400 border-t border-dark-200 pt-10 pb-6 md:pt-12 md:pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 md:mb-10">
-          {/* Kontakt + Leistungen – höchste Priorität */}
+          {/* Kontakt + Leistungen – wie vorher, ohne Social */}
           <div className="lg:col-span-2">
             <h2 className="text-primary-500 font-heading font-bold mb-3 text-base">Kontakt</h2>
             <div className="flex flex-col sm:flex-row sm:items-start sm:gap-10">
@@ -130,19 +130,6 @@ const Footer: React.FC = () => {
                 </ul>
               </div>
             </div>
-
-            <div className="flex space-x-4 mt-4">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.platform}
-                  href={link.url}
-                  aria-label={link.platform}
-                  className="text-light-100 hover:text-primary-400 hover:scale-110 transition-all duration-200 p-1 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-400"
-                >
-                  {getSocialIcon(link.icon)}
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Seiten */}
@@ -164,15 +151,37 @@ const Footer: React.FC = () => {
             </nav>
           </div>
 
-          {/* Logo / Claim */}
-          <div className="hidden lg:block text-right">
+          {/* Logo / Claim + Social + GBP rechts */}
+          <div className="hidden lg:flex flex-col items-end text-right">
             <Logo />
-            <p className="text-light-300 mt-4">
+            <p className="text-light-300 mt-4 text-sm">
               Zukunft. Automatisiert. Jetzt.
+            </p>
+            <div className="flex space-x-3 mt-4 justify-end">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.platform}
+                  href={link.url}
+                  aria-label={link.platform}
+                  className="text-light-100 hover:text-primary-400 hover:scale-110 transition-all duration-200 p-1 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-400"
+                >
+                  {getSocialIcon(link.icon)}
+                </a>
+              ))}
+            </div>
+            <p className="mt-3 text-light-300 text-xs">
+              <a
+                href="https://g.page/r/CUl0X04KsO71EAE/review"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary-400 hover:text-primary-300 hover:underline font-heading font-bold"
+              >
+                Pixel&nbsp;Kraftwerk bei Google bewerten
+              </a>
             </p>
           </div>
 
-          {/* Rechtliches – rutscht bei kleineren Screens unter Kontakt/Seiten */}
+          {/* Rechtliches – wie vorher unten, volle Breite */}
           <div className="lg:col-span-4 md:col-span-2 lg:mt-2">
             <h2 className="text-primary-500 font-heading font-bold mb-3 text-base">Rechtliches</h2>
             <nav aria-label="Rechtliche Informationen">

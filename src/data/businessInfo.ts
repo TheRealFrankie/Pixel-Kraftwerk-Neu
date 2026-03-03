@@ -66,10 +66,11 @@ export const businessInfo = {
   ],
 
   socialMedia: {
-    facebook: "",
-    instagram: "",
+    facebook: "https://www.facebook.com/profile.php?id=61571247426093",
+    instagram: "https://www.instagram.com/pixel.kraftwerk/",
     linkedin: "",
-    twitter: ""
+    twitter: "",
+    googleReview: "https://g.page/r/CUl0X04KsO71EAE/review"
   },
 
   openingHours: [

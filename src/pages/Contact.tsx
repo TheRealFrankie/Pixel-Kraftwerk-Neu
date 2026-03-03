@@ -30,6 +30,19 @@ const Contact: React.FC = () => {
           <p className="text-light-200 mb-16 text-center text-sm">
             Als Ihr Partner für KI-Automatisierung in Groitzsch, Leipzig und der Region melden wir uns zeitnah zurück – kompetent, unverbindlich und persönlich.
           </p>
+
+          <p className="text-light-300 mb-6 text-center text-sm">
+            Sind Sie bereits Kunde von uns? Dann freuen wir uns über eine kurze{" "}
+            <a
+              href="https://g.page/r/CUl0X04KsO71EAE/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-400 hover:underline font-heading font-bold"
+            >
+              Google-Bewertung
+            </a>
+            .
+          </p>
         </div>
 
         <div className="max-w-4xl mx-auto mb-16">
