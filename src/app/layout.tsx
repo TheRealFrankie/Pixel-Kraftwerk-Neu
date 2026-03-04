@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
 import AnalyticsScripts from '@/components/AnalyticsScripts';
-import ChatLauncher from '@/components/ChatLauncher';
+import VoiceflowChat from '@/components/VoiceflowChat';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import './globals.css';
 
@@ -62,7 +62,7 @@ export default function RootLayout({
           <main id="main" className="flex-grow">{children}</main>
           <Footer />
           <CookieBanner />
-          <ChatLauncher />
+          <VoiceflowChat />
         </ThemeProvider>
       </body>
     </html>
