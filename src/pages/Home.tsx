@@ -117,9 +117,9 @@ const Home: React.FC = () => {
             >
               <button
                 onClick={scrollToContactForm}
-                className="inline-flex items-center px-8 py-3.5 rounded-xl bg-primary-500 text-dark-500 font-heading font-bold shadow-lg shadow-primary-500/20 hover:bg-primary-400 hover:shadow-primary-glow transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 min-h-[44px]"
+                className="inline-flex w-full sm:w-auto justify-center items-center px-5 py-3 rounded-lg bg-primary-500 text-dark-500 font-heading font-semibold sm:font-bold text-sm sm:text-base shadow-lg shadow-primary-500/20 hover:bg-primary-400 hover:shadow-primary-glow transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 min-h-[44px]"
               >
-                <ArrowRight className="mr-2" size={20} />
+                <ArrowRight className="mr-2" size={18} />
                 Kostenloses Erstgespräch sichern
               </button>
             </motion.div>
