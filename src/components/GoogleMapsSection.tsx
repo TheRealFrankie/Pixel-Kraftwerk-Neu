@@ -8,9 +8,6 @@ import { businessInfo } from '../data/businessInfo';
 const GoogleMapsSection: React.FC = () => {
   const address = `${businessInfo.address.streetAddress}, ${businessInfo.address.postalCode} ${businessInfo.address.addressLocality}`;
   const encodedAddress = encodeURIComponent(address);
-  const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
-    `${businessInfo.geo.latitude},${businessInfo.geo.longitude}`,
-  )}&z=15&output=embed`;
 
   return (
     <section className="py-16 bg-dark-400">
@@ -37,13 +34,11 @@ const GoogleMapsSection: React.FC = () => {
           <div className="relative w-full h-[400px] md:h-[450px] bg-dark-500 border-2 border-dark-100 overflow-hidden">
             <div className="absolute inset-0">
               <iframe
-                src={mapSrc}
+                src="/locator.html"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
                 title="Google Maps Standort Pixel Kraftwerk"
               />
             </div>
