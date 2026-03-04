@@ -34,11 +34,13 @@ const GoogleMapsSection: React.FC = () => {
           <div className="relative w-full h-[400px] md:h-[450px] bg-dark-500 border-2 border-dark-100 overflow-hidden">
             <div className="absolute inset-0">
               <iframe
-                src="/locator.html"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2535.212320993495!2d12.276904876636072!3d51.15224677173471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a6efa537042d9f%3A0xf5eeb00a4e5f7449!2sPixel%20Kraftwerk%20%7C%20KI%20-%20Automatisierungen!5e1!3m2!1sen!2sde!4v1772643613124!5m2!1sen!2sde"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
                 title="Google Maps Standort Pixel Kraftwerk"
               />
             </div>
