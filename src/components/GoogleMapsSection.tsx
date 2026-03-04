@@ -34,7 +34,7 @@ const GoogleMapsSection: React.FC = () => {
           <div className="relative w-full h-[400px] md:h-[450px] bg-dark-500 border-2 border-dark-100 overflow-hidden">
             <div className="absolute inset-0">
               <iframe
-                src="https://storage.googleapis.com/maps-solutions-mwl4d3xynk/locator-plus/qa1k/locator-plus.html"
+                src="https://storage.googleapis.com/maps-solutions-owb0pzlu78/locator-plus/iovp/locator-plus.html"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
