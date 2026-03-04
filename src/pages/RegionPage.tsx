@@ -162,7 +162,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                     >
                       <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
                         <Image
-                          src="/images/Chatbot - digitaleKundenassitenz.png"
+                          src="/images/ki-chatbot-digitale-kundenassistenz.webp"
                           alt={altText}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -210,7 +210,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                     >
                       <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
                         <Image
-                          src="/images/telefonassiatenz bot.png"
+                          src="/images/ki-telefonassistent.webp"
                           alt={altText}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -258,7 +258,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                     >
                       <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
                         <Image
-                          src="/images/Websites.png"
+                          src="/images/webseiten-mietmodell-agentur.webp"
                           alt={altText}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -306,7 +306,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                     >
                       <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
                         <Image
-                          src="/images/automtatisierung.png"
+                          src="/images/automatisierungen-anfragen-vertrieb-terminplanung.webp"
                           alt={altText}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -355,7 +355,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                       <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] min-h-[260px] lg:min-h-[280px]">
                         <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[280px] overflow-hidden bg-dark-400 order-2 lg:order-1">
                           <Image
-                            src="/images/top3ingoogle.jpeg"
+                            src="/images/seo-top-3-google-local-pack.webp"
                             alt={altText}
                             fill
                             sizes="(max-width: 1024px) 100vw, 55vw"

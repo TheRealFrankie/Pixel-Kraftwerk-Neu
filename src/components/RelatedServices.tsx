@@ -24,31 +24,31 @@ const allServices: ServiceInfo[] = [
     slug: 'ki-chatbots',
     title: 'Digitale Kundenassistenz',
     shortDescription: 'Digitale Kundenassistenz für Ihre Website, die Besucher berät und Anfragen qualifiziert.',
-    image: '/images/Chatbot - digitaleKundenassitenz.png',
+    image: '/images/ki-chatbot-digitale-kundenassistenz.webp',
   },
   {
     slug: 'telefonassistenten',
     title: 'Telefonische Kundenassistenz',
     shortDescription: 'Telefonische Kundenassistenz, die Anrufe entgegennimmt und professionell bearbeitet.',
-    image: '/images/telefonassiatenz bot.png',
+    image: '/images/ki-telefonassistent.webp',
   },
   {
     slug: 'automatisierungen',
     title: 'Automatisierungen für Anfragen, Vertrieb & Terminplanung',
     shortDescription: 'Anfragen erfassen, sortieren, nachfassen und Termine buchen – automatisch. Mehr Überblick, weniger Stress.',
-    image: '/images/automtatisierung.png',
+    image: '/images/automatisierungen-anfragen-vertrieb-terminplanung.webp',
   },
   {
     slug: 'webseite',
     title: 'Webseiten im Mietmodell',
     shortDescription: 'Moderne, schnelle Websites im Mietmodell – mit Rundum-Betreuung.',
-    image: '/images/Websites.png',
+    image: '/images/webseiten-mietmodell-agentur.webp',
   },
   {
     slug: 'seo-top-3-in-google',
     title: 'SEO: Top 3 in Google',
     shortDescription: 'Lokales SEO-Angebot mit Fokus auf Top-Platzierungen für Ihre wichtigsten Suchbegriffe.',
-    image: '/images/top3ingoogle.jpeg',
+    image: '/images/seo-top-3-google-local-pack.webp',
   },
 ];
 

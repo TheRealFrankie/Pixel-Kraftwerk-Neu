@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useEffect } from 'react';
-import { Instagram, Facebook, MessageCircle } from 'lucide-react';
+import React from 'react';
+import { Instagram, Facebook, MessageCircle, Settings } from 'lucide-react';
 import Logo from './Logo';
 import NAPInfo from './NAPInfo';
 import { NavItem, SocialLink } from '../types';
-import { useCookieConsent } from '../hooks/useCookieConsent';
 
 const navItems: NavItem[] = [
   { title: 'Startseite', path: '/' },
@@ -53,54 +52,6 @@ const getSocialIcon = (icon: string) => {
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const { hasConsent } = useCookieConsent();
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !hasConsent) return;
-
-    const loadProvenExpertScript = () => {
-      const existingScript = document.getElementById('proven-expert-script');
-      if (existingScript) return;
-
-      const script = document.createElement('script');
-      script.id = 'proven-expert-script';
-      script.src = 'https://s.provenexpert.net/seals/proseal-v2.js';
-      script.async = true;
-
-      script.onload = () => {
-        const pe = (window as Window & { provenExpert?: { proSeal: (opts: object) => void } }).provenExpert;
-        if (pe?.proSeal) {
-          pe.proSeal({
-            widgetId: "09229aa6-aa11-40d2-80b2-a7579d7f6df5",
-            language: "de-DE",
-            usePageLanguage: false,
-            bannerColor: "#097E92",
-            textColor: "#FFFFFF",
-            showReviews: true,
-            hideDate: true,
-            hideName: false,
-            hideOnMobile: false,
-            bottom: "0px",
-            stickyToSide: "left",
-            googleStars: true,
-            zIndex: "9999",
-            displayReviewerLastName: false,
-          });
-        }
-      };
-
-      document.body.appendChild(script);
-    };
-
-    loadProvenExpertScript();
-
-    return () => {
-      const script = document.getElementById('proven-expert-script');
-      if (script) {
-        script.remove();
-      }
-    };
-  }, [hasConsent]);
 
   return (
     <footer className="bg-dark-400 border-t border-dark-200 pt-10 pb-6 md:pt-12 md:pb-8">
@@ -207,18 +158,16 @@ const Footer: React.FC = () => {
           </p>
         </div>
       </div>
-
-      <noscript>
+      {/* Datenschutz-Einstellrad – ersetzt Proven-Expert-Widget unten links */}
+      <div className="fixed bottom-4 left-4 z-[9999]">
         <a
-          href="https://www.provenexpert.com/pixel-kraftwerk-ki-automatisierungen/?utm_source=seals&utm_campaign=proseal&utm_medium=profile&utm_content=09229aa6-aa11-40d2-80b2-a7579d7f6df5"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Customer reviews & experiences for Pixel Kraftwerk | KI - Automatisierungen"
-          className="pe-pro-seal-more-infos"
+          href="/privacy-settings"
+          className="flex items-center justify-center w-12 h-12 rounded-full bg-dark-500/95 border border-dark-200 text-light-100 shadow-lg hover:bg-dark-400 hover:border-primary-500/60 hover:text-primary-400 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500"
+          aria-label="Datenschutz-Einstellungen öffnen"
         >
-          More info
+          <Settings size={22} />
         </a>
-      </noscript>
+      </div>
     </footer>
   );
 };

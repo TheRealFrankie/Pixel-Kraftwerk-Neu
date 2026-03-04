@@ -119,7 +119,7 @@ const SeoTop3: React.FC = () => {
       <section id="lokale-sichtbarkeit-ausbauen" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
-            src="/images/top 3 in google suche.png"
+            src="/images/seo-top-3-google-suche.webp"
             alt="Top 3 in Google – SEO Sichtbarkeit"
             fill
             className="object-cover object-center"

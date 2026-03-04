@@ -42,7 +42,7 @@ const Services: React.FC = () => {
       icon: <MessageSquare size={24} />,
       title: "Digitale Kundenassistenz für Ihre Website",
       slug: "ki-chatbots",
-      imageSrc: "/images/Chatbot - digitaleKundenassitenz.png",
+      imageSrc: "/images/ki-chatbot-digitale-kundenassistenz.webp",
       imageAlt:
         "Digitale Kundenassistenz: KI-Chatbot auf Laptop und Smartphone, Kundenanfragen in Sekunden beantworten",
       badgeLabel: "Rund um die Uhr",
@@ -53,7 +53,7 @@ const Services: React.FC = () => {
       icon: <Phone size={24} />,
       title: "Telefonische Kundenassistenz",
       slug: "telefonassistenten",
-      imageSrc: "/images/telefonassiatenz bot.png",
+      imageSrc: "/images/ki-telefonassistent.webp",
       imageAlt: "KI-Telefonassistent: Anrufe entgegennehmen, Leads qualifizieren, Termine buchen – 24/7",
       badgeLabel: "Nie wieder verpasste Anrufe",
       description:
@@ -63,7 +63,7 @@ const Services: React.FC = () => {
       icon: <Target size={24} />,
       title: "Automatisierungen für Anfragen, Vertrieb & Terminplanung",
       slug: "automatisierungen",
-      imageSrc: "/images/automtatisierung.png",
+      imageSrc: "/images/automatisierungen-anfragen-vertrieb-terminplanung.webp",
       imageAlt:
         "Automatisierungen: Anfrage, Sortierung, Zuweisung, Follow-up, Termin und CRM – durchgängige Prozessautomatisierung",
       badgeLabel: "Abläufe laufen von selbst",
@@ -74,7 +74,7 @@ const Services: React.FC = () => {
       icon: <Globe size={24} />,
       title: "Webseiten im Mietmodell",
       slug: "webseite",
-      imageSrc: "/images/Websites.png",
+      imageSrc: "/images/webseiten-mietmodell-agentur.webp",
       imageAlt: "Moderne Websites: verkaufsstark, suchmaschinenoptimiert, in Tagen statt Wochen",
       badgeLabel: "In Tagen statt Wochen",
       description:
@@ -84,7 +84,7 @@ const Services: React.FC = () => {
       icon: <Search size={24} />,
       title: "SEO: Top 3 in Google",
       slug: "seo-top-3-in-google",
-      imageSrc: "/images/top3ingoogle.jpeg",
+      imageSrc: "/images/seo-top-3-google-local-pack.webp",
       imageAlt: "Top 3 in Google: lokale Google-Suchergebnisse sichtbar dominieren",
       badgeLabel: "Top 3 in 90 Tagen",
       description:
@@ -167,7 +167,7 @@ const Services: React.FC = () => {
         {/* Bild beginnt unterhalb der Header-Leiste */}
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
-            src="/images/automtatisierung.png"
+            src="/images/automatisierungen-anfragen-vertrieb-terminplanung.webp"
             alt="Pixel Kraftwerk – Leistungen für Automatisierung, Websites & digitale Kundenkommunikation"
             fill
             className="object-cover object-center"

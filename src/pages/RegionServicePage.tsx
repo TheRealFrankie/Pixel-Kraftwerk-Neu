@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { LEISTUNGSGEBIETE_CITIES } from '@/data/leistungsgebiete';
@@ -29,6 +30,33 @@ const SERVICE_INTROS: Record<ServiceSlug, string> = {
     'Moderne Webseiten im Mietmodell – mobiloptimiert, sicher und ohne hohe Startkosten. Professionelle Präsenz für Ihre Region.',
   'seo-top-3':
     'Mehr Sichtbarkeit in Google: Wir optimieren Ihre Webseite und lokalen Signale, damit Sie für relevante Suchanfragen in Ihrer Region gefunden werden.',
+};
+
+/** Hero-Bilder pro Service (SEO-optimierte .webp-Dateien). */
+const SERVICE_HERO_IMAGES: Record<
+  ServiceSlug,
+  { src: string; alt: string }
+> = {
+  'ki-chatbots': {
+    src: '/images/ki-chatbot-digitale-kundenassistenz.webp',
+    alt: 'Digitale Kundenassistenz – KI-Chatbot im Einsatz',
+  },
+  telefonassistenten: {
+    src: '/images/ki-telefonassistent.webp',
+    alt: 'Telefonische Kundenassistenz – KI-Anrufannahme',
+  },
+  automatisierungen: {
+    src: '/images/automatisierungen-anfragen-vertrieb-terminplanung.webp',
+    alt: 'Automatisierungen für Anfragen, Vertrieb und Terminplanung',
+  },
+  webseiten: {
+    src: '/images/webseiten-mietmodell-agentur.webp',
+    alt: 'Moderne Webseiten im Mietmodell – professioneller Webauftritt',
+  },
+  'seo-top-3': {
+    src: '/images/seo-top-3-google-suche.webp',
+    alt: 'Top 3 in Google – SEO-Sichtbarkeit in der Suche',
+  },
 };
 
 interface RegionServicePageProps {
@@ -84,7 +112,32 @@ export default function RegionServicePage({
         serviceUrl={currentPageUrl}
       />
 
-      <section className="relative pt-32 pb-24 bg-dark-500 overflow-hidden">
+      <section className="relative min-h-[70vh] pt-32 pb-24 bg-dark-500 overflow-hidden">
+        {SERVICE_HERO_IMAGES[serviceSlug] && (
+          <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
+            <Image
+              src={SERVICE_HERO_IMAGES[serviceSlug].src}
+              alt={SERVICE_HERO_IMAGES[serviceSlug].alt}
+              fill
+              priority={false}
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-b from-dark-500/70 via-dark-500/50 to-dark-500/95"
+              aria-hidden
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-dark-500/30 via-transparent to-dark-500/40"
+              aria-hidden
+            />
+            <div
+              className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-primary-500/15 to-transparent"
+              aria-hidden
+            />
+          </div>
+        )}
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <motion.p
@@ -101,10 +154,15 @@ export default function RegionServicePage({
                 {regionName}
               </a>
               {' / '}
-              <span className="text-light-200">{serviceLabel}</span>
+              <span className="text-slate-100">{serviceLabel}</span>
             </motion.p>
             <motion.h1
-              className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-light-100 mb-6"
+              className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6"
+              style={{
+                color: '#F5F7FA',
+                textShadow: '0 10px 30px rgba(0,0,0,0.65)',
+                WebkitTextStroke: '1px rgba(0,0,0,0.25)',
+              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -112,7 +170,12 @@ export default function RegionServicePage({
               {serviceLabel} in {regionName}
             </motion.h1>
             <motion.p
-              className="text-xl text-light-200"
+              className="text-xl max-w-3xl"
+              style={{
+                color: '#F5F7FA',
+                textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
+                WebkitTextStroke: '0.5px rgba(0,0,0,0.2)',
+              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}

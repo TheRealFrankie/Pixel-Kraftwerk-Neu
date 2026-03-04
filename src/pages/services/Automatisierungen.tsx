@@ -160,7 +160,7 @@ const Automatisierungen: React.FC = () => {
       <section id="ki-automatisierung-fur-anfragen-termine" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
-            src="/images/automtatisierung.png"
+            src="/images/automatisierungen-anfragen-vertrieb-terminplanung.webp"
             alt="Automatisierungen für Anfragen, Vertrieb und Terminplanung"
             fill
             className="object-cover object-center"

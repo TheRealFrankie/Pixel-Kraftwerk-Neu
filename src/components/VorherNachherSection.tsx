@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Eye, Coins, TrendingUp } from 'lucide-react';
 
-const IMG_VORHER = '/images/seo-vorher-karte.png';
-const IMG_NACHHER = '/images/seo-nachher-karte.png';
+const IMG_VORHER = '/images/seo-top-3-vorher-karte.webp';
+const IMG_NACHHER = '/images/seo-top-3-nachher-karte.webp';
 
 const KPI_VORHER = [
   { label: 'Ø Ranking', value: '86' },

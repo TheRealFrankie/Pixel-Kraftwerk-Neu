@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, MessageSquare, Phone, Workflow, Globe, Settings, Search } from 'lucide-react';
+import { Menu, X, ChevronDown, MessageSquare, Phone, Workflow, Globe, Search, ArrowRight } from 'lucide-react';
 import Logo from './Logo';
 import ThemeToggle from './ThemeToggle';
 import { NavItem } from '../types';
@@ -23,7 +23,6 @@ const serviceLinks: ServiceLink[] = [
 const navItems: NavItem[] = [
   { title: 'Startseite', path: '/' },
   { title: 'Über uns', path: '/about' },
-  { title: 'Leistungsgebiete', path: '/leistungsgebiete' },
   { title: 'FAQ', path: '/faq' },
   { title: 'Kontakt', path: '/contact' },
   { title: 'Impressum', path: '/imprint' },
@@ -141,16 +140,16 @@ const Header: React.FC = () => {
             ))}
 
             <li>
-              <ThemeToggle />
-            </li>
-            <li>
               <a
-                href="/privacy-settings"
-                className="text-light-100 hover:text-primary-400 transition-colors duration-200 p-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500"
-                aria-label="Cookie-Einstellungen"
+                href="/#contact"
+                className="inline-flex items-center px-3 py-1.5 rounded-lg bg-primary-500 text-dark-500 font-heading font-semibold text-sm hover:bg-primary-400 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 min-h-[36px]"
               >
-                <Settings size={20} />
+                Kostenloses Erstgespräch sichern
               </a>
+            </li>
+
+            <li>
+              <ThemeToggle />
             </li>
           </ul>
         </nav>
@@ -221,12 +220,15 @@ const Header: React.FC = () => {
 
             <li className="flex items-center gap-2">
               <ThemeToggle />
+            </li>
+
+            <li>
               <a
-                href="/privacy-settings"
-                className="block text-light-100 hover:text-primary-400 font-heading py-3 px-3 rounded-lg transition-colors duration-200 min-h-[44px] flex items-center"
+                href="/#contact"
+                className="mt-2 block text-center bg-primary-500 text-dark-500 font-heading font-bold py-3 px-3 rounded-lg transition-colors duration-200 min-h-[44px] hover:bg-primary-400"
                 onClick={toggleMenu}
               >
-                Cookie-Einstellungen
+                Kostenloses Erstgespräch sichern
               </a>
             </li>
           </ul>

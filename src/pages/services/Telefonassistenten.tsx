@@ -125,7 +125,7 @@ const Telefonassistenten: React.FC = () => {
       <section id="ki-telefonagent-fur-ihr-unternehmen" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
-            src="/images/telefonassiatenz bot.png"
+            src="/images/ki-telefonassistent.webp"
             alt="Telefonische Kundenassistenz – KI-Anrufannahme"
             fill
             className="object-cover object-center"

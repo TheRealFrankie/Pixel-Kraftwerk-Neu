@@ -127,7 +127,7 @@ const WebsiteSeo: React.FC = () => {
       <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
-            src="/images/Websites.png"
+            src="/images/webseiten-mietmodell-agentur.webp"
             alt="Websites & SEO – Sichtbarkeit und moderne Webauftritte"
             fill
             className="object-cover object-center"

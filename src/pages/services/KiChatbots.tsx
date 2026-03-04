@@ -117,7 +117,7 @@ const KiChatbots: React.FC = () => {
         {/* Bild-Container: erst ab Header-Höhe, geht nicht über die Menüleiste */}
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
-            src="/images/Chatbot - digitaleKundenassitenz.png"
+            src="/images/ki-chatbot-digitale-kundenassistenz.webp"
             alt="Digitale Kundenassistenz – KI-Chatbot im Einsatz"
             fill
             className="object-cover object-center"
