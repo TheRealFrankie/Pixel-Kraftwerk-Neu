@@ -1,6 +1,6 @@
 # SEO-Plan: Pixel Kraftwerk – Lokale & thematische Autorität
 
-**Stand:** Überarbeiteter Plan für pixelkraftwerk-ai.com  
+**Stand:** Überarbeiteter Plan für pixelkraftwerk-ai.com (laufend aktualisiert)  
 **Ziel:** Maximale lokale Sichtbarkeit über **12 Städte** (eigene Seiten, untereinander verlinkt) + Topical Authority für KI-Automatisierung, Chatbots, SEO, Terminbuchung, CRM, Content.  
 **WICHTIG:** Dies ist nur der Plan – keine Code- oder Content-Änderung ohne Freigabe.
 
