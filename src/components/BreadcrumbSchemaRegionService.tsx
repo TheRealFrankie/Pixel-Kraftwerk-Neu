@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { businessInfo } from '@/data/businessInfo';
 
-const baseUrl = 'https://pixelkraftwerk-ai.com';
+const baseUrl = businessInfo.url;
 
 interface BreadcrumbSchemaRegionServiceProps {
   regionName: string;
@@ -30,16 +31,17 @@ const BreadcrumbSchemaRegionService: React.FC<BreadcrumbSchemaRegionServiceProps
       document.head.appendChild(scriptElement);
     }
 
+    const name = businessInfo.name;
     const regionItem = regionUrl.startsWith('http') ? regionUrl : baseUrl + regionUrl;
     const serviceItem = serviceUrl.startsWith('http') ? serviceUrl : baseUrl + (serviceUrl.startsWith('/') ? serviceUrl : '/' + serviceUrl);
     const breadcrumbSchema = {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Pixel Kraftwerk', item: baseUrl + '/' },
-        { '@type': 'ListItem', position: 2, name: 'Pixel Kraftwerk – Leistungsgebiete', item: baseUrl + '/leistungsgebiete' },
-        { '@type': 'ListItem', position: 3, name: 'Pixel Kraftwerk – ' + regionName, item: regionItem },
-        { '@type': 'ListItem', position: 4, name: 'Pixel Kraftwerk – ' + regionName + ' – ' + serviceName, item: serviceItem },
+        { '@type': 'ListItem', position: 1, name, item: baseUrl + '/' },
+        { '@type': 'ListItem', position: 2, name: name + ' – Leistungsgebiete', item: baseUrl + '/leistungsgebiete' },
+        { '@type': 'ListItem', position: 3, name: name + ' – ' + regionName, item: regionItem },
+        { '@type': 'ListItem', position: 4, name: name + ' – ' + regionName + ' – ' + serviceName, item: serviceItem },
       ],
     };
 

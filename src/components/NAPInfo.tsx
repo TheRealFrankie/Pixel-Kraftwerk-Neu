@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { businessInfo } from '../data/businessInfo';
 
 interface NAPInfoProps {
@@ -23,7 +23,7 @@ const NAPInfo: React.FC<NAPInfoProps> = ({
         </span>
         <span>|</span>
         <a
-          href={`tel:${businessInfo.contact.telephone}`}
+          href={`tel:${businessInfo.contact.telephoneE164}`}
           itemProp="telephone"
           className="hover:text-primary-500 transition-colors"
         >
@@ -37,6 +37,8 @@ const NAPInfo: React.FC<NAPInfoProps> = ({
         >
           {businessInfo.contact.email}
         </a>
+        <span>|</span>
+        <span itemProp="openingHours">{businessInfo.openingHoursDisplay}</span>
       </div>
     );
   }
@@ -53,7 +55,7 @@ const NAPInfo: React.FC<NAPInfoProps> = ({
         </div>
         <div>
           <a
-            href={`tel:${businessInfo.contact.telephone}`}
+            href={`tel:${businessInfo.contact.telephoneE164}`}
             itemProp="telephone"
             className="hover:text-primary-500 transition-colors"
           >
@@ -69,6 +71,7 @@ const NAPInfo: React.FC<NAPInfoProps> = ({
             {businessInfo.contact.email}
           </a>
         </div>
+        <div itemProp="openingHours">{businessInfo.openingHoursDisplay}</div>
       </div>
     );
   }
@@ -99,7 +102,7 @@ const NAPInfo: React.FC<NAPInfoProps> = ({
         <div>
           <div className="font-bold text-light-100 mb-1">Telefon</div>
           <a
-            href={`tel:${businessInfo.contact.telephone}`}
+            href={`tel:${businessInfo.contact.telephoneE164}`}
             itemProp="telephone"
             className="text-light-200 hover:text-primary-500 transition-colors"
           >
@@ -121,6 +124,18 @@ const NAPInfo: React.FC<NAPInfoProps> = ({
           >
             {businessInfo.contact.email}
           </a>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-3">
+        {showIcons && (
+          <Clock size={20} className="text-primary-500 flex-shrink-0 mt-0.5" />
+        )}
+        <div>
+          <div className="font-bold text-light-100 mb-1">Öffnungszeiten</div>
+          <span className="text-light-200" itemProp="openingHours">
+            {businessInfo.openingHoursDisplay}
+          </span>
         </div>
       </div>
     </div>

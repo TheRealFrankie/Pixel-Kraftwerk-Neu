@@ -1,5 +1,7 @@
 export const businessInfo = {
-  name: "Pixel Kraftwerk",
+  /** Anzeigename für SEO, Schema, NAP – überall außer Impressum */
+  name: "Pixel Kraftwerk | KI - Automatisierungen",
+  /** Rechtlicher Name nur im Impressum */
   legalName: "Pixel Kraftwerk – Franke & Brause GbR",
   description: "Pixel Kraftwerk – Kunden gewinnen. Prozesse automatisieren.",
   foundingDate: "2024",
@@ -13,7 +15,10 @@ export const businessInfo = {
   },
 
   contact: {
-    telephone: "+491785844460",
+    /** Anzeige wie im Google Business Profile (GBP) */
+    telephone: "0178 5844460",
+    /** E.164 für tel:-Links */
+    telephoneE164: "+491785844460",
     email: "kontakt@pixelkraftwerk-ai.com"
   },
 
@@ -80,6 +85,8 @@ export const businessInfo = {
       closes: "20:00"
     }
   ],
+  /** Menschenlesbare Öffnungszeiten für NAP/Impressum (konsistent mit openingHours) */
+  openingHoursDisplay: "Mo–Sa 08:00–20:00",
 
   businessType: "ProfessionalService",
 

@@ -67,7 +67,7 @@ const Leistungsgebiete: React.FC = () => {
             >
               <MapPin className="inline-block w-4 h-4 mr-1 text-primary-500 -mt-0.5" />
               {businessInfo.address.streetAddress}, {businessInfo.address.postalCode} {businessInfo.address.addressLocality} ·{' '}
-              <a href={`tel:${businessInfo.contact.telephone}`} className="text-primary-400 hover:underline">{businessInfo.contact.telephone}</a>
+              <a href={`tel:${businessInfo.contact.telephoneE164}`} className="text-primary-400 hover:underline">{businessInfo.contact.telephone}</a>
             </motion.p>
           </div>
         </div>

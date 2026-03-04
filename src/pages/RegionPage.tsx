@@ -82,7 +82,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
               <MapPin className="w-4 h-4 text-primary-500 flex-shrink-0" />
               <span>{businessInfo.address.streetAddress}, {businessInfo.address.postalCode} {businessInfo.address.addressLocality}</span>
               <span>·</span>
-              <a href={`tel:${businessInfo.contact.telephone}`} className="text-primary-400 hover:underline">{businessInfo.contact.telephone}</a>
+              <a href={`tel:${businessInfo.contact.telephoneE164}`} className="text-primary-400 hover:underline">{businessInfo.contact.telephone}</a>
             </motion.div>
           </div>
         </div>

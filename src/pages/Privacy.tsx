@@ -3,7 +3,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Lock, Eye, FileText, Users, Calendar, AlertCircle, Mail } from 'lucide-react';
+import { businessInfo } from '@/data/businessInfo';
+
 const Privacy: React.FC = () => {
+  const { legalName, address, contact } = businessInfo;
+
   const sections = [
     {
       id: 'verantwortlicher',
@@ -11,12 +15,12 @@ const Privacy: React.FC = () => {
       title: '1. Verantwortlicher',
       content: (
         <>
-          <p className="text-light-100 font-bold mb-2">Pixel Kraftwerk – Franke & Brause GbR</p>
-          <p className="text-light-200 mb-1">Neuer Weg 9a</p>
-          <p className="text-light-200 mb-1">04539 Groitzsch</p>
-          <p className="text-light-200 mb-1">Telefon: +491785844460</p>
+          <p className="text-light-100 font-bold mb-2">{legalName}</p>
+          <p className="text-light-200 mb-1">{address.streetAddress}</p>
+          <p className="text-light-200 mb-1">{address.postalCode} {address.addressLocality}</p>
+          <p className="text-light-200 mb-1">Telefon: <a href={`tel:${contact.telephoneE164}`} className="text-primary-500 hover:text-primary-400 transition-colors">{contact.telephone}</a></p>
           <p className="text-light-200">
-            E-Mail: <a href="mailto:kontakt@pixelkraftwerk-ai.com" className="text-primary-500 hover:text-primary-400 transition-colors">kontakt@pixelkraftwerk-ai.com</a>
+            E-Mail: <a href={`mailto:${contact.email}`} className="text-primary-500 hover:text-primary-400 transition-colors">{contact.email}</a>
           </p>
         </>
       )

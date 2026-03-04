@@ -1,6 +1,9 @@
 import React from 'react';
+import { businessInfo } from '@/data/businessInfo';
 
 const Imprint: React.FC = () => {
+  const { legalName, address, contact, founders, openingHoursDisplay, vatID } = businessInfo;
+
   return (
     <div className="pt-24 pb-24 bg-dark-400 min-h-screen">
       <div className="container mx-auto px-6 md:px-12">
@@ -10,11 +13,11 @@ const Imprint: React.FC = () => {
           <div>
             <h2 className="text-lg font-heading font-bold text-light-100 mb-4">Angaben gemäß <span className="text-primary-500">§ 5 TMG</span></h2>
             <div className="space-y-1 text-sm text-light-200">
-              <p>Pixel Kraftwerk – Franke & Brause GbR</p>
+              <p>{legalName}</p>
               <p>Vertreten durch die Gesellschafter:</p>
-              <p>Lukas Franke und John Brause</p>
-              <p>Neuer Weg 9a</p>
-              <p>04539 Groitzsch</p>
+              <p>{founders.map((f) => f.name).join(' und ')}</p>
+              <p>{address.streetAddress}</p>
+              <p>{address.postalCode} {address.addressLocality}</p>
               <p>Deutschland</p>
             </div>
           </div>
@@ -22,9 +25,14 @@ const Imprint: React.FC = () => {
           <div>
             <h2 className="text-lg font-heading font-bold text-light-100 mb-4"><span className="text-primary-500">Kontakt</span></h2>
             <div className="space-y-1 text-sm text-light-200">
-              <p>Telefon: +491785844460</p>
-              <p>E-Mail: kontakt@pixelkraftwerk-ai.com</p>
+              <p>Telefon: <a href={`tel:${contact.telephoneE164}`} className="text-primary-400 hover:underline">{contact.telephone}</a></p>
+              <p>E-Mail: <a href={`mailto:${contact.email}`} className="text-primary-400 hover:underline">{contact.email}</a></p>
             </div>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-heading font-bold text-light-100 mb-4"><span className="text-primary-500">Öffnungszeiten</span></h2>
+            <p className="text-sm text-light-200">{openingHoursDisplay}</p>
           </div>
 
           <div>
@@ -40,7 +48,7 @@ const Imprint: React.FC = () => {
             <h2 className="text-lg font-heading font-bold text-light-100 mb-4"><span className="text-primary-500">Umsatzsteuer-Identifikationsnummer</span></h2>
             <div className="space-y-1 text-sm text-light-200">
               <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:</p>
-              <p>DE 453969799</p>
+              <p>{vatID}</p>
             </div>
           </div>
 

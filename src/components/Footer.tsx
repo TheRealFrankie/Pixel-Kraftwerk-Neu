@@ -4,6 +4,7 @@ import React from 'react';
 import { Instagram, Facebook, MessageCircle, Settings } from 'lucide-react';
 import Logo from './Logo';
 import NAPInfo from './NAPInfo';
+import { businessInfo } from '@/data/businessInfo';
 import { NavItem, SocialLink } from '../types';
 
 const navItems: NavItem[] = [
@@ -60,6 +61,7 @@ const Footer: React.FC = () => {
           {/* Kontakt + Leistungen – wie vorher, ohne Social */}
           <div className="lg:col-span-2">
             <h2 className="text-primary-500 font-heading font-bold mb-3 text-base">Kontakt</h2>
+            <p className="text-light-100 font-heading font-semibold text-sm mb-2">{businessInfo.name}</p>
             <div className="flex flex-col sm:flex-row sm:items-start sm:gap-10">
               <NAPInfo variant="minimal" showIcons={false} className="mb-4 sm:mb-0" />
 
@@ -127,7 +129,7 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="text-primary-400 hover:text-primary-300 hover:underline font-heading font-bold"
               >
-                Pixel&nbsp;Kraftwerk bei Google bewerten
+                {businessInfo.name} bei Google bewerten
               </a>
             </p>
           </div>
@@ -154,7 +156,7 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-dark-200 pt-6 md:pt-8 text-center">
           <p className="text-light-400 text-sm">
-            &copy; {currentYear} PIXEL_KRAFTWERK. Alle Rechte vorbehalten.
+            &copy; {currentYear} {businessInfo.name}. Alle Rechte vorbehalten.
           </p>
         </div>
       </div>

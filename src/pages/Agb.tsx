@@ -3,6 +3,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, CheckCircle, Briefcase, DollarSign, Clock, Users, ClipboardCheck, Key, ShieldAlert, Database, Scale, FileCheck } from 'lucide-react';
+import { businessInfo } from '@/data/businessInfo';
+
 const Agb: React.FC = () => {
   const sections = [
     {
@@ -294,7 +296,7 @@ const Agb: React.FC = () => {
               <h1 className="text-4xl md:text-5xl font-heading font-bold text-light-100 mb-4">
                 AGB – Allgemeine <span className="text-primary-500">Geschäftsbedingungen</span>
               </h1>
-              <p className="text-light-100 text-xl mb-2">Pixel Kraftwerk – Franke & Brause GbR</p>
+              <p className="text-light-100 text-xl mb-2">{businessInfo.legalName}</p>
               <p className="text-light-300 text-lg">
                 Stand: <span className="text-primary-500 font-bold">Januar 2026</span>
               </p>

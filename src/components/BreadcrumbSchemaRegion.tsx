@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { businessInfo } from '@/data/businessInfo';
 
-const baseUrl = 'https://pixelkraftwerk-ai.com';
+const baseUrl = businessInfo.url;
 const scriptId = 'breadcrumb-schema-region';
 
 interface BreadcrumbSchemaRegionProps {
@@ -20,14 +21,15 @@ const BreadcrumbSchemaRegion: React.FC<BreadcrumbSchemaRegionProps> = ({ regionN
       scriptElement.type = 'application/ld+json';
       document.head.appendChild(scriptElement);
     }
+    const name = businessInfo.name;
     const regionUrl = baseUrl + '/leistungsgebiete/' + regionSlug;
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Pixel Kraftwerk', item: baseUrl + '/' },
-        { '@type': 'ListItem', position: 2, name: 'Pixel Kraftwerk – Leistungsgebiete', item: baseUrl + '/leistungsgebiete' },
-        { '@type': 'ListItem', position: 3, name: 'Pixel Kraftwerk – ' + regionName, item: regionUrl },
+        { '@type': 'ListItem', position: 1, name, item: baseUrl + '/' },
+        { '@type': 'ListItem', position: 2, name: name + ' – Leistungsgebiete', item: baseUrl + '/leistungsgebiete' },
+        { '@type': 'ListItem', position: 3, name: name + ' – ' + regionName, item: regionUrl },
       ],
     };
     scriptElement.textContent = JSON.stringify(schema);
