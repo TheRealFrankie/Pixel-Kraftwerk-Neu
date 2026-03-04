@@ -12,6 +12,37 @@ declare global {
   }
 }
 
+type CookieConsent = {
+  necessary: boolean;
+  analytics: boolean;
+  marketing: boolean;
+  preferences: boolean;
+};
+
+type CookieConsentState = {
+  consented: boolean;
+  preferences: CookieConsent;
+  timestamp: string | null;
+};
+
+const getStoredConsent = (): CookieConsentState | null => {
+  if (typeof window === 'undefined') return null;
+
+  const stored = window.localStorage.getItem('cookieConsent');
+  if (!stored) return null;
+
+  try {
+    return JSON.parse(stored) as CookieConsentState;
+  } catch {
+    return null;
+  }
+};
+
+const hasPreferenceConsent = () => {
+  const consent = getStoredConsent();
+  return !!consent?.preferences.preferences;
+};
+
 const VoiceflowChat: React.FC = () => {
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -42,9 +73,25 @@ const VoiceflowChat: React.FC = () => {
       firstScript.parentNode?.insertBefore(script, firstScript);
     };
 
-    loadVoiceflowChat();
+    const maybeLoadWithConsent = () => {
+      if (!hasPreferenceConsent()) return;
+      loadVoiceflowChat();
+    };
+
+    // leichte Verzögerung, damit LCP/FCP nicht belastet wird
+    const timeoutId = window.setTimeout(maybeLoadWithConsent, 5000);
+
+    const handleConsentChange = () => {
+      if (hasPreferenceConsent()) {
+        loadVoiceflowChat();
+      }
+    };
+
+    window.addEventListener('cookieConsentChanged', handleConsentChange);
 
     return () => {
+      window.clearTimeout(timeoutId);
+      window.removeEventListener('cookieConsentChanged', handleConsentChange);
       const script = document.getElementById('voiceflow-chat-script');
       if (script) {
         script.remove();
