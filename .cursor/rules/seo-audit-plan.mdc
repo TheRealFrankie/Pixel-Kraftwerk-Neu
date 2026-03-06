@@ -1,0 +1,133 @@
+---
+description: SEO-Audit & Optimierungsplan – Checkliste für Webseiten-Projekte. Prüft Slugs, Schema, Metadata, Verlinkung, Local SEO, Content, UI und Deployment.
+alwaysApply: false
+---
+
+# SEO-Audit & Optimierungsplan
+
+Wenn der User einen SEO-Audit oder eine SEO-Optimierung für eine Webseite anfordert, arbeite diese Checkliste systematisch ab. Priorisiere nach Impact (Phase 1-2 zuerst).
+
+## Phase 1: Technische Grundlagen
+
+### Slugs
+- Alle Slugs in der Sprache der Webseite (keine englischen Slugs auf deutscher Seite)
+- Konsistente Konvention: Kleinbuchstaben, Bindestriche, keine Sonderzeichen
+- 301-Redirects für alle alten/umbenannten Slugs (auf Hosting-Ebene, nicht client-side)
+- Alte Route-Dateien löschen, nicht nur noindex setzen – Redirects reichen
+
+### Canonicals
+- Jede indexierte Seite hat ein explizites `canonical`
+- Trailing Slash einheitlich (passend zu Framework-Config)
+- Canonical zeigt immer auf die aktive, primäre URL
+
+### robots.txt & Sitemap
+- Sitemap enthält NUR indexierte Seiten
+- `lastModified` aktuell, Sitemap-URL in robots.txt referenziert
+
+### Indexierung
+- Seiten die nicht indexiert werden sollen: `robots: { index: false, follow: true }`
+- Keine leeren Seiten, Platzhalter oder Duplikate im Build
+
+## Phase 2: Metadata
+
+### Title Tags
+- Einzigartiger Title pro Seite
+- Format: `Primary Keyword + Standort + Firmenname + Services + Nähe-Keyword`
+- ~120-200 Zeichen (nicht auf 60 beschränken)
+- `title: { absolute: '...' }` in Next.js um Template-Dopplung zu vermeiden
+
+### Meta Descriptions
+- Einzigartig pro Seite, 150-160 Zeichen, mit Primary Keyword + CTA
+
+### H-Tags
+- Genau EIN H1 pro Seite: `H1 = Primary Category + Standort`
+- H2 = Sekundäre Keywords / Unterthemen
+- Keine verschachtelten oder mehrfachen H1
+
+## Phase 3: Structured Data (Schema)
+
+### Pflicht-Schemas
+- `LocalBusiness` auf Homepage (NAP, Öffnungszeiten, Geo-Koordinaten)
+- `WebSite` Schema OHNE `SearchAction` (außer es gibt eine echte Suchfunktion)
+- `BreadcrumbList` JSON-LD auf allen Unterseiten
+- `FAQPage` JSON-LD auf jeder Seite mit FAQ-Sektion
+- `Service` Schema auf Service-Seiten
+
+### Qualität
+- Alle Schemas als JSON-LD (nicht Microdata)
+- NAP in Schema = sichtbares NAP
+- Validieren mit Google Rich Results Test
+
+## Phase 4: Interne Verlinkung
+
+### Anchor-Texte
+- KEINE generischen Texte: "Mehr erfahren", "Hier klicken", "Weiterlesen"
+- Beschreibend: "Alle Leistungen im Detail", "KI-Chatbot für Ihr Unternehmen"
+- Anchor-Texte variieren
+
+### Struktur
+- Service-Seiten → 2-4 Links zu Regionsseiten
+- Regionsseiten → 3-6 Links zu Service-Seiten
+- Homepage + Kontakt → Links zu allen Region- und Service-Seiten
+- Kontextuelle Inline-Links im Fließtext, nicht nur in Listen/Footer
+- Max. 8-10 interne Links pro Seite
+- Jede wichtige Seite hat min. 3 eingehende Links
+- Alle wichtigen Seiten erreichbar in max. 3 Klicks
+
+## Phase 5: Local SEO
+
+### NAP-Konsistenz
+- Name, Adresse, Telefon identisch auf: Homepage, Kontakt, Footer, Schema, GBP
+- Firmenname exakt wie im Google Business Profile
+- Adresse mit Schema.org-Attributen, Telefon in E.164-Format
+
+### Google Maps
+- Embed auf Homepage oder Kontaktseite
+
+### Regionsseiten (Local Authority)
+- Hauptseite "Leistungsgebiete" mit Links zu allen Regionen
+- Pro Region eigene Seite: 1200-2200 Wörter, hyperlokal (Landmarks, Branchen, Nachbarstädte), FAQs, BreadcrumbList
+- Pro Region-Service-Kombination eigene Seite: 1000-2000 Wörter, Custom Content, FAQs, Inline-Links
+- KEIN Template-Content – jede Seite braucht einzigartigen Text
+
+## Phase 6: UI/UX
+
+### Header
+- 3-Zonen-Layout: Logo | Nav | CTA
+- Dropdown mit Icons + Kurzbeschreibung
+- CTA kurz und knackig
+- Mobile: Smooth Animations, min. 44px Tap-Targets
+- Light/Dark Mode: Alle Elemente in beiden Modi lesbar
+
+### Breadcrumbs
+- Visuell sichtbar auf allen Unterseiten
+- Auf Hero-Bild-Seiten: Overlay-Position (kein Layout-Shift)
+- JSON-LD BreadcrumbList parallel zu visuellen Breadcrumbs
+
+### Footer
+- Übersichtliches Spalten-Layout (3-4 Spalten)
+- NAP mit Icons, Service-Links, Seiten-Links, Rechtliches getrennt
+
+## Phase 7: Deployment & Cleanup
+
+### Redirects
+- Alle alten URLs → 301-Redirects auf Hosting-Ebene (vercel.json / netlify.toml)
+- Keine Redirect-Ketten (A→B→C vermeiden, direkt A→C)
+- Nach Slug-Umbenennung: Alte Route-Dateien löschen
+
+### Cleanup
+- Ungenutzte Bilder/Dateien löschen
+- Verwaiste Imports/Komponenten entfernen
+- Nur aktive Seiten im Build
+
+## Umsetzungsreihenfolge nach Impact
+
+1. Slugs vereinheitlichen + 301-Redirects (Hoch)
+2. Title Tags + H1 + Meta Descriptions (Hoch)
+3. Schema: LocalBusiness, BreadcrumbList, FAQPage (Hoch)
+4. Regionsseiten + Region-Service-Seiten mit Custom Content (Hoch)
+5. Interne Verlinkung + Anchor-Texte (Mittel-Hoch)
+6. NAP-Konsistenz + Google Maps (Mittel)
+7. Header/Footer/Breadcrumbs UI (Mittel)
+8. Canonical-Cleanup, SearchAction entfernen (Niedrig-Mittel)
+9. Ungenutzte Dateien aufräumen (Niedrig)
