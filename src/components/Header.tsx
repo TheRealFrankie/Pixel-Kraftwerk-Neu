@@ -25,7 +25,7 @@ const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
-  const dropdownRef = useRef<HTMLLIElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -85,7 +85,7 @@ const Header: React.FC = () => {
             {/* Leistungen Dropdown */}
             <div
               className="relative"
-              ref={dropdownRef as React.RefObject<HTMLDivElement>}
+              ref={dropdownRef}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
