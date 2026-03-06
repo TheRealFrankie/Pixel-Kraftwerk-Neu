@@ -11,11 +11,10 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL(businessInfo.url),
   title: {
-    default: 'BESTE KI-Agentur Groitzsch – Pixel Kraftwerk – KI-Chatbots, Telefonassistenten, Webseiten und SEO: Top 3 in Google in meiner Nähe',
+    default: 'KI-Agentur Groitzsch & Leipzig – Pixel Kraftwerk – KI-Chatbots, Telefonassistenten, Automatisierungen, Webseiten & SEO in meiner Nähe',
     template: `%s | ${businessInfo.name}`,
   },
   description: 'KI-Automatisierung und Chatbots aus Groitzsch für Leipzig und Region. Terminbuchung, CRM, Webseiten und SEO: Top 3 in Google. Jetzt Beratung sichern.',
-  keywords: businessInfo.keywords,
   openGraph: {
     type: 'website',
     locale: 'de_DE',
@@ -46,7 +45,15 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#0A0A0A" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" crossOrigin="" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var h=document.head,l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap';h.appendChild(l)})();`,
+          }}
+        />
+        <noscript>
+          <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        </noscript>
         <meta name="p:domain_verify" content="10eae38c84b0c276cac28f102b415b2e" />
       </head>
       <body className="min-h-screen flex flex-col">

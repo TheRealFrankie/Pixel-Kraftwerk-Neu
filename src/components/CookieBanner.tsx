@@ -170,7 +170,7 @@ const CookieBanner: React.FC = () => {
                 Diese Website verwendet Cookies, um Ihnen die bestmögliche Nutzererfahrung zu bieten. Einige Cookies sind für den Betrieb der Website erforderlich (notwendige Cookies). Andere helfen uns, Ihr Nutzererlebnis zu verbessern (Präferenz-Cookies), die Nutzung der Website zu analysieren (Analyse-Cookies) oder gezieltes Marketing zu ermöglichen (Marketing-Cookies).
               </p>
               <p className="text-light-200 mb-4">
-                Weitere Informationen finden Sie in unserer <a href="/privacy" className="text-primary-500 hover:text-primary-400 transition-colors">Datenschutzerklärung</a>.
+                Weitere Informationen finden Sie in unserer <a href="/datenschutz" className="text-primary-500 hover:text-primary-400 transition-colors">Datenschutzerklärung</a>.
               </p>
             </div>
             

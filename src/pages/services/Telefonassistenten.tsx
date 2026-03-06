@@ -25,6 +25,8 @@ import RelatedServices from '../../components/RelatedServices';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
+import ServiceJsonLd from '../../components/ServiceJsonLd';
+import BreadcrumbNav from '../../components/BreadcrumbNav';
 
 const Telefonassistenten: React.FC = () => {
   const scrollToContact = () => {
@@ -120,9 +122,23 @@ const Telefonassistenten: React.FC = () => {
   return (
     <div className="bg-dark-500">
       <BreadcrumbSchema serviceName="Telefonische Kundenassistenz" serviceUrl="https://pixelkraftwerk-ai.com/telefonassistenten" />
-
+      <ServiceJsonLd
+        name="Telefonische Kundenassistenz (KI-Telefonagent)"
+        serviceType="KI-Telefonassistent"
+        description="Telefonische Kundenassistenz für automatische Anrufannahme. Nie wieder verpasste Anrufe – professioneller Service rund um die Uhr."
+        url="https://pixelkraftwerk-ai.com/telefonassistenten"
+        faqs={faqItems.map((item) => ({ question: item.question, answer: item.answer }))}
+        pageName="Telefonassistenten"
+      />
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
       <section id="ki-telefonagent-fur-ihr-unternehmen" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+        <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
+          <BreadcrumbNav overlay items={[
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungen', href: '/leistungen' },
+            { label: 'Telefonassistenten' },
+          ]} />
+        </div>
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
             src="/images/ki-telefonassistent.webp"
@@ -159,7 +175,7 @@ const Telefonassistenten: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Telefonische Kundenassistenz für Ihr Unternehmen (KI-Telefonagent)
+              Telefonische Kundenassistenz Leipzig &amp; Groitzsch
             </motion.h1>
 
             <motion.h2

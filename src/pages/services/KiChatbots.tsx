@@ -19,6 +19,8 @@ import RelatedServices from '../../components/RelatedServices';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
+import ServiceJsonLd from '../../components/ServiceJsonLd';
+import BreadcrumbNav from '../../components/BreadcrumbNav';
 
 const KiChatbots: React.FC = () => {
   const scrollToContact = () => {
@@ -110,10 +112,24 @@ const KiChatbots: React.FC = () => {
   return (
     <div className="bg-dark-500">
       <BreadcrumbSchema serviceName="Digitale Kundenassistenz" serviceUrl="https://pixelkraftwerk-ai.com/ki-chatbots" />
-
+      <ServiceJsonLd
+        name="Digitale Kundenassistenz (KI-Chatbot)"
+        serviceType="KI-Chatbot"
+        description="Digitale Kundenassistenz für automatische Kundenbetreuung auf Ihrer Website. Beantworten Sie Anfragen rund um die Uhr und entlasten Sie Ihr Team."
+        url="https://pixelkraftwerk-ai.com/ki-chatbots"
+        faqs={faqItems.map((item) => ({ question: item.question, answer: item.answer }))}
+        pageName="KI-Chatbots"
+      />
       {/* Hero mit Premium-Hintergrundbild – Bild beginnt unterhalb der Header-Leiste */}
       <section id="digitale-kundenassistenz" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
         <span id="ki-chatbot-fur-ihre-website" className="absolute top-0 left-0" aria-hidden="true" />
+        <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
+          <BreadcrumbNav overlay items={[
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungen', href: '/leistungen' },
+            { label: 'KI-Chatbots' },
+          ]} />
+        </div>
         {/* Bild-Container: erst ab Header-Höhe, geht nicht über die Menüleiste */}
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
@@ -157,7 +173,7 @@ const KiChatbots: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Digitale Kundenassistenz für Ihre Website (KI-Chatbot)
+              Digitale Kundenassistenz Leipzig &amp; Groitzsch
             </motion.h1>
 
             <motion.h2
@@ -1069,8 +1085,8 @@ const KiChatbots: React.FC = () => {
               viewport={{ once: true }}
             >
               Noch Fragen? Viele Antworten finden Sie in unseren{' '}
-              <a href="/faq" className="text-primary-400 hover:underline">
-                FAQ
+              <a href="/haeufige-fragen" className="text-primary-400 hover:underline">
+                häufig gestellten Fragen
               </a>
               .
             </motion.p>

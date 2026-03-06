@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = getValidRegionSlug(region);
   const content = getRegionContent(slug);
   return {
-    title: content.title,
+    title: { absolute: content.title },
     description: content.metaDescription,
     alternates: { canonical: `${baseUrl}/leistungsgebiete/${slug}` },
   };

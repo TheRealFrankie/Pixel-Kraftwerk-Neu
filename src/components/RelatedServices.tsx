@@ -120,7 +120,7 @@ const RelatedServices: React.FC<RelatedServicesProps> = ({ currentSlug, anchorBy
                     {service.shortDescription}
                   </p>
                   <span className="inline-flex items-center text-primary-500 text-sm font-heading group-hover:translate-x-2 transition-transform duration-200">
-                    Mehr erfahren
+                    {service.title} entdecken
                     <ArrowRight size={16} className="ml-1" />
                   </span>
                 </div>

@@ -5,10 +5,20 @@ import NAPInfo from '../components/NAPInfo';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import { LEISTUNGSGEBIETE_CITIES } from '../data/leistungsgebiete';
 
+const contactBreadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://pixelkraftwerk-ai.com' },
+    { '@type': 'ListItem', position: 2, name: 'Kontakt', item: 'https://pixelkraftwerk-ai.com/kontakt' },
+  ],
+};
+
 const Contact: React.FC = () => {
   return (
     <div className="pt-24 bg-dark-500 min-h-screen">
       <LocalBusinessSchema pageType="contact" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactBreadcrumbSchema) }} />
       <div className="container mx-auto px-6 md:px-12 py-24">
         <h1 className="text-3xl md:text-4xl text-light-100 font-heading font-bold mb-6 text-center">
           Nehmen Sie <span className="text-primary-500">Kontakt</span> mit uns auf
@@ -75,7 +85,7 @@ const Contact: React.FC = () => {
             {' · '}
             <a href="/seo-top-3-in-google" className="text-primary-400 hover:underline">SEO: Top 3 in Google</a>
             {' · '}
-            <a href="/services" className="text-primary-400 hover:underline font-heading font-bold">Alle Leistungen</a>
+            <a href="/leistungen" className="text-primary-400 hover:underline font-heading font-bold">Alle Leistungen</a>
           </p>
         </div>
 

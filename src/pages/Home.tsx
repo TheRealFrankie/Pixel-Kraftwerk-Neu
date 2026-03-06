@@ -3,7 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ChevronDown, CheckCircle, Minus, ArrowRight, Zap, MessageCircle, Workflow, Globe, Search } from 'lucide-react';
+import { ChevronDown, CheckCircle, Minus, ArrowRight, Zap, MessageCircle, Workflow, Globe, Search, MapPin } from 'lucide-react';
+import { LEISTUNGSGEBIETE_CITIES } from '../data/leistungsgebiete';
 import { BackgroundPaths } from '../components/ui/background-paths';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
@@ -284,7 +285,7 @@ const Home: React.FC = () => {
                     Eine digitale Assistenz, die Kundenanfragen beantwortet, Nachrichten entgegennimmt und Anliegen automatisch verarbeitet – auf Ihrer Website und in sozialen Netzwerken, rund um die Uhr.
                   </p>
                   <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                    Mehr erfahren
+                    KI-Chatbots für Ihre Website
                     <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                   </div>
                 </div>
@@ -322,7 +323,7 @@ const Home: React.FC = () => {
                     Eine telefonische Assistenz, die für Sie ans Telefon geht, Fragen beantwortet und Termine annimmt – auch dann, wenn gerade niemand erreichbar ist.
                   </p>
                   <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                    Mehr erfahren
+                    Telefonassistenz rund um die Uhr
                     <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                   </div>
                 </div>
@@ -360,7 +361,7 @@ const Home: React.FC = () => {
                     Moderne Webseiten, die leicht verständlich sind und bei Suchmaschinen sichtbar werden, damit Kunden Sie schneller finden und direkt Kontakt aufnehmen können.
                   </p>
                   <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                    Mehr erfahren
+                    Moderne Webseiten im Mietmodell
                     <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                   </div>
                 </div>
@@ -398,7 +399,7 @@ const Home: React.FC = () => {
                     Anfragen automatisch erfassen, sortieren und zuweisen. Termine buchen, bestätigen und erinnern – ohne Hin-und-Her. Damit Abläufe von selbst laufen.
                   </p>
                   <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                    Mehr erfahren
+                    Automatisierungen für Anfragen &amp; Termine
                     <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                   </div>
                 </div>
@@ -448,7 +449,7 @@ const Home: React.FC = () => {
                       Lokales SEO mit Fokus auf Top-Platzierungen für die Suchbegriffe, die Ihnen wirklich Kunden bringen – mit klarer Strategie und transparenten Ergebnissen.
                     </p>
                     <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                      Mehr erfahren
+                      In 90 Tagen in die Top 3 bei Google
                       <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                     </div>
                   </div>
@@ -457,7 +458,7 @@ const Home: React.FC = () => {
 
             </div>
             <p className="text-center mt-10 text-light-200">
-              <a href="/services" className="text-primary-400 hover:underline font-heading font-bold">Alle Leistungen ansehen</a>
+              <a href="/leistungen" className="text-primary-400 hover:underline font-heading font-bold">Alle Leistungen ansehen</a>
               {' · '}
               <a href="/leistungsgebiete" className="text-primary-400 hover:underline font-heading font-bold">Unsere Leistungsgebiete</a>
             </p>
@@ -649,6 +650,44 @@ const Home: React.FC = () => {
               <ArrowRight className="mr-2" size={24} />
               Kostenloses Erstgespräch
             </motion.button>
+          </div>
+        </div>
+      </section>
+
+      {/* AREAS WE SERVE */}
+      <section className="section-padding bg-dark-500 border-t border-dark-200/30">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.h2
+              className="text-3xl md:text-4xl font-heading font-bold mb-6 text-light-100"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Gebiete, die wir <span className="text-primary-500">bedienen</span>
+            </motion.h2>
+            <p className="text-light-200 mb-10 max-w-2xl mx-auto">
+              Von unserem Sitz in Groitzsch aus betreuen wir Unternehmen in Leipzig, im Landkreis Leipzig und darüber hinaus – persönlich, regional und mit kurzen Wegen.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              {LEISTUNGSGEBIETE_CITIES.map((city) => (
+                <motion.a
+                  key={city.slug}
+                  href={`/leistungsgebiete/${city.slug}`}
+                  className="flex items-center gap-2 px-4 py-3 rounded-xl bg-dark-400/80 border border-dark-200/50 text-light-100 hover:border-primary-500/50 hover:text-primary-400 transition-all duration-200 text-sm font-heading"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <MapPin size={14} className="text-primary-500 flex-shrink-0" />
+                  {city.name}
+                </motion.a>
+              ))}
+            </div>
+            <p className="mt-8 text-light-300 text-sm">
+              <a href="/leistungsgebiete" className="text-primary-400 hover:underline font-heading font-bold">Alle 13 Leistungsgebiete ansehen</a>
+            </p>
           </div>
         </div>
       </section>

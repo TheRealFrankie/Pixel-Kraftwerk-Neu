@@ -50,7 +50,7 @@ const PrivacySettings: React.FC = () => {
                   <p>
                     Weitere Informationen finden Sie in unserer{' '}
                     <a
-                      href="/privacy"
+                      href="/datenschutz"
                       className="text-primary-500 hover:text-primary-400 transition-colors font-heading font-bold"
                     >
                       Datenschutzerklärung

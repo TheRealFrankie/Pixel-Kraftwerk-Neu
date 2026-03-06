@@ -168,7 +168,7 @@ const ContactForm: React.FC = () => {
                 <label htmlFor="privacyAccepted" className="text-light-200 text-sm">
                   Ich habe die{' '}
                   <a
-                    href="/privacy"
+                    href="/datenschutz"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary-400 hover:text-primary-300 underline"

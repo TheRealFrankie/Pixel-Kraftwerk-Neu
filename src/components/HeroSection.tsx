@@ -25,13 +25,9 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-3xl md:text-4xl lg:text-5xl text-light-100 font-heading">
-              Prozesse automatisieren.
-            </h1>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl text-light-100 font-heading">
-              Effizienz steigern.
-            </h1>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl text-light-100 font-heading">
-              Kosten senken.
+              <span className="block">Prozesse automatisieren.</span>
+              <span className="block">Effizienz steigern.</span>
+              <span className="block">Kosten senken.</span>
             </h1>
           </motion.div>
           

@@ -3,9 +3,46 @@ import { HelpCircle } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 
+const allFaqs = [
+  { q: 'Wie individuell sind die KI-Lösungen wirklich?', a: 'Wir entwickeln jede Lösung maßgeschneidert genau nach den Bedürfnissen unserer Kunden. Dabei berücksichtigen wir bestehende Systeme, Workflows und Ziele, sodass am Ende eine passgenaue, effiziente Lösung entsteht.' },
+  { q: 'Welche Branchen profitieren besonders von Ihren KI-Lösungen?', a: 'Unsere Lösungen sind branchenübergreifend einsetzbar. Besonders profitieren Unternehmen aus Dienstleistung, E-Commerce, Gesundheitswesen, öffentlicher Verwaltung und Handwerk.' },
+  { q: 'Welche technischen Voraussetzungen müssen Kunden mitbringen?', a: 'In der Regel sind keine besonderen technischen Voraussetzungen notwendig. Wir gestalten unsere Lösungen so, dass sie sich flexibel an die vorhandene Infrastruktur anpassen. Sollte eine Integration mit bestehenden Systemen oder Webseiten erforderlich sein, klären wir den Zugang dazu im Vorfeld gemeinsam – unkompliziert und lösungsorientiert.' },
+  { q: 'Was passiert, wenn sich die Anforderungen im Projektverlauf ändern?', a: 'Flexibilität ist uns wichtig. Änderungen besprechen wir gemeinsam und passen die Lösung entsprechend an, damit sie immer optimal zum Geschäft passt.' },
+  { q: 'Wie wird die Qualität der Lösungen sichergestellt?', a: 'Jede Lösung durchläuft ausführliche Tests mit dem Kunden zusammen in der Demo-Phase. Erst wenn der Kunde voll zufrieden ist, wird das Produkt live geschaltet.' },
+  { q: 'Sind die Lösungen skalierbar?', a: 'Ja, unsere Systeme sind so aufgebaut, dass sie mit dem Unternehmen wachsen können. Erweiterungen oder Anpassungen sind jederzeit möglich.' },
+  { q: 'Wie kann der Kunde Änderungen an der Website vornehmen?', a: 'Die Webseiten werden von uns betreut und sind nicht zur Selbstbedienung freigegeben. Änderungen oder Anpassungswünsche kann der Kunde einfach per E-Mail oder kurzem Anruf mitteilen, wir setzen diese schnellstmöglich um.' },
+  { q: 'Für wen sind die Lösungen von Pixel Kraftwerk geeignet?', a: 'Unsere Kunden sind vielfältig und kommen deutschlandweit aus unterschiedlichsten Branchen – darunter lokale und regionale Unternehmen, Mittelstand, Online-Shops, Fitnessstudios, Praxen sowie öffentliche Einrichtungen wie Rathäuser.' },
+  { q: 'Welche besonderen Merkmale haben Ihre Leistungen?', a: 'Unsere Lösungen sind keine Baukasten-Produkte, sondern individuell maßgeschneiderte Systeme. Jeder Kunde wird persönlich durch den gesamten Prozess begleitet – von der Entwicklung über die Implementierung bis zum Support. Um eine hohe Qualität sicherzustellen, nehmen wir nur bis zu drei Neukunden pro Monat an.' },
+  { q: 'Wie läuft ein typisches Kundenprojekt ab?', a: 'Zunächst führen wir ein Telefonat oder persönliches Treffen, um die Probleme des Kunden zu verstehen und zu prüfen, ob und wie wir diese lösen können. Anschließend erstellen wir eine maßgeschneiderte Demo, die der Kunde testen kann. Erst wenn der Kunde zufrieden ist, erfolgt die vollständige Implementierung. Die Bezahlung erfolgt erst nach erfolgreicher Abnahme.' },
+  { q: 'Bieten Sie Support und Wartung nach Projektabschluss an?', a: 'Ja, wir bieten maximalen Support und sind persönlich für unsere Kunden da. Änderungswünsche oder Probleme werden in der Regel innerhalb von 24 Stunden bearbeitet, abhängig vom Umfang des Anliegens.' },
+  { q: 'Wie lange dauert es, bis eine Lösung fertiggestellt ist?', a: 'Die Dauer hängt vom Umfang ab: Websites sind meist innerhalb von 3 Tagen fertig, die digitale und telefonische Kundenassistenz benötigen in der Regel 1–2 Wochen. Die Implementierung in CRM-Systeme dauert ähnlich lang. Die genannten Zeiten sind Durchschnittswerte.' },
+  { q: 'Arbeiten Sie deutschlandweit oder regional?', a: 'Wir arbeiten deutschlandweit mit unseren Kunden zusammen.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: allFaqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://pixelkraftwerk-ai.com' },
+    { '@type': 'ListItem', position: 2, name: 'Häufige Fragen', item: 'https://pixelkraftwerk-ai.com/haeufige-fragen' },
+  ],
+};
+
 const Faq: React.FC = () => {
   return (
     <div className="pt-24 bg-dark-500 min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="container mx-auto px-6 md:px-12 py-24">
         <h1 className="text-3xl md:text-4xl text-light-100 font-heading font-bold mb-6 text-center">
           Häufig gestellte <span className="text-primary-500">Fragen (FAQ)</span>
@@ -192,7 +229,7 @@ const Faq: React.FC = () => {
                 Kein Problem! Kontaktieren Sie uns direkt – wir beantworten gerne alle Ihre Fragen persönlich.
               </p>
               <a 
-                href="/contact" 
+                href="/kontakt" 
                 className="inline-block px-8 py-3 bg-primary-500 text-dark-500 font-heading font-bold hover:bg-primary-400 transition-colors duration-300"
               >
                 Jetzt Kontakt aufnehmen

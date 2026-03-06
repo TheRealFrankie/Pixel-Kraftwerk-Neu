@@ -22,6 +22,7 @@ import GoogleMapsSection from '../../components/GoogleMapsSection';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
+import BreadcrumbNav from '../../components/BreadcrumbNav';
 import RelatedServices from '../../components/RelatedServices';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 
@@ -132,9 +133,15 @@ const Website: React.FC = () => {
       </Head>
       <div className="bg-dark-500">
         <BreadcrumbSchema serviceName="Webseiten" serviceUrl={canonicalUrl} />
-
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
       <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+        <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
+          <BreadcrumbNav overlay items={[
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungen', href: '/leistungen' },
+            { label: 'Webseiten' },
+          ]} />
+        </div>
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
             src="/images/webseiten-mietmodell-agentur.webp"
@@ -171,7 +178,7 @@ const Website: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Moderne Webseiten, die Vertrauen schaffen
+              Moderne Webseiten Leipzig &amp; Groitzsch
             </motion.h1>
 
             <motion.h2

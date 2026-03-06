@@ -2,8 +2,11 @@ import type { Metadata } from 'next';
 import Leistungsgebiete from '@/pages/Leistungsgebiete';
 
 export const metadata: Metadata = {
-  title: 'BESTE KI-Agentur Groitzsch – Pixel Kraftwerk – Leistungsgebiete & regionale KI-Services in meiner Nähe',
-  description: 'Pixel Kraftwerk betreut Unternehmen in Leipzig, Markkleeberg, Zwenkau, Borna, Böhlen, Rötha, Neukieritzsch, Pegau, Lucka, Meuselwitz, Regis-Breitingen, Elstertrebnitz und Groitzsch. KI-Chatbots, Telefonassistenten, Terminbuchung, CRM, Websites & SEO.',
+  title: {
+    absolute:
+      'KI-Agentur Groitzsch – Pixel Kraftwerk Leistungsgebiete: Leipzig, Markkleeberg, Borna, Zwenkau und 9 weitere Städte – KI-Chatbots, Telefonassistenten & SEO in meiner Nähe',
+  },
+  description: 'Pixel Kraftwerk betreut Unternehmen in Leipzig, Markkleeberg, Zwenkau, Borna, Groitzsch und 8 weiteren Städten. KI-Chatbots, Telefonassistenten, SEO & mehr.',
   alternates: { canonical: 'https://pixelkraftwerk-ai.com/leistungsgebiete' },
 };
 

@@ -8,6 +8,7 @@ import { LEISTUNGSGEBIETE_CITIES } from '../data/leistungsgebiete';
 import { getRegionServiceLinkText } from '../data/services';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import BreadcrumbSchemaLeistungsgebiete from '../components/BreadcrumbSchemaLeistungsgebiete';
+import BreadcrumbNav from '../components/BreadcrumbNav';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 
 const regionDescriptions: Record<string, string> = {
@@ -41,6 +42,12 @@ const Leistungsgebiete: React.FC = () => {
       <LocalBusinessSchema pageType="homepage" customDescription="KI-Automatisierung und Chatbots für Unternehmen in Leipzig, Markkleeberg, Zwenkau, Borna, Böhlen, Rötha, Neukieritzsch, Pegau, Lucka, Meuselwitz, Regis-Breitingen, Elstertrebnitz und Groitzsch." />
 
       <section className="relative pt-32 pb-24 bg-dark-500 overflow-hidden">
+        <div className="container mx-auto px-4 mb-6">
+          <BreadcrumbNav items={[
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungsgebiete' },
+          ]} />
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h1
@@ -135,9 +142,9 @@ const Leistungsgebiete: React.FC = () => {
               ))}
             </div>
             <p className="mt-10 text-light-300">
-              <a href="/services" className="text-primary-400 hover:underline font-heading font-bold">Alle Leistungen ansehen</a>
+              <a href="/leistungen" className="text-primary-400 hover:underline font-heading font-bold">Alle Leistungen ansehen</a>
               {' · '}
-              <a href="/contact" className="text-primary-400 hover:underline font-heading font-bold">Kontakt</a>
+              <a href="/kontakt" className="text-primary-400 hover:underline font-heading font-bold">Kontakt</a>
             </p>
           </div>
         </div>

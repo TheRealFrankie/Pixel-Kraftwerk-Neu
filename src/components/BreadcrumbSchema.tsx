@@ -26,7 +26,7 @@ const BreadcrumbSchema: React.FC<BreadcrumbSchemaProps> = ({ serviceName, servic
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": name, "item": baseUrl + "/" },
-        { "@type": "ListItem", "position": 2, "name": name + " – Leistungen", "item": baseUrl + "/services" },
+        { "@type": "ListItem", "position": 2, "name": name + " – Leistungen", "item": baseUrl + "/leistungen" },
         { "@type": "ListItem", "position": 3, "name": name + " – " + serviceName, "item": serviceUrl }
       ]
     };

@@ -103,6 +103,7 @@ export default function RegionServicePage({
         }
         url={currentPageUrl}
         areaServed={[regionName]}
+        faqs={content.faqs.map((f) => ({ question: f.q, answer: f.a }))}
         pageName={`Region-Service: ${serviceLabel} in ${regionName}`}
       />
       <BreadcrumbSchemaRegionService
@@ -201,6 +202,27 @@ export default function RegionServicePage({
                 {p}
               </motion.p>
             ))}
+            <motion.p
+              className="text-light-200 text-lg leading-relaxed mb-6"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              Erfahren Sie mehr über{' '}
+              <a href={globalServiceUrl} className="text-primary-400 hover:underline">
+                {serviceLabel} im Überblick
+              </a>
+              {' '}oder entdecken Sie{' '}
+              <a href={regionUrl} className="text-primary-400 hover:underline">
+                alle Leistungen in {regionName}
+              </a>
+              . Haben Sie eine konkrete Frage?{' '}
+              <a href="/kontakt" className="text-primary-400 hover:underline">
+                Sprechen Sie uns an
+              </a>
+              {' '}– das Erstgespräch ist kostenlos.
+            </motion.p>
             {content.highlights.length > 0 && (
               <ul className="space-y-2 text-light-200 mt-4">
                 {content.highlights.map((h, i) => (
@@ -253,12 +275,12 @@ export default function RegionServicePage({
               Alle Leistungsgebiete
             </a>
             {' · '}
-            <a href="/contact" className="text-primary-400 hover:underline">
+            <a href="/kontakt" className="text-primary-400 hover:underline">
               Kontakt
             </a>
           </motion.p>
           <a
-            href="/contact"
+            href="/kontakt"
             className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
           >
             Kostenloses Erstgespräch anfragen
@@ -307,7 +329,7 @@ export default function RegionServicePage({
                 Alle Leistungsgebiete
               </a>
               {' · '}
-              <a href="/contact" className="text-primary-400 hover:underline">
+              <a href="/kontakt" className="text-primary-400 hover:underline">
                 Kontakt
               </a>
             </p>

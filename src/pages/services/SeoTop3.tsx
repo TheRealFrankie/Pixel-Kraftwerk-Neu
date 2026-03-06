@@ -20,6 +20,7 @@ import RelatedServices from '../../components/RelatedServices';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
+import BreadcrumbNav from '../../components/BreadcrumbNav';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 import VorherNachherSection from '../../components/VorherNachherSection';
 import WieFunktioniertEsSection from '../../components/WieFunktioniertEsSection';
@@ -114,9 +115,15 @@ const SeoTop3: React.FC = () => {
           serviceName="Top 3 in Google in 90 Tagen"
           serviceUrl={canonicalUrl}
         />
-
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
       <section id="lokale-sichtbarkeit-ausbauen" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+        <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
+          <BreadcrumbNav overlay items={[
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungen', href: '/leistungen' },
+            { label: 'SEO: Top 3 in Google' },
+          ]} />
+        </div>
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
             src="/images/seo-top-3-google-suche.webp"
@@ -153,7 +160,7 @@ const SeoTop3: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Top 3 in Google in 90 Tagen
+              SEO Leipzig &amp; Groitzsch – Top 3 in Google
             </motion.h1>
 
             <motion.h2
@@ -665,8 +672,8 @@ const SeoTop3: React.FC = () => {
               viewport={{ once: true }}
             >
               Noch Fragen? Viele Antworten finden Sie in unseren{' '}
-              <a href="/faq" className="text-primary-400 hover:underline">
-                FAQ
+              <a href="/haeufige-fragen" className="text-primary-400 hover:underline">
+                häufig gestellten Fragen
               </a>
               .
             </motion.p>

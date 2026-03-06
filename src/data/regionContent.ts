@@ -956,10 +956,13 @@ function getTemplateRegionContent(cityName: string): RegionContent {
     metaDescription: `Pixel Kraftwerk – KI-Automatisierung, Chatbots, Terminbuchung, CRM und SEO für Unternehmen in ${cityName}. Aus Groitzsch für die Region Leipzig.`,
     intro: `Für Unternehmen in ${cityName} und Umgebung entwickeln wir KI-gestützte Lösungen für Kundenkommunikation und Vertrieb: digitale und telefonische Kundenassistenz, Terminbuchungssysteme, CRM-Workflows und Websites mit SEO. Von unserem Sitz in Groitzsch aus sind wir schnell in der Region und verbinden lokale Nähe mit moderner Technologie.`,
     paragraphs: [
-      `In ${cityName} sind viele Unternehmen stark im Tagesgeschäft eingebunden – Anrufe, E‑Mails, Formulareingänge und persönliche Anfragen laufen parallel. Oft bleibt wenig Zeit, um jede Anfrage sofort zu beantworten oder strukturiert nachzuverfolgen. Mit KI-Chatbots auf Ihrer Website und in Messengern, Telefonassistenten für eingehende Anrufe und smarten Buchungssystemen schaffen wir hier Entlastung: wiederkehrende Fragen werden automatisch beantwortet, Termine koordiniert und Anfragen sauber dokumentiert.`,
-      `Besonders Unternehmen aus Handwerk, Gesundheitswesen, Dienstleistung, Beratung und Handel in ${cityName} profitieren davon, wenn Standardanliegen automatisch abgefangen werden. Statt ständig „im Postfach zu leben“, kann sich Ihr Team auf wertschöpfende Aufgaben konzentrieren – Gespräche mit Interessentinnen und Interessenten, individuelle Angebote oder Projektarbeit. Gleichzeitig erleben Ihre Kundinnen und Kunden eine moderne, jederzeit erreichbare Kommunikation.`,
-      `Unsere Projekte starten immer mit einem klar umrissenen Anwendungsfall aus Ihrem Alltag in ${cityName}: zum Beispiel Terminvereinbarung, erste Qualifizierung von Anfragen oder die Entlastung Ihres Empfangs. Auf dieser Basis entwickeln wir ein System, das zu Ihren bestehenden Abläufen passt, anstatt alles auf den Kopf zu stellen. Wo sinnvoll, binden wir vorhandene Tools wie CRM, Terminsoftware oder Newsletter-Systeme an, damit Daten nicht doppelt gepflegt werden müssen.`,
-      `Nach dem Go begleiten wir Sie über den Start hinaus: Wir beobachten gemeinsam, welche Fragen in ${cityName} besonders häufig auftauchen, wie Kundinnen und Kunden mit dem Chatbot oder Telefonassistenten interagieren und wo weitere Automatisierung sinnvoll ist. So wächst Ihre Lösung Schritt für Schritt – vom ersten Use Case hin zu einer ganzheitlichen, aber gut verständlichen Automatisierung Ihrer Kommunikations- und Vertriebsprozesse.`,
+      `In ${cityName} sind viele Unternehmen stark im Tagesgeschäft eingebunden – Anrufe, E‑Mails, Formulareingänge und persönliche Anfragen laufen parallel. Oft bleibt wenig Zeit, um jede Anfrage sofort zu beantworten oder strukturiert nachzuverfolgen. Gleichzeitig erwarten Kundinnen und Kunden heute schnelle Reaktionen, klare Kommunikation und eine Erreichbarkeit, die über klassische Bürozeiten hinausgeht. Wenn Anfragen unbeantwortet bleiben oder Informationen zwischen verschiedenen Kanälen verloren gehen, leidet nicht nur der Eindruck nach außen – es gehen auch potenzielle Aufträge verloren, die bei schnellerer Reaktion zum Abschluss geführt hätten.`,
+      `Genau hier setzen wir an: Mit KI-Chatbots auf Ihrer Website und in Messengern, Telefonassistenten für eingehende Anrufe und smarten Buchungssystemen schaffen wir Entlastung für Unternehmen in ${cityName}. Wiederkehrende Fragen werden automatisch und zuverlässig beantwortet, Termine werden ohne Hin-und-Her koordiniert und Anfragen werden sauber dokumentiert und ans richtige Team weitergeleitet. Das Ergebnis: Ihr Team arbeitet fokussierter, Ihre Kunden bekommen schnellere Antworten und nichts geht mehr verloren.`,
+      `Besonders Unternehmen aus Handwerk, Gesundheitswesen, Dienstleistung, Beratung und Handel in ${cityName} profitieren davon, wenn Standardanliegen automatisch abgefangen werden. Statt ständig „im Postfach zu leben“, kann sich Ihr Team auf wertschöpfende Aufgaben konzentrieren – persönliche Gespräche mit Interessentinnen und Interessenten, individuelle Angebote, Projektarbeit oder die Weiterentwicklung des eigenen Geschäfts. Gleichzeitig erleben Ihre Kundinnen und Kunden eine moderne, jederzeit erreichbare Kommunikation, die Vertrauen schafft und Professionalität ausstrahlt.`,
+      `Unsere Projekte starten immer mit einem klar umrissenen Anwendungsfall aus Ihrem Alltag in ${cityName}: zum Beispiel die automatisierte Terminvereinbarung, die erste Qualifizierung eingehender Anfragen oder die Entlastung Ihres Empfangs durch einen KI-Telefonassistenten. Auf dieser Basis entwickeln wir ein System, das zu Ihren bestehenden Abläufen passt, anstatt alles auf den Kopf zu stellen. Wo sinnvoll, binden wir vorhandene Tools wie CRM, Terminsoftware, Kalender oder Newsletter-Systeme an, damit Daten nicht doppelt gepflegt werden und alle Informationen an einem zentralen Ort zusammenlaufen.`,
+      `Neben der operativen Automatisierung unterstützen wir Unternehmen in ${cityName} auch bei der digitalen Sichtbarkeit: Moderne Webseiten im Mietmodell, die mobil optimiert sind und professionell wirken, kombiniert mit gezielter Suchmaschinenoptimierung für lokale Suchanfragen. Wenn jemand in ${cityName} oder der Region nach einer Leistung sucht, die Sie anbieten, soll Ihr Unternehmen unter den ersten Ergebnissen erscheinen. Dafür optimieren wir Ihre Online-Präsenz, Ihre Google-Signale und Ihre Inhalte – transparent, nachvollziehbar und auf messbare Verbesserungen ausgerichtet.`,
+      `Pixel Kraftwerk arbeitet bewusst regional verankert. Unser Standort ist Neuer Weg 9a, 04539 Groitzsch. Viele unserer Kundinnen und Kunden sitzen in ${cityName}, in Leipzig, im Landkreis Leipzig und darüber hinaus. Das hat einen konkreten Vorteil: Wir denken nicht abstrakt „remote von irgendwo“, sondern kennen die Anforderungen regionaler Betriebe – pragmatisch, ergebnisorientiert und mit Blick auf den tatsächlichen Arbeitsalltag vor Ort. Erstgespräche führen wir online oder bei Ihnen in ${cityName}, Workshops finden je nach Bedarf bei uns in Groitzsch, bei Ihnen oder remote statt.`,
+      `Nach dem Go-live begleiten wir Sie über den Start hinaus: Wir beobachten gemeinsam, welche Fragen in ${cityName} besonders häufig auftauchen, wie Kundinnen und Kunden mit dem Chatbot oder Telefonassistenten interagieren und wo weitere Automatisierung sinnvoll ist. Auf Wunsch erweitern wir die Lösung Schritt für Schritt – etwa um zusätzliche Kanäle, weitere Automatisierungsschritte im Hintergrund oder tiefere CRM-Integration. So wächst Ihre Lösung vom ersten Use Case hin zu einer ganzheitlichen, aber gut verständlichen Automatisierung Ihrer Kommunikations- und Vertriebsprozesse.`,
     ],
     faqs: [
       {
@@ -1002,6 +1005,14 @@ function getTemplateRegionContent(cityName: string): RegionContent {
         q: 'Wie schnell sehen wir Ergebnisse?',
         a: 'Je nach Umfang kann die erste Lösung in wenigen Wochen live gehen. Viele Unternehmen spüren bereits kurz nach dem Start, dass Anfragen strukturierter eingehen, weniger verloren gehen und interne Abläufe entspannter werden.',
       },
+      {
+        q: `Kann ich bestehende Systeme in ${cityName} integrieren (CRM, Kalender, Branchensoftware)?`,
+        a: `Ja. Wo immer möglich, binden wir vorhandene Systeme an – etwa CRM-Lösungen, Terminbuchungs-Tools, Kalender oder Branchensoftware. So entstehen keine Insellösungen, sondern Abläufe, die sauber zusammenspielen und Ihre Daten an einem zentralen Ort halten.`,
+      },
+      {
+        q: `Bietet ihr auch langfristige Betreuung und Optimierung für Unternehmen in ${cityName} an?`,
+        a: `Ja. Viele Kundinnen und Kunden nutzen laufende Betreuungspakete, in denen wir Dialoge, Automatisierungen und Inhalte regelmäßig überprüfen, anpassen und erweitern – damit Ihre Lösung mit Ihrem Unternehmen in ${cityName} mitwächst.`,
+      },
     ],
     servicesHighlight: [
       'KI-Chatbots für Website & Messenger in der Region',
@@ -1013,10 +1024,13 @@ function getTemplateRegionContent(cityName: string): RegionContent {
   };
 }
 
+function buildRegionTitle(cityName: string): string {
+  return `KI-Agentur ${cityName} – wenn Sie nach KI-Chatbots, Telefonassistenten, Automatisierungen oder SEO in meiner Nähe suchen – Pixel Kraftwerk aus Groitzsch für ${cityName} und Umgebung`;
+}
+
 export function getRegionContent(slug: string): RegionContent {
-  if (customRegionContent[slug]) return customRegionContent[slug]!;
-  const name = SLUG_TO_NAME[slug] ?? slug;
-  return getTemplateRegionContent(name);
+  const base = customRegionContent[slug] ?? getTemplateRegionContent(SLUG_TO_NAME[slug] ?? slug);
+  return { ...base, title: buildRegionTitle(base.name) };
 }
 
 export function getValidRegionSlug(region: string): LeistungsgebietSlug {

@@ -20,6 +20,7 @@ import {
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 import ServiceItemListSchema from '../components/ServiceItemListSchema';
+import BreadcrumbNav from '../components/BreadcrumbNav';
 
 interface ServiceDetail {
   icon: React.ReactNode;
@@ -28,6 +29,15 @@ interface ServiceDetail {
   benefits: string[];
   slug: string;
 }
+
+const servicesBreadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://pixelkraftwerk-ai.com' },
+    { '@type': 'ListItem', position: 2, name: 'Unsere Leistungen', item: 'https://pixelkraftwerk-ai.com/leistungen' },
+  ],
+};
 
 const Services: React.FC = () => {
   const scrollToContactForm = () => {
@@ -161,9 +171,16 @@ const Services: React.FC = () => {
   return (
     <div className="bg-dark-500">
       <ServiceItemListSchema />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesBreadcrumbSchema) }} />
 
       {/* HERO SECTION – Premium Hintergrundbild wie auf den Leistungsseiten */}
       <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+        <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
+          <BreadcrumbNav overlay items={[
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungen' },
+          ]} />
+        </div>
         {/* Bild beginnt unterhalb der Header-Leiste */}
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
@@ -326,7 +343,7 @@ const Services: React.FC = () => {
                             </p>
                           )}
                           <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                            Mehr erfahren
+                            {service.title} entdecken
                             <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                           </div>
                         </div>
@@ -375,7 +392,7 @@ const Services: React.FC = () => {
                         </p>
                       )}
                       <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                        Mehr erfahren
+                        {service.title} entdecken
                         <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                       </div>
                     </div>
@@ -445,7 +462,7 @@ const Services: React.FC = () => {
                       href={`/${service.slug}`}
                       className="inline-flex items-center text-primary-500 font-heading font-bold hover:text-primary-400 transition-colors duration-200 group"
                     >
-                      Mehr erfahren
+                      {service.title} im Detail
                       <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                     </a>
                   </div>

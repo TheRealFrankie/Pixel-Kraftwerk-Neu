@@ -13,14 +13,6 @@ const WebSiteSchema: React.FC = () => {
     "publisher": {
       "@id": BUSINESS_ID
     },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": `${businessInfo.url}/?s={search_term_string}`
-      },
-      "query-input": "required name=search_term_string"
-    },
     "inLanguage": "de-DE"
   };
 

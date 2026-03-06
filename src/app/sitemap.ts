@@ -6,7 +6,7 @@ export const dynamic = 'force-static';
 const baseUrl = 'https://pixelkraftwerk-ai.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastMod = new Date('2026-03-02');
+  const lastMod = new Date('2026-03-06');
   const regionServiceEntries: MetadataRoute.Sitemap = [];
   for (const region of LEISTUNGSGEBIETE_SLUGS) {
     for (const service of SERVICE_SLUGS) {
@@ -21,11 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl + '/', lastModified: lastMod, changeFrequency: 'weekly', priority: 1 },
-    { url: baseUrl + '/about', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.9 },
-    { url: baseUrl + '/contact', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.9 },
-    { url: baseUrl + '/features', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.9 },
-    { url: baseUrl + '/services', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.9 },
-    // Kernleistungen in gewünschter Reihenfolge
+    { url: baseUrl + '/ueber-uns', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.9 },
+    { url: baseUrl + '/kontakt', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.9 },
+    { url: baseUrl + '/leistungen', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.9 },
     { url: baseUrl + '/ki-chatbots', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
     { url: baseUrl + '/telefonassistenten', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
     { url: baseUrl + '/automatisierungen', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
@@ -39,12 +37,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
     ...regionServiceEntries,
-    // FAQ bewusst nach den Services
-    { url: baseUrl + '/faq', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
-    { url: baseUrl + '/imprint', lastModified: lastMod, changeFrequency: 'yearly', priority: 0.5 },
+    { url: baseUrl + '/haeufige-fragen', lastModified: lastMod, changeFrequency: 'monthly', priority: 0.8 },
+    { url: baseUrl + '/impressum', lastModified: lastMod, changeFrequency: 'yearly', priority: 0.5 },
     { url: baseUrl + '/agb', lastModified: lastMod, changeFrequency: 'yearly', priority: 0.5 },
-    { url: baseUrl + '/privacy', lastModified: lastMod, changeFrequency: 'yearly', priority: 0.5 },
-    { url: baseUrl + '/privacy-settings', lastModified: lastMod, changeFrequency: 'yearly', priority: 0.4 },
+    { url: baseUrl + '/datenschutz', lastModified: lastMod, changeFrequency: 'yearly', priority: 0.5 },
   ];
   return staticPages;
 }

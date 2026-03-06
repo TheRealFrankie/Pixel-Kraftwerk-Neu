@@ -45,7 +45,7 @@ const ChatLauncher = () => {
   const handleClick = () => {
     if (!hasPreferenceConsent()) {
       // Nutzer zu den Datenschutz-Einstellungen führen, um Präferenz-Cookies zu aktivieren
-      window.location.href = '/privacy-settings';
+      window.location.href = '/datenschutz-einstellungen';
       return;
     }
 

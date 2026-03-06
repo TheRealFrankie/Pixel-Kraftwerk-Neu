@@ -17,6 +17,7 @@ import RelatedServices from '../../components/RelatedServices';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
+import BreadcrumbNav from '../../components/BreadcrumbNav';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 
 const Automatisierungen: React.FC = () => {
@@ -155,9 +156,15 @@ const Automatisierungen: React.FC = () => {
           serviceName="Automatisierungen für Anfragen, Vertrieb & Terminplanung"
           serviceUrl={canonicalUrl}
         />
-
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
       <section id="ki-automatisierung-fur-anfragen-termine" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+        <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
+          <BreadcrumbNav overlay items={[
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungen', href: '/leistungen' },
+            { label: 'Automatisierungen' },
+          ]} />
+        </div>
         <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
           <Image
             src="/images/automatisierungen-anfragen-vertrieb-terminplanung.webp"
@@ -194,7 +201,7 @@ const Automatisierungen: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Automatisierungen für Anfragen, Vertrieb & Terminplanung
+              Automatisierungen Leipzig &amp; Groitzsch
             </motion.h1>
 
             <motion.h2
@@ -808,10 +815,10 @@ const Automatisierungen: React.FC = () => {
               <a href="/telefonassistenten" className="text-primary-400 hover:underline">Telefonassistent einrichten</a>,{' '}
               <a href="/webseite" className="text-primary-400 hover:underline">Website erstellen lassen</a>,{' '}
               <a href="/seo-top-3-in-google" className="text-primary-400 hover:underline">lokales SEO Leipzig</a>,{' '}
-              <a href="/contact" className="text-primary-400 hover:underline">Erstgespräch anfragen</a>.
+              <a href="/kontakt" className="text-primary-400 hover:underline">Erstgespräch anfragen</a>.
             </p>
             <motion.a
-              href="/contact"
+              href="/kontakt"
               className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}

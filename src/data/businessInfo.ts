@@ -29,7 +29,7 @@ export const businessInfo = {
 
   url: "https://pixelkraftwerk-ai.com",
   logo: "https://pixelkraftwerk-ai.com/pixel_kraftwerk_leipzig_groitzsch_titelbild_logo.png",
-  ogImage: "https://pixelkraftwerk-ai.com/pixelkraftwerk-whatsapp-banner.png",
+  ogImage: "https://pixelkraftwerk-ai.com/og-image.png",
   image: "https://pixelkraftwerk-ai.com/pixel_kraftwerk_leipzig_groitzsch_titelbild_logo.png",
 
   founders: [

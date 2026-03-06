@@ -2,12 +2,29 @@ import React from 'react';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
+import BreadcrumbNav from '../components/BreadcrumbNav';
+
+const aboutBreadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://pixelkraftwerk-ai.com' },
+    { '@type': 'ListItem', position: 2, name: 'Über uns', item: 'https://pixelkraftwerk-ai.com/ueber-uns' },
+  ],
+};
 
 const About: React.FC = () => {
   return (
     <div className="pt-24 bg-dark-500 min-h-screen">
       <LocalBusinessSchema pageType="about" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutBreadcrumbSchema) }} />
       <div className="container mx-auto px-6 md:px-12 py-24">
+        <div className="mb-8">
+          <BreadcrumbNav items={[
+            { label: 'Startseite', href: '/' },
+            { label: 'Über uns' },
+          ]} />
+        </div>
         <h1 className="text-3xl md:text-4xl text-light-100 font-heading font-bold mb-6 text-center">
           Über <span className="text-primary-500">Pixel Kraftwerk</span>
         </h1>
@@ -92,6 +109,26 @@ const About: React.FC = () => {
             <p className="text-light-100 text-base leading-relaxed">
               Pixel Kraftwerk steht für technologiegestützte Transformation mit echtem Nutzen.
               Wir liefern Lösungen, die funktionieren – und Wirkung zeigen.
+            </p>
+          </div>
+
+          <div className="mt-16">
+            <h3 className="text-lg font-heading font-bold text-light-100 mb-5">
+              Unsere <span className="text-primary-500">Leistungen</span>
+            </h3>
+            <ul className="space-y-3 text-sm text-light-200 mb-8">
+              <li><a href="/ki-chatbots" className="text-primary-400 hover:underline">KI-Chatbots</a> – digitale Kundenassistenz für Ihre Website</li>
+              <li><a href="/telefonassistenten" className="text-primary-400 hover:underline">Telefonassistenten</a> – Anrufe automatisch annehmen und qualifizieren</li>
+              <li><a href="/automatisierungen" className="text-primary-400 hover:underline">Automatisierungen</a> – Anfragen, Vertrieb &amp; Terminplanung</li>
+              <li><a href="/webseite" className="text-primary-400 hover:underline">Webseiten im Mietmodell</a> – modern, schnell, SEO-optimiert</li>
+              <li><a href="/seo-top-3-in-google" className="text-primary-400 hover:underline">SEO: Top 3 in Google</a> – lokale Sichtbarkeit in 90 Tagen</li>
+            </ul>
+            <p className="text-sm text-light-200">
+              <a href="/leistungen" className="text-primary-400 hover:underline font-heading font-bold">Alle Leistungen im Detail ansehen</a>
+              {' · '}
+              <a href="/leistungsgebiete" className="text-primary-400 hover:underline font-heading font-bold">Regionen die wir betreuen</a>
+              {' · '}
+              <a href="/kontakt" className="text-primary-400 hover:underline font-heading font-bold">Erstgespräch vereinbaren</a>
             </p>
           </div>
         </div>

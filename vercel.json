@@ -1,0 +1,16 @@
+{
+  "redirects": [
+    { "source": "/services", "destination": "/leistungen", "statusCode": 301 },
+    { "source": "/faq", "destination": "/haeufige-fragen", "statusCode": 301 },
+    { "source": "/contact", "destination": "/kontakt", "statusCode": 301 },
+    { "source": "/about", "destination": "/ueber-uns", "statusCode": 301 },
+    { "source": "/imprint", "destination": "/impressum", "statusCode": 301 },
+    { "source": "/privacy", "destination": "/datenschutz", "statusCode": 301 },
+    { "source": "/privacy-settings", "destination": "/datenschutz-einstellungen", "statusCode": 301 },
+    { "source": "/features", "destination": "/leistungen", "statusCode": 301 },
+    { "source": "/termine-buchungen", "destination": "/automatisierungen", "statusCode": 301 },
+    { "source": "/crm-lead-management", "destination": "/automatisierungen", "statusCode": 301 },
+    { "source": "/website-seo", "destination": "/leistungen", "statusCode": 301 },
+    { "source": "/leistungsgebiete/:region/website-seo", "destination": "/leistungsgebiete/:region/webseiten", "statusCode": 301 }
+  ]
+}

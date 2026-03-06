@@ -10,8 +10,10 @@ import { getRegionContent, getValidRegionSlug } from '../data/regionContent';
 import { SERVICES, getRegionServiceLinkText } from '../data/services';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import BreadcrumbSchemaRegion from '../components/BreadcrumbSchemaRegion';
+import BreadcrumbNav from '../components/BreadcrumbNav';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
+import { buildFaqSchema } from '../lib/jsonld';
 
 const RegionPage: React.FC<{ region: string }> = ({ region }) => {
   const slug = getValidRegionSlug(region);
@@ -21,27 +23,16 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
     <div className="bg-dark-500">
       <BreadcrumbSchemaRegion regionName={content.name} regionSlug={slug} />
       <LocalBusinessSchema pageType="homepage" customDescription={content.metaDescription} />
-      {LEISTUNGSGEBIETE_SLUGS.includes(slug) && (
+      {content.faqs.length > 0 && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'SoftwareCompany',
-              name: businessInfo.name,
-              telephone: businessInfo.contact.telephone,
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: businessInfo.address.streetAddress,
-                postalCode: businessInfo.address.postalCode,
-                addressLocality: businessInfo.address.addressLocality,
-                addressCountry: businessInfo.address.addressCountry,
-              },
-              areaServed: [
-                { '@type': 'City', name: content.name },
-                { '@type': 'AdministrativeArea', name: 'Landkreis Leipzig' },
-              ],
-            }),
+            __html: JSON.stringify(
+              buildFaqSchema({
+                url: `https://pixelkraftwerk-ai.com/leistungsgebiete/${slug}`,
+                faqs: content.faqs.map((f) => ({ question: f.q, answer: f.a })),
+              })
+            ),
           }}
         />
       )}
@@ -49,14 +40,13 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
       <section className="relative pt-32 pb-24 bg-dark-500 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <motion.p
-              className="text-primary-500 font-heading font-bold text-sm mb-2"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <a href="/leistungsgebiete" className="hover:underline">Leistungsgebiete</a> / {content.name}
-            </motion.p>
+            <div className="mb-4">
+              <BreadcrumbNav items={[
+                { label: 'Startseite', href: '/' },
+                { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
+                { label: content.name },
+              ]} />
+            </div>
             <motion.h1
               className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-light-100 mb-6"
               initial={{ opacity: 0, y: 20 }}
@@ -103,6 +93,23 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                 {p}
               </motion.p>
             ))}
+            <motion.p
+              className="text-light-200 text-lg leading-relaxed mb-6"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              Unsere Leistungen umfassen{' '}
+              <a href="/ki-chatbots" className="text-primary-400 hover:underline">KI-Chatbots</a>,{' '}
+              <a href="/telefonassistenten" className="text-primary-400 hover:underline">Telefonassistenten</a>,{' '}
+              <a href="/automatisierungen" className="text-primary-400 hover:underline">Automatisierungen für Anfragen & Termine</a>,{' '}
+              <a href="/webseite" className="text-primary-400 hover:underline">moderne Webseiten</a> und{' '}
+              <a href="/seo-top-3-in-google" className="text-primary-400 hover:underline">SEO: Top 3 in Google</a>.{' '}
+              <a href="/kontakt" className="text-primary-400 hover:underline font-heading font-bold">
+                Kostenloses Erstgespräch anfragen
+              </a>.
+            </motion.p>
           </div>
         </div>
       </section>
@@ -121,7 +128,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
             </ul>
             <p className="mt-8">
               <a
-                href="/services"
+                href="/leistungen"
                 className="inline-flex items-center text-primary-500 font-heading font-bold hover:text-primary-400"
               >
                 Alle Leistungen ansehen
@@ -185,7 +192,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                           Eine digitale Assistenz, die Kundenanfragen beantwortet, Nachrichten entgegennimmt und Anliegen automatisch verarbeitet – auf Ihrer Website und in Messengern, rund um die Uhr.
                         </p>
                         <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                          Mehr erfahren
+                          KI-Chatbots für Ihre Website
                           <ArrowRight
                             size={16}
                             className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
@@ -233,7 +240,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                           Eine telefonische Assistenz, die für Sie ans Telefon geht, Fragen beantwortet und Termine annimmt – auch dann, wenn gerade niemand erreichbar ist.
                         </p>
                         <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                          Mehr erfahren
+                          Telefonassistenz rund um die Uhr
                           <ArrowRight
                             size={16}
                             className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
@@ -281,7 +288,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                           Moderne Webseiten, die leicht verständlich sind und bei Suchmaschinen sichtbar werden, damit Kunden Sie schneller finden und direkt Kontakt aufnehmen können.
                         </p>
                         <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                          Mehr erfahren
+                          Moderne Webseiten im Mietmodell
                           <ArrowRight
                             size={16}
                             className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
@@ -329,7 +336,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                           Anfragen automatisch erfassen, sortieren und zuweisen. Termine buchen, bestätigen und erinnern – ohne Hin-und-Her. Damit Abläufe von selbst laufen.
                         </p>
                         <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                          Mehr erfahren
+                          Automatisierungen für Anfragen &amp; Termine
                           <ArrowRight
                             size={16}
                             className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
@@ -386,7 +393,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                             Lokales SEO mit Fokus auf Top-Platzierungen für die Suchbegriffe, die Ihnen wirklich Kunden bringen – mit klarer Strategie und transparenten Ergebnissen.
                           </p>
                           <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                            Mehr erfahren
+                            In 90 Tagen in die Top 3 bei Google
                             <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                           </div>
                         </div>
@@ -423,7 +430,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
           <p className="text-light-200 mb-6">
             <a href="/leistungsgebiete" className="text-primary-400 hover:underline">Alle Leistungsgebiete</a>
             {' · '}
-            <a href="/contact" className="text-primary-400 hover:underline">Kontakt</a>
+            <a href="/kontakt" className="text-primary-400 hover:underline">Kontakt</a>
           </p>
         </div>
       </section>
