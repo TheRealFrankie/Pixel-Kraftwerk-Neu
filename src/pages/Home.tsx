@@ -675,7 +675,7 @@ const Home: React.FC = () => {
                 <motion.a
                   key={city.slug}
                   href={`/leistungsgebiete/${city.slug}`}
-                  className="flex items-center gap-2 px-4 py-3 rounded-xl bg-dark-400/80 border border-dark-200/50 text-light-100 hover:border-primary-500/50 hover:text-primary-400 transition-all duration-200 text-sm font-heading"
+                  className="flex items-center gap-2 px-4 py-3 rounded-xl bg-dark-400 border border-dark-200/70 text-light-100 hover:border-primary-500/60 hover:text-primary-400 hover:bg-dark-300 transition-all duration-200 text-sm font-heading shadow-sm"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

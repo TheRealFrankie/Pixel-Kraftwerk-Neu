@@ -156,7 +156,7 @@ const Header: React.FC = () => {
           <div className="hidden lg:flex items-center gap-3">
             <ThemeToggle />
             <a
-              href="/#kontakt"
+              href="/kontakt"
               className="inline-flex items-center px-5 py-2 rounded-lg bg-primary-500 text-dark-500 font-heading font-bold text-sm hover:bg-primary-400 transition-colors duration-200 whitespace-nowrap"
             >
               Erstgespräch sichern
@@ -266,7 +266,7 @@ const Header: React.FC = () => {
 
             <div className="pt-3">
               <a
-                href="/#kontakt"
+                href="/kontakt"
                 className="block text-center bg-primary-500 text-dark-500 font-heading font-bold py-3 px-4 rounded-lg hover:bg-primary-400 transition-colors duration-200"
                 onClick={toggleMenu}
               >
