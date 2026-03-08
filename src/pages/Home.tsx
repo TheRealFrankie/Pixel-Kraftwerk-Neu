@@ -90,12 +90,9 @@ const Home: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.0, ease: "easeOut", delay: 0.3 }}
               >
-                KI-Agentur Leipzig
+                KI-Agentur für Chatbots, Automatisierungen und SEO in Groitzsch &amp; Leipzig
               </motion.span>
             </h1>
-            <h2 className="sr-only">
-              Chatbots, Telefonassistenten, Terminbuchung, CRM, Websites &amp; SEO – KI-Automatisierung für Leipzig und Region
-            </h2>
             <p className="space-y-1 text-xl md:text-2xl lg:text-3xl text-light-200 font-heading mb-6">
               <motion.span className="block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>Klare Abläufe.</motion.span>
               <motion.span className="block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}>Mehr Anfragen.</motion.span>
@@ -151,9 +148,9 @@ const Home: React.FC = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-12 text-light-100">
+              <p className="text-3xl md:text-4xl font-heading font-bold mb-12 text-light-100">
                 Der Alltag vieler Unternehmen sieht <span className="text-primary-500">heute so aus:</span>
-              </h2>
+              </p>
 
               <div className="space-y-4 text-left max-w-2xl mx-auto mb-12">
                 {[
@@ -202,9 +199,9 @@ const Home: React.FC = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-12 text-light-100">
+              <p className="text-3xl md:text-4xl font-heading font-bold mb-12 text-light-100">
                 So arbeitet ein <span className="text-primary-500">sauber automatisierter</span> Betrieb:
-              </h2>
+              </p>
 
               <div className="space-y-4 text-left max-w-2xl mx-auto">
                 {[
@@ -244,217 +241,165 @@ const Home: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-light-100 mb-4">
-                Unsere Leistungen im Überblick
-              </h2>
               <p className="text-lg text-light-200 max-w-3xl mx-auto mb-4">
                 Digitale Lösungen, die Ihr Unternehmen entlasten und den Arbeitsalltag deutlich vereinfachen.
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-              {/* Leistungsakachel mit Bild: KI-Chatbots */}
-              <motion.a
-                href="/ki-chatbots"
-                className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
-                  <Image
-                    src="/images/ki-chatbot-digitale-kundenassistenz.webp"
-                    alt="Digitale Kundenassistenz: KI-Chatbot auf Laptop und Smartphone, Kundenanfragen in Sekunden beantworten"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
-                    <MessageCircle size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                    <span className="text-sm font-heading font-bold">Rund um die Uhr</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-light-100 mb-2 group-hover:text-primary-400 transition-colors duration-200">
-                    KI-Chatbots
-                  </h3>
-                  <p className="text-light-300 text-base leading-relaxed mb-4">
-                    Eine digitale Assistenz, die Kundenanfragen beantwortet, Nachrichten entgegennimmt und Anliegen automatisch verarbeitet – auf Ihrer Website und in sozialen Netzwerken, rund um die Uhr.
-                  </p>
-                  <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                    KI-Chatbots für Ihre Website
-                    <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-                  </div>
-                </div>
-              </motion.a>
 
-              {/* Leistungsakachel mit Bild: Telefonassistent */}
-              <motion.a
-                href="/telefonassistenten"
-                className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
-                  <Image
-                    src="/images/ki-telefonassistent.webp"
-                    alt="KI-Telefonassistent: Anrufe entgegennehmen, Leads qualifizieren, Termine buchen – 24/7"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
-                    <Workflow size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                    <span className="text-sm font-heading font-bold">Nie wieder verpasste Anrufe</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-light-100 mb-2 group-hover:text-primary-400 transition-colors duration-200">
-                    KI-Telefonassistent
-                  </h3>
-                  <p className="text-light-300 text-base leading-relaxed mb-4">
-                    Eine telefonische Assistenz, die für Sie ans Telefon geht, Fragen beantwortet und Termine annimmt – auch dann, wenn gerade niemand erreichbar ist.
-                  </p>
-                  <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                    Telefonassistenz rund um die Uhr
-                    <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-                  </div>
-                </div>
-              </motion.a>
-
-              {/* Leistungsakachel mit Bild: Webseiten */}
-              <motion.a
-                href="/webseite"
-                className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
-                  <Image
-                    src="/images/webseiten-mietmodell-agentur.webp"
-                    alt="Moderne Websites: verkaufsstark, suchmaschinenoptimiert, in Tagen statt Wochen"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
-                    <Globe size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                    <span className="text-sm font-heading font-bold">In Tagen statt Wochen</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-light-100 mb-2 group-hover:text-primary-400 transition-colors duration-200">
-                    Webseiten
-                  </h3>
-                  <p className="text-light-300 text-base leading-relaxed mb-4">
-                    Moderne Webseiten, die leicht verständlich sind und bei Suchmaschinen sichtbar werden, damit Kunden Sie schneller finden und direkt Kontakt aufnehmen können.
-                  </p>
-                  <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                    Moderne Webseiten im Mietmodell
-                    <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-                  </div>
-                </div>
-              </motion.a>
-
-              {/* Leistungskachel mit Bild: Automatisierungen */}
-              <motion.a
-                href="/automatisierungen"
-                className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
-                  <Image
-                    src="/images/automatisierungen-anfragen-vertrieb-terminplanung.webp"
-                    alt="Automatisierungen: Anfrage, Sortierung, Zuweisung, Follow-up, Termin und CRM – durchgängige Prozessautomatisierung"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
-                    <Zap size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                    <span className="text-sm font-heading font-bold">Abläufe laufen von selbst</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-light-100 mb-2 group-hover:text-primary-400 transition-colors duration-200">
-                    Automatisierungen für Anfragen, Vertrieb & Terminplanung
-                  </h3>
-                  <p className="text-light-300 text-base leading-relaxed mb-4">
-                    Anfragen automatisch erfassen, sortieren und zuweisen. Termine buchen, bestätigen und erinnern – ohne Hin-und-Her. Damit Abläufe von selbst laufen.
-                  </p>
-                  <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                    Automatisierungen für Anfragen &amp; Termine
-                    <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-                  </div>
-                </div>
-              </motion.a>
-
-              {/* Premium-Rechteck-Kachel: Top 3 in Google – Bild links, Inhalt rechts */}
-              <motion.a
-                href="/seo-top-3-in-google"
-                className="group block lg:col-span-2 rounded-2xl relative overflow-hidden border border-dark-200/80 bg-dark-500/95 shadow-card hover:border-primary-500/50 hover:shadow-[0_0_48px_-12px_rgba(0,179,166,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 transition-all duration-500"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.45 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] min-h-[300px] lg:min-h-[320px]">
-                  {/* Bildbereich – Laptop mit Google-Suchergebnissen „Maler in Leipzig“, Top-3-Badge */}
-                  <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[320px] overflow-hidden bg-dark-400 order-2 lg:order-1">
-                  <Image
-                    src="/images/seo-top-3-google-local-pack.webp"
-                      alt="Top 3 in Google: Google-Suchergebnisse für Maler in Leipzig mit Karte und lokalen Einträgen – Ihr Unternehmen sichtbar."
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 55vw"
-                      className="object-cover object-center lg:object-right-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                      priority={false}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-dark-500/60 lg:to-dark-500/80 pointer-events-none" aria-hidden />
-                    <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 text-primary-400 lg:hidden">
-                      <Search size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                      <span className="text-sm font-heading font-bold">Top 3 in 90 Tagen</span>
+              {/* KI-Chatbots */}
+              <div className="flex flex-col">
+                <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
+                  KI-Chatbots für digitale Kundenassistenz und automatische Anfragenbearbeitung
+                </h2>
+                <motion.a
+                  href="/ki-chatbots"
+                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 flex-1"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
+                    <Image src="/images/ki-chatbot-digitale-kundenassistenz.webp" alt="Digitale Kundenassistenz: KI-Chatbot auf Laptop und Smartphone, Kundenanfragen in Sekunden beantworten" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
+                      <MessageCircle size={20} strokeWidth={1.5} className="flex-shrink-0" />
+                      <span className="text-sm font-heading font-bold">Rund um die Uhr</span>
                     </div>
                   </div>
-                  {/* Inhalt – fester Hintergrund für optimale Lesbarkeit */}
-                  <div className="flex flex-col justify-center p-6 md:p-8 lg:p-10 order-1 lg:order-2 relative bg-dark-500 border-l-0 lg:border-l border-dark-200/50">
-                    <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                      <span className="inline-flex items-center rounded-full bg-primary-500/20 text-primary-400 border border-primary-500/30 px-3 py-1.5 text-xs font-heading font-bold tracking-wide">
-                        Fokus-Leistung
-                      </span>
-                    </div>
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary-500/20 text-primary-400 mb-5 flex-shrink-0 shadow-inner border border-primary-500/20">
-                      <Search size={28} strokeWidth={1.5} />
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-3 group-hover:text-primary-400 transition-colors duration-200 pr-24">
-                      Top 3 in Google in 90 Tagen
-                    </h3>
-                    <p className="text-light-200 text-base md:text-lg leading-relaxed mb-6 max-w-xl">
-                      Lokales SEO mit Fokus auf Top-Platzierungen für die Suchbegriffe, die Ihnen wirklich Kunden bringen – mit klarer Strategie und transparenten Ergebnissen.
-                    </p>
-                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                      In 90 Tagen in die Top 3 bei Google
-                      <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                  <div className="p-6">
+                    <p className="text-light-300 text-base leading-relaxed mb-4">Eine digitale Assistenz, die Kundenanfragen beantwortet, Nachrichten entgegennimmt und Anliegen automatisch verarbeitet – auf Ihrer Website und in sozialen Netzwerken, rund um die Uhr.</p>
+                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">KI-Chatbots für Ihre Website<ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
+                  </div>
+                </motion.a>
+              </div>
+
+              {/* Telefonassistent */}
+              <div className="flex flex-col">
+                <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
+                  KI-Telefonassistenten für Anrufannahme, Terminbuchung und Leadqualifizierung
+                </h2>
+                <motion.a
+                  href="/telefonassistenten"
+                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 flex-1"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
+                    <Image src="/images/ki-telefonassistent.webp" alt="KI-Telefonassistent: Anrufe entgegennehmen, Leads qualifizieren, Termine buchen – 24/7" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
+                      <Workflow size={20} strokeWidth={1.5} className="flex-shrink-0" />
+                      <span className="text-sm font-heading font-bold">Nie wieder verpasste Anrufe</span>
                     </div>
                   </div>
-                </div>
-              </motion.a>
+                  <div className="p-6">
+                    <p className="text-light-300 text-base leading-relaxed mb-4">Eine telefonische Assistenz, die für Sie ans Telefon geht, Fragen beantwortet und Termine annimmt – auch dann, wenn gerade niemand erreichbar ist.</p>
+                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">Telefonassistenz rund um die Uhr<ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
+                  </div>
+                </motion.a>
+              </div>
+
+              {/* Webseiten */}
+              <div className="flex flex-col">
+                <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
+                  Webseiten für lokale Unternehmen mit klarer Nutzerführung
+                </h2>
+                <motion.a
+                  href="/webseite"
+                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 flex-1"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
+                    <Image src="/images/webseiten-mietmodell-agentur.webp" alt="Moderne Websites: verkaufsstark, suchmaschinenoptimiert, in Tagen statt Wochen" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
+                      <Globe size={20} strokeWidth={1.5} className="flex-shrink-0" />
+                      <span className="text-sm font-heading font-bold">In Tagen statt Wochen</span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-light-300 text-base leading-relaxed mb-4">Moderne Webseiten, die leicht verständlich sind und bei Suchmaschinen sichtbar werden, damit Kunden Sie schneller finden und direkt Kontakt aufnehmen können.</p>
+                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">Moderne Webseiten im Mietmodell<ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
+                  </div>
+                </motion.a>
+              </div>
+
+              {/* Automatisierungen */}
+              <div className="flex flex-col">
+                <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
+                  Automatisierungen für Anfragen, Vertrieb, Terminplanung und CRM
+                </h2>
+                <motion.a
+                  href="/automatisierungen"
+                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 flex-1"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
+                    <Image src="/images/automatisierungen-anfragen-vertrieb-terminplanung.webp" alt="Automatisierungen: Anfrage, Sortierung, Zuweisung, Follow-up, Termin und CRM" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
+                      <Zap size={20} strokeWidth={1.5} className="flex-shrink-0" />
+                      <span className="text-sm font-heading font-bold">Abläufe laufen von selbst</span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-light-300 text-base leading-relaxed mb-4">Anfragen automatisch erfassen, sortieren und zuweisen. Termine buchen, bestätigen und erinnern – ohne Hin-und-Her. Damit Abläufe von selbst laufen.</p>
+                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">Automatisierungen für Anfragen &amp; Termine<ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
+                  </div>
+                </motion.a>
+              </div>
+
+              {/* SEO */}
+              <div className="flex flex-col lg:col-span-2">
+                <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
+                  Lokales SEO für mehr Sichtbarkeit bei Google
+                </h2>
+                <motion.a
+                  href="/seo-top-3-in-google"
+                  className="group block rounded-2xl relative overflow-hidden border border-dark-200/80 bg-dark-500/95 shadow-card hover:border-primary-500/50 hover:shadow-[0_0_48px_-12px_rgba(0,179,166,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 transition-all duration-500 flex-1"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.45 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] min-h-[300px] lg:min-h-[320px]">
+                    <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[320px] overflow-hidden bg-dark-400 order-2 lg:order-1">
+                      <Image src="/images/seo-top-3-google-local-pack.webp" alt="Top 3 in Google: Google-Suchergebnisse für Maler in Leipzig mit Karte und lokalen Einträgen – Ihr Unternehmen sichtbar." fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover object-center lg:object-right-center transition-transform duration-700 ease-out group-hover:scale-[1.03]" priority={false} />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-dark-500/60 lg:to-dark-500/80 pointer-events-none" aria-hidden />
+                      <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 text-primary-400 lg:hidden">
+                        <Search size={20} strokeWidth={1.5} className="flex-shrink-0" />
+                        <span className="text-sm font-heading font-bold">Top 3 in 90 Tagen</span>
+                      </div>
+                    </div>
+                    <div className="flex flex-col justify-center p-6 md:p-8 lg:p-10 order-1 lg:order-2 relative bg-dark-500 border-l-0 lg:border-l border-dark-200/50">
+                      <div className="absolute top-4 right-4 md:top-6 md:right-6">
+                        <span className="inline-flex items-center rounded-full bg-primary-500/20 text-primary-400 border border-primary-500/30 px-3 py-1.5 text-xs font-heading font-bold tracking-wide">Fokus-Leistung</span>
+                      </div>
+                      <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary-500/20 text-primary-400 mb-5 flex-shrink-0 shadow-inner border border-primary-500/20">
+                        <Search size={28} strokeWidth={1.5} />
+                      </div>
+                      <p className="text-light-200 text-base md:text-lg leading-relaxed mb-6 max-w-xl">Lokales SEO mit Fokus auf Top-Platzierungen für die Suchbegriffe, die Ihnen wirklich Kunden bringen – mit klarer Strategie und transparenten Ergebnissen.</p>
+                      <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">In 90 Tagen in die Top 3 bei Google<ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
+                    </div>
+                  </div>
+                </motion.a>
+              </div>
 
             </div>
             <p className="text-center mt-10 text-light-200">
@@ -470,15 +415,9 @@ const Home: React.FC = () => {
       <section className="section-padding bg-dark-500 border-t border-dark-200/30">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-3xl md:text-4xl font-heading font-bold mb-16 text-light-100 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-primary-500">Praxisbeispiele</span>
-            </motion.h2>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-16 text-light-100 text-center">
+              Praxisbeispiele aus dem Unternehmensalltag
+            </h2>
 
             <div className="space-y-3">
               {practiceExamples.map((example, index) => (
@@ -542,15 +481,9 @@ const Home: React.FC = () => {
       <section className="section-padding bg-dark-400 border-t border-dark-200/30">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-3xl md:text-4xl font-heading font-bold mb-16 text-light-100 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+            <p className="text-3xl md:text-4xl font-heading font-bold mb-16 text-light-100 text-center">
               Was wir <span className="text-primary-500">konkret umsetzen</span>
-            </motion.h2>
+            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {services.map((service, index) => (
@@ -576,15 +509,9 @@ const Home: React.FC = () => {
       <section className="section-padding bg-dark-400 border-t border-dark-200/30">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-3xl md:text-4xl font-heading font-bold mb-20 text-light-100 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Unser <span className="text-primary-500">Prozess</span>
-            </motion.h2>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-20 text-light-100 text-center">
+              So läuft die Zusammenarbeit mit Pixel Kraftwerk ab
+            </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
               {[
@@ -628,15 +555,9 @@ const Home: React.FC = () => {
       <section className="section-padding bg-dark-500 border-t border-dark-200/30">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-3xl mx-auto text-center">
-            <motion.h2
-              className="text-3xl md:text-4xl font-heading font-bold mb-10 text-light-100"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Lassen Sie uns Ihren Betrieb <span className="text-primary-500">entlasten.</span>
-            </motion.h2>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-10 text-light-100">
+              Jetzt kostenlose Erstberatung anfragen
+            </h2>
 
             <motion.button
               onClick={scrollToContactForm}
@@ -658,15 +579,9 @@ const Home: React.FC = () => {
       <section className="section-padding bg-dark-500 border-t border-dark-200/30">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.h2
-              className="text-3xl md:text-4xl font-heading font-bold mb-6 text-light-100"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Gebiete, die wir <span className="text-primary-500">bedienen</span>
-            </motion.h2>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-light-100">
+              Unsere Leistungsgebiete in Groitzsch, Leipzig und Umgebung
+            </h2>
             <p className="text-light-200 mb-10 max-w-2xl mx-auto">
               Von unserem Sitz in Groitzsch aus betreuen wir Unternehmen in Leipzig, im Landkreis Leipzig und darüber hinaus – persönlich, regional und mit kurzen Wegen.
             </p>
