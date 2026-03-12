@@ -13,6 +13,7 @@ import {
   DollarSign,
   Shield,
   ChevronDown,
+  MapPin,
 } from 'lucide-react';
 import ContactForm from '../../components/ContactForm';
 import GoogleMapsSection from '../../components/GoogleMapsSection';
@@ -115,165 +116,313 @@ const SeoTop3: React.FC = () => {
           serviceName="Top 3 in Google in 90 Tagen"
           serviceUrl={canonicalUrl}
         />
-      {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
-      <section id="lokale-sichtbarkeit-ausbauen" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
-        <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
-          <BreadcrumbNav overlay items={[
-            { label: 'Startseite', href: '/' },
-            { label: 'Leistungen', href: '/leistungen' },
-            { label: 'SEO: Top 3 in Google' },
-          ]} />
-        </div>
-        <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
-          <Image
-            src="/images/seo-top-3-google-suche.webp"
-            alt="Top 3 in Google – SEO Sichtbarkeit"
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-dark-500/70 via-dark-500/50 to-dark-500/95" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-r from-dark-500/30 via-transparent to-dark-500/40" aria-hidden />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/15 to-transparent" aria-hidden />
-        </div>
+      {/* Hero – Premium zweispaltig */}
+      <section id="lokale-sichtbarkeit-ausbauen" className="relative bg-dark-500 pt-16 pb-0 md:pt-20 overflow-hidden">
+        {/* Subtile radiale Hintergrundaufhellung */}
+        <div className="absolute top-0 inset-x-0 h-[560px] bg-gradient-radial-subtle pointer-events-none" aria-hidden />
 
-        <div className="container mx-auto px-4 relative z-10 py-24">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/20 border border-primary-500/40 backdrop-blur-sm mb-8 shadow-primary-glow"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Search size={40} className="text-primary-500" strokeWidth={1.5} />
-            </motion.div>
-
-            <motion.h1
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold mb-4 leading-tight"
-              style={{
-                color: '#F5F7FA',
-                textShadow: '0 10px 30px rgba(0,0,0,0.65)',
-                WebkitTextStroke: '1px rgba(0,0,0,0.25)',
-              }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              SEO Leipzig &amp; Groitzsch – Top 3 in Google
-            </motion.h1>
-
-            <motion.h2
-              className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-primary-400 mb-6 drop-shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-            >
-              – für die Suchbegriffe, die Kunden bringen
-            </motion.h2>
-
-            <motion.p
-              className="text-lg sm:text-xl max-w-3xl mx-auto mb-8 leading-relaxed"
-              style={{
-                color: '#F5F7FA',
-                textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
-                WebkitTextStroke: '0.5px rgba(0,0,0,0.2)',
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Wir sorgen dafür, dass Ihr Unternehmen dort erscheint, wo Kunden klicken – in den Top-Ergebnissen. Speziell für{' '}
-              <a href="/leistungsgebiete/leipzig" className="text-primary-400 hover:underline">Leipzig</a>,{' '}
-              <a href="/leistungsgebiete/groitzsch" className="text-primary-400 hover:underline">Groitzsch</a>,{' '}
-              <a href="/leistungsgebiete/markkleeberg" className="text-primary-400 hover:underline">Markkleeberg</a> und die Region.
-            </motion.p>
-
-            <motion.button
-              onClick={scrollToContact}
-              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <ArrowRight className="mr-2" size={24} />
-              Kostenlose SEO-Analyse anfordern
-            </motion.button>
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
-      </section>
-
-      <section className="py-20 bg-dark-400">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Kurz erklärt: Was „Top 3 in Google“ bei lokalen Unternehmen wirklich heißt
-            </motion.h2>
+          <div className="mb-5">
+            <BreadcrumbNav items={[
+              { label: 'Startseite', href: '/' },
+              { label: 'Leistungen', href: '/leistungen' },
+              { label: 'SEO: Top 3 in Google' },
+            ]} />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center pb-10 lg:pb-14">
+            {/* LINKS: Inhalt & CTA */}
+            <div className="flex flex-col">
+              {/* Eyebrow-Label */}
+              <motion.div
+                className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-500/10 border border-primary-500/25 rounded-full text-primary-400 text-xs font-mono tracking-widest uppercase mb-4 w-fit"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 animate-pulse" aria-hidden />
+                Local SEO für Leipzig &amp; Groitzsch
+              </motion.div>
+
+              {/* H1 */}
+              <motion.h1
+                className="text-2xl sm:text-3xl md:text-[2rem] xl:text-[2.4rem] font-heading font-bold text-light-100 leading-[1.15] mb-4"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+              >
+                Bringen Sie Ihr Unternehmen <span className="text-primary-400 whitespace-nowrap">in die Top&nbsp;3 bei Google</span>
+              </motion.h1>
+
+              {/* Subheadline */}
+              <motion.p
+                className="text-light-300 text-sm md:text-base leading-relaxed mb-5 max-w-[520px]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+              >
+                Wenn Ihr Unternehmen dort nicht erscheint, gehen Anfragen direkt an Ihre Konkurrenz.
+              </motion.p>
+
+              {/* Primärer CTA */}
+              <motion.div
+                className="mb-4"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+              >
+                <button
+                  onClick={scrollToContact}
+                  className="inline-flex items-center gap-2 px-7 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-base rounded-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg group"
+                >
+                  Kostenlose SEO-Analyse sichern
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
+                </button>
+              </motion.div>
+
+              {/* Trust-Zeile */}
+              <motion.p
+                className="text-light-200 text-sm tracking-wide mb-5"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.45 }}
+              >
+                Unverbindlich&nbsp;•&nbsp;lokal fokussiert&nbsp;•&nbsp;verständlich erklärt
+              </motion.p>
+
+              {/* 3 Benefit-Bullets */}
+              <motion.ul
+                className="flex flex-col gap-3"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.55 }}
+                aria-label="Vorteile"
+              >
+                {[
+                  'Mehr Anfragen statt nur Rankings',
+                  'Sichtbarkeit bei relevanten Suchbegriffen',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5">
+                    <CheckCircle className="text-primary-500 flex-shrink-0" size={15} />
+                    <span className="text-light-200 text-sm">{item}</span>
+                  </li>
+                ))}
+                <li className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-red-500 border border-red-600 mt-1">
+                  <XCircle className="text-black flex-shrink-0" size={15} />
+                  <span className="text-black text-sm font-black">Nicht in den Top&nbsp;3? Dann sind Sie quasi unsichtbar.</span>
+                </li>
+              </motion.ul>
+            </div>
+
+            {/* RECHTS: Premium-Visual mit schwebenden Badges */}
             <motion.div
-              className="space-y-4 text-light-200 text-sm md:text-base leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
+              className="relative flex items-center justify-center lg:pl-4"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, delay: 0.25 }}
             >
-              <p>
-                Wenn lokale Unternehmen „Top 3“ sagen, meinen sie fast immer die sichtbaren Top-Ergebnisse in der lokalen Suche (Google Maps/Local Pack) – dort, wo Kunden direkt klicken: <strong className="text-light-100">Anrufen, Route, Website</strong>.
-              </p>
-              <p>
-                Das Ziel ist nicht „Traffic um jeden Preis“, sondern:
-              </p>
-              <ul className="list-disc pl-6 space-y-1">
-                <li>mehr qualifizierte Anfragen</li>
-                <li>mehr Anrufe und Nachrichten</li>
-                <li>mehr Termine</li>
-                <li>weniger Abhängigkeit von Ads</li>
-              </ul>
-              <p>
-                Und genau deshalb setzen wir nicht auf Tricks, sondern auf die Signale, die langfristig wirken: <strong className="text-light-100">Relevanz, Vertrauen und lokale Stärke</strong>.
-              </p>
+              {/* Badge oben links: Top 3 sichtbar */}
+              <motion.div
+                className="absolute -top-4 left-2 z-20 flex items-center gap-2 px-3 py-2 bg-dark-300 border border-primary-500/40 rounded-xl shadow-primary-glow"
+                initial={{ opacity: 0, y: -12, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.9 }}
+                aria-hidden
+              >
+                <TrendingUp className="text-primary-400 flex-shrink-0" size={13} />
+                <span className="text-primary-300 text-xs font-semibold whitespace-nowrap">Top 3 sichtbar</span>
+              </motion.div>
+
+              {/* Haupt-Bild-Container */}
+              <div className="relative w-full rounded-2xl overflow-hidden border border-white/[0.06] shadow-[0_32px_80px_-12px_rgba(0,0,0,0.8),0_0_48px_-12px_rgba(0,179,166,0.12)] bg-dark-300 max-h-[340px] lg:max-h-[400px]">
+                {/* Subtiler Gradient-Overlay für Premium-Tiefe */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/5 via-transparent to-transparent pointer-events-none z-10" aria-hidden />
+                {/* Unten auslaufender Verlauf für saubere Unterkante */}
+                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-dark-300/95 to-transparent pointer-events-none z-10" aria-hidden />
+                <Image
+                  src="/images/seo-top3-in-google.webp"
+                  alt="Google Suchergebnisse mit Top-3-Platzierung für lokale Unternehmen in Leipzig"
+                  width={700}
+                  height={480}
+                  className="w-full h-full object-cover object-top"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+
+              {/* Badge unten rechts: Google Maps */}
+              <motion.div
+                className="absolute bottom-5 -right-2 z-20 flex items-center gap-2 px-3 py-2 bg-dark-300 border border-dark-100 rounded-xl shadow-card"
+                initial={{ opacity: 0, x: 12, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.05 }}
+                aria-hidden
+              >
+                <MapPin className="text-primary-400 flex-shrink-0" size={13} />
+                <span className="text-light-200 text-xs font-semibold whitespace-nowrap">Google Maps Fokus</span>
+              </motion.div>
+
+              {/* Badge unten links: mehr Anfragen */}
+              <motion.div
+                className="absolute bottom-5 left-4 z-20 flex items-center gap-2 px-3 py-2 bg-dark-300 border border-dark-100 rounded-xl shadow-card"
+                initial={{ opacity: 0, y: 12, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.15 }}
+                aria-hidden
+              >
+                <Search className="text-primary-400 flex-shrink-0" size={13} />
+                <span className="text-light-200 text-xs font-semibold whitespace-nowrap">+&nbsp;mehr lokale Anfragen</span>
+              </motion.div>
             </motion.div>
           </div>
         </div>
+
+        {/* Trennlinie zum nächsten Abschnitt */}
+        <div className="h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
       </section>
 
       <VorherNachherSection />
 
-      <section className="py-20 bg-dark-500">
+      <section className="py-20 bg-dark-400" aria-labelledby="top3-bedeutung-heading">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
+              id="top3-bedeutung-heading"
+              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              Warum Top 3 so viel verändert (ohne dass Sie mehr arbeiten müssen)
+              Was „Top 3 bei Google“ für lokale Unternehmen wirklich bedeutet
             </motion.h2>
             <motion.div
-              className="space-y-4 text-light-200 text-sm md:text-base leading-relaxed"
+              className="space-y-8 text-light-200 text-base md:text-lg leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
               <p>
-                Wenn Sie sichtbar sind, passiert Folgendes automatisch:
+                Wenn Ihr Unternehmen bei Google in den Top 3 der lokalen Ergebnisse (Google Maps / Local Pack) erscheint, passiert etwas Entscheidendes:
               </p>
-              <ul className="list-disc pl-6 space-y-1">
-                <li>Kunden finden Sie genau dann, wenn Bedarf da ist</li>
-                <li>die Konkurrenz verliert Anteile, ohne dass Sie „lauter“ werden müssen</li>
-                <li>Ihre Website/Telefon klingelt, ohne dass Sie pro Klick bezahlen</li>
+              <p className="text-light-100 font-medium">
+                Kunden sehen Ihr Unternehmen genau dann, wenn sie aktiv nach Ihrer Leistung suchen – und können sofort:
+              </p>
+              <ul className="space-y-2 pl-0 list-none">
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="text-primary-500 flex-shrink-0" size={18} />
+                  <span>anrufen</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="text-primary-500 flex-shrink-0" size={18} />
+                  <span>eine Route starten</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="text-primary-500 flex-shrink-0" size={18} />
+                  <span>Ihre Website besuchen</span>
+                </li>
+              </ul>
+              <p className="text-primary-300 font-semibold">
+                Die meisten Anfragen entstehen genau dort.
+              </p>
+              <p>
+                Deshalb geht es bei lokalem SEO nicht um möglichst viel Traffic, sondern um:
+              </p>
+              <ul className="space-y-2 pl-0 list-none">
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="text-primary-500 flex-shrink-0" size={18} />
+                  <span>mehr qualifizierte Anfragen</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="text-primary-500 flex-shrink-0" size={18} />
+                  <span>mehr Anrufe und Nachrichten</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="text-primary-500 flex-shrink-0" size={18} />
+                  <span>mehr Terminbuchungen</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="text-primary-500 flex-shrink-0" size={18} />
+                  <span>weniger Abhängigkeit von Werbung</span>
+                </li>
+              </ul>
+              <div className="rounded-xl bg-primary-500/10 border border-primary-500/20 px-5 py-4">
+                <p className="text-light-100 font-bold text-lg mb-0">
+                  Kurz gesagt: mehr Kunden aus der Google-Suche.
+                </p>
+              </div>
+              <p>
+                Statt kurzfristiger Tricks setzen wir auf die Faktoren, die Google langfristig belohnt:
+              </p>
+              <ul className="space-y-2 pl-0 list-none">
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 mt-1.5" aria-hidden />
+                  <span><strong className="text-light-100">lokale Relevanz</strong></span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 mt-1.5" aria-hidden />
+                  <span><strong className="text-light-100">Vertrauen und Bewertungen</strong></span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 mt-1.5" aria-hidden />
+                  <span><strong className="text-light-100">starke regionale Signale</strong></span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-dark-500" aria-labelledby="top3-veraendert-heading">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <motion.h2
+              id="top3-veraendert-heading"
+              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Warum die Top 3 so viel verändern
+            </motion.h2>
+            <motion.div
+              className="space-y-8 text-light-200 text-base md:text-lg leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-light-100 font-medium">
+                Wenn Ihr Unternehmen dort sichtbar ist, verändert sich etwas Entscheidendes:
+              </p>
+              <ul className="space-y-3 pl-0 list-none">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary-500 flex-shrink-0 mt-0.5" size={18} />
+                  <span>Kunden finden Sie genau dann, wenn Bedarf entsteht</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary-500 flex-shrink-0 mt-0.5" size={18} />
+                  <span>ein großer Teil der Anfragen geht automatisch an Sie statt an Ihre Konkurrenz</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary-500 flex-shrink-0 mt-0.5" size={18} />
+                  <span>Ihr Telefon oder Postfach füllt sich – ohne dass Sie pro Klick bezahlen müssen</span>
+                </li>
               </ul>
               <p>
-                SEO ist damit ein <strong className="text-light-100">Planbarkeits-Hebel</strong> – besonders für Dienstleister und lokale Betriebe.
+                Für viele lokale Betriebe wird SEO dadurch zu einem <strong className="text-light-100">Planbarkeits-Hebel</strong>:
+              </p>
+              <div className="rounded-xl bg-dark-400 border border-primary-500/20 px-5 py-4 flex flex-wrap items-center gap-2 font-heading font-bold text-light-100">
+                <span>Mehr Sichtbarkeit</span>
+                <span className="text-primary-400" aria-hidden>→</span>
+                <span>mehr Anfragen</span>
+                <span className="text-primary-400" aria-hidden>→</span>
+                <span>mehr Aufträge.</span>
+              </div>
+              <p className="text-light-200">
+                Gerade für Dienstleister und Handwerksbetriebe kann eine gute Platzierung bei Google den Unterschied machen zwischen gelegentlichen Anfragen und einem konstanten Strom neuer Kunden.
               </p>
             </motion.div>
           </div>
@@ -286,38 +435,39 @@ const SeoTop3: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
-              className="text-center mb-8"
+              className="text-center mb-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-2">
-                Kommt Ihnen das <span className="text-primary-500">bekannt vor?</span>
+              <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">Kommt Ihnen das bekannt vor?</p>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-3">
+                Wer online nicht gefunden wird,<br className="hidden md:block" /> verliert Aufträge – täglich.
               </h2>
-              <p className="text-light-300 text-sm max-w-xl mx-auto">Was online nicht gefunden wird, bringt keine neuen Aufträge.</p>
+              <p className="text-light-300 text-sm max-w-xl mx-auto">Diese Situationen kennen viele lokale Unternehmen.</p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {problems.map((problem, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-start bg-dark-500 p-6 border border-dark-100"
+                  className="flex items-start bg-dark-500 p-5 rounded-xl border border-dark-200 hover:border-red-500/20 transition-colors duration-300"
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
                   viewport={{ once: true }}
                 >
-                  <XCircle className="text-red-400 mr-4 mt-1 flex-shrink-0" size={20} />
-                  <p className="text-light-200">{problem}</p>
+                  <XCircle className="text-red-400 mr-4 mt-0.5 flex-shrink-0" size={18} />
+                  <p className="text-light-200 text-sm leading-relaxed">{problem}</p>
                 </motion.div>
               ))}
             </div>
-
           </div>
         </div>
       </section>
 
+      {/* Was Sie bekommen */}
       <section className="py-20 bg-dark-500">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
@@ -328,51 +478,52 @@ const SeoTop3: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+              <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">Das Angebot</p>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-3">
                 Was Sie <span className="text-primary-500">bekommen</span>
               </h2>
               <p className="text-light-300 max-w-2xl mx-auto text-sm">Unser SEO-Angebot und der Nutzen für Sie – kompakt.</p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-10">
               {offerBullets.map((item, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-start bg-dark-400 p-4 border border-dark-100"
+                  className="flex items-start bg-dark-400 p-4 rounded-xl border border-dark-200 hover:border-primary-500/20 transition-colors duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   viewport={{ once: true }}
                 >
-                  <CheckCircle className="text-primary-500 mr-3 mt-0.5 flex-shrink-0" size={18} />
-                  <p className="text-light-200 text-sm">{item}</p>
+                  <CheckCircle className="text-primary-500 mr-3 mt-0.5 flex-shrink-0" size={16} />
+                  <p className="text-light-200 text-sm leading-relaxed">{item}</p>
                 </motion.div>
               ))}
             </div>
 
             <motion.div
-              className="mb-8"
+              className="rounded-xl bg-dark-400 border border-primary-500/15 p-6 mb-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-lg font-heading font-bold text-light-100 mb-3">Was das in Kundensprache bedeutet</h3>
-              <ul className="space-y-2 text-light-200 text-sm">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={16} />
+              <h3 className="text-base font-heading font-bold text-light-100 mb-4">Was das in Kundensprache bedeutet</h3>
+              <ul className="space-y-3 text-light-200 text-sm">
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={15} />
                   <span>Google versteht klar, <strong className="text-light-100">was Sie anbieten</strong> und <strong className="text-light-100">für wen</strong></span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={16} />
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={15} />
                   <span>Kunden sehen Sie dort, wo sie klicken</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={16} />
-                  <span>Anfragen kommen nicht „zufällig“, sondern planbarer</span>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={15} />
+                  <span>Anfragen kommen nicht zufällig, sondern planbarer</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={16} />
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={15} />
                   <span>Ihre Sichtbarkeit baut sich auf – und bleibt stabil</span>
                 </li>
               </ul>
@@ -382,15 +533,15 @@ const SeoTop3: React.FC = () => {
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={index}
-                  className="bg-dark-400 p-5 border border-dark-100"
+                  className="bg-dark-400 p-6 rounded-xl border border-dark-200 hover:border-primary-500/20 transition-colors duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
+                  transition={{ duration: 0.5, delay: 0.2 + index * 0.07 }}
                   viewport={{ once: true }}
                 >
-                  <div className="text-primary-500 mb-2">{benefit.icon}</div>
-                  <h3 className="text-base font-heading font-bold text-light-100 mb-1">{benefit.title}</h3>
-                  <p className="text-light-300 text-sm">{benefit.text}</p>
+                  <div className="text-primary-500 mb-3 w-10 h-10 rounded-lg bg-primary-500/10 flex items-center justify-center">{benefit.icon}</div>
+                  <h3 className="text-base font-heading font-bold text-light-100 mb-1.5">{benefit.title}</h3>
+                  <p className="text-light-300 text-sm leading-relaxed">{benefit.text}</p>
                 </motion.div>
               ))}
             </div>
@@ -398,176 +549,188 @@ const SeoTop3: React.FC = () => {
         </div>
       </section>
 
+      {/* Keywords */}
       <section className="py-20 bg-dark-400">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              className="mb-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              Wie wir Keywords auswählen (damit es wirklich Kunden bringt)
-            </motion.h2>
+              <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">Keyword-Strategie</p>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-3">
+                Wie wir Keywords auswählen
+              </h2>
+              <p className="text-light-300 text-sm">Damit es wirklich Kunden bringt – nicht nur Traffic.</p>
+            </motion.div>
             <motion.div
-              className="space-y-4 text-light-200 text-sm md:text-base leading-relaxed"
+              className="space-y-6 text-light-200 text-sm md:text-base leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
               <p>
-                Viele SEO-Anbieter schießen auf „viel Suchvolumen“. Wir fokussieren auf Suchbegriffe, die <strong className="text-light-100">zu Aufträgen führen</strong>.
+                Viele SEO-Anbieter schießen auf viel Suchvolumen. Wir fokussieren auf Suchbegriffe, die <strong className="text-light-100">zu Aufträgen führen</strong>.
               </p>
-              <p>Beispiel-Logik:</p>
-              <ul className="list-disc pl-6 space-y-1">
-                <li>Leistung + Ort (z. B. „[Leistung] Leipzig“)</li>
-                <li>„in der Nähe“ / „Notdienst“ / „Termin“ (wenn passend)</li>
-                <li>konkrete Probleme („[Problem] beheben“, „Kosten“, „Ablauf“)</li>
-                <li>Longtail, der leichter zu gewinnen ist – aber extrem qualifiziert</li>
-              </ul>
+              <div className="rounded-xl bg-dark-500 border border-dark-200 p-5">
+                <p className="text-light-100 font-semibold text-sm mb-4">Unsere Auswahllogik:</p>
+                <ul className="space-y-3">
+                  {[
+                    'Leistung + Ort (z. B. „[Leistung] Leipzig")',
+                    'In der Nähe / Notdienst / Termin (wenn passend)',
+                    'Konkrete Probleme ([Problem] beheben, Kosten, Ablauf)',
+                    'Longtail, der leichter zu gewinnen ist – aber extrem qualifiziert',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm">
+                      <CheckCircle className="text-primary-500 flex-shrink-0 mt-0.5" size={15} />
+                      <span className="text-light-200">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <p>
-                So entsteht ein Keyword-Set, das realistisch zu ranken ist und trotzdem Umsatz bringt. Als Online-Marketing-Unternehmen arbeiten wir hier nicht mit „Gefühl“, sondern mit klarer Priorisierung: schnelle Wins zuerst, dann Ausbau.
+                So entsteht ein Keyword-Set, das realistisch zu ranken ist und trotzdem Umsatz bringt. Wir arbeiten hier nicht mit Gefühl, sondern mit klarer Priorisierung: schnelle Wins zuerst, dann Ausbau.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-dark-500">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Passt „Top 3 in Google“ zu Ihrem Geschäft?
-            </motion.h2>
-            <motion.p
-              className="text-light-200 mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              In einer kurzen Analyse schauen wir, für welche Suchbegriffe sich SEO bei Ihnen wirklich lohnt – und wo die Konkurrenz schon zu stark ist.
-            </motion.p>
-            <motion.button
-              onClick={scrollToContact}
-              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              SEO-Potenzialcheck vereinbaren
-              <ArrowRight className="ml-2" size={22} />
-            </motion.button>
-          </div>
-        </div>
-      </section>
-
+      {/* Mid-CTA */}
       <section className="py-20 bg-dark-500">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+          <motion.div
+            className="max-w-2xl mx-auto rounded-2xl bg-dark-400 border border-primary-500/20 p-8 md:p-10 text-center shadow-card"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-4">Jetzt prüfen lassen</p>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+              Passt Top 3 in Google zu Ihrem Geschäft?
+            </h2>
+            <p className="text-light-300 text-sm md:text-base mb-6 leading-relaxed">
+              In einer kurzen Analyse schauen wir, für welche Suchbegriffe sich SEO bei Ihnen wirklich lohnt – und wo die Konkurrenz schon zu stark ist.
+            </p>
+            <button
+              onClick={scrollToContact}
+              className="inline-flex items-center gap-2 px-7 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-base rounded-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg group"
             >
-              Was in den Top 3 wirklich zählt (die 3 Hebel)
-            </motion.h2>
-            <motion.p
-              className="text-light-200 text-sm md:text-base mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.05 }}
-              viewport={{ once: true }}
-            >
-              Damit Google Sie oben zeigt, braucht es vor allem:
-            </motion.p>
-            <div className="space-y-4">
-              <motion.div
-                className="bg-dark-400 p-5 border border-dark-100 rounded-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-base font-heading font-bold text-light-100 mb-2">1) Relevanz</h3>
-                <p className="text-light-200 text-sm">Ihr Profil und Ihre Website müssen klar signalisieren, welche Leistungen Sie anbieten (und in welchem Gebiet).</p>
-              </motion.div>
-              <motion.div
-                className="bg-dark-400 p-5 border border-dark-100 rounded-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.15 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-base font-heading font-bold text-light-100 mb-2">2) Vertrauen / Prominenz</h3>
-                <p className="text-light-200 text-sm">Bewertungen, Referenzen, echte Aktivität, starke Inhalte – damit Google und Kunden Ihnen glauben.</p>
-              </motion.div>
-              <motion.div
-                className="bg-dark-400 p-5 border border-dark-100 rounded-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-base font-heading font-bold text-light-100 mb-2">3) Konsistenz</h3>
-                <p className="text-light-200 text-sm">Daten, Standortsignale, Inhalte und Verlinkungen müssen zusammenpassen – ohne Chaos.</p>
-              </motion.div>
-            </div>
-            <motion.p
-              className="text-light-200 text-sm mt-4"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              viewport={{ once: true }}
-            >
-              Genau diese drei Punkte bildet unser 90-Tage-Programm ab.
-            </motion.p>
-          </div>
+              SEO-Potenzialcheck vereinbaren
+              <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
+            </button>
+            <p className="text-light-500 text-xs mt-4">Unverbindlich · kostenlos · ohne Verpflichtung</p>
+          </motion.div>
         </div>
       </section>
 
-      <section className="py-12 bg-dark-500">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.p
-              className="text-light-300 text-sm"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              Für starke Rankings braucht es eine ebenso starke Website.&nbsp;
-              <a href="/webseite" className="text-primary-400 hover:underline">
-                Webseiten im Mietmodell – starke Website als SEO-Basis
-              </a>
-            </motion.p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-dark-400" aria-labelledby="faq-heading">
+      {/* 3 Hebel */}
+      <section className="py-20 bg-dark-400">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
-              id="faq-heading"
+              className="mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">Die 3 Hebel</p>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-3">
+                Was in den Top 3 wirklich zählt
+              </h2>
+              <p className="text-light-300 text-sm">Damit Google Sie oben zeigt, braucht es vor allem:</p>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                {
+                  num: '01',
+                  title: 'Relevanz',
+                  text: 'Ihr Profil und Ihre Website müssen klar signalisieren, welche Leistungen Sie anbieten – und in welchem Gebiet.',
+                },
+                {
+                  num: '02',
+                  title: 'Vertrauen',
+                  text: 'Bewertungen, Referenzen, echte Aktivität, starke Inhalte – damit Google und Kunden Ihnen glauben.',
+                },
+                {
+                  num: '03',
+                  title: 'Konsistenz',
+                  text: 'Daten, Standortsignale, Inhalte und Verlinkungen müssen zusammenpassen – ohne Widersprüche.',
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={item.num}
+                  className="bg-dark-500 p-6 rounded-xl border border-dark-200 hover:border-primary-500/20 transition-colors duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  viewport={{ once: true }}
+                >
+                  <span className="text-primary-500/40 font-mono font-bold text-3xl leading-none mb-3 block">{item.num}</span>
+                  <h3 className="text-base font-heading font-bold text-light-100 mb-2">{item.title}</h3>
+                  <p className="text-light-300 text-sm leading-relaxed">{item.text}</p>
+                </motion.div>
+              ))}
+            </div>
+            <motion.div
+              className="mt-6 rounded-xl bg-dark-500 border border-primary-500/15 px-5 py-4 text-center"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.28 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-light-200 text-sm">
+                Genau diese drei Punkte bildet unser <strong className="text-light-100">90-Tage-Programm</strong> ab.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Website-Crosslink Callout */}
+      <section className="py-10 bg-dark-400">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="max-w-3xl mx-auto rounded-xl bg-dark-500 border border-dark-200 px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex-1 min-w-0">
+              <p className="text-light-100 text-sm font-semibold mb-0.5">Starke Rankings brauchen eine starke Website.</p>
+              <p className="text-light-300 text-xs">Ohne saubere technische Basis bremst Ihre Website das SEO aus.</p>
+            </div>
+            <a
+              href="/webseite"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-dark-400 border border-primary-500/25 text-primary-400 text-xs font-semibold whitespace-nowrap hover:border-primary-500/50 hover:text-primary-300 transition-all duration-300 flex-shrink-0"
+            >
+              Website im Mietmodell
+              <ArrowRight size={13} />
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-dark-500" aria-labelledby="faq-heading">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
               className="text-center mb-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+              <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">FAQ</p>
+              <h2 id="faq-heading" className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-3">
                 Häufige Fragen zum <span className="text-primary-500">SEO-Angebot</span>
               </h2>
             </motion.div>
@@ -578,7 +741,7 @@ const SeoTop3: React.FC = () => {
                 return (
                   <motion.div
                     key={index}
-                    className="bg-dark-500 border border-dark-100"
+                    className={`rounded-xl border transition-colors duration-200 ${isOpen ? 'bg-dark-400 border-primary-500/20' : 'bg-dark-400 border-dark-200 hover:border-dark-100'}`}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
@@ -587,15 +750,15 @@ const SeoTop3: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setFaqOpenIndex(isOpen ? null : index)}
-                      className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-heading font-bold text-light-100 hover:bg-dark-400/50 transition-colors"
+                      className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-heading font-bold text-light-100 transition-colors"
                       aria-expanded={isOpen}
                       aria-controls={`faq-answer-${index}`}
                       id={`faq-question-${index}`}
                     >
-                      <span>{faq.question}</span>
+                      <span className="text-sm md:text-base">{faq.question}</span>
                       <ChevronDown
-                        size={20}
-                        className={`text-primary-500 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                        size={18}
+                        className={`text-primary-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                       />
                     </button>
                     <AnimatePresence initial={false}>
@@ -610,7 +773,7 @@ const SeoTop3: React.FC = () => {
                           transition={{ duration: 0.25 }}
                           className="overflow-hidden"
                         >
-                          <p className="text-light-300 text-sm px-5 pb-4 pt-0">{faq.answer}</p>
+                          <p className="text-light-300 text-sm px-5 pb-5 pt-0 leading-relaxed">{faq.answer}</p>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -632,57 +795,42 @@ const SeoTop3: React.FC = () => {
         }}
       />
 
-      <section className="py-20 bg-dark-500">
+      {/* Final CTA */}
+      <section className="py-24 bg-dark-400">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+          <motion.div
+            className="max-w-2xl mx-auto text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-4">Kostenlose Analyse</p>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
               Wie viele Kunden verlieren Sie aktuell <span className="text-primary-500">an Ihre Konkurrenz?</span>
-            </motion.h2>
-            <motion.p
-              className="text-light-200 mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
+            </h2>
+            <p className="text-light-300 text-sm md:text-base mb-8 leading-relaxed">
               Lassen Sie uns Ihr Potenzial gemeinsam prüfen – mit einer kostenlosen SEO-Analyse.
-            </motion.p>
-            <motion.button
+            </p>
+            <button
               onClick={scrollToContact}
-              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-7 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-base rounded-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg group mb-4"
             >
-              <ArrowRight className="mr-2" size={24} />
+              <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
               SEO-Potenzialcheck anfragen
-            </motion.button>
-            <motion.p
-              className="text-light-300 text-sm mt-4"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              Noch Fragen? Viele Antworten finden Sie in unseren{' '}
+            </button>
+            <p className="text-light-400 text-xs">
+              Noch Fragen?{' '}
               <a href="/haeufige-fragen" className="text-primary-400 hover:underline">
-                häufig gestellten Fragen
+                Häufig gestellte Fragen
               </a>
-              .
-            </motion.p>
+            </p>
             <ServicedRegionsBlock />
             <RegionServiceLinksBlock
               serviceSlug="seo-top-3"
               title="SEO: Top 3 in Google in Ihrem Gebiet"
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -695,4 +843,3 @@ const SeoTop3: React.FC = () => {
 };
 
 export default SeoTop3;
-
