@@ -1,5 +1,17 @@
 {
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.pixelkraftwerk-ai.com" }],
+      "destination": "https://pixelkraftwerk-ai.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "query", "key": "s" }],
+      "destination": "/",
+      "permanent": true
+    },
     { "source": "/services", "destination": "/leistungen", "statusCode": 301 },
     { "source": "/faq", "destination": "/haeufige-fragen", "statusCode": 301 },
     { "source": "/contact", "destination": "/kontakt", "statusCode": 301 },
