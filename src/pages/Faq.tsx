@@ -144,77 +144,65 @@ const Faq: React.FC = () => {
             </div>
           </div>
 
-          {/* Structured FAQ with schema.org */}
-          <div className="bg-dark-400 p-8 border border-dark-100" itemScope itemType="https://schema.org/FAQPage">
+          {/* Weitere FAQs – Schema nur via JSON-LD oben (kein Microdata, sonst FAQPage doppelt) */}
+          <div className="bg-dark-400 p-8 border border-dark-100">
             <h2 className="text-2xl font-heading font-bold text-primary-500 mb-8 text-center">
               Weitere wichtige Informationen
             </h2>
 
             <div className="space-y-6">
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question" className="border-b border-dark-100 pb-6">
-                <h3 itemProp="name" className="text-xl font-heading font-bold text-primary-500 mb-3">
+              <div className="border-b border-dark-100 pb-6">
+                <h3 className="text-xl font-heading font-bold text-primary-500 mb-3">
                   Für wen sind die Lösungen von Pixel Kraftwerk geeignet?
                 </h3>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p itemProp="text" className="text-light-200">
-                    Unsere Kunden sind vielfältig und kommen deutschlandweit aus unterschiedlichsten Branchen – darunter lokale und regionale Unternehmen, Mittelstand, Online-Shops, Fitnessstudios, Praxen sowie öffentliche Einrichtungen wie Rathäuser.
-                  </p>
-                </div>
+                <p className="text-light-200">
+                  Unsere Kunden sind vielfältig und kommen deutschlandweit aus unterschiedlichsten Branchen – darunter lokale und regionale Unternehmen, Mittelstand, Online-Shops, Fitnessstudios, Praxen sowie öffentliche Einrichtungen wie Rathäuser.
+                </p>
               </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question" className="border-b border-dark-100 pb-6">
-                <h3 itemProp="name" className="text-xl font-heading font-bold text-primary-500 mb-3">
+              <div className="border-b border-dark-100 pb-6">
+                <h3 className="text-xl font-heading font-bold text-primary-500 mb-3">
                   Welche besonderen Merkmale haben Ihre Leistungen?
                 </h3>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p itemProp="text" className="text-light-200">
-                    Unsere Lösungen sind keine Baukasten-Produkte, sondern individuell maßgeschneiderte Systeme. Jeder Kunde wird persönlich durch den gesamten Prozess begleitet – von der Entwicklung über die Implementierung bis zum Support. Um eine hohe Qualität sicherzustellen, nehmen wir nur bis zu drei Neukunden pro Monat an.
-                  </p>
-                </div>
+                <p className="text-light-200">
+                  Unsere Lösungen sind keine Baukasten-Produkte, sondern individuell maßgeschneiderte Systeme. Jeder Kunde wird persönlich durch den gesamten Prozess begleitet – von der Entwicklung über die Implementierung bis zum Support. Um eine hohe Qualität sicherzustellen, nehmen wir nur bis zu drei Neukunden pro Monat an.
+                </p>
               </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question" className="border-b border-dark-100 pb-6">
-                <h3 itemProp="name" className="text-xl font-heading font-bold text-primary-500 mb-3">
+              <div className="border-b border-dark-100 pb-6">
+                <h3 className="text-xl font-heading font-bold text-primary-500 mb-3">
                   Wie läuft ein typisches Kundenprojekt ab?
                 </h3>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p itemProp="text" className="text-light-200">
-                    Zunächst führen wir ein Telefonat oder persönliches Treffen, um die Probleme des Kunden zu verstehen und zu prüfen, ob und wie wir diese lösen können. Anschließend erstellen wir eine maßgeschneiderte Demo, die der Kunde testen kann. Erst wenn der Kunde zufrieden ist, erfolgt die vollständige Implementierung. Die Bezahlung erfolgt erst nach erfolgreicher Abnahme.
-                  </p>
-                </div>
+                <p className="text-light-200">
+                  Zunächst führen wir ein Telefonat oder persönliches Treffen, um die Probleme des Kunden zu verstehen und zu prüfen, ob und wie wir diese lösen können. Anschließend erstellen wir eine maßgeschneiderte Demo, die der Kunde testen kann. Erst wenn der Kunde zufrieden ist, erfolgt die vollständige Implementierung. Die Bezahlung erfolgt erst nach erfolgreicher Abnahme.
+                </p>
               </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question" className="border-b border-dark-100 pb-6">
-                <h3 itemProp="name" className="text-xl font-heading font-bold text-primary-500 mb-3">
+              <div className="border-b border-dark-100 pb-6">
+                <h3 className="text-xl font-heading font-bold text-primary-500 mb-3">
                   Bieten Sie Support und Wartung nach Projektabschluss an?
                 </h3>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p itemProp="text" className="text-light-200">
-                    Ja, wir bieten maximalen Support und sind persönlich für unsere Kunden da. Änderungswünsche oder Probleme werden in der Regel innerhalb von 24 Stunden bearbeitet, abhängig vom Umfang des Anliegens.
-                  </p>
-                </div>
+                <p className="text-light-200">
+                  Ja, wir bieten maximalen Support und sind persönlich für unsere Kunden da. Änderungswünsche oder Probleme werden in der Regel innerhalb von 24 Stunden bearbeitet, abhängig vom Umfang des Anliegens.
+                </p>
               </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question" className="border-b border-dark-100 pb-6">
-                <h3 itemProp="name" className="text-xl font-heading font-bold text-primary-500 mb-3">
+              <div className="border-b border-dark-100 pb-6">
+                <h3 className="text-xl font-heading font-bold text-primary-500 mb-3">
                   Wie lange dauert es, bis eine Lösung fertiggestellt ist?
                 </h3>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p itemProp="text" className="text-light-200">
-                    Die Dauer hängt vom Umfang ab: Websites sind meist innerhalb von 3 Tagen fertig, die digitale und telefonische Kundenassistenz benötigen in der Regel 1–2 Wochen. Die Implementierung in CRM-Systeme dauert ähnlich lang. Die genannten Zeiten sind Durchschnittswerte.
-                  </p>
-                </div>
+                <p className="text-light-200">
+                  Die Dauer hängt vom Umfang ab: Websites sind meist innerhalb von 3 Tagen fertig, die digitale und telefonische Kundenassistenz benötigen in der Regel 1–2 Wochen. Die Implementierung in CRM-Systeme dauert ähnlich lang. Die genannten Zeiten sind Durchschnittswerte.
+                </p>
               </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h3 itemProp="name" className="text-xl font-heading font-bold text-primary-500 mb-3">
+              <div>
+                <h3 className="text-xl font-heading font-bold text-primary-500 mb-3">
                   Arbeiten Sie deutschlandweit oder regional?
                 </h3>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p itemProp="text" className="text-light-200">
-                    Wir arbeiten deutschlandweit mit unseren Kunden zusammen.
-                  </p>
-                </div>
+                <p className="text-light-200">
+                  Wir arbeiten deutschlandweit mit unseren Kunden zusammen.
+                </p>
               </div>
             </div>
           </div>
