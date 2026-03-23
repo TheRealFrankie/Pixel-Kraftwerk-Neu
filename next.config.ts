@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     return [
       { source: '/termine-buchungen', destination: '/automatisierungen', permanent: true },
       { source: '/crm-lead-management', destination: '/automatisierungen', permanent: true },
-      { source: '/website-seo', destination: '/services', permanent: true },
+      { source: '/website-seo', destination: '/leistungen', permanent: true },
       {
         source: '/leistungsgebiete/:region/website-seo',
         destination: '/leistungsgebiete/:region/webseiten',
