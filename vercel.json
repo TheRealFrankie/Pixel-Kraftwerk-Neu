@@ -1,36 +1,6 @@
 {
   "redirects": [
     {
-      "source": "/crm-lead-management",
-      "has": [{ "type": "host", "value": "www.pixelkraftwerk-ai.com" }],
-      "destination": "https://pixelkraftwerk-ai.com/automatisierungen",
-      "permanent": true
-    },
-    {
-      "source": "/termine-buchungen",
-      "has": [{ "type": "host", "value": "www.pixelkraftwerk-ai.com" }],
-      "destination": "https://pixelkraftwerk-ai.com/automatisierungen",
-      "permanent": true
-    },
-    {
-      "source": "/website-seo",
-      "has": [{ "type": "host", "value": "www.pixelkraftwerk-ai.com" }],
-      "destination": "https://pixelkraftwerk-ai.com/leistungen",
-      "permanent": true
-    },
-    {
-      "source": "/services",
-      "has": [{ "type": "host", "value": "www.pixelkraftwerk-ai.com" }],
-      "destination": "https://pixelkraftwerk-ai.com/leistungen",
-      "permanent": true
-    },
-    {
-      "source": "/leistungsgebiete/:region/website-seo",
-      "has": [{ "type": "host", "value": "www.pixelkraftwerk-ai.com" }],
-      "destination": "https://pixelkraftwerk-ai.com/leistungsgebiete/:region/webseiten",
-      "permanent": true
-    },
-    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.pixelkraftwerk-ai.com" }],
       "destination": "https://pixelkraftwerk-ai.com/:path*",
@@ -53,6 +23,10 @@
     { "source": "/termine-buchungen", "destination": "/automatisierungen", "statusCode": 301 },
     { "source": "/crm-lead-management", "destination": "/automatisierungen", "statusCode": 301 },
     { "source": "/website-seo", "destination": "/leistungen", "statusCode": 301 },
-    { "source": "/leistungsgebiete/:region/website-seo", "destination": "/leistungsgebiete/:region/webseiten", "statusCode": 301 }
+    {
+      "source": "/leistungsgebiete/:region/website-seo",
+      "destination": "/leistungsgebiete/:region/webseiten",
+      "statusCode": 301
+    }
   ]
 }
