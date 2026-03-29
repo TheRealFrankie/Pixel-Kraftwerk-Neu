@@ -175,7 +175,7 @@ const SeoTop3: React.FC = () => {
                   onClick={scrollToContact}
                   className="inline-flex items-center gap-2 px-7 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-base rounded-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg group"
                 >
-                  Kostenlose SEO-Analyse sichern
+                  3 schnelle Lösungen erhalten..
                   <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
                 </button>
               </motion.div>
@@ -429,7 +429,7 @@ const SeoTop3: React.FC = () => {
         </div>
       </section>
 
-      <WieFunktioniertEsSection onCtaClick={scrollToContact} />
+      <WieFunktioniertEsSection onCtaClick={scrollToContact} ctaLabel="3 schnelle Lösungen erhalten.." />
 
       <section className="py-20 bg-dark-400">
         <div className="container mx-auto px-4">
@@ -621,7 +621,7 @@ const SeoTop3: React.FC = () => {
               onClick={scrollToContact}
               className="inline-flex items-center gap-2 px-7 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-base rounded-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg group"
             >
-              SEO-Potenzialcheck vereinbaren
+              3 schnelle Lösungen erhalten..
               <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
             </button>
             <p className="text-light-500 text-xs mt-4">Unverbindlich · kostenlos · ohne Verpflichtung</p>
@@ -817,7 +817,7 @@ const SeoTop3: React.FC = () => {
               className="inline-flex items-center gap-2 px-7 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-base rounded-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg group mb-4"
             >
               <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
-              SEO-Potenzialcheck anfragen
+              3 schnelle Lösungen erhalten..
             </button>
             <p className="text-light-400 text-xs">
               Noch Fragen?{' '}

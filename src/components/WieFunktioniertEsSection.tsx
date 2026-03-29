@@ -27,9 +27,14 @@ const STEPS = [
 
 interface WieFunktioniertEsSectionProps {
   onCtaClick?: () => void;
+  /** Button-Beschriftung unter den Schritten (z. B. SEO-Seite: Gratis-Video-CTA) */
+  ctaLabel?: string;
 }
 
-const WieFunktioniertEsSection: React.FC<WieFunktioniertEsSectionProps> = ({ onCtaClick }) => {
+const WieFunktioniertEsSection: React.FC<WieFunktioniertEsSectionProps> = ({
+  onCtaClick,
+  ctaLabel = 'Kostenlose SEO-Analyse anfordern',
+}) => {
   const scrollToContact = () => {
     if (onCtaClick) {
       onCtaClick();
@@ -94,7 +99,7 @@ const WieFunktioniertEsSection: React.FC<WieFunktioniertEsSectionProps> = ({ onC
               className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
             >
               <ArrowRight className="mr-2" size={24} />
-              Kostenlose SEO-Analyse anfordern
+              {ctaLabel}
             </button>
           </motion.div>
         </div>

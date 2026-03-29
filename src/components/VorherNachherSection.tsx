@@ -148,22 +148,28 @@ const VorherNachherSection: React.FC = () => {
               {/* Linke Spalte: KPIs & Copy – fester Hintergrund für Lesbarkeit */}
               <div className="min-w-0 bg-dark-500 rounded-lg p-1">
                 <h3 className="text-xl font-heading font-bold text-light-100 mb-2">{title}</h3>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <AnimatePresence mode="wait">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.2 }}
+                    className="flex flex-wrap gap-2 mb-3"
+                  >
                     {kpis.map((kpi, index) => (
                       <motion.span
-                        key={`${activeTab}-${kpi.label}`}
+                        key={kpi.label}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0 }}
                         transition={{ duration: 0.2, delay: index * 0.05 }}
                         className={`inline-block px-3 py-1.5 rounded-lg border text-sm font-semibold ${badgeColor}`}
                       >
                         {kpi.label}: {kpi.value}
                       </motion.span>
                     ))}
-                  </AnimatePresence>
-                </div>
+                  </motion.div>
+                </AnimatePresence>
                 <p
                   className={`text-base font-medium ${
                     isVorher ? 'text-red-100' : 'text-primary-100'
