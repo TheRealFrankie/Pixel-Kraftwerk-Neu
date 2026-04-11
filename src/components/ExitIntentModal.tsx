@@ -15,6 +15,11 @@ interface PageContext {
 }
 
 const PAGE_CONTEXTS: Record<string, PageContext> = {
+  '/': {
+    headline: 'Kurz Zeit für Ihre Erstberatung?',
+    subline: 'Erfahren Sie kostenlos, wie KI-Automatisierung Ihr Unternehmen in Groitzsch und Leipzig voranbringt.',
+    cta: 'Jetzt Erstberatung sichern',
+  },
   '/ki-chatbots': {
     headline: 'Interesse an KI-Chatbots?',
     subline: 'Erfahren Sie in einer kostenlosen Erstberatung, wie ein KI-Chatbot Ihren Kundenservice automatisiert.',
@@ -45,7 +50,24 @@ const PAGE_CONTEXTS: Record<string, PageContext> = {
     subline: 'Wir beraten Sie kostenlos und finden die passende KI-Lösung für Ihr Unternehmen.',
     cta: 'Kostenlose Beratung sichern',
   },
+  '/ueber-uns': {
+    headline: 'Lernen Sie uns persönlich kennen',
+    subline: 'In einem kurzen Erstgespräch zeigen wir Ihnen, wie wir arbeiten und was wir für Sie tun können.',
+    cta: 'Persönliches Gespräch vereinbaren',
+  },
+  '/haeufige-fragen': {
+    headline: 'Noch offene Fragen?',
+    subline: 'Wir beantworten Ihre individuellen Fragen gern persönlich – kostenlos und unverbindlich.',
+    cta: 'Fragen direkt klären',
+  },
+  '/leistungsgebiete': {
+    headline: 'KI-Lösungen in Ihrer Nähe',
+    subline: 'Erfahren Sie, wie wir Unternehmen in Ihrer Region mit KI-Automatisierung unterstützen.',
+    cta: 'Regionale Beratung sichern',
+  },
 };
+
+const SUPPRESSED_PATHS = ['/kontakt', '/impressum', '/agb', '/datenschutz', '/datenschutz-einstellungen'];
 
 const DEFAULT_CONTEXT: PageContext = {
   headline: 'Bevor Sie gehen …',
@@ -55,11 +77,21 @@ const DEFAULT_CONTEXT: PageContext = {
 
 function getPageContext(pathname: string): PageContext {
   if (PAGE_CONTEXTS[pathname]) return PAGE_CONTEXTS[pathname];
-  if (pathname.startsWith('/leistungsgebiete/')) return {
-    headline: 'Interesse an unseren Leistungen in Ihrer Region?',
-    subline: 'Erfahren Sie kostenlos, wie wir Ihr Unternehmen vor Ort mit KI-Lösungen unterstützen.',
-    cta: 'Regionale Beratung sichern',
-  };
+
+  if (pathname.startsWith('/leistungsgebiete/')) {
+    const hasService = pathname.split('/').filter(Boolean).length >= 3;
+    if (hasService) return {
+      headline: 'Genau die richtige Lösung für Ihre Region',
+      subline: 'Lassen Sie sich kostenlos beraten, wie wir diesen Service in Ihrem Gebiet umsetzen.',
+      cta: 'Regionale Beratung sichern',
+    };
+    return {
+      headline: 'KI-Lösungen in Ihrer Region',
+      subline: 'Erfahren Sie kostenlos, wie wir Ihr Unternehmen vor Ort mit KI-Automatisierung unterstützen.',
+      cta: 'Regionale Beratung sichern',
+    };
+  }
+
   return DEFAULT_CONTEXT;
 }
 
@@ -69,6 +101,9 @@ const inputClass =
 const ExitIntentModal: React.FC = () => {
   const { triggered, dismiss } = useExitIntent();
   const pathname = usePathname();
+
+  if (SUPPRESSED_PATHS.includes(pathname)) return null;
+
   const context = getPageContext(pathname);
 
   const [name, setName] = useState('');
