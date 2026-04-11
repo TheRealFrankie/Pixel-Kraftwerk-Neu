@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Faq from '@/pages/Faq';
+import Faq from '@/views/Faq';
 
 export const metadata: Metadata = {
   title: {

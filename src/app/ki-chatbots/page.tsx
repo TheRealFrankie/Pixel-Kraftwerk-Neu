@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import KiChatbots from '@/pages/services/KiChatbots';
+import KiChatbots from '@/views/services/KiChatbots';
 
 export const metadata: Metadata = {
   title: {

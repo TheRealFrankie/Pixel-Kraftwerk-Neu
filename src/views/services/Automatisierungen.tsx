@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
@@ -138,7 +137,7 @@ const Automatisierungen: React.FC = () => {
 
   return (
     <>
-      <Head>
+      <div className="bg-dark-500">
         <ServiceJsonLd
           name="Automatisierungen für Anfragen, Vertrieb & Terminplanung"
           serviceType="BusinessProcessAutomation"
@@ -150,8 +149,6 @@ const Automatisierungen: React.FC = () => {
             answer: item.a,
           }))}
         />
-      </Head>
-      <div className="bg-dark-500">
         <BreadcrumbSchema
           serviceName="Automatisierungen für Anfragen, Vertrieb & Terminplanung"
           serviceUrl={canonicalUrl}

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import PrivacySettings from '@/pages/PrivacySettings';
+import PrivacySettings from '@/views/PrivacySettings';
 
 export const metadata: Metadata = {
   title: 'Datenschutz-Einstellungen',

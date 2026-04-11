@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Automatisierungen from '@/pages/services/Automatisierungen';
+import Automatisierungen from '@/views/services/Automatisierungen';
 
 export const metadata: Metadata = {
   title: {

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import RegionServicePage from '@/pages/RegionServicePage';
+import RegionServicePage from '@/views/RegionServicePage';
 import { getRegionContent, getValidRegionSlug } from '@/data/regionContent';
 import { LEISTUNGSGEBIETE_SLUGS } from '@/data/leistungsgebiete';
 import { getServiceBySlug, isValidServiceSlug, type ServiceSlug } from '@/data/services';

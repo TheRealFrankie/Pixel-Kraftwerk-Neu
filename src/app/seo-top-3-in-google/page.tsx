@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import SeoTop3 from '@/pages/services/SeoTop3';
+import SeoTop3 from '@/views/services/SeoTop3';
 
 export const metadata: Metadata = {
   title: {

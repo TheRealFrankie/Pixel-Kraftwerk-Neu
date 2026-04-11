@@ -27,6 +27,25 @@
       "source": "/leistungsgebiete/:region/website-seo",
       "destination": "/leistungsgebiete/:region/webseiten",
       "statusCode": 301
-    }
+    },
+
+    { "source": "/Home", "destination": "/", "statusCode": 301 },
+    { "source": "/About", "destination": "/ueber-uns", "statusCode": 301 },
+    { "source": "/Contact", "destination": "/kontakt", "statusCode": 301 },
+    { "source": "/Services", "destination": "/leistungen", "statusCode": 301 },
+    { "source": "/Faq", "destination": "/haeufige-fragen", "statusCode": 301 },
+    { "source": "/Imprint", "destination": "/impressum", "statusCode": 301 },
+    { "source": "/Privacy", "destination": "/datenschutz", "statusCode": 301 },
+    { "source": "/PrivacySettings", "destination": "/datenschutz-einstellungen", "statusCode": 301 },
+    { "source": "/Agb", "destination": "/agb", "statusCode": 301 },
+    { "source": "/Leistungsgebiete", "destination": "/leistungsgebiete", "statusCode": 301 },
+    { "source": "/RegionPage", "destination": "/leistungsgebiete", "statusCode": 301 },
+    { "source": "/RegionServicePage", "destination": "/leistungsgebiete", "statusCode": 301 },
+    { "source": "/services/KiChatbots", "destination": "/ki-chatbots", "statusCode": 301 },
+    { "source": "/services/Telefonassistenten", "destination": "/telefonassistenten", "statusCode": 301 },
+    { "source": "/services/Automatisierungen", "destination": "/automatisierungen", "statusCode": 301 },
+    { "source": "/services/Website", "destination": "/webseite", "statusCode": 301 },
+    { "source": "/services/SeoTop3", "destination": "/seo-top-3-in-google", "statusCode": 301 },
+    { "source": "/services/WebsiteSeo", "destination": "/leistungen", "statusCode": 301 }
   ]
 }

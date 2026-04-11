@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Imprint from '@/pages/Imprint';
+import Imprint from '@/views/Imprint';
 
 export const metadata: Metadata = {
   title: 'Impressum',

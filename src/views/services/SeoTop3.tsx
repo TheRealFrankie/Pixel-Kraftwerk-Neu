@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Head from 'next/head';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -98,7 +97,7 @@ const SeoTop3: React.FC = () => {
 
   return (
     <>
-      <Head>
+      <div className="bg-dark-500">
         <ServiceJsonLd
           name="SEO: Top 3 in Google"
           serviceType="SEO"
@@ -110,8 +109,6 @@ const SeoTop3: React.FC = () => {
             answer: item.answer,
           }))}
         />
-      </Head>
-      <div className="bg-dark-500">
         <BreadcrumbSchema
           serviceName="Top 3 in Google in 90 Tagen"
           serviceUrl={canonicalUrl}

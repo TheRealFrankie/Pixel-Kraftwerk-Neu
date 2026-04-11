@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Leistungsgebiete from '@/pages/Leistungsgebiete';
+import Leistungsgebiete from '@/views/Leistungsgebiete';
 
 export const metadata: Metadata = {
   title: {

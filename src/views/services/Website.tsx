@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
@@ -118,7 +117,7 @@ const Website: React.FC = () => {
 
   return (
     <>
-      <Head>
+      <div className="bg-dark-500">
         <ServiceJsonLd
           name="Webseiten im Mietmodell"
           serviceType="Web Design"
@@ -130,8 +129,6 @@ const Website: React.FC = () => {
             answer: item.answer,
           }))}
         />
-      </Head>
-      <div className="bg-dark-500">
         <BreadcrumbSchema serviceName="Webseiten" serviceUrl={canonicalUrl} />
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
       <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">

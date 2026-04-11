@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import RegionPage from '@/pages/RegionPage';
+import RegionPage from '@/views/RegionPage';
 import { getRegionContent, getValidRegionSlug } from '@/data/regionContent';
 import { LEISTUNGSGEBIETE_SLUGS } from '@/data/leistungsgebiete';
 

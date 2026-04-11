@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Agb from '@/pages/Agb';
+import Agb from '@/views/Agb';
 
 export const metadata: Metadata = {
   title: 'AGB – Allgemeine Geschäftsbedingungen',

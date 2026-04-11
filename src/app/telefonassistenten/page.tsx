@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Telefonassistenten from '@/pages/services/Telefonassistenten';
+import Telefonassistenten from '@/views/services/Telefonassistenten';
 
 export const metadata: Metadata = {
   title: {
