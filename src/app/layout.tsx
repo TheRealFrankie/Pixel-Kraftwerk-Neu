@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
 import AnalyticsScripts from '@/components/AnalyticsScripts';
 import VoiceflowChat from '@/components/VoiceflowChat';
+import ExitIntentModal from '@/components/ExitIntentModal';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import './globals.css';
 
@@ -69,6 +70,7 @@ export default function RootLayout({
           <main id="main" className="flex-grow">{children}</main>
           <Footer />
           <CookieBanner />
+          <ExitIntentModal />
           <VoiceflowChat />
         </ThemeProvider>
       </body>
