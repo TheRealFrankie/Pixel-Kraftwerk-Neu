@@ -148,8 +148,8 @@ const Website: React.FC = () => {
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-dark-500/70 via-dark-500/50 to-dark-500/95" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-r from-dark-500/30 via-transparent to-dark-500/40" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-b from-dark-500/80 via-dark-500/75 to-dark-500/95" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-r from-dark-500/40 via-dark-500/20 to-dark-500/40" aria-hidden />
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/15 to-transparent" aria-hidden />
         </div>
 
