@@ -3,8 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ChevronDown, CheckCircle, Minus, ArrowRight, Zap, MessageCircle, Workflow, Globe, Search, MapPin } from 'lucide-react';
-import { LEISTUNGSGEBIETE_CITIES } from '../data/leistungsgebiete';
+import { ChevronDown, CheckCircle, Minus, ArrowRight, Zap, MessageCircle, Workflow, Globe, Search } from 'lucide-react';
 import { BackgroundPaths } from '../components/ui/background-paths';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
@@ -575,33 +574,94 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* AREAS WE SERVE */}
-      <section className="section-padding bg-dark-500 border-t border-dark-200/30">
+      {/* FAQ SECTION */}
+      <section id="faq" className="section-padding bg-dark-500 border-t border-dark-200/30">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-light-100">
-              Unsere Leistungsgebiete in Groitzsch, Leipzig und Umgebung
-            </h2>
-            <p className="text-light-200 mb-10 max-w-2xl mx-auto">
-              Von unserem Sitz in Groitzsch aus betreuen wir Unternehmen in Leipzig, im Landkreis Leipzig und darüber hinaus – persönlich, regional und mit kurzen Wegen.
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-              {LEISTUNGSGEBIETE_CITIES.map((city) => (
-                <motion.a
-                  key={city.slug}
-                  href={`/leistungsgebiete/${city.slug}`}
-                  className="flex items-center gap-2 px-4 py-3 rounded-xl bg-dark-400 border border-dark-200/70 text-light-100 hover:border-primary-500/60 hover:text-primary-400 hover:bg-dark-300 transition-all duration-200 text-sm font-heading shadow-sm"
-                  initial={{ opacity: 0, y: 10 }}
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              className="text-3xl md:text-4xl font-heading font-bold mb-12 text-light-100 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Häufige Fragen
+            </motion.h2>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: 'Für welche Unternehmen sind eure Lösungen gedacht?',
+                  a: 'Wir arbeiten vor allem mit kleinen und mittelständischen Unternehmen in der Region Leipzig und Mitteldeutschland – Handwerksbetriebe, Praxen, Dienstleister, Agenturen und lokale Händler. Überall dort, wo wiederkehrende Aufgaben den Arbeitsalltag belasten.',
+                },
+                {
+                  q: 'Wie läuft die Zusammenarbeit ab?',
+                  a: 'Wir starten mit einem kostenlosen Erstgespräch, in dem wir Ihre Situation analysieren. Danach erstellen wir ein individuelles Konzept, setzen die Lösung um und bleiben für Optimierung und Betreuung an Ihrer Seite. Keine Standardlösungen von der Stange.',
+                },
+                {
+                  q: 'Was kostet das?',
+                  a: 'Die Kosten hängen vom Umfang ab. Wir arbeiten mit transparenten Preismodellen – kein Kleingedrucktes, keine versteckten Kosten. Im Erstgespräch klären wir den Bedarf und Sie erhalten ein konkretes Angebot, bevor wir starten.',
+                },
+                {
+                  q: 'Muss ich meine bestehenden Systeme komplett umstellen?',
+                  a: 'Nein. Wir arbeiten bevorzugt mit den Tools, die bei Ihnen bereits laufen – ob CRM, Kalender, Branchensoftware oder E-Mail. Unsere Lösungen ergänzen Ihre Infrastruktur, statt alles neu aufzubauen.',
+                },
+                {
+                  q: 'Wie schnell kann eine Lösung live gehen?',
+                  a: 'Je nach Komplexität zwischen wenigen Tagen und einigen Wochen. Ein klar abgegrenztes erstes Projekt (z.B. ein Chatbot oder eine automatische Terminbuchung) kann oft schon in der ersten Woche Ergebnisse liefern.',
+                },
+                {
+                  q: 'Betreut ihr auch Unternehmen außerhalb von Leipzig?',
+                  a: 'Ja. Unser Sitz ist in Groitzsch bei Leipzig, aber wir betreuen Unternehmen in der gesamten Region – von Halle über Chemnitz bis Jena. Persönliche Treffen sind genauso möglich wie Zusammenarbeit per Videocall.',
+                },
+                {
+                  q: 'Was unterscheidet euch von anderen Agenturen?',
+                  a: 'Wir liefern keine PowerPoint-Präsentationen, sondern funktionierende Systeme. Als Software-Entwickler mit KI-Fokus setzen wir Lösungen selbst um – von der Planung bis zur Integration. Keine Subunternehmer, keine Blackbox.',
+                },
+                {
+                  q: 'Bietet ihr laufende Betreuung an?',
+                  a: 'Ja, und für die meisten Kunden ist das sinnvoll. Automatisierungen brauchen Feintuning, wenn sich Abläufe ändern. Wir bieten Betreuungspakete mit regelmäßiger Optimierung, Anpassungen und technischem Support.',
+                },
+              ].map((faq, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-dark-400 border border-dark-200/70 rounded-xl overflow-hidden"
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
                   viewport={{ once: true }}
                 >
-                  <MapPin size={14} className="text-primary-500 flex-shrink-0" />
-                  {city.name}
-                </motion.a>
+                  <button
+                    onClick={() => toggleExample(index + 100)}
+                    className="w-full flex items-center justify-between p-5 text-left hover:bg-dark-300/50 transition-colors duration-200"
+                  >
+                    <span className="text-base font-heading font-bold text-light-100 pr-4">{faq.q}</span>
+                    <motion.div
+                      animate={{ rotate: openExample === index + 100 ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex-shrink-0"
+                    >
+                      <ChevronDown className="text-primary-500" size={20} />
+                    </motion.div>
+                  </button>
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: openExample === index + 100 ? 'auto' : 0,
+                      opacity: openExample === index + 100 ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="overflow-hidden"
+                  >
+                    <p className="px-5 pb-5 text-light-200 text-sm leading-relaxed">{faq.a}</p>
+                  </motion.div>
+                </motion.div>
               ))}
             </div>
-            <p className="mt-8 text-light-300 text-sm">
-              <a href="/leistungsgebiete" className="text-primary-400 hover:underline font-heading font-bold">Alle 13 Leistungsgebiete ansehen</a>
+
+            <p className="text-center mt-8 text-light-300 text-sm">
+              Noch mehr Antworten finden Sie auf unserer{' '}
+              <a href="/haeufige-fragen" className="text-primary-400 hover:underline font-heading font-bold">FAQ-Seite</a>.
             </p>
           </div>
         </div>
