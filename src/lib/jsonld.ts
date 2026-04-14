@@ -70,9 +70,8 @@ export function buildBusinessSchema(): JsonLd {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Automatisierungs-Services',
-      itemListElement: businessInfo.services.map((service, index) => ({
+      itemListElement: businessInfo.services.map((service) => ({
         '@type': 'Offer',
-        position: index + 1,
         itemOffered: {
           '@type': 'Service',
           name: service,
