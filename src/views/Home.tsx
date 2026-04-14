@@ -555,7 +555,7 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-10 text-light-100">
-              Jetzt kostenlose Erstberatung anfragen
+              Jetzt unverbindlich anfragen – wir melden uns innerhalb von 24 Stunden
             </h2>
 
             <motion.button
@@ -568,7 +568,7 @@ const Home: React.FC = () => {
               whileHover={{ scale: 1.05 }}
             >
               <ArrowRight className="mr-2" size={24} />
-              Kostenloses Erstgespräch
+              Jetzt unverbindlich anfragen
             </motion.button>
           </div>
         </div>

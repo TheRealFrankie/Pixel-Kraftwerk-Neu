@@ -262,7 +262,7 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <ArrowRight className="mr-2" size={24} />
-              Unverbindliches Website-Angebot anfordern
+              Website-Angebot im Mietmodell anfragen
             </motion.button>
           </div>
         </div>
@@ -428,7 +428,7 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Gespräch zu Ihrer Website anfragen
+              Bringt Ihre Website genug Anfragen? Kostenlos prüfen lassen.
               <ArrowRight className="ml-2" size={22} />
             </motion.button>
           </div>
@@ -767,7 +767,7 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
               viewport={{ once: true }}
             >
               <ArrowRight className="mr-2" size={24} />
-              Gespräch anfragen
+              Unverbindliches Website-Angebot erhalten
             </motion.button>
             <motion.p
               className="text-light-300 text-sm mt-4"

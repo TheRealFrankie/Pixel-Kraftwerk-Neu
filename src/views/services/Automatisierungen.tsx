@@ -524,7 +524,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Gespräch zu Ihren Abläufen anfragen
+              Welche Abläufe kosten Sie die meiste Zeit? In 15 Min klären.
               <ArrowRight className="ml-2" size={22} />
             </motion.button>
           </div>

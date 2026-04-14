@@ -291,7 +291,7 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Jetzt kostenloses Erstgespräch sichern
+              Chatbot-Demo ansehen und Erstgespräch sichern
               <ArrowRight className="ml-2" size={24} />
             </motion.button>
           </div>
@@ -752,7 +752,7 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Gespräch zur digitalen Kundenassistenz anfragen
+              Passt ein Chatbot zu Ihrem Unternehmen? In 15 Minuten klären.
               <ArrowRight className="ml-2" size={22} />
             </motion.button>
           </div>
@@ -1109,7 +1109,7 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
                 onClick={scrollToContact}
                 className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
               >
-                Jetzt kostenloses Erstgespräch sichern
+                Unverbindliches Chatbot-Angebot anfragen
                 <ArrowRight className="ml-2" size={20} />
               </button>
             </motion.div>

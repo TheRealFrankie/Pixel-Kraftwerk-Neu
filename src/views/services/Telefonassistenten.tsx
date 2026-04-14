@@ -269,7 +269,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <ArrowRight className="mr-2" size={24} />
-              Individuelle Beratung anfordern
+              Telefonassistenz kostenlos besprechen
             </motion.button>
           </div>
         </div>
@@ -485,7 +485,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Gespräch zur telefonischen Kundenassistenz anfragen
+              Wie viele Anrufe gehen bei Ihnen verloren? Jetzt klären.
               <ArrowRight className="ml-2" size={22} />
             </motion.button>
           </div>
