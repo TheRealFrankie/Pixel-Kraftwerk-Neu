@@ -15,6 +15,9 @@ export type RegionServiceContent = {
   paragraphs: string[];
   faqs: { q: string; a: string }[];
   highlights: string[];
+  localHook?: string;
+  localSection?: string[];
+  localFaqs?: { q: string; a: string }[];
 };
 
 type RegionServiceKey = `${LeistungsgebietSlug}.${ServiceSlug}`;

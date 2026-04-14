@@ -1,6 +1,13 @@
 import type { LeistungsgebietSlug } from './leistungsgebiete';
 import type { ServiceSlug } from './services';
 import { additionalCustomContent } from './regionServiceContentCustom';
+import { tier1ServiceContent } from './regionServiceContentTier1';
+import { tier1ServiceContentPart2 } from './regionServiceContentTier1Part2';
+import { tier2ServiceContent } from './regionServiceContentTier2';
+import { tier2ServiceContentPart2 } from './regionServiceContentTier2Part2';
+import { tier3ServiceContent } from './regionServiceContentTier3';
+import { tier3ServiceContentPart2 } from './regionServiceContentTier3Part2';
+import { tier4ServiceContent } from './regionServiceContentTier4';
 
 export type RegionServiceContent = {
   regionSlug: LeistungsgebietSlug;
@@ -12,6 +19,12 @@ export type RegionServiceContent = {
   paragraphs: string[];
   faqs: { q: string; a: string }[];
   highlights: string[];
+  /** Unique one-liner beneath H1 in hero, e.g. "Für Unternehmen im Landkreis Leipzig" */
+  localHook?: string;
+  /** 1-3 unique paragraphs for the hyperlocal section (landmarks, local context, proximity) */
+  localSection?: string[];
+  /** City-specific FAQ additions (merged with base service FAQs) */
+  localFaqs?: { q: string; a: string }[];
 };
 
 type RegionServiceKey = `${LeistungsgebietSlug}.${ServiceSlug}`;
@@ -1158,6 +1171,13 @@ function getTemplateRegionServiceContent(
 const allCustomContent: Partial<Record<RegionServiceKey, RegionServiceContent>> = {
   ...customRegionServiceContent,
   ...additionalCustomContent,
+  ...tier1ServiceContent,
+  ...tier1ServiceContentPart2,
+  ...tier2ServiceContent,
+  ...tier2ServiceContentPart2,
+  ...tier3ServiceContent,
+  ...tier3ServiceContentPart2,
+  ...tier4ServiceContent,
 };
 
 export function getRegionServiceContent(

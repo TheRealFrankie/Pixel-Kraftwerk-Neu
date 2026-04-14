@@ -19,10 +19,35 @@ import RelatedServices from '../../components/RelatedServices';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
+import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
+import { getRegionServiceContent } from '../../data/regionServiceContent';
+import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
+import { getRegionServiceLinkText } from '../../data/services';
+import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
 
-const KiChatbots: React.FC = () => {
+interface KiChatbotsProps {
+  regionSlug?: string;
+  regionName?: string;
+}
+
+const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
+  const isRegional = !!regionSlug && !!regionName;
+  const baseUrl = 'https://pixelkraftwerk-ai.com';
+  const regionUrl = isRegional ? `/leistungsgebiete/${regionSlug}` : '';
+  const currentPageUrl = isRegional
+    ? `${baseUrl}/leistungsgebiete/${regionSlug}/ki-chatbots`
+    : `${baseUrl}/ki-chatbots`;
+
+  const regionContent = isRegional
+    ? getRegionServiceContent(regionSlug as LeistungsgebietSlug, regionName, 'ki-chatbots', 'KI-Chatbots')
+    : null;
+
+  const otherRegions = isRegional
+    ? LEISTUNGSGEBIETE_CITIES.filter((c) => c.slug !== regionSlug).slice(0, 6)
+    : [];
+
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -111,20 +136,40 @@ const KiChatbots: React.FC = () => {
 
   return (
     <div className="bg-dark-500">
-      <BreadcrumbSchema serviceName="Digitale Kundenassistenz" serviceUrl="https://pixelkraftwerk-ai.com/ki-chatbots" />
+      {isRegional ? (
+        <BreadcrumbSchemaRegionService
+          regionName={regionName}
+          regionUrl={regionUrl}
+          serviceName="KI-Chatbots"
+          serviceUrl={currentPageUrl}
+        />
+      ) : (
+        <BreadcrumbSchema serviceName="Digitale Kundenassistenz" serviceUrl="https://pixelkraftwerk-ai.com/ki-chatbots" />
+      )}
       <ServiceJsonLd
-        name="Digitale Kundenassistenz (KI-Chatbot)"
+        name={isRegional ? `Digitale Kundenassistenz in ${regionName}` : 'Digitale Kundenassistenz (KI-Chatbot)'}
         serviceType="KI-Chatbot"
-        description="Digitale Kundenassistenz für automatische Kundenbetreuung auf Ihrer Website. Beantworten Sie Anfragen rund um die Uhr und entlasten Sie Ihr Team."
-        url="https://pixelkraftwerk-ai.com/ki-chatbots"
-        faqs={faqItems.map((item) => ({ question: item.question, answer: item.answer }))}
-        pageName="KI-Chatbots"
+        description={isRegional
+          ? `Digitale Kundenassistenz für Unternehmen in ${regionName} und Umgebung. Automatische Kundenbetreuung auf Ihrer Website rund um die Uhr – von Pixel Kraftwerk aus Groitzsch.`
+          : 'Digitale Kundenassistenz für automatische Kundenbetreuung auf Ihrer Website. Beantworten Sie Anfragen rund um die Uhr und entlasten Sie Ihr Team.'}
+        url={currentPageUrl}
+        areaServed={isRegional ? [regionName] : undefined}
+        faqs={[
+          ...faqItems.map((item) => ({ question: item.question, answer: item.answer })),
+          ...(regionContent?.localFaqs?.map((f) => ({ question: f.q, answer: f.a })) || []),
+        ]}
+        pageName={isRegional ? `KI-Chatbots in ${regionName}` : 'KI-Chatbots'}
       />
       {/* Hero mit Premium-Hintergrundbild – Bild beginnt unterhalb der Header-Leiste */}
       <section id="digitale-kundenassistenz" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
         <span id="ki-chatbot-fur-ihre-website" className="absolute top-0 left-0" aria-hidden="true" />
         <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
-          <BreadcrumbNav overlay items={[
+          <BreadcrumbNav overlay items={isRegional ? [
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
+            { label: regionName, href: regionUrl },
+            { label: 'KI-Chatbots' },
+          ] : [
             { label: 'Startseite', href: '/' },
             { label: 'Leistungen', href: '/leistungen' },
             { label: 'KI-Chatbots' },
@@ -173,7 +218,7 @@ const KiChatbots: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Digitale Kundenassistenz Leipzig &amp; Groitzsch
+              {isRegional ? `Digitale Kundenassistenz in ${regionName}` : <>Digitale Kundenassistenz Leipzig &amp; Groitzsch</>}
             </motion.h1>
 
             <motion.h2
@@ -182,7 +227,7 @@ const KiChatbots: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              Ihre Website kann mehr, als nur informieren
+              {regionContent?.localHook || 'Ihre Website kann mehr, als nur informieren'}
             </motion.h2>
 
             <motion.p
@@ -1104,7 +1149,7 @@ const KiChatbots: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              FAQ – häufige Fragen
+              {isRegional ? `FAQ – KI-Chatbots in ${regionName}` : 'FAQ – häufige Fragen'}
             </motion.h2>
             <div className="space-y-6">
               {faqItems.map((item, index) => (
@@ -1120,6 +1165,19 @@ const KiChatbots: React.FC = () => {
                   <p className="text-light-200">{item.answer}</p>
                 </motion.div>
               ))}
+              {regionContent?.localFaqs?.map((faq, index) => (
+                <motion.div
+                  key={`local-${index}`}
+                  className="bg-dark-500 p-6 border border-dark-100"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: (faqItems.length + index) * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-lg font-heading font-bold text-light-100 mb-3">{faq.q}</h3>
+                  <p className="text-light-200">{faq.a}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
@@ -1128,8 +1186,43 @@ const KiChatbots: React.FC = () => {
       <section className="py-20 bg-dark-500">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <ServicedRegionsBlock />
-            <RegionServiceLinksBlock serviceSlug="ki-chatbots" title="KI-Chatbots in Ihrem Gebiet" />
+            {isRegional ? (
+              <div className="text-left max-w-2xl mx-auto">
+                <h3 className="text-xl font-heading font-bold text-light-100 mb-4">
+                  Weitere Leistungen in {regionName}
+                </h3>
+                <p className="text-light-200 mb-3">
+                  <a href={regionUrl} className="text-primary-400 hover:underline font-heading font-bold">
+                    Alle Leistungen in {regionName}
+                  </a>
+                  {' – '}Übersicht unserer Angebote in Ihrer Region.
+                </p>
+                <p className="text-light-200 mb-6">
+                  <a href="/ki-chatbots" className="text-primary-400 hover:underline">
+                    Mehr zur digitalen Kundenassistenz im Überblick
+                  </a>
+                  {' – '}alle Details auf unserer Service-Seite.
+                </p>
+                <p className="text-light-300 text-sm mb-3">KI-Chatbots in anderen Gebieten:</p>
+                <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                  {otherRegions.map((city, i) => (
+                    <li key={city.slug}>
+                      <a
+                        href={`/leistungsgebiete/${city.slug}/ki-chatbots`}
+                        className="text-primary-400 hover:underline"
+                      >
+                        {getRegionServiceLinkText('ki-chatbots', city.name, i)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <>
+                <ServicedRegionsBlock />
+                <RegionServiceLinksBlock serviceSlug="ki-chatbots" title="KI-Chatbots in Ihrem Gebiet" />
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -1162,3 +1255,4 @@ const KiChatbots: React.FC = () => {
 };
 
 export default KiChatbots;
+export type { KiChatbotsProps };

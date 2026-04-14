@@ -16,10 +16,34 @@ import RelatedServices from '../../components/RelatedServices';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
+import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
+import { getRegionServiceContent } from '../../data/regionServiceContent';
+import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
+import { getRegionServiceLinkText } from '../../data/services';
+import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
 
-const Automatisierungen: React.FC = () => {
+interface AutomatisierungenProps {
+  regionSlug?: string;
+  regionName?: string;
+}
+
+const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regionName }) => {
+  const isRegional = !!regionSlug && !!regionName;
+  const baseUrl = 'https://pixelkraftwerk-ai.com';
+  const regionUrl = isRegional ? `/leistungsgebiete/${regionSlug}` : '';
+  const currentPageUrl = isRegional
+    ? `${baseUrl}/leistungsgebiete/${regionSlug}/automatisierungen`
+    : `${baseUrl}/automatisierungen`;
+
+  const regionContent = isRegional
+    ? getRegionServiceContent(regionSlug as LeistungsgebietSlug, regionName, 'automatisierungen', 'Automatisierungen')
+    : null;
+
+  const otherRegions = isRegional
+    ? LEISTUNGSGEBIETE_CITIES.filter((c) => c.slug !== regionSlug).slice(0, 6)
+    : [];
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -133,30 +157,48 @@ const Automatisierungen: React.FC = () => {
     },
   ];
 
-  const canonicalUrl = 'https://pixelkraftwerk-ai.com/automatisierungen';
-
   return (
     <>
       <div className="bg-dark-500">
+        {isRegional ? (
+          <BreadcrumbSchemaRegionService
+            regionName={regionName}
+            regionUrl={regionUrl}
+            serviceName="Automatisierungen"
+            serviceUrl={currentPageUrl}
+          />
+        ) : (
+          <BreadcrumbSchema
+            serviceName="Automatisierungen für Anfragen, Vertrieb & Terminplanung"
+            serviceUrl="https://pixelkraftwerk-ai.com/automatisierungen"
+          />
+        )}
         <ServiceJsonLd
-          name="Automatisierungen für Anfragen, Vertrieb & Terminplanung"
+          name={isRegional ? `Automatisierungen in ${regionName}` : 'Automatisierungen für Anfragen, Vertrieb & Terminplanung'}
           serviceType="BusinessProcessAutomation"
-          description="Anfragen erfassen, sortieren, nachfassen und Termine buchen – automatisch. Mehr Überblick, weniger Stress und klarere Abläufe für Vertrieb und Service-Teams."
-          url={canonicalUrl}
-          pageName="Automatisierungen"
-          faqs={faqs.map((item) => ({
-            question: item.q,
-            answer: item.a,
-          }))}
-        />
-        <BreadcrumbSchema
-          serviceName="Automatisierungen für Anfragen, Vertrieb & Terminplanung"
-          serviceUrl={canonicalUrl}
+          description={isRegional
+            ? `Automatisierungen für Anfragen, Vertrieb & Terminplanung in ${regionName} und Umgebung. Mehr Überblick, weniger Stress – von Pixel Kraftwerk aus Groitzsch.`
+            : 'Anfragen erfassen, sortieren, nachfassen und Termine buchen – automatisch. Mehr Überblick, weniger Stress und klarere Abläufe für Vertrieb und Service-Teams.'}
+          url={currentPageUrl}
+          areaServed={isRegional ? [regionName] : undefined}
+          faqs={[
+            ...faqs.map((item) => ({
+              question: item.q,
+              answer: item.a,
+            })),
+            ...(regionContent?.localFaqs?.map((f) => ({ question: f.q, answer: f.a })) || []),
+          ]}
+          pageName={isRegional ? `Automatisierungen in ${regionName}` : 'Automatisierungen'}
         />
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
       <section id="ki-automatisierung-fur-anfragen-termine" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
         <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
-          <BreadcrumbNav overlay items={[
+          <BreadcrumbNav overlay items={isRegional ? [
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
+            { label: regionName, href: regionUrl },
+            { label: 'Automatisierungen' },
+          ] : [
             { label: 'Startseite', href: '/' },
             { label: 'Leistungen', href: '/leistungen' },
             { label: 'Automatisierungen' },
@@ -198,7 +240,7 @@ const Automatisierungen: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Automatisierungen Leipzig &amp; Groitzsch
+              {isRegional ? `Automatisierungen in ${regionName}` : <>Automatisierungen Leipzig &amp; Groitzsch</>}
             </motion.h1>
 
             <motion.h2
@@ -207,7 +249,7 @@ const Automatisierungen: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              Damit Abläufe automatisch laufen
+              {regionContent?.localHook || 'Damit Abläufe automatisch laufen'}
             </motion.h2>
 
             <motion.p
@@ -536,7 +578,9 @@ const Automatisierungen: React.FC = () => {
               Beispiele aus der Praxis: 8 typische Automatisierungen
             </motion.h2>
             <p className="text-light-200 mb-8">
-              Damit du ein Gefühl bekommst, was realistisch ist – gerade für Unternehmen in Leipzig, Markkleeberg, Borna, Zwenkau, Groitzsch & Umgebung.
+              {isRegional
+                ? `Damit du ein Gefühl bekommst, was realistisch ist – gerade für Unternehmen in ${regionName} und Umgebung.`
+                : 'Damit du ein Gefühl bekommst, was realistisch ist – gerade für Unternehmen in Leipzig, Markkleeberg, Borna, Zwenkau, Groitzsch & Umgebung.'}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {practiceExamples.map((ex, i) => (
@@ -758,7 +802,7 @@ const Automatisierungen: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              FAQs
+              {isRegional ? `FAQ – Automatisierungen in ${regionName}` : 'FAQs'}
             </motion.h2>
             <div className="space-y-6">
               {faqs.map((faq, i) => (
@@ -768,6 +812,19 @@ const Automatisierungen: React.FC = () => {
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: i * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-lg font-heading font-bold text-light-100 mb-2">{faq.q}</h3>
+                  <p className="text-light-200">{faq.a}</p>
+                </motion.div>
+              ))}
+              {regionContent?.localFaqs?.map((faq, index) => (
+                <motion.div
+                  key={`local-${index}`}
+                  className="border-b border-dark-100 pb-6"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: (faqs.length + index) * 0.05 }}
                   viewport={{ once: true }}
                 >
                   <h3 className="text-lg font-heading font-bold text-light-100 mb-2">{faq.q}</h3>
@@ -828,13 +885,102 @@ const Automatisierungen: React.FC = () => {
         </div>
       </section>
 
+      {(isRegional || true) && (
+        <section className="py-16 bg-dark-400">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+                  {isRegional
+                    ? `Automatisierungen für Unternehmen in ${regionName}`
+                    : 'Lokal in Leipzig & Region: Warum das bei Automatisierungen hilft'}
+                </h2>
+                {isRegional && regionContent?.localSection ? (
+                  regionContent.localSection.map((p, i) => (
+                    <motion.p
+                      key={i}
+                      className="text-light-200 max-w-3xl mx-auto mb-4 text-left"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: i * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      {p}
+                    </motion.p>
+                  ))
+                ) : isRegional ? (
+                  <p className="text-light-200 max-w-3xl mx-auto">
+                    Gerade bei Prozessautomatisierung zählt das Verständnis für den lokalen Alltag: typische Anfragen, Abläufe und Kundenkanäle. Als Agentur mit Sitz in Groitzsch kennen wir die Anforderungen von Unternehmen in {regionName} und der Region. Einrichtung und Optimierung Ihrer Automatisierungen erfolgen nah an Ihrem Alltag – persönlich, praxisnah und mit kurzen Wegen.
+                  </p>
+                ) : (
+                  <p className="text-light-200 max-w-3xl mx-auto">
+                    Gerade bei Prozessautomatisierung zählt das Verständnis für den lokalen Alltag: typische Anfragen, Abläufe und Kundenkanäle. Deshalb ist es ein Vorteil, wenn Einrichtung und Optimierung nah am Alltag lokaler Unternehmen passieren.
+                  </p>
+                )}
+              </motion.div>
+              {!isRegional && (
+                <motion.p
+                  className="text-light-200 text-center mt-4"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  Wir unterstützen Unternehmen in Leipzig, Markkleeberg, Zwenkau, Borna, Böhlen, Rötha, Neukieritzsch, Pegau, Lucka, Meuselwitz, Regis-Breitingen, Elstertrebnitz und Groitzsch – und kennen die typischen Anforderungen in der Region.
+                </motion.p>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
       <RelatedServices currentSlug="automatisierungen" />
 
       <section className="py-20 bg-dark-400">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <ServicedRegionsBlock />
-            <RegionServiceLinksBlock serviceSlug="automatisierungen" title="Automatisierungen in Ihrem Gebiet" />
+            {isRegional ? (
+              <div className="mt-10 text-left max-w-2xl mx-auto">
+                <h3 className="text-xl font-heading font-bold text-light-100 mb-4">
+                  Weitere Leistungen in {regionName}
+                </h3>
+                <p className="text-light-200 mb-3">
+                  <a href={regionUrl} className="text-primary-400 hover:underline font-heading font-bold">
+                    Alle Leistungen in {regionName}
+                  </a>
+                  {' – '}Übersicht unserer Angebote in Ihrer Region.
+                </p>
+                <p className="text-light-200 mb-6">
+                  <a href="/automatisierungen" className="text-primary-400 hover:underline">
+                    Mehr zu Automatisierungen im Überblick
+                  </a>
+                  {' – '}alle Details auf unserer Service-Seite.
+                </p>
+                <p className="text-light-300 text-sm mb-3">Automatisierungen in anderen Gebieten:</p>
+                <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                  {otherRegions.map((city, i) => (
+                    <li key={city.slug}>
+                      <a
+                        href={`/leistungsgebiete/${city.slug}/automatisierungen`}
+                        className="text-primary-400 hover:underline"
+                      >
+                        {getRegionServiceLinkText('automatisierungen', city.name, i)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <>
+                <ServicedRegionsBlock />
+                <RegionServiceLinksBlock serviceSlug="automatisierungen" title="Automatisierungen in Ihrem Gebiet" />
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -847,3 +993,4 @@ const Automatisierungen: React.FC = () => {
 };
 
 export default Automatisierungen;
+export type { AutomatisierungenProps };

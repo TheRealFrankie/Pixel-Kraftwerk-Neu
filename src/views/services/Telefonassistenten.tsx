@@ -25,10 +25,34 @@ import RelatedServices from '../../components/RelatedServices';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
+import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
+import { getRegionServiceContent } from '../../data/regionServiceContent';
+import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
+import { getRegionServiceLinkText } from '../../data/services';
+import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
 
-const Telefonassistenten: React.FC = () => {
+interface TelefonassistentenProps {
+  regionSlug?: string;
+  regionName?: string;
+}
+
+const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, regionName }) => {
+  const isRegional = !!regionSlug && !!regionName;
+  const baseUrl = 'https://pixelkraftwerk-ai.com';
+  const regionUrl = isRegional ? `/leistungsgebiete/${regionSlug}` : '';
+  const currentPageUrl = isRegional
+    ? `${baseUrl}/leistungsgebiete/${regionSlug}/telefonassistenten`
+    : `${baseUrl}/telefonassistenten`;
+
+  const regionContent = isRegional
+    ? getRegionServiceContent(regionSlug as LeistungsgebietSlug, regionName, 'telefonassistenten', 'Telefonassistenten')
+    : null;
+
+  const otherRegions = isRegional
+    ? LEISTUNGSGEBIETE_CITIES.filter((c) => c.slug !== regionSlug).slice(0, 6)
+    : [];
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -121,19 +145,39 @@ const Telefonassistenten: React.FC = () => {
 
   return (
     <div className="bg-dark-500">
-      <BreadcrumbSchema serviceName="Telefonische Kundenassistenz" serviceUrl="https://pixelkraftwerk-ai.com/telefonassistenten" />
+      {isRegional ? (
+        <BreadcrumbSchemaRegionService
+          regionName={regionName}
+          regionUrl={regionUrl}
+          serviceName="Telefonassistenten"
+          serviceUrl={currentPageUrl}
+        />
+      ) : (
+        <BreadcrumbSchema serviceName="Telefonische Kundenassistenz" serviceUrl="https://pixelkraftwerk-ai.com/telefonassistenten" />
+      )}
       <ServiceJsonLd
-        name="Telefonische Kundenassistenz (KI-Telefonagent)"
+        name={isRegional ? `Telefonische Kundenassistenz in ${regionName}` : 'Telefonische Kundenassistenz (KI-Telefonagent)'}
         serviceType="KI-Telefonassistent"
-        description="Telefonische Kundenassistenz für automatische Anrufannahme. Nie wieder verpasste Anrufe – professioneller Service rund um die Uhr."
-        url="https://pixelkraftwerk-ai.com/telefonassistenten"
-        faqs={faqItems.map((item) => ({ question: item.question, answer: item.answer }))}
-        pageName="Telefonassistenten"
+        description={isRegional
+          ? `Telefonische Kundenassistenz für Unternehmen in ${regionName} und Umgebung. Automatische Anrufannahme rund um die Uhr – von Pixel Kraftwerk aus Groitzsch.`
+          : 'Telefonische Kundenassistenz für automatische Anrufannahme. Nie wieder verpasste Anrufe – professioneller Service rund um die Uhr.'}
+        url={currentPageUrl}
+        areaServed={isRegional ? [regionName] : undefined}
+        faqs={[
+          ...faqItems.map((item) => ({ question: item.question, answer: item.answer })),
+          ...(regionContent?.localFaqs?.map((f) => ({ question: f.q, answer: f.a })) || []),
+        ]}
+        pageName={isRegional ? `Telefonassistenten in ${regionName}` : 'Telefonassistenten'}
       />
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
       <section id="ki-telefonagent-fur-ihr-unternehmen" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
         <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
-          <BreadcrumbNav overlay items={[
+          <BreadcrumbNav overlay items={isRegional ? [
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
+            { label: regionName, href: regionUrl },
+            { label: 'Telefonassistenten' },
+          ] : [
             { label: 'Startseite', href: '/' },
             { label: 'Leistungen', href: '/leistungen' },
             { label: 'Telefonassistenten' },
@@ -175,7 +219,7 @@ const Telefonassistenten: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Telefonische Kundenassistenz Leipzig &amp; Groitzsch
+              {isRegional ? `Telefonische Kundenassistenz in ${regionName}` : <>Telefonische Kundenassistenz Leipzig &amp; Groitzsch</>}
             </motion.h1>
 
             <motion.h2
@@ -184,7 +228,7 @@ const Telefonassistenten: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              Telefonate und Termine automatisch annehmen – rund um die Uhr
+              {regionContent?.localHook || 'Telefonate und Termine automatisch annehmen – rund um die Uhr'}
             </motion.h2>
 
             <motion.p
@@ -198,7 +242,9 @@ const Telefonassistenten: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Unsere telefonische Kundenassistenz nimmt Anrufe entgegen, beantwortet Fragen, verwaltet Termine und erfasst Anliegen zuverlässig – <strong style={{ color: '#F5F7FA' }}>automatisiert, professionell und 24/7</strong>.
+              {isRegional && regionContent?.intro
+                ? regionContent.intro
+                : <>Unsere telefonische Kundenassistenz nimmt Anrufe entgegen, beantwortet Fragen, verwaltet Termine und erfasst Anliegen zuverlässig – <strong style={{ color: '#F5F7FA' }}>automatisiert, professionell und 24/7</strong>.</>}
             </motion.p>
             <motion.p
               className="text-base sm:text-lg max-w-3xl mx-auto mb-8 leading-relaxed"
@@ -210,7 +256,9 @@ const Telefonassistenten: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.25 }}
             >
-              Ideal für Unternehmen, die viele Anrufe bekommen – aber nicht ständig ans Telefon können, ohne dass das Tagesgeschäft leidet.
+              {isRegional
+                ? `Ideal für Unternehmen in ${regionName}, die viele Anrufe bekommen – aber nicht ständig ans Telefon können, ohne dass das Tagesgeschäft leidet.`
+                : 'Ideal für Unternehmen, die viele Anrufe bekommen – aber nicht ständig ans Telefon können, ohne dass das Tagesgeschäft leidet.'}
             </motion.p>
 
             <motion.button
@@ -674,21 +722,44 @@ const Telefonassistenten: React.FC = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
-                Lokal in Leipzig & Region: Warum das bei Telefonbots wirklich hilft
+                {isRegional
+                  ? `Telefonische Kundenassistenz für Unternehmen in ${regionName}`
+                  : 'Lokal in Leipzig & Region: Warum das bei Telefonbots wirklich hilft'}
               </h2>
-              <p className="text-light-200 max-w-3xl mx-auto">
-                Gerade bei telefonischer Kommunikation zählt Feingefühl: Tonalität, typische Fragen, regionale Orte und echte Abläufe. Deshalb ist es ein Vorteil, wenn Einrichtung und Optimierung nah am Alltag lokaler Unternehmen passieren.
-              </p>
+              {isRegional && regionContent?.localSection ? (
+                regionContent.localSection.map((p, i) => (
+                  <motion.p
+                    key={i}
+                    className="text-light-200 max-w-3xl mx-auto mb-4 text-left"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    {p}
+                  </motion.p>
+                ))
+              ) : isRegional ? (
+                <p className="text-light-200 max-w-3xl mx-auto">
+                  Gerade bei telefonischer Kommunikation zählt Feingefühl: Tonalität, typische Fragen und regionale Besonderheiten. Als Agentur mit Sitz in Groitzsch kennen wir die Anforderungen von Unternehmen in {regionName} und der Region. Einrichtung und Optimierung Ihrer telefonischen Kundenassistenz erfolgen nah an Ihrem Alltag – persönlich, praxisnah und mit kurzen Wegen.
+                </p>
+              ) : (
+                <p className="text-light-200 max-w-3xl mx-auto">
+                  Gerade bei telefonischer Kommunikation zählt Feingefühl: Tonalität, typische Fragen, regionale Orte und echte Abläufe. Deshalb ist es ein Vorteil, wenn Einrichtung und Optimierung nah am Alltag lokaler Unternehmen passieren.
+                </p>
+              )}
             </motion.div>
-            <motion.p
-              className="text-light-200 text-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              Wir unterstützen Unternehmen in Leipzig, Markkleeberg, Zwenkau, Borna, Böhlen, Rötha, Neukieritzsch, Pegau, Lucka, Meuselwitz, Regis-Breitingen, Elstertrebnitz und Groitzsch – und kennen die typischen Anforderungen in der Region.
-            </motion.p>
+            {!isRegional && (
+              <motion.p
+                className="text-light-200 text-center"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Wir unterstützen Unternehmen in Leipzig, Markkleeberg, Zwenkau, Borna, Böhlen, Rötha, Neukieritzsch, Pegau, Lucka, Meuselwitz, Regis-Breitingen, Elstertrebnitz und Groitzsch – und kennen die typischen Anforderungen in der Region.
+              </motion.p>
+            )}
           </div>
         </div>
       </section>
@@ -738,7 +809,9 @@ const Telefonassistenten: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              FAQ – häufige Fragen zur telefonischen Kundenassistenz
+              {isRegional
+                ? `FAQ – Telefonische Kundenassistenz in ${regionName}`
+                : 'FAQ – häufige Fragen zur telefonischen Kundenassistenz'}
             </motion.h2>
             <div className="space-y-6">
               {faqItems.map((item, index) => (
@@ -752,6 +825,19 @@ const Telefonassistenten: React.FC = () => {
                 >
                   <h3 className="text-lg font-heading font-bold text-light-100 mb-3">{item.question}</h3>
                   <p className="text-light-200">{item.answer}</p>
+                </motion.div>
+              ))}
+              {regionContent?.localFaqs?.map((faq, index) => (
+                <motion.div
+                  key={`local-${index}`}
+                  className="bg-dark-500 p-6 border border-dark-100"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: (faqItems.length + index) * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-lg font-heading font-bold text-light-100 mb-3">{faq.q}</h3>
+                  <p className="text-light-200">{faq.a}</p>
                 </motion.div>
               ))}
             </div>
@@ -769,7 +855,7 @@ const Telefonassistenten: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              Bereit für <span className="text-primary-500">professionelle Anrufannahme?</span>
+              Bereit für <span className="text-primary-500">professionelle Anrufannahme{isRegional ? ` in ${regionName}` : ''}?</span>
             </motion.h2>
             <motion.p
               className="text-light-200 mb-8"
@@ -778,7 +864,7 @@ const Telefonassistenten: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              Lassen Sie uns gemeinsam besprechen, wie die telefonische Kundenassistenz Ihr Unternehmen entlasten kann.
+              Lassen Sie uns gemeinsam besprechen, wie die telefonische Kundenassistenz {isRegional ? `Ihr Unternehmen in ${regionName}` : 'Ihr Unternehmen'} entlasten kann.
             </motion.p>
             <motion.p
               className="text-light-300 text-sm mt-4"
@@ -793,8 +879,43 @@ const Telefonassistenten: React.FC = () => {
               </a>
               .
             </motion.p>
-            <ServicedRegionsBlock />
-            <RegionServiceLinksBlock serviceSlug="telefonassistenten" title="Telefonassistenten in Ihrem Gebiet" />
+            {isRegional ? (
+              <div className="mt-10 text-left max-w-2xl mx-auto">
+                <h3 className="text-xl font-heading font-bold text-light-100 mb-4">
+                  Weitere Leistungen in {regionName}
+                </h3>
+                <p className="text-light-200 mb-3">
+                  <a href={regionUrl} className="text-primary-400 hover:underline font-heading font-bold">
+                    Alle Leistungen in {regionName}
+                  </a>
+                  {' – '}Übersicht unserer Angebote in Ihrer Region.
+                </p>
+                <p className="text-light-200 mb-6">
+                  <a href="/telefonassistenten" className="text-primary-400 hover:underline">
+                    Mehr zur telefonischen Kundenassistenz im Überblick
+                  </a>
+                  {' – '}alle Details auf unserer Service-Seite.
+                </p>
+                <p className="text-light-300 text-sm mb-3">Telefonassistenten in anderen Gebieten:</p>
+                <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                  {otherRegions.map((city, i) => (
+                    <li key={city.slug}>
+                      <a
+                        href={`/leistungsgebiete/${city.slug}/telefonassistenten`}
+                        className="text-primary-400 hover:underline"
+                      >
+                        {getRegionServiceLinkText('telefonassistenten', city.name, i)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <>
+                <ServicedRegionsBlock />
+                <RegionServiceLinksBlock serviceSlug="telefonassistenten" title="Telefonassistenten in Ihrem Gebiet" />
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -807,3 +928,4 @@ const Telefonassistenten: React.FC = () => {
 };
 
 export default Telefonassistenten;
+export type { TelefonassistentenProps };

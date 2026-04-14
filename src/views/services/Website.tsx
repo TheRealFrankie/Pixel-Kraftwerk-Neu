@@ -21,11 +21,36 @@ import GoogleMapsSection from '../../components/GoogleMapsSection';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
+import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
 import RelatedServices from '../../components/RelatedServices';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
+import { getRegionServiceContent } from '../../data/regionServiceContent';
+import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
+import { getRegionServiceLinkText } from '../../data/services';
+import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
 
-const Website: React.FC = () => {
+interface WebsiteProps {
+  regionSlug?: string;
+  regionName?: string;
+}
+
+const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
+  const isRegional = !!regionSlug && !!regionName;
+  const baseUrl = 'https://pixelkraftwerk-ai.com';
+  const regionUrl = isRegional ? `/leistungsgebiete/${regionSlug}` : '';
+  const currentPageUrl = isRegional
+    ? `${baseUrl}/leistungsgebiete/${regionSlug}/webseiten`
+    : `${baseUrl}/webseite`;
+
+  const regionContent = isRegional
+    ? getRegionServiceContent(regionSlug as LeistungsgebietSlug, regionName, 'webseiten', 'Webseiten')
+    : null;
+
+  const otherRegions = isRegional
+    ? LEISTUNGSGEBIETE_CITIES.filter((c) => c.slug !== regionSlug).slice(0, 6)
+    : [];
+
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -113,27 +138,42 @@ const Website: React.FC = () => {
     { question: 'Wann brauche ich einen Software-Entwickler?', answer: 'Wenn Sie spezielle Funktionen oder Integrationen brauchen (z. B. CRM, Automatisierungen, komplexe Formulare). Für Standard-Websites meist nicht.' },
   ];
 
-  const canonicalUrl = 'https://pixelkraftwerk-ai.com/webseite';
-
   return (
     <>
       <div className="bg-dark-500">
+        {isRegional ? (
+          <BreadcrumbSchemaRegionService
+            regionName={regionName}
+            regionUrl={regionUrl}
+            serviceName="Webseiten"
+            serviceUrl={currentPageUrl}
+          />
+        ) : (
+          <BreadcrumbSchema serviceName="Webseiten" serviceUrl="https://pixelkraftwerk-ai.com/webseite" />
+        )}
         <ServiceJsonLd
-          name="Webseiten im Mietmodell"
+          name={isRegional ? `Webseiten für Unternehmen in ${regionName}` : 'Webseiten im Mietmodell'}
           serviceType="Web Design"
-          description="Moderne, schnelle Webseiten im Mietmodell – inklusive Technik, Betreuung und laufenden Anpassungen. Ideal für lokale Unternehmen, die ohne hohe Startkosten professionell auftreten wollen."
-          url={canonicalUrl}
-          pageName="Webseiten"
-          faqs={faqItems.map((item) => ({
-            question: item.question,
-            answer: item.answer,
-          }))}
+          description={isRegional
+            ? `Moderne Webseiten für Unternehmen in ${regionName} und Umgebung – inklusive Technik, Betreuung und laufenden Anpassungen. Von Pixel Kraftwerk aus Groitzsch.`
+            : 'Moderne, schnelle Webseiten im Mietmodell – inklusive Technik, Betreuung und laufenden Anpassungen. Ideal für lokale Unternehmen, die ohne hohe Startkosten professionell auftreten wollen.'}
+          url={currentPageUrl}
+          areaServed={isRegional ? [regionName] : undefined}
+          faqs={[
+            ...faqItems.map((item) => ({ question: item.question, answer: item.answer })),
+            ...(regionContent?.localFaqs?.map((f) => ({ question: f.q, answer: f.a })) || []),
+          ]}
+          pageName={isRegional ? `Webseiten in ${regionName}` : 'Webseiten'}
         />
-        <BreadcrumbSchema serviceName="Webseiten" serviceUrl={canonicalUrl} />
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
       <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
         <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
-          <BreadcrumbNav overlay items={[
+          <BreadcrumbNav overlay items={isRegional ? [
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
+            { label: regionName, href: regionUrl },
+            { label: 'Webseiten' },
+          ] : [
             { label: 'Startseite', href: '/' },
             { label: 'Leistungen', href: '/leistungen' },
             { label: 'Webseiten' },
@@ -175,7 +215,7 @@ const Website: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Moderne Webseiten Leipzig &amp; Groitzsch
+              {isRegional ? `Webseiten für Unternehmen in ${regionName}` : <>Moderne Webseiten Leipzig &amp; Groitzsch</>}
             </motion.h1>
 
             <motion.h2
@@ -184,7 +224,7 @@ const Website: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              – im einfachen Mietmodell
+              {regionContent?.localHook || '– im einfachen Mietmodell'}
             </motion.h2>
 
             <motion.p
@@ -612,6 +652,44 @@ const Website: React.FC = () => {
         </div>
       </section>
 
+      {isRegional && (
+        <section className="py-20 bg-dark-500">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <motion.div
+                className="text-center mb-12"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+                  Webseiten für Unternehmen in {regionName}
+                </h2>
+                {regionContent?.localSection ? (
+                  regionContent.localSection.map((p, i) => (
+                    <motion.p
+                      key={i}
+                      className="text-light-200 max-w-3xl mx-auto mb-4 text-left"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: i * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      {p}
+                    </motion.p>
+                  ))
+                ) : (
+                  <p className="text-light-200 max-w-3xl mx-auto">
+                    Eine gute Website für Unternehmen in {regionName} verbindet modernes Design mit lokaler Relevanz. Als Agentur mit Sitz in Groitzsch kennen wir die Anforderungen vor Ort – und erstellen Webseiten, die Ihre Kunden in {regionName} und Umgebung direkt ansprechen.
+                  </p>
+                )}
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      )}
+
       <section id="faq" className="py-20 bg-dark-400">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -622,7 +700,9 @@ const Website: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              Kurze FAQ (Webseiten im Mietmodell)
+              {isRegional
+                ? `FAQ – Webseiten im Mietmodell in ${regionName}`
+                : 'Kurze FAQ (Webseiten im Mietmodell)'}
             </motion.h2>
             <div className="space-y-6">
               {faqItems.map((item, index) => (
@@ -636,6 +716,19 @@ const Website: React.FC = () => {
                 >
                   <h3 className="text-lg font-heading font-bold text-light-100 mb-3">{item.question}</h3>
                   <p className="text-light-200">{item.answer}</p>
+                </motion.div>
+              ))}
+              {regionContent?.localFaqs?.map((faq, index) => (
+                <motion.div
+                  key={`local-${index}`}
+                  className="bg-dark-500 p-6 border border-dark-100"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: (faqItems.length + index) * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-lg font-heading font-bold text-light-100 mb-3">{faq.q}</h3>
+                  <p className="text-light-200">{faq.a}</p>
                 </motion.div>
               ))}
             </div>
@@ -653,7 +746,7 @@ const Website: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              Bereit für eine Website, die <span className="text-primary-500">wirklich für Sie arbeitet?</span>
+              Bereit für eine Website, die <span className="text-primary-500">wirklich für Sie arbeitet{isRegional ? ` in ${regionName}` : ''}?</span>
             </motion.h2>
             <motion.p
               className="text-light-200 mb-4"
@@ -663,7 +756,7 @@ const Website: React.FC = () => {
               viewport={{ once: true }}
             >
               Lassen Sie uns in einer kurzen, unverbindlichen Beratung besprechen, wie Ihre neue Website aussehen und
-              was sie für Ihr Unternehmen leisten soll.
+              was sie {isRegional ? `für Ihr Unternehmen in ${regionName}` : 'für Ihr Unternehmen'} leisten soll.
             </motion.p>
             <motion.button
               onClick={scrollToContact}
@@ -676,25 +769,65 @@ const Website: React.FC = () => {
               <ArrowRight className="mr-2" size={24} />
               Gespräch anfragen
             </motion.button>
-          </div>
-        </div>
-      </section>
-
-      <RelatedServices
-        currentSlug="webseite"
-        anchorBySlug={{
-          'ki-chatbots': '#ki-chatbot-fur-ihre-website',
-          'telefonassistenten': '#ki-telefonagent-fur-ihr-unternehmen',
-          'automatisierungen': '#ki-automatisierung-fur-anfragen-termine',
-          'seo-top-3-in-google': '#lokale-sichtbarkeit-ausbauen',
-        }}
-      />
-
-      <section className="py-20 bg-dark-400">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <ServicedRegionsBlock headingTag="h2" />
-            <RegionServiceLinksBlock serviceSlug="webseiten" title="Webseiten in Ihrem Gebiet" />
+            <motion.p
+              className="text-light-300 text-sm mt-4"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              Noch Fragen? Viele Antworten finden Sie in unseren{' '}
+              <a href="#faq" className="text-primary-400 hover:underline">
+                FAQ
+              </a>
+              .
+            </motion.p>
+            {isRegional ? (
+              <div className="mt-10 text-left max-w-2xl mx-auto">
+                <h3 className="text-xl font-heading font-bold text-light-100 mb-4">
+                  Weitere Leistungen in {regionName}
+                </h3>
+                <p className="text-light-200 mb-3">
+                  <a href={regionUrl} className="text-primary-400 hover:underline font-heading font-bold">
+                    Alle Leistungen in {regionName}
+                  </a>
+                  {' – '}Übersicht unserer Angebote in Ihrer Region.
+                </p>
+                <p className="text-light-200 mb-6">
+                  <a href="/webseite" className="text-primary-400 hover:underline">
+                    Mehr zu Webseiten im Mietmodell im Überblick
+                  </a>
+                  {' – '}alle Details auf unserer Service-Seite.
+                </p>
+                <p className="text-light-300 text-sm mb-3">Webseiten in anderen Gebieten:</p>
+                <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                  {otherRegions.map((city, i) => (
+                    <li key={city.slug}>
+                      <a
+                        href={`/leistungsgebiete/${city.slug}/webseiten`}
+                        className="text-primary-400 hover:underline"
+                      >
+                        {getRegionServiceLinkText('webseiten', city.name, i)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <>
+                <RelatedServices
+                  currentSlug="webseite"
+                  anchorBySlug={{
+                    'ki-chatbots': '#ki-chatbot-fur-ihre-website',
+                    'telefonassistenten': '#ki-telefonagent-fur-ihr-unternehmen',
+                    'automatisierungen': '#ki-automatisierung-fur-anfragen-termine',
+                    'seo-top-3-in-google': '#lokale-sichtbarkeit-ausbauen',
+                  }}
+                />
+                <ServicedRegionsBlock headingTag="h2" />
+                <RegionServiceLinksBlock serviceSlug="webseiten" title="Webseiten in Ihrem Gebiet" />
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -708,4 +841,5 @@ const Website: React.FC = () => {
 };
 
 export default Website;
+export type { WebsiteProps };
 

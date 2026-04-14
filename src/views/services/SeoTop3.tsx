@@ -20,12 +20,37 @@ import RelatedServices from '../../components/RelatedServices';
 import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
+import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 import VorherNachherSection from '../../components/VorherNachherSection';
 import WieFunktioniertEsSection from '../../components/WieFunktioniertEsSection';
+import { getRegionServiceContent } from '../../data/regionServiceContent';
+import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
+import { getRegionServiceLinkText } from '../../data/services';
+import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
 
-const SeoTop3: React.FC = () => {
+interface SeoTop3Props {
+  regionSlug?: string;
+  regionName?: string;
+}
+
+const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
+  const isRegional = !!regionSlug && !!regionName;
+  const baseUrl = 'https://pixelkraftwerk-ai.com';
+  const regionUrl = isRegional ? `/leistungsgebiete/${regionSlug}` : '';
+  const currentPageUrl = isRegional
+    ? `${baseUrl}/leistungsgebiete/${regionSlug}/seo-top-3`
+    : `${baseUrl}/seo-top-3-in-google`;
+
+  const regionContent = isRegional
+    ? getRegionServiceContent(regionSlug as LeistungsgebietSlug, regionName, 'seo-top-3', 'SEO Top 3')
+    : null;
+
+  const otherRegions = isRegional
+    ? LEISTUNGSGEBIETE_CITIES.filter((c) => c.slug !== regionSlug).slice(0, 6)
+    : [];
+
   const [faqOpenIndex, setFaqOpenIndex] = useState<number | null>(null);
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -93,26 +118,39 @@ const SeoTop3: React.FC = () => {
     },
   ];
 
-  const canonicalUrl = 'https://pixelkraftwerk-ai.com/seo-top-3-in-google';
-
   return (
     <>
       <div className="bg-dark-500">
         <ServiceJsonLd
-          name="SEO: Top 3 in Google"
+          name={isRegional ? `SEO: Top 3 in Google in ${regionName}` : 'SEO: Top 3 in Google'}
           serviceType="SEO"
-          description="Lokales SEO-Angebot mit Fokus auf Top-3-Platzierungen in Google für Suchbegriffe, die wirklich Kunden bringen – speziell für Unternehmen aus Leipzig, Groitzsch, Markkleeberg und der Region."
-          url={canonicalUrl}
-          pageName="SEO Top 3 in Google"
-          faqs={faqs.map((item) => ({
-            question: item.question,
-            answer: item.answer,
-          }))}
+          description={isRegional
+            ? `Lokales SEO-Angebot für Unternehmen in ${regionName} – Top-3-Platzierungen in Google für Suchbegriffe, die wirklich Kunden bringen. Pixel Kraftwerk aus Groitzsch.`
+            : 'Lokales SEO-Angebot mit Fokus auf Top-3-Platzierungen in Google für Suchbegriffe, die wirklich Kunden bringen – speziell für Unternehmen aus Leipzig, Groitzsch, Markkleeberg und der Region.'}
+          url={currentPageUrl}
+          areaServed={isRegional ? [regionName] : undefined}
+          pageName={isRegional ? `SEO Top 3 in ${regionName}` : 'SEO Top 3 in Google'}
+          faqs={[
+            ...faqs.map((item) => ({
+              question: item.question,
+              answer: item.answer,
+            })),
+            ...(regionContent?.localFaqs?.map((f) => ({ question: f.q, answer: f.a })) || []),
+          ]}
         />
-        <BreadcrumbSchema
-          serviceName="Top 3 in Google in 90 Tagen"
-          serviceUrl={canonicalUrl}
-        />
+        {isRegional ? (
+          <BreadcrumbSchemaRegionService
+            regionName={regionName}
+            regionUrl={regionUrl}
+            serviceName="SEO Top 3"
+            serviceUrl={currentPageUrl}
+          />
+        ) : (
+          <BreadcrumbSchema
+            serviceName="Top 3 in Google in 90 Tagen"
+            serviceUrl={currentPageUrl}
+          />
+        )}
       {/* Hero – Premium zweispaltig */}
       <section id="lokale-sichtbarkeit-ausbauen" className="relative bg-dark-500 pt-16 pb-0 md:pt-20 overflow-hidden">
         {/* Subtile radiale Hintergrundaufhellung */}
@@ -120,7 +158,12 @@ const SeoTop3: React.FC = () => {
 
         <div className="container mx-auto px-4">
           <div className="mb-5">
-            <BreadcrumbNav items={[
+            <BreadcrumbNav items={isRegional ? [
+              { label: 'Startseite', href: '/' },
+              { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
+              { label: regionName, href: regionUrl },
+              { label: 'SEO Top 3' },
+            ] : [
               { label: 'Startseite', href: '/' },
               { label: 'Leistungen', href: '/leistungen' },
               { label: 'SEO: Top 3 in Google' },
@@ -138,7 +181,7 @@ const SeoTop3: React.FC = () => {
                 transition={{ duration: 0.5 }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 animate-pulse" aria-hidden />
-                Local SEO für Leipzig &amp; Groitzsch
+                {isRegional ? `Local SEO für ${regionName}` : <>Local SEO für Leipzig &amp; Groitzsch</>}
               </motion.div>
 
               {/* H1 */}
@@ -148,7 +191,9 @@ const SeoTop3: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
               >
-                Bringen Sie Ihr Unternehmen <span className="text-primary-400 whitespace-nowrap">in die Top&nbsp;3 bei Google</span>
+                {isRegional
+                  ? <>SEO Top 3 in Google für <span className="text-primary-400 whitespace-nowrap">{regionName}</span></>
+                  : <>Bringen Sie Ihr Unternehmen <span className="text-primary-400 whitespace-nowrap">in die Top&nbsp;3 bei Google</span></>}
               </motion.h1>
 
               {/* Subheadline */}
@@ -158,7 +203,7 @@ const SeoTop3: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
-                Wenn Ihr Unternehmen dort nicht erscheint, gehen Anfragen direkt an Ihre Konkurrenz.
+                {regionContent?.localHook || 'Wenn Ihr Unternehmen dort nicht erscheint, gehen Anfragen direkt an Ihre Konkurrenz.'}
               </motion.p>
 
               {/* Primärer CTA */}
@@ -715,6 +760,44 @@ const SeoTop3: React.FC = () => {
         </div>
       </section>
 
+      {/* Lokaler Abschnitt (nur regional) */}
+      {isRegional && (
+        <section className="py-20 bg-dark-500">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
+                  SEO für Unternehmen in {regionName}
+                </h2>
+                {regionContent?.localSection ? (
+                  regionContent.localSection.map((p, i) => (
+                    <motion.p
+                      key={i}
+                      className="text-light-200 text-base md:text-lg leading-relaxed mb-4"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: i * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      {p}
+                    </motion.p>
+                  ))
+                ) : (
+                  <p className="text-light-200 text-base md:text-lg leading-relaxed">
+                    Als Agentur mit Sitz in Groitzsch kennen wir die Anforderungen von Unternehmen in {regionName} und der Region. Wir wissen, welche Suchbegriffe vor Ort zählen, wie die Konkurrenzsituation aussieht und wie wir Ihre lokale Sichtbarkeit gezielt stärken.
+                  </p>
+                )}
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* FAQ */}
       <section className="py-20 bg-dark-500" aria-labelledby="faq-heading">
         <div className="container mx-auto px-4">
@@ -728,7 +811,9 @@ const SeoTop3: React.FC = () => {
             >
               <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">FAQ</p>
               <h2 id="faq-heading" className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-3">
-                Häufige Fragen zum <span className="text-primary-500">SEO-Angebot</span>
+                {isRegional
+                  ? <>FAQ – SEO Top 3 in <span className="text-primary-500">{regionName}</span></>
+                  : <>Häufige Fragen zum <span className="text-primary-500">SEO-Angebot</span></>}
               </h2>
             </motion.div>
 
@@ -777,6 +862,51 @@ const SeoTop3: React.FC = () => {
                   </motion.div>
                 );
               })}
+              {regionContent?.localFaqs?.map((faq, index) => {
+                const globalIndex = faqs.length + index;
+                const isOpen = faqOpenIndex === globalIndex;
+                return (
+                  <motion.div
+                    key={`local-${index}`}
+                    className={`rounded-xl border transition-colors duration-200 ${isOpen ? 'bg-dark-400 border-primary-500/20' : 'bg-dark-400 border-dark-200 hover:border-dark-100'}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    viewport={{ once: true }}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setFaqOpenIndex(isOpen ? null : globalIndex)}
+                      className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-heading font-bold text-light-100 transition-colors"
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-answer-${globalIndex}`}
+                      id={`faq-question-${globalIndex}`}
+                    >
+                      <span className="text-sm md:text-base">{faq.q}</span>
+                      <ChevronDown
+                        size={18}
+                        className={`text-primary-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          id={`faq-answer-${globalIndex}`}
+                          role="region"
+                          aria-labelledby={`faq-question-${globalIndex}`}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-light-300 text-sm px-5 pb-5 pt-0 leading-relaxed">{faq.a}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -804,10 +934,12 @@ const SeoTop3: React.FC = () => {
           >
             <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-4">Kostenlose Analyse</p>
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
-              Wie viele Kunden verlieren Sie aktuell <span className="text-primary-500">an Ihre Konkurrenz?</span>
+              Wie viele Kunden verlieren Sie aktuell <span className="text-primary-500">an Ihre Konkurrenz{isRegional ? ` in ${regionName}` : ''}?</span>
             </h2>
             <p className="text-light-300 text-sm md:text-base mb-8 leading-relaxed">
-              Lassen Sie uns Ihr Potenzial gemeinsam prüfen – mit einer kostenlosen SEO-Analyse.
+              {isRegional
+                ? `Lassen Sie uns Ihr Potenzial in ${regionName} gemeinsam prüfen – mit einer kostenlosen SEO-Analyse.`
+                : 'Lassen Sie uns Ihr Potenzial gemeinsam prüfen – mit einer kostenlosen SEO-Analyse.'}
             </p>
             <button
               onClick={scrollToContact}
@@ -822,11 +954,46 @@ const SeoTop3: React.FC = () => {
                 Häufig gestellte Fragen
               </a>
             </p>
-            <ServicedRegionsBlock />
-            <RegionServiceLinksBlock
-              serviceSlug="seo-top-3"
-              title="SEO: Top 3 in Google in Ihrem Gebiet"
-            />
+            {isRegional ? (
+              <div className="mt-10 text-left max-w-2xl mx-auto">
+                <h3 className="text-xl font-heading font-bold text-light-100 mb-4">
+                  Weitere Leistungen in {regionName}
+                </h3>
+                <p className="text-light-200 mb-3">
+                  <a href={regionUrl} className="text-primary-400 hover:underline font-heading font-bold">
+                    Alle Leistungen in {regionName}
+                  </a>
+                  {' – '}Übersicht unserer Angebote in Ihrer Region.
+                </p>
+                <p className="text-light-200 mb-6">
+                  <a href="/seo-top-3-in-google" className="text-primary-400 hover:underline">
+                    Mehr zu SEO: Top 3 in Google im Überblick
+                  </a>
+                  {' – '}alle Details auf unserer Service-Seite.
+                </p>
+                <p className="text-light-300 text-sm mb-3">SEO Top 3 in anderen Gebieten:</p>
+                <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                  {otherRegions.map((city, i) => (
+                    <li key={city.slug}>
+                      <a
+                        href={`/leistungsgebiete/${city.slug}/seo-top-3`}
+                        className="text-primary-400 hover:underline"
+                      >
+                        {getRegionServiceLinkText('seo-top-3', city.name, i)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <>
+                <ServicedRegionsBlock />
+                <RegionServiceLinksBlock
+                  serviceSlug="seo-top-3"
+                  title="SEO: Top 3 in Google in Ihrem Gebiet"
+                />
+              </>
+            )}
           </motion.div>
         </div>
       </section>
@@ -840,3 +1007,4 @@ const SeoTop3: React.FC = () => {
 };
 
 export default SeoTop3;
+export type { SeoTop3Props };
