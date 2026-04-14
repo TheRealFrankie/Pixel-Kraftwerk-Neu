@@ -5,6 +5,10 @@
 import { LEISTUNGSGEBIETE_SLUGS } from './leistungsgebiete';
 import type { LeistungsgebietSlug } from './leistungsgebiete';
 import type { ServiceSlug } from './services';
+import { tier1RegionContent } from './regionContentTier1';
+import { tier2RegionContent } from './regionContentTier2';
+import { tier3RegionContent } from './regionContentTier3';
+import { tier4RegionContent } from './regionContentTier4';
 
 export type RegionContent = {
   name: string;
@@ -947,6 +951,43 @@ const SLUG_TO_NAME: Record<string, string> = {
   'regis-breitingen': 'Regis-Breitingen',
   elstertrebnitz: 'Elstertrebnitz',
   groitzsch: 'Groitzsch',
+  'halle-saale': 'Halle (Saale)',
+  chemnitz: 'Chemnitz',
+  jena: 'Jena',
+  gera: 'Gera',
+  zwickau: 'Zwickau',
+  altenburg: 'Altenburg',
+  weissenfels: 'Weißenfels',
+  merseburg: 'Merseburg',
+  zeitz: 'Zeitz',
+  grimma: 'Grimma',
+  naumburg: 'Naumburg',
+  delitzsch: 'Delitzsch',
+  doebeln: 'Döbeln',
+  schkeuditz: 'Schkeuditz',
+  wurzen: 'Wurzen',
+  eilenburg: 'Eilenburg',
+  taucha: 'Taucha',
+  markranstaedt: 'Markranstädt',
+  leuna: 'Leuna',
+  oschatz: 'Oschatz',
+  schmoelln: 'Schmölln',
+  'bad-duerrenberg': 'Bad Dürrenberg',
+  schkopau: 'Schkopau',
+  hohenmoelsen: 'Hohenmölsen',
+  eisenberg: 'Eisenberg',
+  frohburg: 'Frohburg',
+  brandis: 'Brandis',
+  mittweida: 'Mittweida',
+  querfurt: 'Querfurt',
+  penig: 'Penig',
+  naunhof: 'Naunhof',
+  luetzen: 'Lützen',
+  colditz: 'Colditz',
+  'bad-lausick': 'Bad Lausick',
+  geithain: 'Geithain',
+  rochlitz: 'Rochlitz',
+  kitzscher: 'Kitzscher',
 };
 
 function getTemplateRegionContent(cityName: string): RegionContent {
@@ -1028,8 +1069,16 @@ function buildRegionTitle(cityName: string): string {
   return `KI-Agentur ${cityName} – wenn Sie nach KI-Chatbots, Telefonassistenten, Automatisierungen oder SEO in meiner Nähe suchen – Pixel Kraftwerk aus Groitzsch für ${cityName} und Umgebung`;
 }
 
+const allCustomRegionContent: Partial<Record<string, RegionContent>> = {
+  ...customRegionContent,
+  ...tier1RegionContent,
+  ...tier2RegionContent,
+  ...tier3RegionContent,
+  ...tier4RegionContent,
+};
+
 export function getRegionContent(slug: string): RegionContent {
-  const base = customRegionContent[slug] ?? getTemplateRegionContent(SLUG_TO_NAME[slug] ?? slug);
+  const base = allCustomRegionContent[slug] ?? getTemplateRegionContent(SLUG_TO_NAME[slug] ?? slug);
   return { ...base, title: buildRegionTitle(base.name) };
 }
 

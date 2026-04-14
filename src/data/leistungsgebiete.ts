@@ -1,5 +1,5 @@
 /**
- * Die 12 Leistungsgebiete (Städte) + Groitzsch (Hauptsitz).
+ * Leistungsgebiete (Städte) + Groitzsch (Hauptsitz).
  * Einheitliche Slugs für URLs, Sitemap und Interlinking.
  */
 export const LEISTUNGSGEBIETE_CITIES = [
@@ -16,13 +16,54 @@ export const LEISTUNGSGEBIETE_CITIES = [
   { slug: 'regis-breitingen', name: 'Regis-Breitingen', subtitle: 'Landkreis Leipzig' },
   { slug: 'elstertrebnitz', name: 'Elstertrebnitz', subtitle: 'Landkreis Leipzig' },
   { slug: 'groitzsch', name: 'Groitzsch', subtitle: 'Hauptsitz' },
+  // Phase 1 – Tier 1: Großstädte + nahe Mittelstädte
+  { slug: 'halle-saale', name: 'Halle (Saale)', subtitle: 'Saalekreis' },
+  { slug: 'chemnitz', name: 'Chemnitz', subtitle: 'Sachsen' },
+  { slug: 'jena', name: 'Jena', subtitle: 'Thüringen' },
+  { slug: 'gera', name: 'Gera', subtitle: 'Thüringen' },
+  { slug: 'zwickau', name: 'Zwickau', subtitle: 'Sachsen' },
+  { slug: 'altenburg', name: 'Altenburg', subtitle: 'Altenburger Land' },
+  { slug: 'weissenfels', name: 'Weißenfels', subtitle: 'Burgenlandkreis' },
+  { slug: 'merseburg', name: 'Merseburg', subtitle: 'Saalekreis' },
+  { slug: 'zeitz', name: 'Zeitz', subtitle: 'Burgenlandkreis' },
+  { slug: 'grimma', name: 'Grimma', subtitle: 'Landkreis Leipzig' },
+  // Phase 2 – Tier 2: Mittelstädte mit Substanz
+  { slug: 'naumburg', name: 'Naumburg', subtitle: 'Burgenlandkreis' },
+  { slug: 'delitzsch', name: 'Delitzsch', subtitle: 'Nordsachsen' },
+  { slug: 'doebeln', name: 'Döbeln', subtitle: 'Mittelsachsen' },
+  { slug: 'schkeuditz', name: 'Schkeuditz', subtitle: 'Nordsachsen' },
+  { slug: 'wurzen', name: 'Wurzen', subtitle: 'Landkreis Leipzig' },
+  { slug: 'eilenburg', name: 'Eilenburg', subtitle: 'Nordsachsen' },
+  { slug: 'taucha', name: 'Taucha', subtitle: 'Nordsachsen' },
+  { slug: 'markranstaedt', name: 'Markranstädt', subtitle: 'Landkreis Leipzig' },
+  { slug: 'leuna', name: 'Leuna', subtitle: 'Saalekreis' },
+  { slug: 'oschatz', name: 'Oschatz', subtitle: 'Nordsachsen' },
+  // Phase 3 – Tier 3: Kleinstädte mit Relevanz
+  { slug: 'schmoelln', name: 'Schmölln', subtitle: 'Altenburger Land' },
+  { slug: 'bad-duerrenberg', name: 'Bad Dürrenberg', subtitle: 'Saalekreis' },
+  { slug: 'schkopau', name: 'Schkopau', subtitle: 'Saalekreis' },
+  { slug: 'hohenmoelsen', name: 'Hohenmölsen', subtitle: 'Burgenlandkreis' },
+  { slug: 'eisenberg', name: 'Eisenberg', subtitle: 'Saale-Holzland-Kreis' },
+  { slug: 'frohburg', name: 'Frohburg', subtitle: 'Landkreis Leipzig' },
+  { slug: 'brandis', name: 'Brandis', subtitle: 'Landkreis Leipzig' },
+  { slug: 'mittweida', name: 'Mittweida', subtitle: 'Mittelsachsen' },
+  { slug: 'querfurt', name: 'Querfurt', subtitle: 'Saalekreis' },
+  { slug: 'penig', name: 'Penig', subtitle: 'Mittelsachsen' },
+  // Phase 4 – Tier 4: Auffüllung auf 50
+  { slug: 'naunhof', name: 'Naunhof', subtitle: 'Landkreis Leipzig' },
+  { slug: 'luetzen', name: 'Lützen', subtitle: 'Burgenlandkreis' },
+  { slug: 'colditz', name: 'Colditz', subtitle: 'Landkreis Leipzig' },
+  { slug: 'bad-lausick', name: 'Bad Lausick', subtitle: 'Landkreis Leipzig' },
+  { slug: 'geithain', name: 'Geithain', subtitle: 'Landkreis Leipzig' },
+  { slug: 'rochlitz', name: 'Rochlitz', subtitle: 'Mittelsachsen' },
+  { slug: 'kitzscher', name: 'Kitzscher', subtitle: 'Landkreis Leipzig' },
 ] as const;
 
 export type LeistungsgebietSlug = (typeof LEISTUNGSGEBIETE_CITIES)[number]['slug'];
 
 export const LEISTUNGSGEBIETE_SLUGS = LEISTUNGSGEBIETE_CITIES.map((c) => c.slug);
 
-/** Stadtnamen für Schema areaServed und Anzeige (Reihenfolge: 12 Städte + Groitzsch) */
+/** Stadtnamen für Schema areaServed und Anzeige */
 export const AREA_SERVED_NAMES = [
   'Leipzig',
   'Markkleeberg',
@@ -37,4 +78,41 @@ export const AREA_SERVED_NAMES = [
   'Regis-Breitingen',
   'Elstertrebnitz',
   'Groitzsch',
+  'Halle (Saale)',
+  'Chemnitz',
+  'Jena',
+  'Gera',
+  'Zwickau',
+  'Altenburg',
+  'Weißenfels',
+  'Merseburg',
+  'Zeitz',
+  'Grimma',
+  'Naumburg',
+  'Delitzsch',
+  'Döbeln',
+  'Schkeuditz',
+  'Wurzen',
+  'Eilenburg',
+  'Taucha',
+  'Markranstädt',
+  'Leuna',
+  'Oschatz',
+  'Schmölln',
+  'Bad Dürrenberg',
+  'Schkopau',
+  'Hohenmölsen',
+  'Eisenberg',
+  'Frohburg',
+  'Brandis',
+  'Mittweida',
+  'Querfurt',
+  'Penig',
+  'Naunhof',
+  'Lützen',
+  'Colditz',
+  'Bad Lausick',
+  'Geithain',
+  'Rochlitz',
+  'Kitzscher',
 ] as const;
