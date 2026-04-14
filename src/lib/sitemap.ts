@@ -2,7 +2,7 @@ import { LEISTUNGSGEBIETE_SLUGS } from '@/data/leistungsgebiete';
 import { SERVICE_SLUGS } from '@/data/services';
 
 const baseUrl = 'https://pixelkraftwerk-ai.com';
-const lastMod = '2026-03-06';
+const lastMod = '2026-04-14';
 
 interface SitemapEntry {
   url: string;
