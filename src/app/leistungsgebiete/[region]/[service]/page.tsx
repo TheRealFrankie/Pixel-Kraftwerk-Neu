@@ -29,7 +29,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const serviceInfo = getServiceBySlug(service);
 
   if (!serviceInfo) {
-    return { title: 'Leistungsgebiete | Pixel Kraftwerk' };
+    return {
+      title: 'Leistungsgebiete | Pixel Kraftwerk',
+      description: 'Übersicht unserer Leistungsgebiete in Leipzig, Groitzsch und Umgebung.',
+    };
   }
 
   const keywords = SERVICE_TITLE_KEYWORDS[service as ServiceSlug] ?? serviceInfo.label;

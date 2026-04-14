@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: false,
   images: { unoptimized: true },
+  // Hinweis: Bei `output: 'export'` werden diese Redirects NICHT als HTTP-301
+  // ausgeliefert. Vercel uebernimmt sie ueber vercel.json. Bei Hosting-Wechsel
+  // muessen die Regeln dort (z.B. _redirects, nginx) nachgebaut werden.
   async redirects() {
     return [
       { source: '/termine-buchungen', destination: '/automatisierungen', permanent: true },

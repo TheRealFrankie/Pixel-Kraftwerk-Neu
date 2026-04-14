@@ -124,20 +124,15 @@ const Footer: React.FC = () => {
             <h2 className="text-light-100 font-heading font-bold text-sm mb-3">Kontakt</h2>
             <address className="not-italic space-y-2 text-sm text-light-300">
               <p className="text-light-100 font-heading font-semibold">{businessInfo.name}</p>
-              <p
-                itemProp="address"
-                itemScope
-                itemType="https://schema.org/PostalAddress"
-              >
-                <span itemProp="streetAddress">{businessInfo.address.streetAddress}</span>
+              <p>
+                {businessInfo.address.streetAddress}
                 <br />
-                <span itemProp="postalCode">{businessInfo.address.postalCode}</span>{' '}
-                <span itemProp="addressLocality">{businessInfo.address.addressLocality}</span>
+                {businessInfo.address.postalCode}{' '}
+                {businessInfo.address.addressLocality}
               </p>
               <p>
                 <a
                   href={`tel:${businessInfo.contact.telephoneE164}`}
-                  itemProp="telephone"
                   className="flex items-center gap-2 hover:text-primary-400 transition-colors duration-200"
                 >
                   <Phone size={14} className="text-primary-500 flex-shrink-0" />
@@ -147,7 +142,6 @@ const Footer: React.FC = () => {
               <p>
                 <a
                   href={`mailto:${businessInfo.contact.email}`}
-                  itemProp="email"
                   className="flex items-center gap-2 hover:text-primary-400 transition-colors duration-200"
                 >
                   <Mail size={14} className="text-primary-500 flex-shrink-0" />
@@ -156,7 +150,7 @@ const Footer: React.FC = () => {
               </p>
               <p className="flex items-start gap-2 pt-1">
                 <MapPin size={14} className="text-primary-500 flex-shrink-0 mt-0.5" />
-                <span itemProp="openingHours">{businessInfo.openingHoursDisplay}</span>
+                {businessInfo.openingHoursDisplay}
               </p>
             </address>
           </div>
