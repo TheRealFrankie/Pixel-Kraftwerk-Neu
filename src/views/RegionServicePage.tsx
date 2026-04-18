@@ -6,6 +6,7 @@ import KiChatbots from './services/KiChatbots';
 import Automatisierungen from './services/Automatisierungen';
 import Website from './services/Website';
 import SeoTop3 from './services/SeoTop3';
+import CrmSysteme from './services/CrmSysteme';
 
 interface RegionServicePageProps {
   regionSlug: string;
@@ -30,6 +31,8 @@ export default function RegionServicePage({
       return <Website regionSlug={regionSlug} regionName={regionName} />;
     case 'seo-top-3':
       return <SeoTop3 regionSlug={regionSlug} regionName={regionName} />;
+    case 'crm-systeme':
+      return <CrmSysteme regionSlug={regionSlug} regionName={regionName} />;
     default:
       return null;
   }

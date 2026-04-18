@@ -8,6 +8,7 @@ export const SERVICE_SLUGS = [
   'automatisierungen',
   'webseiten',
   'seo-top-3',
+  'crm-systeme',
 ] as const;
 
 export type ServiceSlug = (typeof SERVICE_SLUGS)[number];
@@ -53,6 +54,15 @@ export const SERVICES: ServiceInfo[] = [
     slug: 'seo-top-3',
     label: 'SEO: Top 3 in Google',
     linkTextVariants: ['SEO: Top 3 in Google in', 'Top 3 in Google für', 'SEO in'],
+  },
+  {
+    slug: 'crm-systeme',
+    label: 'CRM-Systeme',
+    linkTextVariants: [
+      'CRM-Systeme in',
+      'CRM & Lead-Management für Unternehmen in',
+      'CRM-Systeme für Unternehmen in',
+    ],
   },
 ];
 

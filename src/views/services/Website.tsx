@@ -22,9 +22,11 @@ import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
+import LocalBusinessSchema from '../../components/LocalBusinessSchema';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
 import RelatedServices from '../../components/RelatedServices';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
+import HeroScrollIndicator from '../../components/HeroScrollIndicator';
 import { getRegionServiceContent } from '../../data/regionServiceContent';
 import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
 import { getRegionServiceLinkText } from '../../data/services';
@@ -141,6 +143,12 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
   return (
     <>
       <div className="bg-dark-500">
+        <LocalBusinessSchema
+          pageType="service"
+          customDescription={isRegional
+            ? `Moderne Webseiten für Unternehmen in ${regionName} und Umgebung – inklusive Technik, Betreuung und laufenden Anpassungen. Von Pixel Kraftwerk aus Groitzsch.`
+            : 'Moderne, schnelle Webseiten im Mietmodell – inklusive Technik, Betreuung und laufenden Anpassungen. Ideal für lokale Unternehmen aus Groitzsch, Leipzig und Region.'}
+        />
         {isRegional ? (
           <BreadcrumbSchemaRegionService
             regionName={regionName}
@@ -166,7 +174,7 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
           pageName={isRegional ? `Webseiten in ${regionName}` : 'Webseiten'}
         />
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
-      <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-dark-500">
         <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
           <BreadcrumbNav overlay items={isRegional ? [
             { label: 'Startseite', href: '/' },
@@ -179,7 +187,7 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
             { label: 'Webseiten' },
           ]} />
         </div>
-        <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
+        <div className="absolute inset-0">
           <Image
             src="/images/webseiten-mietmodell-agentur.webp"
             alt="Moderne Webseiten – professioneller Webauftritt"
@@ -193,7 +201,7 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/15 to-transparent" aria-hidden />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 py-24">
+        <div className="container mx-auto px-4 relative z-10 pt-32 pb-16 md:pt-36 md:pb-20">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/20 border border-primary-500/40 backdrop-blur-sm mb-8 shadow-primary-glow"
@@ -205,7 +213,7 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
             </motion.div>
 
             <motion.h1
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold mb-4 leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold mb-6 leading-tight"
               style={{
                 color: '#F5F7FA',
                 textShadow: '0 10px 30px rgba(0,0,0,0.65)',
@@ -215,7 +223,9 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {isRegional ? `Webseiten für Unternehmen in ${regionName}` : <>Moderne Webseiten Leipzig &amp; Groitzsch</>}
+              {isRegional ? `Webseiten für Unternehmen in ${regionName}` : (
+                <>Moderne Webseiten<span className="sr-only"> Leipzig &amp; Groitzsch</span></>
+              )}
             </motion.h1>
 
             <motion.h2
@@ -266,6 +276,7 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
             </motion.button>
           </div>
         </div>
+        <HeroScrollIndicator />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
       </section>
 
@@ -784,6 +795,16 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
             </motion.p>
             {isRegional ? (
               <div className="mt-10 text-left max-w-2xl mx-auto">
+                {regionContent?.paragraphs && regionContent.paragraphs.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="text-xl font-heading font-bold text-light-100 mb-4">
+                      Webseiten für Unternehmen in {regionName}
+                    </h3>
+                    {regionContent.paragraphs.map((p, i) => (
+                      <p key={i} className="text-light-200 text-lg leading-relaxed mb-4">{p}</p>
+                    ))}
+                  </div>
+                )}
                 <h3 className="text-xl font-heading font-bold text-light-100 mb-4">
                   Weitere Leistungen in {regionName}
                 </h3>
@@ -815,6 +836,15 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
               </div>
             ) : (
               <>
+                <div className="mb-8">
+                  <p className="text-light-200 text-lg leading-relaxed">
+                    Wir gestalten moderne Webseiten für Unternehmen in{' '}
+                    <a href="/leistungsgebiete/leipzig" className="text-primary-400 hover:underline">Leipzig</a>,{' '}
+                    <a href="/leistungsgebiete/zwenkau" className="text-primary-400 hover:underline">Zwenkau</a> und{' '}
+                    <a href="/leistungsgebiete/markkleeberg" className="text-primary-400 hover:underline">Markkleeberg</a>.
+                    Unser Team in <a href="/leistungsgebiete/groitzsch" className="text-primary-400 hover:underline">Groitzsch</a> steht Ihnen persönlich zur Seite – vom Entwurf bis zum Launch.
+                  </p>
+                </div>
                 <RelatedServices
                   currentSlug="webseite"
                   anchorBySlug={{

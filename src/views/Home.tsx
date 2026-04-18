@@ -3,8 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ChevronDown, CheckCircle, Minus, ArrowRight, Zap, MessageCircle, Workflow, Globe, Search } from 'lucide-react';
-import { BackgroundPaths } from '../components/ui/background-paths';
+import { ChevronDown, CheckCircle, Minus, ArrowRight, Zap, MessageCircle, Workflow, Globe, Search, Users } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
@@ -62,43 +61,41 @@ const Home: React.FC = () => {
     },
   ];
 
-  const services = [
-    "KI-Chatbots (digitale Kundenassistenz)",
-    "KI-Telefonassistent",
-    "Automatisierungen (Anfragen, Vertrieb & Terminplanung)",
-    "Webseiten",
-    "SEO: Top 3 in Google"
-  ];
-
   return (
     <div className="bg-dark-500">
       <LocalBusinessSchema pageType="homepage" />
       <WebSiteSchema />
 
       {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center bg-dark-500 overflow-hidden">
-        <BackgroundPaths />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark-500/80 z-[1]" aria-hidden />
+      <section data-section-label="Start" className="relative min-h-screen flex items-center bg-dark-500 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-startseite-ki-agentur-v2.webp"
+            alt="KI-Agentur Pixel Kraftwerk – Chatbots, Automatisierungen und SEO für Unternehmen in Leipzig und Groitzsch"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-dark-500/90 via-dark-500/60 to-transparent" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-b from-dark-500/40 via-transparent to-dark-500/80" aria-hidden />
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/10 to-transparent" aria-hidden />
+        </div>
 
+        <h1 className="sr-only">KI-Agentur für Chatbots, Automatisierungen und SEO in Groitzsch &amp; Leipzig</h1>
         <div className="container mx-auto px-4 z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl text-light-100 font-heading font-extrabold tracking-tight mb-4 -mt-8 drop-shadow-[0_0_24px_rgba(0,179,166,0.15)]">
-              <motion.span
-                className="block"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.0, ease: "easeOut", delay: 0.3 }}
-              >
-                KI-Agentur für Chatbots, Automatisierungen und SEO in Groitzsch &amp; Leipzig
-              </motion.span>
-            </h1>
-            <p className="space-y-1 text-xl md:text-2xl lg:text-3xl text-light-200 font-heading mb-6">
+          <div className="max-w-2xl lg:max-w-3xl text-left">
+            <p className="space-y-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold mb-8" style={{ color: '#F5F7FA', textShadow: '0 6px 20px rgba(0,0,0,0.5)' }}>
               <motion.span className="block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>Klare Abläufe.</motion.span>
               <motion.span className="block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}>Mehr Anfragen.</motion.span>
               <motion.span className="block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>Weniger Stress.</motion.span>
             </p>
             <motion.p
-              className="text-lg md:text-xl text-light-200 max-w-2xl mx-auto mb-8 leading-relaxed"
+              className="text-sm sm:text-base md:text-lg max-w-xl mb-8 leading-relaxed"
+              style={{
+                color: '#E8EAED',
+                textShadow: '0 3px 10px rgba(0,0,0,0.4)',
+              }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.6 }}
@@ -114,9 +111,9 @@ const Home: React.FC = () => {
             >
               <button
                 onClick={scrollToContactForm}
-                className="inline-flex w-full sm:w-auto justify-center items-center px-5 py-3 rounded-lg bg-primary-500 text-dark-500 font-heading font-semibold sm:font-bold text-sm sm:text-base shadow-lg shadow-primary-500/20 hover:bg-primary-400 hover:shadow-primary-glow transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 min-h-[44px]"
+                className="inline-flex items-center px-7 py-4 rounded-lg bg-primary-500 text-dark-500 font-heading font-bold text-base shadow-lg shadow-primary-500/20 hover:bg-primary-400 hover:shadow-primary-glow transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 min-h-[44px]"
               >
-                <ArrowRight className="mr-2" size={18} />
+                <ArrowRight className="mr-2" size={20} />
                 Kostenloses Erstgespräch sichern
               </button>
             </motion.div>
@@ -137,7 +134,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* PROBLEM SECTION */}
-      <section id="problem-section" className="section-padding bg-dark-400 border-t border-dark-200/30">
+      <section id="problem-section" data-section-label="Herausforderung" className="section-padding bg-dark-400 relative">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -188,7 +186,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* FUTURE SECTION */}
-      <section className="section-padding bg-dark-500 border-t border-dark-200/30">
+      <section data-section-label="Lösung" className="section-padding bg-dark-500 relative">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -229,7 +228,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* SERVICES HUB SECTION */}
-      <section className="section-padding relative bg-dark-400 border-t border-dark-200/30 overflow-hidden">
+      <section data-section-label="Leistungen" className="section-padding relative bg-dark-400 overflow-hidden">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
         <div className="absolute inset-0 bg-gradient-to-b from-primary-500/5 via-transparent to-primary-500/5 pointer-events-none" aria-hidden />
         <div className="container mx-auto px-4 relative">
           <div className="max-w-6xl mx-auto">
@@ -364,38 +364,59 @@ const Home: React.FC = () => {
               </div>
 
               {/* SEO */}
-              <div className="flex flex-col lg:col-span-2">
+              <div className="flex flex-col">
                 <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
                   Lokales SEO für mehr Sichtbarkeit bei Google
                 </h2>
                 <motion.a
                   href="/seo-top-3-in-google"
-                  className="group block rounded-2xl relative overflow-hidden border border-dark-200/80 bg-dark-500/95 shadow-card hover:border-primary-500/50 hover:shadow-[0_0_48px_-12px_rgba(0,179,166,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 transition-all duration-500 flex-1"
+                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 flex-1"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.45 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -6, transition: { duration: 0.3 } }}
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] min-h-[300px] lg:min-h-[320px]">
-                    <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[320px] overflow-hidden bg-dark-400 order-2 lg:order-1">
-                      <Image src="/images/seo-top-3-google-local-pack.webp" alt="Top 3 in Google: Google-Suchergebnisse für Maler in Leipzig mit Karte und lokalen Einträgen – Ihr Unternehmen sichtbar." fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover object-center lg:object-right-center transition-transform duration-700 ease-out group-hover:scale-[1.03]" priority={false} />
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-dark-500/60 lg:to-dark-500/80 pointer-events-none" aria-hidden />
-                      <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 text-primary-400 lg:hidden">
-                        <Search size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                        <span className="text-sm font-heading font-bold">Top 3 in 90 Tagen</span>
-                      </div>
+                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
+                    <Image src="/images/seo-top-3-google-local-pack.webp" alt="Top 3 in Google: Google-Suchergebnisse mit Karte und lokalen Einträgen – Ihr Unternehmen sichtbar." fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
+                      <Search size={20} strokeWidth={1.5} className="flex-shrink-0" />
+                      <span className="text-sm font-heading font-bold">Top 3 in 90 Tagen</span>
                     </div>
-                    <div className="flex flex-col justify-center p-6 md:p-8 lg:p-10 order-1 lg:order-2 relative bg-dark-500 border-l-0 lg:border-l border-dark-200/50">
-                      <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                        <span className="inline-flex items-center rounded-full bg-primary-500/20 text-primary-400 border border-primary-500/30 px-3 py-1.5 text-xs font-heading font-bold tracking-wide">Fokus-Leistung</span>
-                      </div>
-                      <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary-500/20 text-primary-400 mb-5 flex-shrink-0 shadow-inner border border-primary-500/20">
-                        <Search size={28} strokeWidth={1.5} />
-                      </div>
-                      <p className="text-light-200 text-base md:text-lg leading-relaxed mb-6 max-w-xl">Lokales SEO mit Fokus auf Top-Platzierungen für die Suchbegriffe, die Ihnen wirklich Kunden bringen – mit klarer Strategie und transparenten Ergebnissen.</p>
-                      <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">In 90 Tagen in die Top 3 bei Google<ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-light-300 text-base leading-relaxed mb-4">Lokales SEO mit Fokus auf Top-Platzierungen für die Suchbegriffe, die Ihnen wirklich Kunden bringen – mit klarer Strategie und transparenten Ergebnissen.</p>
+                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">In 90 Tagen in die Top 3 bei Google<ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
+                  </div>
+                </motion.a>
+              </div>
+
+              {/* CRM-Systeme */}
+              <div className="flex flex-col">
+                <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
+                  CRM-Systeme für strukturiertes Lead-Management und Kundenverwaltung
+                </h2>
+                <motion.a
+                  href="/crm-systeme"
+                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 flex-1"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
+                    <Image src="/images/crm-systeme-kundenverwaltung.webp" alt="CRM-System für Kundenverwaltung und Lead-Management" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
+                      <Users size={20} strokeWidth={1.5} className="flex-shrink-0" />
+                      <span className="text-sm font-heading font-bold">Kein Lead geht verloren</span>
                     </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-light-300 text-base leading-relaxed mb-4">Alle Anfragen, Angebote und Kundenkontakte zentral verwalten. Automatische Follow-ups, transparente Pipeline und Auswertungen – damit aus Interessenten Aufträge werden.</p>
+                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">CRM-System einrichten lassen<ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
                   </div>
                 </motion.a>
               </div>
@@ -411,7 +432,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* PRACTICE EXAMPLES SECTION */}
-      <section className="section-padding bg-dark-500 border-t border-dark-200/30">
+      <section data-section-label="Praxisbeispiele" className="section-padding bg-dark-500 relative">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-16 text-light-100 text-center">
@@ -477,7 +499,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* SERVICES SECTION */}
-      <section className="section-padding bg-dark-400 border-t border-dark-200/30">
+      <section data-section-label="Umsetzung" className="section-padding bg-dark-400 relative">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden />
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
             <p className="text-3xl md:text-4xl font-heading font-bold mb-16 text-light-100 text-center">
@@ -485,7 +508,13 @@ const Home: React.FC = () => {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {services.map((service, index) => (
+              {[
+                "KI-Chatbots (digitale Kundenassistenz)",
+                "KI-Telefonassistent",
+                "Automatisierungen (Anfragen, Vertrieb & Terminplanung)",
+                "Webseiten",
+                "SEO: Top 3 in Google"
+              ].map((service, index) => (
                 <motion.div
                   key={index}
                   className="flex items-center rounded-xl bg-dark-500/90 p-5 border border-dark-200 shadow-card hover:border-primary-500/50 hover:bg-dark-400 hover:shadow-card-hover transition-all duration-300"
@@ -505,7 +534,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* PROCESS SECTION */}
-      <section className="section-padding bg-dark-400 border-t border-dark-200/30">
+      <section data-section-label="Ablauf" className="section-padding bg-dark-400 relative">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden />
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-20 text-light-100 text-center">
@@ -551,8 +581,9 @@ const Home: React.FC = () => {
       </section>
 
       {/* FINAL CTA SECTION */}
-      <section className="section-padding bg-dark-500 border-t border-dark-200/30">
-        <div className="container mx-auto px-6 md:px-12">
+      <section data-section-label="Jetzt anfragen" className="section-padding bg-gradient-to-b from-dark-500 via-dark-500 to-primary-500/10 relative overflow-hidden">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
+        <div className="container mx-auto px-6 md:px-12 relative">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-10 text-light-100">
               Jetzt unverbindlich anfragen – wir melden uns innerhalb von 24 Stunden
@@ -575,7 +606,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* FAQ SECTION */}
-      <section id="faq" className="section-padding bg-dark-500 border-t border-dark-200/30">
+      <section id="faq" data-section-label="FAQ" className="section-padding bg-dark-400 relative">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden />
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
             <motion.h2

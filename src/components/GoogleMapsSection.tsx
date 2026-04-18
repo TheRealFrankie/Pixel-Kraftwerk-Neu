@@ -10,7 +10,7 @@ const GoogleMapsSection: React.FC = () => {
   const encodedAddress = encodeURIComponent(address);
 
   return (
-    <section className="py-16 bg-dark-400">
+    <section data-section-label="Standort" className="py-16 bg-dark-400">
       <div className="container mx-auto px-4">
         <motion.div
           className="max-w-5xl mx-auto"

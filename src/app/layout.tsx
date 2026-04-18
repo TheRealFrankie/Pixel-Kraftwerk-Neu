@@ -6,6 +6,7 @@ import CookieBanner from '@/components/CookieBanner';
 import AnalyticsScripts from '@/components/AnalyticsScripts';
 import VoiceflowChat from '@/components/VoiceflowChat';
 import ExitIntentModal from '@/components/ExitIntentModal';
+import SectionIndicator from '@/components/SectionIndicator';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import './globals.css';
 
@@ -68,6 +69,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Header />
           <main id="main" className="flex-grow">{children}</main>
+          <SectionIndicator />
           <Footer />
           <CookieBanner />
           <ExitIntentModal />

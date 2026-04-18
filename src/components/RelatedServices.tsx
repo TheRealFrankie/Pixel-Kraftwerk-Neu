@@ -17,6 +17,7 @@ const RELATED_ORDER: string[] = [
   'automatisierungen',
   'webseite',
   'seo-top-3-in-google',
+  'crm-systeme',
 ];
 
 const allServices: ServiceInfo[] = [
@@ -48,6 +49,12 @@ const allServices: ServiceInfo[] = [
     slug: 'seo-top-3-in-google',
     title: 'SEO: Top 3 in Google',
     shortDescription: 'Lokales SEO-Angebot mit Fokus auf Top-Platzierungen für Ihre wichtigsten Suchbegriffe.',
+    image: '/images/seo-top-3-google-local-pack.webp',
+  },
+  {
+    slug: 'crm-systeme',
+    title: 'CRM-Systeme',
+    shortDescription: 'Zentrale Kundenverwaltung, automatisierte Follow-ups und transparente Vertriebspipeline für Ihr Unternehmen.',
     image: '/images/seo-top-3-google-local-pack.webp',
   },
 ];
@@ -91,12 +98,12 @@ const RelatedServices: React.FC<RelatedServicesProps> = ({ currentSlug, anchorBy
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
             {relatedServices.map((service, index) => (
               <motion.a
                 key={service.slug}
                 href={getHref(service.slug)}
-                className="group bg-dark-500 border border-dark-100 overflow-hidden hover:border-primary-500/50 transition-all duration-300 flex flex-col"
+                className="group bg-dark-500 border border-dark-100 overflow-hidden hover:border-primary-500/50 transition-all duration-300 flex flex-col h-full"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -109,18 +116,18 @@ const RelatedServices: React.FC<RelatedServicesProps> = ({ currentSlug, anchorBy
                     alt={service.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 20vw"
                   />
                 </div>
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-lg font-heading font-bold text-light-100 mb-3 group-hover:text-primary-400 transition-colors duration-200">
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="text-base font-heading font-bold text-light-100 mb-2 leading-snug line-clamp-2 min-h-[2.75rem] group-hover:text-primary-400 transition-colors duration-200">
                     {service.title}
                   </h3>
-                  <p className="text-light-300 text-sm mb-4 leading-relaxed flex-1">
+                  <p className="text-light-300 text-sm mb-4 leading-relaxed line-clamp-3 flex-1">
                     {service.shortDescription}
                   </p>
-                  <span className="inline-flex items-center text-primary-500 text-sm font-heading group-hover:translate-x-2 transition-transform duration-200">
-                    {service.title} entdecken
+                  <span className="mt-auto inline-flex items-center text-primary-500 text-sm font-heading group-hover:translate-x-2 transition-transform duration-200">
+                    Mehr erfahren
                     <ArrowRight size={16} className="ml-1" />
                   </span>
                 </div>

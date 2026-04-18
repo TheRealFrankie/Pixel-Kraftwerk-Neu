@@ -153,7 +153,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ inline }) => {
   }
 
   return (
-    <section id="contact" className="section-padding bg-dark-500 border-t border-dark-200/30">
+    <section id="contact" data-section-label="Kontakt" className="section-padding bg-dark-500 border-t border-dark-200/30">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-primary-500">

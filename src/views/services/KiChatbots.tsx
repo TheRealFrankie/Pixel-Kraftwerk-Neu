@@ -21,10 +21,13 @@ import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
+import LocalBusinessSchema from '../../components/LocalBusinessSchema';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
 import { getRegionServiceContent } from '../../data/regionServiceContent';
 import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
 import { getRegionServiceLinkText } from '../../data/services';
+import SubpageLinksBlock from '../../components/SubpageLinksBlock';
+import HeroScrollIndicator from '../../components/HeroScrollIndicator';
 import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
 
 interface KiChatbotsProps {
@@ -136,6 +139,12 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
 
   return (
     <div className="bg-dark-500">
+      <LocalBusinessSchema
+        pageType="service"
+        customDescription={isRegional
+          ? `Digitale Kundenassistenz für Unternehmen in ${regionName} und Umgebung. Pixel Kraftwerk aus Groitzsch richtet KI-Chatbots für Website, WhatsApp, Instagram und Facebook ein.`
+          : 'Digitale Kundenassistenz für automatische Kundenbetreuung auf Ihrer Website. Pixel Kraftwerk aus Groitzsch richtet KI-Chatbots für Website, WhatsApp, Instagram und Facebook ein.'}
+      />
       {isRegional ? (
         <BreadcrumbSchemaRegionService
           regionName={regionName}
@@ -161,7 +170,7 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
         pageName={isRegional ? `KI-Chatbots in ${regionName}` : 'KI-Chatbots'}
       />
       {/* Hero mit Premium-Hintergrundbild – Bild beginnt unterhalb der Header-Leiste */}
-      <section id="digitale-kundenassistenz" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+      <section id="digitale-kundenassistenz" className="relative min-h-screen flex items-center overflow-hidden bg-dark-500">
         <span id="ki-chatbot-fur-ihre-website" className="absolute top-0 left-0" aria-hidden="true" />
         <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
           <BreadcrumbNav overlay items={isRegional ? [
@@ -175,8 +184,8 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
             { label: 'KI-Chatbots' },
           ]} />
         </div>
-        {/* Bild-Container: erst ab Header-Höhe, geht nicht über die Menüleiste */}
-        <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
+        {/* Bild-Container: füllt die gesamte Hero-Sektion (inkl. Header-Bereich) */}
+        <div className="absolute inset-0">
           <Image
             src="/images/ki-chatbot-digitale-kundenassistenz.webp"
             alt="Digitale Kundenassistenz – KI-Chatbot im Einsatz"
@@ -195,7 +204,7 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/15 to-transparent" aria-hidden />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 py-24">
+        <div className="container mx-auto px-4 relative z-10 pt-32 pb-16 md:pt-36 md:pb-20">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/20 border border-primary-500/40 backdrop-blur-sm mb-8 shadow-primary-glow"
@@ -206,7 +215,6 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
               <MessageSquare size={40} className="text-primary-500" strokeWidth={1.5} />
             </motion.div>
 
-            {/* Headline: Typografie nur – weiches Weiß, Schatten, optionaler Stroke für Lesbarkeit */}
             <motion.h1
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold mb-6 leading-tight"
               style={{
@@ -218,7 +226,9 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {isRegional ? `Digitale Kundenassistenz in ${regionName}` : <>Digitale Kundenassistenz Leipzig &amp; Groitzsch</>}
+              {isRegional ? `Digitale Kundenassistenz in ${regionName}` : (
+                <>Digitale Kundenassistenz<span className="sr-only"> Leipzig &amp; Groitzsch</span></>
+              )}
             </motion.h1>
 
             <motion.h2
@@ -231,7 +241,7 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
             </motion.h2>
 
             <motion.p
-              className="text-lg sm:text-xl max-w-3xl mx-auto mb-4 leading-relaxed font-sans"
+              className="text-lg sm:text-xl max-w-3xl mx-auto mb-4 leading-relaxed"
               style={{
                 color: '#F5F7FA',
                 textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
@@ -241,48 +251,20 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Ihre Website kann mehr als nur schön aussehen und Leistungen aufzählen: Sie kann <strong style={{ color: '#F5F7FA' }}>Anfragen annehmen, Fragen beantworten und Termine erfassen</strong> – automatisch, zuverlässig und <strong style={{ color: '#F5F7FA' }}>24/7</strong>.
+              Ihre Website kann <strong style={{ color: '#F5F7FA' }}>Anfragen annehmen, Fragen beantworten und Termine erfassen</strong> – automatisch, zuverlässig und <strong style={{ color: '#F5F7FA' }}>24/7</strong>.
             </motion.p>
             <motion.p
-              className="text-lg sm:text-xl max-w-3xl mx-auto mb-6 leading-relaxed font-sans"
+              className="text-base sm:text-lg max-w-3xl mx-auto mb-8 leading-relaxed"
               style={{
-                color: '#F5F7FA',
+                color: '#E8EAED',
                 textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
-                WebkitTextStroke: '0.5px rgba(0,0,0,0.2)',
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.25 }}
             >
               Unsere digitale Kundenassistenz übernimmt die erste Kommunikation mit Ihren Website-Besuchern, beantwortet häufige Fragen und erfasst Termine oder Anliegen – so, dass bei Ihnen <strong style={{ color: '#F5F7FA' }}>nur die wirklich relevanten Anfragen</strong> ankommen.
             </motion.p>
-
-            <motion.div
-              className="border border-primary-500/40 rounded-xl px-4 py-4 sm:px-5 sm:py-4 mb-8 max-w-2xl mx-auto text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <p
-                className="text-base sm:text-lg leading-relaxed"
-                style={{
-                  color: '#F5F7FA',
-                  textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
-                  WebkitTextStroke: '0.5px rgba(0,0,0,0.2)',
-                }}
-              >
-                👉 <strong>Erleben Sie die digitale Kundenassistenz live – direkt hier auf der Website.</strong>
-              </p>
-              <p
-                className="mt-2 text-sm sm:text-base"
-                style={{
-                  color: '#E8EAED',
-                  textShadow: '0 2px 8px rgba(0,0,0,0.5)',
-                }}
-              >
-                <em>Hinweis: Die Assistenz auf dieser Seite ist eine Live-Demo unseres Systems.</em>
-              </p>
-            </motion.div>
 
             <motion.button
               onClick={scrollToContact}
@@ -296,6 +278,7 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
             </motion.button>
           </div>
         </div>
+        <HeroScrollIndicator />
         {/* Feine Trennlinie am unteren Hero-Rand */}
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
       </section>
@@ -1074,6 +1057,43 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
           </div>
         </div>
       </section>
+
+      {isRegional && regionContent?.paragraphs && regionContent.paragraphs.length > 0 && (
+        <section className="py-16 bg-dark-400">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
+                KI-Chatbots für Unternehmen in {regionName}
+              </h2>
+              {regionContent.paragraphs.map((p, i) => (
+                <p key={i} className="text-light-200 text-lg leading-relaxed mb-5">{p}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {!isRegional && (
+        <section className="py-12 bg-dark-400">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <p className="text-light-200 text-lg leading-relaxed">
+                Wir entwickeln KI-Chatbots für Unternehmen in{' '}
+                <a href="/leistungsgebiete/leipzig" className="text-primary-400 hover:underline">Leipzig</a>,{' '}
+                <a href="/leistungsgebiete/markkleeberg" className="text-primary-400 hover:underline">Markkleeberg</a>,{' '}
+                <a href="/leistungsgebiete/borna" className="text-primary-400 hover:underline">Borna</a> und der gesamten Region.
+                Von unserem Standort in <a href="/leistungsgebiete/groitzsch" className="text-primary-400 hover:underline">Groitzsch</a> aus betreuen wir Projekte persönlich – von der ersten Analyse bis zur laufenden Optimierung.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <SubpageLinksBlock
+        serviceSlug="ki-chatbots"
+        regionSlug={isRegional ? regionSlug : undefined}
+        title="Chatbot-Lösungen im Detail"
+      />
 
       <RelatedServices currentSlug="ki-chatbots" />
 

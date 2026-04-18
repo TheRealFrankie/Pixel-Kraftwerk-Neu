@@ -18,6 +18,8 @@ const SERVICE_TITLE_KEYWORDS: Record<ServiceSlug, string> = {
     'moderner Website, Firmenhomepage oder Webdesign im Mietmodell',
   'seo-top-3':
     'lokaler Suchmaschinenoptimierung, Google-Ranking oder SEO-Beratung',
+  'crm-systeme':
+    'CRM-System, Kundenverwaltung oder Lead-Management',
 };
 
 type Props = { params: Promise<{ region: string; service: string }> };

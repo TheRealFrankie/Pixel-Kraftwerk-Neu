@@ -100,6 +100,16 @@ const Services: React.FC = () => {
       description:
         "Lokales SEO mit Fokus auf Top-Platzierungen für die Suchbegriffe, die Ihnen wirklich Kunden bringen – mit klarer Strategie und transparenten Ergebnissen.",
     },
+    {
+      icon: <Users size={24} />,
+      title: "CRM-Systeme & Lead-Management",
+      slug: "crm-systeme",
+      imageSrc: "/images/crm-systeme-kundenverwaltung.webp",
+      imageAlt: "CRM-System: Zentrale Kundenverwaltung und Lead-Pipeline für kleine Unternehmen",
+      badgeLabel: "Kein Lead geht verloren",
+      description:
+        "Alle Anfragen, Angebote und Kundenkontakte zentral verwalten. Automatische Follow-ups, transparente Pipeline und Auswertungen – damit aus Interessenten Aufträge werden.",
+    },
   ];
 
   const serviceDetails: ServiceDetail[] = [
@@ -158,6 +168,17 @@ const Services: React.FC = () => {
       ],
       slug: "seo-top-3-in-google"
     },
+    {
+      icon: <Users size={40} strokeWidth={1.5} />,
+      title: "CRM-Systeme & Lead-Management",
+      description: "Wir richten CRM-Systeme ein, die zu Ihrem Geschäft passen: zentrale Kundenverwaltung, visuelle Vertriebspipeline, automatisierte Follow-ups und aussagekräftige Auswertungen.",
+      benefits: [
+        "Zentrale Kundendatenbank statt verstreuter Listen",
+        "Automatische Follow-ups und Erinnerungen",
+        "Transparente Pipeline mit Auswertungen und Kennzahlen"
+      ],
+      slug: "crm-systeme"
+    },
   ];
 
   const companyBenefits = [
@@ -181,8 +202,8 @@ const Services: React.FC = () => {
             { label: 'Leistungen' },
           ]} />
         </div>
-        {/* Bild beginnt unterhalb der Header-Leiste */}
-        <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
+        {/* Bild füllt die gesamte Hero-Sektion (inkl. Header-Bereich) */}
+        <div className="absolute inset-0">
           <Image
             src="/images/automatisierungen-anfragen-vertrieb-terminplanung.webp"
             alt="Pixel Kraftwerk – Leistungen für Automatisierung, Websites & digitale Kundenkommunikation"
@@ -210,7 +231,7 @@ const Services: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Unsere Leistungen – aus einer Hand
+              Leistungen der KI-Agentur Groitzsch &amp; Leipzig
             </motion.h1>
 
             <motion.p
@@ -295,110 +316,52 @@ const Services: React.FC = () => {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {coreServices.map((service, index) => {
-                const isSeoCard = service.slug === 'seo-top-3-in-google';
-
-                if (isSeoCard) {
-                  return (
-                    <motion.a
-                      key={service.slug}
-                      href={`/${service.slug}`}
-                      className="group block lg:col-span-2 rounded-2xl relative overflow-hidden border border-dark-200/80 bg-dark-500/95 shadow-card hover:border-primary-500/50 hover:shadow-[0_0_48px_-12px_rgba(0,179,166,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 transition-all duration-500"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                    >
-                      <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] min-h-[260px] lg:min-h-[280px]">
-                        <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[280px] overflow-hidden bg-dark-400 order-2 lg:order-1">
-                          <Image
-                            src={service.imageSrc}
-                            alt={service.imageAlt}
-                            fill
-                            sizes="(max-width: 1024px) 100vw, 55vw"
-                            className="object-cover object-center lg:object-right-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-dark-500/60 lg:to-dark-500/80 pointer-events-none" aria-hidden />
-                          <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 text-primary-400 lg:hidden">
-                            <Search size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                            <span className="text-sm font-heading font-bold">{service.badgeLabel}</span>
-                          </div>
-                        </div>
-                        <div className="flex flex-col justify-center p-6 md:p-8 lg:p-8 order-1 lg:order-2 relative bg-dark-500 border-l-0 lg:border-l border-dark-200/50">
-                          <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                            <span className="inline-flex items-center rounded-full bg-primary-500/20 text-primary-400 border border-primary-500/30 px-3 py-1.5 text-xs font-heading font-bold tracking-wide">
-                              Fokus-Leistung
-                            </span>
-                          </div>
-                          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary-500/20 text-primary-400 mb-5 flex-shrink-0 shadow-inner border border-primary-500/20">
-                            <Search size={28} strokeWidth={1.5} />
-                          </div>
-                          <h3 className="text-xl md:text-2xl font-heading font-bold text-light-100 mb-3 group-hover:text-primary-400 transition-colors duration-200">
-                            {service.title}
-                          </h3>
-                          {service.description && (
-                            <p className="text-light-200 text-sm md:text-base leading-relaxed mb-4 max-w-xl">
-                              {service.description}
-                            </p>
-                          )}
-                          <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                            {service.title} entdecken
-                            <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-                          </div>
-                        </div>
-                      </div>
-                    </motion.a>
-                  );
-                }
-
-                return (
-                  <motion.a
-                    key={service.slug}
-                    href={`/${service.slug}`}
-                    className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                  >
-                    <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
-                      <Image
-                        src={service.imageSrc}
-                        alt={service.imageAlt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      />
-                      <div
-                        className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/30 to-transparent pointer-events-none"
-                        aria-hidden
-                      />
-                      <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
-                        <span className="flex items-center justify-center w-8 h-8 rounded-xl bg-primary-500/15 border border-primary-500/30">
-                          {service.icon}
-                        </span>
-                        <span className="text-xs font-heading font-bold line-clamp-2">{service.badgeLabel}</span>
-                      </div>
+              {coreServices.map((service, index) => (
+                <motion.a
+                  key={service.slug}
+                  href={`/${service.slug}`}
+                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
+                    <Image
+                      src={service.imageSrc}
+                      alt={service.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/30 to-transparent pointer-events-none"
+                      aria-hidden
+                    />
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
+                      <span className="flex items-center justify-center w-8 h-8 rounded-xl bg-primary-500/15 border border-primary-500/30">
+                        {service.icon}
+                      </span>
+                      <span className="text-xs font-heading font-bold line-clamp-2">{service.badgeLabel}</span>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-heading font-bold text-light-100 mb-2 group-hover:text-primary-400 transition-colors duration-200">
-                        {service.title}
-                      </h3>
-                      {service.description && (
-                        <p className="text-light-300 text-base leading-relaxed mb-4">
-                          {service.description}
-                        </p>
-                      )}
-                      <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                        {service.title} entdecken
-                        <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-                      </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-heading font-bold text-light-100 mb-2 group-hover:text-primary-400 transition-colors duration-200">
+                      {service.title}
+                    </h3>
+                    {service.description && (
+                      <p className="text-light-300 text-base leading-relaxed mb-4">
+                        {service.description}
+                      </p>
+                    )}
+                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
+                      {service.title} entdecken
+                      <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                     </div>
-                  </motion.a>
-                );
-              })}
+                  </div>
+                </motion.a>
+              ))}
             </div>
           </div>
         </div>

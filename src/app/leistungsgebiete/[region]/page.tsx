@@ -11,8 +11,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { region } = await params;
   const slug = getValidRegionSlug(region);
   const content = getRegionContent(slug);
+  const schemaTitle = `Beste KI-Agentur ${content.name} – KI-Chatbots, Telefonassistenten, Automatisierungen, Webseiten, Local SEO & CRM in Ihrer Nähe | Pixel Kraftwerk`;
   return {
-    title: { absolute: content.title },
+    title: { absolute: schemaTitle },
     description: content.metaDescription,
     alternates: { canonical: `${baseUrl}/leistungsgebiete/${slug}` },
   };

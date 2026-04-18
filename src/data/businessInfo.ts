@@ -67,7 +67,9 @@ export const businessInfo = {
     "Website-Entwicklung",
     "KI-Video-Produktion",
     "Workflow-Automatisierung",
-    "SEO-Optimierungen"
+    "SEO-Optimierungen",
+    "CRM-Systeme & Lead-Management",
+    "Kundenverwaltung & Pipeline-Management"
   ],
 
   socialMedia: {
@@ -130,6 +132,16 @@ export const businessInfo = {
   "Pixel Kraftwerk SEO",
   "Pixel Kraftwerk",
   "Pixel Kraftwerk KI",
-  "KI Agentur Pixel Kraftwerk"
+  "KI Agentur Pixel Kraftwerk",
+  "CRM System",
+  "CRM System Leipzig",
+  "CRM für kleine Unternehmen",
+  "CRM für Handwerker",
+  "Lead Management",
+  "Lead Management Leipzig",
+  "Kundenverwaltung Software",
+  "CRM Agentur Leipzig",
+  "CRM Einführung",
+  "Pipeline Management"
   ]
 };

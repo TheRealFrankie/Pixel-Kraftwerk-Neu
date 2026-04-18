@@ -149,6 +149,7 @@ iframe[src*="voiceflow"] {
 
 [data-theme="light"] .bg-dark-500\/95 { background-color: rgba(226, 229, 234, 0.97) !important; }
 [data-theme="light"] .bg-dark-500\/90 { background-color: rgba(226, 229, 234, 0.92) !important; }
+[data-theme="light"] .bg-dark-500\/80 { background-color: rgba(226, 229, 234, 0.88) !important; }
 [data-theme="light"] .bg-dark-500\/60 { background-color: rgba(226, 229, 234, 0.75) !important; }
 [data-theme="light"] .bg-dark-500\/50 { background-color: rgba(226, 229, 234, 0.6) !important; }
 [data-theme="light"] .bg-dark-400\/95 { background-color: rgba(220, 224, 230, 0.97) !important; }

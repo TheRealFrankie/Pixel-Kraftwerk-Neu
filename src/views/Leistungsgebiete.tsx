@@ -56,7 +56,7 @@ const Leistungsgebiete: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              Unsere <span className="text-primary-500">Leistungsgebiete</span>
+              Leistungsgebiete der <span className="text-primary-500">KI-Agentur Groitzsch</span>
             </motion.h1>
             <motion.p
               className="text-xl text-light-200 mb-6"

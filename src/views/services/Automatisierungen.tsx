@@ -17,11 +17,14 @@ import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
+import LocalBusinessSchema from '../../components/LocalBusinessSchema';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 import { getRegionServiceContent } from '../../data/regionServiceContent';
 import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
 import { getRegionServiceLinkText } from '../../data/services';
+import SubpageLinksBlock from '../../components/SubpageLinksBlock';
+import HeroScrollIndicator from '../../components/HeroScrollIndicator';
 import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
 
 interface AutomatisierungenProps {
@@ -160,6 +163,12 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
   return (
     <>
       <div className="bg-dark-500">
+        <LocalBusinessSchema
+          pageType="service"
+          customDescription={isRegional
+            ? `Automatisierungen für Anfragen, Vertrieb & Terminplanung in ${regionName} und Umgebung. Pixel Kraftwerk aus Groitzsch baut Workflows, die Anfragen sortieren, Termine buchen und Follow-ups automatisch auslösen.`
+            : 'Automatisierungen für Anfragen, Vertrieb & Terminplanung. Pixel Kraftwerk aus Groitzsch baut Workflows, die Anfragen sortieren, Termine buchen und Follow-ups automatisch auslösen.'}
+        />
         {isRegional ? (
           <BreadcrumbSchemaRegionService
             regionName={regionName}
@@ -191,7 +200,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
           pageName={isRegional ? `Automatisierungen in ${regionName}` : 'Automatisierungen'}
         />
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
-      <section id="ki-automatisierung-fur-anfragen-termine" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+      <section id="ki-automatisierung-fur-anfragen-termine" className="relative min-h-screen flex items-center overflow-hidden bg-dark-500">
         <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
           <BreadcrumbNav overlay items={isRegional ? [
             { label: 'Startseite', href: '/' },
@@ -204,7 +213,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
             { label: 'Automatisierungen' },
           ]} />
         </div>
-        <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
+        <div className="absolute inset-0">
           <Image
             src="/images/automatisierungen-anfragen-vertrieb-terminplanung.webp"
             alt="Automatisierungen für Anfragen, Vertrieb und Terminplanung"
@@ -218,7 +227,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/15 to-transparent" aria-hidden />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 py-24">
+        <div className="container mx-auto px-4 relative z-10 pt-32 pb-16 md:pt-36 md:pb-20">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/20 border border-primary-500/40 backdrop-blur-sm mb-8 shadow-primary-glow"
@@ -240,7 +249,9 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {isRegional ? `Automatisierungen in ${regionName}` : <>Automatisierungen Leipzig &amp; Groitzsch</>}
+              {isRegional ? `Automatisierungen in ${regionName}` : (
+                <>Automatisierungen<span className="sr-only"> Leipzig &amp; Groitzsch</span></>
+              )}
             </motion.h1>
 
             <motion.h2
@@ -289,6 +300,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
             </motion.button>
           </div>
         </div>
+        <HeroScrollIndicator />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
       </section>
 
@@ -938,6 +950,42 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
           </div>
         </section>
       )}
+
+      {isRegional && regionContent?.paragraphs && regionContent.paragraphs.length > 0 && (
+        <section className="py-16 bg-dark-400">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
+                Automatisierungen für Unternehmen in {regionName}
+              </h2>
+              {regionContent.paragraphs.map((p, i) => (
+                <p key={i} className="text-light-200 text-lg leading-relaxed mb-5">{p}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {!isRegional && (
+        <section className="py-12 bg-dark-400">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <p className="text-light-200 text-lg leading-relaxed">
+                Unsere Automatisierungslösungen setzen wir besonders häufig für Unternehmen in{' '}
+                <a href="/leistungsgebiete/leipzig" className="text-primary-400 hover:underline">Leipzig</a> und{' '}
+                <a href="/leistungsgebiete/zwenkau" className="text-primary-400 hover:underline">Zwenkau</a> um.
+                Von <a href="/leistungsgebiete/groitzsch" className="text-primary-400 hover:underline">Groitzsch</a> aus arbeiten wir direkt mit Ihrem Team – persönlich, transparent und praxisnah.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <SubpageLinksBlock
+        serviceSlug="automatisierungen"
+        regionSlug={isRegional ? regionSlug : undefined}
+        title="Automatisierung im Detail"
+      />
 
       <RelatedServices currentSlug="automatisierungen" />
 

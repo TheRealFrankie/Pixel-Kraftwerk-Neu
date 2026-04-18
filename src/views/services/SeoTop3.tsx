@@ -21,6 +21,7 @@ import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
+import LocalBusinessSchema from '../../components/LocalBusinessSchema';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 import VorherNachherSection from '../../components/VorherNachherSection';
@@ -28,6 +29,8 @@ import WieFunktioniertEsSection from '../../components/WieFunktioniertEsSection'
 import { getRegionServiceContent } from '../../data/regionServiceContent';
 import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
 import { getRegionServiceLinkText } from '../../data/services';
+import SubpageLinksBlock from '../../components/SubpageLinksBlock';
+import HeroScrollIndicator from '../../components/HeroScrollIndicator';
 import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
 
 interface SeoTop3Props {
@@ -121,6 +124,12 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
   return (
     <>
       <div className="bg-dark-500">
+        <LocalBusinessSchema
+          pageType="service"
+          customDescription={isRegional
+            ? `Lokales SEO für Unternehmen in ${regionName} und Umgebung. Pixel Kraftwerk aus Groitzsch bringt Ihr Unternehmen in die Top 3 bei Google für die Suchbegriffe, die wirklich Kunden bringen.`
+            : 'Lokales SEO für Unternehmen aus Leipzig, Groitzsch und Region. Pixel Kraftwerk bringt Ihr Unternehmen in die Top 3 bei Google für die Suchbegriffe, die wirklich Kunden bringen.'}
+        />
         <ServiceJsonLd
           name={isRegional ? `SEO: Top 3 in Google in ${regionName}` : 'SEO: Top 3 in Google'}
           serviceType="SEO"
@@ -152,7 +161,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
           />
         )}
       {/* Hero – Premium zweispaltig */}
-      <section id="lokale-sichtbarkeit-ausbauen" className="relative bg-dark-500 pt-16 pb-0 md:pt-20 overflow-hidden">
+      <section id="lokale-sichtbarkeit-ausbauen" className="relative min-h-screen flex items-center bg-dark-500 pt-16 pb-0 md:pt-20 overflow-hidden">
         {/* Subtile radiale Hintergrundaufhellung */}
         <div className="absolute top-0 inset-x-0 h-[560px] bg-gradient-radial-subtle pointer-events-none" aria-hidden />
 
@@ -181,10 +190,11 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                 transition={{ duration: 0.5 }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 animate-pulse" aria-hidden />
-                {isRegional ? `Local SEO für ${regionName}` : <>Local SEO für Leipzig &amp; Groitzsch</>}
+                {isRegional ? `Local SEO für ${regionName}` : (
+                  <>Local SEO für<span className="sr-only"> Leipzig &amp; Groitzsch</span></>
+                )}
               </motion.div>
 
-              {/* H1 */}
               <motion.h1
                 className="text-2xl sm:text-3xl md:text-[2rem] xl:text-[2.4rem] font-heading font-bold text-light-100 leading-[1.15] mb-4"
                 initial={{ opacity: 0, y: 24 }}
@@ -319,6 +329,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
           </div>
         </div>
 
+        <HeroScrollIndicator />
         {/* Trennlinie zum nächsten Abschnitt */}
         <div className="h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
       </section>
@@ -911,6 +922,44 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
           </div>
         </div>
       </section>
+
+      {isRegional && regionContent?.paragraphs && regionContent.paragraphs.length > 0 && (
+        <section className="py-16 bg-dark-400">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
+                Lokales SEO für Unternehmen in {regionName}
+              </h2>
+              {regionContent.paragraphs.map((p, i) => (
+                <p key={i} className="text-light-200 text-lg leading-relaxed mb-5">{p}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {!isRegional && (
+        <section className="py-12 bg-dark-400">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <p className="text-light-200 text-lg leading-relaxed">
+                Lokales SEO funktioniert dann am besten, wenn es auf Ihren Standort zugeschnitten ist. Wir bringen Unternehmen in{' '}
+                <a href="/leistungsgebiete/leipzig" className="text-primary-400 hover:underline">Leipzig</a>,{' '}
+                <a href="/leistungsgebiete/markkleeberg" className="text-primary-400 hover:underline">Markkleeberg</a> und{' '}
+                <a href="/leistungsgebiete/borna" className="text-primary-400 hover:underline">Borna</a>{' '}
+                gezielt in die Top-3-Positionen bei Google – mit lokaler Strategie direkt aus{' '}
+                <a href="/leistungsgebiete/groitzsch" className="text-primary-400 hover:underline">Groitzsch</a>.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <SubpageLinksBlock
+        serviceSlug="seo-top-3"
+        regionSlug={isRegional ? regionSlug : undefined}
+        title="SEO-Themen im Detail"
+      />
 
       <RelatedServices
         currentSlug="seo-top-3-in-google"

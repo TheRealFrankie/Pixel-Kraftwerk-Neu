@@ -12,6 +12,16 @@ const serviceLinks = [
   { title: 'Automatisierungen', path: '/automatisierungen' },
   { title: 'Webseiten', path: '/webseite' },
   { title: 'SEO: Top 3 in Google', path: '/seo-top-3-in-google' },
+  { title: 'CRM-Systeme', path: '/crm-systeme' },
+];
+
+const regionLinks = [
+  { title: 'Leipzig', path: '/leistungsgebiete/leipzig' },
+  { title: 'Groitzsch', path: '/leistungsgebiete/groitzsch' },
+  { title: 'Markkleeberg', path: '/leistungsgebiete/markkleeberg' },
+  { title: 'Borna', path: '/leistungsgebiete/borna' },
+  { title: 'Zwenkau', path: '/leistungsgebiete/zwenkau' },
+  { title: 'Alle Gebiete', path: '/leistungsgebiete' },
 ];
 
 const navItems: NavItem[] = [
@@ -51,10 +61,10 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-dark-400 border-t border-dark-200">
       <div className="container mx-auto px-4 pt-10 pb-6 md:pt-12 md:pb-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-10">
 
           {/* Spalte 1: Logo + Claim + Social */}
-          <div className="col-span-2 md:col-span-1">
+          <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <Logo />
             <p className="text-light-400 text-sm mt-3 mb-4">
               Zukunft. Automatisiert. Jetzt.
@@ -119,7 +129,24 @@ const Footer: React.FC = () => {
             </nav>
           </div>
 
-          {/* Spalte 4: Kontakt (NAP) */}
+          {/* Spalte 4: Leistungsgebiete */}
+          <div>
+            <h2 className="text-light-100 font-heading font-bold text-sm mb-3">Leistungsgebiete</h2>
+            <ul className="space-y-2">
+              {regionLinks.map((region) => (
+                <li key={region.path}>
+                  <a
+                    href={region.path}
+                    className="text-light-300 text-sm hover:text-primary-400 transition-colors duration-200"
+                  >
+                    {region.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Spalte 5: Kontakt (NAP) */}
           <div>
             <h2 className="text-light-100 font-heading font-bold text-sm mb-3">Kontakt</h2>
             <address className="not-italic space-y-2 text-sm text-light-300">

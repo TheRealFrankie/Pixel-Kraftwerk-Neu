@@ -26,11 +26,14 @@ import ServicedRegionsBlock from '../../components/ServicedRegionsBlock';
 import RegionServiceLinksBlock from '../../components/RegionServiceLinksBlock';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
+import LocalBusinessSchema from '../../components/LocalBusinessSchema';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
 import { getRegionServiceContent } from '../../data/regionServiceContent';
 import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
 import { getRegionServiceLinkText } from '../../data/services';
+import SubpageLinksBlock from '../../components/SubpageLinksBlock';
+import HeroScrollIndicator from '../../components/HeroScrollIndicator';
 import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
 
 interface TelefonassistentenProps {
@@ -145,6 +148,12 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
 
   return (
     <div className="bg-dark-500">
+      <LocalBusinessSchema
+        pageType="service"
+        customDescription={isRegional
+          ? `Telefonische Kundenassistenz für Unternehmen in ${regionName} und Umgebung. Pixel Kraftwerk aus Groitzsch richtet KI-Telefonassistenten für Inbound-Anrufe, Terminbuchung und Lead-Qualifizierung ein.`
+          : 'Telefonische Kundenassistenz für automatische Anrufannahme. Pixel Kraftwerk aus Groitzsch richtet KI-Telefonassistenten für Inbound-Anrufe, Terminbuchung und Lead-Qualifizierung ein.'}
+      />
       {isRegional ? (
         <BreadcrumbSchemaRegionService
           regionName={regionName}
@@ -170,7 +179,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
         pageName={isRegional ? `Telefonassistenten in ${regionName}` : 'Telefonassistenten'}
       />
       {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
-      <section id="ki-telefonagent-fur-ihr-unternehmen" className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark-500">
+      <section id="ki-telefonagent-fur-ihr-unternehmen" className="relative min-h-screen flex items-center overflow-hidden bg-dark-500">
         <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
           <BreadcrumbNav overlay items={isRegional ? [
             { label: 'Startseite', href: '/' },
@@ -183,7 +192,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
             { label: 'Telefonassistenten' },
           ]} />
         </div>
-        <div className="absolute top-20 left-0 right-0 bottom-0 md:top-24">
+        <div className="absolute inset-0">
           <Image
             src="/images/ki-telefonassistent.webp"
             alt="Telefonische Kundenassistenz – KI-Anrufannahme"
@@ -197,7 +206,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/15 to-transparent" aria-hidden />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 py-24">
+        <div className="container mx-auto px-4 relative z-10 pt-32 pb-16 md:pt-36 md:pb-20">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/20 border border-primary-500/40 backdrop-blur-sm mb-8 shadow-primary-glow"
@@ -219,7 +228,9 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {isRegional ? `Telefonische Kundenassistenz in ${regionName}` : <>Telefonische Kundenassistenz Leipzig &amp; Groitzsch</>}
+              {isRegional ? `Telefonische Kundenassistenz in ${regionName}` : (
+                <>Telefonische Kundenassistenz<span className="sr-only"> Leipzig &amp; Groitzsch</span></>
+              )}
             </motion.h1>
 
             <motion.h2
@@ -273,6 +284,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
             </motion.button>
           </div>
         </div>
+        <HeroScrollIndicator />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
       </section>
 
@@ -796,6 +808,43 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
           </div>
         </div>
       </section>
+
+      {isRegional && regionContent?.paragraphs && regionContent.paragraphs.length > 0 && (
+        <section className="py-16 bg-dark-400">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
+                Telefonassistenten für Unternehmen in {regionName}
+              </h2>
+              {regionContent.paragraphs.map((p, i) => (
+                <p key={i} className="text-light-200 text-lg leading-relaxed mb-5">{p}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {!isRegional && (
+        <section className="py-12 bg-dark-400">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <p className="text-light-200 text-lg leading-relaxed">
+                Unsere KI-Telefonassistenten entlasten Teams in{' '}
+                <a href="/leistungsgebiete/leipzig" className="text-primary-400 hover:underline">Leipzig</a>,{' '}
+                <a href="/leistungsgebiete/borna" className="text-primary-400 hover:underline">Borna</a> und{' '}
+                <a href="/leistungsgebiete/markkleeberg" className="text-primary-400 hover:underline">Markkleeberg</a> täglich bei der Anrufannahme.
+                Direkt aus <a href="/leistungsgebiete/groitzsch" className="text-primary-400 hover:underline">Groitzsch</a> – persönliche Betreuung, kurze Wege.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <SubpageLinksBlock
+        serviceSlug="telefonassistenten"
+        regionSlug={isRegional ? regionSlug : undefined}
+        title="Telefonassistenten im Detail"
+      />
 
       <RelatedServices currentSlug="telefonassistenten" />
 

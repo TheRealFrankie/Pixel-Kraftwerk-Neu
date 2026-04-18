@@ -274,6 +274,59 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
     ],
   },
 
+  'leipzig.crm-systeme': {
+    regionSlug: 'leipzig',
+    regionName: 'Leipzig',
+    serviceSlug: 'crm-systeme',
+    serviceLabel: 'CRM-Systeme',
+    metaDescription:
+      'CRM-Systeme für Unternehmen in Leipzig – Pixel Kraftwerk richtet Kundenverwaltung, Lead-Management und automatisierte Vertriebspipelines ein.',
+    intro:
+      'Leipziger Unternehmen wachsen – und mit dem Wachstum steigt die Zahl an Anfragen, Angeboten und Kundenkontakten. Wer da noch mit Excel und E-Mail arbeitet, verliert Überblick und Aufträge. Ein CRM-System bringt Struktur in Ihren Vertrieb und sorgt dafür, dass kein Lead in Leipzig und der Region untergeht.',
+    paragraphs: [
+      'Leipzig hat sich in den letzten Jahren zu einem der dynamischsten Wirtschaftsstandorte Mitteldeutschlands entwickelt. Handwerksbetriebe in Plagwitz, Agenturen im Südviertel, Praxen in Gohlis und Dienstleister in der Innenstadt – sie alle teilen ein Problem: Je mehr Anfragen reinkommen, desto schwieriger wird es, den Überblick zu behalten. Ein CRM-System löst dieses Problem, indem es alle Kundenkontakte, Anfragen und Follow-ups an einem zentralen Ort bündelt.',
+      'Für Leipziger Unternehmen richten wir CRM-Systeme ein, die zu ihrem Arbeitsalltag passen. Das beginnt mit einer ehrlichen Analyse: Wie kommen Ihre Anfragen rein? Über Kontaktformular, Telefon, Google Ads, Empfehlungen? Was passiert danach – wer fasst nach, wie schnell, mit welchem Ergebnis? Auf dieser Basis bauen wir Pipelines, die Ihren tatsächlichen Vertriebsprozess abbilden, statt ein theoretisches Ideal aufzuzwingen.',
+      'Die Integration mit Ihrer bestehenden Infrastruktur ist entscheidend. Website-Formulare, E-Mail-Postfächer, Kalender und – falls vorhanden – unser KI-Chatbot oder Telefonassistent fließen automatisch ins CRM. So entsteht aus jeder Anfrage ein sauber dokumentierter Lead, den Ihr Team in Ruhe bearbeiten kann. Automatisierte Follow-up-E-Mails und Erinnerungen sorgen dafür, dass keine Anfrage vergessen wird.',
+      'Besonders Leipziger Handwerksbetriebe und Dienstleister profitieren von mobilen CRM-Apps: Ob auf der Baustelle in Connewitz oder beim Kundentermin in Schleußig – alle Infos sind griffbereit. Neue Anfragen werden direkt zugewiesen, Termine bestätigt und Angebote nachgefasst, ohne dass jemand im Büro anrufen muss.',
+      'Als Unternehmen aus Groitzsch kennen wir den Leipziger Markt und die Anforderungen lokaler Betriebe. Wir bieten persönliche Beratung vor Ort, praxisnahe Schulungen und eine Betreuung, die über das Setup hinausgeht. Viele unserer Leipziger Kunden starten mit einem einfachen Pipeline-Setup und erweitern Schritt für Schritt – genau in dem Tempo, das zu ihrem Team passt.',
+    ],
+    faqs: [
+      {
+        q: 'Welches CRM-System empfehlt ihr für Leipziger Unternehmen?',
+        a: 'Das hängt von Teamgröße und Anforderungen ab. Für viele lokale Unternehmen funktionieren Plattformen wie HubSpot, Pipedrive oder Brevo sehr gut. Wir beraten herstellerunabhängig und wählen die Lösung, die zu Ihrem Alltag passt.',
+      },
+      {
+        q: 'Kann ich mir das CRM-System vor Ort in Leipzig zeigen lassen?',
+        a: 'Ja. Wir kommen gerne zu Ihnen oder Sie besuchen uns in Groitzsch – in einem persönlichen Termin zeigen wir Ihnen, wie ein CRM für Ihren Betrieb konkret aussehen würde.',
+      },
+      {
+        q: 'Wie lange dauert die CRM-Einführung für ein Leipziger Unternehmen?',
+        a: 'Ein Basis-Setup mit den wichtigsten Pipelines und Automatisierungen steht in 2–4 Wochen. Komplexere Projekte mit Datenmigration und vielen Integrationen dauern 4–8 Wochen.',
+      },
+      {
+        q: 'Können bestehende Excel-Listen und Outlook-Kontakte importiert werden?',
+        a: 'Ja. Wir migrieren Ihre bestehenden Daten sauber ins neue System, damit keine Kundenhistorie verloren geht. Das gehört zu jedem CRM-Projekt standardmäßig dazu.',
+      },
+    ],
+    highlights: [
+      'CRM-Einführung speziell für Leipziger Unternehmen',
+      'Persönliche Beratung vor Ort in Leipzig und Groitzsch',
+      'Integration mit Website, Chatbot und Telefonassistent',
+      'Mobile CRM-App für Außendienst und Baustelle',
+    ],
+    localHook: 'Über 600.000 Einwohner, ein wachsender Markt und Ihr nächster Kunde googelt gerade – haben Sie den Überblick?',
+    localSection: [
+      'Leipzig bietet enormes Potenzial für lokale Unternehmen, aber nur wer seine Anfragen strukturiert bearbeitet, schöpft dieses Potenzial aus. In Stadtteilen wie Plagwitz, Connewitz und Gohlis herrscht starker Wettbewerb – wer schneller und organisierter nachfasst, gewinnt den Auftrag.',
+      'Unsere CRM-Lösungen für Leipzig berücksichtigen die Besonderheiten des lokalen Marktes: kurze Entscheidungswege, persönliche Empfehlungen und die Erwartung schneller Reaktionszeiten. Mit einem professionell eingerichteten CRM-System heben Sie sich von Mitbewerbern ab, die noch mit Zettelwirtschaft arbeiten.',
+    ],
+    localFaqs: [
+      {
+        q: 'Arbeitet Pixel Kraftwerk auch direkt vor Ort in Leipzig?',
+        a: 'Ja. Unser Büro ist im nahegelegenen Groitzsch, wir sind regelmäßig in Leipzig und bieten persönliche Termine für Analyse, Schulung und Betreuung an.',
+      },
+    ],
+  },
+
   'groitzsch.ki-chatbots': {
     regionSlug: 'groitzsch',
     regionName: 'Groitzsch',

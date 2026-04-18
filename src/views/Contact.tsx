@@ -88,7 +88,7 @@ const Contact: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              Sprechen wir über <span className="text-primary-500">Ihr Projekt</span>
+              Kontakt zur KI-Agentur in <span className="text-primary-500">Groitzsch &amp; Leipzig</span>
             </motion.h1>
             <motion.p
               className="text-light-200 text-lg leading-relaxed max-w-2xl"
@@ -206,6 +206,51 @@ const Contact: React.FC = () => {
             >
               <ContactForm inline />
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES & AREAS INTERLINKING */}
+      <section className="py-16 bg-dark-400 border-t border-dark-200/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div>
+              <h2 className="text-lg font-heading font-bold text-light-100 mb-4">Unsere Leistungen</h2>
+              <ul className="space-y-2">
+                {[
+                  { title: 'KI-Chatbots', path: '/ki-chatbots' },
+                  { title: 'Telefonassistenten', path: '/telefonassistenten' },
+                  { title: 'Automatisierungen', path: '/automatisierungen' },
+                  { title: 'Webseiten', path: '/webseite' },
+                  { title: 'SEO: Top 3 in Google', path: '/seo-top-3-in-google' },
+                  { title: 'CRM-Systeme', path: '/crm-systeme' },
+                ].map((s) => (
+                  <li key={s.path}>
+                    <a href={s.path} className="text-primary-400 hover:underline text-sm font-heading">{s.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-lg font-heading font-bold text-light-100 mb-4">Unsere Leistungsgebiete</h2>
+              <ul className="space-y-2">
+                {[
+                  { name: 'Leipzig', slug: 'leipzig' },
+                  { name: 'Groitzsch', slug: 'groitzsch' },
+                  { name: 'Markkleeberg', slug: 'markkleeberg' },
+                  { name: 'Borna', slug: 'borna' },
+                  { name: 'Zwenkau', slug: 'zwenkau' },
+                  { name: 'Böhlen', slug: 'boehlen' },
+                ].map((c) => (
+                  <li key={c.slug}>
+                    <a href={`/leistungsgebiete/${c.slug}`} className="text-primary-400 hover:underline text-sm font-heading">{c.name}</a>
+                  </li>
+                ))}
+                <li>
+                  <a href="/leistungsgebiete" className="text-primary-400 hover:underline text-sm font-heading font-bold">Alle Leistungsgebiete →</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
