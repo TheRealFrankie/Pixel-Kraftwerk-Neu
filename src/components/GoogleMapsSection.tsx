@@ -58,14 +58,24 @@ const GoogleMapsSection: React.FC = () => {
                     {businessInfo.address.streetAddress}<br />
                     {businessInfo.address.postalCode} {businessInfo.address.addressLocality}
                   </p>
-                  <a
-                    href={`https://www.google.com/maps/dir//${encodedAddress}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-2 text-primary-500 text-sm font-heading font-bold hover:text-primary-400 transition-colors duration-200"
-                  >
-                    Route planen →
-                  </a>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2">
+                    <a
+                      href={`https://www.google.com/maps/dir//${encodedAddress}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block text-primary-500 text-sm font-heading font-bold hover:text-primary-400 transition-colors duration-200"
+                    >
+                      Route planen →
+                    </a>
+                    <a
+                      href={businessInfo.socialMedia.googleMaps}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block text-primary-500 text-sm font-heading font-bold hover:text-primary-400 transition-colors duration-200"
+                    >
+                      Auf Google Maps ansehen →
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

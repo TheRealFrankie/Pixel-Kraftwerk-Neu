@@ -37,8 +37,8 @@ const contactPoints = [
     icon: <MapPin size={22} />,
     label: 'Standort',
     value: `${businessInfo.address.streetAddress}, ${businessInfo.address.postalCode} ${businessInfo.address.addressLocality}`,
-    href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(businessInfo.address.streetAddress + ', ' + businessInfo.address.postalCode + ' ' + businessInfo.address.addressLocality)}`,
-    sub: 'Sachsen, Deutschland',
+    href: businessInfo.socialMedia.googleMaps,
+    sub: 'Auf Google Maps ansehen',
     external: true,
   },
   {

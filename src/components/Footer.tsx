@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Instagram, Facebook, Settings, MapPin, Phone, Mail } from 'lucide-react';
+import { Instagram, Facebook, Settings, MapPin, Phone, Mail, Clock } from 'lucide-react';
 import Logo from './Logo';
 import { businessInfo } from '@/data/businessInfo';
 import { NavItem, SocialLink } from '../types';
@@ -152,10 +152,20 @@ const Footer: React.FC = () => {
             <address className="not-italic space-y-2 text-sm text-light-300">
               <p className="text-light-100 font-heading font-semibold">{businessInfo.name}</p>
               <p>
-                {businessInfo.address.streetAddress}
-                <br />
-                {businessInfo.address.postalCode}{' '}
-                {businessInfo.address.addressLocality}
+                <a
+                  href={businessInfo.socialMedia.googleMaps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2 hover:text-primary-400 transition-colors duration-200"
+                >
+                  <MapPin size={14} className="text-primary-500 flex-shrink-0 mt-0.5" />
+                  <span>
+                    {businessInfo.address.streetAddress}
+                    <br />
+                    {businessInfo.address.postalCode}{' '}
+                    {businessInfo.address.addressLocality}
+                  </span>
+                </a>
               </p>
               <p>
                 <a
@@ -176,7 +186,7 @@ const Footer: React.FC = () => {
                 </a>
               </p>
               <p className="flex items-start gap-2 pt-1">
-                <MapPin size={14} className="text-primary-500 flex-shrink-0 mt-0.5" />
+                <Clock size={14} className="text-primary-500 flex-shrink-0 mt-0.5" />
                 {businessInfo.openingHoursDisplay}
               </p>
             </address>

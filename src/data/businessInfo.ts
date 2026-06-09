@@ -1,6 +1,6 @@
 export const businessInfo = {
   /** Anzeigename für SEO, Schema, NAP – überall außer Impressum */
-  name: "Pixel Kraftwerk | KI - Automatisierungen",
+  name: "Pixel Kraftwerk — KI Agentur",
   /** Rechtlicher Name nur im Impressum */
   legalName: "Pixel Kraftwerk – Franke & Brause GbR",
   description: "Pixel Kraftwerk – Kunden gewinnen. Prozesse automatisieren.",
@@ -77,7 +77,8 @@ export const businessInfo = {
     instagram: "https://www.instagram.com/pixel.kraftwerk/",
     linkedin: "",
     twitter: "",
-    googleReview: "https://g.page/r/CUl0X04KsO71EAE/review"
+    googleReview: "https://g.page/r/CUl0X04KsO71EAE/review",
+    googleMaps: "https://maps.app.goo.gl/uqNw1xDvyX1UCXYi9"
   },
 
   openingHours: [
