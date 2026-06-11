@@ -12,6 +12,13 @@ import { crmTier1ServiceContent } from './regionServiceContentCrmTier1';
 import { crmTier2ServiceContent } from './regionServiceContentCrmTier2';
 import { crmTier3ServiceContent } from './regionServiceContentCrmTier3';
 import { crmTier4ServiceContent } from './regionServiceContentCrmTier4';
+import { crmTier5ServiceContent } from './regionServiceContentCrmTier5';
+import { crmTier6ServiceContent } from './regionServiceContentCrmTier6';
+import { crmTier7ServiceContent } from './regionServiceContentCrmTier7';
+import { crmTier8ServiceContent } from './regionServiceContentCrmTier8';
+import { chatbotsTier7ServiceContent } from './regionServiceContentChatbotsTier7';
+import { telefonTier7ServiceContent } from './regionServiceContentTelefonTier7';
+import { automationTier7ServiceContent } from './regionServiceContentAutomationTier7';
 
 export type RegionServiceContent = {
   regionSlug: LeistungsgebietSlug;
@@ -1294,6 +1301,13 @@ const allCustomContent: Partial<Record<RegionServiceKey, RegionServiceContent>> 
   ...crmTier2ServiceContent,
   ...crmTier3ServiceContent,
   ...crmTier4ServiceContent,
+  ...crmTier5ServiceContent,
+  ...crmTier6ServiceContent,
+  ...crmTier7ServiceContent,
+  ...crmTier8ServiceContent,
+  ...chatbotsTier7ServiceContent,
+  ...telefonTier7ServiceContent,
+  ...automationTier7ServiceContent,
 };
 
 export function getRegionServiceContent(

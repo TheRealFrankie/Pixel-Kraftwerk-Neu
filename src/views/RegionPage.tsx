@@ -24,6 +24,7 @@ import {
   Landmark,
 } from 'lucide-react';
 import { getRegionContent, getValidRegionSlug } from '../data/regionContent';
+import { getNeighborCities } from '../data/leistungsgebiete';
 import { SERVICES, getRegionServiceLinkText } from '../data/services';
 import { businessInfo } from '../data/businessInfo';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
@@ -34,9 +35,20 @@ import GoogleMapsSection from '../components/GoogleMapsSection';
 import HeroScrollIndicator from '../components/HeroScrollIndicator';
 import { buildFaqSchema } from '../lib/jsonld';
 
+/** Variierende Ankertexte für Nachbarstadt-Links */
+const neighborLinkLabels: Array<(name: string) => string> = [
+  (name) => `KI-Agentur ${name}`,
+  (name) => `KI-Lösungen in ${name}`,
+  (name) => `Unsere Leistungen in ${name}`,
+  (name) => `${name} entdecken`,
+  (name) => `Automatisierung für ${name}`,
+  (name) => `Mehr zu ${name}`,
+];
+
 const RegionPage: React.FC<{ region: string }> = ({ region }) => {
   const slug = getValidRegionSlug(region);
   const content = getRegionContent(slug);
+  const neighborCities = getNeighborCities(slug, 6);
 
   const [openExample, setOpenExample] = React.useState<number | null>(null);
   const [openFaq, setOpenFaq] = React.useState<number | null>(null);
@@ -1278,6 +1290,36 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                 </a>
                 .
               </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {neighborCities.length > 0 && (
+        <section data-section-label="Nachbarstädte" className="py-16 bg-dark-500">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4 text-center">
+                Weitere Städte in der Nähe von <span className="text-primary-500">{content.name}</span>
+              </h2>
+              <p className="text-light-200 text-center mb-10 max-w-2xl mx-auto">
+                Pixel Kraftwerk betreut auch Unternehmen in den umliegenden Städten – mit denselben
+                KI-Lösungen, kurzen Wegen und persönlicher Beratung.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {neighborCities.map((city, i) => (
+                  <a
+                    key={city.slug}
+                    href={`/leistungsgebiete/${city.slug}`}
+                    className="flex items-center gap-3 p-4 bg-dark-400 border border-dark-100 hover:border-primary-500/50 transition-colors group"
+                  >
+                    <MapPin size={18} className="text-primary-500 flex-shrink-0" />
+                    <span className="text-light-100 font-heading text-sm group-hover:text-primary-400 transition-colors">
+                      {neighborLinkLabels[i % neighborLinkLabels.length](city.name)}
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </section>

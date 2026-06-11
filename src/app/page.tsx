@@ -4,7 +4,7 @@ import Home from '@/views/Home';
 export const metadata: Metadata = {
   title: {
     absolute:
-      'KI-Agentur Groitzsch & Leipzig – wenn Sie nach KI-Chatbots, Telefonassistenten, Automatisierungen oder Website & SEO in meiner Nähe suchen – Pixel Kraftwerk ist die erste Adresse',
+      'BESTE KI-Agentur Groitzsch & Leipzig – wenn Sie nach KI-Chatbots, Telefonassistenten, Automatisierungen, CRM oder Website & SEO in meiner Nähe suchen – Pixel Kraftwerk ist die erste Adresse',
   },
   description: 'KI-Automatisierung und Chatbots aus Groitzsch für Leipzig und Sachsen. Terminbuchung, CRM, Webseiten und SEO: Top 3 in Google. Jetzt Beratung sichern.',
   openGraph: {

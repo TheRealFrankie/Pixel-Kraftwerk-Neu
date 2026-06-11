@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin } from 'lucide-react';
+import { MapPin, Phone } from 'lucide-react';
 import { businessInfo } from '../data/businessInfo';
 
 const GoogleMapsSection: React.FC = () => {
@@ -28,6 +28,15 @@ const GoogleMapsSection: React.FC = () => {
               <p className="text-lg">
                 {businessInfo.address.streetAddress}, {businessInfo.address.postalCode} {businessInfo.address.addressLocality}
               </p>
+            </div>
+            <div className="flex items-center justify-center text-light-200">
+              <Phone size={18} className="mr-2 text-primary-500" />
+              <a
+                href={`tel:${businessInfo.contact.telephoneE164}`}
+                className="text-lg hover:text-primary-400 transition-colors duration-200"
+              >
+                {businessInfo.contact.telephone}
+              </a>
             </div>
           </div>
 
@@ -56,7 +65,13 @@ const GoogleMapsSection: React.FC = () => {
                   </h3>
                   <p className="text-light-200 text-sm">
                     {businessInfo.address.streetAddress}<br />
-                    {businessInfo.address.postalCode} {businessInfo.address.addressLocality}
+                    {businessInfo.address.postalCode} {businessInfo.address.addressLocality}<br />
+                    <a
+                      href={`tel:${businessInfo.contact.telephoneE164}`}
+                      className="hover:text-primary-400 transition-colors duration-200"
+                    >
+                      {businessInfo.contact.telephone}
+                    </a>
                   </p>
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2">
                     <a

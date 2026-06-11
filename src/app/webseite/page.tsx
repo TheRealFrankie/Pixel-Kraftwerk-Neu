@@ -4,7 +4,7 @@ import Website from '@/views/services/Website';
 export const metadata: Metadata = {
   title: {
     absolute:
-      'Webseiten Groitzsch & Leipzig – wenn Sie nach moderner Website, Firmenhomepage oder Webdesign im Mietmodell in meiner Nähe suchen – Pixel Kraftwerk erstellt und betreut Ihren professionellen Webauftritt',
+      'BESTE Webseiten Groitzsch & Leipzig – wenn Sie nach moderner Website, Firmenhomepage oder Webdesign im Mietmodell in meiner Nähe suchen – Pixel Kraftwerk erstellt und betreut Ihren professionellen Webauftritt',
   },
   description:
     'Moderne, schnelle Webseiten im Mietmodell – ohne hohe Startkosten, mit Full-Service-Betreuung und schnellen Anpassungen. Ideal für lokale Unternehmen rund um Leipzig.',

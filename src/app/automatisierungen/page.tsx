@@ -4,7 +4,7 @@ import Automatisierungen from '@/views/services/Automatisierungen';
 export const metadata: Metadata = {
   title: {
     absolute:
-      'Automatisierungen Groitzsch & Leipzig – wenn Sie nach KI-Automatisierung, Workflow-Optimierung oder Prozessautomatisierung in meiner Nähe suchen – Pixel Kraftwerk richtet Ihre Abläufe sauber und zuverlässig ein',
+      'BESTE Automatisierungen Groitzsch & Leipzig – wenn Sie nach KI-Automatisierung, Workflow-Optimierung oder Prozessautomatisierung in meiner Nähe suchen – Pixel Kraftwerk richtet Ihre Abläufe sauber und zuverlässig ein',
   },
   description:
     'Wir bauen Automatisierungen, die Anfragen sortieren, nachfassen und Termine buchen – automatisch. Mehr Überblick, weniger Stress. Leipzig & Region.',

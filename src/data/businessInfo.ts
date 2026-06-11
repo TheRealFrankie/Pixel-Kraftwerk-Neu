@@ -1,3 +1,5 @@
+import { AREA_SERVED_NAMES } from './leistungsgebiete';
+
 export const businessInfo = {
   /** Anzeigename für SEO, Schema, NAP – überall außer Impressum */
   name: "Pixel Kraftwerk — KI Agentur",
@@ -41,20 +43,8 @@ export const businessInfo = {
 
   priceRange: "€€",
 
-  /** Alle 50 Leistungsgebiete – für Schema areaServed und NAP-Konsistenz */
-  serviceArea: [
-    "Leipzig", "Groitzsch", "Markkleeberg", "Zwenkau", "Borna",
-    "Böhlen", "Rötha", "Neukieritzsch", "Pegau", "Lucka",
-    "Meuselwitz", "Regis-Breitingen", "Elstertrebnitz",
-    "Halle (Saale)", "Chemnitz", "Jena", "Gera", "Zwickau",
-    "Altenburg", "Weißenfels", "Merseburg", "Zeitz", "Grimma",
-    "Naumburg", "Delitzsch", "Döbeln", "Schkeuditz", "Wurzen",
-    "Eilenburg", "Taucha", "Markranstädt", "Leuna", "Oschatz",
-    "Schmölln", "Bad Dürrenberg", "Schkopau", "Hohenmölsen",
-    "Eisenberg", "Frohburg", "Brandis", "Mittweida", "Querfurt", "Penig",
-    "Naunhof", "Lützen", "Colditz", "Bad Lausick", "Geithain",
-    "Rochlitz", "Kitzscher"
-  ],
+  /** Alle Leistungsgebiete (aus LEISTUNGSGEBIETE_CITIES abgeleitet) – für Schema areaServed und NAP-Konsistenz */
+  serviceArea: [...AREA_SERVED_NAMES] as string[],
 
   services: [
     "KI-Chatbot Entwicklung",

@@ -2,13 +2,33 @@
  * Inhalte für Leistungsgebiete-Seiten (Stadt-Seiten).
  * Shared für generateMetadata (Server) und RegionPage (Client).
  */
-import { LEISTUNGSGEBIETE_SLUGS } from './leistungsgebiete';
+import { LEISTUNGSGEBIETE_SLUGS, LEISTUNGSGEBIETE_CITIES } from './leistungsgebiete';
 import type { LeistungsgebietSlug } from './leistungsgebiete';
 import type { ServiceSlug } from './services';
 import { tier1RegionContent } from './regionContentTier1';
 import { tier2RegionContent } from './regionContentTier2';
 import { tier3RegionContent } from './regionContentTier3';
 import { tier4RegionContent } from './regionContentTier4';
+import { tier5RegionContent } from './regionContentTier5';
+import { tier5Part2RegionContent } from './regionContentTier5Part2';
+import { tier5Part3RegionContent } from './regionContentTier5Part3';
+import { tier5Part4RegionContent } from './regionContentTier5Part4';
+import { tier5Part5RegionContent } from './regionContentTier5Part5';
+import { tier6RegionContent } from './regionContentTier6';
+import { tier6Part2RegionContent } from './regionContentTier6Part2';
+import { tier6Part3RegionContent } from './regionContentTier6Part3';
+import { tier6Part4RegionContent } from './regionContentTier6Part4';
+import { tier6Part5RegionContent } from './regionContentTier6Part5';
+import { tier7RegionContent } from './regionContentTier7';
+import { tier7Part2RegionContent } from './regionContentTier7Part2';
+import { tier7Part3RegionContent } from './regionContentTier7Part3';
+import { tier7Part4RegionContent } from './regionContentTier7Part4';
+import { tier7Part5RegionContent } from './regionContentTier7Part5';
+import { tier8RegionContent } from './regionContentTier8';
+import { tier8Part2RegionContent } from './regionContentTier8Part2';
+import { tier8Part3RegionContent } from './regionContentTier8Part3';
+import { tier8Part4RegionContent } from './regionContentTier8Part4';
+import { tier8Part5RegionContent } from './regionContentTier8Part5';
 
 export type RegionContent = {
   name: string;
@@ -937,58 +957,9 @@ const customRegionContent: Partial<Record<string, RegionContent>> = {
   },
 };
 
-const SLUG_TO_NAME: Record<string, string> = {
-  leipzig: 'Leipzig',
-  markkleeberg: 'Markkleeberg',
-  zwenkau: 'Zwenkau',
-  borna: 'Borna',
-  boehlen: 'Böhlen',
-  roetha: 'Rötha',
-  neukieritzsch: 'Neukieritzsch',
-  pegau: 'Pegau',
-  lucka: 'Lucka',
-  meuselwitz: 'Meuselwitz',
-  'regis-breitingen': 'Regis-Breitingen',
-  elstertrebnitz: 'Elstertrebnitz',
-  groitzsch: 'Groitzsch',
-  'halle-saale': 'Halle (Saale)',
-  chemnitz: 'Chemnitz',
-  jena: 'Jena',
-  gera: 'Gera',
-  zwickau: 'Zwickau',
-  altenburg: 'Altenburg',
-  weissenfels: 'Weißenfels',
-  merseburg: 'Merseburg',
-  zeitz: 'Zeitz',
-  grimma: 'Grimma',
-  naumburg: 'Naumburg',
-  delitzsch: 'Delitzsch',
-  doebeln: 'Döbeln',
-  schkeuditz: 'Schkeuditz',
-  wurzen: 'Wurzen',
-  eilenburg: 'Eilenburg',
-  taucha: 'Taucha',
-  markranstaedt: 'Markranstädt',
-  leuna: 'Leuna',
-  oschatz: 'Oschatz',
-  schmoelln: 'Schmölln',
-  'bad-duerrenberg': 'Bad Dürrenberg',
-  schkopau: 'Schkopau',
-  hohenmoelsen: 'Hohenmölsen',
-  eisenberg: 'Eisenberg',
-  frohburg: 'Frohburg',
-  brandis: 'Brandis',
-  mittweida: 'Mittweida',
-  querfurt: 'Querfurt',
-  penig: 'Penig',
-  naunhof: 'Naunhof',
-  luetzen: 'Lützen',
-  colditz: 'Colditz',
-  'bad-lausick': 'Bad Lausick',
-  geithain: 'Geithain',
-  rochlitz: 'Rochlitz',
-  kitzscher: 'Kitzscher',
-};
+const SLUG_TO_NAME: Record<string, string> = Object.fromEntries(
+  LEISTUNGSGEBIETE_CITIES.map((c) => [c.slug, c.name])
+);
 
 function getTemplateRegionContent(cityName: string): RegionContent {
   return {
@@ -1075,6 +1046,26 @@ const allCustomRegionContent: Partial<Record<string, RegionContent>> = {
   ...tier2RegionContent,
   ...tier3RegionContent,
   ...tier4RegionContent,
+  ...tier5RegionContent,
+  ...tier5Part2RegionContent,
+  ...tier5Part3RegionContent,
+  ...tier5Part4RegionContent,
+  ...tier5Part5RegionContent,
+  ...tier6RegionContent,
+  ...tier6Part2RegionContent,
+  ...tier6Part3RegionContent,
+  ...tier6Part4RegionContent,
+  ...tier6Part5RegionContent,
+  ...tier7RegionContent,
+  ...tier7Part2RegionContent,
+  ...tier7Part3RegionContent,
+  ...tier7Part4RegionContent,
+  ...tier7Part5RegionContent,
+  ...tier8RegionContent,
+  ...tier8Part2RegionContent,
+  ...tier8Part3RegionContent,
+  ...tier8Part4RegionContent,
+  ...tier8Part5RegionContent,
 };
 
 export function getRegionContent(slug: string): RegionContent {

@@ -39,7 +39,7 @@ const Leistungsgebiete: React.FC = () => {
   return (
     <div className="bg-dark-500">
       <BreadcrumbSchemaLeistungsgebiete />
-      <LocalBusinessSchema pageType="homepage" customDescription="KI-Automatisierung und Chatbots für Unternehmen in Leipzig, Markkleeberg, Zwenkau, Borna, Böhlen, Rötha, Neukieritzsch, Pegau, Lucka, Meuselwitz, Regis-Breitingen, Elstertrebnitz und Groitzsch." />
+      <LocalBusinessSchema pageType="homepage" customDescription="KI-Automatisierung und Chatbots für Unternehmen in über 250 Städten deutschlandweit – von Leipzig, Groitzsch und Halle über Dresden und Berlin bis Hamburg und München." />
 
       <section className="relative pt-32 pb-24 bg-dark-500 overflow-hidden">
         <div className="container mx-auto px-4 mb-6">
@@ -64,7 +64,7 @@ const Leistungsgebiete: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Wir bedienen <strong>Leipzig</strong>, <strong>Markkleeberg</strong>, <strong>Zwenkau</strong>, <strong>Borna</strong>, <strong>Böhlen</strong>, <strong>Rötha</strong>, <strong>Neukieritzsch</strong>, <strong>Pegau</strong>, <strong>Lucka</strong>, <strong>Meuselwitz</strong>, <strong>Regis-Breitingen</strong>, <strong>Elstertrebnitz</strong> und <strong>Groitzsch</strong> (Hauptsitz) – mit KI-Automatisierung, Chatbots, Terminbuchung, CRM, Websites & SEO.
+              Wir bedienen über <strong>250 Städte deutschlandweit</strong> – von unserem Hauptsitz in <strong>Groitzsch</strong> über <strong>Leipzig</strong>, <strong>Halle (Saale)</strong>, <strong>Dresden</strong> und <strong>Berlin</strong> bis nach <strong>Hamburg</strong>, <strong>München</strong> und <strong>Köln</strong> – mit KI-Automatisierung, Chatbots, Terminbuchung, CRM, Websites & SEO.
             </motion.p>
             <motion.p
               className="text-light-300 max-w-2xl mx-auto"
