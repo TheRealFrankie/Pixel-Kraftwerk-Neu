@@ -223,7 +223,7 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {isRegional ? `Webseiten für Unternehmen in ${regionName}` : (
+              {isRegional ? `Webseiten ${regionName}` : (
                 <>Moderne Webseiten<span className="sr-only"> Leipzig &amp; Groitzsch</span></>
               )}
             </motion.h1>

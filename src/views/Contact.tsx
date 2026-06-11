@@ -8,6 +8,7 @@ import GoogleMapsSection from '../components/GoogleMapsSection';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { businessInfo } from '../data/businessInfo';
+import { LEISTUNGSGEBIETE_CITIES } from '../data/leistungsgebiete';
 
 const contactBreadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -233,23 +234,14 @@ const Contact: React.FC = () => {
             </div>
             <div>
               <h2 className="text-lg font-heading font-bold text-light-100 mb-4">Unsere Leistungsgebiete</h2>
-              <ul className="space-y-2">
-                {[
-                  { name: 'Leipzig', slug: 'leipzig' },
-                  { name: 'Groitzsch', slug: 'groitzsch' },
-                  { name: 'Markkleeberg', slug: 'markkleeberg' },
-                  { name: 'Borna', slug: 'borna' },
-                  { name: 'Zwenkau', slug: 'zwenkau' },
-                  { name: 'Böhlen', slug: 'boehlen' },
-                ].map((c) => (
-                  <li key={c.slug}>
-                    <a href={`/leistungsgebiete/${c.slug}`} className="text-primary-400 hover:underline text-sm font-heading">{c.name}</a>
-                  </li>
+              <div className="flex flex-wrap gap-x-3 gap-y-1.5">
+                {LEISTUNGSGEBIETE_CITIES.map((c) => (
+                  <a key={c.slug} href={`/leistungsgebiete/${c.slug}`} className="text-primary-400 hover:underline text-sm font-heading">
+                    {c.name}
+                  </a>
                 ))}
-                <li>
-                  <a href="/leistungsgebiete" className="text-primary-400 hover:underline text-sm font-heading font-bold">Alle Leistungsgebiete →</a>
-                </li>
-              </ul>
+              </div>
+              <a href="/leistungsgebiete" className="inline-block mt-3 text-primary-400 hover:underline text-sm font-heading font-bold">Alle Leistungsgebiete →</a>
             </div>
           </div>
         </div>

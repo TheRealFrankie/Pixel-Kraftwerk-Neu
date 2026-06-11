@@ -3,7 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ChevronDown, CheckCircle, Minus, ArrowRight, Zap, MessageCircle, Workflow, Globe, Search, Users } from 'lucide-react';
+import { ChevronDown, CheckCircle, Minus, ArrowRight, Zap, MessageCircle, Workflow, Globe, Search, Users, Database } from 'lucide-react';
+import { LEISTUNGSGEBIETE_CITIES } from '../data/leistungsgebiete';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
@@ -59,6 +60,13 @@ const Home: React.FC = () => {
       nachher: "Eine moderne Website, die verständlich aufgebaut ist und bei Suchmaschinen besser sichtbar wird.",
       ergebnis: "Mehr Besucher. Mehr Anfragen."
     },
+    {
+      icon: <Database size={32} strokeWidth={1.5} />,
+      title: "CRM-Systeme & Lead-Management",
+      vorher: "Anfragen, Angebote und Kundenkontakte liegen verteilt in E-Mails, Excel-Listen und Notizblöcken. Niemand weiß, welcher Lead schon nachgefasst wurde.",
+      nachher: "Alle Kontakte, Anfragen und Aufträge sind zentral erfasst. Automatische Follow-ups und eine klare Pipeline sorgen dafür, dass aus Interessenten Aufträge werden.",
+      ergebnis: "Kein Lead geht verloren. Vertrieb läuft strukturiert und messbar."
+    },
   ];
 
   return (
@@ -82,9 +90,16 @@ const Home: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/10 to-transparent" aria-hidden />
         </div>
 
-        <h1 className="sr-only">KI-Agentur für Chatbots, Automatisierungen und SEO in Groitzsch &amp; Leipzig</h1>
         <div className="container mx-auto px-4 z-10">
           <div className="max-w-2xl lg:max-w-3xl text-left">
+            <motion.h1
+              className="text-primary-500 text-xs sm:text-sm font-heading font-bold uppercase tracking-widest mb-5"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              KI-Agentur Leipzig &amp; Groitzsch
+            </motion.h1>
             <p className="space-y-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold mb-8" style={{ color: '#F5F7FA', textShadow: '0 6px 20px rgba(0,0,0,0.5)' }}>
               <motion.span className="block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>Klare Abläufe.</motion.span>
               <motion.span className="block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}>Mehr Anfragen.</motion.span>
@@ -513,7 +528,8 @@ const Home: React.FC = () => {
                 "KI-Telefonassistent",
                 "Automatisierungen (Anfragen, Vertrieb & Terminplanung)",
                 "Webseiten",
-                "SEO: Top 3 in Google"
+                "SEO: Top 3 in Google",
+                "CRM-Systeme (Lead-Management & Kundenverwaltung)"
               ].map((service, index) => (
                 <motion.div
                   key={index}
@@ -694,6 +710,37 @@ const Home: React.FC = () => {
             <p className="text-center mt-8 text-light-300 text-sm">
               Noch mehr Antworten finden Sie auf unserer{' '}
               <a href="/haeufige-fragen" className="text-primary-400 hover:underline font-heading font-bold">FAQ-Seite</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* AREAS WE SERVE */}
+      <section data-section-label="Leistungsgebiete" className="section-padding bg-dark-500 relative">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden />
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-light-100 text-center">
+              Gebiete, die wir bedienen
+            </h2>
+            <p className="text-center text-light-300 text-sm mb-8">
+              Wir betreuen Unternehmen in Leipzig, Groitzsch und der gesamten Region Mitteldeutschland.
+            </p>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {LEISTUNGSGEBIETE_CITIES.map((city) => (
+                <a
+                  key={city.slug}
+                  href={`/leistungsgebiete/${city.slug}`}
+                  className="px-3 py-1.5 rounded-lg bg-dark-400 border border-dark-200 text-light-300 text-sm hover:border-primary-500/50 hover:text-primary-400 transition-all duration-200"
+                >
+                  {city.name}
+                </a>
+              ))}
+            </div>
+            <p className="text-center mt-6">
+              <a href="/leistungsgebiete" className="text-primary-400 hover:underline font-heading font-bold text-sm">
+                Alle Leistungsgebiete im Überblick →
+              </a>
             </p>
           </div>
         </div>

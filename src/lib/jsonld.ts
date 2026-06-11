@@ -1,4 +1,5 @@
 import { businessInfo } from '@/data/businessInfo';
+import { AREA_SERVED_NAMES } from '@/data/leistungsgebiete';
 
 export const BUSINESS_ID = `${businessInfo.url}/#business`;
 
@@ -52,7 +53,7 @@ export function buildBusinessSchema(): JsonLd {
       latitude: businessInfo.geo.latitude,
       longitude: businessInfo.geo.longitude,
     },
-    areaServed: businessInfo.serviceArea.map((area) => ({
+    areaServed: AREA_SERVED_NAMES.map((area) => ({
       '@type': 'City',
       name: area,
     })),

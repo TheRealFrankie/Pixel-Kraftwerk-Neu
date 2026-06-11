@@ -268,7 +268,10 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
         }
         url={currentPageUrl}
         areaServed={isRegional ? [regionName!] : undefined}
-        faqs={faqs.map((f) => ({ question: f.question, answer: f.answer }))}
+        faqs={[
+          ...faqs.map((f) => ({ question: f.question, answer: f.answer })),
+          ...(regionContent?.faqs?.map((f) => ({ question: f.q, answer: f.a })) || []),
+        ]}
         pageName="CRM-Systeme"
       />
 
@@ -315,7 +318,7 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
                 transition={{ duration: 0.8 }}
               >
                 {isRegional
-                  ? `CRM-Systeme für Unternehmen in ${regionName}`
+                  ? `CRM-Systeme ${regionName}`
                   : (
                     <>CRM-Systeme<span className="sr-only"> Leipzig &amp; Groitzsch</span></>
                   )}
@@ -689,6 +692,9 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
               <div className="space-y-4">
                 {faqs.map((faq, i) => (
                   <FaqItem key={i} question={faq.question} answer={faq.answer} index={i} />
+                ))}
+                {regionContent?.faqs?.map((faq, i) => (
+                  <FaqItem key={`local-${i}`} question={faq.q} answer={faq.a} index={faqs.length + i} />
                 ))}
               </div>
             </div>

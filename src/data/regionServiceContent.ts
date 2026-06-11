@@ -8,6 +8,10 @@ import { tier2ServiceContentPart2 } from './regionServiceContentTier2Part2';
 import { tier3ServiceContent } from './regionServiceContentTier3';
 import { tier3ServiceContentPart2 } from './regionServiceContentTier3Part2';
 import { tier4ServiceContent } from './regionServiceContentTier4';
+import { crmTier1ServiceContent } from './regionServiceContentCrmTier1';
+import { crmTier2ServiceContent } from './regionServiceContentCrmTier2';
+import { crmTier3ServiceContent } from './regionServiceContentCrmTier3';
+import { crmTier4ServiceContent } from './regionServiceContentCrmTier4';
 
 export type RegionServiceContent = {
   regionSlug: LeistungsgebietSlug;
@@ -1162,6 +1166,61 @@ function getTemplateRegionServiceContent(
     };
   }
 
+  // CRM-Systeme Template
+  if (serviceSlug === 'crm-systeme') {
+    return {
+      regionSlug,
+      regionName,
+      serviceSlug,
+      serviceLabel,
+      metaDescription: `CRM-Systeme für Unternehmen in ${regionName} – Pixel Kraftwerk aus Groitzsch richtet Lead-Management, Kundenverwaltung und automatisierte Vertriebspipelines ein.`,
+      intro: `CRM-Systeme für Unternehmen in ${regionName}: Anfragen, Angebote und Kundenkontakte zentral verwalten – damit kein Lead verloren geht und Ihr Vertrieb strukturiert läuft. Pixel Kraftwerk aus Groitzsch begleitet Sie von der Auswahl bis zur Integration.`,
+      paragraphs: [
+        `In ${regionName} wachsen die Anfragen – und mit ihnen die Unübersichtlichkeit. Kontaktdaten in E-Mails, Angebote in Excel, Rückruflisten auf Zetteln: Je mehr Kundinnen und Kunden ein Unternehmen hat, desto schneller gerät dieses System an seine Grenzen. Ein CRM-System bringt Ordnung: Alle Anfragen, Angebote und Kundengespräche sind an einem Ort dokumentiert und für das gesamte Team einsehbar. So weiß immer jemand, wer wann zuletzt Kontakt hatte, was besprochen wurde und welcher Schritt als nächstes ansteht.`,
+        `Für Unternehmen in ${regionName} richten wir CRM-Systeme ein, die zum tatsächlichen Arbeitsalltag passen – keine Theorie, sondern ein Setup, das sofort genutzt wird. Das beginnt mit einer ehrlichen Bestandsaufnahme: Wie kommen Anfragen rein? Wer bearbeitet sie? Was passiert, wenn jemand krank ist oder im Urlaub? Auf dieser Basis definieren wir Pipelines, automatisierte Follow-ups und klare Zuständigkeiten – damit Ihr Vertrieb auch ohne tägliche Kontrolle zuverlässig läuft.`,
+        `Die Integration mit Ihrer bestehenden Infrastruktur steht im Mittelpunkt. Website-Formulare, E-Mail-Postfächer, Kalender und – falls vorhanden – KI-Chatbot oder Telefonassistent fließen automatisch ins CRM. So entsteht aus jeder Anfrage ein sauber dokumentierter Lead, den Ihr Team in Ruhe und ohne Zettelwirtschaft bearbeiten kann. Automatisierte Erinnerungen stellen sicher, dass kein Follow-up vergessen wird.`,
+        `Besonders in Regionen wie ${regionName}, wo persönliche Empfehlungen und direkte Kundenbeziehungen eine große Rolle spielen, zahlt sich ein strukturiertes CRM aus. Wer schnell und professionell nachhakt, gewinnt mehr Aufträge – nicht weil er günstiger ist, sondern weil er verlässlicher wirkt. Wir helfen Ihnen, diesen Vorteil systematisch zu nutzen: mit einem CRM, das zu Ihren Abläufen passt und von Ihrem Team tatsächlich genutzt wird.`,
+        `Pixel Kraftwerk arbeitet aus Groitzsch heraus und betreut Unternehmen in ${regionName} und der gesamten Region persönlich. CRM-Einführung ist kein reines IT-Projekt – es braucht Verständnis für die Prozesse vor Ort, für die Branchen und für die Art, wie Teams in der Region arbeiten. Wir bieten praxisnahe Schulungen, begleiten den Start und stehen für laufende Optimierungen bereit, wenn sich Ihr Unternehmen weiterentwickelt.`,
+      ],
+      faqs: [
+        {
+          q: `Welches CRM-System eignet sich für Unternehmen in ${regionName}?`,
+          a: `Das hängt von Teamgröße, Branche und vorhandenen Tools ab. Wir arbeiten herstellerunabhängig und beraten Sie ehrlich – ob HubSpot, Pipedrive, Brevo oder eine andere Lösung am besten zu Ihrem Betrieb in ${regionName} passt. Das klären wir im kostenlosen Erstgespräch.`,
+        },
+        {
+          q: 'Was kostet eine CRM-Einführung?',
+          a: 'Die Kosten hängen vom Umfang ab: Wie viele Pipelines, welche Integrationen, wie viele Nutzer? Im Erstgespräch klären wir Ihren Bedarf und erstellen ein transparentes Angebot – ohne versteckte Folgekosten.',
+        },
+        {
+          q: `Wie lange dauert die CRM-Einführung für ein Unternehmen in ${regionName}?`,
+          a: 'Ein Basis-Setup mit Pipelines und automatischen Follow-ups steht in der Regel innerhalb von 2–4 Wochen. Komplexere Projekte mit Datenmigration und mehreren Integrationen benötigen 4–8 Wochen.',
+        },
+        {
+          q: 'Können bestehende Excel-Listen und Kontakte übernommen werden?',
+          a: 'Ja. Wir migrieren Ihre vorhandenen Daten sauber ins neue System – damit keine Kundenhistorie verloren geht. Das gehört bei uns zu jedem CRM-Projekt standardmäßig dazu.',
+        },
+        {
+          q: 'Muss mein Team das CRM-System selbst bedienen können?',
+          a: 'Ja, und genau dafür sorgen wir. Wir bieten praxisnahe Schulungen, passen Ansichten und Workflows auf Ihre Abläufe an und bleiben als Ansprechpartner erreichbar. Ein CRM, das niemand nutzt, hilft niemandem.',
+        },
+        {
+          q: 'Lässt sich das CRM mit unserem Chatbot oder Telefonassistenten verbinden?',
+          a: 'Ja – und diese Kombination ist besonders wirkungsvoll. Wenn ein KI-Chatbot oder Telefonassistent Anfragen automatisch ins CRM übergibt, läuft Ihr Vertriebsprozess komplett ohne manuelle Datenerfassung. Wir richten diese Integration für Sie ein.',
+        },
+        {
+          q: 'Gibt es laufende Betreuung nach der Einführung?',
+          a: `Ja. Viele unserer Kunden in ${regionName} und der Region nutzen laufende Betreuungspakete: Anpassungen bei neuen Prozessen, technischer Support und regelmäßige Optimierungen. So bleibt Ihr CRM immer auf dem Stand Ihres Unternehmens.`,
+        },
+      ],
+      highlights: [
+        `CRM-Einführung speziell für Unternehmen in ${regionName}`,
+        'Herstellerunabhängige Beratung und Konfiguration',
+        'Integration mit Website, Chatbot und Telefonassistent',
+        'Praxisnahe Schulungen und laufende Betreuung',
+      ],
+    };
+  }
+
   // Generisches Template für ki-chatbots, telefonassistenten, automatisierungen
   return {
     regionSlug,
@@ -1231,6 +1290,10 @@ const allCustomContent: Partial<Record<RegionServiceKey, RegionServiceContent>> 
   ...tier3ServiceContent,
   ...tier3ServiceContentPart2,
   ...tier4ServiceContent,
+  ...crmTier1ServiceContent,
+  ...crmTier2ServiceContent,
+  ...crmTier3ServiceContent,
+  ...crmTier4ServiceContent,
 };
 
 export function getRegionServiceContent(

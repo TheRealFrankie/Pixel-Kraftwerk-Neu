@@ -202,7 +202,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                 transition={{ duration: 0.7, delay: 0.1 }}
               >
                 {isRegional
-                  ? <>SEO Top 3 in Google für <span className="text-primary-400 whitespace-nowrap">{regionName}</span></>
+                  ? <>SEO Top 3 in Google <span className="text-primary-400 whitespace-nowrap">{regionName}</span></>
                   : <>Bringen Sie Ihr Unternehmen <span className="text-primary-400 whitespace-nowrap">in die Top&nbsp;3 bei Google</span></>}
               </motion.h1>
 

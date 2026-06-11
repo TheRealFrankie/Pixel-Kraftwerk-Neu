@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import RegionServicePage from '@/views/RegionServicePage';
 import { getRegionContent, getValidRegionSlug } from '@/data/regionContent';
-import { LEISTUNGSGEBIETE_SLUGS } from '@/data/leistungsgebiete';
+import { getRegionServiceContent } from '@/data/regionServiceContent';
+import { LEISTUNGSGEBIETE_SLUGS, type LeistungsgebietSlug } from '@/data/leistungsgebiete';
 import { getServiceBySlug, isValidServiceSlug, type ServiceSlug } from '@/data/services';
 
 const baseUrl = 'https://pixelkraftwerk-ai.com';
@@ -22,6 +23,15 @@ const SERVICE_TITLE_KEYWORDS: Record<ServiceSlug, string> = {
     'CRM-System, Kundenverwaltung oder Lead-Management',
 };
 
+const SERVICE_SECONDARY_KEYWORDS: Record<ServiceSlug, string> = {
+  'ki-chatbots': 'Chatbot-Einrichtung, Website-Assistent & Automatisierung',
+  telefonassistenten: 'Anrufannahme, Terminbuchung & Lead-Qualifizierung',
+  automatisierungen: 'Workflow-Automatisierung, Prozessoptimierung & Zeitersparnis',
+  webseiten: 'Webdesign, Firmenhomepage & Mietmodell',
+  'seo-top-3': 'Google-Ranking, Google Business Profil & lokale Sichtbarkeit',
+  'crm-systeme': 'CRM-Setup, Vertriebspipeline & Lead-Management',
+};
+
 type Props = { params: Promise<{ region: string; service: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -38,14 +48,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const keywords = SERVICE_TITLE_KEYWORDS[service as ServiceSlug] ?? serviceInfo.label;
-  const title = `${serviceInfo.label} ${content.name} – wenn Sie nach ${keywords} in meiner Nähe suchen – Pixel Kraftwerk aus Groitzsch für ${content.name} und Umgebung`;
-  const description = `${serviceInfo.label} für Unternehmen in ${content.name} und Umgebung. ${content.metaDescription.slice(0, 100)}…`;
+  const secondaryKeywords = SERVICE_SECONDARY_KEYWORDS[service as ServiceSlug] ?? serviceInfo.label;
+  const title = `BESTER ${serviceInfo.label} in ${content.name} – wenn Sie nach ${keywords} in meiner Nähe suchen – Pixel Kraftwerk aus Groitzsch | ${secondaryKeywords} für ${content.name}`;
   const canonical = `${baseUrl}/leistungsgebiete/${regionSlug}/${service}`;
+
+  const serviceContent = getRegionServiceContent(
+    regionSlug as LeistungsgebietSlug,
+    content.name,
+    service as ServiceSlug,
+    serviceInfo.label
+  );
+  const description = serviceContent.metaDescription;
 
   return {
     title: { absolute: title },
     description,
     alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: 'website',
+    },
   };
 }
 

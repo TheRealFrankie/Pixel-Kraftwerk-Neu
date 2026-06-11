@@ -41,21 +41,19 @@ export const businessInfo = {
 
   priceRange: "€€",
 
-  /** 12 Leistungsgebiete + Groitzsch (Hauptsitz) – für Schema areaServed und NAP-Konsistenz */
+  /** Alle 50 Leistungsgebiete – für Schema areaServed und NAP-Konsistenz */
   serviceArea: [
-    "Leipzig",
-    "Markkleeberg",
-    "Zwenkau",
-    "Borna",
-    "Böhlen",
-    "Rötha",
-    "Neukieritzsch",
-    "Pegau",
-    "Lucka",
-    "Meuselwitz",
-    "Regis-Breitingen",
-    "Elstertrebnitz",
-    "Groitzsch"
+    "Leipzig", "Groitzsch", "Markkleeberg", "Zwenkau", "Borna",
+    "Böhlen", "Rötha", "Neukieritzsch", "Pegau", "Lucka",
+    "Meuselwitz", "Regis-Breitingen", "Elstertrebnitz",
+    "Halle (Saale)", "Chemnitz", "Jena", "Gera", "Zwickau",
+    "Altenburg", "Weißenfels", "Merseburg", "Zeitz", "Grimma",
+    "Naumburg", "Delitzsch", "Döbeln", "Schkeuditz", "Wurzen",
+    "Eilenburg", "Taucha", "Markranstädt", "Leuna", "Oschatz",
+    "Schmölln", "Bad Dürrenberg", "Schkopau", "Hohenmölsen",
+    "Eisenberg", "Frohburg", "Brandis", "Mittweida", "Querfurt", "Penig",
+    "Naunhof", "Lützen", "Colditz", "Bad Lausick", "Geithain",
+    "Rochlitz", "Kitzscher"
   ],
 
   services: [

@@ -28,6 +28,7 @@ import { SERVICES, getRegionServiceLinkText } from '../data/services';
 import { businessInfo } from '../data/businessInfo';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import BreadcrumbSchemaRegion from '../components/BreadcrumbSchemaRegion';
+import BreadcrumbNav from '../components/BreadcrumbNav';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 import HeroScrollIndicator from '../components/HeroScrollIndicator';
@@ -124,6 +125,13 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
         data-section-label="Start"
         className="relative min-h-screen flex items-center bg-dark-500 overflow-hidden"
       >
+        <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
+          <BreadcrumbNav overlay items={[
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
+            { label: content.name },
+          ]} />
+        </div>
         <div className="absolute inset-0">
           <Image
             src="/images/hero-startseite-ki-agentur-v2.webp"
