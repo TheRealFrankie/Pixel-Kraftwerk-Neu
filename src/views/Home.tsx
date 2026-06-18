@@ -4,7 +4,6 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ChevronDown, CheckCircle, Minus, ArrowRight, Zap, MessageCircle, Workflow, Globe, Search, Users, Database } from 'lucide-react';
-import { LEISTUNGSGEBIETE_CITIES } from '../data/leistungsgebiete';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
@@ -710,37 +709,6 @@ const Home: React.FC = () => {
             <p className="text-center mt-8 text-light-300 text-sm">
               Noch mehr Antworten finden Sie auf unserer{' '}
               <a href="/haeufige-fragen" className="text-primary-400 hover:underline font-heading font-bold">FAQ-Seite</a>.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* AREAS WE SERVE */}
-      <section data-section-label="Leistungsgebiete" className="section-padding bg-dark-500 relative">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden />
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-light-100 text-center">
-              Gebiete, die wir bedienen
-            </h2>
-            <p className="text-center text-light-300 text-sm mb-8">
-              Wir betreuen Unternehmen in Leipzig, Groitzsch und der gesamten Region Mitteldeutschland.
-            </p>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {LEISTUNGSGEBIETE_CITIES.map((city) => (
-                <a
-                  key={city.slug}
-                  href={`/leistungsgebiete/${city.slug}`}
-                  className="px-3 py-1.5 rounded-lg bg-dark-400 border border-dark-200 text-light-300 text-sm hover:border-primary-500/50 hover:text-primary-400 transition-all duration-200"
-                >
-                  {city.name}
-                </a>
-              ))}
-            </div>
-            <p className="text-center mt-6">
-              <a href="/leistungsgebiete" className="text-primary-400 hover:underline font-heading font-bold text-sm">
-                Alle Leistungsgebiete im Überblick →
-              </a>
             </p>
           </div>
         </div>
