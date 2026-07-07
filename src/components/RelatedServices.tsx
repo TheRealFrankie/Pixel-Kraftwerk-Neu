@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { INK, BODY, PETROL, BORDER, SURFACE } from '@/lib/theme';
 
 interface ServiceInfo {
   slug: string;
@@ -10,7 +11,6 @@ interface ServiceInfo {
   image: string;
 }
 
-/** Feste Reihenfolge: 5 Leistungen – auf jeder Seite werden die jeweils anderen 4 angezeigt. */
 const RELATED_ORDER: string[] = [
   'ki-chatbots',
   'telefonassistenten',
@@ -55,7 +55,7 @@ const allServices: ServiceInfo[] = [
     slug: 'crm-systeme',
     title: 'CRM-Systeme',
     shortDescription: 'Zentrale Kundenverwaltung, automatisierte Follow-ups und transparente Vertriebspipeline für Ihr Unternehmen.',
-    image: '/images/seo-top-3-google-local-pack.webp',
+    image: '/images/crm-systeme-kundenverwaltung.webp',
   },
 ];
 
@@ -63,7 +63,6 @@ const slugToService = new Map(allServices.map((s) => [s.slug, s]));
 
 interface RelatedServicesProps {
   currentSlug: string;
-  /** Optionale Anker-Hashes pro Slug (z. B. { 'ki-chatbots': '#ki-chatbot-fur-ihre-website' }) */
   anchorBySlug?: Record<string, string>;
 }
 
@@ -80,7 +79,7 @@ const RelatedServices: React.FC<RelatedServicesProps> = ({ currentSlug, anchorBy
   };
 
   return (
-    <section className="py-24 bg-dark-400">
+    <section className="py-24" style={{ background: SURFACE }}>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -90,10 +89,11 @@ const RelatedServices: React.FC<RelatedServicesProps> = ({ currentSlug, anchorBy
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
-              Das könnte Sie auch <span className="text-primary-500">interessieren</span>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4" style={{ color: INK }}>
+              Das könnte Sie auch{' '}
+              <span style={{ color: PETROL }}>interessieren</span>
             </h2>
-            <p className="text-light-200">
+            <p style={{ color: BODY }}>
               Entdecken Sie weitere Lösungen, die perfekt zu dieser Dienstleistung passen.
             </p>
           </motion.div>
@@ -103,14 +103,15 @@ const RelatedServices: React.FC<RelatedServicesProps> = ({ currentSlug, anchorBy
               <motion.a
                 key={service.slug}
                 href={getHref(service.slug)}
-                className="group bg-dark-500 border border-dark-100 overflow-hidden hover:border-primary-500/50 transition-all duration-300 flex flex-col h-full"
+                className="group bg-white rounded-2xl border overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col h-full"
+                style={{ borderColor: BORDER }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -4 }}
               >
-                <div className="relative w-full aspect-[16/10] bg-dark-400 shrink-0">
+                <div className="relative w-full aspect-[16/10] shrink-0 overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -120,13 +121,19 @@ const RelatedServices: React.FC<RelatedServicesProps> = ({ currentSlug, anchorBy
                   />
                 </div>
                 <div className="p-5 flex flex-col flex-1">
-                  <h3 className="text-base font-heading font-bold text-light-100 mb-2 leading-snug line-clamp-2 min-h-[2.75rem] group-hover:text-primary-400 transition-colors duration-200">
+                  <h3
+                    className="text-base font-heading font-bold mb-2 leading-snug line-clamp-2 min-h-[2.75rem] transition-colors duration-200"
+                    style={{ color: INK }}
+                  >
                     {service.title}
                   </h3>
-                  <p className="text-light-300 text-sm mb-4 leading-relaxed line-clamp-3 flex-1">
+                  <p className="text-sm mb-4 leading-relaxed line-clamp-3 flex-1" style={{ color: BODY }}>
                     {service.shortDescription}
                   </p>
-                  <span className="mt-auto inline-flex items-center text-primary-500 text-sm font-heading group-hover:translate-x-2 transition-transform duration-200">
+                  <span
+                    className="mt-auto inline-flex items-center text-sm font-heading group-hover:translate-x-2 transition-transform duration-200"
+                    style={{ color: PETROL }}
+                  >
                     Mehr erfahren
                     <ArrowRight size={16} className="ml-1" />
                   </span>

@@ -45,6 +45,11 @@ const PAGE_CONTEXTS: Record<string, PageContext> = {
     subline: 'Erfahren Sie kostenlos, wie wir Sie in die Top 3 bei Google bringen.',
     cta: 'SEO-Beratung sichern',
   },
+  '/crm-systeme': {
+    headline: 'CRM-System für Ihr Unternehmen?',
+    subline: 'In 20 Minuten zeigen wir Ihnen, welches CRM zu Ihren Abläufen passt und was es kostet.',
+    cta: 'CRM-Beratung sichern',
+  },
   '/leistungen': {
     headline: 'Welche Lösung passt zu Ihnen?',
     subline: 'Wir beraten Sie kostenlos und finden die passende KI-Lösung für Ihr Unternehmen.',
@@ -96,7 +101,7 @@ function getPageContext(pathname: string): PageContext {
 }
 
 const inputClass =
-  'w-full rounded-lg bg-dark-300 border border-dark-200 text-light-100 p-3.5 text-sm focus:border-primary-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 transition-all duration-200 placeholder:text-light-400/50';
+  'w-full rounded-lg bg-white border p-3.5 text-sm focus:outline-none transition-all duration-200';
 
 const ExitIntentModal: React.FC = () => {
   const { triggered, dismiss } = useExitIntent();
@@ -179,14 +184,16 @@ const ExitIntentModal: React.FC = () => {
         >
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-dark-500/80 backdrop-blur-sm"
+            className="absolute inset-0 backdrop-blur-sm"
+            style={{ background: 'rgba(12,18,16,0.5)' }}
             onClick={dismiss}
             aria-hidden
           />
 
           {/* Modal */}
           <motion.div
-            className="relative w-full max-w-md bg-dark-400 border border-dark-200/50 rounded-2xl shadow-2xl shadow-primary-500/10 overflow-hidden"
+            className="relative w-full max-w-md rounded-2xl shadow-2xl overflow-hidden"
+            style={{ background: '#fff', border: '1px solid #E4E9E7' }}
             initial={{ opacity: 0, y: 32, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
@@ -199,7 +206,8 @@ const ExitIntentModal: React.FC = () => {
 
             <button
               onClick={dismiss}
-              className="absolute top-4 right-4 text-light-400 hover:text-light-100 transition-colors duration-200"
+              className="absolute top-4 right-4 transition-colors duration-200"
+              style={{ color: '#68746F' }}
               aria-label="Schließen"
             >
               <X size={20} />
@@ -215,24 +223,24 @@ const ExitIntentModal: React.FC = () => {
                   <div className="w-14 h-14 rounded-full bg-primary-500/20 flex items-center justify-center mx-auto mb-4">
                     <ArrowRight size={24} className="text-primary-400" />
                   </div>
-                  <h3 className="text-xl font-heading font-bold text-primary-400 mb-2">Vielen Dank!</h3>
-                  <p className="text-light-200 text-sm leading-relaxed">
+                  <h3 className="text-xl font-heading font-bold mb-2" style={{ color: '#0E7C72' }}>Vielen Dank!</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: '#404B48' }}>
                     Wir melden uns innerhalb von 24h bei Ihnen.
                   </p>
                 </motion.div>
               ) : (
                 <>
-                  <h2 className="text-xl md:text-2xl font-heading font-bold text-light-100 mb-2 pr-8">
+                  <h2 className="text-xl md:text-2xl font-heading font-bold mb-2 pr-8" style={{ color: '#0C1210' }}>
                     {context.headline}
                   </h2>
-                  <p className="text-light-300 text-sm leading-relaxed mb-6">
+                  <p className="text-sm leading-relaxed mb-6" style={{ color: '#68746F' }}>
                     {context.subline}
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label htmlFor="exit-name" className="block text-light-100 font-heading font-medium mb-1.5 text-sm">
-                        Name <span className="text-primary-500">*</span>
+                      <label htmlFor="exit-name" className="block font-heading font-medium mb-1.5 text-sm" style={{ color: '#0C1210' }}>
+                        Name <span style={{ color: '#0E7C72' }}>*</span>
                       </label>
                       <input
                         type="text"
@@ -241,14 +249,15 @@ const ExitIntentModal: React.FC = () => {
                         onChange={(e) => setName(e.target.value)}
                         required
                         className={inputClass}
+                        style={{ borderColor: '#E4E9E7', color: '#0C1210' }}
                         placeholder="Max Mustermann"
                         autoFocus
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="exit-email" className="block text-light-100 font-heading font-medium mb-1.5 text-sm">
-                        E-Mail <span className="text-primary-500">*</span>
+                      <label htmlFor="exit-email" className="block font-heading font-medium mb-1.5 text-sm" style={{ color: '#0C1210' }}>
+                        E-Mail <span style={{ color: '#0E7C72' }}>*</span>
                       </label>
                       <input
                         type="email"
@@ -257,6 +266,7 @@ const ExitIntentModal: React.FC = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         className={inputClass}
+                        style={{ borderColor: '#E4E9E7', color: '#0C1210' }}
                         placeholder="max@beispiel.de"
                       />
                     </div>
@@ -268,31 +278,29 @@ const ExitIntentModal: React.FC = () => {
                         checked={privacyAccepted}
                         onChange={(e) => setPrivacyAccepted(e.target.checked)}
                         required
-                        className="mt-0.5 w-4 h-4 rounded bg-dark-300 border border-dark-200 text-primary-500 focus:ring-2 focus:ring-primary-500/50 cursor-pointer flex-shrink-0"
+                        className="mt-0.5 w-4 h-4 rounded cursor-pointer flex-shrink-0"
+                        style={{ accentColor: '#0E7C72' }}
                       />
-                      <label htmlFor="exit-privacy" className="text-light-300 text-xs leading-relaxed cursor-pointer">
+                      <label htmlFor="exit-privacy" className="text-xs leading-relaxed cursor-pointer" style={{ color: '#68746F' }}>
                         Ich habe die{' '}
-                        <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-primary-400 hover:text-primary-300 underline">
+                        <a href="/datenschutz" target="_blank" rel="noopener noreferrer" style={{ color: '#0E7C72' }} className="underline">
                           Datenschutzerklärung
                         </a>{' '}
-                        gelesen und akzeptiert. <span className="text-primary-500">*</span>
+                        gelesen und akzeptiert. <span style={{ color: '#0E7C72' }}>*</span>
                       </label>
                     </div>
 
                     <button
                       type="submit"
                       disabled={isSubmitting || !privacyAccepted}
-                      className={`w-full py-3.5 px-6 rounded-xl bg-primary-500 text-dark-500 font-heading font-bold text-sm shadow-lg shadow-primary-500/20 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 ${
-                        isSubmitting || !privacyAccepted
-                          ? 'opacity-60 cursor-not-allowed'
-                          : 'hover:bg-primary-400 hover:shadow-primary-glow'
-                      }`}
+                      className="btn-primary w-full py-3.5 justify-center"
+                      style={{ opacity: isSubmitting || !privacyAccepted ? 0.6 : 1, cursor: isSubmitting || !privacyAccepted ? 'not-allowed' : 'pointer' }}
                     >
                       {isSubmitting ? 'Wird gesendet…' : context.cta}
                     </button>
 
                     {errorMessage && (
-                      <div className="p-3 rounded-lg bg-red-500/20 border border-red-500/50 text-red-300 text-sm">
+                      <div className="p-3 rounded-lg text-sm" style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.3)', color: '#B91C1C' }}>
                         {errorMessage}
                       </div>
                     )}
@@ -300,7 +308,8 @@ const ExitIntentModal: React.FC = () => {
 
                   <button
                     onClick={dismiss}
-                    className="w-full mt-3 text-center text-light-400 text-xs hover:text-light-200 transition-colors duration-200"
+                    className="w-full mt-3 text-center text-xs transition-colors duration-200"
+                    style={{ color: '#68746F' }}
                   >
                     Nein danke, vielleicht später
                   </button>

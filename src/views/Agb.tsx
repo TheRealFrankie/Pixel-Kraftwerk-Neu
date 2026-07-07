@@ -13,10 +13,10 @@ const Agb: React.FC = () => {
       title: '1. Geltungsbereich',
       content: (
         <>
-          <p className="text-light-200 mb-2 leading-relaxed">
+          <p className="mb-2 leading-relaxed" style={{ color: '#404B48' }}>
             Diese AGB gelten ausschließlich für Unternehmer im Sinne des § 14 BGB.
           </p>
-          <p className="text-light-200 leading-relaxed">
+          <p className="leading-relaxed" style={{ color: '#404B48' }}>
             Verträge mit Verbrauchern werden nicht geschlossen.
           </p>
         </>
@@ -28,13 +28,13 @@ const Agb: React.FC = () => {
       title: '2. Vertragsabschluss',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Ein Vertrag kommt ausschließlich durch schriftliche Unterzeichnung vor Ort zustande.
           </p>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Elektronische Vertragsschlüsse, Online-Verträge oder mündliche Nebenabreden sind ausgeschlossen.
           </p>
-          <p className="text-light-200 leading-relaxed">
+          <p className="leading-relaxed" style={{ color: '#404B48' }}>
             Angebote sind freibleibend, sofern nicht ausdrücklich als verbindlich bezeichnet.
           </p>
         </>
@@ -46,10 +46,10 @@ const Agb: React.FC = () => {
       title: '3. Leistungsumfang',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Pixel Kraftwerk erbringt Dienstleistungen in den Bereichen KI-Systeme, Automatisierung, digitale Kundenkommunikation, Content- und Videoerstellung, Webentwicklung sowie Prozessdigitalisierung.
           </p>
-          <p className="text-light-200 leading-relaxed">
+          <p className="leading-relaxed" style={{ color: '#404B48' }}>
             Der konkrete Leistungsumfang ergibt sich ausschließlich aus dem Einzelvertrag.
           </p>
         </>
@@ -61,30 +61,30 @@ const Agb: React.FC = () => {
       title: '4. Vergütung und Zahlungsbedingungen',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Alle Preise verstehen sich netto zuzüglich gesetzlicher Umsatzsteuer.
           </p>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Die Vergütung ist vollständig im Voraus zu leisten.
             Monatliche Entgelte sind jeweils zu Beginn des Abrechnungszeitraums fällig.
           </p>
-          <p className="text-light-200 mb-2 leading-relaxed">
+          <p className="mb-2 leading-relaxed" style={{ color: '#404B48' }}>
             Bei Zahlungsverzug gelten folgende Maßnahmen:
           </p>
           <ul className="space-y-2">
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Mahnung mit Mahngebühren</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Vorübergehender Leistungsstopp</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Fristsetzung</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Fristlose Kündigung durch Pixel Kraftwerk</span>
             </li>
@@ -98,26 +98,26 @@ const Agb: React.FC = () => {
       title: '5. Vertragslaufzeit und Kündigung',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Die Mindestlaufzeit beträgt sechs Monate, sofern nichts Abweichendes vereinbart ist.
           </p>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Die Kündigungsfrist beträgt drei Monate zum Monatsende.
           </p>
-          <p className="text-light-200 mb-2 leading-relaxed">
+          <p className="mb-2 leading-relaxed" style={{ color: '#404B48' }}>
             Die Kündigung bedarf der Schriftform und kann erfolgen:
           </p>
           <ul className="space-y-2 mb-4">
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>per eingeschriebenem Brief oder</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>per E-Mail an <a href="mailto:kontakt@pixelkraftwerk-ai.com" className="text-primary-500 hover:text-primary-400 transition-colors font-bold">kontakt@pixelkraftwerk-ai.com</a></span>
             </li>
           </ul>
-          <p className="text-light-200 leading-relaxed">
+          <p className="leading-relaxed" style={{ color: '#404B48' }}>
             Maßgeblich ist der Zugang der Kündigung bei Pixel Kraftwerk.
           </p>
         </>
@@ -129,10 +129,10 @@ const Agb: React.FC = () => {
       title: '6. Mitwirkungspflichten des Kunden',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Der Kunde stellt alle zur Leistungserbringung notwendigen Informationen, Inhalte, Zugänge und Freigaben rechtzeitig bereit.
           </p>
-          <p className="text-light-200 leading-relaxed">
+          <p className="leading-relaxed" style={{ color: '#404B48' }}>
             Unterbleibt eine Mitwirkung, verlängern sich alle Fristen entsprechend.
             Mehrkosten durch fehlende Mitwirkung trägt der Kunde.
           </p>
@@ -145,11 +145,11 @@ const Agb: React.FC = () => {
       title: '7. Projektabnahme',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Nach Fertigstellung erfolgt eine gemeinsame Endabnahme.
             Mit der Abnahme gilt die Leistung als vertragsgemäß erbracht.
           </p>
-          <p className="text-light-200 leading-relaxed">
+          <p className="leading-relaxed" style={{ color: '#404B48' }}>
             Unterbleibt die Abnahme trotz Aufforderung, gilt die Leistung nach 7 Kalendertagen als abgenommen.
           </p>
         </>
@@ -161,53 +161,53 @@ const Agb: React.FC = () => {
       title: '8. Nutzungsrechte',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Pixel Kraftwerk stellt sämtliche Leistungen ausschließlich zur zeitlich begrenzten Nutzung im Rahmen des jeweiligen Vertragsverhältnisses zur Verfügung.
           </p>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Der Kunde erhält für die Dauer der Vertragslaufzeit ein einfaches, nicht übertragbares und nicht unterlizenzierbares Nutzungsrecht an den bereitgestellten Leistungen.
           </p>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Eine Übertragung von Eigentums-, Urheber- oder sonstigen Verwertungsrechten findet nicht statt.
           </p>
-          <p className="text-light-200 mb-2 leading-relaxed">
+          <p className="mb-2 leading-relaxed" style={{ color: '#404B48' }}>
             Insbesondere erfolgt keine Herausgabe von:
           </p>
           <ul className="space-y-2 mb-4">
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Quellcodes</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Systemzugängen</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Konfigurationsdateien</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>KI-Logiken</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Automatisierungen</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Workflows</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Trainingsdaten</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>technischen Dokumentationen</span>
             </li>
           </ul>
-          <p className="text-light-200 leading-relaxed">
+          <p className="leading-relaxed" style={{ color: '#404B48' }}>
             Mit Beendigung des Vertragsverhältnisses erlischt das Nutzungsrecht vollständig, und sämtliche bereitgestellten Leistungen werden eingestellt.
           </p>
         </>
@@ -219,16 +219,16 @@ const Agb: React.FC = () => {
       title: '9. Haftung',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Pixel Kraftwerk haftet nur bei Vorsatz und grober Fahrlässigkeit.
           </p>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Bei einfacher Fahrlässigkeit ist die Haftung auf den Auftragswert der letzten drei Monate begrenzt.
           </p>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Eine Haftung für mittelbare Schäden, entgangenen Gewinn oder Folgeschäden ist ausgeschlossen.
           </p>
-          <p className="text-light-200 leading-relaxed">
+          <p className="leading-relaxed" style={{ color: '#404B48' }}>
             Pixel Kraftwerk haftet nicht für Störungen durch Drittanbieter, Internet- und Telekommunikationsnetze sowie KI-Systeme.
           </p>
         </>
@@ -240,10 +240,10 @@ const Agb: React.FC = () => {
       title: '10. Datenschutz und Auftragsverarbeitung',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Pixel Kraftwerk verarbeitet personenbezogene Daten gemäß DSGVO.
           </p>
-          <p className="text-light-200 leading-relaxed">
+          <p className="leading-relaxed" style={{ color: '#404B48' }}>
             Im Rahmen von Kundenprojekten handelt Pixel Kraftwerk als Auftragsverarbeiter im Sinne von Art. 28 DSGVO.
           </p>
         </>
@@ -255,10 +255,10 @@ const Agb: React.FC = () => {
       title: '11. Gerichtsstand und Recht',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Gerichtsstand ist Leipzig.
           </p>
-          <p className="text-light-200 leading-relaxed">
+          <p className="leading-relaxed" style={{ color: '#404B48' }}>
             Es gilt ausschließlich deutsches Recht unter Ausschluss des UN-Kaufrechts.
           </p>
         </>
@@ -270,10 +270,10 @@ const Agb: React.FC = () => {
       title: '12. Schlussbestimmungen',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Nebenabreden bestehen nicht. Änderungen bedürfen der Schriftform.
           </p>
-          <p className="text-light-200 leading-relaxed">
+          <p className="leading-relaxed" style={{ color: '#404B48' }}>
             Sollte eine Bestimmung unwirksam sein, bleibt der Vertrag im Übrigen wirksam.
           </p>
         </>
@@ -282,7 +282,7 @@ const Agb: React.FC = () => {
   ];
 
   return (
-    <div className="bg-dark-500 min-h-screen">
+    <div style={{ background: '#FAFAF9', minHeight: '100vh' }}>
 
       {/* HEADER */}
       <section className="pt-32 pb-16 bg-dark-400">
@@ -293,10 +293,10 @@ const Agb: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl md:text-5xl font-heading font-bold text-light-100 mb-4">
+              <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4" style={{ color: '#0C1210' }}>
                 AGB – Allgemeine <span className="text-primary-500">Geschäftsbedingungen</span>
               </h1>
-              <p className="text-light-100 text-xl mb-2">{businessInfo.legalName}</p>
+              <p className="text-xl mb-2" style={{ color: '#0C1210' }}>{businessInfo.legalName}</p>
               <p className="text-light-300 text-lg">
                 Stand: <span className="text-primary-500 font-bold">Januar 2026</span>
               </p>
@@ -322,7 +322,7 @@ const Agb: React.FC = () => {
                   <div className="text-primary-500 mr-4 flex-shrink-0 mt-1">
                     {section.icon}
                   </div>
-                  <h2 className="text-2xl font-heading font-bold text-light-100">
+                  <h2 className="text-2xl font-heading font-bold " style={{ color: '#0C1210' }}>
                     {section.title}
                   </h2>
                 </div>
@@ -345,7 +345,7 @@ const Agb: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <p className="text-light-200 text-lg mb-6 leading-relaxed">
+              <p className="text-lg mb-6 leading-relaxed" style={{ color: '#404B48' }}>
                 Bei Fragen zu unseren Geschäftsbedingungen stehen wir Ihnen gerne zur Verfügung.
               </p>
               <a

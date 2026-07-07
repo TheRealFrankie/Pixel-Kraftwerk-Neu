@@ -32,6 +32,7 @@ export type HowFoundUs =
 export interface ContactFormData {
   name: string;
   email: string;
+  telephone?: string;
   company: string;
   tasksToAutomate: string;
   privacyAccepted: boolean;

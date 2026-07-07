@@ -57,8 +57,11 @@ const VorherNachherSection: React.FC = () => {
   const kpis = activeTab === 'vorher' ? KPI_VORHER : KPI_NACHHER;
   const isVorher = activeTab === 'vorher';
   const badgeColor = isVorher
-    ? 'bg-red-500/25 border-red-400 text-red-100'
-    : 'bg-primary-500/25 border-primary-400 text-primary-100';
+    ? 'border'
+    : 'border';
+  const badgeStyle = isVorher
+    ? { background: 'rgba(239,68,68,0.08)', borderColor: 'rgba(239,68,68,0.25)', color: '#B91C1C' }
+    : { background: 'rgba(14,124,114,0.08)', borderColor: 'rgba(14,124,114,0.25)', color: '#0E7C72' };
 
   const title = isVorher ? 'Ihr Unternehmen – Vorher' : 'Ihr Unternehmen – Nachher';
   const conclusion = isVorher
@@ -71,7 +74,7 @@ const VorherNachherSection: React.FC = () => {
       : 'Karte mit grünen Markierungen – Unternehmen in den Top 3 bei Google Maps';
 
   return (
-    <section className="vorher-nachher-section py-20 bg-dark-400" aria-labelledby="vorher-nachher-heading">
+    <section className="vorher-nachher-section py-20" style={{ background: '#FAFAF9' }} aria-labelledby="vorher-nachher-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Einleitende Copy – reduziert */}
@@ -84,11 +87,11 @@ const VorherNachherSection: React.FC = () => {
           >
             <h2
               id="vorher-nachher-heading"
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-2"
+              className="text-2xl md:text-3xl font-heading font-bold mb-2" style={{ color: '#0C1210' }}
             >
               Der Unterschied, wenn Sie in den <span className="text-primary-500">Top 3</span> sind
             </h2>
-            <p className="text-light-100 max-w-2xl mx-auto">
+            <p className="max-w-2xl mx-auto" style={{ color: '#404B48' }}>
               Top 3 bei Google in 90 Tagen – garantiert. Die Grafik zeigt Vorher vs. Nachher.
             </p>
           </motion.div>
@@ -108,8 +111,8 @@ const VorherNachherSection: React.FC = () => {
               onClick={() => setActiveTab('vorher')}
               className={`px-6 py-3 font-heading font-bold transition-colors rounded-lg ${
                 activeTab === 'vorher'
-                  ? 'bg-red-500/25 border-2 border-red-400 text-red-100'
-                  : 'bg-dark-500 border border-dark-200 text-light-200 hover:border-dark-100 hover:text-light-100'
+                  ? 'border-2 border-red-400 font-semibold'
+                  : 'border border-gray-200 hover:border-gray-300'
               }`}
             >
               Vorher
@@ -123,8 +126,8 @@ const VorherNachherSection: React.FC = () => {
               onClick={() => setActiveTab('nachher')}
               className={`px-6 py-3 font-heading font-bold transition-colors rounded-lg ${
                 activeTab === 'nachher'
-                  ? 'bg-primary-500/25 border-2 border-primary-400 text-primary-100'
-                  : 'bg-dark-500 border border-dark-200 text-light-200 hover:border-dark-100 hover:text-light-100'
+                  ? 'border-2 font-semibold'
+                  : 'border border-gray-200 hover:border-gray-300'
               }`}
             >
               Nachher
@@ -133,7 +136,7 @@ const VorherNachherSection: React.FC = () => {
 
           {/* Karten-Box: Links KPIs, rechts Karte – Grafikbereich volle Breite, nicht abgeschnitten */}
           <motion.div
-            className="bg-dark-500 border border-dark-200 rounded-xl shadow-card"
+            className="rounded-2xl border bg-white shadow-card" style={{ borderColor: '#E4E9E7' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -146,8 +149,8 @@ const VorherNachherSection: React.FC = () => {
               className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 md:p-8"
             >
               {/* Linke Spalte: KPIs & Copy – fester Hintergrund für Lesbarkeit */}
-              <div className="min-w-0 bg-dark-500 rounded-lg p-1">
-                <h3 className="text-xl font-heading font-bold text-light-100 mb-2">{title}</h3>
+              <div className="min-w-0 rounded-lg p-1">
+                <h3 className="text-xl font-heading font-bold mb-2" style={{ color: '#0C1210' }}>{title}</h3>
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeTab}
@@ -163,7 +166,7 @@ const VorherNachherSection: React.FC = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.2, delay: index * 0.05 }}
-                        className={`inline-block px-3 py-1.5 rounded-lg border text-sm font-semibold ${badgeColor}`}
+                        className={`inline-block px-3 py-1.5 rounded-lg text-sm font-semibold ${badgeColor}`} style={badgeStyle}
                       >
                         {kpi.label}: {kpi.value}
                       </motion.span>
@@ -171,16 +174,15 @@ const VorherNachherSection: React.FC = () => {
                   </motion.div>
                 </AnimatePresence>
                 <p
-                  className={`text-base font-medium ${
-                    isVorher ? 'text-red-100' : 'text-primary-100'
-                  }`}
+                  className={`text-base font-medium`}
+                  style={{ color: isVorher ? '#B91C1C' : '#0E7C72' }}
                 >
                   {conclusion}
                 </p>
               </div>
 
               {/* Rechte Spalte: Karte – vollständig sichtbar, object-contain (Original-Assets: Not_Top_3 / Top_3) */}
-              <div className="rounded-lg border border-dark-200 bg-dark-400 min-h-[260px] lg:min-h-[320px] relative flex items-center justify-center w-full">
+              <div className="rounded-xl border min-h-[260px] lg:min-h-[320px] relative flex items-center justify-center w-full" style={{ borderColor: '#E4E9E7', background: '#F4F7F6' }}>
                 <img
                   src={activeTab === 'vorher' ? IMG_VORHER : IMG_NACHHER}
                   alt={mapAlt}
@@ -197,7 +199,7 @@ const VorherNachherSection: React.FC = () => {
                 />
                 {showPlaceholder && (
                   <div
-                    className="absolute inset-2 flex flex-col items-center justify-center bg-dark-300 rounded-lg p-4"
+                    className="absolute inset-2 flex flex-col items-center justify-center rounded-lg p-4" style={{ background: '#FAFAF9' }}
                     aria-hidden="true"
                   >
                     <div className="w-full h-full min-h-[140px] grid grid-cols-6 sm:grid-cols-8 gap-1.5 place-content-center place-items-center">
@@ -216,7 +218,7 @@ const VorherNachherSection: React.FC = () => {
                         />
                       ))}
                     </div>
-                    <span className="text-light-300 text-xs mt-2 text-center">
+                    <span className="text-xs mt-2 text-center" style={{ color: '#68746F' }}>
                       {isVorher ? 'Rote Markierungen (nicht Top 3)' : 'Grüne Markierungen (Top 3)'}
                     </span>
                   </div>
@@ -236,12 +238,12 @@ const VorherNachherSection: React.FC = () => {
             {NUTZENPUNKTE.map((item) => (
               <div
                 key={item.title}
-                className="bg-dark-500 p-4 border border-dark-200 rounded-lg hover:border-primary-500/30 transition-colors flex items-center gap-3"
+                className="rounded-2xl border bg-white p-4 shadow-card hover:border-primary-500/30 transition-colors flex items-center gap-3" style={{ borderColor: '#E4E9E7' }}
               >
-                <div className="text-primary-400 flex-shrink-0">{<item.icon size={20} />}</div>
+                <div className="flex-shrink-0" style={{ color: '#0E7C72' }}>{<item.icon size={20} />}</div>
                 <div>
-                  <h4 className="font-heading font-bold text-light-100 text-sm">{item.title}</h4>
-                  <p className="text-light-200 text-sm">{item.text}</p>
+                  <h4 className="font-heading font-bold text-sm" style={{ color: '#0C1210' }}>{item.title}</h4>
+                  <p className="text-sm" style={{ color: '#404B48' }}>{item.text}</p>
                 </div>
               </div>
             ))}

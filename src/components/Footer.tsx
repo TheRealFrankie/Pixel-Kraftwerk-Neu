@@ -4,7 +4,13 @@ import React from 'react';
 import { Instagram, Facebook, Settings, MapPin, Phone, Mail, Clock } from 'lucide-react';
 import Logo from './Logo';
 import { businessInfo } from '@/data/businessInfo';
-import { NavItem, SocialLink } from '../types';
+import type { NavItem, SocialLink } from '../types';
+
+const INK_BG    = '#0B1512';
+const INK_TEXT  = '#E7F4F2';
+const INK_MUTED = '#8FB5AE';
+const INK_BORDER = '#1E3530';
+const PETROL_LIGHT = '#3DADA4';
 
 const serviceLinks = [
   { title: 'KI-Chatbots', path: '/ki-chatbots' },
@@ -45,28 +51,29 @@ const socialLinks: SocialLink[] = [
 ];
 
 const getSocialIcon = (icon: string) => {
-  switch (icon) {
-    case 'instagram':
-      return <Instagram size={18} />;
-    case 'facebook':
-      return <Facebook size={18} />;
-    default:
-      return null;
-  }
+  if (icon === 'instagram') return <Instagram size={18} />;
+  if (icon === 'facebook') return <Facebook size={18} />;
+  return null;
 };
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
+  const linkStyle: React.CSSProperties = { color: INK_MUTED, fontSize: '0.875rem' };
+  const hoverLink = (e: React.MouseEvent<HTMLAnchorElement>) =>
+    (e.currentTarget.style.color = PETROL_LIGHT);
+  const leaveLink = (e: React.MouseEvent<HTMLAnchorElement>) =>
+    (e.currentTarget.style.color = INK_MUTED);
+
   return (
-    <footer className="bg-dark-400 border-t border-dark-200">
+    <footer style={{ background: INK_BG, borderTop: `1px solid ${INK_BORDER}` }}>
       <div className="container mx-auto px-4 pt-10 pb-6 md:pt-12 md:pb-8">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-10">
 
           {/* Spalte 1: Logo + Claim + Social */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <Logo />
-            <p className="text-light-400 text-sm mt-3 mb-4">
+            <p className="text-sm mt-3 mb-4" style={{ color: INK_MUTED }}>
               Zukunft. Automatisiert. Jetzt.
             </p>
             <div className="flex items-center gap-3">
@@ -77,7 +84,10 @@ const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.platform}
-                  className="text-light-300 hover:text-primary-400 transition-colors duration-200 p-1 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50"
+                  style={{ color: INK_MUTED, padding: '0.25rem', borderRadius: '0.5rem' }}
+                  className="transition-colors duration-200"
+                  onMouseEnter={hoverLink}
+                  onMouseLeave={leaveLink}
                 >
                   {getSocialIcon(link.icon)}
                 </a>
@@ -87,7 +97,8 @@ const Footer: React.FC = () => {
               href="https://g.page/r/CUl0X04KsO71EAE/review"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-3 text-primary-400 hover:text-primary-300 hover:underline text-xs font-heading font-bold"
+              className="inline-block mt-3 text-xs font-heading font-bold hover:underline"
+              style={{ color: PETROL_LIGHT }}
             >
               Bei Google bewerten
             </a>
@@ -95,14 +106,13 @@ const Footer: React.FC = () => {
 
           {/* Spalte 2: Leistungen */}
           <div>
-            <h2 className="text-light-100 font-heading font-bold text-sm mb-3">Leistungen</h2>
+            <h2 className="font-heading font-bold text-sm mb-3" style={{ color: INK_TEXT }}>
+              Leistungen
+            </h2>
             <ul className="space-y-2">
               {serviceLinks.map((service) => (
                 <li key={service.path}>
-                  <a
-                    href={service.path}
-                    className="text-light-300 text-sm hover:text-primary-400 transition-colors duration-200"
-                  >
+                  <a href={service.path} style={linkStyle} className="transition-colors duration-200" onMouseEnter={hoverLink} onMouseLeave={leaveLink}>
                     {service.title}
                   </a>
                 </li>
@@ -112,15 +122,14 @@ const Footer: React.FC = () => {
 
           {/* Spalte 3: Seiten */}
           <div>
-            <h2 className="text-light-100 font-heading font-bold text-sm mb-3">Seiten</h2>
+            <h2 className="font-heading font-bold text-sm mb-3" style={{ color: INK_TEXT }}>
+              Seiten
+            </h2>
             <nav aria-label="Seitennavigation">
               <ul className="space-y-2">
                 {navItems.map((item) => (
                   <li key={item.path}>
-                    <a
-                      href={item.path}
-                      className="text-light-300 text-sm hover:text-primary-400 transition-colors duration-200"
-                    >
+                    <a href={item.path} style={linkStyle} className="transition-colors duration-200" onMouseEnter={hoverLink} onMouseLeave={leaveLink}>
                       {item.title}
                     </a>
                   </li>
@@ -131,14 +140,13 @@ const Footer: React.FC = () => {
 
           {/* Spalte 4: Leistungsgebiete */}
           <div>
-            <h2 className="text-light-100 font-heading font-bold text-sm mb-3">Leistungsgebiete</h2>
+            <h2 className="font-heading font-bold text-sm mb-3" style={{ color: INK_TEXT }}>
+              Leistungsgebiete
+            </h2>
             <ul className="space-y-2">
               {regionLinks.map((region) => (
                 <li key={region.path}>
-                  <a
-                    href={region.path}
-                    className="text-light-300 text-sm hover:text-primary-400 transition-colors duration-200"
-                  >
+                  <a href={region.path} style={linkStyle} className="transition-colors duration-200" onMouseEnter={hoverLink} onMouseLeave={leaveLink}>
                     {region.title}
                   </a>
                 </li>
@@ -146,62 +154,80 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Spalte 5: Kontakt (NAP) */}
+          {/* Spalte 5: Kontakt */}
           <div>
-            <h2 className="text-light-100 font-heading font-bold text-sm mb-3">Kontakt</h2>
-            <address className="not-italic space-y-2 text-sm text-light-300">
-              <p className="text-light-100 font-heading font-semibold">{businessInfo.name}</p>
+            <h2 className="font-heading font-bold text-sm mb-3" style={{ color: INK_TEXT }}>
+              Kontakt
+            </h2>
+            <address className="not-italic space-y-2 text-sm" style={{ color: INK_MUTED }}>
+              <p className="font-heading font-semibold" style={{ color: INK_TEXT }}>
+                {businessInfo.name}
+              </p>
               <p>
                 <a
                   href={businessInfo.socialMedia.googleMaps}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-2 hover:text-primary-400 transition-colors duration-200"
+                  className="flex items-start gap-2 transition-colors duration-200"
+                  style={{ color: INK_MUTED }}
+                  onMouseEnter={hoverLink}
+                  onMouseLeave={leaveLink}
                 >
-                  <MapPin size={14} className="text-primary-500 flex-shrink-0 mt-0.5" />
+                  <MapPin size={14} style={{ color: PETROL_LIGHT }} className="flex-shrink-0 mt-0.5" />
                   <span>
                     {businessInfo.address.streetAddress}
                     <br />
-                    {businessInfo.address.postalCode}{' '}
-                    {businessInfo.address.addressLocality}
+                    {businessInfo.address.postalCode} {businessInfo.address.addressLocality}
                   </span>
                 </a>
               </p>
               <p>
                 <a
                   href={`tel:${businessInfo.contact.telephoneE164}`}
-                  className="flex items-center gap-2 hover:text-primary-400 transition-colors duration-200"
+                  className="flex items-center gap-2 transition-colors duration-200"
+                  style={{ color: INK_MUTED }}
+                  onMouseEnter={hoverLink}
+                  onMouseLeave={leaveLink}
                 >
-                  <Phone size={14} className="text-primary-500 flex-shrink-0" />
+                  <Phone size={14} style={{ color: PETROL_LIGHT }} className="flex-shrink-0" />
                   {businessInfo.contact.telephone}
                 </a>
               </p>
               <p>
                 <a
                   href={`mailto:${businessInfo.contact.email}`}
-                  className="flex items-center gap-2 hover:text-primary-400 transition-colors duration-200"
+                  className="flex items-center gap-2 transition-colors duration-200"
+                  style={{ color: INK_MUTED }}
+                  onMouseEnter={hoverLink}
+                  onMouseLeave={leaveLink}
                 >
-                  <Mail size={14} className="text-primary-500 flex-shrink-0" />
+                  <Mail size={14} style={{ color: PETROL_LIGHT }} className="flex-shrink-0" />
                   {businessInfo.contact.email}
                 </a>
               </p>
               <p className="flex items-start gap-2 pt-1">
-                <Clock size={14} className="text-primary-500 flex-shrink-0 mt-0.5" />
+                <Clock size={14} style={{ color: PETROL_LIGHT }} className="flex-shrink-0 mt-0.5" />
                 {businessInfo.openingHoursDisplay}
               </p>
             </address>
           </div>
         </div>
 
-        {/* Bottom Bar: Rechtliches + Copyright */}
-        <div className="border-t border-dark-200 mt-8 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        {/* Bottom Bar */}
+        <div
+          className="mt-8 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+          style={{ borderTop: `1px solid ${INK_BORDER}` }}
+        >
           <nav aria-label="Rechtliche Informationen">
             <ul className="flex flex-wrap gap-x-5 gap-y-1">
               {legalItems.map((item) => (
                 <li key={item.path}>
                   <a
                     href={item.path}
-                    className="text-light-400 text-xs hover:text-primary-400 transition-colors duration-200"
+                    className="text-xs transition-colors duration-200"
+                    style={{ color: INK_MUTED }}
+                    onMouseEnter={hoverLink}
+                    onMouseLeave={leaveLink}
                   >
                     {item.title}
                   </a>
@@ -209,7 +235,7 @@ const Footer: React.FC = () => {
               ))}
             </ul>
           </nav>
-          <p className="text-light-400 text-xs">
+          <p className="text-xs" style={{ color: INK_MUTED }}>
             &copy; {currentYear} {businessInfo.name}
           </p>
         </div>
@@ -219,8 +245,17 @@ const Footer: React.FC = () => {
       <div className="fixed bottom-4 left-4 z-[9999]">
         <a
           href="/datenschutz-einstellungen"
-          className="flex items-center justify-center w-12 h-12 rounded-full bg-dark-500/95 border border-dark-200 text-light-100 shadow-lg hover:bg-dark-400 hover:border-primary-500/60 hover:text-primary-400 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500"
+          className="flex items-center justify-center w-12 h-12 rounded-full shadow-elevation transition-colors duration-200 focus:outline-none"
+          style={{ background: '#fff', border: '1px solid #E4E9E7', color: '#404B48' }}
           aria-label="Datenschutz-Einstellungen öffnen"
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.borderColor = '#0E7C72';
+            (e.currentTarget as HTMLAnchorElement).style.color = '#0E7C72';
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.borderColor = '#E4E9E7';
+            (e.currentTarget as HTMLAnchorElement).style.color = '#404B48';
+          }}
         >
           <Settings size={22} />
         </a>

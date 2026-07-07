@@ -6,9 +6,9 @@ import { Shield, Cookie, Info } from 'lucide-react';
 import CookieSettings from '../components/CookieSettings';
 const PrivacySettings: React.FC = () => {
   return (
-    <div className="bg-dark-500 min-h-screen">
+    <div style={{ background: '#FAFAF9', minHeight: '100vh' }}>
 
-      <section className="pt-32 pb-20 bg-dark-400">
+      <section className="pt-32 pb-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -18,7 +18,7 @@ const PrivacySettings: React.FC = () => {
               transition={{ duration: 0.8 }}
             >
               <motion.div
-                className="inline-flex items-center justify-center w-20 h-20 bg-dark-500 border-2 border-primary-500 rounded-full mb-6"
+                className="inline-flex items-center justify-center w-20 h-20 border-2 border-primary-500 rounded-full mb-6 bg-white"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -26,24 +26,24 @@ const PrivacySettings: React.FC = () => {
                 <Shield size={32} className="text-primary-500" />
               </motion.div>
 
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-light-100 mb-4">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4" style={{ color: '#0C1210' }}>
                 Datenschutz-<span className="text-primary-500">Einstellungen</span>
               </h1>
 
-              <p className="text-lg text-light-200 max-w-2xl mx-auto">
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: '#404B48' }}>
                 Hier können Sie Ihre Cookie-Einstellungen anpassen. Wir respektieren Ihre Privatsphäre und geben Ihnen die volle Kontrolle.
               </p>
             </motion.div>
 
             <motion.div
-              className="bg-dark-500 border border-dark-100 p-6 md:p-8 mb-8"
+              className="bg-white border rounded-2xl p-6 md:p-8 mb-8" style={{ borderColor: '#E4E9E7' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div className="flex items-start mb-6">
                 <Info className="text-primary-500 mr-3 mt-1 flex-shrink-0" size={20} />
-                <div className="text-light-200 text-sm leading-relaxed">
+                <div className="text-sm leading-relaxed" style={{ color: '#404B48' }}>
                   <p className="mb-3">
                     Diese Website verwendet Cookies, um Ihnen die bestmögliche Nutzererfahrung zu bieten. Einige Cookies sind für den Betrieb der Website erforderlich, andere helfen uns, Ihr Nutzererlebnis zu verbessern.
                   </p>

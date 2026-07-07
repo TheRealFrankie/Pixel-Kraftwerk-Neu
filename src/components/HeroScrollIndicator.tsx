@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { MUTED, PETROL } from '@/lib/theme';
 
 interface HeroScrollIndicatorProps {
   delay?: number;
@@ -29,13 +30,16 @@ const HeroScrollIndicator: React.FC<HeroScrollIndicatorProps> = ({
     <motion.button
       ref={buttonRef}
       onClick={scrollToNextSection}
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 text-primary-500 hover:text-primary-400 transition-colors duration-300 animate-bounce focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 rounded-lg py-2 min-h-[44px]"
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 animate-bounce focus:outline-none rounded-lg py-2 min-h-[44px] transition-colors duration-300"
+      style={{ color: PETROL }}
       aria-label="Nach unten scrollen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: 'easeOut', delay }}
     >
-      <span className="text-xs font-heading font-medium text-light-300">{label}</span>
+      <span className="text-xs font-heading font-medium" style={{ color: MUTED }}>
+        {label}
+      </span>
       <ChevronDown size={24} />
     </motion.button>
   );

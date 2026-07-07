@@ -3,14 +3,10 @@
 import React from 'react';
 import { LEISTUNGSGEBIETE_CITIES } from '@/data/leistungsgebiete';
 import { getRegionServiceLinkText, type ServiceSlug } from '@/data/services';
+import { INK, BODY, PETROL, BORDER, SURFACE } from '@/lib/theme';
 
-/** Anzahl Region-Service-Links im Block (Plan: 6–8, max. 8–10 pro Seite) */
 const LINK_COUNT = 8;
 
-/**
- * Block „In Ihrer Region“ / „[Service] in Ihrem Gebiet“ für Service-Seiten.
- * Zeigt 6–8 Links zu Region-Service-Seiten dieses Services mit variierendem Linktext.
- */
 interface RegionServiceLinksBlockProps {
   serviceSlug: ServiceSlug;
   title?: string;
@@ -23,9 +19,11 @@ const RegionServiceLinksBlock: React.FC<RegionServiceLinksBlockProps> = ({
   const links = LEISTUNGSGEBIETE_CITIES.slice(0, LINK_COUNT);
 
   return (
-    <div className="bg-dark-500 border border-dark-100 p-6 mt-8">
-      <h3 className="text-lg font-heading font-bold text-light-100 mb-3">{title}</h3>
-      <p className="text-light-300 text-sm mb-3">
+    <div className="rounded-2xl border p-6 mt-8" style={{ background: SURFACE, borderColor: BORDER }}>
+      <h3 className="text-lg font-heading font-bold mb-3" style={{ color: INK }}>
+        {title}
+      </h3>
+      <p className="text-sm mb-3" style={{ color: BODY }}>
         Wir bieten diese Leistung in allen unseren Leistungsgebieten an – hier eine Auswahl:
       </p>
       <p className="text-sm">
@@ -33,7 +31,8 @@ const RegionServiceLinksBlock: React.FC<RegionServiceLinksBlockProps> = ({
           <React.Fragment key={city.slug}>
             <a
               href={`/leistungsgebiete/${city.slug}/${serviceSlug}`}
-              className="text-primary-400 hover:underline"
+              style={{ color: PETROL }}
+              className="hover:underline"
             >
               {getRegionServiceLinkText(serviceSlug, city.name, i)}
             </a>
@@ -41,7 +40,7 @@ const RegionServiceLinksBlock: React.FC<RegionServiceLinksBlockProps> = ({
           </React.Fragment>
         ))}
         {' · '}
-        <a href="/leistungsgebiete" className="text-primary-400 hover:underline font-heading font-bold">
+        <a href="/leistungsgebiete" style={{ color: PETROL }} className="hover:underline font-heading font-bold">
           Alle Leistungsgebiete
         </a>
       </p>

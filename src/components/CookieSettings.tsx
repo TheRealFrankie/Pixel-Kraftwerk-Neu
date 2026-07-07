@@ -135,7 +135,8 @@ const CookieSettings: React.FC<CookieSettingsProps> = ({ standalone = false }) =
         {cookieCategories.map((category, index) => (
           <motion.div
             key={category.key}
-            className="group bg-dark-500 border border-dark-100 hover:border-primary-500/50 transition-all duration-300"
+            className="group bg-white rounded-2xl border shadow-card hover:shadow-card-hover transition-all duration-300"
+            style={{ borderColor: '#E4E9E7' }}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: standalone ? index * 0.1 : 0 }}
@@ -145,17 +146,18 @@ const CookieSettings: React.FC<CookieSettingsProps> = ({ standalone = false }) =
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-start gap-4 flex-1">
                   <motion.div
-                    className="text-primary-500 mt-1"
+                    style={{ color: '#0E7C72' }}
+                    className="mt-1"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.2 }}
                   >
                     {category.icon}
                   </motion.div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-heading font-bold text-light-100 mb-2 group-hover:text-primary-400 transition-colors duration-200">
+                    <h3 className="text-lg font-heading font-bold mb-2 transition-colors duration-200" style={{ color: '#0C1210' }}>
                       {category.title}
                     </h3>
-                    <p className="text-light-300 text-sm leading-relaxed">
+                    <p className="text-sm leading-relaxed" style={{ color: '#68746F' }}>
                       {category.description}
                     </p>
                   </div>
@@ -164,30 +166,23 @@ const CookieSettings: React.FC<CookieSettingsProps> = ({ standalone = false }) =
                 <div className="flex-shrink-0">
                   {category.required ? (
                     <motion.div
-                      className="flex items-center justify-center w-12 h-12 bg-primary-500/20 rounded-full"
+                      className="flex items-center justify-center w-12 h-12 rounded-full"
+                      style={{ background: 'rgba(14,124,114,0.1)' }}
                       whileHover={{ scale: 1.05 }}
                     >
-                      <Check size={20} className="text-primary-500" />
+                      <Check size={20} style={{ color: '#0E7C72' }} />
                     </motion.div>
                   ) : (
                     <button
                       onClick={() => handlePreferenceChange(category.key)}
-                      className={`relative w-14 h-7 rounded-full p-1 transition-all duration-300 ${
-                        consentState.preferences[category.key]
-                          ? 'bg-primary-500'
-                          : 'bg-dark-200'
-                      }`}
+                      className="relative w-14 h-7 rounded-full p-1 transition-all duration-300"
+                      style={{ background: consentState.preferences[category.key] ? '#0E7C72' : '#E4E9E7' }}
                       aria-label={`Toggle ${category.title}`}
                     >
                       <motion.div
-                        className={`w-5 h-5 rounded-full shadow-lg ${
-                          consentState.preferences[category.key]
-                            ? 'bg-dark-500'
-                            : 'bg-light-200'
-                        }`}
-                        animate={{
-                          x: consentState.preferences[category.key] ? 28 : 0,
-                        }}
+                        className="w-5 h-5 rounded-full shadow-lg"
+                        style={{ background: '#fff' }}
+                        animate={{ x: consentState.preferences[category.key] ? 28 : 0 }}
                         transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                       />
                     </button>
@@ -207,11 +202,10 @@ const CookieSettings: React.FC<CookieSettingsProps> = ({ standalone = false }) =
       >
         <motion.button
           onClick={savePreferences}
-          className={`px-8 py-3 bg-primary-500 text-dark-500 font-heading font-bold hover:bg-primary-400 transition-all duration-300 ${
-            !updated && !standalone ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
+          className="btn-primary px-8 py-3"
           disabled={!updated && !standalone}
-          whileHover={{ scale: updated || standalone ? 1.05 : 1 }}
+          style={{ opacity: !updated && !standalone ? 0.5 : 1, cursor: !updated && !standalone ? 'not-allowed' : 'pointer' }}
+          whileHover={{ scale: updated || standalone ? 1.02 : 1 }}
           whileTap={{ scale: updated || standalone ? 0.98 : 1 }}
         >
           Einstellungen speichern

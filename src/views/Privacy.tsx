@@ -15,11 +15,11 @@ const Privacy: React.FC = () => {
       title: '1. Verantwortlicher',
       content: (
         <>
-          <p className="text-light-100 font-bold mb-2">{legalName}</p>
-          <p className="text-light-200 mb-1">{address.streetAddress}</p>
-          <p className="text-light-200 mb-1">{address.postalCode} {address.addressLocality}</p>
-          <p className="text-light-200 mb-1">Telefon: <a href={`tel:${contact.telephoneE164}`} className="text-primary-500 hover:text-primary-400 transition-colors">{contact.telephone}</a></p>
-          <p className="text-light-200">
+          <p className="font-bold mb-2" style={{ color: '#0C1210' }}>{legalName}</p>
+          <p className="mb-1" style={{ color: '#404B48' }}>{address.streetAddress}</p>
+          <p className="mb-1" style={{ color: '#404B48' }}>{address.postalCode} {address.addressLocality}</p>
+          <p className="mb-1" style={{ color: '#404B48' }}>Telefon: <a href={`tel:${contact.telephoneE164}`} className="text-primary-500 hover:text-primary-400 transition-colors">{contact.telephone}</a></p>
+          <p className="" style={{ color: '#404B48' }}>
             E-Mail: <a href={`mailto:${contact.email}`} className="text-primary-500 hover:text-primary-400 transition-colors">{contact.email}</a>
           </p>
         </>
@@ -30,7 +30,7 @@ const Privacy: React.FC = () => {
       icon: <Shield size={28} strokeWidth={1.5} />,
       title: '2. Allgemeine Hinweise',
       content: (
-        <p className="text-light-200 leading-relaxed">
+        <p className="leading-relaxed" style={{ color: '#404B48' }}>
           Der Schutz Ihrer personenbezogenen Daten ist uns ein besonderes Anliegen. Wir verarbeiten personenbezogene Daten ausschließlich im Rahmen der geltenden datenschutzrechtlichen Vorschriften, insbesondere der Datenschutz-Grundverordnung (DSGVO) sowie des Bundesdatenschutzgesetzes (BDSG).
         </p>
       )
@@ -41,35 +41,35 @@ const Privacy: React.FC = () => {
       title: '3. Zugriffsdaten und Hosting',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Beim Aufruf unserer Website werden durch den Hosting-Provider automatisch folgende Daten erfasst:
           </p>
           <ul className="space-y-2 mb-4">
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>IP-Adresse</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Datum und Uhrzeit des Zugriffs</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>aufgerufene Seite</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Browsertyp und Betriebssystem</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Referrer-URL</span>
             </li>
           </ul>
-          <p className="text-light-200 mb-2 leading-relaxed">
+          <p className="mb-2 leading-relaxed" style={{ color: '#404B48' }}>
             Die Verarbeitung erfolgt zur technischen Bereitstellung der Website, zur Systemsicherheit und zur Missbrauchsprävention.
           </p>
-          <p className="text-light-100 font-bold text-sm">
+          <p className="font-bold text-sm" style={{ color: '#0C1210' }}>
             Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse)
           </p>
         </>
@@ -81,31 +81,31 @@ const Privacy: React.FC = () => {
       title: '4. Kontaktaufnahme',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Bei Kontaktaufnahme über unsere Website oder per E-Mail verarbeiten wir insbesondere:
           </p>
           <ul className="space-y-2 mb-4">
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Name</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>E-Mail-Adresse</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Unternehmensname</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Kommunikationsinhalte</span>
             </li>
           </ul>
-          <p className="text-light-200 mb-2 leading-relaxed">
+          <p className="mb-2 leading-relaxed" style={{ color: '#404B48' }}>
             Die Verarbeitung erfolgt zur Bearbeitung Ihrer Anfrage und zur Durchführung vorvertraglicher Maßnahmen.
           </p>
-          <p className="text-light-100 font-bold text-sm">
+          <p className="font-bold text-sm" style={{ color: '#0C1210' }}>
             Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO
           </p>
         </>
@@ -117,29 +117,29 @@ const Privacy: React.FC = () => {
       title: '5. Digitale Kundenassistenz auf der Website',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Auf unserer Website ist ein KI-gestützter Kommunikationsdienst integriert, über den Nutzer freiwillig mit uns in Kontakt treten können.
           </p>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Hierbei können insbesondere folgende Daten verarbeitet werden:
           </p>
           <ul className="space-y-2 mb-4">
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>übermittelte Texte und Inhalte</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Kontaktdaten, sofern vom Nutzer angegeben</span>
             </li>
           </ul>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Die Verarbeitung dient der Kommunikation, der Bearbeitung von Anfragen sowie der Verbesserung unseres Serviceangebots.
           </p>
-          <p className="text-light-200 mb-2 leading-relaxed">
+          <p className="mb-2 leading-relaxed" style={{ color: '#404B48' }}>
             Eine automatisierte Entscheidungsfindung mit rechtlicher Wirkung findet nicht statt.
           </p>
-          <p className="text-light-100 font-bold text-sm">
+          <p className="font-bold text-sm" style={{ color: '#0C1210' }}>
             Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO, Art. 6 Abs. 1 lit. f DSGVO
           </p>
         </>
@@ -151,13 +151,13 @@ const Privacy: React.FC = () => {
       title: '6. Cookies',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Unsere Website verwendet technisch notwendige Cookies, die für den Betrieb der Website erforderlich sind. Eine weitergehende Analyse des Nutzerverhaltens oder Marketing-Tracking findet nicht statt.
           </p>
-          <p className="text-light-200 mb-2 leading-relaxed">
+          <p className="mb-2 leading-relaxed" style={{ color: '#404B48' }}>
             Sie können die Speicherung von Cookies jederzeit über die Einstellungen Ihres Browsers oder über unser Cookie-Einstellungsmenü anpassen.
           </p>
-          <p className="text-light-100 font-bold text-sm">
+          <p className="font-bold text-sm" style={{ color: '#0C1210' }}>
             Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, § 25 Abs. 2 TTDSG
           </p>
         </>
@@ -169,10 +169,10 @@ const Privacy: React.FC = () => {
       title: '7. Einsatz externer Dienstleister',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Zur technischen Bereitstellung unserer Leistungen setzen wir sorgfältig ausgewählte externe Dienstleister ein, die personenbezogene Daten in unserem Auftrag verarbeiten. Diese Dienstleister sind vertraglich auf die Einhaltung der datenschutzrechtlichen Vorgaben verpflichtet.
           </p>
-          <p className="text-light-200 leading-relaxed">
+          <p className="leading-relaxed" style={{ color: '#404B48' }}>
             Eine Übermittlung in Drittstaaten erfolgt nur, sofern geeignete Garantien gemäß Art. 44 ff. DSGVO bestehen.
           </p>
         </>
@@ -183,8 +183,8 @@ const Privacy: React.FC = () => {
       icon: <FileText size={28} strokeWidth={1.5} />,
       title: '8. Verarbeitung im Rahmen von Kundenprojekten',
       content: (
-        <p className="text-light-200 leading-relaxed">
-          Im Rahmen unserer Dienstleistungen verarbeiten wir personenbezogene Daten regelmäßig im Auftrag unserer Kunden. In diesen Fällen handeln wir als <span className="font-bold text-light-100">Auftragsverarbeiter</span> im Sinne von Art. 28 DSGVO. Die datenschutzrechtliche Verantwortung liegt beim jeweiligen Auftraggeber.
+        <p className="leading-relaxed" style={{ color: '#404B48' }}>
+          Im Rahmen unserer Dienstleistungen verarbeiten wir personenbezogene Daten regelmäßig im Auftrag unserer Kunden. In diesen Fällen handeln wir als <span className="font-bold " style={{ color: '#0C1210' }}>Auftragsverarbeiter</span> im Sinne von Art. 28 DSGVO. Die datenschutzrechtliche Verantwortung liegt beim jeweiligen Auftraggeber.
         </p>
       )
     },
@@ -193,7 +193,7 @@ const Privacy: React.FC = () => {
       icon: <Calendar size={28} strokeWidth={1.5} />,
       title: '9. Speicherdauer',
       content: (
-        <p className="text-light-200 leading-relaxed">
+        <p className="leading-relaxed" style={{ color: '#404B48' }}>
           Personenbezogene Daten werden nur so lange gespeichert, wie dies für die jeweiligen Verarbeitungszwecke erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.
         </p>
       )
@@ -204,36 +204,36 @@ const Privacy: React.FC = () => {
       title: '10. Rechte der betroffenen Personen',
       content: (
         <>
-          <p className="text-light-200 mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed" style={{ color: '#404B48' }}>
             Sie haben jederzeit das Recht auf:
           </p>
           <ul className="space-y-2 mb-4">
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Auskunft (Art. 15 DSGVO)</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Berichtigung (Art. 16 DSGVO)</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Löschung (Art. 17 DSGVO)</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Einschränkung der Verarbeitung (Art. 18 DSGVO)</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Datenübertragbarkeit (Art. 20 DSGVO)</span>
             </li>
-            <li className="text-light-200 flex items-start">
+            <li className="flex items-start" style={{ color: '#404B48' }}>
               <span className="text-primary-500 mr-2">•</span>
               <span>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</span>
             </li>
           </ul>
-          <p className="text-light-200">
+          <p className="" style={{ color: '#404B48' }}>
             Anfragen richten Sie bitte an: <a href="mailto:kontakt@pixelkraftwerk-ai.com" className="text-primary-500 hover:text-primary-400 transition-colors font-bold">kontakt@pixelkraftwerk-ai.com</a>
           </p>
         </>
@@ -244,7 +244,7 @@ const Privacy: React.FC = () => {
       icon: <AlertCircle size={28} strokeWidth={1.5} />,
       title: '11. Beschwerderecht',
       content: (
-        <p className="text-light-200 leading-relaxed">
+        <p className="leading-relaxed" style={{ color: '#404B48' }}>
           Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.
         </p>
       )
@@ -254,7 +254,7 @@ const Privacy: React.FC = () => {
       icon: <FileText size={28} strokeWidth={1.5} />,
       title: '12. Änderungen dieser Datenschutzerklärung',
       content: (
-        <p className="text-light-200 leading-relaxed">
+        <p className="leading-relaxed" style={{ color: '#404B48' }}>
           Wir behalten uns vor, diese Datenschutzerklärung bei rechtlichen oder technischen Änderungen anzupassen.
         </p>
       )
@@ -262,10 +262,10 @@ const Privacy: React.FC = () => {
   ];
 
   return (
-    <div className="bg-dark-500 min-h-screen">
+    <div style={{ background: '#FAFAF9', minHeight: '100vh' }}>
 
       {/* HEADER */}
-      <section className="pt-32 pb-16 bg-dark-400">
+      <section className="pt-32 pb-16">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -273,10 +273,10 @@ const Privacy: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl md:text-5xl font-heading font-bold text-light-100 mb-6">
+              <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6" style={{ color: '#0C1210' }}>
                 Datenschutz<span className="text-primary-500">erklärung</span>
               </h1>
-              <p className="text-light-300 text-lg">
+              <p className="text-lg" style={{ color: '#68746F' }}>
                 Stand: <span className="text-primary-500 font-bold">Januar 2026</span>
               </p>
             </motion.div>
@@ -285,13 +285,13 @@ const Privacy: React.FC = () => {
       </section>
 
       {/* CONTENT SECTIONS */}
-      <section className="py-16 bg-dark-500">
+      <section className="py-16">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto space-y-8">
             {sections.map((section, index) => (
               <motion.div
                 key={section.id}
-                className="bg-dark-400 border border-dark-100 p-8 hover:border-primary-500/30 transition-all duration-300"
+                className="bg-white border rounded-2xl p-8 hover:border-primary-500/30 transition-all duration-300" style={{ borderColor: '#E4E9E7' }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
@@ -301,7 +301,7 @@ const Privacy: React.FC = () => {
                   <div className="text-primary-500 mr-4 flex-shrink-0 mt-1">
                     {section.icon}
                   </div>
-                  <h2 className="text-2xl font-heading font-bold text-light-100">
+                  <h2 className="text-2xl font-heading font-bold " style={{ color: '#0C1210' }}>
                     {section.title}
                   </h2>
                 </div>
@@ -315,7 +315,7 @@ const Privacy: React.FC = () => {
       </section>
 
       {/* FOOTER CTA */}
-      <section className="py-16 bg-dark-400">
+      <section className="py-16">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
@@ -324,7 +324,7 @@ const Privacy: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <p className="text-light-200 text-lg mb-6 leading-relaxed">
+              <p className="text-lg mb-6 leading-relaxed" style={{ color: '#404B48' }}>
                 Bei Fragen zum Datenschutz stehen wir Ihnen gerne zur Verfügung.
               </p>
               <a

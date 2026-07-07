@@ -146,50 +146,54 @@ const CookieBanner: React.FC = () => {
     return null;
   }
 
+  const cardStyle: React.CSSProperties = {
+    background: '#F3F5F4',
+    border: '1px solid #E4E9E7',
+    borderRadius: '0.75rem',
+    padding: '1rem',
+  };
+  const toggleBase = 'w-12 h-6 rounded-full p-1 transition-colors duration-200';
+  const toggleKnobBase = 'w-4 h-4 rounded-full transform transition-transform duration-200';
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-dark-400 border-t border-dark-100 p-4 md:p-6 shadow-lg animate-slide-in">
+    <div
+      className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 shadow-elevation-lg animate-slide-in"
+      style={{ background: '#fff', borderTop: '1px solid #E4E9E7' }}
+    >
       <div className="container mx-auto">
         {!showSettings ? (
           <div>
             <div className="flex justify-between items-start mb-4">
-              <h2 className="text-xl font-heading font-bold text-primary-500 flex items-center">
-                <Info size={20} className="mr-2" />
+              <h2 className="text-xl font-heading font-bold flex items-center gap-2" style={{ color: '#0E7C72' }}>
+                <Info size={20} />
                 Cookie-Einstellungen
               </h2>
-              <button
-                onClick={closeBanner}
-                className="text-light-300 hover:text-light-100 transition-colors duration-200"
-                aria-label="Schließen"
-              >
+              <button onClick={closeBanner} aria-label="Schließen" style={{ color: '#68746F' }} className="transition-colors hover:opacity-70">
                 <X size={20} />
               </button>
             </div>
-            
             <div className="mb-6">
-              <p className="text-light-200 mb-4">
+              <p className="text-sm mb-3 leading-relaxed" style={{ color: '#404B48' }}>
                 Diese Website verwendet Cookies, um Ihnen die bestmögliche Nutzererfahrung zu bieten. Einige Cookies sind für den Betrieb der Website erforderlich (notwendige Cookies). Andere helfen uns, Ihr Nutzererlebnis zu verbessern (Präferenz-Cookies), die Nutzung der Website zu analysieren (Analyse-Cookies) oder gezieltes Marketing zu ermöglichen (Marketing-Cookies).
               </p>
-              <p className="text-light-200 mb-4">
-                Weitere Informationen finden Sie in unserer <a href="/datenschutz" className="text-primary-500 hover:text-primary-400 transition-colors">Datenschutzerklärung</a>.
+              <p className="text-sm" style={{ color: '#404B48' }}>
+                Weitere Informationen finden Sie in unserer{' '}
+                <a href="/datenschutz" style={{ color: '#0E7C72' }} className="underline">Datenschutzerklärung</a>.
               </p>
             </div>
-            
             <div className="flex flex-wrap gap-3 justify-center">
-              <button
-                onClick={acceptAllCookies}
-                className="px-4 py-2 bg-primary-500 text-dark-500 font-heading font-bold hover:bg-primary-400 transition-colors duration-200"
-              >
-                Alle akzeptieren
-              </button>
+              <button onClick={acceptAllCookies} className="btn-primary px-5 py-2 text-sm">Alle akzeptieren</button>
               <button
                 onClick={acceptNecessaryCookies}
-                className="px-4 py-2 bg-dark-300 text-light-100 font-heading hover:bg-dark-200 transition-colors duration-200"
+                className="px-5 py-2 rounded-xl font-heading font-semibold text-sm border transition-colors duration-200"
+                style={{ background: '#F3F5F4', color: '#0C1210', borderColor: '#E4E9E7' }}
               >
-                Nur notwendige akzeptieren
+                Nur notwendige
               </button>
               <button
                 onClick={openSettings}
-                className="px-4 py-2 border border-primary-500 text-primary-500 font-heading hover:bg-primary-500 hover:text-dark-500 transition-colors duration-200"
+                className="px-5 py-2 rounded-xl font-heading font-semibold text-sm border transition-colors duration-200"
+                style={{ borderColor: '#0E7C72', color: '#0E7C72', background: 'transparent' }}
               >
                 Einstellungen anpassen
               </button>
@@ -198,116 +202,47 @@ const CookieBanner: React.FC = () => {
         ) : (
           <div>
             <div className="flex justify-between items-start mb-4">
-              <h2 className="text-xl font-heading font-bold text-primary-500">
+              <h2 className="text-xl font-heading font-bold" style={{ color: '#0E7C72' }}>
                 Cookie-Einstellungen anpassen
               </h2>
-              <button
-                onClick={closeBanner}
-                className="text-light-300 hover:text-light-100 transition-colors duration-200"
-                aria-label="Schließen"
-              >
+              <button onClick={closeBanner} aria-label="Schließen" style={{ color: '#68746F' }} className="transition-colors hover:opacity-70">
                 <X size={20} />
               </button>
             </div>
-            
-            <div className="space-y-6 mb-8">
-              <div className="p-4 bg-dark-300 border border-dark-100">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h3 className="text-lg font-heading font-bold text-primary-500 mb-1">Notwendige Cookies</h3>
-                    <p className="text-light-200 text-sm">
-                      Diese Cookies sind für die Funktion der Website notwendig und können nicht deaktiviert werden.
-                    </p>
+            <div className="space-y-4 mb-6">
+              {[
+                { key: 'necessary' as const, label: 'Notwendige Cookies', desc: 'Diese Cookies sind für die Funktion der Website notwendig und können nicht deaktiviert werden.', locked: true },
+                { key: 'analytics' as const, label: 'Analyse-Cookies', desc: 'Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.', locked: false },
+                { key: 'marketing' as const, label: 'Marketing-Cookies', desc: 'Diese Cookies werden verwendet, um Werbung relevanter für Sie zu gestalten.', locked: false },
+                { key: 'preferences' as const, label: 'Präferenz-Cookies', desc: 'Diese Cookies ermöglichen der Website, verbesserte Funktionalität und Personalisierung zu bieten.', locked: false },
+              ].map(({ key, label, desc, locked }) => {
+                const active = consentState.preferences[key];
+                return (
+                  <div key={key} style={cardStyle}>
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <h3 className="font-heading font-bold mb-0.5 text-base" style={{ color: '#0E7C72' }}>{label}</h3>
+                        <p className="text-sm" style={{ color: '#404B48' }}>{desc}</p>
+                      </div>
+                      {locked ? (
+                        <div style={{ color: '#0E7C72' }}><Check size={20} /></div>
+                      ) : (
+                        <button
+                          onClick={() => handlePreferenceChange(key)}
+                          className={toggleBase}
+                          style={{ background: active ? '#0E7C72' : '#E4E9E7' }}
+                        >
+                          <div className={toggleKnobBase} style={{ background: '#fff', transform: active ? 'translateX(1.5rem)' : 'translateX(0)' }} />
+                        </button>
+                      )}
+                    </div>
                   </div>
-                  <div className="text-primary-500">
-                    <Check size={20} />
-                  </div>
-                </div>
-              </div>
-              
-              <div className="p-4 bg-dark-300 border border-dark-100">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h3 className="text-lg font-heading font-bold text-primary-500 mb-1">Analyse-Cookies</h3>
-                    <p className="text-light-200 text-sm">
-                      Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.
-                    </p>
-                  </div>
-                  <button 
-                    onClick={() => handlePreferenceChange('analytics')} 
-                    className={`w-12 h-6 rounded-full p-1 transition-colors duration-200 ${
-                      consentState.preferences.analytics ? 'bg-primary-500' : 'bg-dark-100'
-                    }`}
-                  >
-                    <div 
-                      className={`w-4 h-4 rounded-full transform transition-transform duration-200 ${
-                        consentState.preferences.analytics ? 'bg-dark-500 translate-x-6' : 'bg-light-200 translate-x-0'
-                      }`}
-                    />
-                  </button>
-                </div>
-              </div>
-              
-              <div className="p-4 bg-dark-300 border border-dark-100">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h3 className="text-lg font-heading font-bold text-primary-500 mb-1">Marketing-Cookies</h3>
-                    <p className="text-light-200 text-sm">
-                      Diese Cookies werden verwendet, um Werbung relevanter für Sie zu gestalten.
-                    </p>
-                  </div>
-                  <button 
-                    onClick={() => handlePreferenceChange('marketing')} 
-                    className={`w-12 h-6 rounded-full p-1 transition-colors duration-200 ${
-                      consentState.preferences.marketing ? 'bg-primary-500' : 'bg-dark-100'
-                    }`}
-                  >
-                    <div 
-                      className={`w-4 h-4 rounded-full transform transition-transform duration-200 ${
-                        consentState.preferences.marketing ? 'bg-dark-500 translate-x-6' : 'bg-light-200 translate-x-0'
-                      }`}
-                    />
-                  </button>
-                </div>
-              </div>
-              
-              <div className="p-4 bg-dark-300 border border-dark-100">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h3 className="text-lg font-heading font-bold text-primary-500 mb-1">Präferenz-Cookies</h3>
-                    <p className="text-light-200 text-sm">
-                      Diese Cookies ermöglichen der Website, verbesserte Funktionalität und Personalisierung zu bieten.
-                    </p>
-                  </div>
-                  <button 
-                    onClick={() => handlePreferenceChange('preferences')} 
-                    className={`w-12 h-6 rounded-full p-1 transition-colors duration-200 ${
-                      consentState.preferences.preferences ? 'bg-primary-500' : 'bg-dark-100'
-                    }`}
-                  >
-                    <div 
-                      className={`w-4 h-4 rounded-full transform transition-transform duration-200 ${
-                        consentState.preferences.preferences ? 'bg-dark-500 translate-x-6' : 'bg-light-200 translate-x-0'
-                      }`}
-                    />
-                  </button>
-                </div>
-              </div>
+                );
+              })}
             </div>
-            
             <div className="flex justify-between">
-              <button 
-                onClick={closeSettings}
-                className="px-4 py-2 bg-dark-300 text-light-100 font-heading hover:bg-dark-200 transition-colors duration-200"
-              >
-                Zurück
-              </button>
-              <button 
-                onClick={savePreferences}
-                className="px-4 py-2 bg-primary-500 text-dark-500 font-heading font-bold hover:bg-primary-400 transition-colors duration-200"
-              >
-                Einstellungen speichern
-              </button>
+              <button onClick={closeSettings} className="btn-secondary px-5 py-2 text-sm">Zurück</button>
+              <button onClick={savePreferences} className="btn-primary px-5 py-2 text-sm">Einstellungen speichern</button>
             </div>
           </div>
         )}

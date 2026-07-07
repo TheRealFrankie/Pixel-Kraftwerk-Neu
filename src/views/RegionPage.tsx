@@ -135,128 +135,115 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
       {/* HERO SECTION */}
       <section
         data-section-label="Start"
-        className="relative min-h-screen flex items-center bg-dark-500 overflow-hidden"
+        className="relative h-screen flex flex-col overflow-hidden"
+        style={{ background: '#FAFAF9' }}
       >
-        <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
-          <BreadcrumbNav overlay items={[
-            { label: 'Startseite', href: '/' },
-            { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
-            { label: content.name },
-          ]} />
-        </div>
         <div className="absolute inset-0">
           <Image
             src="/images/hero-startseite-ki-agentur-v2.webp"
             alt={`KI-Agentur Pixel Kraftwerk in ${content.name} – Chatbots, Automatisierungen und SEO für Unternehmen`}
             fill
-            className="object-cover object-center"
+            className="object-cover object-right"
             priority
             sizes="100vw"
           />
           <div
-            className="absolute inset-0 bg-gradient-to-r from-dark-500/90 via-dark-500/60 to-transparent"
-            aria-hidden
-          />
-          <div
-            className="absolute inset-0 bg-gradient-to-b from-dark-500/40 via-transparent to-dark-500/80"
-            aria-hidden
-          />
-          <div
-            className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/10 to-transparent"
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(90deg, rgba(250,250,249,0.97) 0%, rgba(250,250,249,0.88) 38%, rgba(250,250,249,0.3) 65%, rgba(250,250,249,0.0) 80%)' }}
             aria-hidden
           />
         </div>
 
-        <div className="container mx-auto px-4 z-10">
-          <div className="max-w-2xl lg:max-w-3xl text-left">
-            <motion.h1
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-bold tracking-wide uppercase text-primary-400 mb-5"
-              style={{ textShadow: '0 3px 10px rgba(0,0,0,0.5)' }}
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <MapPin size={16} className="flex-shrink-0" strokeWidth={2} />
-              KI-Agentur {content.name}
-            </motion.h1>
-            <p
-              className="space-y-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold mb-8"
-              style={{ color: '#F5F7FA', textShadow: '0 6px 20px rgba(0,0,0,0.5)' }}
-            >
-              <motion.span
-                className="block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-              >
-                Klare Abläufe.
-              </motion.span>
-              <motion.span
-                className="block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.9 }}
-              >
-                Mehr Anfragen.
-              </motion.span>
-              <motion.span
-                className="block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2 }}
-              >
-                Weniger Stress.
-              </motion.span>
-            </p>
-            <motion.p
-              className="text-sm sm:text-base md:text-lg max-w-xl mb-6 leading-relaxed"
-              style={{ color: '#E8EAED', textShadow: '0 3px 10px rgba(0,0,0,0.4)' }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.6 }}
-            >
-              Während Sie das lesen, gehen in {content.name} Anrufe verloren, Anfragen versanden in der Inbox und Termine werden doppelt gebucht. Das muss nicht so bleiben – wir automatisieren Kundenkommunikation, Terminbuchung und interne Abläufe mit KI, damit Ihr Team wieder Luft zum Arbeiten hat.
-            </motion.p>
+        <div className="relative z-20 container mx-auto px-4 md:px-8 pt-20 md:pt-24">
+          <BreadcrumbNav items={[
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
+            { label: content.name },
+          ]} />
+        </div>
 
-            <motion.div
-              className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-light-300 mb-8"
-              style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.8 }}
-            >
-              <span className="inline-flex items-center gap-1.5">
-                <MapPin size={14} className="text-primary-500 flex-shrink-0" />
-                {businessInfo.address.streetAddress} · {businessInfo.address.postalCode}{' '}
-                {businessInfo.address.addressLocality}
-              </span>
-              <span className="hidden sm:inline text-light-400/60">·</span>
-              <a
-                href={`tel:${businessInfo.contact.telephoneE164}`}
-                className="inline-flex items-center gap-1.5 hover:text-primary-400 transition-colors"
+        <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-5"
               >
-                <Phone size={14} className="text-primary-500 flex-shrink-0" />
-                {businessInfo.contact.telephone}
-              </a>
-            </motion.div>
+                <span className="pill-badge">
+                  <MapPin size={12} className="flex-shrink-0" />
+                  Ihre lokale KI-Agentur
+                </span>
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.0, ease: 'easeOut', delay: 2.0 }}
-            >
-              <button
-                onClick={scrollToContactForm}
-                className="inline-flex items-center px-7 py-4 rounded-lg bg-primary-500 text-dark-500 font-heading font-bold text-base shadow-lg shadow-primary-500/20 hover:bg-primary-400 hover:shadow-primary-glow transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 min-h-[44px]"
+              <motion.h1
+                className="font-heading font-bold tracking-tight mb-4 leading-[1.08]"
+                style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.6 }}
               >
-                <ArrowRight className="mr-2" size={20} />
-                Kostenloses Erstgespräch sichern
-              </button>
-            </motion.div>
+                KI-Agentur {content.name}
+              </motion.h1>
+
+              <motion.h2
+                className="text-lg max-w-xl mb-3 leading-relaxed"
+                style={{ color: '#0E7C72', fontWeight: 600 }}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.6 }}
+              >
+                KI-Chatbots, Telefonassistenten, Automatisierungen, Webdesign, SEO &amp; CRM-Systeme in {content.name}
+              </motion.h2>
+
+              <motion.p
+                className="text-lg max-w-xl mb-5 leading-relaxed"
+                style={{ color: '#404B48' }}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
+                Klare Abläufe. Mehr Anfragen. Weniger Stress. Wir automatisieren Kundenkommunikation, Terminbuchung und interne Abläufe mit KI für Unternehmen in {content.name} – damit Ihr Team wieder Luft zum Arbeiten hat.
+              </motion.p>
+
+              <motion.div
+                className="flex flex-col sm:flex-row gap-3 mb-6"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.65, duration: 0.5 }}
+              >
+                <button onClick={scrollToContactForm} className="btn-primary">
+                  <ArrowRight size={18} />
+                  Kostenloses Erstgespräch sichern
+                </button>
+              </motion.div>
+
+              <motion.div
+                className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm"
+                style={{ color: '#68746F' }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+              >
+                <span className="inline-flex items-center gap-1.5">
+                  <MapPin size={13} style={{ color: '#0E7C72' }} className="flex-shrink-0" />
+                  {businessInfo.address.addressLocality}
+                </span>
+                <span style={{ color: '#E4E9E7' }}>|</span>
+                <a
+                  href={`tel:${businessInfo.contact.telephoneE164}`}
+                  className="inline-flex items-center gap-1.5 hover:underline transition-colors"
+                  style={{ color: '#68746F' }}
+                >
+                  <Phone size={13} style={{ color: '#0E7C72' }} className="flex-shrink-0" />
+                  {businessInfo.contact.telephone}
+                </a>
+              </motion.div>
+            </div>
+            <div className="hidden lg:block" aria-hidden />
           </div>
         </div>
-
-        <HeroScrollIndicator />
       </section>
 
       {/* PROBLEM SECTION */}
@@ -282,7 +269,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                 <span className="text-primary-500">heute aus:</span>
               </p>
 
-              <div className="space-y-4 text-left max-w-2xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-3xl mx-auto">
                 {[
                   'Kundenanfragen kommen unregelmäßig und ungeordnet rein.',
                   'Termine müssen ständig manuell abgestimmt werden.',
@@ -292,18 +279,17 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                 ].map((item, index) => (
                   <motion.div
                     key={index}
-                    className="flex items-start"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex items-start gap-3 rounded-2xl bg-white border p-5 shadow-card"
+                    style={{ borderColor: '#E4E9E7' }}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.07 }}
                     viewport={{ once: true }}
                   >
-                    <Minus
-                      className="text-red-400 mr-3 mt-1 flex-shrink-0"
-                      size={20}
-                      strokeWidth={2.5}
-                    />
-                    <p className="text-light-200 text-lg">{item}</p>
+                    <div className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center mt-0.5" style={{ background: 'rgba(239,68,68,0.07)', color: '#B91C1C' }}>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8" stroke="#B91C1C" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                    </div>
+                    <p className="text-sm leading-relaxed" style={{ color: '#404B48' }}>{item}</p>
                   </motion.div>
                 ))}
               </div>
@@ -353,12 +339,15 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                 {
                   icon: <PhoneOff size={28} strokeWidth={1.5} />,
                   kicker: 'Entgangener Umsatz',
-                  big: '~ 350 €',
+                  big: 'Verpasst.',
                   text: (
                     <>
-                      Durchschnittlicher Auftragswert pro verpasstem Anruf. Nur zwei verpasste
-                      Anrufe pro Woche summieren sich auf über{' '}
-                      <span className="text-light-100 font-bold">35.000 € im Jahr</span>.
+                      Jeder verpasste Anruf ist ein möglicher Auftrag. Schon zwei verpasste Anrufe
+                      pro Woche summieren sich übers Jahr zu{' '}
+                      <span className="text-light-100 font-bold">
+                        über 100 verlorenen Chancen
+                      </span>
+                      .
                     </>
                   ),
                 },
@@ -698,21 +687,23 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
               </p>
             </motion.div>
 
-            <ul className="max-w-3xl mx-auto mb-12 space-y-3">
-              {content.servicesHighlight.map((s, i) => (
-                <motion.li
-                  key={i}
-                  className="flex items-center gap-3 text-light-200"
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <CheckCircle className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                  {s}
-                </motion.li>
-              ))}
-            </ul>
+            <motion.div
+              className="max-w-3xl mx-auto mb-12 rounded-2xl border bg-white p-6 shadow-card"
+              style={{ borderColor: '#E4E9E7' }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex flex-wrap gap-2">
+                {content.servicesHighlight.map((s, i) => (
+                  <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border" style={{ background: 'rgba(14,124,114,0.06)', color: '#0E7C72', borderColor: 'rgba(14,124,114,0.2)' }}>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="#0E7C72" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {SERVICES.map((s, i) => {
@@ -1244,7 +1235,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                 {content.faqs.map((faq, index) => (
                   <motion.div
                     key={index}
-                    className="bg-dark-400 border border-dark-200/70 rounded-xl overflow-hidden"
+                    className="bg-white border border-dark-200/70 rounded-xl overflow-hidden shadow-card"
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -1311,7 +1302,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                   <a
                     key={city.slug}
                     href={`/leistungsgebiete/${city.slug}`}
-                    className="flex items-center gap-3 p-4 bg-dark-400 border border-dark-100 hover:border-primary-500/50 transition-colors group"
+                    className="flex items-center gap-3 p-4 bg-white border border-dark-200 hover:border-primary-500/50 transition-colors group rounded-2xl shadow-card"
                   >
                     <MapPin size={18} className="text-primary-500 flex-shrink-0" />
                     <span className="text-light-100 font-heading text-sm group-hover:text-primary-400 transition-colors">

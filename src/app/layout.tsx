@@ -6,15 +6,13 @@ import CookieBanner from '@/components/CookieBanner';
 import AnalyticsScripts from '@/components/AnalyticsScripts';
 import VoiceflowChat from '@/components/VoiceflowChat';
 import ExitIntentModal from '@/components/ExitIntentModal';
-import SectionIndicator from '@/components/SectionIndicator';
-import { ThemeProvider } from '@/contexts/ThemeContext';
 import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(businessInfo.url),
   title: {
-    default: 'KI-Agentur Groitzsch & Leipzig – Pixel Kraftwerk – KI-Chatbots, Telefonassistenten, Automatisierungen, Webseiten & SEO in meiner Nähe',
-    template: `%s | ${businessInfo.name}`,
+    default: 'KI-Agentur Groitzsch & Leipzig – KI-Chatbots, Telefonassistenten, Automatisierungen, Webseiten, SEO & CRM in meiner Nähe | Pixel Kraftwerk',
+    template: '%s | Pixel Kraftwerk',
   },
   description: 'KI-Automatisierung und Chatbots aus Groitzsch für Leipzig und Region. Terminbuchung, CRM, Webseiten und SEO: Top 3 in Google. Jetzt Beratung sichern.',
   openGraph: {
@@ -36,25 +34,20 @@ export default function RootLayout({
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem('pixelkraftwerk-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);return;}document.documentElement.setAttribute('data-theme','light');})();`,
-          }}
-        />
+        <meta name="theme-color" content="#0E7C72" />
         <link rel="icon" type="image/png" href="/pixelkraftwerk-logo-quadrat.png" />
         <link rel="apple-touch-icon" href="/pixelkraftwerk-logo-quadrat.png" />
-        <meta name="theme-color" content="#00B3A6" />
-        <meta name="msapplication-TileColor" content="#0A0A0A" />
+        <meta name="msapplication-TileColor" content="#FAFAF9" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" crossOrigin="" />
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700&display=swap" crossOrigin="" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var h=document.head,l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap';h.appendChild(l)})();`,
+            __html: `(function(){var h=document.head,l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700&display=swap';h.appendChild(l)})();`,
           }}
         />
         <noscript>
-          <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         </noscript>
         <meta name="p:domain_verify" content="10eae38c84b0c276cac28f102b415b2e" />
       </head>
@@ -66,15 +59,12 @@ export default function RootLayout({
           Zum Inhalt springen
         </a>
         <AnalyticsScripts />
-        <ThemeProvider>
           <Header />
           <main id="main" className="flex-grow">{children}</main>
-          <SectionIndicator />
           <Footer />
           <CookieBanner />
           <ExitIntentModal />
           <VoiceflowChat />
-        </ThemeProvider>
       </body>
     </html>
   );

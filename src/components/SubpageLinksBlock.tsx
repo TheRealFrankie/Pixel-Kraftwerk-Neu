@@ -8,6 +8,7 @@ import {
   getGlobalRoutePrefix,
   type SubpageDefinition,
 } from '@/data/serviceSubpages';
+import { INK, PETROL, BORDER, SURFACE } from '@/lib/theme';
 
 interface SubpageLinksBlockProps {
   serviceSlug: string;
@@ -31,11 +32,12 @@ const SubpageLinksBlock: React.FC<SubpageLinksBlockProps> = ({
       : `${globalPrefix}/${sub.slug}`;
 
   return (
-    <section className="py-16 bg-dark-500">
+    <section className="py-16" style={{ background: SURFACE }}>
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <motion.h2
-            className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4 text-center"
+            className="text-2xl md:text-3xl font-heading font-bold mb-4 text-center"
+            style={{ color: INK }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -44,7 +46,8 @@ const SubpageLinksBlock: React.FC<SubpageLinksBlockProps> = ({
             {title}
           </motion.h2>
           <motion.p
-            className="text-light-200 text-center mb-8"
+            className="text-center mb-8"
+            style={{ color: '#404B48' }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -58,15 +61,16 @@ const SubpageLinksBlock: React.FC<SubpageLinksBlockProps> = ({
               <motion.a
                 key={sub.slug}
                 href={getHref(sub)}
-                className="group flex items-center gap-3 p-5 bg-dark-400 border border-dark-100 hover:border-primary-500/50 transition-all duration-300"
+                className="group flex items-center gap-3 p-5 bg-white rounded-2xl border hover:border-primary-400/50 transition-all duration-300 shadow-card hover:shadow-card-hover"
+                style={{ borderColor: BORDER }}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 viewport={{ once: true }}
                 whileHover={{ x: 4 }}
               >
-                <ChevronRight className="w-5 h-5 text-primary-500 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
-                <span className="text-light-100 group-hover:text-primary-400 transition-colors font-heading font-bold">
+                <ChevronRight className="w-5 h-5 flex-shrink-0 group-hover:translate-x-1 transition-transform" style={{ color: PETROL }} />
+                <span className="font-heading font-bold transition-colors duration-200" style={{ color: INK }}>
                   {sub.label}
                 </span>
               </motion.a>

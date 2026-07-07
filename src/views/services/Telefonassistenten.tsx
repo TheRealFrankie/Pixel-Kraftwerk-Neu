@@ -25,9 +25,6 @@ import {
   Rocket,
   Settings,
   Star,
-  Euro,
-  Infinity as InfinityIcon,
-  RefreshCw,
   Sparkles,
   Hammer,
   Coffee
@@ -42,9 +39,11 @@ import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegi
 import LocalBusinessSchema from '../../components/LocalBusinessSchema';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
+import TrustLine from '../../components/TrustLine';
+import StickyCtaBar from '../../components/StickyCtaBar';
 import { getRegionServiceContent } from '../../data/regionServiceContent';
 import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
-import { getRegionServiceLinkText } from '../../data/services';
+import { getRegionServiceLinkText, SERVICE_TITLE_KEYWORDS } from '../../data/services';
 import SubpageLinksBlock from '../../components/SubpageLinksBlock';
 import HeroScrollIndicator from '../../components/HeroScrollIndicator';
 import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
@@ -99,13 +98,6 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
     { icon: Hammer, title: 'Auf der Baustelle', text: 'Telefon klingelt, Hände voll. Die Assistenz nimmt ab, klärt das Anliegen, Sie rufen abends strukturiert zurück.' },
     { icon: Stethoscope, title: 'In der Behandlung', text: 'Patient wartet, Sie können nicht ans Telefon. Die Assistenz erfasst den Terminwunsch, das Backoffice plant am nächsten Morgen ein.' },
     { icon: Coffee, title: 'Im Kundentermin', text: 'Interessent ruft zur Preisanfrage an. Die Assistenz gibt den Rahmen, fragt Ort und Projektgröße ab, übergibt strukturiert.' }
-  ];
-
-  const mietStats = [
-    { icon: Euro, value: '0 €', label: 'Einmalkosten' },
-    { icon: InfinityIcon, value: 'keine', label: 'Mindestlaufzeit' },
-    { icon: Clock, value: '24/7', label: 'Assistenz aktiv' },
-    { icon: RefreshCw, value: 'inkl.', label: 'Laufende Optimierung' }
   ];
 
   const processSteps = [
@@ -171,13 +163,6 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
     '„Ich habe ein Problem mit …"'
   ];
 
-  const optimizationPoints = [
-    'häufige Missverständnisse werden entfernt',
-    'neue Standardfragen werden ergänzt',
-    'Übergaben an Ihr Team werden verbessert',
-    'Termin- oder Routingregeln werden feiner eingestellt'
-  ];
-
   const faqItems = [
     { question: 'Ersetzt der Telefonagent mein Team?', answer: 'Nein. Er übernimmt Standardfälle und erfasst Infos – komplexe Fälle gehen an Ihr Team.' },
     { question: 'Kann der Assistent Termine wirklich buchen?', answer: 'Ja, je nach Setup. Wenn echte Kalenderlogik und Regeln nötig sind, setzen wir das sauber um.' },
@@ -188,7 +173,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
   ];
 
   return (
-    <div className="bg-dark-500">
+    <div style={{ background: '#FAFAF9' }}>
       <LocalBusinessSchema
         pageType="service"
         customDescription={isRegional
@@ -219,13 +204,30 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
         ]}
         pageName={isRegional ? `Telefonassistenten in ${regionName}` : 'Telefonassistenten'}
       />
-      {/* HERO – Schmerz + Outcome + CTA */}
-      <section id="ki-telefonagent-fur-ihr-unternehmen" className="relative min-h-screen flex items-center overflow-hidden bg-dark-500">
-        <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
-          <BreadcrumbNav overlay items={isRegional ? [
+      {/* HERO */}
+      <section
+        id="ki-telefonagent-fur-ihr-unternehmen"
+        className="relative h-screen flex flex-col overflow-hidden"
+        style={{ background: '#FAFAF9' }}
+      >
+        <div className="absolute inset-0">
+          <Image
+            src="/images/ki-telefonassistent-hero.png"
+            alt="Telefonische Kundenassistenz – KI-Anrufannahme"
+            fill
+            className="object-cover"
+            style={{ objectPosition: '55% center' }}
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(95deg, rgba(250,250,249,0.98) 0%, rgba(250,250,249,0.94) 32%, rgba(250,250,249,0.55) 52%, rgba(250,250,249,0.05) 70%, rgba(250,250,249,0.0) 82%)' }} aria-hidden />
+        </div>
+
+        <div className="relative z-20 container mx-auto px-4 md:px-8 pt-20 md:pt-24">
+          <BreadcrumbNav items={isRegional ? [
             { label: 'Startseite', href: '/' },
             { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
-            { label: regionName, href: regionUrl },
+            { label: regionName!, href: regionUrl },
             { label: 'Telefonassistenten' },
           ] : [
             { label: 'Startseite', href: '/' },
@@ -233,112 +235,65 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
             { label: 'Telefonassistenten' },
           ]} />
         </div>
-        <div className="absolute inset-0">
-          <Image
-            src="/images/ki-telefonassistent.webp"
-            alt="Telefonische Kundenassistenz – KI-Anrufannahme"
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-dark-500/70 via-dark-500/50 to-dark-500/95" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-r from-dark-500/30 via-transparent to-dark-500/40" aria-hidden />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/15 to-transparent" aria-hidden />
-        </div>
 
-        <div className="container mx-auto px-4 relative z-10 pt-32 pb-16 md:pt-36 md:pb-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/20 border border-primary-500/40 backdrop-blur-sm mb-8 shadow-primary-glow"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Phone size={40} className="text-primary-500" strokeWidth={1.5} />
-            </motion.div>
+        <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+            <div>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-5">
+                <span className="pill-badge"><Phone size={12} /> Telefonische Kundenassistenz</span>
+              </motion.div>
 
-            <motion.h1
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold mb-6 leading-tight"
-              style={{
-                color: '#F5F7FA',
-                textShadow: '0 10px 30px rgba(0,0,0,0.65)',
-                WebkitTextStroke: '1px rgba(0,0,0,0.25)',
-              }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              {isRegional ? `Telefonische Kundenassistenz in ${regionName}` : (
-                <>Telefonische Kundenassistenz<span className="sr-only"> Leipzig &amp; Groitzsch</span></>
-              )}
-            </motion.h1>
+              <motion.h1
+                className="font-heading font-bold tracking-tight mb-4 leading-[1.08]"
+                style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.6 }}
+              >
+                {isRegional ? `Telefonische Kundenassistenz in ${regionName}` : 'Telefonische Kundenassistenz Groitzsch & Leipzig'}
+              </motion.h1>
 
-            <motion.h2
-              className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-primary-400 mb-6 drop-shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-            >
-              {regionContent?.localHook || 'Kein Anruf mehr verloren – auch wenn Sie gerade nicht ans Telefon können.'}
-            </motion.h2>
+              <motion.h2 className="text-base max-w-xl mb-3 leading-relaxed font-semibold" style={{ color: '#0E7C72' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                {SERVICE_TITLE_KEYWORDS['telefonassistenten']}
+              </motion.h2>
 
-            <motion.p
-              className="text-lg sm:text-xl max-w-3xl mx-auto mb-4 leading-relaxed"
-              style={{
-                color: '#F5F7FA',
-                textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
-                WebkitTextStroke: '0.5px rgba(0,0,0,0.2)',
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {isRegional && regionContent?.intro
-                ? regionContent.intro
-                : <>Unsere telefonische Kundenassistenz nimmt eingehende Anrufe entgegen, beantwortet häufige Fragen, erfasst Rückrufwünsche und vereinbart Termine – <strong style={{ color: '#F5F7FA' }}>automatisiert, professionell und 24/7</strong>.</>}
-            </motion.p>
-            <motion.p
-              className="text-base sm:text-lg max-w-3xl mx-auto mb-8 leading-relaxed"
-              style={{
-                color: '#E8EAED',
-                textShadow: '0 4px 12px rgba(0,0,0,0.5)',
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.25 }}
-            >
-              Das Telefon klingelt genau dann, wenn Sie im <strong style={{ color: '#F5F7FA' }}>Kundentermin</strong>, auf der <strong style={{ color: '#F5F7FA' }}>Baustelle</strong>, in der <strong style={{ color: '#F5F7FA' }}>Behandlung</strong> oder mitten im Tagesgeschäft sind. Ohne Assistenz geht jeder dieser Anrufe – und damit jeder mögliche Auftrag – an die Konkurrenz.
-            </motion.p>
+              <motion.p className="text-lg mb-3 max-w-xl leading-relaxed" style={{ color: '#0E7C72', fontWeight: 600 }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>
+                {regionContent?.localHook || 'Kein Anruf mehr verloren – auch wenn Sie gerade nicht ans Telefon können.'}
+              </motion.p>
 
-            <motion.button
-              onClick={scrollToContact}
-              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              Kein Anruf soll mehr verloren gehen – Erstgespräch sichern
-              <ArrowRight className="ml-2" size={24} />
-            </motion.button>
+              <motion.p className="text-base max-w-xl mb-6 leading-relaxed" style={{ color: '#404B48' }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }}>
+                {isRegional && regionContent?.intro
+                  ? regionContent.intro
+                  : 'Unsere telefonische Kundenassistenz nimmt Anrufe entgegen, beantwortet Fragen, erfasst Rückrufwünsche und vereinbart Termine – automatisiert, professionell und 24/7.'}
+              </motion.p>
 
-            <motion.p
-              className="text-sm mt-6"
-              style={{ color: '#E8EAED' }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.55 }}
-            >
-              Keine Einmalinvestition. Keine Mindestlaufzeit. Eigene Rufnummer innerhalb weniger Tage.
-            </motion.p>
+              <motion.div className="flex flex-col sm:flex-row gap-3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65, duration: 0.5 }}>
+                <button onClick={scrollToContact} className="btn-primary">
+                  Erstgespräch sichern
+                  <ArrowRight size={18} />
+                </button>
+                <a href="tel:+491785844460" className="btn-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Jetzt anrufen
+                </a>
+              </motion.div>
+              <motion.div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 mb-1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.72 }}>
+                {['Keine Einmalkosten', 'Keine Mindestlaufzeit', 'Betreuung inklusive'].map(item => (
+                  <span key={item} className="flex items-center gap-1 text-xs" style={{ color: '#68746F' }}>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="#0E7C72" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    {item}
+                  </span>
+                ))}
+              </motion.div>
+              <TrustLine className="mt-4" />
+            </div>
+            <div className="hidden lg:block" aria-hidden />
           </div>
         </div>
-        <HeroScrollIndicator />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
       </section>
 
       {/* PROBLEM – Anrufe kommen, aber nicht durch */}
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -348,7 +303,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/30 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/30 mb-6 rounded-full">
                 <AlertTriangle size={16} className="text-primary-400" />
                 <span className="text-primary-400 text-sm font-heading font-bold tracking-wide">DAS PROBLEM</span>
               </div>
@@ -364,14 +319,14 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               {problems.map((problem, index) => (
                 <motion.div
                   key={index}
-                  className="group relative flex items-start bg-dark-500 p-6 border border-dark-100 hover:border-primary-500/40 transition-all duration-300"
+                  className="group relative flex items-start bg-white p-6 border border-dark-200 hover:border-primary-500/40 transition-all duration-300 rounded-2xl shadow-card"
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
                   <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary-500/60 group-hover:bg-primary-500 transition-colors duration-300" />
-                  <div className="flex items-center justify-center w-10 h-10 bg-primary-500/10 border border-primary-500/20 mr-4 flex-shrink-0">
+                  <div className="flex items-center justify-center w-10 h-10 bg-primary-500/10 border border-primary-500/20 mr-4 flex-shrink-0 rounded-xl">
                     <AlertTriangle className="text-primary-400" size={18} strokeWidth={2} />
                   </div>
                   <p className="text-light-200 pt-2">{problem}</p>
@@ -393,7 +348,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* VERLUST – Warum verpasste Anrufe so teuer sind */}
-      <section className="py-16 bg-dark-400 border-t border-dark-100/50">
+      <section className="py-16 border-t" style={{ background: '#F4F7F6', borderColor: '#E4E9E7' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -418,7 +373,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               ].map((loss, i) => (
                 <motion.div
                   key={i}
-                  className="bg-dark-500 border border-dark-100 p-5 text-center"
+                  className="bg-white border border-dark-200 p-5 text-center rounded-2xl shadow-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -444,7 +399,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* ZIELZUSTAND – so klingt Ihr Telefon, wenn die Assistenz läuft */}
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -468,14 +423,14 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
                 return (
                   <motion.div
                     key={index}
-                    className="group relative bg-dark-400 p-6 border border-dark-100 hover:border-primary-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-primary-glow"
+                    className="group relative bg-white p-6 border border-dark-200 hover:border-primary-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-primary-glow rounded-2xl shadow-card"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.08 }}
                     viewport={{ once: true }}
                   >
                     <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-500/10 border border-primary-500/30 mb-4 group-hover:bg-primary-500/20 transition-colors duration-300">
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-500/10 border border-primary-500/30 mb-4 group-hover:bg-primary-500/20 transition-colors duration-300 rounded-full">
                       <Icon className="text-primary-500" size={22} strokeWidth={1.75} />
                     </div>
                     <h3 className="text-base font-heading font-bold text-light-100 mb-2 leading-tight">{point.title}</h3>
@@ -510,7 +465,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* LÖSUNG – Was die Kundenassistenz leistet */}
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -528,7 +483,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               </p>
             </motion.div>
 
-            <div className="bg-dark-500 p-8 border border-dark-100 mb-8">
+            <div className="bg-white p-8 border border-dark-200 mb-8 rounded-2xl shadow-card">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {features.map((feature, index) => (
                   <motion.div
@@ -547,7 +502,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
             </div>
 
             <motion.div
-              className="bg-dark-500 p-8 border border-dark-100 mb-6"
+              className="bg-white p-8 border border-dark-200 mb-6 rounded-2xl shadow-card"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -570,8 +525,8 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
                     <div className="flex items-center justify-center w-9 h-9 bg-primary-500/20 border border-primary-500/40 flex-shrink-0 mt-1">
                       <Phone className="text-primary-500" size={15} strokeWidth={2} />
                     </div>
-                    <div className="relative bg-dark-400 border border-dark-100 px-4 py-3 flex-1">
-                      <div className="absolute left-[-7px] top-3 w-3 h-3 bg-dark-400 border-l border-b border-dark-100 rotate-45" />
+                    <div className="relative bg-white border border-dark-200 px-4 py-3 flex-1 rounded-2xl shadow-card">
+                      <div className="absolute left-[-7px] top-3 w-3 h-3 bg-white border-l border-b border-dark-200 rotate-45" />
                       <p className="text-light-200 text-sm">{q}</p>
                     </div>
                   </motion.div>
@@ -596,7 +551,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* VORTEILE – nach vorne gezogen */}
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -615,14 +570,14 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={index}
-                  className="group relative bg-dark-400 p-6 border border-dark-100 hover:border-primary-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-primary-glow"
+                  className="group relative bg-white p-6 border border-dark-200 hover:border-primary-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-primary-glow rounded-2xl shadow-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
                   <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-500/10 border border-primary-500/30 mb-4 text-primary-500 group-hover:bg-primary-500/20 transition-colors duration-300">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-500/10 border border-primary-500/30 mb-4 text-primary-500 group-hover:bg-primary-500/20 transition-colors duration-300 rounded-full">
                     {benefit.icon}
                   </div>
                   <h3 className="text-lg font-heading font-bold text-light-100 mb-2">{benefit.title}</h3>
@@ -635,7 +590,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* FÜR WEN – Branchen / Selbstselektion */}
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -657,13 +612,13 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               {selfSelectionCriteria.map((criteria, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-center bg-dark-500 p-5 border border-dark-100 hover:border-primary-500/40 transition-all duration-300"
+                  className="flex items-center bg-white p-5 border border-dark-200 hover:border-primary-500/40 transition-all duration-300 rounded-2xl shadow-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
                   viewport={{ once: true }}
                 >
-                  <div className="flex items-center justify-center w-10 h-10 bg-primary-500/10 border border-primary-500/30 mr-4 flex-shrink-0">
+                  <div className="flex items-center justify-center w-10 h-10 bg-primary-500/10 border border-primary-500/30 mr-4 flex-shrink-0 rounded-xl">
                     <CheckCircle className="text-primary-500" size={18} strokeWidth={2} />
                   </div>
                   <span className="text-light-100 font-medium">{criteria}</span>
@@ -684,13 +639,13 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               {targetAudiences.map((audience, index) => (
                 <motion.div
                   key={index}
-                  className="group flex items-start bg-dark-500 p-6 border border-dark-100 hover:border-primary-500/50 hover:-translate-y-1 hover:shadow-primary-glow transition-all duration-300"
+                  className="group flex items-start bg-white p-6 border border-dark-200 hover:border-primary-500/50 hover:-translate-y-1 hover:shadow-primary-glow transition-all duration-300 rounded-2xl shadow-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="flex items-center justify-center w-14 h-14 bg-primary-500/10 border border-primary-500/30 mr-4 flex-shrink-0 text-primary-500 group-hover:bg-primary-500/20 group-hover:scale-110 transition-all duration-300">
+                  <div className="flex items-center justify-center w-14 h-14 bg-primary-500/10 border border-primary-500/30 mr-4 flex-shrink-0 text-primary-500 group-hover:bg-primary-500/20 group-hover:scale-110 transition-all duration-300 rounded-xl">
                     {audience.icon}
                   </div>
                   <div>
@@ -702,7 +657,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
             </div>
 
             <motion.div
-              className="bg-dark-500 border-l-2 border-primary-500 p-6 flex flex-col md:flex-row items-center justify-between gap-4"
+              className="bg-white border-l-2 border-primary-500 p-6 flex flex-col md:flex-row items-center justify-between gap-4 rounded-xl shadow-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -713,7 +668,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               </p>
               <button
                 onClick={scrollToContact}
-                className="inline-flex items-center px-5 py-3 bg-primary-500/10 border border-primary-500/50 text-primary-400 font-heading font-bold hover:bg-primary-500 hover:text-dark-500 transition-all duration-300 flex-shrink-0"
+                className="inline-flex items-center px-5 py-3 bg-primary-500/10 border border-primary-500/50 text-primary-400 font-heading font-bold hover:bg-primary-500 hover:text-dark-500 transition-all duration-300 flex-shrink-0 rounded-full"
               >
                 <Phone size={18} className="mr-2" />
                 Erstgespräch anfragen
@@ -724,7 +679,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* PRAXIS-BEISPIEL – Anruf-Protokoll + Alltag-Szenarien */}
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -734,7 +689,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/30 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/30 mb-6 rounded-full">
                 <Phone size={14} className="text-primary-400" />
                 <span className="text-primary-400 text-sm font-heading font-bold tracking-wide">AUS DER PRAXIS</span>
               </div>
@@ -747,13 +702,13 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
             </motion.div>
 
             <motion.div
-              className="bg-dark-400 border border-dark-100 mb-12 shadow-xl overflow-hidden"
+              className="bg-white border border-dark-200 mb-12 shadow-xl overflow-hidden rounded-2xl"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-center justify-between px-6 py-3 bg-dark-500 border-b border-dark-100">
+              <div className="flex items-center justify-between px-6 py-3 bg-dark-500 border-b border-dark-200">
                 <div className="flex items-center gap-2">
                   <PhoneCall size={16} className="text-primary-400" />
                   <span className="text-primary-400 text-xs font-heading font-bold tracking-wider">EINGEHENDER ANRUF</span>
@@ -766,7 +721,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
                   15:47 Uhr
                 </div>
               </div>
-              <div className="px-6 py-5 border-b border-dark-100 bg-dark-400">
+              <div className="px-6 py-5 border-b border-dark-200 bg-dark-400">
                 <div className="text-xs text-light-300 mb-1 font-heading tracking-wide">ANLIEGEN</div>
                 <div className="text-light-100 font-heading font-bold">Terminanfrage Heizungswartung – Leipzig-Gohlis</div>
               </div>
@@ -785,7 +740,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
                   </div>
                 ))}
               </div>
-              <div className="px-6 py-3 border-t border-dark-100 bg-dark-500 flex items-center justify-between">
+              <div className="px-6 py-3 border-t border-dark-200 bg-dark-500 flex items-center justify-between">
                 <span className="text-light-300 text-xs">Automatisch erfasst von der Kundenassistenz</span>
                 <div className="flex items-center gap-2 text-primary-400 text-xs font-heading font-bold">
                   <CheckCircle size={12} />
@@ -800,13 +755,13 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
                 return (
                   <motion.div
                     key={index}
-                    className="group bg-dark-400 p-6 border border-dark-100 hover:border-primary-500/40 transition-all duration-300"
+                    className="group bg-white p-6 border border-dark-200 hover:border-primary-500/40 transition-all duration-300 rounded-2xl shadow-card"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-500/10 border border-primary-500/30 mb-4 group-hover:bg-primary-500/20 transition-colors duration-300">
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-500/10 border border-primary-500/30 mb-4 group-hover:bg-primary-500/20 transition-colors duration-300 rounded-full">
                       <Icon className="text-primary-500" size={22} strokeWidth={1.75} />
                     </div>
                     <h3 className="text-base font-heading font-bold text-light-100 mb-2">{scenario.title}</h3>
@@ -820,7 +775,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* KURZ ERKLÄRT – wandert nach hinten, SEO-Content bleibt */}
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -841,20 +796,20 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               </p>
             </motion.div>
             <ul className="space-y-2 text-light-200 mb-8 max-w-2xl mx-auto">
-              <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Anrufer werden freundlich begrüßt</li>
-              <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>das Anliegen wird kurz geklärt</li>
-              <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Standardfragen werden beantwortet</li>
-              <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>Termine oder Rückrufwünsche werden strukturiert aufgenommen</li>
-              <li className="flex items-start"><span className="text-primary-500 mr-2">•</span>dringende Fälle werden weitergeleitet</li>
+              <li className="flex items-start"><svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>Anrufer werden freundlich begrüßt</li>
+              <li className="flex items-start"><svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>das Anliegen wird kurz geklärt</li>
+              <li className="flex items-start"><svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>Standardfragen werden beantwortet</li>
+              <li className="flex items-start"><svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>Termine oder Rückrufwünsche werden strukturiert aufgenommen</li>
+              <li className="flex items-start"><svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>dringende Fälle werden weitergeleitet</li>
             </ul>
             <motion.div
-              className="bg-dark-500 border-l-2 border-primary-500 p-6 flex items-start gap-4"
+              className="bg-white border-l-2 border-primary-500 p-6 flex items-start gap-4 rounded-xl shadow-card"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-center justify-center w-10 h-10 bg-primary-500/10 border border-primary-500/20 flex-shrink-0">
+              <div className="flex items-center justify-center w-10 h-10 bg-primary-500/10 border border-primary-500/20 flex-shrink-0 rounded-xl">
                 <AlertTriangle size={18} className="text-primary-500" />
               </div>
               <p className="text-light-100">
@@ -866,7 +821,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* ÜBERGABE ANS TEAM */}
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -887,7 +842,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               </p>
             </motion.div>
             <motion.div
-              className="bg-dark-400 p-8 border border-primary-500/30 mb-8"
+              className="bg-white p-8 border border-primary-500/30 mb-8 rounded-2xl shadow-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -913,7 +868,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* SETUP – Schnell vs. Individuell */}
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -931,44 +886,44 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               </p>
             </motion.div>
             <motion.div
-              className="overflow-x-auto mb-8"
+              className="overflow-x-auto mb-8 rounded-2xl border shadow-card" style={{ borderColor: '#E4E9E7' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <table className="w-full border-collapse bg-dark-500 border border-dark-100">
+              <table className="w-full border-collapse">
                 <thead>
                   <tr>
-                    <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Setup</th>
-                    <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Gut, wenn…</th>
-                    <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Ergebnis</th>
+                    <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Setup</th>
+                    <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Gut, wenn…</th>
+                    <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Ergebnis</th>
                   </tr>
                 </thead>
-                <tbody className="text-light-200 text-sm">
-                  <tr>
-                    <td className="border border-dark-100 p-3">Schnell-Setup (MVP)</td>
-                    <td className="border border-dark-100 p-3">Sie wollen schnell live gehen & erstmal testen</td>
-                    <td className="border border-dark-100 p-3">Sofort weniger verpasste Anrufe</td>
+                <tbody className="text-sm">
+                  <tr style={{ background: '#fff' }}>
+                    <td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Schnell-Setup (MVP)</td>
+                    <td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Sie wollen schnell live gehen & erstmal testen</td>
+                    <td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>Sofort weniger verpasste Anrufe</td>
                   </tr>
-                  <tr>
-                    <td className="border border-dark-100 p-3">Individuelle Einrichtung</td>
-                    <td className="border border-dark-100 p-3">Sie wollen CRM/Kalender/Prozesse sauber automatisieren</td>
-                    <td className="border border-dark-100 p-3">Mehr qualifizierte Leads + weniger Aufwand</td>
+                  <tr style={{ background: '#FAFAF9' }}>
+                    <td className="py-3 px-4" style={{ color: '#404B48' }}>Individuelle Einrichtung</td>
+                    <td className="py-3 px-4" style={{ color: '#404B48' }}>Sie wollen CRM/Kalender/Prozesse sauber automatisieren</td>
+                    <td className="py-3 px-4 font-semibold" style={{ color: '#0E7C72' }}>Mehr qualifizierte Leads + weniger Aufwand</td>
                   </tr>
                 </tbody>
               </table>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <motion.div
-                className="relative bg-dark-500 p-8 border border-dark-100 hover:border-primary-500/30 transition-colors duration-300"
+                className="relative bg-white p-8 border border-dark-200 hover:border-primary-500/30 transition-colors duration-300 rounded-2xl shadow-card"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-primary-500/10 border border-primary-500/30">
+                  <div className="flex items-center justify-center w-12 h-12 bg-primary-500/10 border border-primary-500/30 rounded-xl">
                     <Rocket className="text-primary-500" size={22} strokeWidth={1.75} />
                   </div>
                   <h3 className="text-xl font-heading font-bold text-light-100">Schnell-Setup (MVP)</h3>
@@ -981,13 +936,13 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
                 </ul>
               </motion.div>
               <motion.div
-                className="relative bg-dark-500 p-8 border-2 border-primary-500/50 shadow-primary-glow"
+                className="relative bg-white p-8 border-2 border-primary-500/50 shadow-primary-glow rounded-2xl"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="absolute -top-3 right-6 flex items-center gap-1 px-3 py-1 bg-primary-500 text-dark-500 text-xs font-heading font-bold tracking-wide">
+                <div className="absolute -top-3 right-6 flex items-center gap-1 px-3 py-1 bg-primary-500 text-dark-500 text-xs font-heading font-bold tracking-wide rounded-xl">
                   <Star size={12} fill="currentColor" />
                   EMPFOHLEN
                 </div>
@@ -1011,99 +966,9 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
         </div>
       </section>
 
-      {/* MIETMODELL – flexibel starten statt groß investieren */}
-      <section className="py-20 bg-dark-500">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              className="text-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
-                Flexibel starten statt groß investieren – <span className="text-primary-500">unser Mietmodell</span>
-              </h2>
-              <p className="text-light-200 max-w-3xl mx-auto mb-4">
-                Wir verkaufen keinen Telefonagenten. Wir liefern eine Assistenz, die laufend besser wird – und Sie zahlen nur, solange sie für Sie arbeitet.
-              </p>
-              <p className="text-light-300 max-w-3xl mx-auto">
-                Unsere telefonische Kundenassistenz wird <strong>monatlich gemietet</strong>, nicht verkauft.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-              {mietStats.map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    className="bg-dark-400 p-6 border border-dark-100 hover:border-primary-500/40 text-center transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.08 }}
-                    viewport={{ once: true }}
-                  >
-                    <Icon className="text-primary-500 mx-auto mb-3" size={24} strokeWidth={1.75} />
-                    <div className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-1 leading-tight">{stat.value}</div>
-                    <div className="text-xs text-light-300 uppercase tracking-wide">{stat.label}</div>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            <motion.div
-              className="bg-dark-400 p-8 border border-primary-500/30"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-xl font-heading font-bold text-light-100 mb-6">Das bedeutet für Sie:</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="flex items-start">
-                  <CheckCircle className="text-primary-500 mr-3 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-light-200">Keine hohen Einmalkosten</span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="text-primary-500 mr-3 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-light-200"><strong>Keine Mindestlaufzeit</strong></span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="text-primary-500 mr-3 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-light-200">Kündigungsfrist: <strong>3 Monate zum Monatsende</strong></span>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="text-primary-500 mr-3 flex-shrink-0 mt-1" size={20} />
-                  <span className="text-light-200">Betrieb, Wartung und laufende Optimierung inklusive</span>
-                </div>
-              </div>
-
-              <h3 className="text-xl font-heading font-bold text-light-100 mb-4">Laufende Optimierung anhand echter Gespräche</h3>
-              <p className="text-light-200 mb-4">Sie haben keinen „Projekt-Klotz", der nach dem Go-Live liegen bleibt. Stattdessen:</p>
-              <ul className="space-y-2 text-light-200 mb-6">
-                {optimizationPoints.map((point, i) => (
-                  <li key={i} className="flex items-start">
-                    <span className="text-primary-500 mr-2">•</span>
-                    {point}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="relative bg-gradient-to-r from-primary-500/10 via-primary-500/5 to-primary-500/10 border-l-2 border-primary-500 p-5 flex items-start gap-3">
-                <Sparkles className="text-primary-500 flex-shrink-0 mt-0.5" size={20} />
-                <p className="text-light-100 font-heading font-bold">
-                  Ihre Assistenz wird nicht zum abgeschlossenen Projekt – sie wird zum mitwachsenden Teil Ihres Teams.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* ABLAUF – So entsteht Ihre telefonische Kundenassistenz */}
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -1127,13 +992,13 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
                 {processSteps.map((step, index) => (
                   <motion.div
                     key={index}
-                    className="relative flex items-start gap-6 bg-dark-500 p-6 border border-dark-100 hover:border-primary-500/50 transition-all duration-300 group"
+                    className="relative flex items-start gap-6 bg-white p-6 border border-dark-200 hover:border-primary-500/50 transition-all duration-300 group rounded-2xl shadow-card"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <div className="relative flex items-center justify-center w-14 h-14 bg-dark-400 border-2 border-primary-500/50 flex-shrink-0 group-hover:border-primary-500 group-hover:bg-primary-500/10 transition-all duration-300 z-10">
+                    <div className="relative flex items-center justify-center w-14 h-14 bg-white border-2 border-primary-500/50 flex-shrink-0 group-hover:border-primary-500 group-hover:bg-primary-500/10 transition-all duration-300 z-10 rounded-2xl shadow-card">
                       <span className="text-xl font-heading font-bold text-primary-500">
                         {step.step}
                       </span>
@@ -1151,35 +1016,36 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* CHATBOT CROSS-LINK */}
-      <section className="py-16 bg-dark-500">
+      <section className="py-16" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <motion.div
-              className="relative bg-gradient-to-br from-dark-400 via-dark-400 to-dark-500 border border-primary-500/30 p-8 overflow-hidden group hover:border-primary-500/50 transition-colors duration-300"
+              className="rounded-2xl border bg-white p-8 shadow-card"
+              style={{ borderColor: 'rgba(14,124,114,0.25)' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary-500/5 blur-3xl rounded-full group-hover:bg-primary-500/10 transition-colors duration-500" aria-hidden />
-              <div className="relative flex items-start gap-5">
-                <div className="flex items-center justify-center w-14 h-14 bg-primary-500/10 border border-primary-500/30 flex-shrink-0">
-                  <MessageSquare size={24} className="text-primary-500" strokeWidth={1.75} />
+              <div className="flex items-start gap-5">
+                <div className="flex items-center justify-center w-12 h-12 rounded-xl flex-shrink-0" style={{ background: 'rgba(14,124,114,0.08)', border: '1px solid rgba(14,124,114,0.2)' }}>
+                  <MessageSquare size={22} style={{ color: '#0E7C72' }} strokeWidth={1.75} />
                 </div>
                 <div className="flex-1">
-                  <div className="text-xs text-primary-400 font-heading font-bold tracking-wide mb-2">ERGÄNZENDER KANAL</div>
-                  <h3 className="text-lg font-heading font-bold text-light-100 mb-2">
+                  <div className="text-xs font-heading font-bold tracking-wide mb-2 uppercase" style={{ color: '#0E7C72' }}>Ergänzender Kanal</div>
+                  <h3 className="text-base font-heading font-bold mb-2" style={{ color: '#0C1210' }}>
                     Auch über die Website erreichbar sein?
                   </h3>
-                  <p className="text-light-300 mb-4 leading-relaxed">
+                  <p className="mb-4 leading-relaxed text-sm" style={{ color: '#404B48' }}>
                     Viele Kunden nehmen zuerst über die Website Kontakt auf. Unsere digitale Kundenassistenz beantwortet Anfragen direkt online und erfasst Anliegen strukturiert.
                   </p>
                   <a
                     href="/ki-chatbots#digitale-kundenassistenz"
-                    className="inline-flex items-center text-primary-500 font-heading font-bold hover:text-primary-400 transition-colors duration-200 group/link"
+                    className="inline-flex items-center font-heading font-bold hover:underline transition-colors duration-200 group/link text-sm"
+                    style={{ color: '#0E7C72' }}
                   >
                     Mehr zur digitalen Kundenassistenz
-                    <ArrowRight size={18} className="ml-2 group-hover/link:translate-x-1 transition-transform duration-200" />
+                    <ArrowRight size={16} className="ml-2 group-hover/link:translate-x-1 transition-transform duration-200" />
                   </a>
                 </div>
               </div>
@@ -1189,18 +1055,18 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* ZWISCHEN-CTA */}
-      <section className="py-16 bg-dark-500">
+      <section className="py-16" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <motion.div
-              className="relative bg-dark-400 border border-primary-500/20 p-8 md:p-10 text-center overflow-hidden"
+              className="relative bg-white border border-primary-500/20 p-8 md:p-10 text-center overflow-hidden rounded-2xl shadow-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-0.5 bg-gradient-to-r from-transparent via-primary-500 to-transparent" />
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-500/10 border border-primary-500/30 mb-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-500/10 border border-primary-500/30 mb-5 rounded-full">
                 <Clock size={14} className="text-primary-400" />
                 <span className="text-primary-400 text-xs font-heading font-bold tracking-wide">15 MINUTEN – UNVERBINDLICH</span>
               </div>
@@ -1210,9 +1076,13 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               <p className="text-light-200 mb-8 max-w-xl mx-auto">
                 In einem kurzen Gespräch klären wir, wie viele Anrufe Sie heute verlieren – und ob ein KI-Telefonagent für Ihr Team wirklich Entlastung bringt.
               </p>
+              <p className="text-xs text-primary-400 font-semibold mb-3 flex items-center justify-center gap-1.5">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="#0E7C72" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                Wir nehmen maximal 3 Neukunden pro Monat an
+              </p>
               <button
                 onClick={scrollToContact}
-                className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg"
+                className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg rounded-xl"
               >
                 Wie viele Anrufe gehen bei Ihnen verloren? Jetzt klären.
                 <ArrowRight className="ml-2" size={22} />
@@ -1223,7 +1093,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* LOKAL-SEKTION */}
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -1277,7 +1147,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {isRegional && regionContent?.paragraphs && regionContent.paragraphs.length > 0 && (
-        <section className="py-16 bg-dark-400">
+        <section className="py-16" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
@@ -1292,7 +1162,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       )}
 
       {!isRegional && (
-        <section className="py-12 bg-dark-400">
+        <section className="py-12" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <p className="text-light-200 text-lg leading-relaxed">
@@ -1316,7 +1186,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       <RelatedServices currentSlug="telefonassistenten" />
 
       {/* FAQ */}
-      <section id="faq" className="py-20 bg-dark-400">
+      <section id="faq" className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -1334,14 +1204,14 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               {faqItems.map((item, index) => (
                 <motion.div
                   key={index}
-                  className="group bg-dark-500 p-6 border border-dark-100 hover:border-primary-500/40 transition-colors duration-300"
+                  className="group bg-white p-6 border border-dark-200 hover:border-primary-500/40 transition-colors duration-300 rounded-2xl shadow-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   viewport={{ once: true }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex items-center justify-center w-8 h-8 bg-primary-500/10 border border-primary-500/30 flex-shrink-0 mt-0.5">
+                    <div className="flex items-center justify-center w-8 h-8 bg-primary-500/10 border border-primary-500/30 flex-shrink-0 mt-0.5 rounded-xl">
                       <span className="text-primary-500 font-heading font-bold text-sm">?</span>
                     </div>
                     <div className="flex-1">
@@ -1354,14 +1224,14 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               {regionContent?.localFaqs?.map((faq, index) => (
                 <motion.div
                   key={`local-${index}`}
-                  className="group bg-dark-500 p-6 border border-dark-100 hover:border-primary-500/40 transition-colors duration-300"
+                  className="group bg-white p-6 border border-dark-200 hover:border-primary-500/40 transition-colors duration-300 rounded-2xl shadow-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: (faqItems.length + index) * 0.05 }}
                   viewport={{ once: true }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex items-center justify-center w-8 h-8 bg-primary-500/10 border border-primary-500/30 flex-shrink-0 mt-0.5">
+                    <div className="flex items-center justify-center w-8 h-8 bg-primary-500/10 border border-primary-500/30 flex-shrink-0 mt-0.5 rounded-xl">
                       <span className="text-primary-500 font-heading font-bold text-sm">?</span>
                     </div>
                     <div className="flex-1">
@@ -1384,14 +1254,14 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
         <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto">
             <motion.div
-              className="bg-dark-400 border border-primary-500/30 p-10 text-center relative overflow-hidden"
+              className="bg-white border border-primary-500/30 p-10 text-center relative overflow-hidden rounded-2xl shadow-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary-500 to-transparent" />
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-500/10 border border-primary-500/30 mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-500/10 border border-primary-500/30 mb-6 rounded-full">
                 <Phone className="text-primary-500" size={28} strokeWidth={1.5} />
               </div>
               <motion.h2
@@ -1421,7 +1291,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
               >
                 <button
                   onClick={scrollToContact}
-                  className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg"
+                  className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg rounded-xl"
                 >
                   Kostenloses Erstgespräch anfragen
                   <ArrowRight className="ml-2" size={20} />
@@ -1457,7 +1327,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       </section>
 
       {/* REGIONEN-BLOCK (ausgelagert aus Abschluss-CTA) */}
-      <section className="py-16 bg-dark-500">
+      <section className="py-16" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             {isRegional ? (
@@ -1501,7 +1371,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
         </div>
       </section>
 
-      <ContactForm />
+      <ContactForm service="telefonassistent" heading="Telefonassistenten-Beratung anfragen" subheading="Wir analysieren, wie viele Anrufe Sie verlieren und was ein KI-Telefonagent konkret bringt." />
 
       <GoogleMapsSection />
     </div>

@@ -4,33 +4,15 @@ import RegionServicePage from '@/views/RegionServicePage';
 import { getRegionContent, getValidRegionSlug } from '@/data/regionContent';
 import { getRegionServiceContent } from '@/data/regionServiceContent';
 import { LEISTUNGSGEBIETE_SLUGS, type LeistungsgebietSlug } from '@/data/leistungsgebiete';
-import { getServiceBySlug, isValidServiceSlug, type ServiceSlug } from '@/data/services';
+import {
+  getServiceBySlug,
+  isValidServiceSlug,
+  SERVICE_TITLE_KEYWORDS,
+  SERVICE_TITLE_LABELS,
+  type ServiceSlug,
+} from '@/data/services';
 
 const baseUrl = 'https://pixelkraftwerk-ai.com';
-
-const SERVICE_TITLE_KEYWORDS: Record<ServiceSlug, string> = {
-  'ki-chatbots':
-    'digitaler Kundenassistenz, Website-Chatbot oder KI-Chatbot',
-  telefonassistenten:
-    'KI-Telefonassistenz, automatischer Anrufannahme oder Telefonservice',
-  automatisierungen:
-    'KI-Automatisierung, Workflow-Optimierung oder Prozessautomatisierung',
-  webseiten:
-    'moderner Website, Firmenhomepage oder Webdesign im Mietmodell',
-  'seo-top-3':
-    'lokaler Suchmaschinenoptimierung, Google-Ranking oder SEO-Beratung',
-  'crm-systeme':
-    'CRM-System, Kundenverwaltung oder Lead-Management',
-};
-
-const SERVICE_SECONDARY_KEYWORDS: Record<ServiceSlug, string> = {
-  'ki-chatbots': 'Chatbot-Einrichtung, Website-Assistent & Automatisierung',
-  telefonassistenten: 'Anrufannahme, Terminbuchung & Lead-Qualifizierung',
-  automatisierungen: 'Workflow-Automatisierung, Prozessoptimierung & Zeitersparnis',
-  webseiten: 'Webdesign, Firmenhomepage & Mietmodell',
-  'seo-top-3': 'Google-Ranking, Google Business Profil & lokale Sichtbarkeit',
-  'crm-systeme': 'CRM-Setup, Vertriebspipeline & Lead-Management',
-};
 
 type Props = { params: Promise<{ region: string; service: string }> };
 
@@ -48,8 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const keywords = SERVICE_TITLE_KEYWORDS[service as ServiceSlug] ?? serviceInfo.label;
-  const secondaryKeywords = SERVICE_SECONDARY_KEYWORDS[service as ServiceSlug] ?? serviceInfo.label;
-  const title = `BESTER ${serviceInfo.label} in ${content.name} – wenn Sie nach ${keywords} in meiner Nähe suchen – Pixel Kraftwerk aus Groitzsch | ${secondaryKeywords} für ${content.name}`;
+  const titleLabel = SERVICE_TITLE_LABELS[service as ServiceSlug] ?? serviceInfo.label;
+  const title = `${titleLabel} ${content.name} – ${keywords} in meiner Nähe`;
   const canonical = `${baseUrl}/leistungsgebiete/${regionSlug}/${service}`;
 
   const serviceContent = getRegionServiceContent(
@@ -61,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = serviceContent.metaDescription;
 
   return {
-    title: { absolute: title },
+    title,
     description,
     alternates: { canonical },
     openGraph: {

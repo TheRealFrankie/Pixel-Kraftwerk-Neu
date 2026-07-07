@@ -13,6 +13,26 @@ export const SERVICE_SLUGS = [
 
 export type ServiceSlug = (typeof SERVICE_SLUGS)[number];
 
+/** Kurzlabel für Title/H1 (z. B. „KI-Chatbots“, „SEO-Agentur“) – Single Source of Truth für Titles UND H1/H2 */
+export const SERVICE_TITLE_LABELS: Record<ServiceSlug, string> = {
+  'ki-chatbots': 'KI-Chatbots',
+  telefonassistenten: 'KI-Telefonassistenten',
+  automatisierungen: 'Automatisierungen',
+  webseiten: 'Webdesign',
+  'seo-top-3': 'SEO-Agentur',
+  'crm-systeme': 'CRM-Systeme',
+};
+
+/** Keyword-Liste für Title/H2 (sekundäre Kategorien & pertinente Services) */
+export const SERVICE_TITLE_KEYWORDS: Record<ServiceSlug, string> = {
+  'ki-chatbots': 'digitale Kundenassistenz, Website-Chatbot oder KI-Chatbot',
+  telefonassistenten: 'KI-Telefonassistenz, Anrufannahme oder Telefonservice',
+  automatisierungen: 'Leadgenerierung, Terminbuchung oder Prozessautomatisierung',
+  webseiten: 'moderne Website, Firmenhomepage oder Webdesign im Mietmodell',
+  'seo-top-3': 'Local SEO, Google-Maps-Ranking oder Top-3-Platzierungen',
+  'crm-systeme': 'Kundenverwaltung, Lead-Management oder Vertriebspipeline',
+};
+
 export interface ServiceInfo {
   slug: ServiceSlug;
   /** Kurzlabel für Breadcrumbs und Listen (z. B. „KI-Chatbots“, „Telefonassistenten“) */

@@ -32,12 +32,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${subpageDef.label} ${regionData.name} – wenn Sie nach ${subpageDef.titleKeywords} in meiner Nähe suchen – Pixel Kraftwerk aus Groitzsch für ${regionData.name} und Umgebung`;
+  const title = `${subpageDef.label} ${regionData.name} – ${subpageDef.titleKeywords} in meiner Nähe`;
   const description = `${subpageDef.label} für Unternehmen in ${regionData.name} und Umgebung. ${content.metaDescription.slice(0, 100)}…`;
   const canonical = `${baseUrl}/leistungsgebiete/${regionSlug}/${service}/${topic}`;
 
   return {
-    title: { absolute: title },
+    title,
     description,
     alternates: { canonical },
   };

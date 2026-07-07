@@ -24,10 +24,12 @@ import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
 import LocalBusinessSchema from '../../components/LocalBusinessSchema';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
+import TrustLine from '../../components/TrustLine';
+import StickyCtaBar from '../../components/StickyCtaBar';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 import { getRegionServiceContent } from '../../data/regionServiceContent';
 import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
-import { getRegionServiceLinkText } from '../../data/services';
+import { getRegionServiceLinkText, SERVICE_TITLE_KEYWORDS } from '../../data/services';
 import SubpageLinksBlock from '../../components/SubpageLinksBlock';
 import HeroScrollIndicator from '../../components/HeroScrollIndicator';
 import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
@@ -89,7 +91,7 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
     {
       question: 'Was kostet ein CRM-System für kleine Unternehmen?',
       answer:
-        'Die reinen Softwarekosten beginnen bei vielen Anbietern ab 15–30 € pro Nutzer und Monat. Dazu kommen Setup-Kosten für Anpassung, Datenimport und Schulung. Wir bieten ein transparentes Paket: Einmalige Einrichtung plus optionales monatliches Betreuungspaket. Im Vergleich zum Umsatzverlust durch verlorene Leads rechnet sich die Investition meist innerhalb weniger Wochen.',
+        'Die Kosten hängen von Anbieter, Nutzerzahl und Umfang der Einrichtung ab. Wir bieten ein transparentes Paket: Einmalige Einrichtung plus optionales monatliches Betreuungspaket – Sie wissen vorab genau, was auf Sie zukommt. Im Vergleich zum Umsatzverlust durch verlorene Leads rechnet sich die Investition meist innerhalb weniger Wochen. Im kostenlosen Erstgespräch nennen wir Ihnen konkrete Zahlen für Ihren Fall.',
     },
     {
       question: 'Kann ich mein bestehendes System (Excel, Outlook) integrieren?',
@@ -275,117 +277,78 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
         pageName="CRM-Systeme"
       />
 
-      <div className="bg-dark-500">
+      <div style={{ background: '#FAFAF9' }}>
         {/* Hero mit Premium-Hintergrundbild */}
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-dark-500">
-          <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
-            <BreadcrumbNav overlay items={breadcrumbItems} />
-          </div>
-          <div className="absolute inset-0">
-            <Image
-              src="/images/crm-systeme-kundenverwaltung.webp"
-              alt="CRM-System für Kundenverwaltung und Lead-Management"
-              fill
-              className="object-cover object-center"
-              priority
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-dark-500/70 via-dark-500/50 to-dark-500/95" aria-hidden />
-            <div className="absolute inset-0 bg-gradient-to-r from-dark-500/30 via-transparent to-dark-500/40" aria-hidden />
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/15 to-transparent" aria-hidden />
-          </div>
-
-          <div className="container mx-auto px-4 relative z-10 pt-32 pb-16 md:pt-36 md:pb-20">
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.div
-                className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/20 border border-primary-500/40 backdrop-blur-sm mb-8 shadow-primary-glow"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Users size={40} className="text-primary-500" strokeWidth={1.5} />
+        {/* HERO */}
+      <section
+        id="crm-systeme"
+        className="relative h-screen flex flex-col overflow-hidden"
+        style={{ background: '#FAFAF9' }}
+      >
+        <div className="absolute inset-0">
+          <Image
+            src="/images/crm-systeme-kundenverwaltung.webp"
+            alt="CRM-System für Kundenverwaltung und Lead-Management"
+            fill
+            className="object-cover object-right"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(250,250,249,0.97) 0%, rgba(250,250,249,0.88) 38%, rgba(250,250,249,0.3) 65%, rgba(250,250,249,0.0) 80%)' }} aria-hidden />
+        </div>
+        <div className="relative z-20 container mx-auto px-4 md:px-8 pt-20 md:pt-24">
+          <BreadcrumbNav items={isRegional ? [
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
+            { label: regionName!, href: regionUrl },
+            { label: 'CRM-Systeme' },
+          ] : [
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungen', href: '/leistungen' },
+            { label: 'CRM-Systeme' },
+          ]} />
+        </div>
+        <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+            <div>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-5">
+                <span className="pill-badge"><Users size={12} /> CRM-Systeme</span>
               </motion.div>
-
-              <motion.h1
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold mb-6 leading-tight"
-                style={{
-                  color: '#F5F7FA',
-                  textShadow: '0 10px 30px rgba(0,0,0,0.65)',
-                  WebkitTextStroke: '1px rgba(0,0,0,0.25)',
-                }}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                {isRegional
-                  ? `CRM-Systeme ${regionName}`
-                  : (
-                    <>CRM-Systeme<span className="sr-only"> Leipzig &amp; Groitzsch</span></>
-                  )}
+              <motion.h1 className="font-heading font-bold tracking-tight mb-4 leading-[1.08]" style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.6 }}>
+                {isRegional ? `CRM-Systeme in ${regionName}` : 'CRM-Systeme Groitzsch & Leipzig'}
               </motion.h1>
-
-              <motion.h2
-                className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-primary-400 mb-6 drop-shadow-md"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
-              >
-                {regionContent?.intro || 'Kunden gewinnen, Prozesse ordnen'}
+              <motion.h2 className="text-base max-w-xl mb-3 leading-relaxed font-semibold" style={{ color: '#0E7C72' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                {SERVICE_TITLE_KEYWORDS['crm-systeme']}
               </motion.h2>
-
-              <motion.p
-                className="text-lg sm:text-xl max-w-3xl mx-auto mb-4 leading-relaxed"
-                style={{
-                  color: '#F5F7FA',
-                  textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
-                  WebkitTextStroke: '0.5px rgba(0,0,0,0.2)',
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                {isRegional
-                  ? `Sie führen ein Unternehmen in ${regionName} und verlieren den Überblick über Anfragen, Angebote und Kundenkontakte? Ein CRM-System bringt Struktur in Ihren Vertrieb – ohne dass Sie dafür Ihre Arbeitsweise komplett umkrempeln müssen.`
-                  : 'Anfragen kommen rein – aber wer fasst nach? Angebote werden verschickt – aber wo bleibt der Überblick? Ein CRM-System bringt Struktur in Ihren Vertrieb, automatisiert wiederkehrende Aufgaben und sorgt dafür, dass aus Interessenten Kunden werden.'}
+              <motion.p className="text-lg mb-3 max-w-xl leading-relaxed" style={{ color: '#0E7C72', fontWeight: 600 }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>
+                {regionContent?.localHook || 'Kunden gewinnen, Prozesse ordnen'}
               </motion.p>
-
-              <motion.p
-                className="text-base sm:text-lg max-w-3xl mx-auto mb-8 leading-relaxed"
-                style={{
-                  color: '#E8EAED',
-                  textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.25 }}
-              >
-                Pixel Kraftwerk richtet CRM-Systeme ein, die zu Ihrem Geschäft passen – nicht umgekehrt. Wir übernehmen Auswahl, Setup, Datenmigration und Schulung. Besonders für Unternehmen in{' '}
-                <a href="/leistungsgebiete/leipzig" className="text-primary-400 hover:underline" style={{ textShadow: 'none' }}>Leipzig</a>,{' '}
-                <a href="/leistungsgebiete/groitzsch" className="text-primary-400 hover:underline" style={{ textShadow: 'none' }}>Groitzsch</a> und der Region Sachsen.
+              <motion.p className="text-base max-w-xl mb-6 leading-relaxed" style={{ color: '#404B48' }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+                Anfragen kommen rein – aber wer fasst nach? Ein CRM-System bringt Struktur in Ihren Vertrieb, automatisiert wiederkehrende Aufgaben und sorgt dafür, dass aus Interessenten Kunden werden.
               </motion.p>
-
-              <motion.button
-                onClick={scrollToContact}
-                className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                CRM-Beratung vereinbaren
-                <ArrowRight className="ml-2" size={24} />
-              </motion.button>
+              <motion.div className="flex flex-col sm:flex-row gap-3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }}>
+                <button onClick={scrollToContact} className="btn-primary">
+                  CRM-Beratung vereinbaren
+                  <ArrowRight size={18} />
+                </button>
+                <a href="tel:+491785844460" className="btn-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Jetzt anrufen
+                </a>
+              </motion.div>
+              <TrustLine className="mt-5" />
             </div>
+            <div className="hidden lg:block" aria-hidden />
           </div>
-          <HeroScrollIndicator />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
-        </section>
+        </div>
+      </section>
 
         {/* Problem */}
-        <section className="py-20 bg-dark-400">
+        <section className="py-20" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
+                className="text-2xl md:text-3xl font-heading font-bold mb-6" style={{ color: '#0C1210' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -395,7 +358,7 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
               </motion.h2>
 
               <motion.p
-                className="text-light-200 text-lg leading-relaxed mb-6"
+                className=" text-lg leading-relaxed mb-6"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -404,23 +367,25 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
                 Die meisten kleinen Unternehmen starten mit E-Mail und Excel. Das funktioniert – bis es nicht mehr funktioniert. Ab einem bestimmten Punkt kosten verlorene Anfragen mehr als jedes CRM-System. Typische Symptome, die wir bei Kunden {isRegional ? `in ${regionName} und ` : ''}in der Region immer wieder sehen:
               </motion.p>
 
-              <motion.ul
-                className="space-y-3 mb-8"
+              <motion.div
+                className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
                 {problemPoints.map((point, i) => (
-                  <li key={i} className="flex items-start gap-3 text-light-200">
-                    <span className="text-red-400 font-bold mt-0.5">✗</span>
-                    <span>{point}</span>
-                  </li>
+                  <div key={i} className="flex items-start gap-3 rounded-2xl bg-white border p-4 shadow-card" style={{ borderColor: '#E4E9E7' }}>
+                    <div className="flex-shrink-0 w-7 h-7 rounded-xl flex items-center justify-center mt-0.5" style={{ background: 'rgba(239,68,68,0.07)', color: '#B91C1C' }}>
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 6h6" stroke="#B91C1C" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                    </div>
+                    <span className="text-sm leading-relaxed" style={{ color: '#404B48' }}>{point}</span>
+                  </div>
                 ))}
-              </motion.ul>
+              </motion.div>
 
               <motion.p
-                className="text-light-200 text-lg leading-relaxed"
+                className=" text-lg leading-relaxed"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -433,11 +398,11 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
         </section>
 
         {/* Solution Features */}
-        <section className="py-20 bg-dark-500">
+        <section className="py-20" style={{ background: '#FAFAF9' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4 text-center"
+                className="text-2xl md:text-3xl font-heading font-bold mb-4 text-center" style={{ color: '#0C1210' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -446,7 +411,7 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
                 Die Lösung: Ein CRM, das zu Ihrem Geschäft passt
               </motion.h2>
               <motion.p
-                className="text-light-300 text-center text-lg mb-12 max-w-2xl mx-auto"
+                className=" text-center text-lg mb-12 max-w-2xl mx-auto"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -459,15 +424,15 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
                 {solutionFeatures.map((feature, i) => (
                   <motion.div
                     key={i}
-                    className="bg-dark-400 border border-dark-100 p-6 hover:border-primary-500/30 transition-all duration-300"
+                    className="bg-white border border-dark-200 p-6 hover:border-primary-500/30 transition-all duration-300 rounded-2xl shadow-card"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: i * 0.08 }}
                     viewport={{ once: true }}
                   >
                     <feature.icon className="w-8 h-8 text-primary-500 mb-4" />
-                    <h3 className="text-lg font-heading font-bold text-light-100 mb-3">{feature.title}</h3>
-                    <p className="text-light-300 text-sm leading-relaxed">{feature.description}</p>
+                    <h3 className="text-lg font-heading font-bold mb-3" style={{ color: '#0C1210' }}>{feature.title}</h3>
+                    <p className=" text-sm leading-relaxed">{feature.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -476,11 +441,11 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
         </section>
 
         {/* Comparison Table */}
-        <section className="py-20 bg-dark-400">
+        <section className="py-20" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-8 text-center"
+                className="text-2xl md:text-3xl font-heading font-bold mb-8 text-center" style={{ color: '#0C1210' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -490,7 +455,8 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
               </motion.h2>
 
               <motion.div
-                className="overflow-x-auto"
+                className="overflow-x-auto rounded-2xl border shadow-card"
+                style={{ borderColor: '#E4E9E7' }}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
@@ -500,7 +466,7 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
                   <thead>
                     <tr>
                       {comparisonTable.headers.map((h, i) => (
-                        <th key={i} className="py-3 px-4 bg-dark-300 text-light-100 font-heading font-bold text-sm border-b border-dark-200">
+                        <th key={i} className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>
                           {h}
                         </th>
                       ))}
@@ -508,9 +474,9 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
                   </thead>
                   <tbody>
                     {comparisonTable.rows.map((row, rIdx) => (
-                      <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-dark-500/50' : 'bg-dark-400/50'}>
+                      <tr key={rIdx} style={{ background: rIdx % 2 === 0 ? '#fff' : '#FAFAF9' }}>
                         {row.map((cell, cIdx) => (
-                          <td key={cIdx} className={`py-3 px-4 text-sm border-b border-dark-200/50 ${cIdx === 2 ? 'text-primary-400' : 'text-light-200'}`}>
+                          <td key={cIdx} className="py-3 px-4 text-sm border-b" style={{ color: cIdx === 2 ? '#0E7C72' : '#404B48', fontWeight: cIdx === 2 ? 600 : 400, borderColor: '#E4E9E7' }}>
                             {cell}
                           </td>
                         ))}
@@ -523,12 +489,54 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
           </div>
         </section>
 
+        {/* Mid CTA */}
+        <section className="py-14" style={{ background: '#F4F7F6' }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto text-center">
+              <motion.h2
+                className="text-xl md:text-2xl font-heading font-bold mb-3" style={{ color: '#0C1210' }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Welches CRM passt zu Ihrem Unternehmen?
+              </motion.h2>
+              <motion.p
+                className=" mb-6 text-base"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                In 20 Minuten zeigen wir Ihnen, welches System zu Ihren Abläufen passt und was es kostet.
+              </motion.p>
+              <motion.div
+                className="flex flex-col sm:flex-row gap-3 justify-center"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <button onClick={scrollToContact} className="btn-primary">
+                  CRM-Beratung vereinbaren
+                  <ArrowRight size={18} />
+                </button>
+                <a href="tel:+491785844460" className="btn-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Direkt anrufen
+                </a>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* Target Groups */}
-        <section className="py-20 bg-dark-500">
+        <section className="py-20" style={{ background: '#FAFAF9' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4 text-center"
+                className="text-2xl md:text-3xl font-heading font-bold mb-4 text-center" style={{ color: '#0C1210' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -537,7 +545,7 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
                 Für wen eignet sich ein CRM-System?
               </motion.h2>
               <motion.p
-                className="text-light-300 text-center text-lg mb-10 max-w-2xl mx-auto"
+                className=" text-center text-lg mb-10 max-w-2xl mx-auto"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -550,14 +558,14 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
                 {targetGroups.map((group, i) => (
                   <motion.div
                     key={i}
-                    className="bg-dark-400 border border-dark-100 p-6 flex flex-col"
+                    className="bg-white border border-dark-200 p-6 flex flex-col rounded-2xl shadow-card"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <h3 className="text-lg font-heading font-bold text-light-100 mb-3">{group.title}</h3>
-                    <p className="text-light-300 text-sm leading-relaxed mb-4 flex-1">{group.description}</p>
+                    <h3 className="text-lg font-heading font-bold mb-3" style={{ color: '#0C1210' }}>{group.title}</h3>
+                    <p className=" text-sm leading-relaxed mb-4 flex-1">{group.description}</p>
                     <a
                       href={isRegional ? `/leistungsgebiete/${regionSlug}/crm-systeme/${group.link.href.split('/').pop()}` : group.link.href}
                       className="text-primary-400 hover:underline text-sm font-heading"
@@ -572,11 +580,11 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
         </section>
 
         {/* Implementation Process */}
-        <section className="py-20 bg-dark-400">
+        <section className="py-20" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4"
+                className="text-2xl md:text-3xl font-heading font-bold mb-4" style={{ color: '#0C1210' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -585,7 +593,7 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
                 So führen wir Ihr CRM-System ein
               </motion.h2>
               <motion.p
-                className="text-light-300 text-lg mb-10"
+                className=" text-lg mb-10"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -598,18 +606,19 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
                 {implementationSteps.map((step, i) => (
                   <motion.div
                     key={i}
-                    className="flex gap-4"
+                    className="flex gap-4 rounded-2xl border bg-white p-5 shadow-card"
+                    style={{ borderColor: '#E4E9E7' }}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <div className="flex-shrink-0 w-12 h-12 bg-primary-500/10 border border-primary-500/20 flex items-center justify-center">
-                      <span className="text-primary-500 font-heading font-bold text-sm">{step.step}</span>
+                    <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl" style={{ background: 'rgba(14,124,114,0.08)', border: '1px solid rgba(14,124,114,0.2)' }}>
+                      <span className="font-heading font-bold text-sm" style={{ color: '#0E7C72' }}>{step.step}</span>
                     </div>
                     <div>
-                      <h3 className="text-lg font-heading font-bold text-light-100 mb-2">{step.title}</h3>
-                      <p className="text-light-300 text-sm leading-relaxed">{step.description}</p>
+                      <h3 className="text-base font-heading font-bold mb-1.5" style={{ color: '#0C1210' }}>{step.title}</h3>
+                      <p className="text-sm leading-relaxed" style={{ color: '#68746F' }}>{step.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -619,20 +628,20 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
         </section>
 
         {/* Cross-link: Automatisierungen */}
-        <section className="py-16 bg-dark-500">
+        <section className="py-16" style={{ background: '#FAFAF9' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <motion.div
-                className="bg-dark-400 border border-primary-500/20 p-8"
+                className="bg-white border border-primary-500/20 p-8 rounded-2xl shadow-card"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-xl font-heading font-bold text-light-100 mb-3">
+                <h3 className="text-xl font-heading font-bold mb-3" style={{ color: '#0C1210' }}>
                   CRM + Automatisierung = maximale Wirkung
                 </h3>
-                <p className="text-light-200 leading-relaxed mb-4">
+                <p className=" leading-relaxed mb-4">
                   Ein CRM-System entfaltet sein volles Potenzial, wenn es mit intelligenten Automatisierungen kombiniert wird. Neue Anfragen werden automatisch als Lead angelegt, Follow-ups laufen im Hintergrund und Termine buchen sich von selbst. Unsere{' '}
                   <a href="/automatisierungen" className="text-primary-400 hover:underline">Automatisierungslösungen</a>{' '}
                   ergänzen Ihr CRM perfekt. Auch unser{' '}
@@ -646,11 +655,11 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
 
         {/* Regional Content */}
         {isRegional && regionContent?.paragraphs && regionContent.paragraphs.length > 0 && (
-          <section className="py-16 bg-dark-400">
+          <section className="py-16" style={{ background: '#F4F7F6' }}>
             <div className="container mx-auto px-4">
               <div className="max-w-3xl mx-auto">
                 <motion.h2
-                  className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
+                  className="text-2xl md:text-3xl font-heading font-bold mb-6" style={{ color: '#0C1210' }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
@@ -661,7 +670,7 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
                 {regionContent.paragraphs.map((p, i) => (
                   <motion.p
                     key={i}
-                    className="text-light-200 text-lg leading-relaxed mb-5"
+                    className=" text-lg leading-relaxed mb-5"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -676,11 +685,11 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
         )}
 
         {/* FAQ */}
-        <section id="faq" className="py-20 bg-dark-400">
+        <section id="faq" className="py-20" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-8"
+                className="text-2xl md:text-3xl font-heading font-bold mb-8" style={{ color: '#0C1210' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -702,7 +711,7 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
         </section>
 
         {/* CTA */}
-        <section className="py-20 bg-dark-500">
+        <section className="py-20" style={{ background: '#FAFAF9' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <motion.div
@@ -717,7 +726,7 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
               </motion.div>
 
               <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
+                className="text-2xl md:text-3xl font-heading font-bold mb-6" style={{ color: '#0C1210' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -726,7 +735,7 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
                 Lassen Sie uns Ihr CRM-System gemeinsam aufsetzen
               </motion.h2>
               <motion.p
-                className="text-light-300 text-lg mb-8 max-w-xl mx-auto"
+                className=" text-lg mb-8 max-w-xl mx-auto"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -734,6 +743,10 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
               >
                 Kostenlose Erstberatung – wir analysieren Ihre aktuelle Situation und zeigen, wie ein CRM Ihren Arbeitsalltag konkret vereinfacht.
               </motion.p>
+              <p className="text-xs font-semibold mb-4 flex items-center justify-center gap-1.5" style={{ color: '#0E7C72' }}>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="#0E7C72" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                Wir nehmen maximal 3 Neukunden pro Monat an
+              </p>
               <motion.button
                 onClick={scrollToContact}
                 className="inline-flex items-center px-10 py-4 rounded-xl bg-primary-500 text-dark-500 font-heading font-bold text-lg shadow-lg shadow-primary-500/20 hover:bg-primary-400 hover:shadow-primary-glow transition-all duration-300"
@@ -764,27 +777,27 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
 
         <RelatedServices currentSlug="crm-systeme" />
 
-        <section className="py-20 bg-dark-400">
+        <section className="py-20" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               {isRegional ? (
                 <div className="mt-10 text-left max-w-2xl mx-auto">
-                  <h3 className="text-xl font-heading font-bold text-light-100 mb-4">
+                  <h3 className="text-xl font-heading font-bold mb-4" style={{ color: '#0C1210' }}>
                     Weitere Leistungen in {regionName}
                   </h3>
-                  <p className="text-light-200 mb-3">
+                  <p className=" mb-3">
                     <a href={regionUrl} className="text-primary-400 hover:underline font-heading font-bold">
                       Alle Leistungen in {regionName}
                     </a>
                     {' – '}Übersicht unserer Angebote in Ihrer Region.
                   </p>
-                  <p className="text-light-200 mb-6">
+                  <p className=" mb-6">
                     <a href="/crm-systeme" className="text-primary-400 hover:underline">
                       Mehr zu CRM-Systemen im Überblick
                     </a>
                     {' – '}alle Details auf unserer Service-Seite.
                   </p>
-                  <p className="text-light-300 text-sm mb-3">CRM-Systeme in anderen Gebieten:</p>
+                  <p className=" text-sm mb-3">CRM-Systeme in anderen Gebieten:</p>
                   <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
                     {otherRegions.map((city, i) => (
                       <li key={city.slug}>
@@ -808,9 +821,10 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
           </div>
         </section>
 
-        <ContactForm />
+        <ContactForm service="crm-systeme" heading="CRM-Beratung vereinbaren" subheading="In 20 Minuten klären wir, welches CRM zu Ihren Abläufen passt und was es kostet." />
         <GoogleMapsSection />
       </div>
+      <StickyCtaBar ctaLabel="CRM-Beratung vereinbaren" />
     </>
   );
 };
@@ -820,7 +834,7 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
 
   return (
     <motion.div
-      className="border border-dark-100 bg-dark-500 overflow-hidden"
+      className="border border-dark-200 bg-white overflow-hidden rounded-2xl shadow-card"
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}

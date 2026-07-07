@@ -37,11 +37,11 @@ const regions = LEISTUNGSGEBIETE_CITIES.map(({ slug, name, subtitle }) => ({
 
 const Leistungsgebiete: React.FC = () => {
   return (
-    <div className="bg-dark-500">
+    <div style={{ background: '#FAFAF9' }}>
       <BreadcrumbSchemaLeistungsgebiete />
       <LocalBusinessSchema pageType="homepage" customDescription="KI-Automatisierung und Chatbots für Unternehmen in über 250 Städten deutschlandweit – von Leipzig, Groitzsch und Halle über Dresden und Berlin bis Hamburg und München." />
 
-      <section className="relative pt-32 pb-24 bg-dark-500 overflow-hidden">
+      <section className="relative pt-32 pb-24 overflow-hidden" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4 mb-6">
           <BreadcrumbNav items={[
             { label: 'Startseite', href: '/' },
@@ -51,7 +51,7 @@ const Leistungsgebiete: React.FC = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h1
-              className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-light-100 mb-6"
+              className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6" style={{ color: '#0C1210' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -59,7 +59,7 @@ const Leistungsgebiete: React.FC = () => {
               Leistungsgebiete der <span className="text-primary-500">KI-Agentur Groitzsch</span>
             </motion.h1>
             <motion.p
-              className="text-xl text-light-200 mb-6"
+              className="text-xl mb-6" style={{ color: '#404B48' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -67,7 +67,7 @@ const Leistungsgebiete: React.FC = () => {
               Wir bedienen über <strong>250 Städte deutschlandweit</strong> – von unserem Hauptsitz in <strong>Groitzsch</strong> über <strong>Leipzig</strong>, <strong>Halle (Saale)</strong>, <strong>Dresden</strong> und <strong>Berlin</strong> bis nach <strong>Hamburg</strong>, <strong>München</strong> und <strong>Köln</strong> – mit KI-Automatisierung, Chatbots, Terminbuchung, CRM, Websites & SEO.
             </motion.p>
             <motion.p
-              className="text-light-300 max-w-2xl mx-auto"
+              className="max-w-2xl mx-auto" style={{ color: '#68746F' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -80,10 +80,10 @@ const Leistungsgebiete: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F3F5F4' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-12 text-center">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-12 text-center" style={{ color: '#0C1210' }}>
               Regionen, die wir bedienen
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -91,17 +91,17 @@ const Leistungsgebiete: React.FC = () => {
                 <motion.a
                   key={region.slug}
                   href={region.path}
-                  className="block bg-dark-500 p-8 border border-dark-100 hover:border-primary-500/50 transition-all duration-300 group"
+                  className="block bg-white p-8 border rounded-2xl hover:border-primary-500/50 transition-all duration-300 group shadow-card" style={{ borderColor: '#E4E9E7' }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -4 }}
                 >
-                  <h3 className="text-xl font-heading font-bold text-light-100 mb-2 group-hover:text-primary-400 transition-colors">
+                  <h3 className="text-xl font-heading font-bold mb-2 group-hover:text-primary-400 transition-colors" style={{ color: '#0C1210' }}>
                     {region.name}
                   </h3>
                   <p className="text-primary-500 text-sm font-bold mb-3">{region.subtitle}</p>
-                  <p className="text-light-200 text-sm mb-4">{region.description}</p>
+                  <p className="text-sm mb-4" style={{ color: '#404B48' }}>{region.description}</p>
                   <span className="inline-flex items-center text-primary-500 font-heading font-bold text-sm group-hover:text-primary-400">
                     Mehr zu {region.name}
                     <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -113,13 +113,13 @@ const Leistungsgebiete: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-8">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-8" style={{ color: '#0C1210' }}>
               Leistungen nach Region – Beispiele
             </h2>
-            <p className="text-light-200 mb-8 max-w-2xl mx-auto">
+            <p className="mb-8 max-w-2xl mx-auto" style={{ color: '#404B48' }}>
               Hier finden Sie eine Auswahl unserer Leistungen in ausgewählten Gebieten – mit variierendem Linktext und thematisch passend.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-left">
@@ -134,14 +134,14 @@ const Leistungsgebiete: React.FC = () => {
                 <a
                   key={`${item.regionSlug}-${item.serviceSlug}`}
                   href={`/leistungsgebiete/${item.regionSlug}/${item.serviceSlug}`}
-                  className="flex items-center gap-3 p-4 bg-dark-400 border border-dark-100 hover:border-primary-500/50 transition-colors text-light-100 font-heading"
+                  className="flex items-center gap-3 p-4 bg-white border rounded-xl hover:border-primary-500/50 transition-colors font-heading" style={{ color: '#0C1210', borderColor: '#E4E9E7' }}
                 >
                   <span className="text-primary-500 flex-shrink-0">{item.icon}</span>
                   <span className="text-sm">{getRegionServiceLinkText(item.serviceSlug, item.regionName, item.variant)}</span>
                 </a>
               ))}
             </div>
-            <p className="mt-10 text-light-300">
+            <p className="mt-10" style={{ color: '#68746F' }}>
               <a href="/leistungen" className="text-primary-400 hover:underline font-heading font-bold">Alle Leistungen ansehen</a>
               {' · '}
               <a href="/kontakt" className="text-primary-400 hover:underline font-heading font-bold">Kontakt</a>

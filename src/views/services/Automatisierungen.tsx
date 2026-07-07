@@ -19,10 +19,12 @@ import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
 import LocalBusinessSchema from '../../components/LocalBusinessSchema';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
+import TrustLine from '../../components/TrustLine';
+import StickyCtaBar from '../../components/StickyCtaBar';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 import { getRegionServiceContent } from '../../data/regionServiceContent';
 import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
-import { getRegionServiceLinkText } from '../../data/services';
+import { getRegionServiceLinkText, SERVICE_TITLE_KEYWORDS } from '../../data/services';
 import SubpageLinksBlock from '../../components/SubpageLinksBlock';
 import HeroScrollIndicator from '../../components/HeroScrollIndicator';
 import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
@@ -162,7 +164,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
 
   return (
     <>
-      <div className="bg-dark-500">
+      <div style={{ background: '#FAFAF9' }}>
         <LocalBusinessSchema
           pageType="service"
           customDescription={isRegional
@@ -199,13 +201,28 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
           ]}
           pageName={isRegional ? `Automatisierungen in ${regionName}` : 'Automatisierungen'}
         />
-      {/* Hero mit Premium-Hintergrundbild – Bild unterhalb der Header-Leiste */}
-      <section id="ki-automatisierung-fur-anfragen-termine" className="relative min-h-screen flex items-center overflow-hidden bg-dark-500">
-        <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
-          <BreadcrumbNav overlay items={isRegional ? [
+      {/* HERO */}
+      <section
+        id="ki-automatisierung-fur-anfragen-termine"
+        className="relative h-screen flex flex-col overflow-hidden"
+        style={{ background: '#FAFAF9' }}
+      >
+        <div className="absolute inset-0">
+          <Image
+            src="/images/automatisierungen-anfragen-vertrieb-terminplanung.webp"
+            alt="Automatisierungen für Anfragen, Vertrieb und Terminplanung"
+            fill
+            className="object-cover object-right"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(250,250,249,0.97) 0%, rgba(250,250,249,0.88) 38%, rgba(250,250,249,0.3) 65%, rgba(250,250,249,0.0) 80%)' }} aria-hidden />
+        </div>
+        <div className="relative z-20 container mx-auto px-4 md:px-8 pt-20 md:pt-24">
+          <BreadcrumbNav items={isRegional ? [
             { label: 'Startseite', href: '/' },
             { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
-            { label: regionName, href: regionUrl },
+            { label: regionName!, href: regionUrl },
             { label: 'Automatisierungen' },
           ] : [
             { label: 'Startseite', href: '/' },
@@ -213,98 +230,42 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
             { label: 'Automatisierungen' },
           ]} />
         </div>
-        <div className="absolute inset-0">
-          <Image
-            src="/images/automatisierungen-anfragen-vertrieb-terminplanung.webp"
-            alt="Automatisierungen für Anfragen, Vertrieb und Terminplanung"
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-dark-500/70 via-dark-500/50 to-dark-500/95" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-r from-dark-500/30 via-transparent to-dark-500/40" aria-hidden />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/15 to-transparent" aria-hidden />
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10 pt-32 pb-16 md:pt-36 md:pb-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/20 border border-primary-500/40 backdrop-blur-sm mb-8 shadow-primary-glow"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Workflow size={40} className="text-primary-500" strokeWidth={1.5} />
-            </motion.div>
-
-            <motion.h1
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold mb-6 leading-tight"
-              style={{
-                color: '#F5F7FA',
-                textShadow: '0 10px 30px rgba(0,0,0,0.65)',
-                WebkitTextStroke: '1px rgba(0,0,0,0.25)',
-              }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              {isRegional ? `Automatisierungen in ${regionName}` : (
-                <>Automatisierungen<span className="sr-only"> Leipzig &amp; Groitzsch</span></>
-              )}
-            </motion.h1>
-
-            <motion.h2
-              className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-primary-400 mb-6 drop-shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-            >
-              {regionContent?.localHook || 'Damit Abläufe automatisch laufen'}
-            </motion.h2>
-
-            <motion.p
-              className="text-lg sm:text-xl max-w-3xl mx-auto mb-6 leading-relaxed"
-              style={{
-                color: '#F5F7FA',
-                textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
-                WebkitTextStroke: '0.5px rgba(0,0,0,0.2)',
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Stell dir vor, neue Anfragen gehen nicht mehr im E-Mail-Chaos unter. Niemand muss mehr „irgendwann mal“ zurückrufen. Und Termine laufen sauber, automatisch und zuverlässig im Hintergrund.
-            </motion.p>
-            <motion.p
-              className="text-base sm:text-lg max-w-3xl mx-auto mb-8 leading-relaxed"
-              style={{
-                color: '#E8EAED',
-                textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)',
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.25 }}
-            >
-              Wir bauen Abläufe, die Arbeit abnehmen, Fehler reduzieren und für Überblick sorgen – <strong style={{ color: '#F5F7FA' }}>ohne dass dein Team ständig manuell nachhaken muss</strong>.
-            </motion.p>
-            <motion.button
-              onClick={scrollToContact}
-              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              Kostenlosen Automations-Check anfragen
-              <ArrowRight className="ml-2" size={24} />
-            </motion.button>
+        <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+            <div>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-5">
+                <span className="pill-badge"><Workflow size={12} /> Automatisierungen</span>
+              </motion.div>
+              <motion.h1 className="font-heading font-bold tracking-tight mb-4 leading-[1.08]" style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.6 }}>
+                {isRegional ? `Automatisierungen in ${regionName}` : 'Automatisierungen Groitzsch & Leipzig'}
+              </motion.h1>
+              <motion.h2 className="text-base max-w-xl mb-3 leading-relaxed font-semibold" style={{ color: '#0E7C72' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                {SERVICE_TITLE_KEYWORDS['automatisierungen']}
+              </motion.h2>
+              <motion.p className="text-lg mb-3 max-w-xl leading-relaxed" style={{ color: '#0E7C72', fontWeight: 600 }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>
+                {regionContent?.localHook || 'Damit Abläufe automatisch laufen'}
+              </motion.p>
+              <motion.p className="text-base max-w-xl mb-6 leading-relaxed" style={{ color: '#404B48' }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+                Wir bauen Abläufe, die Arbeit abnehmen, Fehler reduzieren und für Überblick sorgen – ohne dass Ihr Team ständig manuell nachhaken muss.
+              </motion.p>
+              <motion.div className="flex flex-col sm:flex-row gap-3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }}>
+                <button onClick={scrollToContact} className="btn-primary">
+                  Kostenlosen Automations-Check anfragen
+                  <ArrowRight size={18} />
+                </button>
+                <a href="tel:+491785844460" className="btn-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Jetzt anrufen
+                </a>
+              </motion.div>
+              <TrustLine className="mt-5" />
+            </div>
+            <div className="hidden lg:block" aria-hidden />
           </div>
         </div>
-        <HeroScrollIndicator />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
       </section>
 
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -323,13 +284,13 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              Wenn wir von <strong className="text-light-100">KI-Automatisierung</strong> sprechen, geht es nicht um „noch ein Tool“. Es geht darum, dass eure Systeme so miteinander verbunden sind, dass Abläufe automatisch passieren.
+              Wenn wir von <strong style={{ color: '#0C1210' }}>KI-Automatisierung</strong> sprechen, geht es nicht um „noch ein Tool“. Es geht darum, dass eure Systeme so miteinander verbunden sind, dass Abläufe automatisch passieren.
             </motion.p>
-            <p className="text-light-200 mb-2">Typisch ist ein Setup wie:</p>
+            <p className="mb-2" style={{ color: '#404B48' }}>Typisch ist ein Setup wie:</p>
             <ul className="space-y-2 text-light-200 mb-6">
-              <li><strong className="text-light-100">Eingänge</strong> (Website, E-Mail, Telefonnotiz, WhatsApp, Ads, Google Business Profile)</li>
-              <li><strong className="text-light-100">Logik</strong> (Regeln, Prioritäten, Zuständigkeiten – optional mit künstlicher Intelligenz zur Klassifizierung)</li>
-              <li><strong className="text-light-100">Aktionen</strong> (Sofortantwort, Aufgaben, CRM-Eintrag, Terminbuchung, Follow-up, Reminder)</li>
+              <li><strong style={{ color: '#0C1210' }}>Eingänge</strong> (Website, E-Mail, Telefonnotiz, WhatsApp, Ads, Google Business Profile)</li>
+              <li><strong style={{ color: '#0C1210' }}>Logik</strong> (Regeln, Prioritäten, Zuständigkeiten – optional mit künstlicher Intelligenz zur Klassifizierung)</li>
+              <li><strong style={{ color: '#0C1210' }}>Aktionen</strong> (Sofortantwort, Aufgaben, CRM-Eintrag, Terminbuchung, Follow-up, Reminder)</li>
             </ul>
             <motion.p
               className="text-light-200 mb-4"
@@ -337,7 +298,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
             >
-              Technisch bauen wir das häufig mit <strong className="text-light-100">n8n</strong>, APIs und Webhooks. Für dich zählt aber nur: Anfragen werden erfasst, sortiert, bearbeitet und nachverfolgt – automatisch.
+              Technisch bauen wir das häufig mit <strong style={{ color: '#0C1210' }}>n8n</strong>, APIs und Webhooks. Für dich zählt aber nur: Anfragen werden erfasst, sortiert, bearbeitet und nachverfolgt – automatisch.
             </motion.p>
             <motion.p
               className="text-light-200"
@@ -345,13 +306,13 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
             >
-              <strong className="text-light-100">Wichtig:</strong> Sobald es um komplexe Integrationen (CRM, Kalenderlogik, mehrere Standorte, Datenqualität) geht, ist ein <strong className="text-light-100">Software-Entwickler</strong> ein echter Hebel: stabiler, sauberer, weniger Fehler.
+              <strong style={{ color: '#0C1210' }}>Wichtig:</strong> Sobald es um komplexe Integrationen (CRM, Kalenderlogik, mehrere Standorte, Datenqualität) geht, ist ein <strong style={{ color: '#0C1210' }}>Software-Entwickler</strong> ein echter Hebel: stabiler, sauberer, weniger Fehler.
             </motion.p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -402,21 +363,21 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
             >
               Was wird automatisiert?
             </motion.p>
-            <p className="text-light-200 mb-2">
+            <p className="mb-2" style={{ color: '#404B48' }}>
               Nicht „alles auf einmal“, sondern genau die Schritte, die euch heute Zeit, Nerven und Umsatz kosten – z. B.:
             </p>
-            <ul className="space-y-1 text-light-200 list-disc list-inside">
-              <li>Anfragen automatisch erfassen & ordnen</li>
-              <li>Zuständigkeiten zuweisen</li>
-              <li>Nachfassen, Erinnern, Aufgaben erstellen</li>
-              <li>Termine buchen, bestätigen, umbuchen, erinnern</li>
-              <li>Daten zwischen Systemen synchronisieren (z. B. Website → CRM → Kalender → Team)</li>
+            <ul className="space-y-2.5">
+                <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>Anfragen automatisch erfassen &amp; ordnen</span></li>
+                <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>Zuständigkeiten zuweisen</span></li>
+                <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>Nachfassen, Erinnern, Aufgaben erstellen</span></li>
+                <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>Termine buchen, bestätigen, umbuchen, erinnern</span></li>
+                <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>Daten zwischen Systemen synchronisieren (z. B. Website → CRM → Kalender → Team)</span></li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -448,14 +409,14 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               ].map((item, i) => (
                 <motion.div
                   key={i}
-                  className="bg-dark-400 p-6 border border-dark-100"
+                  className="bg-white p-6 border border-dark-200 rounded-2xl shadow-card"
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   viewport={{ once: true }}
                 >
                   <h3 className="text-lg font-heading font-bold text-primary-500 mb-2">{item.problem}</h3>
-                  <p className="text-light-200">{item.solution}</p>
+                  <p className="" style={{ color: '#404B48' }}>{item.solution}</p>
                 </motion.div>
               ))}
             </div>
@@ -463,7 +424,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
         </div>
       </section>
 
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -487,7 +448,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               {processSteps.map((step, i) => (
                 <motion.div
                   key={i}
-                  className="flex gap-4 bg-dark-500 p-6 border border-dark-100"
+                  className="flex gap-4 bg-white p-6 border border-dark-200 rounded-2xl shadow-card"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -507,7 +468,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
         </div>
       </section>
 
-      <section className="py-16 bg-dark-500">
+      <section className="py-16" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h2
@@ -530,7 +491,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
             </motion.p>
             <motion.button
               onClick={scrollToContact}
-              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
+              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300 rounded-xl"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -543,7 +504,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
         </div>
       </section>
 
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -555,29 +516,29 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
             >
               Vorher vs. Nachher (typischer Alltag)
             </motion.h2>
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse bg-dark-400 border border-dark-100">
-                <thead>
-                  <tr>
-                    <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Bereich</th>
-                    <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Manuell (vorher)</th>
-                    <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Automatisiert (nachher)</th>
-                  </tr>
-                </thead>
-                <tbody className="text-light-200 text-sm">
-                  <tr><td className="border border-dark-100 p-3">Anfragen</td><td className="border border-dark-100 p-3">verteilt in E-Mail/WhatsApp/Notizen</td><td className="border border-dark-100 p-3">zentral erfasst & sauber sortiert</td></tr>
-                  <tr><td className="border border-dark-100 p-3">Reaktion</td><td className="border border-dark-100 p-3">abhängig von Zeit/Stress</td><td className="border border-dark-100 p-3">Sofort-Bestätigung + klare Zuständigkeit</td></tr>
-                  <tr><td className="border border-dark-100 p-3">Follow-ups</td><td className="border border-dark-100 p-3">„machen wir später“ → oft vergessen</td><td className="border border-dark-100 p-3">automatisch geplant + Aufgaben erstellt</td></tr>
-                  <tr><td className="border border-dark-100 p-3">Termine</td><td className="border border-dark-100 p-3">Hin-und-Her am Telefon</td><td className="border border-dark-100 p-3">self-service Buchung + Regeln + Reminder</td></tr>
-                  <tr><td className="border border-dark-100 p-3">Überblick</td><td className="border border-dark-100 p-3">„Wo stehen wir gerade?“</td><td className="border border-dark-100 p-3">Pipeline/Status auf einen Blick</td></tr>
-                </tbody>
-              </table>
+            <div className="overflow-x-auto rounded-2xl border shadow-card" style={{ borderColor: '#E4E9E7' }}>
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr>
+                      <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Bereich</th>
+                      <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Manuell (vorher)</th>
+                      <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Automatisiert (nachher)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr style={{ background: '#fff' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Anfragen</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>verteilt in E-Mail/WhatsApp/Notizen</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>zentral erfasst & sauber sortiert</td></tr>
+                    <tr style={{ background: '#FAFAF9' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Reaktion</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>abhängig von Zeit/Stress</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>Sofort-Bestätigung + klare Zuständigkeit</td></tr>
+                    <tr style={{ background: '#fff' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Follow-ups</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>„machen wir später“ → oft vergessen</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>automatisch geplant + Aufgaben erstellt</td></tr>
+                    <tr style={{ background: '#FAFAF9' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Termine</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Hin-und-Her am Telefon</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>self-service Buchung + Regeln + Reminder</td></tr>
+                    <tr style={{ background: '#fff' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Überblick</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>„Wo stehen wir gerade?“</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>Pipeline/Status auf einen Blick</td></tr>
+                  </tbody>
+                </table>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -589,7 +550,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
             >
               Beispiele aus der Praxis: 8 typische Automatisierungen
             </motion.h2>
-            <p className="text-light-200 mb-8">
+            <p className="mb-8" style={{ color: '#404B48' }}>
               {isRegional
                 ? `Damit du ein Gefühl bekommst, was realistisch ist – gerade für Unternehmen in ${regionName} und Umgebung.`
                 : 'Damit du ein Gefühl bekommst, was realistisch ist – gerade für Unternehmen in Leipzig, Markkleeberg, Borna, Zwenkau, Groitzsch & Umgebung.'}
@@ -598,7 +559,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               {practiceExamples.map((ex, i) => (
                 <motion.div
                   key={i}
-                  className="bg-dark-500 p-6 border border-dark-100"
+                  className="bg-white p-6 border border-dark-200 rounded-2xl shadow-card"
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: i * 0.05 }}
@@ -608,7 +569,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
                   <ul className="space-y-1 text-light-200 text-sm">
                     {ex.points.map((p, j) => (
                       <li key={j} className="flex items-start gap-2">
-                        <span className="text-primary-500">•</span>
+                        <svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                         {p}
                       </li>
                     ))}
@@ -620,7 +581,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
         </div>
       </section>
 
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -632,21 +593,21 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
             >
               Welche Automatisierung passt zu welchem Kanal?
             </motion.h2>
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse bg-dark-400 border border-dark-100">
+            <div className="overflow-x-auto rounded-2xl border shadow-card" style={{ borderColor: '#E4E9E7' }}>
+              <table className="w-full border-collapse">
                 <thead>
                   <tr>
-                    <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Kanal</th>
-                    <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Typische Automatisierung</th>
-                    <th className="border border-dark-100 p-3 text-left font-heading font-bold text-light-100">Ergebnis</th>
+                      <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Kanal</th>
+                      <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Typische Automatisierung</th>
+                      <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Ergebnis</th>
                   </tr>
                 </thead>
-                <tbody className="text-light-200 text-sm">
-                  <tr><td className="border border-dark-100 p-3">Website</td><td className="border border-dark-100 p-3">Formular → Lead + Sofortantwort + Zuweisung</td><td className="border border-dark-100 p-3">schnellerer Erstkontakt</td></tr>
-                  <tr><td className="border border-dark-100 p-3">E-Mail</td><td className="border border-dark-100 p-3">Mails taggen/sortieren → Aufgaben & Status</td><td className="border border-dark-100 p-3">weniger Chaos im Postfach</td></tr>
-                  <tr><td className="border border-dark-100 p-3">Telefon</td><td className="border border-dark-100 p-3">verpasster Anruf → Rückruf-Task + Reminder</td><td className="border border-dark-100 p-3">keine verpassten Chancen</td></tr>
-                  <tr><td className="border border-dark-100 p-3">Ads</td><td className="border border-dark-100 p-3">Leadform → Quali-Fragen → Terminlink</td><td className="border border-dark-100 p-3">bessere Lead-Qualität</td></tr>
-                  <tr><td className="border border-dark-100 p-3">Kalender</td><td className="border border-dark-100 p-3">Buchung → Termin + Vorbereitung + Reminder</td><td className="border border-dark-100 p-3">weniger No-Shows</td></tr>
+                <tbody className="text-sm">
+                  <tr style={{ background: '#fff' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Website</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Formular → Lead + Sofortantwort + Zuweisung</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>schnellerer Erstkontakt</td></tr>
+                  <tr style={{ background: '#FAFAF9' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>E-Mail</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Mails taggen/sortieren → Aufgaben & Status</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>weniger Chaos im Postfach</td></tr>
+                  <tr style={{ background: '#fff' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Telefon</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>verpasster Anruf → Rückruf-Task + Reminder</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>keine verpassten Chancen</td></tr>
+                  <tr style={{ background: '#FAFAF9' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Ads</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Leadform → Quali-Fragen → Terminlink</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>bessere Lead-Qualität</td></tr>
+                  <tr style={{ background: '#fff' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Kalender</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Buchung → Termin + Vorbereitung + Reminder</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>weniger No-Shows</td></tr>
                 </tbody>
               </table>
             </div>
@@ -654,7 +615,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
         </div>
       </section>
 
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -666,18 +627,18 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
             >
               Was braucht man dafür? (Tools, Schnittstellen, Voraussetzungen)
             </motion.h2>
-            <p className="text-light-200 mb-4">
+            <p className="mb-4" style={{ color: '#404B48' }}>
               Viele denken bei Automatisierung an „neues CRM“ oder „noch ein Tool“. In der Praxis geht es um drei Bausteine:
             </p>
             <ul className="space-y-2 text-light-200 mb-6">
-              <li><strong className="text-light-100">Eingänge</strong> – wo Anfragen herkommen</li>
-              <li><strong className="text-light-100">Logik</strong> – Regeln, Zuständigkeiten, Priorisierung</li>
-              <li><strong className="text-light-100">Aktionen</strong> – Benachrichtigen, Aufgaben erstellen, buchen, erinnern</li>
+              <li><strong style={{ color: '#0C1210' }}>Eingänge</strong> – wo Anfragen herkommen</li>
+              <li><strong style={{ color: '#0C1210' }}>Logik</strong> – Regeln, Zuständigkeiten, Priorisierung</li>
+              <li><strong style={{ color: '#0C1210' }}>Aktionen</strong> – Benachrichtigen, Aufgaben erstellen, buchen, erinnern</li>
             </ul>
-            <p className="text-light-200 mb-4">
+            <p className="mb-4" style={{ color: '#404B48' }}>
               Im Hintergrund werden dafür Tools über Schnittstellen verbunden (APIs). Für dich als Kunde zählt aber nur: Es läuft automatisch und dein Team hat Überblick.
             </p>
-            <p className="text-light-200 mb-6">
+            <p className="mb-6" style={{ color: '#404B48' }}>
               Gute Automatisierungen müssen: stabil laufen, verständlich für dein Team sein, sauber dokumentiert sein und skalieren können (wenn mehr Anfragen kommen).
             </p>
             <motion.h3
@@ -689,23 +650,23 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
             >
               Wann ein Software-Entwickler sinnvoll ist
             </motion.h3>
-            <p className="text-light-200 mb-2">
+            <p className="mb-2" style={{ color: '#404B48' }}>
               Ein MVP kann schlank starten. Aber sobald ihr:
             </p>
-            <ul className="space-y-2 text-light-200 mb-3 list-disc list-inside">
-              <li>mehrere Systeme sauber synchronisieren wollt,</li>
-              <li>komplexe Regeln (Teams, Standorte, Kalender) habt,</li>
-              <li>Datenqualität wichtig ist (Dubletten, Felder, Validierung),</li>
-              <li>oder Monitoring/Fehler-Handling braucht,</li>
+            <ul className="space-y-2.5 mb-3">
+              <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>mehrere Systeme sauber synchronisieren wollt,</span></li>
+              <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>komplexe Regeln (Teams, Standorte, Kalender) habt,</span></li>
+              <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>Datenqualität wichtig ist (Dubletten, Felder, Validierung),</span></li>
+              <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>oder Monitoring/Fehler-Handling braucht,</span></li>
             </ul>
-            <p className="text-light-200">
-              … ist ein <strong className="text-light-100">Software-Entwickler</strong> (bzw. Softwareentwickler) extrem wertvoll, weil der Unterschied dann im Detail steckt.
+            <p className="" style={{ color: '#404B48' }}>
+              … ist ein <strong style={{ color: '#0C1210' }}>Software-Entwickler</strong> (bzw. Softwareentwickler) extrem wertvoll, weil der Unterschied dann im Detail steckt.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -718,7 +679,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               <Shield className="text-primary-500" size={28} />
               Sicherheit & Datenschutz (DSGVO) – was wichtig ist
             </motion.h2>
-            <p className="text-light-200 mb-4">
+            <p className="mb-4" style={{ color: '#404B48' }}>
               Automatisierung heißt nicht „Daten wild rumschieben“. Saubere Umsetzung beinhaltet:
             </p>
             <ul className="space-y-2 text-light-200">
@@ -728,14 +689,14 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               <li>Datensparsamkeit (nur speichern, was nötig ist)</li>
               <li>Logging & Dokumentation (für Nachvollziehbarkeit)</li>
             </ul>
-            <p className="text-light-200 mt-4">
+            <p className="mt-4" style={{ color: '#404B48' }}>
               Wenn ihr sensible Daten verarbeitet (z. B. Gesundheitsdaten), planen wir die Architektur entsprechend konservativ.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -751,7 +712,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               {ourApproachSteps.map((s, i) => (
                 <motion.div
                   key={i}
-                  className="flex gap-4 bg-dark-500 p-6 border border-dark-100"
+                  className="flex gap-4 bg-white p-6 border border-dark-200 rounded-2xl shadow-card"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -769,7 +730,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
         </div>
       </section>
 
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -782,7 +743,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               <ListChecks className="text-primary-500" size={28} />
               Mini-Checkliste: Ist Ihr Betrieb bereit für Automatisierung?
             </motion.h2>
-            <p className="text-light-200 mb-4">
+            <p className="mb-4" style={{ color: '#404B48' }}>
               Haken dran = perfekt. Wenn nicht, kein Problem – dann starten wir eben kleiner.
             </p>
             <ul className="space-y-3">
@@ -804,7 +765,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
         </div>
       </section>
 
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.h2
@@ -820,27 +781,27 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               {faqs.map((faq, i) => (
                 <motion.div
                   key={i}
-                  className="border-b border-dark-100 pb-6"
+                  className="rounded-2xl border bg-white p-5 shadow-card" style={{ borderColor: '#E4E9E7' }}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: i * 0.05 }}
                   viewport={{ once: true }}
                 >
-                  <h3 className="text-lg font-heading font-bold text-light-100 mb-2">{faq.q}</h3>
-                  <p className="text-light-200">{faq.a}</p>
+                  <h3 className="text-base font-heading font-bold mb-2 flex items-start gap-2"><span className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold" style={{ background: 'rgba(14,124,114,0.08)', color: '#0E7C72' }}>?</span>{faq.q}</h3>
+                  <p className="text-sm mt-2" style={{ color: '#404B48' }}>{faq.a}</p>
                 </motion.div>
               ))}
               {regionContent?.localFaqs?.map((faq, index) => (
                 <motion.div
                   key={`local-${index}`}
-                  className="border-b border-dark-100 pb-6"
+                  className="rounded-2xl border bg-white p-5 shadow-card" style={{ borderColor: '#E4E9E7' }}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: (faqs.length + index) * 0.05 }}
                   viewport={{ once: true }}
                 >
-                  <h3 className="text-lg font-heading font-bold text-light-100 mb-2">{faq.q}</h3>
-                  <p className="text-light-200">{faq.a}</p>
+                  <h3 className="text-base font-heading font-bold mb-2 flex items-start gap-2"><span className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold" style={{ background: 'rgba(14,124,114,0.08)', color: '#0E7C72' }}>?</span>{faq.q}</h3>
+                  <p className="" style={{ color: '#404B48' }}>{faq.a}</p>
                 </motion.div>
               ))}
             </div>
@@ -848,7 +809,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
         </div>
       </section>
 
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <motion.h2
@@ -883,22 +844,31 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
               <a href="/seo-top-3-in-google" className="text-primary-400 hover:underline">lokales SEO Leipzig</a>,{' '}
               <a href="/kontakt" className="text-primary-400 hover:underline">Erstgespräch anfragen</a>.
             </p>
-            <motion.a
-              href="/kontakt"
-              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
+            <p className="text-xs font-semibold mb-4 flex items-center gap-1.5" style={{ color: '#0E7C72' }}>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="#0E7C72" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              Wir nehmen maximal 3 Neukunden pro Monat an
+            </p>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-3"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              Kostenlosen Automations-Check anfragen (15 Min, konkret, ohne BlaBla)
-              <ArrowRight className="ml-2" size={24} />
-            </motion.a>
+              <button onClick={scrollToContact} className="btn-primary">
+                Kostenlosen Automations-Check anfragen
+                <ArrowRight size={18} />
+              </button>
+              <a href="tel:+491785844460" className="btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                Jetzt anrufen
+              </a>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {(isRegional || true) && (
-        <section className="py-16 bg-dark-400">
+        <section className="py-16" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <motion.div
@@ -907,7 +877,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+                <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4" style={{ color: '#0C1210' }}>
                   {isRegional
                     ? `Automatisierungen für Unternehmen in ${regionName}`
                     : 'Lokal in Leipzig & Region: Warum das bei Automatisierungen hilft'}
@@ -952,10 +922,10 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
       )}
 
       {isRegional && regionContent?.paragraphs && regionContent.paragraphs.length > 0 && (
-        <section className="py-16 bg-dark-400">
+        <section className="py-16" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-6" style={{ color: '#0C1210' }}>
                 Automatisierungen für Unternehmen in {regionName}
               </h2>
               {regionContent.paragraphs.map((p, i) => (
@@ -967,7 +937,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
       )}
 
       {!isRegional && (
-        <section className="py-12 bg-dark-400">
+        <section className="py-12" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <p className="text-light-200 text-lg leading-relaxed">
@@ -989,12 +959,12 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
 
       <RelatedServices currentSlug="automatisierungen" />
 
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             {isRegional ? (
               <div className="mt-10 text-left max-w-2xl mx-auto">
-                <h3 className="text-xl font-heading font-bold text-light-100 mb-4">
+                <h3 className="text-xl font-heading font-bold mb-4" style={{ color: '#0C1210' }}>
                   Weitere Leistungen in {regionName}
                 </h3>
                 <p className="text-light-200 mb-3">
@@ -1003,7 +973,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
                   </a>
                   {' – '}Übersicht unserer Angebote in Ihrer Region.
                 </p>
-                <p className="text-light-200 mb-6">
+                <p className="mb-6" style={{ color: '#404B48' }}>
                   <a href="/automatisierungen" className="text-primary-400 hover:underline">
                     Mehr zu Automatisierungen im Überblick
                   </a>
@@ -1033,7 +1003,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
         </div>
       </section>
 
-      <ContactForm />
+      <ContactForm service="automatisierungen" heading="Kostenlosen Automations-Check anfragen" subheading="Wir schauen auf Ihre Abläufe und sagen Ihnen ehrlich, welche 1–2 Automatisierungen am meisten bringen." />
       <GoogleMapsSection />
     </div>
   </>

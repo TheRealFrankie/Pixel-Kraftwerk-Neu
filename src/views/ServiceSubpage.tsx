@@ -153,7 +153,7 @@ export default function ServiceSubpage({
     ? LEISTUNGSGEBIETE_CITIES.filter((c) => c.slug !== regionSlug).slice(0, 6)
     : [];
 
-  const h1Text = isRegional ? `${subpageDef.label} in ${regionName}` : content.h1;
+  const h1Text = isRegional ? `${subpageDef.label} in ${regionName}` : `${subpageDef.label} Groitzsch & Leipzig`;
   const heroImage = SERVICE_HERO_IMAGES[parentService.slug];
   const heroCtaText = content.heroCtaText ?? 'Jetzt unverbindlich anfragen';
 
@@ -204,6 +204,7 @@ export default function ServiceSubpage({
             parentService={parentService}
             heroImage={heroImage}
             h1Text={h1Text}
+            titleKeywords={subpageDef.titleKeywords}
             regionalContent={regionalContent ?? null}
             isRegional={isRegional}
             breadcrumbItems={breadcrumbItems}
@@ -216,6 +217,7 @@ export default function ServiceSubpage({
             parentService={parentService}
             heroImage={heroImage}
             h1Text={h1Text}
+            titleKeywords={subpageDef.titleKeywords}
             regionalContent={regionalContent ?? null}
             isRegional={isRegional}
             breadcrumbItems={breadcrumbItems}
@@ -403,6 +405,7 @@ interface HeroProps {
   parentService: { slug: string; label: string; globalRoute: string };
   heroImage?: ServiceHeroConfig;
   h1Text: string;
+  titleKeywords: string;
   regionalContent: RegionalSubpageContent | null;
   isRegional: boolean;
   breadcrumbItems: { label: string; href?: string }[];
@@ -414,83 +417,104 @@ function FullscreenHero({
   content,
   heroImage,
   h1Text,
+  titleKeywords,
   regionalContent,
   isRegional,
   breadcrumbItems,
   scrollToContact,
   heroCtaText,
 }: HeroProps) {
-  const Icon = heroImage?.icon;
-
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-dark-500">
-      <div className="absolute top-20 md:top-24 left-0 right-0 z-20 container mx-auto px-4">
-        <BreadcrumbNav overlay items={breadcrumbItems} />
-      </div>
+    <section
+      className="relative h-screen flex flex-col overflow-hidden"
+      style={{ background: '#FAFAF9' }}
+    >
       {heroImage && (
         <div className="absolute inset-0">
-          <Image src={heroImage.src} alt={heroImage.alt} fill className="object-cover object-center" priority sizes="100vw" />
-          <div className="absolute inset-0 bg-gradient-to-b from-dark-500/70 via-dark-500/50 to-dark-500/95" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-r from-dark-500/30 via-transparent to-dark-500/40" aria-hidden />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/15 to-transparent" aria-hidden />
+          <Image src={heroImage.src} alt={heroImage.alt} fill className="object-cover object-right" priority sizes="100vw" />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(90deg, rgba(250,250,249,0.97) 0%, rgba(250,250,249,0.88) 38%, rgba(250,250,249,0.3) 65%, rgba(250,250,249,0.0) 80%)' }}
+            aria-hidden
+          />
         </div>
       )}
-      <div className="container mx-auto px-4 relative z-10 pt-32 pb-16 md:pt-36 md:pb-20 w-full">
-        <div className="max-w-4xl mx-auto text-center">
-          {Icon && (
-            <motion.div
-              className="inline-flex items-center justify-center w-20 h-20 bg-primary-500/20 border border-primary-500/40 backdrop-blur-sm mb-8 shadow-primary-glow"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Icon size={40} className="text-primary-500" strokeWidth={1.5} />
+
+      {/* Breadcrumb im normalen Fluss */}
+      <div className="relative z-20 container mx-auto px-4 md:px-8 pt-20 md:pt-24">
+        <BreadcrumbNav items={breadcrumbItems} />
+      </div>
+
+      <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            {/* Badge */}
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-5">
+              <span
+                className="pill-badge"
+                style={{ fontSize: '0.75rem' }}
+              >
+                {isRegional && regionalContent?.localHook ? regionalContent.localHook : content.primaryKeyword}
+              </span>
             </motion.div>
-          )}
 
-          <motion.h1
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold mb-6 leading-tight"
-            style={{ color: '#F5F7FA', textShadow: '0 10px 30px rgba(0,0,0,0.65)', WebkitTextStroke: '1px rgba(0,0,0,0.25)' }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {h1Text}
-          </motion.h1>
-
-          {(content.subheadline || regionalContent?.localHook) && (
-            <motion.h2
-              className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-primary-400 mb-6 drop-shadow-md"
+            <motion.h1
+              className="font-heading font-bold tracking-tight mb-4 leading-[1.08]"
+              style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
+              transition={{ delay: 0.35, duration: 0.6 }}
             >
-              {isRegional && regionalContent?.localHook ? regionalContent.localHook : content.subheadline}
-            </motion.h2>
-          )}
+              {h1Text}
+            </motion.h1>
 
-          <motion.p
-            className="text-lg sm:text-xl max-w-3xl mx-auto mb-8 leading-relaxed"
-            style={{ color: '#F5F7FA', textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4)', WebkitTextStroke: '0.5px rgba(0,0,0,0.2)' }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            dangerouslySetInnerHTML={{ __html: content.intro }}
-          />
-          <motion.button
-            onClick={scrollToContact}
-            className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            {heroCtaText}
-            <ArrowRight className="ml-2" size={24} />
-          </motion.button>
+            <motion.h2
+              className="text-base font-semibold mb-3 leading-relaxed"
+              style={{ color: '#0E7C72' }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              {titleKeywords}
+            </motion.h2>
+
+            {(content.subheadline) && (
+              <motion.p
+                className="text-lg mb-3 leading-relaxed"
+                style={{ color: '#0E7C72', fontWeight: 600 }}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.5 }}
+              >
+                {content.subheadline}
+              </motion.p>
+            )}
+
+            <motion.p
+              className="text-base max-w-xl mb-6 leading-relaxed"
+              style={{ color: '#404B48' }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              dangerouslySetInnerHTML={{ __html: content.intro }}
+            />
+
+            <motion.div
+              className="flex flex-col sm:flex-row gap-3"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.65, duration: 0.5 }}
+            >
+              <button onClick={scrollToContact} className="btn-primary">
+                {heroCtaText}
+                <ArrowRight size={18} />
+              </button>
+            </motion.div>
+          </div>
+
+          <div className="hidden lg:block" aria-hidden />
         </div>
       </div>
-      <HeroScrollIndicator />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" aria-hidden />
     </section>
   );
 }
@@ -500,6 +524,7 @@ function TwoColumnHero({
   parentService,
   heroImage,
   h1Text,
+  titleKeywords,
   regionalContent,
   isRegional,
   breadcrumbItems,
@@ -507,34 +532,60 @@ function TwoColumnHero({
   heroCtaText,
 }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center bg-dark-500 pt-16 pb-0 md:pt-20 overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-[560px] bg-gradient-radial-subtle pointer-events-none" aria-hidden />
-      <div className="container mx-auto px-4 relative z-10 w-full">
-        <div className="mb-5">
-          <BreadcrumbNav items={breadcrumbItems} />
+    <section
+      className="relative h-screen flex flex-col overflow-hidden"
+      style={{ background: '#FAFAF9' }}
+    >
+      {heroImage && (
+        <div className="absolute inset-0">
+          <Image src={heroImage.src} alt={heroImage.alt} fill className="object-cover object-right" priority sizes="100vw" />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(90deg, rgba(250,250,249,0.97) 0%, rgba(250,250,249,0.88) 38%, rgba(250,250,249,0.3) 65%, rgba(250,250,249,0.0) 80%)' }}
+            aria-hidden
+          />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center pb-10 lg:pb-14">
+      )}
+
+      {/* Breadcrumb im normalen Fluss */}
+      <div className="relative z-20 container mx-auto px-4 md:px-8 pt-20 md:pt-24">
+        <BreadcrumbNav items={breadcrumbItems} />
+      </div>
+
+      <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="flex flex-col">
             <motion.div
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-500/10 border border-primary-500/25 rounded-full text-primary-400 text-xs font-mono tracking-widest uppercase mb-4 w-fit"
+              className="pill-badge w-fit mb-5"
+              style={{ fontSize: '0.75rem' }}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 animate-pulse" aria-hidden />
               {parentService.label}
             </motion.div>
             <motion.h1
-              className="text-2xl sm:text-3xl md:text-[2rem] xl:text-[2.4rem] font-heading font-bold text-light-100 leading-[1.15] mb-4"
+              className="font-heading font-bold tracking-tight leading-[1.08] mb-4"
+              style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
             >
               {h1Text}
             </motion.h1>
+            <motion.h2
+              className="text-base font-semibold mb-3"
+              style={{ color: '#0E7C72' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.12 }}
+            >
+              {titleKeywords}
+            </motion.h2>
             {isRegional && regionalContent?.localHook && (
               <motion.p
-                className="text-primary-400 font-heading text-lg mb-4"
+                className="font-heading text-lg mb-4"
+                style={{ color: '#0E7C72', fontWeight: 600 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.15 }}
@@ -543,7 +594,8 @@ function TwoColumnHero({
               </motion.p>
             )}
             <motion.p
-              className="text-light-300 text-sm md:text-base leading-relaxed mb-5 max-w-[520px]"
+              className="text-sm md:text-base leading-relaxed mb-5 max-w-[520px]"
+              style={{ color: '#404B48' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
@@ -555,16 +607,14 @@ function TwoColumnHero({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              <button
-                onClick={scrollToContact}
-                className="inline-flex items-center gap-2 px-7 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-base rounded-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg group"
-              >
+              <button onClick={scrollToContact} className="btn-primary">
                 {heroCtaText}
-                <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
+                <ArrowRight size={20} />
               </button>
             </motion.div>
             <motion.p
-              className="text-light-200 text-sm tracking-wide"
+              className="text-sm"
+              style={{ color: '#68746F' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.45 }}
@@ -572,32 +622,9 @@ function TwoColumnHero({
               Unverbindlich&nbsp;&bull;&nbsp;lokal fokussiert&nbsp;&bull;&nbsp;verständlich erklärt
             </motion.p>
           </div>
-          {heroImage && (
-            <motion.div
-              className="relative flex items-center justify-center lg:pl-4"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 0.25 }}
-            >
-              <div className="relative w-full rounded-2xl overflow-hidden border border-white/[0.06] shadow-[0_32px_80px_-12px_rgba(0,0,0,0.8),0_0_48px_-12px_rgba(0,179,166,0.12)] bg-dark-300 max-h-[340px] lg:max-h-[400px]">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/5 via-transparent to-transparent pointer-events-none z-10" aria-hidden />
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-dark-300/95 to-transparent pointer-events-none z-10" aria-hidden />
-                <Image
-                  src={heroImage.src}
-                  alt={heroImage.alt}
-                  width={700}
-                  height={480}
-                  className="w-full h-full object-cover object-top"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </motion.div>
-          )}
+          <div className="hidden lg:block" aria-hidden />
         </div>
       </div>
-      <HeroScrollIndicator />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
     </section>
   );
 }
@@ -629,13 +656,13 @@ function ProblemSection({ problem }: { problem: NonNullable<SubpageContent['prob
             {problem.bullets.map((item, i) => (
               <motion.div
                 key={i}
-                className="flex items-start bg-dark-500 p-6 border border-dark-100"
+                className="flex items-start bg-white rounded-2xl p-6 border border-dark-200 shadow-card"
                 initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 viewport={{ once: true }}
               >
-                <span className="text-primary-500 mr-4 mt-1 flex-shrink-0 text-xl">•</span>
+                <svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 <p className="text-light-200" dangerouslySetInnerHTML={{ __html: item }} />
               </motion.div>
             ))}
@@ -658,7 +685,7 @@ function ProblemSection({ problem }: { problem: NonNullable<SubpageContent['prob
               {problem.details.map((detail, i) => (
                 <motion.div
                   key={i}
-                  className="bg-dark-500 p-8 border border-dark-100"
+                  className="bg-white rounded-2xl p-8 border border-dark-200 shadow-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
@@ -670,7 +697,7 @@ function ProblemSection({ problem }: { problem: NonNullable<SubpageContent['prob
                     <ul className="space-y-2 text-light-200">
                       {detail.bullets.map((b, bi) => (
                         <li key={bi} className="flex items-start">
-                          <span className="text-primary-500 mr-2">•</span>
+                          <svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                           <span dangerouslySetInnerHTML={{ __html: b }} />
                         </li>
                       ))}
@@ -713,7 +740,7 @@ function SolutionSection({ solution }: { solution: NonNullable<SubpageContent['s
           </motion.div>
 
           <motion.div
-            className="bg-dark-400 p-8 border border-primary-500/30 mb-8"
+            className="bg-white p-8 border border-primary-500/30 mb-8 rounded-2xl shadow-card"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -735,7 +762,7 @@ function SolutionSection({ solution }: { solution: NonNullable<SubpageContent['s
               {solution.blocks.map((block, i) => (
                 <motion.div
                   key={i}
-                  className="bg-dark-400 p-8 border border-dark-100"
+                  className="bg-white p-8 border border-dark-200 rounded-2xl shadow-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
@@ -749,7 +776,7 @@ function SolutionSection({ solution }: { solution: NonNullable<SubpageContent['s
                     <ul className="space-y-2 text-light-200">
                       {block.bullets.map((b, bi) => (
                         <li key={bi} className="flex items-start">
-                          <span className="text-primary-500 mr-2">•</span>
+                          <svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                           <span dangerouslySetInnerHTML={{ __html: b }} />
                         </li>
                       ))}
@@ -804,9 +831,12 @@ function DefinitionSection({ definition }: { definition: NonNullable<SubpageCont
               dangerouslySetInnerHTML={{ __html: definition.lead }}
             />
             {definition.examples && definition.examples.length > 0 && (
-              <ul className="text-light-200 max-w-3xl mx-auto mb-8 space-y-2 list-disc list-inside">
+              <ul className="max-w-3xl mx-auto mb-8 space-y-2.5">
                 {definition.examples.map((ex, i) => (
-                  <li key={i} dangerouslySetInnerHTML={{ __html: ex }} />
+                  <li key={i} className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}>
+                    <svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    <span dangerouslySetInnerHTML={{ __html: ex }} />
+                  </li>
                 ))}
               </ul>
             )}
@@ -817,7 +847,7 @@ function DefinitionSection({ definition }: { definition: NonNullable<SubpageCont
               {definition.blocks.map((block, i) => (
                 <motion.div
                   key={i}
-                  className="bg-dark-400 p-8 border border-dark-100"
+                  className="bg-white p-8 border border-dark-200 rounded-2xl shadow-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: i * 0.08 }}
@@ -857,7 +887,7 @@ function FeaturesSection({ features }: { features: NonNullable<SubpageContent['f
             />
           </motion.div>
 
-          <div className="bg-dark-400 p-8 border border-dark-100">
+          <div className="bg-white p-8 border border-dark-200 rounded-2xl shadow-card">
             <div className="space-y-3">
               {features.primaryList.map((f, i) => (
                 <motion.div
@@ -868,14 +898,14 @@ function FeaturesSection({ features }: { features: NonNullable<SubpageContent['f
                   transition={{ duration: 0.3, delay: i * 0.05 }}
                   viewport={{ once: true }}
                 >
-                  <span className="text-primary-500 mr-3 flex-shrink-0">•</span>
+                  <svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   <span className="text-light-100" dangerouslySetInnerHTML={{ __html: f }} />
                 </motion.div>
               ))}
             </div>
 
             {(features.note || (features.groups && features.groups.length > 0)) && (
-              <div className="mt-8 pt-8 border-t border-dark-100">
+              <div className="mt-8 pt-8 border-t border-dark-200">
                 {features.note && (
                   <p
                     className="text-light-200 text-center mb-8"
@@ -891,7 +921,7 @@ function FeaturesSection({ features }: { features: NonNullable<SubpageContent['f
                     <ul className="space-y-2 text-light-200">
                       {group.bullets.map((b, bi) => (
                         <li key={bi} className="flex items-start">
-                          <span className="text-primary-500 mr-2">•</span>
+                          <svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                           <span dangerouslySetInnerHTML={{ __html: b }} />
                         </li>
                       ))}
@@ -944,7 +974,7 @@ function MiniCtaSection({
           )}
           <motion.button
             onClick={scrollToContact}
-            className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
+            className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300 rounded-xl"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -982,7 +1012,7 @@ function AudiencesSection({ audiences }: { audiences: NonNullable<SubpageContent
           </motion.div>
 
           <motion.div
-            className="bg-dark-500 p-8 border border-dark-100 mb-10"
+            className="bg-white rounded-2xl p-8 border border-dark-200 shadow-card mb-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -1007,7 +1037,7 @@ function AudiencesSection({ audiences }: { audiences: NonNullable<SubpageContent
               return (
                 <motion.div
                   key={i}
-                  className="bg-dark-500 p-6 border border-dark-100 text-center"
+                  className="bg-white rounded-2xl p-6 border border-dark-200 shadow-card text-center"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
@@ -1055,7 +1085,7 @@ function BenefitsSection({ benefits }: { benefits: NonNullable<SubpageContent['b
               return (
                 <motion.div
                   key={i}
-                  className="bg-dark-400 p-6 border border-dark-100 text-center h-full"
+                  className="bg-white rounded-2xl p-6 border border-dark-200 shadow-card text-center h-full"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
@@ -1099,7 +1129,7 @@ function RentalSection({ rental }: { rental: NonNullable<SubpageContent['rental'
           </motion.div>
 
           <motion.div
-            className="bg-dark-500 p-8 border border-primary-500/30 mb-8"
+            className="bg-white p-8 border border-primary-500/30 mb-8 rounded-2xl shadow-card"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -1119,7 +1149,7 @@ function RentalSection({ rental }: { rental: NonNullable<SubpageContent['rental'
           {rental.additional?.map((block, i) => (
             <motion.div
               key={i}
-              className="bg-dark-500 p-8 border border-dark-100 mb-6"
+              className="bg-white rounded-2xl p-8 border border-dark-200 shadow-card mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
@@ -1129,7 +1159,7 @@ function RentalSection({ rental }: { rental: NonNullable<SubpageContent['rental'
               <ul className="space-y-2 text-light-200">
                 {block.bullets.map((b, bi) => (
                   <li key={bi} className="flex items-start">
-                    <span className="text-primary-500 mr-2">•</span>
+                    <svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     <span>{b}</span>
                   </li>
                 ))}
@@ -1167,7 +1197,7 @@ function ProcessSection({ process }: { process: NonNullable<SubpageContent['proc
             {process.steps.map((step, i) => (
               <motion.div
                 key={i}
-                className="bg-dark-400 p-6 border border-dark-100 relative h-full"
+                className="bg-white rounded-2xl p-6 border border-dark-200 shadow-card relative h-full"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -1193,27 +1223,31 @@ function ProcessSection({ process }: { process: NonNullable<SubpageContent['proc
 
 function CrossSellBanner({ crossSell }: { crossSell: NonNullable<SubpageContent['crossSell']> }) {
   return (
-    <section className="py-16 bg-dark-400" data-section-label="Ergänzende Leistung">
+    <section className="py-16" style={{ background: '#F4F7F6' }} data-section-label="Ergänzende Leistung">
       <div className="container mx-auto px-4">
         <motion.div
-          className="max-w-3xl mx-auto bg-gradient-to-br from-dark-500 to-dark-400 border border-primary-500/25 rounded-2xl p-8 md:p-10 text-center"
+          className="max-w-3xl mx-auto rounded-2xl border bg-white p-8 md:p-10 text-center shadow-card"
+          style={{ borderColor: 'rgba(14,124,114,0.25)' }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           {crossSell.kicker && (
-            <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">
+            <p className="text-xs font-mono tracking-widest uppercase mb-3 font-semibold" style={{ color: '#0E7C72' }}>
               {crossSell.kicker}
             </p>
           )}
-          <h2 className="text-xl md:text-2xl font-heading font-bold text-light-100 mb-4">
+          <h2 className="text-xl md:text-2xl font-heading font-bold mb-4" style={{ color: '#0C1210' }}>
             {crossSell.title}
           </h2>
-          <p className="text-light-200 mb-6 leading-relaxed">{crossSell.body}</p>
+          <p className="mb-6 leading-relaxed" style={{ color: '#404B48' }}>{crossSell.body}</p>
           <a
             href={crossSell.ctaHref}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary-500/10 border border-primary-500/40 text-primary-400 font-heading font-bold rounded-lg hover:bg-primary-500 hover:text-dark-500 transition-all duration-300 group"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-heading font-bold transition-all duration-300 group"
+            style={{ background: 'rgba(14,124,114,0.08)', color: '#0E7C72', border: '1px solid rgba(14,124,114,0.25)' }}
+            onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.background = '#0E7C72'; t.style.color = '#fff'; }}
+            onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.background = 'rgba(14,124,114,0.08)'; t.style.color = '#0E7C72'; }}
           >
             {crossSell.ctaText}
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -1291,16 +1325,16 @@ function DeepDiveSections({
 
               {section.bullets && section.bullets.length > 0 && (
                 <motion.div
-                  className="rounded-xl bg-dark-500 border border-dark-100 p-6 my-6"
+                  className="rounded-xl bg-white border border-dark-200 p-6 my-6 shadow-card"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <ul className="space-y-3">
+                  <ul className="space-y-2.5">
                     {section.bullets.map((b, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-3 text-light-200">
-                        <CheckCircle className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+                      <li key={bIdx} className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}>
+                        <svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                         <span dangerouslySetInnerHTML={{ __html: b }} />
                       </li>
                     ))}
@@ -1310,7 +1344,8 @@ function DeepDiveSections({
 
               {section.table && (
                 <motion.div
-                  className="my-8 overflow-x-auto rounded-xl border border-dark-100"
+                  className="my-8 overflow-x-auto rounded-2xl border shadow-card"
+                  style={{ borderColor: '#E4E9E7' }}
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
@@ -1320,7 +1355,7 @@ function DeepDiveSections({
                     <thead>
                       <tr>
                         {section.table.headers.map((h, hIdx) => (
-                          <th key={hIdx} className="py-3 px-4 bg-dark-300 text-light-100 font-heading font-bold text-sm border-b border-dark-100">
+                          <th key={hIdx} className="py-3 px-4 font-heading font-bold text-sm border-b" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>
                             {h}
                           </th>
                         ))}
@@ -1328,9 +1363,9 @@ function DeepDiveSections({
                     </thead>
                     <tbody>
                       {section.table.rows.map((row, rIdx) => (
-                        <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-dark-500/50' : 'bg-dark-400/50'}>
+                        <tr key={rIdx} style={{ background: rIdx % 2 === 0 ? '#fff' : '#FAFAF9' }}>
                           {row.map((cell, cIdx) => (
-                            <td key={cIdx} className="py-3 px-4 text-light-200 text-sm border-b border-dark-100/50">
+                            <td key={cIdx} className="py-3 px-4 text-sm border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>
                               {cell}
                             </td>
                           ))}
@@ -1388,7 +1423,7 @@ function SiblingLinksSection({
               <motion.a
                 key={link.href}
                 href={isRegional ? `/leistungsgebiete/${regionSlug}/${parentSlug}/${link.href.split('/').pop()}` : link.href}
-                className="group flex items-center gap-3 p-4 bg-dark-500 rounded-xl border border-dark-100 hover:border-primary-500/40 transition-all duration-300"
+                className="group flex items-center gap-3 p-4 bg-white rounded-xl border border-dark-200 hover:border-primary-500/40 transition-all duration-300 shadow-card"
                 whileHover={{ x: 4 }}
               >
                 <ChevronRight className="w-5 h-5 text-primary-500 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
@@ -1412,7 +1447,7 @@ function FaqSection({ faqs, subpageLabel }: { faqs: { q: string; a: string }[]; 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 bg-dark-500" data-section-label="FAQ" aria-labelledby="faq-heading">
+    <section id="faq" className="py-20" style={{ background: '#F4F7F6' }} data-section-label="FAQ" aria-labelledby="faq-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -1422,19 +1457,20 @@ function FaqSection({ faqs, subpageLabel }: { faqs: { q: string; a: string }[]; 
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">FAQ</p>
-            <h2 id="faq-heading" className="text-2xl md:text-3xl font-heading font-bold text-light-100">
-              Häufige Fragen zu <span className="text-primary-500">{subpageLabel}</span>
+            <p className="text-xs font-mono tracking-widest uppercase mb-3 font-semibold" style={{ color: '#0E7C72' }}>FAQ</p>
+            <h2 id="faq-heading" className="text-2xl md:text-3xl font-heading font-bold" style={{ color: '#0C1210' }}>
+              Häufige Fragen zu <span style={{ color: '#0E7C72' }}>{subpageLabel}</span>
             </h2>
           </motion.div>
 
-          <div className="space-y-2" role="list">
+          <div className="space-y-3" role="list">
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
               return (
                 <motion.div
                   key={index}
-                  className={`rounded-xl border transition-colors duration-200 ${isOpen ? 'bg-dark-400 border-primary-500/20' : 'bg-dark-400 border-dark-100 hover:border-primary-500/20'}`}
+                  className="rounded-2xl border bg-white shadow-card transition-all duration-200"
+                  style={{ borderColor: isOpen ? 'rgba(14,124,114,0.3)' : '#E4E9E7' }}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
@@ -1443,13 +1479,15 @@ function FaqSection({ faqs, subpageLabel }: { faqs: { q: string; a: string }[]; 
                   <button
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-heading font-bold text-light-100 transition-colors"
+                    className="w-full flex items-center gap-4 px-5 py-4 text-left transition-colors"
                     aria-expanded={isOpen}
                   >
-                    <span className="text-sm md:text-base">{faq.q}</span>
+                    <div className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm" style={{ background: 'rgba(14,124,114,0.08)', color: '#0E7C72' }}>?</div>
+                    <span className="flex-1 text-sm md:text-base font-heading font-bold" style={{ color: '#0C1210' }}>{faq.q}</span>
                     <ChevronDown
                       size={18}
-                      className={`text-primary-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                      className={`flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                      style={{ color: '#0E7C72' }}
                     />
                   </button>
                   <AnimatePresence initial={false}>
@@ -1461,7 +1499,7 @@ function FaqSection({ faqs, subpageLabel }: { faqs: { q: string; a: string }[]; 
                         transition={{ duration: 0.25 }}
                         className="overflow-hidden"
                       >
-                        <p className="text-light-300 text-sm px-5 pb-5 pt-0 leading-relaxed">{faq.a}</p>
+                        <p className="text-sm px-5 pb-5 pt-0 leading-relaxed" style={{ color: '#404B48' }}>{faq.a}</p>
                       </motion.div>
                     )}
                   </AnimatePresence>

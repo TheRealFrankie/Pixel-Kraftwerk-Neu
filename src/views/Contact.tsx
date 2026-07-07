@@ -8,7 +8,6 @@ import GoogleMapsSection from '../components/GoogleMapsSection';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { businessInfo } from '../data/businessInfo';
-import { LEISTUNGSGEBIETE_CITIES } from '../data/leistungsgebiete';
 
 const contactBreadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -59,13 +58,12 @@ const steps = [
 
 const Contact: React.FC = () => {
   return (
-    <div className="bg-dark-500 min-h-screen">
+    <div style={{ background: '#FAFAF9', minHeight: '100vh' }}>
       <LocalBusinessSchema pageType="contact" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactBreadcrumbSchema) }} />
 
       {/* HERO */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-500/5 via-transparent to-transparent" aria-hidden />
         <div className="container mx-auto px-4 relative z-10">
           <div className="mb-6">
             <BreadcrumbNav items={[
@@ -75,7 +73,7 @@ const Contact: React.FC = () => {
           </div>
           <div className="max-w-3xl">
             <motion.div
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/30 text-primary-400 text-xs font-heading font-semibold mb-6"
+              className="pill-badge mb-6"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
@@ -84,7 +82,7 @@ const Contact: React.FC = () => {
               Kostenlose Erstberatung
             </motion.div>
             <motion.h1
-              className="text-4xl md:text-5xl font-heading font-bold text-light-100 mb-5 leading-tight"
+              className="text-4xl md:text-5xl font-heading font-bold mb-5 leading-tight" style={{ color: '#0C1210' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -92,7 +90,7 @@ const Contact: React.FC = () => {
               Kontakt zur KI-Agentur in <span className="text-primary-500">Groitzsch &amp; Leipzig</span>
             </motion.h1>
             <motion.p
-              className="text-light-200 text-lg leading-relaxed max-w-2xl"
+              className="text-lg leading-relaxed max-w-2xl" style={{ color: '#404B48' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -116,7 +114,7 @@ const Contact: React.FC = () => {
                 {contactPoints.map((point, i) => (
                   <motion.div
                     key={point.label}
-                    className="flex items-center gap-4 p-4 rounded-xl bg-dark-400 border border-dark-200/50 hover:border-primary-500/40 transition-all duration-200"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-white border hover:border-primary-500/40 transition-all duration-200" style={{ borderColor: '#E4E9E7' }}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: i * 0.08 }}
@@ -125,25 +123,25 @@ const Contact: React.FC = () => {
                       {point.icon}
                     </div>
                     <div className="min-w-0">
-                      <div className="text-xs text-light-400 font-heading uppercase tracking-wide mb-0.5">{point.label}</div>
+                      <div className="text-xs font-heading uppercase tracking-wide mb-0.5" style={{ color: '#68746F' }}>{point.label}</div>
                       {point.href ? (
                         <a
                           href={point.href}
                           {...(point.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                          className="text-light-100 font-heading font-semibold text-sm hover:text-primary-400 transition-colors truncate block"
+                          className="font-heading font-semibold text-sm hover:text-primary-400 transition-colors truncate block" style={{ color: '#0C1210' }}
                           itemProp={point.label === 'Telefon' ? 'telephone' : point.label === 'E-Mail' ? 'email' : undefined}
                         >
                           {point.value}
                         </a>
                       ) : (
-                        <span className="text-light-100 font-heading font-semibold text-sm" itemProp="openingHours">
+                        <span className="font-heading font-semibold text-sm" itemProp="openingHours" style={{ color: '#0C1210' }}>
                           {point.value}
                         </span>
                       )}
-                      <div className="text-xs text-light-400 mt-0.5">{point.sub}</div>
+                      <div className="text-xs mt-0.5" style={{ color: '#68746F' }}>{point.sub}</div>
                     </div>
                     {point.href && (
-                      <ArrowRight size={16} className="text-light-400 flex-shrink-0 ml-auto" />
+                      <ArrowRight size={16} className="flex-shrink-0 ml-auto" style={{ color: '#68746F' }} />
                     )}
                   </motion.div>
                 ))}
@@ -151,12 +149,12 @@ const Contact: React.FC = () => {
 
               {/* Prozess */}
               <motion.div
-                className="p-6 rounded-xl bg-dark-400 border border-dark-200/50"
+                className="p-6 rounded-xl bg-white border" style={{ borderColor: '#E4E9E7' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <h2 className="text-base font-heading font-bold text-light-100 mb-5">
+                <h2 className="text-base font-heading font-bold mb-5" style={{ color: '#0C1210' }}>
                   So läuft es ab
                 </h2>
                 <div className="space-y-4">
@@ -166,8 +164,8 @@ const Contact: React.FC = () => {
                         <span className="text-primary-400 text-xs font-heading font-bold">{step.num}</span>
                       </div>
                       <div>
-                        <div className="text-sm font-heading font-semibold text-light-100">{step.title}</div>
-                        <div className="text-xs text-light-400 mt-0.5">{step.desc}</div>
+                        <div className="text-sm font-heading font-semibold" style={{ color: '#0C1210' }}>{step.title}</div>
+                        <div className="text-xs mt-0.5" style={{ color: '#68746F' }}>{step.desc}</div>
                       </div>
                       {i < steps.length - 1 && (
                         <div className="absolute ml-[17px] mt-9 w-px h-4 bg-primary-500/20" aria-hidden />
@@ -182,7 +180,7 @@ const Contact: React.FC = () => {
                 href="https://g.page/r/CUl0X04KsO71EAE/review"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 rounded-xl bg-dark-400 border border-dark-200/50 hover:border-primary-500/40 transition-all duration-200 group"
+                className="flex items-center gap-3 p-4 rounded-xl bg-white border hover:border-primary-500/30 transition-all duration-200 group shadow-card" style={{ borderColor: '#E4E9E7' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
@@ -191,10 +189,10 @@ const Contact: React.FC = () => {
                   <Star size={20} className="text-yellow-400 fill-yellow-400" />
                 </div>
                 <div>
-                  <div className="text-sm font-heading font-semibold text-light-100 group-hover:text-primary-400 transition-colors">
+                  <div className="text-sm font-heading font-semibold group-hover:text-primary-500 transition-colors" style={{ color: '#0C1210' }}>
                     Bereits Kunde? Bewertung hinterlassen
                   </div>
-                  <div className="text-xs text-light-400 mt-0.5">Google Rezension schreiben →</div>
+                  <div className="text-xs mt-0.5" style={{ color: '#68746F' }}>Google Rezension schreiben →</div>
                 </div>
               </motion.a>
             </div>
@@ -207,42 +205,6 @@ const Contact: React.FC = () => {
             >
               <ContactForm inline />
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES & AREAS INTERLINKING */}
-      <section className="py-16 bg-dark-400 border-t border-dark-200/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div>
-              <h2 className="text-lg font-heading font-bold text-light-100 mb-4">Unsere Leistungen</h2>
-              <ul className="space-y-2">
-                {[
-                  { title: 'KI-Chatbots', path: '/ki-chatbots' },
-                  { title: 'Telefonassistenten', path: '/telefonassistenten' },
-                  { title: 'Automatisierungen', path: '/automatisierungen' },
-                  { title: 'Webseiten', path: '/webseite' },
-                  { title: 'SEO: Top 3 in Google', path: '/seo-top-3-in-google' },
-                  { title: 'CRM-Systeme', path: '/crm-systeme' },
-                ].map((s) => (
-                  <li key={s.path}>
-                    <a href={s.path} className="text-primary-400 hover:underline text-sm font-heading">{s.title}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h2 className="text-lg font-heading font-bold text-light-100 mb-4">Unsere Leistungsgebiete</h2>
-              <div className="flex flex-wrap gap-x-3 gap-y-1.5">
-                {LEISTUNGSGEBIETE_CITIES.map((c) => (
-                  <a key={c.slug} href={`/leistungsgebiete/${c.slug}`} className="text-primary-400 hover:underline text-sm font-heading">
-                    {c.name}
-                  </a>
-                ))}
-              </div>
-              <a href="/leistungsgebiete" className="inline-block mt-3 text-primary-400 hover:underline text-sm font-heading font-bold">Alle Leistungsgebiete →</a>
-            </div>
           </div>
         </div>
       </section>

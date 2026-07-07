@@ -3,721 +3,720 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ChevronDown, CheckCircle, Minus, ArrowRight, Zap, MessageCircle, Workflow, Globe, Search, Users, Database } from 'lucide-react';
+import {
+  ArrowRight, Zap, MessageCircle, ChevronDown,
+  Globe, Search, Users, Database, Phone, MapPin,
+  Mail, Clock, Star, Workflow,
+} from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import WebSiteSchema from '../components/WebSiteSchema';
+import { businessInfo } from '@/data/businessInfo';
 
+/* ─── constants ─── */
+const INK = '#0C1210';
+const BODY = '#404B48';
+const MUTED = '#68746F';
+const PETROL = '#0E7C72';
+const PETROL_DARK = '#0A5F58';
+const BORDER = '#E4E9E7';
+const SURFACE = '#F3F5F4';
+
+/* ─── Main ─── */
 const Home: React.FC = () => {
-  const [openExample, setOpenExample] = React.useState<number | null>(null);
+  const [openAccordion, setOpenAccordion] = React.useState<number | null>(null);
 
-  const toggleExample = (index: number) => {
-    setOpenExample(openExample === index ? null : index);
-  };
+  const toggleAccordion = (i: number) => setOpenAccordion(openAccordion === i ? null : i);
 
-  const scrollToContactForm = () => {
-    const contactForm = document.getElementById('contact');
-    if (contactForm) {
-      contactForm.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const scrollToNextSection = () => {
-    const nextSection = document.getElementById('problem-section');
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const practiceExamples = [
     {
-      icon: <MessageCircle size={32} strokeWidth={1.5} />,
-      title: "Digitale Kundenassistenz",
-      vorher: "Kunden stellen immer wieder dieselben Fragen per Website, E-Mail oder Social Media. Außerhalb der Öffnungszeiten bleiben Anfragen unbeantwortet.",
-      nachher: "Die digitale Kundenassistenz beantwortet Fragen automatisch, nimmt Anliegen auf und reagiert individuell auf Nachrichten – rund um die Uhr.",
-      ergebnis: "Schnellere Antworten für Kunden. Weniger Unterbrechungen im Arbeitsalltag."
+      icon: <MessageCircle size={28} strokeWidth={1.5} style={{ color: PETROL }} />,
+      title: 'Digitale Kundenassistenz',
+      vorher: 'Kunden stellen immer wieder dieselben Fragen per Website, E-Mail oder Social Media. Außerhalb der Öffnungszeiten bleiben Anfragen unbeantwortet.',
+      nachher: 'Die digitale Kundenassistenz beantwortet Fragen automatisch, nimmt Anliegen auf und reagiert individuell auf Nachrichten – rund um die Uhr.',
+      ergebnis: 'Schnellere Antworten für Kunden. Weniger Unterbrechungen im Arbeitsalltag.',
     },
     {
-      icon: <Workflow size={32} strokeWidth={1.5} />,
-      title: "Telefonische Kundenassistenz",
-      vorher: "Anrufe gehen verloren oder unterbrechen ständig die Arbeit. Außerhalb der Geschäftszeiten ist niemand erreichbar.",
-      nachher: "Die telefonische Kundenassistenz nimmt Anrufe entgegen, beantwortet Fragen und nimmt Termine automatisch an.",
-      ergebnis: "Keine verpassten Anrufe mehr. Ruhigerer Arbeitsalltag."
+      icon: <Workflow size={28} strokeWidth={1.5} style={{ color: PETROL }} />,
+      title: 'Telefonische Kundenassistenz',
+      vorher: 'Anrufe gehen verloren oder unterbrechen ständig die Arbeit. Außerhalb der Geschäftszeiten ist niemand erreichbar.',
+      nachher: 'Die telefonische Kundenassistenz nimmt Anrufe entgegen, beantwortet Fragen und nimmt Termine automatisch an.',
+      ergebnis: 'Keine verpassten Anrufe mehr. Ruhigerer Arbeitsalltag.',
     },
     {
-      icon: <Zap size={32} strokeWidth={1.5} />,
-      title: "Automatisierungen für Anfragen, Vertrieb & Terminplanung",
-      vorher: "Anfragen gehen unter, Termine werden per Hin-und-Her koordiniert, Follow-ups werden vergessen. Alles verteilt in E-Mails, Notizen und Excel.",
-      nachher: "Anfragen werden automatisch erfasst, sortiert und zugewiesen. Termine buchen Kunden selbst, Bestätigung und Reminder laufen automatisch. Nichts geht mehr verloren.",
-      ergebnis: "Mehr Überblick, weniger Stress, schnelle Reaktion – ohne dass jemand dran denken muss."
+      icon: <Zap size={28} strokeWidth={1.5} style={{ color: PETROL }} />,
+      title: 'Automatisierungen für Anfragen, Vertrieb & Terminplanung',
+      vorher: 'Anfragen gehen unter, Termine werden per Hin-und-Her koordiniert, Follow-ups werden vergessen. Alles verteilt in E-Mails, Notizen und Excel.',
+      nachher: 'Anfragen werden automatisch erfasst, sortiert und zugewiesen. Termine buchen Kunden selbst, Bestätigung und Reminder laufen automatisch. Nichts geht mehr verloren.',
+      ergebnis: 'Mehr Überblick, weniger Stress, schnelle Reaktion – ohne dass jemand dran denken muss.',
     },
     {
-      icon: <Globe size={32} strokeWidth={1.5} />,
-      title: "Websites & SEO",
-      vorher: "Die Website ist online, bringt aber kaum Anfragen. Viele Kunden finden das Unternehmen nicht.",
-      nachher: "Eine moderne Website, die verständlich aufgebaut ist und bei Suchmaschinen besser sichtbar wird.",
-      ergebnis: "Mehr Besucher. Mehr Anfragen."
+      icon: <Globe size={28} strokeWidth={1.5} style={{ color: PETROL }} />,
+      title: 'Websites & SEO',
+      vorher: 'Die Website ist online, bringt aber kaum Anfragen. Viele Kunden finden das Unternehmen nicht.',
+      nachher: 'Eine moderne Website, die verständlich aufgebaut ist und bei Suchmaschinen besser sichtbar wird.',
+      ergebnis: 'Mehr Besucher. Mehr Anfragen.',
     },
     {
-      icon: <Database size={32} strokeWidth={1.5} />,
-      title: "CRM-Systeme & Lead-Management",
-      vorher: "Anfragen, Angebote und Kundenkontakte liegen verteilt in E-Mails, Excel-Listen und Notizblöcken. Niemand weiß, welcher Lead schon nachgefasst wurde.",
-      nachher: "Alle Kontakte, Anfragen und Aufträge sind zentral erfasst. Automatische Follow-ups und eine klare Pipeline sorgen dafür, dass aus Interessenten Aufträge werden.",
-      ergebnis: "Kein Lead geht verloren. Vertrieb läuft strukturiert und messbar."
+      icon: <Database size={28} strokeWidth={1.5} style={{ color: PETROL }} />,
+      title: 'CRM-Systeme & Lead-Management',
+      vorher: 'Anfragen, Angebote und Kundenkontakte liegen verteilt in E-Mails, Excel-Listen und Notizblöcken. Niemand weiß, welcher Lead schon nachgefasst wurde.',
+      nachher: 'Alle Kontakte, Anfragen und Aufträge sind zentral erfasst. Automatische Follow-ups und eine klare Pipeline sorgen dafür, dass aus Interessenten Aufträge werden.',
+      ergebnis: 'Kein Lead geht verloren. Vertrieb läuft strukturiert und messbar.',
+    },
+  ];
+
+  const faqs = [
+    {
+      q: 'Für welche Unternehmen sind eure Lösungen gedacht?',
+      a: 'Wir arbeiten vor allem mit kleinen und mittelständischen Unternehmen in der Region Leipzig und Mitteldeutschland – Handwerksbetriebe, Praxen, Dienstleister, Agenturen und lokale Händler. Überall dort, wo wiederkehrende Aufgaben den Arbeitsalltag belasten.',
+    },
+    {
+      q: 'Wie läuft die Zusammenarbeit ab?',
+      a: 'Wir starten mit einem kostenlosen Erstgespräch, in dem wir Ihre Situation analysieren. Danach erstellen wir ein individuelles Konzept, setzen die Lösung um und bleiben für Optimierung und Betreuung an Ihrer Seite. Keine Standardlösungen von der Stange.',
+    },
+    {
+      q: 'Was kostet das?',
+      a: 'Die Kosten hängen vom Umfang ab. Wir arbeiten mit transparenten Preismodellen – kein Kleingedrucktes, keine versteckten Kosten. Im Erstgespräch klären wir den Bedarf und Sie erhalten ein konkretes Angebot, bevor wir starten.',
+    },
+    {
+      q: 'Muss ich meine bestehenden Systeme komplett umstellen?',
+      a: 'Nein. Wir arbeiten bevorzugt mit den Tools, die bei Ihnen bereits laufen – ob CRM, Kalender, Branchensoftware oder E-Mail. Unsere Lösungen ergänzen Ihre Infrastruktur, statt alles neu aufzubauen.',
+    },
+    {
+      q: 'Wie schnell kann eine Lösung live gehen?',
+      a: 'Je nach Komplexität zwischen wenigen Tagen und einigen Wochen. Ein klar abgegrenztes erstes Projekt (z.B. ein Chatbot oder eine automatische Terminbuchung) kann oft schon in der ersten Woche Ergebnisse liefern.',
+    },
+    {
+      q: 'Betreut ihr auch Unternehmen außerhalb von Leipzig?',
+      a: 'Ja. Unser Sitz ist in Groitzsch bei Leipzig, aber wir betreuen Unternehmen in der gesamten Region – von Halle über Chemnitz bis Jena. Persönliche Treffen sind genauso möglich wie Zusammenarbeit per Videocall.',
+    },
+    {
+      q: 'Was unterscheidet euch von anderen Agenturen?',
+      a: 'Wir liefern keine PowerPoint-Präsentationen, sondern funktionierende Systeme. Als Software-Entwickler mit KI-Fokus setzen wir Lösungen selbst um – von der Planung bis zur Integration. Keine Subunternehmer, keine Blackbox.',
+    },
+    {
+      q: 'Bietet ihr laufende Betreuung an?',
+      a: 'Ja, und für die meisten Kunden ist das sinnvoll. Automatisierungen brauchen Feintuning, wenn sich Abläufe ändern. Wir bieten Betreuungspakete mit regelmäßiger Optimierung, Anpassungen und technischem Support.',
+    },
+  ];
+
+  const serviceCards = [
+    {
+      img: '/images/ki-chatbot-digitale-kundenassistenz.webp',
+      alt: 'Digitale Kundenassistenz: KI-Chatbot auf Laptop und Smartphone',
+      badgeIcon: <MessageCircle size={18} strokeWidth={1.5} />,
+      badge: 'Rund um die Uhr',
+      h2: 'KI-Chatbots für digitale Kundenassistenz und automatische Anfragenbearbeitung',
+      desc: 'Eine digitale Assistenz, die Kundenanfragen beantwortet, Nachrichten entgegennimmt und Anliegen automatisch verarbeitet – auf Ihrer Website und in sozialen Netzwerken, rund um die Uhr.',
+      cta: 'KI-Chatbots für Ihre Website',
+      href: '/ki-chatbots',
+      delay: 0.1,
+    },
+    {
+      img: '/images/ki-telefonassistent.webp',
+      alt: 'KI-Telefonassistent: Anrufe entgegennehmen, Leads qualifizieren, Termine buchen – 24/7',
+      badgeIcon: <Workflow size={18} strokeWidth={1.5} />,
+      badge: 'Nie wieder verpasste Anrufe',
+      h2: 'KI-Telefonassistenten für Anrufannahme, Terminbuchung und Leadqualifizierung',
+      desc: 'Eine telefonische Assistenz, die für Sie ans Telefon geht, Fragen beantwortet und Termine annimmt – auch dann, wenn gerade niemand erreichbar ist.',
+      cta: 'Telefonassistenz rund um die Uhr',
+      href: '/telefonassistenten',
+      delay: 0.2,
+    },
+    {
+      img: '/images/webseiten-mietmodell-agentur.webp',
+      alt: 'Moderne Websites: verkaufsstark, suchmaschinenoptimiert, in Tagen statt Wochen',
+      badgeIcon: <Globe size={18} strokeWidth={1.5} />,
+      badge: 'In Tagen statt Wochen',
+      h2: 'Webseiten für lokale Unternehmen mit klarer Nutzerführung',
+      desc: 'Moderne Webseiten, die leicht verständlich sind und bei Suchmaschinen sichtbar werden, damit Kunden Sie schneller finden und direkt Kontakt aufnehmen können.',
+      cta: 'Moderne Webseiten im Mietmodell',
+      href: '/webseite',
+      delay: 0.3,
+    },
+    {
+      img: '/images/automatisierungen-anfragen-vertrieb-terminplanung.webp',
+      alt: 'Automatisierungen: Anfrage, Sortierung, Zuweisung, Follow-up, Termin und CRM',
+      badgeIcon: <Zap size={18} strokeWidth={1.5} />,
+      badge: 'Abläufe laufen von selbst',
+      h2: 'Automatisierungen für Anfragen, Vertrieb, Terminplanung und CRM',
+      desc: 'Anfragen automatisch erfassen, sortieren und zuweisen. Termine buchen, bestätigen und erinnern – ohne Hin-und-Her. Damit Abläufe von selbst laufen.',
+      cta: 'Automatisierungen für Anfragen & Termine',
+      href: '/automatisierungen',
+      delay: 0.35,
+    },
+    {
+      img: '/images/seo-top-3-google-local-pack.webp',
+      alt: 'Top 3 in Google: Google-Suchergebnisse mit Karte und lokalen Einträgen',
+      badgeIcon: <Search size={18} strokeWidth={1.5} />,
+      badge: 'Top 3 in 90 Tagen',
+      h2: 'Lokales SEO für mehr Sichtbarkeit bei Google',
+      desc: 'Lokales SEO mit Fokus auf Top-Platzierungen für die Suchbegriffe, die Ihnen wirklich Kunden bringen – mit klarer Strategie und transparenten Ergebnissen.',
+      cta: 'In 90 Tagen in die Top 3 bei Google',
+      href: '/seo-top-3-in-google',
+      delay: 0.4,
+    },
+    {
+      img: '/images/crm-systeme-kundenverwaltung.webp',
+      alt: 'CRM-System für Kundenverwaltung und Lead-Management',
+      badgeIcon: <Users size={18} strokeWidth={1.5} />,
+      badge: 'Kein Lead geht verloren',
+      h2: 'CRM-Systeme für strukturiertes Lead-Management und Kundenverwaltung',
+      desc: 'Alle Anfragen, Angebote und Kundenkontakte zentral verwalten. Automatische Follow-ups, transparente Pipeline und Auswertungen – damit aus Interessenten Aufträge werden.',
+      cta: 'CRM-System einrichten lassen',
+      href: '/crm-systeme',
+      delay: 0.45,
     },
   ];
 
   return (
-    <div className="bg-dark-500">
+    <div style={{ background: '#FAFAF9' }}>
       <LocalBusinessSchema pageType="homepage" />
       <WebSiteSchema />
 
-      {/* HERO SECTION */}
-      <section data-section-label="Start" className="relative min-h-screen flex items-center bg-dark-500 overflow-hidden">
+      {/* ─── HERO ─── */}
+      <section
+        data-section-label="Start"
+        className="relative h-screen flex items-center overflow-hidden"
+      >
+        {/* Vollbild-Hintergrundbild */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-startseite-ki-agentur-v2.webp"
-            alt="KI-Agentur Pixel Kraftwerk – Chatbots, Automatisierungen und SEO für Unternehmen in Leipzig und Groitzsch"
+            src="/images/hero-startseite-mann-laptop.png"
+            alt="Unternehmer am Laptop – KI-Agentur Pixel Kraftwerk in Leipzig und Groitzsch"
             fill
-            className="object-cover object-center"
+            className="object-cover object-right"
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-dark-500/90 via-dark-500/60 to-transparent" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-b from-dark-500/40 via-transparent to-dark-500/80" aria-hidden />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-500/10 to-transparent" aria-hidden />
+          {/* Heller Gradient: links Text-Lesbarkeit, rechts Bild sichtbar */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(90deg, rgba(250,250,249,0.97) 0%, rgba(250,250,249,0.88) 38%, rgba(250,250,249,0.3) 65%, rgba(250,250,249,0.0) 80%)',
+            }}
+            aria-hidden
+          />
         </div>
 
-        <div className="container mx-auto px-4 z-10">
-          <div className="max-w-2xl lg:max-w-3xl text-left">
-            <motion.h1
-              className="text-primary-500 text-xs sm:text-sm font-heading font-bold uppercase tracking-widest mb-5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              KI-Agentur Leipzig &amp; Groitzsch
-            </motion.h1>
-            <p className="space-y-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold mb-8" style={{ color: '#F5F7FA', textShadow: '0 6px 20px rgba(0,0,0,0.5)' }}>
-              <motion.span className="block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>Klare Abläufe.</motion.span>
-              <motion.span className="block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}>Mehr Anfragen.</motion.span>
-              <motion.span className="block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>Weniger Stress.</motion.span>
-            </p>
-            <motion.p
-              className="text-sm sm:text-base md:text-lg max-w-xl mb-8 leading-relaxed"
-              style={{
-                color: '#E8EAED',
-                textShadow: '0 3px 10px rgba(0,0,0,0.4)',
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.6 }}
-            >
-              Wir automatisieren Unternehmen in Leipzig und Region mit Systemen, die Kundenanfragen automatisch bearbeiten, Termine selbstständig koordinieren und interne Abläufe dank künstlicher Intelligenz spürbar vereinfachen.
-            </motion.p>
+        <div className="container mx-auto px-4 md:px-8 relative z-10 py-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-            <motion.div
-              className="mt-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.0, ease: "easeOut", delay: 1.8 }}
-            >
-              <button
-                onClick={scrollToContactForm}
-                className="inline-flex items-center px-7 py-4 rounded-lg bg-primary-500 text-dark-500 font-heading font-bold text-base shadow-lg shadow-primary-500/20 hover:bg-primary-400 hover:shadow-primary-glow transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 min-h-[44px]"
+            {/* Left */}
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-6"
               >
-                <ArrowRight className="mr-2" size={20} />
-                Kostenloses Erstgespräch sichern
-              </button>
-            </motion.div>
-          </div>
-        </div>
+                <span
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide border"
+                  style={{ background: 'rgba(14,124,114,0.07)', color: PETROL_DARK, borderColor: 'rgba(14,124,114,0.2)' }}
+                >
+                  <Star size={12} fill={PETROL} color={PETROL} />
+                  Digitale Lösungen für Unternehmen
+                </span>
+              </motion.div>
 
-        <motion.button
-          onClick={scrollToNextSection}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1 text-primary-500 hover:text-primary-400 transition-colors duration-300 animate-bounce focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 rounded-lg py-2 min-h-[44px]"
-          aria-label="Nach unten scrollen"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 2.4 }}
-        >
-          <span className="text-xs font-heading font-medium text-light-300">Scroll</span>
-          <ChevronDown size={24} />
-        </motion.button>
-      </section>
+              <motion.h1
+                className="font-heading font-bold tracking-tight mb-4 leading-[1.08]"
+                style={{ color: INK, fontSize: 'clamp(2rem, 4.5vw, 3.2rem)' }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.6 }}
+              >
+                KI-Agentur Groitzsch &amp; Leipzig
+              </motion.h1>
 
-      {/* PROBLEM SECTION */}
-      <section id="problem-section" data-section-label="Herausforderung" className="section-padding bg-dark-400 relative">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              className="text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <p className="text-3xl md:text-4xl font-heading font-bold mb-12 text-light-100">
-                Der Alltag vieler Unternehmen sieht <span className="text-primary-500">heute so aus:</span>
-              </p>
-
-              <div className="space-y-4 text-left max-w-2xl mx-auto mb-12">
-                {[
-                  "Kundenanfragen kommen unregelmäßig und ungeordnet rein.",
-                  "Termine müssen ständig manuell abgestimmt werden.",
-                  "E-Mails, Telefonate und Rückfragen unterbrechen die Arbeit.",
-                  "Viele Aufgaben bleiben direkt beim Inhaber hängen.",
-                  "Organisation und Marketing fühlen sich chaotisch an."
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-start"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <Minus className="text-red-400 mr-3 mt-1 flex-shrink-0" size={20} strokeWidth={2.5} />
-                    <p className="text-light-200 text-lg">{item}</p>
-                  </motion.div>
-                ))}
-              </div>
+              <motion.h2
+                className="text-lg md:text-xl font-heading font-bold mb-4 leading-snug"
+                style={{ color: PETROL }}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.6 }}
+              >
+                KI-Chatbots, Telefonassistenten, Automatisierungen, Webdesign, SEO &amp; CRM-Systeme
+              </motion.h2>
 
               <motion.p
-                className="text-xl md:text-2xl text-light-100 font-bold"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                viewport={{ once: true }}
+                className="text-lg max-w-xl mb-4 leading-relaxed"
+                style={{ color: BODY }}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.55, duration: 0.6 }}
               >
-                Das kostet <span className="text-red-400">Zeit, Geld und Nerven.</span>
+                Hast du ein Unternehmen? <span style={{ color: PETROL, fontWeight: 600 }}>Dann können wir dir mit Sicherheit helfen.</span> Wir helfen Unternehmen dabei, mehr Kunden zu gewinnen, ihre Abläufe zu vereinfachen und im Alltag spürbar Zeit zu sparen.
               </motion.p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* FUTURE SECTION */}
-      <section data-section-label="Lösung" className="section-padding bg-dark-500 relative">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              className="text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <p className="text-3xl md:text-4xl font-heading font-bold mb-12 text-light-100">
-                So arbeitet ein <span className="text-primary-500">sauber automatisierter</span> Betrieb:
-              </p>
+              <motion.p
+                className="text-base max-w-xl mb-6 leading-relaxed"
+                style={{ color: MUTED }}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.65, duration: 0.6 }}
+              >
+                Dafür entwickeln wir moderne Webseiten, KI-Chatbots, Telefonagenten und individuelle Softwarelösungen, die mehr Kundenanfragen erzeugen und wiederkehrende Aufgaben automatisch übernehmen.
+              </motion.p>
 
-              <div className="space-y-4 text-left max-w-2xl mx-auto">
-                {[
-                  "Kundenanfragen werden automatisch entgegengenommen und beantwortet.",
-                  "Termine werden selbstständig gebucht, bestätigt und erinnert.",
-                  "Mitarbeiter arbeiten mit klaren, verlässlichen Abläufen.",
-                  "Der Betrieb läuft ruhiger, strukturierter und planbarer.",
-                  "Der Inhaber gewinnt Zeit und Fokus für das Kerngeschäft zurück."
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-start"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <CheckCircle className="text-primary-500 mr-3 mt-1 flex-shrink-0" size={20} />
-                    <p className="text-light-200 text-lg">{item}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* SERVICES HUB SECTION */}
-      <section data-section-label="Leistungen" className="section-padding relative bg-dark-400 overflow-hidden">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-500/5 via-transparent to-primary-500/5 pointer-events-none" aria-hidden />
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <p className="text-lg text-light-200 max-w-3xl mx-auto mb-4">
-                Digitale Lösungen, die Ihr Unternehmen entlasten und den Arbeitsalltag deutlich vereinfachen.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-
-              {/* KI-Chatbots */}
-              <div className="flex flex-col">
-                <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
-                  KI-Chatbots für digitale Kundenassistenz und automatische Anfragenbearbeitung
-                </h2>
-                <motion.a
-                  href="/ki-chatbots"
-                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 flex-1"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              <motion.div
+                className="flex flex-col sm:flex-row gap-3 mb-6"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.75 }}
+              >
+                <button
+                  onClick={scrollToContact}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-base transition-all duration-200 min-h-[48px]"
+                  style={{ background: PETROL, color: '#FAFAF9', boxShadow: '0 1px 3px rgba(14,124,114,0.3), 0 4px 12px rgba(14,124,114,0.15)' }}
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
-                    <Image src="/images/ki-chatbot-digitale-kundenassistenz.webp" alt="Digitale Kundenassistenz: KI-Chatbot auf Laptop und Smartphone, Kundenanfragen in Sekunden beantworten" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
-                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
-                      <MessageCircle size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                      <span className="text-sm font-heading font-bold">Rund um die Uhr</span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-light-300 text-base leading-relaxed mb-4">Eine digitale Assistenz, die Kundenanfragen beantwortet, Nachrichten entgegennimmt und Anliegen automatisch verarbeitet – auf Ihrer Website und in sozialen Netzwerken, rund um die Uhr.</p>
-                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">KI-Chatbots für Ihre Website<ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
-                  </div>
-                </motion.a>
-              </div>
-
-              {/* Telefonassistent */}
-              <div className="flex flex-col">
-                <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
-                  KI-Telefonassistenten für Anrufannahme, Terminbuchung und Leadqualifizierung
-                </h2>
-                <motion.a
-                  href="/telefonassistenten"
-                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 flex-1"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                  <ArrowRight size={18} />
+                  Kostenloses Erstgespräch sichern
+                </button>
+                <a
+                  href="/leistungen"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-base border transition-all duration-200 min-h-[48px]"
+                  style={{ color: INK, borderColor: BORDER, background: 'white' }}
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
-                    <Image src="/images/ki-telefonassistent.webp" alt="KI-Telefonassistent: Anrufe entgegennehmen, Leads qualifizieren, Termine buchen – 24/7" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
-                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
-                      <Workflow size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                      <span className="text-sm font-heading font-bold">Nie wieder verpasste Anrufe</span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-light-300 text-base leading-relaxed mb-4">Eine telefonische Assistenz, die für Sie ans Telefon geht, Fragen beantwortet und Termine annimmt – auch dann, wenn gerade niemand erreichbar ist.</p>
-                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">Telefonassistenz rund um die Uhr<ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
-                  </div>
-                </motion.a>
-              </div>
+                  Leistungen ansehen
+                </a>
+              </motion.div>
 
-              {/* Webseiten */}
-              <div className="flex flex-col">
-                <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
-                  Webseiten für lokale Unternehmen mit klarer Nutzerführung
-                </h2>
-                <motion.a
-                  href="/webseite"
-                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 flex-1"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              {/* Trust row */}
+              <motion.div
+                className="flex flex-wrap items-center gap-5"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.0 }}
+              >
+                <a
+                  href={businessInfo.socialMedia.googleReview}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+                  aria-label="Unsere Google-Bewertungen ansehen"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
-                    <Image src="/images/webseiten-mietmodell-agentur.webp" alt="Moderne Websites: verkaufsstark, suchmaschinenoptimiert, in Tagen statt Wochen" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
-                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
-                      <Globe size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                      <span className="text-sm font-heading font-bold">In Tagen statt Wochen</span>
-                    </div>
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={14} fill={PETROL} color={PETROL} />
+                    ))}
                   </div>
-                  <div className="p-6">
-                    <p className="text-light-300 text-base leading-relaxed mb-4">Moderne Webseiten, die leicht verständlich sind und bei Suchmaschinen sichtbar werden, damit Kunden Sie schneller finden und direkt Kontakt aufnehmen können.</p>
-                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">Moderne Webseiten im Mietmodell<ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
-                  </div>
-                </motion.a>
-              </div>
-
-              {/* Automatisierungen */}
-              <div className="flex flex-col">
-                <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
-                  Automatisierungen für Anfragen, Vertrieb, Terminplanung und CRM
-                </h2>
-                <motion.a
-                  href="/automatisierungen"
-                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 flex-1"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
-                    <Image src="/images/automatisierungen-anfragen-vertrieb-terminplanung.webp" alt="Automatisierungen: Anfrage, Sortierung, Zuweisung, Follow-up, Termin und CRM" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
-                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
-                      <Zap size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                      <span className="text-sm font-heading font-bold">Abläufe laufen von selbst</span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-light-300 text-base leading-relaxed mb-4">Anfragen automatisch erfassen, sortieren und zuweisen. Termine buchen, bestätigen und erinnern – ohne Hin-und-Her. Damit Abläufe von selbst laufen.</p>
-                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">Automatisierungen für Anfragen &amp; Termine<ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
-                  </div>
-                </motion.a>
-              </div>
-
-              {/* SEO */}
-              <div className="flex flex-col">
-                <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
-                  Lokales SEO für mehr Sichtbarkeit bei Google
-                </h2>
-                <motion.a
-                  href="/seo-top-3-in-google"
-                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 flex-1"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.45 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
-                    <Image src="/images/seo-top-3-google-local-pack.webp" alt="Top 3 in Google: Google-Suchergebnisse mit Karte und lokalen Einträgen – Ihr Unternehmen sichtbar." fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
-                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
-                      <Search size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                      <span className="text-sm font-heading font-bold">Top 3 in 90 Tagen</span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-light-300 text-base leading-relaxed mb-4">Lokales SEO mit Fokus auf Top-Platzierungen für die Suchbegriffe, die Ihnen wirklich Kunden bringen – mit klarer Strategie und transparenten Ergebnissen.</p>
-                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">In 90 Tagen in die Top 3 bei Google<ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
-                  </div>
-                </motion.a>
-              </div>
-
-              {/* CRM-Systeme */}
-              <div className="flex flex-col">
-                <h2 className="text-lg md:text-xl font-heading font-bold text-light-100 mb-3 leading-snug">
-                  CRM-Systeme für strukturiertes Lead-Management und Kundenverwaltung
-                </h2>
-                <motion.a
-                  href="/crm-systeme"
-                  className="group block rounded-2xl bg-dark-500/95 backdrop-blur-sm border border-dark-200/80 shadow-card hover:border-primary-500/40 hover:shadow-card-hover hover:shadow-primary-500/10 overflow-hidden transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 flex-1"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-dark-400">
-                    <Image src="/images/crm-systeme-kundenverwaltung.webp" alt="CRM-System für Kundenverwaltung und Lead-Management" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-500/90 via-dark-500/20 to-transparent pointer-events-none" aria-hidden />
-                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-primary-400">
-                      <Users size={20} strokeWidth={1.5} className="flex-shrink-0" />
-                      <span className="text-sm font-heading font-bold">Kein Lead geht verloren</span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-light-300 text-base leading-relaxed mb-4">Alle Anfragen, Angebote und Kundenkontakte zentral verwalten. Automatische Follow-ups, transparente Pipeline und Auswertungen – damit aus Interessenten Aufträge werden.</p>
-                    <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">CRM-System einrichten lassen<ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" /></div>
-                  </div>
-                </motion.a>
-              </div>
-
+                  <span className="text-sm font-medium" style={{ color: MUTED }}>5,0 auf Google</span>
+                </a>
+                <span style={{ color: BORDER }} className="hidden sm:block">·</span>
+                <span className="text-sm" style={{ color: MUTED }}>Antwort binnen 24 Stunden</span>
+                <span style={{ color: BORDER }} className="hidden sm:block">·</span>
+                <span className="text-sm" style={{ color: MUTED }}>Kein Kleingedrucktes</span>
+              </motion.div>
             </div>
-            <p className="text-center mt-10 text-light-200">
-              <a href="/leistungen" className="text-primary-400 hover:underline font-heading font-bold">Alle Leistungen ansehen</a>
-              {' · '}
-              <a href="/leistungsgebiete" className="text-primary-400 hover:underline font-heading font-bold">Unsere Leistungsgebiete</a>
-            </p>
+
+            {/* Leere rechte Spalte – Bild füllt den Hintergrund */}
+            <div className="hidden lg:block" />
           </div>
         </div>
       </section>
 
-      {/* PRACTICE EXAMPLES SECTION */}
-      <section data-section-label="Praxisbeispiele" className="section-padding bg-dark-500 relative">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-16 text-light-100 text-center">
+
+      {/* ─── SERVICES ─── */}
+      <section data-section-label="Leistungen" className="section-padding" style={{ background: SURFACE }}>
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="text-center mb-14"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-heading font-bold mb-4" style={{ color: INK }}>
+              Digitale Lösungen für Ihren Betrieb
+            </h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: MUTED }}>
+              Digitale Lösungen, die Ihr Unternehmen entlasten und den Arbeitsalltag deutlich vereinfachen.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-10">
+            {serviceCards.map((s, i) => (
+              <div key={s.href} className="flex flex-col">
+                <h2 className="text-base font-heading font-semibold mb-3 leading-snug" style={{ color: BODY }}>
+                  {s.h2}
+                </h2>
+                <motion.a
+                  href={s.href}
+                  className="group block rounded-2xl bg-white overflow-hidden flex-1 transition-all duration-300 hover:-translate-y-1"
+                  style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 3px rgba(12,18,16,0.06)' }}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: s.delay }}
+                  viewport={{ once: true }}
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden" style={{ background: SURFACE }}>
+                    <Image
+                      src={s.img}
+                      alt={s.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2" style={{ color: PETROL }}>
+                      {s.badgeIcon}
+                      <span className="text-sm font-heading font-semibold">{s.badge}</span>
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <p className="text-sm leading-relaxed mb-4" style={{ color: MUTED }}>{s.desc}</p>
+                    <div className="flex items-center gap-2 text-sm font-heading font-semibold" style={{ color: PETROL }}>
+                      {s.cta}
+                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
+                    </div>
+                  </div>
+                </motion.a>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-sm" style={{ color: MUTED }}>
+            <a href="/leistungen" className="font-semibold hover:underline" style={{ color: PETROL }}>Alle Leistungen ansehen</a>
+            {' · '}
+            <a href="/leistungsgebiete" className="font-semibold hover:underline" style={{ color: PETROL }}>Unsere Leistungsgebiete</a>
+          </p>
+        </div>
+      </section>
+
+      {/* ─── PRACTICE EXAMPLES ─── */}
+      <section data-section-label="Praxisbeispiele" className="section-padding" style={{ background: '#FAFAF9' }}>
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-heading font-bold" style={{ color: INK }}>
               Praxisbeispiele aus dem Unternehmensalltag
             </h2>
+          </motion.div>
 
-            <div className="space-y-3">
-              {practiceExamples.map((example, index) => (
-                <motion.div
-                  key={index}
-                  className="group"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  viewport={{ once: true }}
+          <div className="max-w-3xl mx-auto space-y-2">
+            {practiceExamples.map((ex, i) => (
+              <motion.div
+                key={i}
+                className="bg-white rounded-xl overflow-hidden"
+                style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 3px rgba(12,18,16,0.05)' }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                viewport={{ once: true }}
+              >
+                <button
+                  onClick={() => toggleAccordion(i)}
+                  className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors duration-200 min-h-[56px]"
+                  aria-expanded={openAccordion === i}
                 >
-                  <motion.button
-                    onClick={() => toggleExample(index)}
-                    className="w-full flex items-center justify-between py-5 text-left border-b border-dark-200 hover:border-primary-500/50 transition-all duration-300 rounded-lg"
-                    whileHover={{ x: 8 }}
-                  >
-                    <span className="text-lg font-heading font-bold text-light-100 flex items-center">
-                      <motion.div
-                        animate={{ rotate: openExample === index ? 180 : 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="mr-4"
-                      >
-                        <ChevronDown className="text-primary-500" size={24} />
-                      </motion.div>
-                      <span className="text-primary-500 mr-3">{example.icon}</span>
-                      {example.title}
-                    </span>
-                  </motion.button>
+                  <span className="font-heading font-semibold flex items-center gap-3 pr-4" style={{ color: INK }}>
+                    {ex.icon}
+                    {ex.title}
+                  </span>
                   <motion.div
-                    initial={false}
-                    animate={{
-                      height: openExample === index ? 'auto' : 0,
-                      opacity: openExample === index ? 1 : 0
-                    }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    className="overflow-hidden"
+                    animate={{ rotate: openAccordion === i ? 180 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="flex-shrink-0"
                   >
-                    <div className="py-6 pl-12 space-y-6">
-                      <div>
-                        <p className="text-light-100 font-bold mb-2 text-base">Vorher:</p>
-                        <p className="text-light-200 text-sm leading-relaxed">{example.vorher}</p>
-                      </div>
-                      <div>
-                        <p className="text-light-100 font-bold mb-2 text-base">Nachher:</p>
-                        <p className="text-light-200 text-sm leading-relaxed">{example.nachher}</p>
-                      </div>
-                      <div>
-                        <p className="text-light-100 font-bold mb-2 text-base">Ergebnis:</p>
-                        <p className="text-light-100 font-bold border-l-4 border-primary-500 pl-3 text-sm leading-relaxed">{example.ergebnis}</p>
-                      </div>
-                    </div>
+                    <ChevronDown size={20} style={{ color: PETROL }} />
                   </motion.div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES SECTION */}
-      <section data-section-label="Umsetzung" className="section-padding bg-dark-400 relative">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden />
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-3xl md:text-4xl font-heading font-bold mb-16 text-light-100 text-center">
-              Was wir <span className="text-primary-500">konkret umsetzen</span>
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                "KI-Chatbots (digitale Kundenassistenz)",
-                "KI-Telefonassistent",
-                "Automatisierungen (Anfragen, Vertrieb & Terminplanung)",
-                "Webseiten",
-                "SEO: Top 3 in Google",
-                "CRM-Systeme (Lead-Management & Kundenverwaltung)"
-              ].map((service, index) => (
+                </button>
                 <motion.div
-                  key={index}
-                  className="flex items-center rounded-xl bg-dark-500/90 p-5 border border-dark-200 shadow-card hover:border-primary-500/50 hover:bg-dark-400 hover:shadow-card-hover transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ x: 8 }}
+                  initial={false}
+                  animate={{ height: openAccordion === i ? 'auto' : 0, opacity: openAccordion === i ? 1 : 0 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className="overflow-hidden"
                 >
-                  <CheckCircle className="text-primary-500 mr-4 flex-shrink-0" size={24} />
-                  <p className="text-light-100 font-heading font-bold">{service}</p>
+                  <div className="px-5 pb-5 space-y-4" style={{ borderTop: `1px solid ${BORDER}`, paddingTop: '1rem' }}>
+                    <div>
+                      <p className="font-semibold mb-1 text-sm" style={{ color: INK }}>Vorher:</p>
+                      <p className="text-sm leading-relaxed" style={{ color: BODY }}>{ex.vorher}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-1 text-sm" style={{ color: INK }}>Nachher:</p>
+                      <p className="text-sm leading-relaxed" style={{ color: BODY }}>{ex.nachher}</p>
+                    </div>
+                    <div className="pl-3" style={{ borderLeft: `4px solid ${PETROL}` }}>
+                      <p className="font-semibold mb-1 text-sm" style={{ color: INK }}>Ergebnis:</p>
+                      <p className="font-medium text-sm leading-relaxed" style={{ color: INK }}>{ex.ergebnis}</p>
+                    </div>
+                  </div>
                 </motion.div>
-              ))}
-            </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* PROCESS SECTION */}
-      <section data-section-label="Ablauf" className="section-padding bg-dark-400 relative">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden />
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-20 text-light-100 text-center">
+      {/* ─── PROCESS ─── */}
+      <section data-section-label="Ablauf" className="section-padding" style={{ background: SURFACE }}>
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="text-center mb-14"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-heading font-bold" style={{ color: INK }}>
               So läuft die Zusammenarbeit mit Pixel Kraftwerk ab
             </h2>
+          </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-              {[
-                { num: "01", title: "Erstgespräch", desc: "Ziele und Potenziale klären" },
-                { num: "02", title: "Planung", desc: "Individuelles Konzept entwickeln" },
-                { num: "03", title: "Umsetzung", desc: "Saubere technische Integration" },
-                { num: "04", title: "Betreuung", desc: "Langfristige Unterstützung" }
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  className="group"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    transition={{ duration: 0.3 }}
-                    className="h-full"
-                  >
-                    <div className="text-primary-500 mb-5 group-hover:scale-110 transition-transform duration-300">
-                      <div className="text-5xl font-heading font-bold mb-2">{step.num}</div>
-                      <div className="h-1 w-16 bg-primary-500"></div>
-                    </div>
-                    <h3 className="text-xl font-heading font-bold text-light-100 mb-3">
-                      {step.title}
-                    </h3>
-                    <p className="text-light-200 text-base leading-relaxed">
-                      {step.desc}
-                    </p>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
+            {[
+              { num: '01', title: 'Erstgespräch', desc: 'Ziele und Potenziale klären – kostenlos und unverbindlich.' },
+              { num: '02', title: 'Planung', desc: 'Individuelles Konzept entwickeln, passend zu Ihrem Betrieb.' },
+              { num: '03', title: 'Umsetzung', desc: 'Saubere technische Integration in Ihre bestehenden Systeme.' },
+              { num: '04', title: 'Betreuung', desc: 'Langfristige Unterstützung und Optimierung im Betrieb.' },
+            ].map((step, i) => (
+              <motion.div
+                key={step.num}
+                className="bg-white rounded-2xl p-6"
+                style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 3px rgba(12,18,16,0.05)' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="text-3xl font-heading font-bold mb-2" style={{ color: PETROL }}>{step.num}</div>
+                <div className="h-0.5 w-8 mb-4 rounded-full" style={{ background: PETROL }} />
+                <h3 className="font-heading font-bold text-base mb-2" style={{ color: INK }}>{step.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: MUTED }}>{step.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* FINAL CTA SECTION */}
-      <section data-section-label="Jetzt anfragen" className="section-padding bg-gradient-to-b from-dark-500 via-dark-500 to-primary-500/10 relative overflow-hidden">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
-        <div className="container mx-auto px-6 md:px-12 relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-10 text-light-100">
-              Jetzt unverbindlich anfragen – wir melden uns innerhalb von 24 Stunden
+      {/* ─── TEAM / REGION ─── */}
+      <section data-section-label="Über uns" className="section-padding" style={{ background: '#FAFAF9' }}>
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="text-center mb-14"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <p className="font-semibold text-sm tracking-wide uppercase mb-3" style={{ color: PETROL }}>
+              Verwurzelt in Groitzsch &amp; Leipzig
+            </p>
+            <h2 className="font-heading font-bold mb-4" style={{ color: INK }}>
+              Menschen aus der Region,<br />keine anonyme Agentur
             </h2>
+            <p className="text-lg max-w-xl mx-auto" style={{ color: MUTED }}>
+              Wir sitzen nicht in einem fernen Großraumbüro, sondern direkt bei Ihnen um die Ecke. Bei uns sprechen Sie immer mit denselben zwei Ansprechpartnern – persönlich und auf Augenhöhe.
+            </p>
+          </motion.div>
 
-            <motion.button
-              onClick={scrollToContactForm}
-              className="inline-flex items-center px-10 py-4 rounded-xl bg-primary-500 text-dark-500 font-heading font-bold text-lg shadow-lg shadow-primary-500/20 hover:bg-primary-400 hover:shadow-primary-glow transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-500 min-h-[44px]"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-10">
+            {[
+              { initials: 'LF', name: 'Lukas Franke', role: 'Mitgründer · Beratung & Strategie', desc: 'Ihr Ansprechpartner fürs Erstgespräch. Erklärt Technik so, dass sie jeder versteht.' },
+              { initials: 'JB', name: 'John Brause', role: 'Mitgründer · Technik & Umsetzung', desc: 'Sorgt dafür, dass alles reibungslos läuft – von der Website bis zum Telefonassistenten.' },
+            ].map((p, i) => (
+              <motion.div
+                key={p.name}
+                className="bg-white rounded-2xl p-6 text-center"
+                style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 3px rgba(12,18,16,0.05)' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.12 }}
+                viewport={{ once: true }}
+              >
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: '#C4E5E1' }}>
+                  <span className="font-heading font-bold text-xl" style={{ color: PETROL_DARK }}>{p.initials}</span>
+                </div>
+                <h3 className="font-heading font-bold text-base mb-0.5" style={{ color: INK }}>{p.name}</h3>
+                <p className="text-xs font-semibold mb-3" style={{ color: PETROL }}>{p.role}</p>
+                <p className="text-sm leading-relaxed" style={{ color: MUTED }}>{p.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Google Trust */}
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            viewport={{ once: true }}
+          >
+            <a
+              href={businessInfo.socialMedia.googleReview}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border bg-white hover:opacity-80 transition-opacity"
+              style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 3px rgba(12,18,16,0.05)' }}
             >
-              <ArrowRight className="mr-2" size={24} />
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={16} fill={PETROL} color={PETROL} />
+                ))}
+              </div>
+              <div className="text-left">
+                <p className="text-sm font-heading font-bold" style={{ color: INK }}>5,0 auf Google</p>
+                <p className="text-xs" style={{ color: MUTED }}>Bewertungen ansehen →</p>
+              </div>
+            </a>
+          </motion.div>
+
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <a
+              href="/ueber-uns"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm border transition-all duration-200"
+              style={{ color: INK, borderColor: BORDER, background: 'white' }}
+            >
+              Mehr über uns erfahren
+              <ArrowRight size={16} />
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── CTA BAND ─── */}
+      <section data-section-label="Jetzt anfragen" className="section-padding" style={{ background: '#0B1512' }}>
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-heading font-bold mb-4" style={{ color: '#E7F4F2' }}>
+              Jetzt unverbindlich anfragen
+            </h2>
+            <p className="text-lg mb-10" style={{ color: 'rgba(231,244,242,0.75)' }}>
+              Wir melden uns innerhalb von 24 Stunden – kein Spam, kein Druck.
+            </p>
+            <motion.button
+              onClick={scrollToContact}
+              className="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-heading font-bold text-base transition-all duration-200 min-h-[48px]"
+              style={{ background: PETROL, color: '#FAFAF9' }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <ArrowRight size={20} />
               Jetzt unverbindlich anfragen
             </motion.button>
           </div>
         </div>
       </section>
 
-      {/* FAQ SECTION */}
-      <section id="faq" data-section-label="FAQ" className="section-padding bg-dark-400 relative">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden />
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-3xl md:text-4xl font-heading font-bold mb-12 text-light-100 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+      {/* ─── FAQ ─── */}
+      <section id="faq" data-section-label="FAQ" className="section-padding" style={{ background: SURFACE }}>
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-heading font-bold" style={{ color: INK }}>
               Häufige Fragen
-            </motion.h2>
+            </h2>
+          </motion.div>
 
-            <div className="space-y-4">
-              {[
-                {
-                  q: 'Für welche Unternehmen sind eure Lösungen gedacht?',
-                  a: 'Wir arbeiten vor allem mit kleinen und mittelständischen Unternehmen in der Region Leipzig und Mitteldeutschland – Handwerksbetriebe, Praxen, Dienstleister, Agenturen und lokale Händler. Überall dort, wo wiederkehrende Aufgaben den Arbeitsalltag belasten.',
-                },
-                {
-                  q: 'Wie läuft die Zusammenarbeit ab?',
-                  a: 'Wir starten mit einem kostenlosen Erstgespräch, in dem wir Ihre Situation analysieren. Danach erstellen wir ein individuelles Konzept, setzen die Lösung um und bleiben für Optimierung und Betreuung an Ihrer Seite. Keine Standardlösungen von der Stange.',
-                },
-                {
-                  q: 'Was kostet das?',
-                  a: 'Die Kosten hängen vom Umfang ab. Wir arbeiten mit transparenten Preismodellen – kein Kleingedrucktes, keine versteckten Kosten. Im Erstgespräch klären wir den Bedarf und Sie erhalten ein konkretes Angebot, bevor wir starten.',
-                },
-                {
-                  q: 'Muss ich meine bestehenden Systeme komplett umstellen?',
-                  a: 'Nein. Wir arbeiten bevorzugt mit den Tools, die bei Ihnen bereits laufen – ob CRM, Kalender, Branchensoftware oder E-Mail. Unsere Lösungen ergänzen Ihre Infrastruktur, statt alles neu aufzubauen.',
-                },
-                {
-                  q: 'Wie schnell kann eine Lösung live gehen?',
-                  a: 'Je nach Komplexität zwischen wenigen Tagen und einigen Wochen. Ein klar abgegrenztes erstes Projekt (z.B. ein Chatbot oder eine automatische Terminbuchung) kann oft schon in der ersten Woche Ergebnisse liefern.',
-                },
-                {
-                  q: 'Betreut ihr auch Unternehmen außerhalb von Leipzig?',
-                  a: 'Ja. Unser Sitz ist in Groitzsch bei Leipzig, aber wir betreuen Unternehmen in der gesamten Region – von Halle über Chemnitz bis Jena. Persönliche Treffen sind genauso möglich wie Zusammenarbeit per Videocall.',
-                },
-                {
-                  q: 'Was unterscheidet euch von anderen Agenturen?',
-                  a: 'Wir liefern keine PowerPoint-Präsentationen, sondern funktionierende Systeme. Als Software-Entwickler mit KI-Fokus setzen wir Lösungen selbst um – von der Planung bis zur Integration. Keine Subunternehmer, keine Blackbox.',
-                },
-                {
-                  q: 'Bietet ihr laufende Betreuung an?',
-                  a: 'Ja, und für die meisten Kunden ist das sinnvoll. Automatisierungen brauchen Feintuning, wenn sich Abläufe ändern. Wir bieten Betreuungspakete mit regelmäßiger Optimierung, Anpassungen und technischem Support.',
-                },
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-dark-400 border border-dark-200/70 rounded-xl overflow-hidden"
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  viewport={{ once: true }}
+          <div className="max-w-3xl mx-auto space-y-2">
+            {faqs.map((faq, i) => (
+              <motion.div
+                key={i}
+                className="bg-white rounded-xl overflow-hidden"
+                style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 3px rgba(12,18,16,0.04)' }}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.04 }}
+                viewport={{ once: true }}
+              >
+                <button
+                  onClick={() => toggleAccordion(i + 100)}
+                  className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors duration-200 min-h-[56px]"
+                  aria-expanded={openAccordion === i + 100}
                 >
-                  <button
-                    onClick={() => toggleExample(index + 100)}
-                    className="w-full flex items-center justify-between p-5 text-left hover:bg-dark-300/50 transition-colors duration-200"
-                  >
-                    <span className="text-base font-heading font-bold text-light-100 pr-4">{faq.q}</span>
-                    <motion.div
-                      animate={{ rotate: openExample === index + 100 ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="flex-shrink-0"
-                    >
-                      <ChevronDown className="text-primary-500" size={20} />
-                    </motion.div>
-                  </button>
+                  <span className="text-sm font-heading font-semibold pr-4" style={{ color: INK }}>{faq.q}</span>
                   <motion.div
-                    initial={false}
-                    animate={{
-                      height: openExample === index + 100 ? 'auto' : 0,
-                      opacity: openExample === index + 100 ? 1 : 0,
-                    }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    className="overflow-hidden"
+                    animate={{ rotate: openAccordion === i + 100 ? 180 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="flex-shrink-0"
                   >
-                    <p className="px-5 pb-5 text-light-200 text-sm leading-relaxed">{faq.a}</p>
+                    <ChevronDown size={18} style={{ color: PETROL }} />
                   </motion.div>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{ height: openAccordion === i + 100 ? 'auto' : 0, opacity: openAccordion === i + 100 ? 1 : 0 }}
+                  transition={{ duration: 0.28, ease: 'easeInOut' }}
+                  className="overflow-hidden"
+                >
+                  <p className="px-5 pb-5 text-sm leading-relaxed" style={{ borderTop: `1px solid ${BORDER}`, paddingTop: '1rem', color: MUTED }}>{faq.a}</p>
                 </motion.div>
-              ))}
-            </div>
-
-            <p className="text-center mt-8 text-light-300 text-sm">
-              Noch mehr Antworten finden Sie auf unserer{' '}
-              <a href="/haeufige-fragen" className="text-primary-400 hover:underline font-heading font-bold">FAQ-Seite</a>.
-            </p>
+              </motion.div>
+            ))}
           </div>
+
+          <p className="text-center mt-8 text-sm" style={{ color: MUTED }}>
+            Noch mehr Antworten finden Sie auf unserer{' '}
+            <a href="/haeufige-fragen" className="font-semibold hover:underline" style={{ color: PETROL }}>FAQ-Seite</a>.
+          </p>
         </div>
       </section>
 
-      {/* CONTACT FORM */}
-      <ContactForm />
+      {/* ─── CONTACT ─── */}
+      <section data-section-label="Kontakt" className="section-padding" style={{ background: '#FAFAF9' }}>
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="text-center mb-14"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-heading font-bold mb-4" style={{ color: INK }}>
+              Lassen Sie uns unverbindlich sprechen
+            </h2>
+            <p className="text-lg max-w-xl mx-auto mb-10" style={{ color: MUTED }}>
+              Erzählen Sie uns kurz, wo bei Ihnen der Schuh drückt. Wir melden uns zeitnah und vereinbaren ein kostenloses Erstgespräch – ganz ohne Verpflichtung.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm mb-4" style={{ color: BODY }}>
+              <a href="tel:+491785844460" className="flex items-center gap-2 hover:underline" style={{ color: BODY }}>
+                <Phone size={16} style={{ color: PETROL }} />
+                {businessInfo.contact.telephone}
+              </a>
+              <a href={`mailto:${businessInfo.contact.email}`} className="flex items-center gap-2 hover:underline" style={{ color: BODY }}>
+                <Mail size={16} style={{ color: PETROL }} />
+                {businessInfo.contact.email}
+              </a>
+              <span className="flex items-center gap-2">
+                <Clock size={16} style={{ color: PETROL }} />
+                {businessInfo.openingHoursDisplay}
+              </span>
+            </div>
+            <p className="flex items-center justify-center gap-1.5 text-xs" style={{ color: MUTED }}>
+              <MapPin size={13} style={{ color: PETROL }} />
+              {businessInfo.address.streetAddress}, {businessInfo.address.postalCode} {businessInfo.address.addressLocality}
+            </p>
+          </motion.div>
+        </div>
+        <ContactForm />
+      </section>
 
-      {/* GOOGLE MAPS */}
       <GoogleMapsSection />
     </div>
   );

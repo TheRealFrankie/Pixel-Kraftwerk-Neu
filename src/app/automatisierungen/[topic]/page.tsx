@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const globalRoute = getGlobalRoutePrefix(SERVICE_SLUG);
   return {
-    title: { absolute: buildGlobalSubpageMetaTitle(subpageDef) },
+    title: buildGlobalSubpageMetaTitle(subpageDef),
     description: content.metaDescription,
     alternates: { canonical: `${baseUrl}${globalRoute}/${topic}` },
   };

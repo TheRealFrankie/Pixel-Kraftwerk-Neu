@@ -23,12 +23,14 @@ import BreadcrumbSchema from '../../components/BreadcrumbSchema';
 import BreadcrumbSchemaRegionService from '../../components/BreadcrumbSchemaRegionService';
 import LocalBusinessSchema from '../../components/LocalBusinessSchema';
 import BreadcrumbNav from '../../components/BreadcrumbNav';
+import TrustLine from '../../components/TrustLine';
+import StickyCtaBar from '../../components/StickyCtaBar';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
 import VorherNachherSection from '../../components/VorherNachherSection';
 import WieFunktioniertEsSection from '../../components/WieFunktioniertEsSection';
 import { getRegionServiceContent } from '../../data/regionServiceContent';
 import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
-import { getRegionServiceLinkText } from '../../data/services';
+import { getRegionServiceLinkText, SERVICE_TITLE_KEYWORDS } from '../../data/services';
 import SubpageLinksBlock from '../../components/SubpageLinksBlock';
 import HeroScrollIndicator from '../../components/HeroScrollIndicator';
 import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
@@ -123,7 +125,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
 
   return (
     <>
-      <div className="bg-dark-500">
+      <div style={{ background: '#FAFAF9' }}>
         <LocalBusinessSchema
           pageType="service"
           customDescription={isRegional
@@ -161,187 +163,78 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
           />
         )}
       {/* Hero – Premium zweispaltig */}
-      <section id="lokale-sichtbarkeit-ausbauen" className="relative min-h-screen flex items-center bg-dark-500 pt-16 pb-0 md:pt-20 overflow-hidden">
-        {/* Subtile radiale Hintergrundaufhellung */}
-        <div className="absolute top-0 inset-x-0 h-[560px] bg-gradient-radial-subtle pointer-events-none" aria-hidden />
-
-        <div className="container mx-auto px-4">
-          <div className="mb-5">
-            <BreadcrumbNav items={isRegional ? [
-              { label: 'Startseite', href: '/' },
-              { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
-              { label: regionName, href: regionUrl },
-              { label: 'SEO Top 3' },
-            ] : [
-              { label: 'Startseite', href: '/' },
-              { label: 'Leistungen', href: '/leistungen' },
-              { label: 'SEO: Top 3 in Google' },
-            ]} />
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center pb-10 lg:pb-14">
-            {/* LINKS: Inhalt & CTA */}
-            <div className="flex flex-col">
-              {/* Eyebrow-Label */}
-              <motion.div
-                className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-500/10 border border-primary-500/25 rounded-full text-primary-400 text-xs font-mono tracking-widest uppercase mb-4 w-fit"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 animate-pulse" aria-hidden />
-                {isRegional ? `Local SEO für ${regionName}` : (
-                  <>Local SEO für<span className="sr-only"> Leipzig &amp; Groitzsch</span></>
-                )}
+      {/* HERO */}
+      <section
+        id="lokale-sichtbarkeit-ausbauen"
+        className="relative h-screen flex flex-col overflow-hidden"
+        style={{ background: '#FAFAF9' }}
+      >
+        <div className="absolute inset-0">
+          <Image
+            src="/images/seo-top3-in-google.webp"
+            alt="SEO Top 3 in Google – Suchmaschinenoptimierung"
+            fill
+            className="object-cover object-right"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(250,250,249,0.97) 0%, rgba(250,250,249,0.88) 38%, rgba(250,250,249,0.3) 65%, rgba(250,250,249,0.0) 80%)' }} aria-hidden />
+        </div>
+        <div className="relative z-20 container mx-auto px-4 md:px-8 pt-20 md:pt-24">
+          <BreadcrumbNav items={isRegional ? [
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
+            { label: regionName!, href: regionUrl },
+            { label: 'SEO: Top 3 in Google' },
+          ] : [
+            { label: 'Startseite', href: '/' },
+            { label: 'Leistungen', href: '/leistungen' },
+            { label: 'SEO: Top 3 in Google' },
+          ]} />
+        </div>
+        <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+            <div>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-5">
+                <span className="pill-badge"><Search size={12} /> SEO: Top 3 in Google</span>
               </motion.div>
-
-              <motion.h1
-                className="text-2xl sm:text-3xl md:text-[2rem] xl:text-[2.4rem] font-heading font-bold text-light-100 leading-[1.15] mb-4"
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-              >
-                {isRegional
-                  ? <>SEO Top 3 in Google <span className="text-primary-400 whitespace-nowrap">{regionName}</span></>
-                  : <>Bringen Sie Ihr Unternehmen <span className="text-primary-400 whitespace-nowrap">in die Top&nbsp;3 bei Google</span></>}
+              <motion.h1 className="font-heading font-bold tracking-tight mb-4 leading-[1.08]" style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.6 }}>
+                {isRegional ? `SEO-Agentur in ${regionName}` : 'SEO-Agentur Groitzsch & Leipzig'}
               </motion.h1>
-
-              {/* Subheadline */}
-              <motion.p
-                className="text-light-300 text-sm md:text-base leading-relaxed mb-5 max-w-[520px]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-              >
+              <motion.h2 className="text-base max-w-xl mb-3 leading-relaxed font-semibold" style={{ color: '#0E7C72' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                {SERVICE_TITLE_KEYWORDS['seo-top-3']}
+              </motion.h2>
+              <motion.p className="text-lg mb-3 max-w-xl leading-relaxed" style={{ color: '#0E7C72', fontWeight: 600 }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>
                 {regionContent?.localHook || 'Wenn Ihr Unternehmen dort nicht erscheint, gehen Anfragen direkt an Ihre Konkurrenz.'}
               </motion.p>
-
-              {/* Primärer CTA */}
-              <motion.div
-                className="mb-4"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-              >
-                <button
-                  onClick={scrollToContact}
-                  className="inline-flex items-center gap-2 px-7 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-base rounded-lg hover:bg-primary-400 transition-all duration-300 shadow-primary-glow hover:shadow-primary-glow-lg group"
-                >
-                  Kostenlose SEO-Analyse für Ihr Unternehmen
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
-                </button>
-              </motion.div>
-
-              {/* Trust-Zeile */}
-              <motion.p
-                className="text-light-200 text-sm tracking-wide mb-5"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.45 }}
-              >
-                Unverbindlich&nbsp;•&nbsp;lokal fokussiert&nbsp;•&nbsp;verständlich erklärt
+              <motion.p className="text-base max-w-xl mb-6 leading-relaxed" style={{ color: '#404B48' }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+                Lokales SEO mit Fokus auf Top-Platzierungen für die Suchbegriffe, die Ihnen wirklich Kunden bringen – mit klarer Strategie und transparenten Ergebnissen.
               </motion.p>
-
-              {/* 3 Benefit-Bullets */}
-              <motion.ul
-                className="flex flex-col gap-3"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.55 }}
-                aria-label="Vorteile"
-              >
-                {[
-                  'Mehr Anfragen statt nur Rankings',
-                  'Sichtbarkeit bei relevanten Suchbegriffen',
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-2.5">
-                    <CheckCircle className="text-primary-500 flex-shrink-0" size={15} />
-                    <span className="text-light-200 text-sm">{item}</span>
-                  </li>
-                ))}
-                <li className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-red-500 border border-red-600 mt-1">
-                  <XCircle className="text-black flex-shrink-0" size={15} />
-                  <span className="text-black text-sm font-black">Nicht in den Top&nbsp;3? Dann sind Sie quasi unsichtbar.</span>
-                </li>
-              </motion.ul>
+              <motion.div className="flex flex-col sm:flex-row gap-3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }}>
+                <button onClick={scrollToContact} className="btn-primary">
+                  Kostenlose SEO-Analyse anfragen
+                  <ArrowRight size={18} />
+                </button>
+                <a href="tel:+491785844460" className="btn-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Jetzt anrufen
+                </a>
+              </motion.div>
+              <TrustLine className="mt-5" />
             </div>
-
-            {/* RECHTS: Premium-Visual mit schwebenden Badges */}
-            <motion.div
-              className="relative flex items-center justify-center lg:pl-4"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 0.25 }}
-            >
-              {/* Badge oben links: Top 3 sichtbar */}
-              <motion.div
-                className="absolute -top-4 left-2 z-20 flex items-center gap-2 px-3 py-2 bg-dark-300 border border-primary-500/40 rounded-xl shadow-primary-glow"
-                initial={{ opacity: 0, y: -12, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-                aria-hidden
-              >
-                <TrendingUp className="text-primary-400 flex-shrink-0" size={13} />
-                <span className="text-primary-300 text-xs font-semibold whitespace-nowrap">Top 3 sichtbar</span>
-              </motion.div>
-
-              {/* Haupt-Bild-Container */}
-              <div className="relative w-full rounded-2xl overflow-hidden border border-white/[0.06] shadow-[0_32px_80px_-12px_rgba(0,0,0,0.8),0_0_48px_-12px_rgba(0,179,166,0.12)] bg-dark-300 max-h-[340px] lg:max-h-[400px]">
-                {/* Subtiler Gradient-Overlay für Premium-Tiefe */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/5 via-transparent to-transparent pointer-events-none z-10" aria-hidden />
-                {/* Unten auslaufender Verlauf für saubere Unterkante */}
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-dark-300/95 to-transparent pointer-events-none z-10" aria-hidden />
-                <Image
-                  src="/images/seo-top3-in-google.webp"
-                  alt="Google Suchergebnisse mit Top-3-Platzierung für lokale Unternehmen in Leipzig"
-                  width={700}
-                  height={480}
-                  className="w-full h-full object-cover object-top"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-
-              {/* Badge unten rechts: Google Maps */}
-              <motion.div
-                className="absolute bottom-5 -right-2 z-20 flex items-center gap-2 px-3 py-2 bg-dark-300 border border-dark-100 rounded-xl shadow-card"
-                initial={{ opacity: 0, x: 12, scale: 0.9 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                transition={{ duration: 0.5, delay: 1.05 }}
-                aria-hidden
-              >
-                <MapPin className="text-primary-400 flex-shrink-0" size={13} />
-                <span className="text-light-200 text-xs font-semibold whitespace-nowrap">Google Maps Fokus</span>
-              </motion.div>
-
-              {/* Badge unten links: mehr Anfragen */}
-              <motion.div
-                className="absolute bottom-5 left-4 z-20 flex items-center gap-2 px-3 py-2 bg-dark-300 border border-dark-100 rounded-xl shadow-card"
-                initial={{ opacity: 0, y: 12, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.5, delay: 1.15 }}
-                aria-hidden
-              >
-                <Search className="text-primary-400 flex-shrink-0" size={13} />
-                <span className="text-light-200 text-xs font-semibold whitespace-nowrap">+&nbsp;mehr lokale Anfragen</span>
-              </motion.div>
-            </motion.div>
+            <div className="hidden lg:block" aria-hidden />
           </div>
         </div>
-
-        <HeroScrollIndicator />
-        {/* Trennlinie zum nächsten Abschnitt */}
-        <div className="h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden />
       </section>
 
       <VorherNachherSection />
 
-      <section className="py-20 bg-dark-400" aria-labelledby="top3-bedeutung-heading">
+      <section className="py-20" style={{ background: '#F4F7F6' }} aria-labelledby="top3-bedeutung-heading">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <motion.h2
               id="top3-bedeutung-heading"
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-10"
+              className="text-2xl md:text-3xl font-heading font-bold mb-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -411,15 +304,15 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
               <ul className="space-y-2 pl-0 list-none">
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 mt-1.5" aria-hidden />
-                  <span><strong className="text-light-100">lokale Relevanz</strong></span>
+                  <span><strong className="style={{ color: '#0C1210' }}">lokale Relevanz</strong></span>
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 mt-1.5" aria-hidden />
-                  <span><strong className="text-light-100">Vertrauen und Bewertungen</strong></span>
+                  <span><strong className="style={{ color: '#0C1210' }}">Vertrauen und Bewertungen</strong></span>
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 mt-1.5" aria-hidden />
-                  <span><strong className="text-light-100">starke regionale Signale</strong></span>
+                  <span><strong className="style={{ color: '#0C1210' }}">starke regionale Signale</strong></span>
                 </li>
               </ul>
             </motion.div>
@@ -427,12 +320,12 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
         </div>
       </section>
 
-      <section className="py-20 bg-dark-500" aria-labelledby="top3-veraendert-heading">
+      <section className="py-20" style={{ background: '#FAFAF9' }} aria-labelledby="top3-veraendert-heading">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <motion.h2
               id="top3-veraendert-heading"
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-10"
+              className="text-2xl md:text-3xl font-heading font-bold mb-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -465,16 +358,16 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                 </li>
               </ul>
               <p>
-                Für viele lokale Betriebe wird SEO dadurch zu einem <strong className="text-light-100">Planbarkeits-Hebel</strong>:
+                Für viele lokale Betriebe wird SEO dadurch zu einem <strong className="style={{ color: '#0C1210' }}">Planbarkeits-Hebel</strong>:
               </p>
-              <div className="rounded-xl bg-dark-400 border border-primary-500/20 px-5 py-4 flex flex-wrap items-center gap-2 font-heading font-bold text-light-100">
+              <div className="rounded-xl bg-white border border-primary-500/20 px-5 py-4 flex flex-wrap items-center gap-2 font-heading font-bold text-light-100 shadow-card">
                 <span>Mehr Sichtbarkeit</span>
                 <span className="text-primary-400" aria-hidden>→</span>
                 <span>mehr Anfragen</span>
                 <span className="text-primary-400" aria-hidden>→</span>
                 <span>mehr Aufträge.</span>
               </div>
-              <p className="text-light-200">
+              <p className="">
                 Gerade für Dienstleister und Handwerksbetriebe kann eine gute Platzierung bei Google den Unterschied machen zwischen gelegentlichen Anfragen und einem konstanten Strom neuer Kunden.
               </p>
             </motion.div>
@@ -484,7 +377,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
 
       <WieFunktioniertEsSection onCtaClick={scrollToContact} ctaLabel="Finden Ihre Kunden Sie bei Google? Jetzt prüfen." />
 
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -495,24 +388,24 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
               viewport={{ once: true }}
             >
               <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">Kommt Ihnen das bekannt vor?</p>
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-3">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-3">
                 Wer online nicht gefunden wird,<br className="hidden md:block" /> verliert Aufträge – täglich.
               </h2>
-              <p className="text-light-300 text-sm max-w-xl mx-auto">Diese Situationen kennen viele lokale Unternehmen.</p>
+              <p className=" text-sm max-w-xl mx-auto">Diese Situationen kennen viele lokale Unternehmen.</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {problems.map((problem, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-start bg-dark-500 p-5 rounded-xl border border-dark-200 hover:border-red-500/20 transition-colors duration-300"
+                  className="flex items-start bg-white p-5 rounded-xl border border-dark-200 hover:border-red-500/20 transition-colors duration-300 shadow-card"
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
                   viewport={{ once: true }}
                 >
                   <XCircle className="text-red-400 mr-4 mt-0.5 flex-shrink-0" size={18} />
-                  <p className="text-light-200 text-sm leading-relaxed">{problem}</p>
+                  <p className=" text-sm leading-relaxed">{problem}</p>
                 </motion.div>
               ))}
             </div>
@@ -521,7 +414,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
       </section>
 
       {/* Was Sie bekommen */}
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -532,40 +425,40 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
               viewport={{ once: true }}
             >
               <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">Das Angebot</p>
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-3">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-3">
                 Was Sie <span className="text-primary-500">bekommen</span>
               </h2>
-              <p className="text-light-300 max-w-2xl mx-auto text-sm">Unser SEO-Angebot und der Nutzen für Sie – kompakt.</p>
+              <p className=" max-w-2xl mx-auto text-sm">Unser SEO-Angebot und der Nutzen für Sie – kompakt.</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-10">
               {offerBullets.map((item, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-start bg-dark-400 p-4 rounded-xl border border-dark-200 hover:border-primary-500/20 transition-colors duration-300"
+                  className="flex items-start bg-white p-4 rounded-xl border border-dark-200 hover:border-primary-500/20 transition-colors duration-300 shadow-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   viewport={{ once: true }}
                 >
                   <CheckCircle className="text-primary-500 mr-3 mt-0.5 flex-shrink-0" size={16} />
-                  <p className="text-light-200 text-sm leading-relaxed">{item}</p>
+                  <p className=" text-sm leading-relaxed">{item}</p>
                 </motion.div>
               ))}
             </div>
 
             <motion.div
-              className="rounded-xl bg-dark-400 border border-primary-500/15 p-6 mb-10"
+              className="rounded-xl bg-white border border-primary-500/15 p-6 mb-10 shadow-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-base font-heading font-bold text-light-100 mb-4">Was das in Kundensprache bedeutet</h3>
+              <h3 className="text-base font-heading font-bold mb-4">Was das in Kundensprache bedeutet</h3>
               <ul className="space-y-3 text-light-200 text-sm">
                 <li className="flex items-start gap-2.5">
                   <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={15} />
-                  <span>Google versteht klar, <strong className="text-light-100">was Sie anbieten</strong> und <strong className="text-light-100">für wen</strong></span>
+                  <span>Google versteht klar, <strong className="style={{ color: '#0C1210' }}">was Sie anbieten</strong> und <strong className="style={{ color: '#0C1210' }}">für wen</strong></span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={15} />
@@ -586,15 +479,15 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={index}
-                  className="bg-dark-400 p-6 rounded-xl border border-dark-200 hover:border-primary-500/20 transition-colors duration-300"
+                  className="bg-white p-6 rounded-xl border border-dark-200 hover:border-primary-500/20 transition-colors duration-300 shadow-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.07 }}
                   viewport={{ once: true }}
                 >
                   <div className="text-primary-500 mb-3 w-10 h-10 rounded-lg bg-primary-500/10 flex items-center justify-center">{benefit.icon}</div>
-                  <h3 className="text-base font-heading font-bold text-light-100 mb-1.5">{benefit.title}</h3>
-                  <p className="text-light-300 text-sm leading-relaxed">{benefit.text}</p>
+                  <h3 className="text-base font-heading font-bold mb-1.5">{benefit.title}</h3>
+                  <p className=" text-sm leading-relaxed">{benefit.text}</p>
                 </motion.div>
               ))}
             </div>
@@ -603,7 +496,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
       </section>
 
       {/* Keywords */}
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <motion.div
@@ -614,10 +507,10 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
               viewport={{ once: true }}
             >
               <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">Keyword-Strategie</p>
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-3">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-3">
                 Wie wir Keywords auswählen
               </h2>
-              <p className="text-light-300 text-sm">Damit es wirklich Kunden bringt – nicht nur Traffic.</p>
+              <p className=" text-sm">Damit es wirklich Kunden bringt – nicht nur Traffic.</p>
             </motion.div>
             <motion.div
               className="space-y-6 text-light-200 text-sm md:text-base leading-relaxed"
@@ -627,9 +520,9 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
               viewport={{ once: true }}
             >
               <p>
-                Viele SEO-Anbieter schießen auf viel Suchvolumen. Wir fokussieren auf Suchbegriffe, die <strong className="text-light-100">zu Aufträgen führen</strong>.
+                Viele SEO-Anbieter schießen auf viel Suchvolumen. Wir fokussieren auf Suchbegriffe, die <strong className="style={{ color: '#0C1210' }}">zu Aufträgen führen</strong>.
               </p>
-              <div className="rounded-xl bg-dark-500 border border-dark-200 p-5">
+              <div className="rounded-xl bg-white border border-dark-200 p-5 shadow-card">
                 <p className="text-light-100 font-semibold text-sm mb-4">Unsere Auswahllogik:</p>
                 <ul className="space-y-3">
                   {[
@@ -640,7 +533,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-sm">
                       <CheckCircle className="text-primary-500 flex-shrink-0 mt-0.5" size={15} />
-                      <span className="text-light-200">{item}</span>
+                      <span className="">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -654,20 +547,20 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
       </section>
 
       {/* Mid-CTA */}
-      <section className="py-20 bg-dark-500">
+      <section className="py-20" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4">
           <motion.div
-            className="max-w-2xl mx-auto rounded-2xl bg-dark-400 border border-primary-500/20 p-8 md:p-10 text-center shadow-card"
+            className="max-w-2xl mx-auto rounded-2xl bg-white border border-primary-500/20 p-8 md:p-10 text-center shadow-card"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-4">Jetzt prüfen lassen</p>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">
               Passt Top 3 in Google zu Ihrem Geschäft?
             </h2>
-            <p className="text-light-300 text-sm md:text-base mb-6 leading-relaxed">
+            <p className=" text-sm md:text-base mb-6 leading-relaxed">
               In einer kurzen Analyse schauen wir, für welche Suchbegriffe sich SEO bei Ihnen wirklich lohnt – und wo die Konkurrenz schon zu stark ist.
             </p>
             <button
@@ -683,7 +576,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
       </section>
 
       {/* 3 Hebel */}
-      <section className="py-20 bg-dark-400">
+      <section className="py-20" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -694,10 +587,10 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
               viewport={{ once: true }}
             >
               <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">Die 3 Hebel</p>
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-3">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-3">
                 Was in den Top 3 wirklich zählt
               </h2>
-              <p className="text-light-300 text-sm">Damit Google Sie oben zeigt, braucht es vor allem:</p>
+              <p className=" text-sm">Damit Google Sie oben zeigt, braucht es vor allem:</p>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
@@ -719,27 +612,27 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
               ].map((item, index) => (
                 <motion.div
                   key={item.num}
-                  className="bg-dark-500 p-6 rounded-xl border border-dark-200 hover:border-primary-500/20 transition-colors duration-300"
+                  className="bg-white p-6 rounded-xl border border-dark-200 hover:border-primary-500/20 transition-colors duration-300 shadow-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
                   viewport={{ once: true }}
                 >
                   <span className="text-primary-500/40 font-mono font-bold text-3xl leading-none mb-3 block">{item.num}</span>
-                  <h3 className="text-base font-heading font-bold text-light-100 mb-2">{item.title}</h3>
-                  <p className="text-light-300 text-sm leading-relaxed">{item.text}</p>
+                  <h3 className="text-base font-heading font-bold mb-2">{item.title}</h3>
+                  <p className=" text-sm leading-relaxed">{item.text}</p>
                 </motion.div>
               ))}
             </div>
             <motion.div
-              className="mt-6 rounded-xl bg-dark-500 border border-primary-500/15 px-5 py-4 text-center"
+              className="mt-6 rounded-xl bg-white border border-primary-500/15 px-5 py-4 text-center shadow-card"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.28 }}
               viewport={{ once: true }}
             >
-              <p className="text-light-200 text-sm">
-                Genau diese drei Punkte bildet unser <strong className="text-light-100">90-Tage-Programm</strong> ab.
+              <p className=" text-sm">
+                Genau diese drei Punkte bildet unser <strong className="style={{ color: '#0C1210' }}">90-Tage-Programm</strong> ab.
               </p>
             </motion.div>
           </div>
@@ -747,10 +640,10 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
       </section>
 
       {/* Website-Crosslink Callout */}
-      <section className="py-10 bg-dark-400">
+      <section className="py-10" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <motion.div
-            className="max-w-3xl mx-auto rounded-xl bg-dark-500 border border-dark-200 px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+            className="max-w-3xl mx-auto rounded-xl bg-white border border-dark-200 px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 shadow-card"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -758,11 +651,11 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
           >
             <div className="flex-1 min-w-0">
               <p className="text-light-100 text-sm font-semibold mb-0.5">Starke Rankings brauchen eine starke Website.</p>
-              <p className="text-light-300 text-xs">Ohne saubere technische Basis bremst Ihre Website das SEO aus.</p>
+              <p className=" text-xs">Ohne saubere technische Basis bremst Ihre Website das SEO aus.</p>
             </div>
             <a
               href="/webseite"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-dark-400 border border-primary-500/25 text-primary-400 text-xs font-semibold whitespace-nowrap hover:border-primary-500/50 hover:text-primary-300 transition-all duration-300 flex-shrink-0"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white border border-primary-500/25 text-primary-400 text-xs font-semibold whitespace-nowrap hover:border-primary-500/50 hover:text-primary-300 transition-all duration-300 flex-shrink-0 shadow-card"
             >
               Website im Mietmodell
               <ArrowRight size={13} />
@@ -773,7 +666,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
 
       {/* Lokaler Abschnitt (nur regional) */}
       {isRegional && (
-        <section className="py-20 bg-dark-500">
+        <section className="py-20" style={{ background: '#FAFAF9' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <motion.div
@@ -782,14 +675,14 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
+                <h2 className="text-2xl md:text-3xl font-heading font-bold mb-6">
                   SEO für Unternehmen in {regionName}
                 </h2>
                 {regionContent?.localSection ? (
                   regionContent.localSection.map((p, i) => (
                     <motion.p
                       key={i}
-                      className="text-light-200 text-base md:text-lg leading-relaxed mb-4"
+                      className=" text-base md:text-lg leading-relaxed mb-4"
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -799,7 +692,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                     </motion.p>
                   ))
                 ) : (
-                  <p className="text-light-200 text-base md:text-lg leading-relaxed">
+                  <p className=" text-base md:text-lg leading-relaxed">
                     Als Agentur mit Sitz in Groitzsch kennen wir die Anforderungen von Unternehmen in {regionName} und der Region. Wir wissen, welche Suchbegriffe vor Ort zählen, wie die Konkurrenzsituation aussieht und wie wir Ihre lokale Sichtbarkeit gezielt stärken.
                   </p>
                 )}
@@ -810,7 +703,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
       )}
 
       {/* FAQ */}
-      <section className="py-20 bg-dark-500" aria-labelledby="faq-heading">
+      <section className="py-20" style={{ background: '#F4F7F6' }} aria-labelledby="faq-heading">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -820,8 +713,8 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-3">FAQ</p>
-              <h2 id="faq-heading" className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-3">
+              <p className="text-xs font-mono tracking-widest uppercase mb-3 font-semibold" style={{ color: '#0E7C72' }}>FAQ</p>
+              <h2 id="faq-heading" className="text-2xl md:text-3xl font-heading font-bold mb-3" style={{ color: '#0C1210' }}>
                 {isRegional
                   ? <>FAQ – SEO Top 3 in <span className="text-primary-500">{regionName}</span></>
                   : <>Häufige Fragen zum <span className="text-primary-500">SEO-Angebot</span></>}
@@ -834,7 +727,8 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                 return (
                   <motion.div
                     key={index}
-                    className={`rounded-xl border transition-colors duration-200 ${isOpen ? 'bg-dark-400 border-primary-500/20' : 'bg-dark-400 border-dark-200 hover:border-dark-100'}`}
+                    className="rounded-2xl border bg-white shadow-card transition-all duration-200"
+                    style={{ borderColor: isOpen ? 'rgba(14,124,114,0.3)' : '#E4E9E7' }}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
@@ -843,15 +737,17 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                     <button
                       type="button"
                       onClick={() => setFaqOpenIndex(isOpen ? null : index)}
-                      className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-heading font-bold text-light-100 transition-colors"
+                      className="w-full flex items-center gap-4 px-5 py-4 text-left transition-colors"
                       aria-expanded={isOpen}
                       aria-controls={`faq-answer-${index}`}
                       id={`faq-question-${index}`}
                     >
-                      <span className="text-sm md:text-base">{faq.question}</span>
+                      <div className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm" style={{ background: 'rgba(14,124,114,0.08)', color: '#0E7C72' }}>?</div>
+                      <span className="flex-1 text-sm md:text-base font-heading font-bold" style={{ color: '#0C1210' }}>{faq.question}</span>
                       <ChevronDown
                         size={18}
-                        className={`text-primary-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                        className={`flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                        style={{ color: '#0E7C72' }}
                       />
                     </button>
                     <AnimatePresence initial={false}>
@@ -866,7 +762,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                           transition={{ duration: 0.25 }}
                           className="overflow-hidden"
                         >
-                          <p className="text-light-300 text-sm px-5 pb-5 pt-0 leading-relaxed">{faq.answer}</p>
+                          <p className="text-sm px-5 pb-5 pt-0 leading-relaxed" style={{ color: '#404B48' }}>{faq.answer}</p>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -879,7 +775,8 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                 return (
                   <motion.div
                     key={`local-${index}`}
-                    className={`rounded-xl border transition-colors duration-200 ${isOpen ? 'bg-dark-400 border-primary-500/20' : 'bg-dark-400 border-dark-200 hover:border-dark-100'}`}
+                    className="rounded-2xl border bg-white shadow-card transition-all duration-200"
+                    style={{ borderColor: isOpen ? 'rgba(14,124,114,0.3)' : '#E4E9E7' }}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
@@ -888,15 +785,17 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                     <button
                       type="button"
                       onClick={() => setFaqOpenIndex(isOpen ? null : globalIndex)}
-                      className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-heading font-bold text-light-100 transition-colors"
+                      className="w-full flex items-center gap-4 px-5 py-4 text-left transition-colors"
                       aria-expanded={isOpen}
                       aria-controls={`faq-answer-${globalIndex}`}
                       id={`faq-question-${globalIndex}`}
                     >
-                      <span className="text-sm md:text-base">{faq.q}</span>
+                      <div className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm" style={{ background: 'rgba(14,124,114,0.08)', color: '#0E7C72' }}>?</div>
+                      <span className="flex-1 text-sm md:text-base font-heading font-bold" style={{ color: '#0C1210' }}>{faq.q}</span>
                       <ChevronDown
                         size={18}
-                        className={`text-primary-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                        className={`flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                        style={{ color: '#0E7C72' }}
                       />
                     </button>
                     <AnimatePresence initial={false}>
@@ -911,7 +810,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                           transition={{ duration: 0.25 }}
                           className="overflow-hidden"
                         >
-                          <p className="text-light-300 text-sm px-5 pb-5 pt-0 leading-relaxed">{faq.a}</p>
+                          <p className="text-sm px-5 pb-5 pt-0 leading-relaxed" style={{ color: '#404B48' }}>{faq.a}</p>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -924,14 +823,14 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
       </section>
 
       {isRegional && regionContent?.paragraphs && regionContent.paragraphs.length > 0 && (
-        <section className="py-16 bg-dark-400">
+        <section className="py-16" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-6">
                 Lokales SEO für Unternehmen in {regionName}
               </h2>
               {regionContent.paragraphs.map((p, i) => (
-                <p key={i} className="text-light-200 text-lg leading-relaxed mb-5">{p}</p>
+                <p key={i} className=" text-lg leading-relaxed mb-5">{p}</p>
               ))}
             </div>
           </div>
@@ -939,10 +838,10 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
       )}
 
       {!isRegional && (
-        <section className="py-12 bg-dark-400">
+        <section className="py-12" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <p className="text-light-200 text-lg leading-relaxed">
+              <p className=" text-lg leading-relaxed">
                 Lokales SEO funktioniert dann am besten, wenn es auf Ihren Standort zugeschnitten ist. Wir bringen Unternehmen in{' '}
                 <a href="/leistungsgebiete/leipzig" className="text-primary-400 hover:underline">Leipzig</a>,{' '}
                 <a href="/leistungsgebiete/markkleeberg" className="text-primary-400 hover:underline">Markkleeberg</a> und{' '}
@@ -972,7 +871,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
       />
 
       {/* Final CTA */}
-      <section className="py-24 bg-dark-400">
+      <section className="py-24" style={{ background: '#F4F7F6' }}>
         <div className="container mx-auto px-4">
           <motion.div
             className="max-w-2xl mx-auto text-center"
@@ -982,13 +881,17 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
             viewport={{ once: true }}
           >
             <p className="text-primary-400 text-xs font-mono tracking-widest uppercase mb-4">Kostenlose Analyse</p>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">
               Wie viele Kunden verlieren Sie aktuell <span className="text-primary-500">an Ihre Konkurrenz{isRegional ? ` in ${regionName}` : ''}?</span>
             </h2>
-            <p className="text-light-300 text-sm md:text-base mb-8 leading-relaxed">
+            <p className=" text-sm md:text-base mb-8 leading-relaxed">
               {isRegional
                 ? `Lassen Sie uns Ihr Potenzial in ${regionName} gemeinsam prüfen – mit einer kostenlosen SEO-Analyse.`
                 : 'Lassen Sie uns Ihr Potenzial gemeinsam prüfen – mit einer kostenlosen SEO-Analyse.'}
+            </p>
+            <p className="text-xs font-semibold mb-4 flex items-center justify-center gap-1.5" style={{ color: '#0E7C72' }}>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="#0E7C72" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              In 90 Tagen unter die Top 3 – oder kostenlose Weiterbetreuung
             </p>
             <button
               onClick={scrollToContact}
@@ -1005,22 +908,22 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
             </p>
             {isRegional ? (
               <div className="mt-10 text-left max-w-2xl mx-auto">
-                <h3 className="text-xl font-heading font-bold text-light-100 mb-4">
+                <h3 className="text-xl font-heading font-bold mb-4">
                   Weitere Leistungen in {regionName}
                 </h3>
-                <p className="text-light-200 mb-3">
+                <p className=" mb-3">
                   <a href={regionUrl} className="text-primary-400 hover:underline font-heading font-bold">
                     Alle Leistungen in {regionName}
                   </a>
                   {' – '}Übersicht unserer Angebote in Ihrer Region.
                 </p>
-                <p className="text-light-200 mb-6">
+                <p className=" mb-6">
                   <a href="/seo-top-3-in-google" className="text-primary-400 hover:underline">
                     Mehr zu SEO: Top 3 in Google im Überblick
                   </a>
                   {' – '}alle Details auf unserer Service-Seite.
                 </p>
-                <p className="text-light-300 text-sm mb-3">SEO Top 3 in anderen Gebieten:</p>
+                <p className=" text-sm mb-3">SEO Top 3 in anderen Gebieten:</p>
                 <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
                   {otherRegions.map((city, i) => (
                     <li key={city.slug}>
@@ -1047,10 +950,11 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
         </div>
       </section>
 
-        <ContactForm />
+        <ContactForm service="seo" heading="Kostenlose SEO-Analyse anfragen" subheading="Wir zeigen Ihnen, für welche Suchbegriffe Sie jetzt sichtbar sein könnten." />
 
         <GoogleMapsSection />
       </div>
+      <StickyCtaBar ctaLabel="Kostenlose SEO-Analyse" />
     </>
   );
 };

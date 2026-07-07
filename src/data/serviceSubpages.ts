@@ -450,7 +450,7 @@ export function getGlobalRoutePrefix(serviceSlug: string): string {
  * Identisch zum Muster der regionalen Subpage-Titles, damit die Außendarstellung konsistent ist.
  */
 export function buildGlobalSubpageMetaTitle(def: SubpageDefinition): string {
-  return `${def.label} Groitzsch & Leipzig – wenn Sie nach ${def.titleKeywords} in meiner Nähe suchen – Pixel Kraftwerk`;
+  return `${def.label} Groitzsch & Leipzig – ${def.titleKeywords} in meiner Nähe`;
 }
 
 /**

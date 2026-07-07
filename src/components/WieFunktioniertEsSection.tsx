@@ -27,7 +27,6 @@ const STEPS = [
 
 interface WieFunktioniertEsSectionProps {
   onCtaClick?: () => void;
-  /** Button-Beschriftung unter den Schritten (z. B. SEO-Seite: Gratis-Video-CTA) */
   ctaLabel?: string;
 }
 
@@ -44,7 +43,7 @@ const WieFunktioniertEsSection: React.FC<WieFunktioniertEsSectionProps> = ({
   };
 
   return (
-    <section className="py-20 bg-dark-500" aria-labelledby="wie-funktioniert-heading">
+    <section className="py-20" style={{ background: '#F4F7F6' }} aria-labelledby="wie-funktioniert-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -56,31 +55,36 @@ const WieFunktioniertEsSection: React.FC<WieFunktioniertEsSectionProps> = ({
           >
             <h2
               id="wie-funktioniert-heading"
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4"
+              className="text-2xl md:text-3xl font-heading font-bold mb-4"
+              style={{ color: '#0C1210' }}
             >
-              Wie kommen Sie in die <span className="text-primary-500">Top 3?</span>
+              Wie kommen Sie in die <span style={{ color: '#0E7C72' }}>Top 3?</span>
             </h2>
-            <p className="text-light-200 max-w-2xl mx-auto">
+            <p className="max-w-2xl mx-auto" style={{ color: '#404B48' }}>
               Es ist einfacher, als die meisten denken. Der Weg in die Top 3 – Schritt für Schritt.
             </p>
           </motion.div>
 
-          <div className="space-y-6 mb-10">
+          <div className="space-y-4 mb-10">
             {STEPS.map((item, index) => (
               <motion.div
                 key={item.step}
-                className="flex items-start bg-dark-400 p-6 border border-dark-100 hover:border-primary-500/50 transition-colors duration-300 rounded-lg"
+                className="flex items-start gap-5 rounded-2xl border bg-white p-6 shadow-card"
+                style={{ borderColor: '#E4E9E7' }}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <span className="text-3xl font-heading font-bold text-primary-500 mr-6 flex-shrink-0">
+                <div
+                  className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl font-heading font-bold text-lg"
+                  style={{ background: 'rgba(14,124,114,0.08)', color: '#0E7C72', border: '1px solid rgba(14,124,114,0.2)' }}
+                >
                   {item.step}
-                </span>
+                </div>
                 <div>
-                  <h3 className="text-lg font-heading font-bold text-light-100 mb-2">{item.title}</h3>
-                  <p className="text-light-300">{item.description}</p>
+                  <h3 className="text-base font-heading font-bold mb-1.5" style={{ color: '#0C1210' }}>{item.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: '#68746F' }}>{item.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -96,7 +100,7 @@ const WieFunktioniertEsSection: React.FC<WieFunktioniertEsSectionProps> = ({
             <button
               type="button"
               onClick={scrollToContact}
-              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300"
+              className="inline-flex items-center px-8 py-4 bg-primary-500 text-white font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300 rounded-xl"
             >
               <ArrowRight className="mr-2" size={24} />
               {ctaLabel}
