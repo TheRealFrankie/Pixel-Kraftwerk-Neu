@@ -207,7 +207,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       {/* HERO */}
       <section
         id="ki-telefonagent-fur-ihr-unternehmen"
-        className="relative h-screen flex flex-col overflow-hidden"
+        className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
         style={{ background: '#FAFAF9' }}
       >
         <div className="absolute inset-0">
@@ -239,29 +239,31 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
         <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
             <div>
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-5">
-                <span className="pill-badge"><Phone size={12} /> Telefonische Kundenassistenz</span>
-              </motion.div>
-
               <motion.h1
-                className="font-heading font-bold tracking-tight mb-4 leading-[1.08]"
+                className="text-xs md:text-sm font-heading font-bold uppercase tracking-widest mb-3"
+                style={{ color: '#0E7C72' }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                {isRegional ? `Telefonische Kundenassistenz in ${regionName}` : 'Telefonische Kundenassistenz Groitzsch & Leipzig'}
+              </motion.h1>
+
+              <motion.h2
+                className="font-heading font-bold tracking-tight mb-2 leading-[1.08]"
                 style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35, duration: 0.6 }}
               >
-                {isRegional ? `Telefonische Kundenassistenz in ${regionName}` : 'Telefonische Kundenassistenz Groitzsch & Leipzig'}
-              </motion.h1>
-
-              <motion.h2 className="text-base max-w-xl mb-3 leading-relaxed font-semibold" style={{ color: '#0E7C72' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-                {SERVICE_TITLE_KEYWORDS['telefonassistenten']}
+                {regionContent?.localHook || 'Kein Anruf mehr verloren – auch wenn Sie gerade nicht ans Telefon können.'}
               </motion.h2>
 
-              <motion.p className="text-lg mb-3 max-w-xl leading-relaxed" style={{ color: '#0E7C72', fontWeight: 600 }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>
-                {regionContent?.localHook || 'Kein Anruf mehr verloren – auch wenn Sie gerade nicht ans Telefon können.'}
-              </motion.p>
+              <motion.h3 className="sr-only md:not-sr-only text-sm md:text-base max-w-xl mb-3 leading-snug font-semibold" style={{ color: '#0E7C72' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                {SERVICE_TITLE_KEYWORDS['telefonassistenten']}
+              </motion.h3>
 
-              <motion.p className="text-base max-w-xl mb-6 leading-relaxed" style={{ color: '#404B48' }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }}>
+              <motion.p className="text-base md:text-lg max-w-xl mb-4 leading-relaxed" style={{ color: '#404B48' }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }}>
                 {isRegional && regionContent?.intro
                   ? regionContent.intro
                   : 'Unsere telefonische Kundenassistenz nimmt Anrufe entgegen, beantwortet Fragen, erfasst Rückrufwünsche und vereinbart Termine – automatisiert, professionell und 24/7.'}
@@ -272,12 +274,12 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
                   Erstgespräch sichern
                   <ArrowRight size={18} />
                 </button>
-                <a href="tel:+491785844460" className="btn-secondary">
+                <a href="tel:+491785844460" className="inline-flex items-center justify-center gap-2 py-3 text-sm font-semibold underline underline-offset-4 sm:no-underline sm:justify-start sm:px-6 sm:py-3 sm:rounded-xl sm:border" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                   Jetzt anrufen
                 </a>
               </motion.div>
-              <motion.div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 mb-1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.72 }}>
+              <motion.div className="hidden sm:flex flex-wrap gap-x-4 gap-y-1 mt-3 mb-1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.72 }}>
                 {['Keine Einmalkosten', 'Keine Mindestlaufzeit', 'Betreuung inklusive'].map(item => (
                   <span key={item} className="flex items-center gap-1 text-xs" style={{ color: '#68746F' }}>
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="#0E7C72" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -285,7 +287,9 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
                   </span>
                 ))}
               </motion.div>
-              <TrustLine className="mt-4" />
+              <div className="hidden sm:block">
+                <TrustLine className="mt-4" />
+              </div>
             </div>
             <div className="hidden lg:block" aria-hidden />
           </div>
@@ -1374,6 +1378,8 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       <ContactForm service="telefonassistent" heading="Telefonassistenten-Beratung anfragen" subheading="Wir analysieren, wie viele Anrufe Sie verlieren und was ein KI-Telefonagent konkret bringt." />
 
       <GoogleMapsSection />
+
+      <StickyCtaBar ctaLabel="Erstgespräch sichern" />
     </div>
   );
 };

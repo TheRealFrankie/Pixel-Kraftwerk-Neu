@@ -135,7 +135,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
       {/* HERO SECTION */}
       <section
         data-section-label="Start"
-        className="relative h-screen flex flex-col overflow-hidden"
+        className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
         style={{ background: '#FAFAF9' }}
       >
         <div className="absolute inset-0">
@@ -165,46 +165,44 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
         <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
             <div>
-              <motion.div
+              <motion.h1
+                className="text-xs md:text-sm font-heading font-bold uppercase tracking-widest mb-3"
+                style={{ color: '#0E7C72' }}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="mb-5"
-              >
-                <span className="pill-badge">
-                  <MapPin size={12} className="flex-shrink-0" />
-                  Ihre lokale KI-Agentur
-                </span>
-              </motion.div>
-
-              <motion.h1
-                className="font-heading font-bold tracking-tight mb-4 leading-[1.08]"
-                style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35, duration: 0.6 }}
               >
                 KI-Agentur {content.name}
               </motion.h1>
 
               <motion.h2
-                className="text-lg max-w-xl mb-3 leading-relaxed"
-                style={{ color: '#0E7C72', fontWeight: 600 }}
+                className="font-heading font-bold tracking-tight mb-2 leading-[1.08]"
+                style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.6 }}
+              >
+                Klare Abläufe. Mehr Anfragen. <span style={{ color: '#0E7C72' }}>Weniger Stress.</span>
+              </motion.h2>
+
+              <motion.h3
+                className="sr-only md:not-sr-only text-sm md:text-base font-semibold mb-3 leading-snug"
+                style={{ color: '#0E7C72' }}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45, duration: 0.6 }}
               >
                 KI-Chatbots, Telefonassistenten, Automatisierungen, Webdesign, SEO &amp; CRM-Systeme in {content.name}
-              </motion.h2>
+              </motion.h3>
 
               <motion.p
-                className="text-lg max-w-xl mb-5 leading-relaxed"
+                className="text-base md:text-lg max-w-xl mb-5 leading-relaxed"
                 style={{ color: '#404B48' }}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
-                Klare Abläufe. Mehr Anfragen. Weniger Stress. Wir automatisieren Kundenkommunikation, Terminbuchung und interne Abläufe mit KI für Unternehmen in {content.name} – damit Ihr Team wieder Luft zum Arbeiten hat.
+                Wir automatisieren Kundenkommunikation, Terminbuchung und interne Abläufe mit KI für Unternehmen in {content.name} – damit Ihr Team wieder Luft zum Arbeiten hat.
               </motion.p>
 
               <motion.div

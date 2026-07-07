@@ -196,7 +196,7 @@ const Services: React.FC = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesBreadcrumbSchema) }} />
 
       {/* HERO SECTION – Premium Hintergrundbild wie auf den Leistungsseiten */}
-      <section className="relative h-screen flex flex-col overflow-hidden" style={{ background: '#FAFAF9' }}>
+      <section className="relative min-h-[100dvh] md:min-h-screen flex flex-col" style={{ background: '#FAFAF9' }}>
         <div className="relative z-20 container mx-auto px-4 pt-20 md:pt-24">
           <BreadcrumbNav items={[
             { label: 'Startseite', href: '/' },
@@ -220,9 +220,10 @@ const Services: React.FC = () => {
         <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-2xl">
             <motion.h1
-              className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 leading-tight"
+              className="font-heading font-bold mb-4 leading-[1.08]"
               style={{
                 color: '#0C1210',
+                fontSize: 'clamp(1.75rem, 4vw, 3rem)',
               }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -232,7 +233,7 @@ const Services: React.FC = () => {
             </motion.h1>
 
             <motion.h2
-              className="pill-badge mb-6"
+              className="pill-badge mb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
@@ -241,7 +242,7 @@ const Services: React.FC = () => {
             </motion.h2>
 
             <motion.p
-              className="text-xl md:text-2xl max-w-2xl mb-6 leading-relaxed"
+              className="text-base md:text-2xl max-w-2xl mb-4 leading-relaxed"
               style={{
                 color: '#404B48',
               }}
@@ -254,7 +255,7 @@ const Services: React.FC = () => {
             </motion.p>
 
             <motion.p
-              className="text-base md:text-lg max-w-2xl mb-6 leading-relaxed font-medium"
+              className="text-sm md:text-lg max-w-2xl mb-4 leading-relaxed font-medium"
               style={{
                 color: '#404B48',
               }}

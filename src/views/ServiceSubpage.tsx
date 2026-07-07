@@ -418,15 +418,13 @@ function FullscreenHero({
   heroImage,
   h1Text,
   titleKeywords,
-  regionalContent,
-  isRegional,
   breadcrumbItems,
   scrollToContact,
   heroCtaText,
 }: HeroProps) {
   return (
     <section
-      className="relative h-screen flex flex-col overflow-hidden"
+      className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
       style={{ background: '#FAFAF9' }}
     >
       {heroImage && (
@@ -448,39 +446,39 @@ function FullscreenHero({
       <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            {/* Badge */}
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-5">
-              <span
-                className="pill-badge"
-                style={{ fontSize: '0.75rem' }}
-              >
-                {isRegional && regionalContent?.localHook ? regionalContent.localHook : content.primaryKeyword}
-              </span>
-            </motion.div>
-
             <motion.h1
-              className="font-heading font-bold tracking-tight mb-4 leading-[1.08]"
-              style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
-              initial={{ opacity: 0, y: 20 }}
+              className="text-xs md:text-sm font-heading font-bold uppercase tracking-widest mb-3"
+              style={{ color: '#0E7C72' }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.6 }}
+              transition={{ delay: 0.2 }}
             >
               {h1Text}
             </motion.h1>
 
             <motion.h2
-              className="text-base font-semibold mb-3 leading-relaxed"
+              className="font-heading font-bold tracking-tight mb-2 leading-[1.08]"
+              style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.6 }}
+            >
+              {content.h1}
+            </motion.h2>
+
+            <motion.h3
+              className="sr-only md:not-sr-only text-sm md:text-base font-semibold mb-3 leading-snug"
               style={{ color: '#0E7C72' }}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
               {titleKeywords}
-            </motion.h2>
+            </motion.h3>
 
             {(content.subheadline) && (
               <motion.p
-                className="text-lg mb-3 leading-relaxed"
+                className="text-base md:text-lg mb-3 leading-relaxed"
                 style={{ color: '#0E7C72', fontWeight: 600 }}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -491,7 +489,7 @@ function FullscreenHero({
             )}
 
             <motion.p
-              className="text-base max-w-xl mb-6 leading-relaxed"
+              className="text-base md:text-lg max-w-xl mb-4 leading-relaxed"
               style={{ color: '#404B48' }}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -521,7 +519,6 @@ function FullscreenHero({
 
 function TwoColumnHero({
   content,
-  parentService,
   heroImage,
   h1Text,
   titleKeywords,
@@ -533,7 +530,7 @@ function TwoColumnHero({
 }: HeroProps) {
   return (
     <section
-      className="relative h-screen flex flex-col overflow-hidden"
+      className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
       style={{ background: '#FAFAF9' }}
     >
       {heroImage && (
@@ -555,36 +552,36 @@ function TwoColumnHero({
       <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="flex flex-col">
-            <motion.div
-              className="pill-badge w-fit mb-5"
-              style={{ fontSize: '0.75rem' }}
+            <motion.h1
+              className="text-xs md:text-sm font-heading font-bold uppercase tracking-widest mb-3"
+              style={{ color: '#0E7C72' }}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {parentService.label}
-            </motion.div>
-            <motion.h1
-              className="font-heading font-bold tracking-tight leading-[1.08] mb-4"
+              {h1Text}
+            </motion.h1>
+            <motion.h2
+              className="font-heading font-bold tracking-tight leading-[1.08] mb-2"
               style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
             >
-              {h1Text}
-            </motion.h1>
-            <motion.h2
-              className="text-base font-semibold mb-3"
+              {content.h1}
+            </motion.h2>
+            <motion.h3
+              className="sr-only md:not-sr-only text-sm md:text-base font-semibold mb-3 leading-snug"
               style={{ color: '#0E7C72' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.12 }}
             >
               {titleKeywords}
-            </motion.h2>
+            </motion.h3>
             {isRegional && regionalContent?.localHook && (
               <motion.p
-                className="font-heading text-lg mb-4"
+                className="font-heading text-base md:text-lg mb-3"
                 style={{ color: '#0E7C72', fontWeight: 600 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -594,7 +591,7 @@ function TwoColumnHero({
               </motion.p>
             )}
             <motion.p
-              className="text-sm md:text-base leading-relaxed mb-5 max-w-[520px]"
+              className="text-sm md:text-base leading-relaxed mb-4 max-w-[520px]"
               style={{ color: '#404B48' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -1031,7 +1028,7 @@ function AudiencesSection({ audiences }: { audiences: NonNullable<SubpageContent
           <h3 className="text-xl font-heading font-bold text-light-100 text-center mb-6">
             Typische Einsatzbereiche
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {audiences.audiences.map((a, i) => {
               const Icon = ICON_MAP[a.icon ?? 'building'] ?? Building2;
               return (

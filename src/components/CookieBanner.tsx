@@ -158,7 +158,7 @@ const CookieBanner: React.FC = () => {
   return (
     <div
       className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 shadow-elevation-lg animate-slide-in"
-      style={{ background: '#fff', borderTop: '1px solid #E4E9E7' }}
+      style={{ background: '#fff', borderTop: '1px solid #E4E9E7', paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
     >
       <div className="container mx-auto">
         {!showSettings ? (

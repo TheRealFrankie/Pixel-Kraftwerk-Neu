@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
   return (
     <footer style={{ background: INK_BG, borderTop: `1px solid ${INK_BORDER}` }}>
       <div className="container mx-auto px-4 pt-10 pb-6 md:pt-12 md:pb-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-10">
 
           {/* Spalte 1: Logo + Claim + Social */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
@@ -242,7 +242,7 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Datenschutz-Einstellrad */}
-      <div className="fixed bottom-4 left-4 z-[9999]">
+      <div className="fixed bottom-20 left-4 z-[9999] md:bottom-4" style={{ marginBottom: 'env(safe-area-inset-bottom)' }}>
         <a
           href="/datenschutz-einstellungen"
           className="flex items-center justify-center w-12 h-12 rounded-full shadow-elevation transition-colors duration-200 focus:outline-none"

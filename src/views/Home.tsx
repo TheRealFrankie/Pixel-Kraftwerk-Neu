@@ -108,8 +108,9 @@ const Home: React.FC = () => {
 
   const serviceCards = [
     {
-      img: '/images/ki-chatbot-digitale-kundenassistenz.webp',
-      alt: 'Digitale Kundenassistenz: KI-Chatbot auf Laptop und Smartphone',
+      img: '/images/ki-chatbot-digitale-kundenassistenz-hero.png',
+      alt: 'Digitale Kundenassistenz auf Laptop und Smartphone – KI-Chatbot Hero',
+      objectPosition: 'center',
       badgeIcon: <MessageCircle size={18} strokeWidth={1.5} />,
       badge: 'Rund um die Uhr',
       h2: 'KI-Chatbots für digitale Kundenassistenz und automatische Anfragenbearbeitung',
@@ -119,8 +120,9 @@ const Home: React.FC = () => {
       delay: 0.1,
     },
     {
-      img: '/images/ki-telefonassistent.webp',
-      alt: 'KI-Telefonassistent: Anrufe entgegennehmen, Leads qualifizieren, Termine buchen – 24/7',
+      img: '/images/ki-telefonassistent-hero.png',
+      alt: 'KI-Telefonassistent – professionelle Anrufannahme rund um die Uhr',
+      objectPosition: '55% center',
       badgeIcon: <Workflow size={18} strokeWidth={1.5} />,
       badge: 'Nie wieder verpasste Anrufe',
       h2: 'KI-Telefonassistenten für Anrufannahme, Terminbuchung und Leadqualifizierung',
@@ -130,8 +132,9 @@ const Home: React.FC = () => {
       delay: 0.2,
     },
     {
-      img: '/images/webseiten-mietmodell-agentur.webp',
-      alt: 'Moderne Websites: verkaufsstark, suchmaschinenoptimiert, in Tagen statt Wochen',
+      img: '/images/webseiten-hero-mockup-laptop-handy.png',
+      alt: 'Moderne responsive Website auf Laptop und Smartphone',
+      objectPosition: '78% center',
       badgeIcon: <Globe size={18} strokeWidth={1.5} />,
       badge: 'In Tagen statt Wochen',
       h2: 'Webseiten für lokale Unternehmen mit klarer Nutzerführung',
@@ -143,6 +146,7 @@ const Home: React.FC = () => {
     {
       img: '/images/automatisierungen-anfragen-vertrieb-terminplanung.webp',
       alt: 'Automatisierungen: Anfrage, Sortierung, Zuweisung, Follow-up, Termin und CRM',
+      objectPosition: 'center',
       badgeIcon: <Zap size={18} strokeWidth={1.5} />,
       badge: 'Abläufe laufen von selbst',
       h2: 'Automatisierungen für Anfragen, Vertrieb, Terminplanung und CRM',
@@ -152,8 +156,9 @@ const Home: React.FC = () => {
       delay: 0.35,
     },
     {
-      img: '/images/seo-top-3-google-local-pack.webp',
-      alt: 'Top 3 in Google: Google-Suchergebnisse mit Karte und lokalen Einträgen',
+      img: '/images/seo-top3-in-google.webp',
+      alt: 'Top 3 in Google – lokale Sichtbarkeit und Google-Rankings',
+      objectPosition: 'center',
       badgeIcon: <Search size={18} strokeWidth={1.5} />,
       badge: 'Top 3 in 90 Tagen',
       h2: 'Lokales SEO für mehr Sichtbarkeit bei Google',
@@ -165,6 +170,7 @@ const Home: React.FC = () => {
     {
       img: '/images/crm-systeme-kundenverwaltung.webp',
       alt: 'CRM-System für Kundenverwaltung und Lead-Management',
+      objectPosition: 'center',
       badgeIcon: <Users size={18} strokeWidth={1.5} />,
       badge: 'Kein Lead geht verloren',
       h2: 'CRM-Systeme für strukturiertes Lead-Management und Kundenverwaltung',
@@ -183,7 +189,7 @@ const Home: React.FC = () => {
       {/* ─── HERO ─── */}
       <section
         data-section-label="Start"
-        className="relative h-screen flex items-center overflow-hidden"
+        className="relative min-h-[100dvh] md:min-h-screen flex items-center"
       >
         {/* Vollbild-Hintergrundbild */}
         <div className="absolute inset-0">
@@ -205,69 +211,55 @@ const Home: React.FC = () => {
           />
         </div>
 
-        <div className="container mx-auto px-4 md:px-8 relative z-10 py-0">
+        <div className="container mx-auto px-4 md:px-8 relative z-10 pt-24 pb-8 md:pt-28 md:pb-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
             {/* Left */}
             <div>
-              <motion.div
+              <motion.h1
+                className="text-xs md:text-sm font-heading font-bold uppercase tracking-widest mb-2"
+                style={{ color: PETROL }}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="mb-6"
-              >
-                <span
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide border"
-                  style={{ background: 'rgba(14,124,114,0.07)', color: PETROL_DARK, borderColor: 'rgba(14,124,114,0.2)' }}
-                >
-                  <Star size={12} fill={PETROL} color={PETROL} />
-                  Digitale Lösungen für Unternehmen
-                </span>
-              </motion.div>
-
-              <motion.h1
-                className="font-heading font-bold tracking-tight mb-4 leading-[1.08]"
-                style={{ color: INK, fontSize: 'clamp(2rem, 4.5vw, 3.2rem)' }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35, duration: 0.6 }}
               >
                 KI-Agentur Groitzsch &amp; Leipzig
               </motion.h1>
 
               <motion.h2
-                className="text-lg md:text-xl font-heading font-bold mb-4 leading-snug"
+                className="font-heading font-bold tracking-tight mb-2 leading-[1.08]"
+                style={{ color: INK, fontSize: 'clamp(1.9rem, 4vw, 3rem)' }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.6 }}
+              >
+                Hast du ein Unternehmen?<br />
+                <span style={{ color: PETROL }}>Dann können wir dir mit Sicherheit helfen.</span>
+              </motion.h2>
+
+              <motion.h3
+                className="sr-only md:not-sr-only text-sm md:text-base font-heading font-semibold mb-2 leading-snug"
                 style={{ color: PETROL }}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45, duration: 0.6 }}
               >
                 KI-Chatbots, Telefonassistenten, Automatisierungen, Webdesign, SEO &amp; CRM-Systeme
-              </motion.h2>
+              </motion.h3>
 
               <motion.p
-                className="text-lg max-w-xl mb-4 leading-relaxed"
+                className="text-base md:text-lg max-w-xl mb-5 leading-relaxed"
                 style={{ color: BODY }}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55, duration: 0.6 }}
               >
-                Hast du ein Unternehmen? <span style={{ color: PETROL, fontWeight: 600 }}>Dann können wir dir mit Sicherheit helfen.</span> Wir helfen Unternehmen dabei, mehr Kunden zu gewinnen, ihre Abläufe zu vereinfachen und im Alltag spürbar Zeit zu sparen.
-              </motion.p>
-
-              <motion.p
-                className="text-base max-w-xl mb-6 leading-relaxed"
-                style={{ color: MUTED }}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.65, duration: 0.6 }}
-              >
-                Dafür entwickeln wir moderne Webseiten, KI-Chatbots, Telefonagenten und individuelle Softwarelösungen, die mehr Kundenanfragen erzeugen und wiederkehrende Aufgaben automatisch übernehmen.
+                Wir helfen Unternehmen dabei, mehr Kunden zu gewinnen, ihre Abläufe zu vereinfachen und im Alltag spürbar Zeit zu sparen. Dafür entwickeln wir moderne Webseiten, KI-Chatbots, Telefonagenten und individuelle Softwarelösungen, die mehr Kundenanfragen erzeugen und wiederkehrende Aufgaben automatisch übernehmen.
               </motion.p>
 
 
               <motion.div
-                className="flex flex-col sm:flex-row gap-3 mb-6"
+                className="flex flex-col sm:flex-row gap-3 mb-5"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.75 }}
@@ -282,8 +274,8 @@ const Home: React.FC = () => {
                 </button>
                 <a
                   href="/leistungen"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-base border transition-all duration-200 min-h-[48px]"
-                  style={{ color: INK, borderColor: BORDER, background: 'white' }}
+                  className="inline-flex items-center justify-center gap-2 py-3 text-base font-semibold underline underline-offset-4 sm:no-underline sm:justify-start sm:px-7 sm:py-3.5 sm:rounded-xl sm:border sm:bg-white sm:min-h-[48px] transition-all duration-200"
+                  style={{ color: INK, borderColor: BORDER }}
                 >
                   Leistungen ansehen
                 </a>
@@ -364,6 +356,7 @@ const Home: React.FC = () => {
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      style={{ objectPosition: s.objectPosition }}
                     />
                     <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2" style={{ color: PETROL }}>
                       {s.badgeIcon}

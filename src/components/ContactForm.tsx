@@ -62,9 +62,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ inline, service, heading, sub
     border: `1px solid ${BORDER}`,
     color: INK,
     borderRadius: '0.75rem',
-    padding: '0.875rem',
-    fontSize: '0.875rem',
+    padding: '0.9375rem 1rem',
+    fontSize: '0.9375rem',
     width: '100%',
+    minHeight: '48px',
     outline: 'none',
     transition: 'border-color 0.2s',
   };
@@ -195,7 +196,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ inline, service, heading, sub
               checked={formData.privacyAccepted}
               onChange={handleChange}
               required
-              className="mt-0.5 w-4 h-4 rounded cursor-pointer flex-shrink-0"
+              className="mt-0.5 w-5 h-5 rounded cursor-pointer flex-shrink-0"
               style={{ accentColor: PETROL }}
             />
             <label htmlFor="privacyAccepted" className="text-xs leading-relaxed cursor-pointer" style={{ color: MUTED }}>
