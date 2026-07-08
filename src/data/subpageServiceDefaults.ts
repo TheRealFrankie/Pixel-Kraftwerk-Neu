@@ -410,9 +410,9 @@ const seoTop3: SubpageServiceDefaults = {
   },
   crossSell: {
     kicker: 'Eine moderne Website ist die Basis für gutes SEO.',
-    title: 'Webseiten im Mietmodell',
-    body: 'Schnelle, saubere Webseiten, die technisch fürs Ranking optimiert sind – die perfekte Basis für Ihre SEO-Strategie.',
-    ctaText: 'Mehr zu Webseiten im Mietmodell',
+    title: 'Professionelle Webseiten',
+    body: 'Schnelle, saubere Webseiten mit technisch sauberer Grundlage – individuell entwickelt und mobil optimiert für Ihr Unternehmen.',
+    ctaText: 'Mehr zu unseren Webseiten',
     ctaHref: '/webseite',
   },
 };

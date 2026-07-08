@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import ServiceSubpage from '@/views/ServiceSubpage';
+import AutomatisierungenLeadgenerierung from '@/views/services/subpages/AutomatisierungenLeadgenerierung';
+import AutomatisierungenTerminbuchung from '@/views/services/subpages/AutomatisierungenTerminbuchung';
+import AutomatisierungenAngebotsprozesse from '@/views/services/subpages/AutomatisierungenAngebotsprozesse';
+import AutomatisierungenEmailAutomatisierung from '@/views/services/subpages/AutomatisierungenEmailAutomatisierung';
 import { getRegionContent, getValidRegionSlug } from '@/data/regionContent';
 import { LEISTUNGSGEBIETE_SLUGS } from '@/data/leistungsgebiete';
 import { getServiceBySlug, isValidServiceSlug } from '@/data/services';
@@ -18,10 +22,53 @@ const baseUrl = 'https://pixelkraftwerk-ai.com';
 
 type Props = { params: Promise<{ region: string; service: string; topic: string }> };
 
+const AUTOMATISIERUNGEN_TOPIC_META: Record<string, { label: string; titleKeywords: string; description: string }> = {
+  leadgenerierung: {
+    label: 'Leadgenerierung automatisieren',
+    titleKeywords: 'Lead-Automatisierung & CRM-Anbindung',
+    description: 'Neue Anfragen automatisch erfassen, qualifizieren und nachverfolgen. Pixel Kraftwerk entwickelt individuelle Lead-Automatisierungen für Unternehmen.',
+  },
+  terminbuchung: {
+    label: 'Terminbuchung automatisieren',
+    titleKeywords: 'Online-Terminbuchung & Kalender-Automatisierung',
+    description: 'Termine automatisch buchen, bestätigen und vorbereiten. Pixel Kraftwerk verbindet Kalender, Kundendaten und interne Abläufe.',
+  },
+  angebotsprozesse: {
+    label: 'Angebotsprozesse automatisieren',
+    titleKeywords: 'Angebotserstellung & Angebotsautomatisierung',
+    description: 'Vom Kundenwunsch zum professionellen Angebot: Pixel Kraftwerk automatisiert Datenerfassung, Freigaben, Versand und Follow-ups.',
+  },
+  'email-automatisierung': {
+    label: 'E-Mail-Automatisierung',
+    titleKeywords: 'E-Mail-Workflows & Postfach-Automatisierung',
+    description: 'E-Mails automatisch sortieren, zuweisen und weiterverarbeiten. Pixel Kraftwerk entwickelt individuelle E-Mail-Workflows für Unternehmen.',
+  },
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { region, service, topic } = await params;
   const regionSlug = getValidRegionSlug(region);
   const regionData = getRegionContent(regionSlug);
+
+  // Neue Metadaten für Automatisierungen-Subpages
+  if (service === 'automatisierungen' && AUTOMATISIERUNGEN_TOPIC_META[topic]) {
+    const meta = AUTOMATISIERUNGEN_TOPIC_META[topic];
+    const title = `${meta.label} ${regionData.name} – ${meta.titleKeywords} in meiner Nähe`;
+    const description = `${meta.label} für Unternehmen in ${regionData.name} und Umgebung. ${meta.description.slice(0, 100)}…`;
+    const canonical = `${baseUrl}/leistungsgebiete/${regionSlug}/${service}/${topic}`;
+    return {
+      title,
+      description,
+      alternates: { canonical },
+      openGraph: {
+        title,
+        description,
+        url: canonical,
+        type: 'website',
+      },
+    };
+  }
+
   const subpageDef = getSubpageBySlug(service, topic);
   const content = getSubpageContent(service, topic);
 
@@ -70,6 +117,20 @@ export default async function Page({ params }: Props) {
 
   const regionSlug = getValidRegionSlug(region);
   const regionData = getRegionContent(regionSlug);
+
+  // Neue dedizierte Views für Automatisierungen-Subpages
+  if (service === 'automatisierungen') {
+    if (topic === 'leadgenerierung')
+      return <AutomatisierungenLeadgenerierung regionSlug={regionSlug} regionName={regionData.name} />;
+    if (topic === 'terminbuchung')
+      return <AutomatisierungenTerminbuchung regionSlug={regionSlug} regionName={regionData.name} />;
+    if (topic === 'angebotsprozesse')
+      return <AutomatisierungenAngebotsprozesse regionSlug={regionSlug} regionName={regionData.name} />;
+    if (topic === 'email-automatisierung')
+      return <AutomatisierungenEmailAutomatisierung regionSlug={regionSlug} regionName={regionData.name} />;
+  }
+
+  // Fallback auf ServiceSubpage für alle anderen Services (unverändert)
   const serviceInfo = getServiceBySlug(service);
   const subpageDef = getSubpageBySlug(service, topic);
   const content = getSubpageContent(service, topic);

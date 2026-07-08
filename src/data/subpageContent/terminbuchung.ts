@@ -317,7 +317,7 @@ const content: SubpageContent = {
   ],
   crossServiceLinks: [
     { text: 'KI-Telefonassistenten', href: '/telefonassistenten' },
-    { text: 'Webseiten im Mietmodell', href: '/webseite' },
+    { text: 'Professionelle Webseiten', href: '/webseite' },
   ],
   areaLinks: buildTier1AreaLinks('Terminbuchung'),
 };

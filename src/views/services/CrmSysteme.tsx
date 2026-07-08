@@ -1,19 +1,23 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
-  CheckCircle,
-  Shield,
-  BarChart3,
+  Users,
   Target,
+  FileText,
+  Layers,
+  ListChecks,
+  Settings2,
   Zap,
-  Database,
-  TrendingUp,
-  Settings,
+  LayoutGrid,
+  Link2,
+  ShieldCheck,
+  Eye,
+  Expand,
 } from 'lucide-react';
+
 import ContactForm from '../../components/ContactForm';
 import GoogleMapsSection from '../../components/GoogleMapsSection';
 import RelatedServices from '../../components/RelatedServices';
@@ -26,18 +30,264 @@ import BreadcrumbNav from '../../components/BreadcrumbNav';
 import TrustLine from '../../components/TrustLine';
 import StickyCtaBar from '../../components/StickyCtaBar';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
+import SubpageLinksBlock from '../../components/SubpageLinksBlock';
+import Accordion from '../../components/Accordion';
+import CrmCustomerFileVisual from '../../components/CrmCustomerFileVisual';
 import { getRegionServiceContent } from '../../data/regionServiceContent';
 import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
 import { getRegionServiceLinkText, SERVICE_TITLE_KEYWORDS } from '../../data/services';
-import SubpageLinksBlock from '../../components/SubpageLinksBlock';
-import HeroScrollIndicator from '../../components/HeroScrollIndicator';
 import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
 
+/* ─── Design Tokens ─────────────────────────────────────────────────────────── */
+const INK     = '#0C1210';
+const BODY    = '#404B48';
+const MUTED   = '#68746F';
+const PETROL  = '#0E7C72';
+const BORDER  = '#E4E9E7';
+const SURFACE = '#F3F5F4';
+const PAPER   = '#FAFAF9';
+
+/* ─── Props ──────────────────────────────────────────────────────────────────── */
 interface CrmSystemeProps {
   regionSlug?: string;
   regionName?: string;
 }
 
+/* ─── Data ───────────────────────────────────────────────────────────────────── */
+const FUNKTIONSBEREICHE = [
+  {
+    icon: Users,
+    title: 'Kunden und Kontakte',
+    description:
+      'Alle Kontaktdaten, Gespräche, Dokumente, Termine und Vorgänge zentral verwalten.',
+  },
+  {
+    icon: Target,
+    title: 'Anfragen und Leads',
+    description:
+      'Neue Anfragen erfassen, qualifizieren, zuweisen und bis zum Abschluss verfolgen.',
+  },
+  {
+    icon: FileText,
+    title: 'Angebote und Aufträge',
+    description:
+      'Angebote, Status, Aufträge, Fristen und nächste Schritte übersichtlich steuern.',
+  },
+  {
+    icon: Layers,
+    title: 'Projekte und Vorgänge',
+    description:
+      'Projektstände, Zuständigkeiten, Dateien, Notizen und Termine nachvollziehbar abbilden.',
+  },
+  {
+    icon: ListChecks,
+    title: 'Aufgaben und Termine',
+    description:
+      'Wiedervorlagen, Erinnerungen und Aufgaben zentral planen und automatisch verteilen.',
+  },
+  {
+    icon: Settings2,
+    title: 'Individuelle Prozesse',
+    description:
+      'Auch Abläufe außerhalb des klassischen Vertriebs können digital abgebildet werden.',
+  },
+];
+
+const EINSATZBEREICHE = [
+  'Projektmanagement',
+  'Angebotsverwaltung',
+  'Auftragsverwaltung',
+  'Einsatzplanung',
+  'Terminplanung',
+  'Immobilienverwaltung',
+  'Mitgliederverwaltung',
+  'Bewerbermanagement',
+  'Reklamationsbearbeitung',
+  'Wartungsprozesse',
+  'Dokumentenverwaltung',
+  'Interne Freigaben',
+];
+
+const VORHER = [
+  'Daten in Excel, E-Mails und Notizen',
+  'Manuelle Wiedervorlagen',
+  'Unklare Zuständigkeiten',
+  'Unterschiedliche Informationsstände',
+  'Wenig Transparenz über laufende Vorgänge',
+];
+
+const NACHHER = [
+  'Alle wichtigen Informationen an einem Ort',
+  'Klare Status und Verantwortlichkeiten',
+  'Automatische Erinnerungen',
+  'Nachvollziehbare Prozesse',
+  'Individuelle Ansichten für unterschiedliche Mitarbeiter',
+];
+
+const VORTEILE = [
+  {
+    icon: LayoutGrid,
+    title: 'Genau passende Funktionen',
+    description:
+      'Keine überladene Software mit Funktionen, die niemand nutzt.',
+  },
+  {
+    icon: Zap,
+    title: 'Weniger manuelle Arbeit',
+    description:
+      'Wiederkehrende Aufgaben und Datenübertragungen können automatisiert werden.',
+  },
+  {
+    icon: Eye,
+    title: 'Mehr Überblick',
+    description:
+      'Kunden, Projekte, Aufgaben und Vorgänge bleiben jederzeit nachvollziehbar.',
+  },
+  {
+    icon: Users,
+    title: 'Bessere Zusammenarbeit',
+    description:
+      'Alle Mitarbeiter arbeiten mit denselben aktuellen Informationen.',
+  },
+  {
+    icon: Expand,
+    title: 'Flexibel erweiterbar',
+    description:
+      'Neue Funktionen und Prozesse können später ergänzt werden.',
+  },
+  {
+    icon: Link2,
+    title: 'Bestehende Systeme anbinden',
+    description:
+      'E-Mail, Kalender, Formulare und vorhandene Software können integriert werden.',
+  },
+];
+
+const STANDARD_PUNKTE = [
+  'Allgemeine Prozesse',
+  'Unnötige Funktionen',
+  'Starre Benutzeroberflächen',
+  'Anpassung der Mitarbeiter an die Software',
+  'Wichtige Sonderfälle fehlen',
+];
+
+const INDIVIDUELL_PUNKTE = [
+  'Auf interne Abläufe zugeschnitten',
+  'Nur relevante Funktionen',
+  'Individuelle Ansichten und Rollen',
+  'Vorhandene Systeme integrierbar',
+  'Langfristig erweiterbar',
+];
+
+const ANWENDUNGSBEISPIELE = [
+  {
+    title: 'Handwerksbetrieb',
+    description:
+      'Anfragen, Besichtigungen, Angebote, Aufträge, Termine und Projektdokumente zentral verwalten.',
+    href: '/crm-systeme/crm-fuer-handwerker',
+  },
+  {
+    title: 'Dienstleistungsunternehmen',
+    description:
+      'Leads, Kundengespräche, Verträge, Projekte und Follow-ups strukturiert abbilden.',
+    href: '/crm-systeme/crm-fuer-dienstleister',
+  },
+  {
+    title: 'Immobilienverwaltung',
+    description:
+      'Objekte, Eigentümer, Mieter, Schäden, Dokumente und offene Vorgänge organisieren.',
+    href: '/crm-systeme/crm-fuer-vermietung',
+  },
+  {
+    title: 'Interne Unternehmensprozesse',
+    description:
+      'Anträge, Freigaben, Aufgaben, Dokumente und Zuständigkeiten digital steuern.',
+    href: null,
+  },
+];
+
+const ABLAUF_SCHRITTE = [
+  {
+    step: '01',
+    title: 'Analyse',
+    description: 'Wir besprechen Ihre Abläufe, Probleme und Anforderungen.',
+  },
+  {
+    step: '02',
+    title: 'Konzeption',
+    description: 'Wir planen Struktur, Ansichten, Rollen und Funktionen.',
+  },
+  {
+    step: '03',
+    title: 'Entwicklung',
+    description:
+      'Das System wird individuell umgesetzt und mit vorhandenen Tools verbunden.',
+  },
+  {
+    step: '04',
+    title: 'Einführung',
+    description:
+      'Daten, Nutzer und Prozesse werden sauber in das neue System überführt.',
+  },
+  {
+    step: '05',
+    title: 'Betreuung',
+    description: 'Das System kann laufend optimiert und erweitert werden.',
+  },
+];
+
+const INTEGRATIONEN = [
+  'E-Mail',
+  'Kalender',
+  'Website-Formulare',
+  'Telefonassistenten',
+  'Chatbots',
+  'Buchungssysteme',
+  'Bestehende CRM- oder ERP-Systeme',
+  'Dokumentenspeicher',
+  'Schnittstellen und APIs',
+];
+
+const BASE_FAQS = [
+  {
+    question: 'Was kostet ein individuelles CRM-System?',
+    answer:
+      'Die Kosten hängen von Funktionen, Nutzerzahl, Integrationen und Umfang ab. Nach der Analyse erhalten Sie ein transparentes Angebot.',
+  },
+  {
+    question: 'Wie lange dauert die Entwicklung?',
+    answer:
+      'Kleinere Systeme können innerhalb weniger Wochen umgesetzt werden. Umfangreichere Lösungen benötigen entsprechend mehr Zeit.',
+  },
+  {
+    question: 'Können bestehende Daten übernommen werden?',
+    answer:
+      'In vielen Fällen können Daten aus Excel, Formularen oder vorhandenen Systemen übernommen werden. Die genaue Vorgehensweise prüfen wir vor Projektstart.',
+  },
+  {
+    question: 'Müssen wir unsere bisherigen Programme ersetzen?',
+    answer:
+      'Nicht zwingend. Bestehende Systeme können häufig angebunden oder schrittweise ersetzt werden.',
+  },
+  {
+    question: 'Kann das System später erweitert werden?',
+    answer:
+      'Ja. Das System wird so geplant, dass zusätzliche Funktionen, Nutzer und Prozesse ergänzt werden können.',
+  },
+  {
+    question: 'Ist ein individuelles CRM nur für große Unternehmen sinnvoll?',
+    answer:
+      'Nein. Auch kleinere Unternehmen profitieren, wenn Informationen verteilt sind oder Standardsoftware die tatsächlichen Abläufe nicht sinnvoll abbildet.',
+  },
+];
+
+const TRUST_CHIPS = [
+  'Individuell entwickelt',
+  'Erweiterbar',
+  'Bestehende Systeme integrierbar',
+];
+
+/* ─── Component ──────────────────────────────────────────────────────────────── */
 const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
   const isRegional = !!regionSlug && !!regionName;
   const baseUrl = 'https://pixelkraftwerk-ai.com';
@@ -47,7 +297,12 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
     : `${baseUrl}/crm-systeme`;
 
   const regionContent = isRegional
-    ? getRegionServiceContent(regionSlug as LeistungsgebietSlug, regionName, 'crm-systeme', 'CRM-Systeme')
+    ? getRegionServiceContent(
+        regionSlug as LeistungsgebietSlug,
+        regionName,
+        'crm-systeme',
+        'CRM-Systeme',
+      )
     : null;
 
   const otherRegions = isRegional
@@ -71,180 +326,21 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
         { label: 'CRM-Systeme' },
       ];
 
-  const faqs = [
-    {
-      question: 'Was ist ein CRM-System und warum brauche ich eines?',
-      answer:
-        'Ein CRM-System (Customer Relationship Management) ist eine Software, die alle Kundenkontakte, Anfragen, Angebote und Aufgaben an einem zentralen Ort bündelt. Statt verstreuter Zettel, Excel-Listen und E-Mail-Postfächer sehen Sie auf einen Blick, wo jeder Kunde steht. Das spart Zeit, verhindert verlorene Anfragen und sorgt dafür, dass Ihr Team professionell und organisiert arbeitet – selbst bei wachsendem Geschäft.',
-    },
-    {
-      question: 'Für welche Unternehmensgrößen eignet sich ein CRM?',
-      answer:
-        'CRM-Systeme sind nicht nur für Konzerne. Gerade kleine Teams mit 2–20 Mitarbeitern profitieren enorm, weil dort besonders viel Wissen „im Kopf" steckt. Wenn ein Mitarbeiter ausfällt oder Urlaub hat, sind alle Infos trotzdem verfügbar. Ab dem Moment, wo Sie mehr als 10 Anfragen pro Woche bearbeiten, lohnt sich ein strukturiertes System.',
-    },
-    {
-      question: 'Wie lange dauert die Einführung eines CRM-Systems?',
-      answer:
-        'Ein einfaches Setup mit den wichtigsten Pipelines und Automatisierungen steht in 2–4 Wochen. Komplexere Migrationen mit Datenimport aus Altsystemen, individuellen Workflows und Team-Schulung dauern 4–8 Wochen. Wir arbeiten iterativ: Sie können das System ab Woche 2 produktiv nutzen, während wir im Hintergrund weitere Automatisierungen einbauen.',
-    },
-    {
-      question: 'Was kostet ein CRM-System für kleine Unternehmen?',
-      answer:
-        'Die Kosten hängen von Anbieter, Nutzerzahl und Umfang der Einrichtung ab. Wir bieten ein transparentes Paket: Einmalige Einrichtung plus optionales monatliches Betreuungspaket – Sie wissen vorab genau, was auf Sie zukommt. Im Vergleich zum Umsatzverlust durch verlorene Leads rechnet sich die Investition meist innerhalb weniger Wochen. Im kostenlosen Erstgespräch nennen wir Ihnen konkrete Zahlen für Ihren Fall.',
-    },
-    {
-      question: 'Kann ich mein bestehendes System (Excel, Outlook) integrieren?',
-      answer:
-        'Ja. Wir migrieren Daten aus Excel, Outlook, Google Contacts und gängigen Branchensoftware-Lösungen. Bestehende Kontakte, Notizen und Kommunikationshistorie werden sauber importiert, damit nichts verloren geht. Auch eine laufende Synchronisation (z. B. E-Mail-Integration, Kalender-Anbindung) richten wir standardmäßig ein.',
-    },
-    {
-      question: 'Welche CRM-Software empfiehlt Pixel Kraftwerk?',
-      answer:
-        'Wir arbeiten herstellerunabhängig und wählen die Plattform nach Ihren Anforderungen. Für kleine Teams eignen sich Lösungen wie HubSpot (starke kostenlose Basis), Pipedrive (vertriebsfokussiert) oder Brevo (Marketing + CRM). Für Handwerker und Dienstleister gibt es branchenspezifische Optionen. Entscheidend ist nicht die Software – sondern dass sie zu Ihren Prozessen passt.',
-    },
-    {
-      question: 'Wie sicher sind meine Kundendaten im CRM?',
-      answer:
-        'Datenschutz hat oberste Priorität. Wir setzen auf DSGVO-konforme Anbieter mit Servern in der EU, verschlüsselter Datenübertragung und granularer Rechteverwaltung. Sie entscheiden, wer welche Daten sehen darf. Zusätzlich richten wir automatische Backups und Löschfristen ein, damit Sie jederzeit audit-fähig sind.',
-    },
-    {
-      question: 'Kann das CRM-System mit meiner Website verknüpft werden?',
-      answer:
-        'Selbstverständlich. Kontaktformulare, Chatbot-Anfragen und Terminbuchungen fließen automatisch ins CRM. So wird aus einem Website-Besucher direkt ein Lead mit allen Infos – ohne manuelles Abtippen. Wir integrieren das nahtlos in Ihre bestehende oder von uns entwickelte Website.',
-    },
-    {
-      question: 'Was passiert nach der Einrichtung – bekomme ich Support?',
-      answer:
-        'Ja. Wir bieten optionale Betreuungspakete mit monatlichem Review, Workflow-Anpassungen und Schulungen für neue Teammitglieder. Die meisten Kunden starten mit dem Betreuungspaket und reduzieren nach 3–6 Monaten, wenn alle Prozesse eingespielt sind. Bei akuten Fragen sind wir natürlich jederzeit erreichbar.',
-    },
-    {
-      question: 'Kann ich das CRM-System selbst verwalten?',
-      answer:
-        'Absolut. Wir schulen Ihr Team, sodass Alltags-Aufgaben (Kontakte anlegen, Pipeline pflegen, Berichte ziehen) ohne uns funktionieren. Für Anpassungen an Workflows, neue Automatisierungen oder Integrationen stehen wir als Partner bereit. Ziel ist Ihre Eigenständigkeit – nicht Abhängigkeit.',
-    },
+  const allFaqs = [
+    ...BASE_FAQS,
+    ...(regionContent?.faqs?.map((f) => ({ question: f.q, answer: f.a })) ?? []),
   ];
-
-  const problemPoints = [
-    'Anfragen gehen in E-Mail-Postfächern, Notizzetteln und Handynotizen unter',
-    'Kein Überblick, welche Leads offen sind und wer nachfassen muss',
-    'Angebote werden verschickt – aber das Follow-up vergessen',
-    'Kundenwissen steckt in einzelnen Köpfen statt im System',
-    'Neukundengewinnung funktioniert, aber Bestandskunden werden vernachlässigt',
-    'Keine Auswertung, woher Aufträge kommen und welche Kanäle sich lohnen',
-  ];
-
-  const solutionFeatures = [
-    {
-      icon: Database,
-      title: 'Zentrale Kundendatenbank',
-      description:
-        'Alle Kontakte, Anfragen und Kommunikation an einem Ort. Jeder im Team sieht sofort den aktuellen Stand – ob am Schreibtisch oder unterwegs auf der Baustelle.',
-    },
-    {
-      icon: Target,
-      title: 'Visuelle Vertriebs-Pipeline',
-      description:
-        'Ihre Leads und Angebote als übersichtliche Kanban-Boards. Drag & Drop vom Erstkontakt bis zum Abschluss. Nichts geht mehr verloren, kein Follow-up wird vergessen.',
-    },
-    {
-      icon: Zap,
-      title: 'Automatisierte Follow-ups',
-      description:
-        'Das System erinnert Ihr Team automatisch an Nachfass-Aufgaben, verschickt Follow-up-E-Mails und eskaliert, wenn eine Anfrage zu lange unbearbeitet bleibt.',
-    },
-    {
-      icon: BarChart3,
-      title: 'Auswertungen & Kennzahlen',
-      description:
-        'Dashboard mit Conversion-Raten, Umsatzprognosen und Kanal-Performance. Sie sehen auf einen Blick, welche Marketing-Maßnahmen Aufträge bringen – und welche nicht.',
-    },
-    {
-      icon: Settings,
-      title: 'Individuelle Workflows',
-      description:
-        'Branchenspezifische Prozesse statt Standard-Vorlagen. Ob Aufmaß-Termin beim Handwerker, Exposé-Versand bei der Vermietung oder Beratungsgespräch beim Dienstleister – jeder Workflow passt zu Ihrem Geschäft.',
-    },
-    {
-      icon: Shield,
-      title: 'DSGVO & Datensicherheit',
-      description:
-        'EU-Server, verschlüsselte Übertragung, Löschfristen, Rechtemanagement. Ihre Kundendaten sind sicher und Sie sind jederzeit audit-fähig – ohne juristische Kopfschmerzen.',
-    },
-  ];
-
-  const targetGroups = [
-    {
-      title: 'Handwerksbetriebe & Baufirmen',
-      description:
-        'Aufmaß-Anfragen, Angebote, Nachfass-Termine – strukturiert statt chaotisch. Mit mobiler CRM-App auch auf der Baustelle immer im Bild.',
-      link: { href: '/crm-systeme/crm-fuer-handwerker', text: 'CRM für Handwerker im Detail' },
-    },
-    {
-      title: 'Hausverwaltungen & Vermietung',
-      description:
-        'Mieteranfragen, Besichtigungen, Mietverträge – alles in einer Timeline. Automatische Erinnerungen bei Mieterwechsel und Vertragsfristen.',
-      link: { href: '/crm-systeme/crm-fuer-vermietung', text: 'CRM für Vermietung im Detail' },
-    },
-    {
-      title: 'Dienstleister & Agenturen',
-      description:
-        'Vom Erstgespräch über das Angebot bis zum Projektstart – transparente Pipeline und automatisierte Onboarding-Prozesse.',
-      link: { href: '/crm-systeme/crm-fuer-dienstleister', text: 'CRM für Dienstleister im Detail' },
-    },
-  ];
-
-  const implementationSteps = [
-    {
-      step: '01',
-      title: 'Analyse & Konzept',
-      description:
-        'Wir analysieren Ihre aktuellen Prozesse: Wie kommen Anfragen rein? Wer bearbeitet was? Wo gehen Leads verloren? Daraus entwickeln wir ein CRM-Konzept, das zu Ihrer Arbeitsweise passt – nicht umgekehrt.',
-    },
-    {
-      step: '02',
-      title: 'Plattform-Auswahl & Setup',
-      description:
-        'Basierend auf Teamgröße, Budget und Anforderungen empfehlen wir die passende CRM-Plattform. Dann richten wir Pipelines, benutzerdefinierte Felder, Tags und die Grundstruktur ein.',
-    },
-    {
-      step: '03',
-      title: 'Datenmigration & Integration',
-      description:
-        'Bestehende Kontakte und Kommunikationshistorie werden sauber importiert. Website-Formulare, E-Mail-Postfächer und Kalender werden angebunden, damit alles automatisch ins CRM fließt.',
-    },
-    {
-      step: '04',
-      title: 'Automatisierungen einrichten',
-      description:
-        'Follow-up-Sequenzen, Aufgaben-Zuweisungen, Benachrichtigungen und E-Mail-Templates – die Automatisierungen, die Ihrem Team täglich Zeit sparen und dafür sorgen, dass kein Lead durch das Raster fällt.',
-    },
-    {
-      step: '05',
-      title: 'Schulung & Go-Live',
-      description:
-        'Ihr Team lernt das System in einer praxisnahen Schulung kennen. Wir begleiten die ersten Wochen aktiv und optimieren Workflows basierend auf dem echten Arbeitsalltag.',
-    },
-  ];
-
-  const comparisonTable = {
-    headers: ['Kriterium', 'Ohne CRM', 'Mit CRM von Pixel Kraftwerk'],
-    rows: [
-      ['Anfragen-Überblick', 'Verstreut in E-Mail, Notizen, Kopf', 'Zentrale Pipeline mit Status pro Lead'],
-      ['Follow-up', 'Vergessen oder zu spät', 'Automatische Erinnerung + E-Mail-Sequenz'],
-      ['Kundenwissen', 'Nur beim zuständigen Mitarbeiter', 'Im System – für alle im Team abrufbar'],
-      ['Auswertung', 'Bauchgefühl', 'Dashboard mit Zahlen und Trends'],
-      ['Reaktionszeit', 'Stunden bis Tage', 'Minuten durch Sofort-Benachrichtigung'],
-      ['Skalierbarkeit', 'Mehr Aufträge = mehr Chaos', 'Mehr Aufträge = gleicher Prozess, mehr Umsatz'],
-    ],
-  };
 
   return (
     <>
+      {/* ── Schema ─────────────────────────────────────────────────────────── */}
       <LocalBusinessSchema
         pageType="service"
-        customDescription={isRegional
-          ? `CRM-Systeme und Lead-Management für Unternehmen in ${regionName} und Umgebung. Pixel Kraftwerk aus Groitzsch richtet CRM-Systeme für Handwerker, Dienstleister und Vermietung ein.`
-          : 'CRM-Systeme und Lead-Management für kleine Unternehmen. Pixel Kraftwerk aus Groitzsch richtet CRM-Systeme für Handwerker, Dienstleister und Vermietung ein – inklusive Migration und Schulung.'}
+        customDescription={
+          isRegional
+            ? `Individuelle CRM-Systeme und Unternehmenssoftware für Unternehmen in ${regionName}. Pixel Kraftwerk entwickelt maßgeschneiderte Softwarelösungen für Kunden, Projekte, Aufträge und interne Abläufe.`
+            : 'Individuelle CRM-Systeme und Unternehmenssoftware. Pixel Kraftwerk entwickelt maßgeschneiderte Softwarelösungen für Kundenverwaltung, Lead-Management und Prozessdigitalisierung.'
+        }
       />
       {isRegional ? (
         <BreadcrumbSchemaRegionService
@@ -260,418 +356,891 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
         />
       )}
       <ServiceJsonLd
-        name={isRegional ? `CRM-Systeme ${regionName}` : 'CRM-Systeme'}
-        serviceType="CRM-System Einführung & Betreuung"
+        name={isRegional ? `Individuelles CRM-System ${regionName}` : 'Individuelles CRM-System'}
+        serviceType="Individuelle CRM-Systeme & Unternehmenssoftware"
         description={
           isRegional
-            ? `CRM-Systeme und Lead-Management für Unternehmen in ${regionName}. Zentrale Kundenverwaltung, automatisierte Follow-ups und transparente Vertriebspipeline.`
-            : 'CRM-Systeme und Lead-Management für kleine Unternehmen. Zentrale Kundenverwaltung, automatisierte Follow-ups und transparente Vertriebspipeline von Pixel Kraftwerk.'
+            ? `Individuelle CRM-Systeme und Unternehmenssoftware für Unternehmen in ${regionName}. Kundenverwaltung, Lead-Management und Prozessdigitalisierung – maßgeschneidert.`
+            : 'Individuelle CRM-Systeme und Unternehmenssoftware für Kunden, Projekte, Aufträge, Termine und interne Abläufe. Pixel Kraftwerk entwickelt Software, die sich an Ihre Prozesse anpasst.'
         }
         url={currentPageUrl}
         areaServed={isRegional ? [regionName!] : undefined}
-        faqs={[
-          ...faqs.map((f) => ({ question: f.question, answer: f.answer })),
-          ...(regionContent?.faqs?.map((f) => ({ question: f.q, answer: f.a })) || []),
-        ]}
+        faqs={allFaqs.map((f) => ({ question: f.question, answer: f.answer }))}
         pageName="CRM-Systeme"
       />
 
-      <div style={{ background: '#FAFAF9' }}>
-        {/* Hero mit Premium-Hintergrundbild */}
-        {/* HERO */}
-      <section
-        id="crm-systeme"
-        className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
-        style={{ background: '#FAFAF9' }}
-      >
-        <div className="absolute inset-0">
-          <Image
-            src="/images/crm-systeme-kundenverwaltung.webp"
-            alt="CRM-System für Kundenverwaltung und Lead-Management"
-            fill
-            className="object-cover object-right"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(250,250,249,0.97) 0%, rgba(250,250,249,0.88) 38%, rgba(250,250,249,0.3) 65%, rgba(250,250,249,0.0) 80%)' }} aria-hidden />
-        </div>
-        <div className="relative z-20 container mx-auto px-4 md:px-8 pt-20 md:pt-24">
-          <BreadcrumbNav items={isRegional ? [
-            { label: 'Startseite', href: '/' },
-            { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
-            { label: regionName!, href: regionUrl },
-            { label: 'CRM-Systeme' },
-          ] : [
-            { label: 'Startseite', href: '/' },
-            { label: 'Leistungen', href: '/leistungen' },
-            { label: 'CRM-Systeme' },
-          ]} />
-        </div>
-        <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
-            <div>
-              <motion.h1 className="text-xs md:text-sm font-heading font-bold uppercase tracking-widest mb-3" style={{ color: '#0E7C72' }} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                {isRegional ? `CRM-Systeme in ${regionName}` : 'CRM-Systeme Groitzsch & Leipzig'}
-              </motion.h1>
-              <motion.h2 className="font-heading font-bold tracking-tight mb-2 leading-[1.08]" style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.6 }}>
-                {regionContent?.localHook || 'Kunden gewinnen, Prozesse ordnen'}
-              </motion.h2>
-              <motion.h3 className="sr-only md:not-sr-only text-sm md:text-base max-w-xl mb-3 leading-snug font-semibold" style={{ color: '#0E7C72' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-                {SERVICE_TITLE_KEYWORDS['crm-systeme']}
-              </motion.h3>
-              <motion.p className="text-base md:text-lg max-w-xl mb-4 leading-relaxed" style={{ color: '#404B48' }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-                Anfragen kommen rein – aber wer fasst nach? Ein CRM-System bringt Struktur in Ihren Vertrieb, automatisiert wiederkehrende Aufgaben und sorgt dafür, dass aus Interessenten Kunden werden.
-              </motion.p>
-              <motion.div className="flex flex-col sm:flex-row gap-3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }}>
-                <button onClick={scrollToContact} className="btn-primary">
-                  CRM-Beratung vereinbaren
-                  <ArrowRight size={18} />
-                </button>
-                <a href="tel:+491785844460" className="inline-flex items-center justify-center gap-2 py-3 text-sm font-semibold underline underline-offset-4 sm:no-underline sm:justify-start sm:px-6 sm:py-3 sm:rounded-xl sm:border" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                  Jetzt anrufen
-                </a>
-              </motion.div>
-              <div className="hidden sm:block">
-                <TrustLine className="mt-5" />
-              </div>
-            </div>
-            <div className="hidden lg:block" aria-hidden />
-          </div>
-        </div>
-      </section>
+      <div style={{ background: PAPER }}>
+        {/* ── HERO ───────────────────────────────────────────────────────────── */}
+        <section
+          id="crm-systeme"
+          className="relative pt-16 md:pt-20 pb-16 md:pb-20"
+          style={{ background: PAPER }}
+        >
+          <div className="container mx-auto px-4 md:px-8">
+            <BreadcrumbNav items={breadcrumbItems} />
 
-        {/* Problem */}
-        <section className="py-20" style={{ background: '#F4F7F6' }}>
+            <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16">
+              {/* Left column: copy */}
+              <div>
+                {/* Eyebrow */}
+                <motion.span
+                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest mb-4"
+                  style={{
+                    background: `rgba(14,124,114,0.08)`,
+                    color: PETROL,
+                    border: `1px solid rgba(14,124,114,0.20)`,
+                  }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  Individuelle Unternehmenssoftware
+                </motion.span>
+
+                {/* H1 */}
+                <motion.h1
+                  className="font-heading font-bold tracking-tight leading-[1.08] mb-4"
+                  style={{ color: INK, fontSize: 'clamp(1.9rem, 4.2vw, 3rem)' }}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.22, duration: 0.55 }}
+                >
+                  Ein CRM-System, das sich Ihren Abläufen anpasst.
+                </motion.h1>
+
+                {/* H2 – highlighted subheadline */}
+                <motion.h2
+                  className="text-base md:text-lg font-semibold leading-snug mb-4 max-w-xl"
+                  style={{ color: PETROL }}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.32 }}
+                >
+                  Beenden Sie das tägliche Durcheinander aus Excel-Listen, E-Mails, Notizen und unpassender Standardsoftware.
+                </motion.h2>
+
+                {/* H3 – SEO keyword line (sr-only on mobile) */}
+                <motion.h3
+                  className="sr-only md:not-sr-only text-sm font-medium mb-4"
+                  style={{ color: MUTED }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.38 }}
+                >
+                  {SERVICE_TITLE_KEYWORDS['crm-systeme']}
+                </motion.h3>
+
+                {/* Description */}
+                <motion.p
+                  className="text-base md:text-lg max-w-xl mb-6 leading-relaxed"
+                  style={{ color: BODY }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.44 }}
+                >
+                  Wir entwickeln individuelle CRM-Systeme und Unternehmenssoftware, die Kunden, Vorgänge und interne Abläufe zentral zusammenführen – exakt passend zu Ihrem Unternehmen.
+                </motion.p>
+
+                {/* Trust chips */}
+                <motion.div
+                  className="flex flex-wrap gap-2 mb-6"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  aria-label="Leistungsmerkmale"
+                >
+                  {TRUST_CHIPS.map((chip) => (
+                    <span
+                      key={chip}
+                      className="text-xs font-medium px-2.5 py-1 rounded-full"
+                      style={{ background: SURFACE, color: MUTED, border: `1px solid ${BORDER}` }}
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </motion.div>
+
+                {/* CTAs */}
+                <motion.div
+                  className="flex flex-col sm:flex-row gap-3"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.58 }}
+                >
+                  <button onClick={scrollToContact} className="btn-primary">
+                    Individuelles CRM planen
+                    <ArrowRight size={18} />
+                  </button>
+                  <button
+                    onClick={scrollToContact}
+                    className="btn-secondary"
+                  >
+                    Kostenloses Erstgespräch sichern
+                  </button>
+                </motion.div>
+
+                <div className="hidden sm:block mt-5">
+                  <TrustLine />
+                </div>
+              </div>
+
+              {/* Right column: hero visual */}
+              <motion.div
+                className="hidden lg:flex items-center justify-center py-8 px-4"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.35, duration: 0.65 }}
+                aria-hidden
+              >
+                <CrmCustomerFileVisual />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── VERTRAUENSLEISTE ───────────────────────────────────────────────── */}
+        <section
+          className="py-5 border-y"
+          style={{ background: SURFACE, borderColor: BORDER }}
+          aria-label="Leistungsmerkmale"
+        >
+          <div className="container mx-auto px-4">
+            <ul className="flex flex-wrap justify-center gap-x-8 gap-y-3">
+              {[
+                'Individuell entwickelt',
+                'Erweiterbar',
+                'Bestehende Systeme integrierbar',
+                'Keine Standardlösung von der Stange',
+                'Auf Ihre Prozesse zugeschnitten',
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-center gap-2 text-sm font-medium"
+                  style={{ color: BODY }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2.5 7.5l3 3 6-6" stroke={PETROL} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* ── PROBLEMSEKTION ──────────────────────────────────────────────────── */}
+        <section className="py-20" style={{ background: SURFACE }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold mb-6" style={{ color: '#0C1210' }}
+                className="text-2xl md:text-3xl font-heading font-bold mb-5"
+                style={{ color: INK }}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                Das Problem: Wachstum ohne System führt zu Chaos
-              </motion.h2>
-
-              <motion.p
-                className=" text-lg leading-relaxed mb-6"
-                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                Die meisten kleinen Unternehmen starten mit E-Mail und Excel. Das funktioniert – bis es nicht mehr funktioniert. Ab einem bestimmten Punkt kosten verlorene Anfragen mehr als jedes CRM-System. Typische Symptome, die wir bei Kunden {isRegional ? `in ${regionName} und ` : ''}in der Region immer wieder sehen:
+                Ihre Daten sind vorhanden. Der Überblick fehlt.
+              </motion.h2>
+              <motion.p
+                className="text-lg leading-relaxed mb-5"
+                style={{ color: BODY }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.08 }}
+                viewport={{ once: true }}
+              >
+                Kundenanfragen liegen im E-Mail-Postfach. Angebote werden in Word erstellt. Aufgaben stehen in Notizen. Kundendaten werden in Excel gepflegt – und wichtige Informationen befinden sich häufig nur in den Köpfen einzelner Mitarbeiter.
               </motion.p>
 
               <motion.div
-                className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-3"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
+                transition={{ duration: 0.45, delay: 0.12 }}
                 viewport={{ once: true }}
               >
-                {problemPoints.map((point, i) => (
-                  <div key={i} className="flex items-start gap-3 rounded-2xl bg-white border p-4 shadow-card" style={{ borderColor: '#E4E9E7' }}>
-                    <div className="flex-shrink-0 w-7 h-7 rounded-xl flex items-center justify-center mt-0.5" style={{ background: 'rgba(239,68,68,0.07)', color: '#B91C1C' }}>
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 6h6" stroke="#B91C1C" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                {[
+                  'Informationen werden mehrfach gepflegt',
+                  'Rückmeldungen und Follow-ups werden vergessen',
+                  'Zuständigkeiten sind unklar',
+                  'Mitarbeiter arbeiten mit unterschiedlichen Datenständen',
+                  'Vorgänge lassen sich nur schwer nachvollziehen',
+                  'Standardsoftware passt nicht zu den tatsächlichen Abläufen',
+                ].map((point, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-3 rounded-2xl bg-white p-4"
+                    style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 4px rgba(12,18,16,0.05)' }}
+                  >
+                    <div
+                      className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
+                      style={{ background: 'rgba(239,68,68,0.07)' }}
+                      aria-hidden
+                    >
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                        <path d="M2.5 5h5" stroke="#B91C1C" strokeWidth="1.5" strokeLinecap="round" />
+                      </svg>
                     </div>
-                    <span className="text-sm leading-relaxed" style={{ color: '#404B48' }}>{point}</span>
+                    <span className="text-sm leading-relaxed" style={{ color: BODY }}>
+                      {point}
+                    </span>
                   </div>
                 ))}
               </motion.div>
+            </div>
+          </div>
+        </section>
 
+        {/* ── AGITATION ──────────────────────────────────────────────────────── */}
+        <section className="py-20" style={{ background: PAPER }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <motion.h2
+                className="text-2xl md:text-3xl font-heading font-bold mb-5"
+                style={{ color: INK }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Je mehr Ihr Unternehmen wächst, desto größer wird das Chaos.
+              </motion.h2>
               <motion.p
-                className=" text-lg leading-relaxed"
+                className="text-lg leading-relaxed mb-7"
+                style={{ color: BODY }}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.08 }}
                 viewport={{ once: true }}
               >
-                Kommt Ihnen das bekannt vor? Dann ist es Zeit für ein System, das mitwächst. Ein CRM ersetzt nicht Ihre Arbeitsweise – es gibt ihr eine Struktur, die mit jedem neuen Auftrag wertvoller wird.
-              </motion.p>
-            </div>
-          </div>
-        </section>
-
-        {/* Solution Features */}
-        <section className="py-20" style={{ background: '#FAFAF9' }}>
-          <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto">
-              <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold mb-4 text-center" style={{ color: '#0C1210' }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                Die Lösung: Ein CRM, das zu Ihrem Geschäft passt
-              </motion.h2>
-              <motion.p
-                className=" text-center text-lg mb-12 max-w-2xl mx-auto"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                Kein überladenes Enterprise-System, sondern genau die Funktionen, die Sie brauchen. Klar, übersichtlich und auf Ihre Branche zugeschnitten.
+                Was bei wenigen Kunden noch irgendwie funktioniert, kostet mit wachsender Auslastung immer mehr Zeit. Fehlende Informationen führen zu Rückfragen. Vergessene Wiedervorlagen kosten Chancen. Unklare Prozesse verursachen Fehler.
               </motion.p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {solutionFeatures.map((feature, i) => (
-                  <motion.div
-                    key={i}
-                    className="bg-white border border-dark-200 p-6 hover:border-primary-500/30 transition-all duration-300 rounded-2xl shadow-card"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.08 }}
-                    viewport={{ once: true }}
-                  >
-                    <feature.icon className="w-8 h-8 text-primary-500 mb-4" />
-                    <h3 className="text-lg font-heading font-bold mb-3" style={{ color: '#0C1210' }}>{feature.title}</h3>
-                    <p className=" text-sm leading-relaxed">{feature.description}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Comparison Table */}
-        <section className="py-20" style={{ background: '#F4F7F6' }}>
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold mb-8 text-center" style={{ color: '#0C1210' }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                Ohne CRM vs. mit CRM – der Unterschied im Alltag
-              </motion.h2>
-
+              {/* Callout */}
               <motion.div
-                className="overflow-x-auto rounded-2xl border shadow-card"
-                style={{ borderColor: '#E4E9E7' }}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
+                className="rounded-2xl px-6 py-5"
+                style={{
+                  borderLeft: `4px solid ${PETROL}`,
+                  background: `rgba(14,124,114,0.05)`,
+                  border: `1px solid rgba(14,124,114,0.18)`,
+                  borderLeftWidth: '4px',
+                }}
+                initial={{ opacity: 0, x: -12 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.45, delay: 0.12 }}
                 viewport={{ once: true }}
               >
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr>
-                      {comparisonTable.headers.map((h, i) => (
-                        <th key={i} className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>
-                          {h}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {comparisonTable.rows.map((row, rIdx) => (
-                      <tr key={rIdx} style={{ background: rIdx % 2 === 0 ? '#fff' : '#FAFAF9' }}>
-                        {row.map((cell, cIdx) => (
-                          <td key={cIdx} className="py-3 px-4 text-sm border-b" style={{ color: cIdx === 2 ? '#0E7C72' : '#404B48', fontWeight: cIdx === 2 ? 600 : 400, borderColor: '#E4E9E7' }}>
-                            {cell}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Mid CTA */}
-        <section className="py-14" style={{ background: '#F4F7F6' }}>
-          <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center">
-              <motion.h2
-                className="text-xl md:text-2xl font-heading font-bold mb-3" style={{ color: '#0C1210' }}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                Welches CRM passt zu Ihrem Unternehmen?
-              </motion.h2>
-              <motion.p
-                className=" mb-6 text-base"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                In 20 Minuten zeigen wir Ihnen, welches System zu Ihren Abläufen passt und was es kostet.
-              </motion.p>
-              <motion.div
-                className="flex flex-col sm:flex-row gap-3 justify-center"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <button onClick={scrollToContact} className="btn-primary">
-                  CRM-Beratung vereinbaren
-                  <ArrowRight size={18} />
-                </button>
-                <a href="tel:+491785844460" className="btn-secondary">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                  Direkt anrufen
-                </a>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Target Groups */}
-        <section className="py-20" style={{ background: '#FAFAF9' }}>
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold mb-4 text-center" style={{ color: '#0C1210' }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                Für wen eignet sich ein CRM-System?
-              </motion.h2>
-              <motion.p
-                className=" text-center text-lg mb-10 max-w-2xl mx-auto"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                Wir haben CRM-Systeme für verschiedenste Branchen eingerichtet. Drei Bereiche, in denen die Wirkung besonders groß ist:
-              </motion.p>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {targetGroups.map((group, i) => (
-                  <motion.div
-                    key={i}
-                    className="bg-white border border-dark-200 p-6 flex flex-col rounded-2xl shadow-card"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <h3 className="text-lg font-heading font-bold mb-3" style={{ color: '#0C1210' }}>{group.title}</h3>
-                    <p className=" text-sm leading-relaxed mb-4 flex-1">{group.description}</p>
-                    <a
-                      href={isRegional ? `/leistungsgebiete/${regionSlug}/crm-systeme/${group.link.href.split('/').pop()}` : group.link.href}
-                      className="text-primary-400 hover:underline text-sm font-heading"
-                    >
-                      {group.link.text} →
-                    </a>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Implementation Process */}
-        <section className="py-20" style={{ background: '#F4F7F6' }}>
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold mb-4" style={{ color: '#0C1210' }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                So führen wir Ihr CRM-System ein
-              </motion.h2>
-              <motion.p
-                className=" text-lg mb-10"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                Kein Projekt-Marathon, sondern ein pragmatischer 5-Schritte-Prozess. Sie können das System bereits nach wenigen Tagen produktiv nutzen.
-              </motion.p>
-
-              <div className="space-y-6">
-                {implementationSteps.map((step, i) => (
-                  <motion.div
-                    key={i}
-                    className="flex gap-4 rounded-2xl border bg-white p-5 shadow-card"
-                    style={{ borderColor: '#E4E9E7' }}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl" style={{ background: 'rgba(14,124,114,0.08)', border: '1px solid rgba(14,124,114,0.2)' }}>
-                      <span className="font-heading font-bold text-sm" style={{ color: '#0E7C72' }}>{step.step}</span>
-                    </div>
-                    <div>
-                      <h3 className="text-base font-heading font-bold mb-1.5" style={{ color: '#0C1210' }}>{step.title}</h3>
-                      <p className="text-sm leading-relaxed" style={{ color: '#68746F' }}>{step.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Cross-link: Automatisierungen */}
-        <section className="py-16" style={{ background: '#FAFAF9' }}>
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <motion.div
-                className="bg-white border border-primary-500/20 p-8 rounded-2xl shadow-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-xl font-heading font-bold mb-3" style={{ color: '#0C1210' }}>
-                  CRM + Automatisierung = maximale Wirkung
-                </h3>
-                <p className=" leading-relaxed mb-4">
-                  Ein CRM-System entfaltet sein volles Potenzial, wenn es mit intelligenten Automatisierungen kombiniert wird. Neue Anfragen werden automatisch als Lead angelegt, Follow-ups laufen im Hintergrund und Termine buchen sich von selbst. Unsere{' '}
-                  <a href="/automatisierungen" className="text-primary-400 hover:underline">Automatisierungslösungen</a>{' '}
-                  ergänzen Ihr CRM perfekt. Auch unser{' '}
-                  <a href="/ki-chatbots" className="text-primary-400 hover:underline">KI-Chatbot</a>{' '}
-                  kann Anfragen direkt ins CRM weiterleiten.
+                <p className="text-base font-semibold leading-snug" style={{ color: INK }}>
+                  Noch eine weitere Standardsoftware löst das Problem häufig nicht – weil sich Ihr Unternehmen erneut an das Programm anpassen muss.
                 </p>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Regional Content */}
+        {/* ── LÖSUNGSSEKTION ──────────────────────────────────────────────────── */}
+        <section className="py-20" style={{ background: SURFACE }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <motion.h2
+                className="text-2xl md:text-3xl font-heading font-bold mb-5"
+                style={{ color: INK }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Wir entwickeln das System, das Ihr Unternehmen wirklich braucht.
+              </motion.h2>
+              <motion.p
+                className="text-lg leading-relaxed mb-7"
+                style={{ color: BODY }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.08 }}
+                viewport={{ once: true }}
+              >
+                Wir analysieren Ihre tatsächlichen Abläufe und entwickeln daraus eine individuelle Softwarelösung. Sie erhalten genau die Funktionen, Ansichten und Automatisierungen, die im Alltag benötigt werden – ohne unnötige Menüs und komplizierte Umwege.
+              </motion.p>
+
+              <motion.div
+                className="inline-flex items-center gap-3 px-5 py-4 rounded-2xl"
+                style={{ background: `rgba(14,124,114,0.07)`, border: `1px solid rgba(14,124,114,0.20)` }}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.15 }}
+                viewport={{ once: true }}
+              >
+                <ShieldCheck size={20} style={{ color: PETROL, flexShrink: 0 }} aria-hidden />
+                <span className="text-base font-semibold" style={{ color: PETROL }}>
+                  Ihre Prozesse bestimmen die Software. Nicht umgekehrt.
+                </span>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── FUNKTIONSBEREICHE ───────────────────────────────────────────────── */}
+        <section className="py-20" style={{ background: PAPER }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <motion.h2
+                className="text-2xl md:text-3xl font-heading font-bold mb-4 text-center"
+                style={{ color: INK }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Was Ihr individuelles CRM-System abbilden kann
+              </motion.h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+                {FUNKTIONSBEREICHE.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    className="bg-white rounded-2xl p-6"
+                    style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 6px rgba(12,18,16,0.07)' }}
+                    initial={{ opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.07 }}
+                    viewport={{ once: true }}
+                  >
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
+                      style={{ background: `rgba(14,124,114,0.09)` }}
+                      aria-hidden
+                    >
+                      <item.icon size={20} style={{ color: PETROL }} />
+                    </div>
+                    <h3 className="font-heading font-bold text-base mb-2" style={{ color: INK }}>
+                      {item.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: BODY }}>
+                      {item.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── NICHT NUR VERTRIEBS-CRM ─────────────────────────────────────────── */}
+        <section className="py-20" style={{ background: SURFACE }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <motion.h2
+                className="text-2xl md:text-3xl font-heading font-bold mb-4"
+                style={{ color: INK }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Nicht nur für Vertrieb und Kundenverwaltung
+              </motion.h2>
+              <motion.p
+                className="text-lg leading-relaxed mb-8"
+                style={{ color: BODY }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.08 }}
+                viewport={{ once: true }}
+              >
+                Ein individuelles CRM-System kann viele wiederkehrende Unternehmensprozesse zentral abbilden.
+              </motion.p>
+
+              <motion.div
+                className="flex flex-wrap gap-2 mb-7"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.45, delay: 0.12 }}
+                viewport={{ once: true }}
+              >
+                {EINSATZBEREICHE.map((bereich) => (
+                  <span
+                    key={bereich}
+                    className="text-sm font-medium px-3 py-1.5 rounded-full"
+                    style={{ background: PAPER, color: BODY, border: `1px solid ${BORDER}` }}
+                  >
+                    {bereich}
+                  </span>
+                ))}
+              </motion.div>
+
+              <motion.p
+                className="text-sm italic"
+                style={{ color: MUTED }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                Welche Bereiche sinnvoll sind, hängt von den tatsächlichen Abläufen Ihres Unternehmens ab.
+              </motion.p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── VORHER / NACHHER ────────────────────────────────────────────────── */}
+        <section className="py-20" style={{ background: PAPER }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <motion.h2
+                className="text-2xl md:text-3xl font-heading font-bold mb-10 text-center"
+                style={{ color: INK }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Von verteilten Informationen zu klaren Abläufen
+              </motion.h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Vorher */}
+                <motion.div
+                  className="rounded-2xl p-6"
+                  style={{ background: '#FEF2F2', border: '1px solid rgba(239,68,68,0.20)' }}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center gap-2 mb-5">
+                    <span
+                      className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
+                      style={{ background: 'rgba(239,68,68,0.12)', color: '#B91C1C' }}
+                      aria-hidden
+                    >
+                      ✕
+                    </span>
+                    <span className="font-heading font-bold text-base" style={{ color: '#B91C1C' }}>
+                      Bisher
+                    </span>
+                  </div>
+                  <ul className="space-y-3">
+                    {VORHER.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm" style={{ color: BODY }}>
+                        <div
+                          className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
+                          style={{ background: 'rgba(239,68,68,0.10)' }}
+                          aria-hidden
+                        >
+                          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">
+                            <path d="M1.5 4h5" stroke="#B91C1C" strokeWidth="1.4" strokeLinecap="round" />
+                          </svg>
+                        </div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+
+                {/* Nachher */}
+                <motion.div
+                  className="rounded-2xl p-6"
+                  style={{ background: 'rgba(14,124,114,0.05)', border: '1px solid rgba(14,124,114,0.20)' }}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.12 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center gap-2 mb-5">
+                    <span
+                      className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
+                      style={{ background: 'rgba(14,124,114,0.14)', color: PETROL }}
+                      aria-hidden
+                    >
+                      ✓
+                    </span>
+                    <span className="font-heading font-bold text-base" style={{ color: PETROL }}>
+                      Mit individuellem CRM
+                    </span>
+                  </div>
+                  <ul className="space-y-3">
+                    {NACHHER.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm" style={{ color: BODY }}>
+                        <div
+                          className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
+                          style={{ background: 'rgba(14,124,114,0.12)' }}
+                          aria-hidden
+                        >
+                          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">
+                            <path d="M1 4.5l2 2L7 1.5" stroke={PETROL} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── VORTEILE ────────────────────────────────────────────────────────── */}
+        <section className="py-20" style={{ background: SURFACE }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <motion.h2
+                className="text-2xl md:text-3xl font-heading font-bold mb-10 text-center"
+                style={{ color: INK }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Eine Software, die für Sie arbeitet
+              </motion.h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {VORTEILE.map((v, i) => (
+                  <motion.div
+                    key={i}
+                    className="bg-white rounded-2xl p-6"
+                    style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 6px rgba(12,18,16,0.07)' }}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.07 }}
+                    viewport={{ once: true }}
+                  >
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
+                      style={{ background: `rgba(14,124,114,0.09)` }}
+                      aria-hidden
+                    >
+                      <v.icon size={20} style={{ color: PETROL }} />
+                    </div>
+                    <h3 className="font-heading font-bold text-base mb-2" style={{ color: INK }}>
+                      {v.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: BODY }}>
+                      {v.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── STANDARD-SOFTWARE VS. INDIVIDUELLES CRM ──────────────────────────── */}
+        <section className="py-20" style={{ background: PAPER }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <motion.h2
+                className="text-2xl md:text-3xl font-heading font-bold mb-10 text-center"
+                style={{ color: INK }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Warum kein gewöhnliches CRM von der Stange?
+              </motion.h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Standard */}
+                <motion.div
+                  className="rounded-2xl p-6 bg-white"
+                  style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 4px rgba(12,18,16,0.05)' }}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.04 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center gap-2 mb-5">
+                    <span
+                      className="w-7 h-7 rounded-full flex items-center justify-center"
+                      style={{ background: 'rgba(239,68,68,0.08)', color: '#B91C1C' }}
+                      aria-hidden
+                    >
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                        <path d="M2.5 6h7" stroke="#B91C1C" strokeWidth="1.4" strokeLinecap="round" />
+                      </svg>
+                    </span>
+                    <span className="font-heading font-bold text-base" style={{ color: INK }}>
+                      Standardsoftware
+                    </span>
+                  </div>
+                  <ul className="space-y-3">
+                    {STANDARD_PUNKTE.map((p, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm" style={{ color: BODY }}>
+                        <div
+                          className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
+                          style={{ background: 'rgba(239,68,68,0.08)' }}
+                          aria-hidden
+                        >
+                          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">
+                            <path d="M1.5 4h5" stroke="#B91C1C" strokeWidth="1.4" strokeLinecap="round" />
+                          </svg>
+                        </div>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+
+                {/* Individuell */}
+                <motion.div
+                  className="rounded-2xl p-6"
+                  style={{
+                    background: 'rgba(14,124,114,0.04)',
+                    border: `1px solid rgba(14,124,114,0.22)`,
+                    boxShadow: '0 1px 4px rgba(14,124,114,0.06)',
+                  }}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center gap-2 mb-5">
+                    <span
+                      className="w-7 h-7 rounded-full flex items-center justify-center"
+                      style={{ background: 'rgba(14,124,114,0.12)', color: PETROL }}
+                      aria-hidden
+                    >
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                        <path d="M2 6.5l3 3 5-6" stroke={PETROL} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <span className="font-heading font-bold text-base" style={{ color: PETROL }}>
+                      Individuelles CRM
+                    </span>
+                  </div>
+                  <ul className="space-y-3">
+                    {INDIVIDUELL_PUNKTE.map((p, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm" style={{ color: BODY }}>
+                        <div
+                          className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
+                          style={{ background: 'rgba(14,124,114,0.10)' }}
+                          aria-hidden
+                        >
+                          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">
+                            <path d="M1 4.5l2 2L7 1.5" stroke={PETROL} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </div>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── ANWENDUNGSBEISPIELE ──────────────────────────────────────────────── */}
+        <section className="py-20" style={{ background: SURFACE }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <motion.h2
+                className="text-2xl md:text-3xl font-heading font-bold mb-4 text-center"
+                style={{ color: INK }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                So kann Ihre individuelle Software eingesetzt werden
+              </motion.h2>
+              <motion.p
+                className="text-base text-center mb-10 max-w-2xl mx-auto"
+                style={{ color: MUTED }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.08 }}
+                viewport={{ once: true }}
+              >
+                Diese Beispiele dienen zur Orientierung. Sie zeigen mögliche Einsatzbereiche – keine konkreten Kundenprojekte.
+              </motion.p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {ANWENDUNGSBEISPIELE.map((bsp, i) => (
+                  <motion.div
+                    key={i}
+                    className="bg-white rounded-2xl p-6 flex flex-col"
+                    style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 6px rgba(12,18,16,0.07)' }}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
+                    viewport={{ once: true }}
+                  >
+                    <h3 className="font-heading font-bold text-base mb-2" style={{ color: INK }}>
+                      {bsp.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed mb-4 flex-1" style={{ color: BODY }}>
+                      {bsp.description}
+                    </p>
+                    {bsp.href && (
+                      <a
+                        href={
+                          isRegional
+                            ? `/leistungsgebiete/${regionSlug}/crm-systeme/${bsp.href.split('/').pop()}`
+                            : bsp.href
+                        }
+                        className="text-sm font-semibold inline-flex items-center gap-1"
+                        style={{ color: PETROL }}
+                        aria-label={`Mehr zu: ${bsp.title}`}
+                      >
+                        Mehr erfahren
+                        <ArrowRight size={13} aria-hidden />
+                      </a>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── ABLAUF ──────────────────────────────────────────────────────────── */}
+        <section className="py-20" style={{ background: PAPER }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <motion.h2
+                className="text-2xl md:text-3xl font-heading font-bold mb-10"
+                style={{ color: INK }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                So entsteht Ihr individuelles CRM-System
+              </motion.h2>
+
+              <div className="space-y-4">
+                {ABLAUF_SCHRITTE.map((s, i) => (
+                  <motion.div
+                    key={i}
+                    className="flex gap-4 bg-white rounded-2xl p-5"
+                    style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 4px rgba(12,18,16,0.05)' }}
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
+                    viewport={{ once: true }}
+                  >
+                    <div
+                      className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl"
+                      style={{ background: `rgba(14,124,114,0.08)`, border: `1px solid rgba(14,124,114,0.18)` }}
+                      aria-hidden
+                    >
+                      <span className="font-heading font-bold text-sm" style={{ color: PETROL }}>
+                        {s.step}
+                      </span>
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-bold text-base mb-1" style={{ color: INK }}>
+                        {s.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed" style={{ color: MUTED }}>
+                        {s.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── INTEGRATIONEN ────────────────────────────────────────────────────── */}
+        <section className="py-20" style={{ background: SURFACE }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <motion.h2
+                className="text-2xl md:text-3xl font-heading font-bold mb-4"
+                style={{ color: INK }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Ihre bestehenden Systeme müssen nicht ersetzt werden
+              </motion.h2>
+              <motion.p
+                className="text-lg leading-relaxed mb-8"
+                style={{ color: BODY }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.08 }}
+                viewport={{ once: true }}
+              >
+                Das individuelle CRM kann bestehende Programme sinnvoll ergänzen und Daten zentral zusammenführen. Mögliche Anbindungen:
+              </motion.p>
+
+              <motion.div
+                className="flex flex-wrap gap-2 mb-8"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.45, delay: 0.12 }}
+                viewport={{ once: true }}
+              >
+                {INTEGRATIONEN.map((item) => (
+                  <span
+                    key={item}
+                    className="text-sm font-medium px-3 py-1.5 rounded-full"
+                    style={{ background: PAPER, color: BODY, border: `1px solid ${BORDER}` }}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </motion.div>
+
+              {/* Internal links */}
+              <motion.p
+                className="text-sm"
+                style={{ color: MUTED }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                Mehr zu passenden Erweiterungen:{' '}
+                <a href="/automatisierungen" style={{ color: PETROL }} className="hover:underline font-medium">
+                  Prozessautomatisierungen
+                </a>
+                {', '}
+                <a href="/ki-chatbots" style={{ color: PETROL }} className="hover:underline font-medium">
+                  KI-Chatbots
+                </a>
+                {' und '}
+                <a href="/telefonassistenten" style={{ color: PETROL }} className="hover:underline font-medium">
+                  Telefonassistenten
+                </a>
+                .
+              </motion.p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── REGIONALE INHALTE ────────────────────────────────────────────────── */}
         {isRegional && regionContent?.paragraphs && regionContent.paragraphs.length > 0 && (
-          <section className="py-16" style={{ background: '#F4F7F6' }}>
+          <section className="py-16" style={{ background: PAPER }}>
             <div className="container mx-auto px-4">
               <div className="max-w-3xl mx-auto">
                 <motion.h2
-                  className="text-2xl md:text-3xl font-heading font-bold mb-6" style={{ color: '#0C1210' }}
+                  className="text-2xl md:text-3xl font-heading font-bold mb-6"
+                  style={{ color: INK }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
+                  transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  CRM-Systeme für Unternehmen in {regionName}
+                  Individuelle CRM-Systeme für Unternehmen in {regionName}
                 </motion.h2>
                 {regionContent.paragraphs.map((p, i) => (
                   <motion.p
                     key={i}
-                    className=" text-lg leading-relaxed mb-5"
+                    className="text-lg leading-relaxed mb-5"
+                    style={{ color: BODY }}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
                     viewport={{ once: true }}
                   >
                     {p}
@@ -682,86 +1251,106 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
           </section>
         )}
 
-        {/* FAQ */}
-        <section id="faq" className="py-20" style={{ background: '#F4F7F6' }}>
+        {/* ── FAQ ─────────────────────────────────────────────────────────────── */}
+        <section id="faq" className="py-20" style={{ background: SURFACE }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold mb-8" style={{ color: '#0C1210' }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                Häufige Fragen zu CRM-Systemen{isRegional ? ` in ${regionName}` : ''}
-              </motion.h2>
-
-              <div className="space-y-4">
-                {faqs.map((faq, i) => (
-                  <FaqItem key={i} question={faq.question} answer={faq.answer} index={i} />
-                ))}
-                {regionContent?.faqs?.map((faq, i) => (
-                  <FaqItem key={`local-${i}`} question={faq.q} answer={faq.a} index={faqs.length + i} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-20" style={{ background: '#FAFAF9' }}>
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 mb-6"
+                className="text-2xl md:text-3xl font-heading font-bold mb-8"
+                style={{ color: INK }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <TrendingUp className="w-4 h-4 text-primary-500" />
-                <span className="text-primary-400 text-sm font-heading">Bereit für strukturierten Vertrieb?</span>
-              </motion.div>
-
-              <motion.h2
-                className="text-2xl md:text-3xl font-heading font-bold mb-6" style={{ color: '#0C1210' }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                Lassen Sie uns Ihr CRM-System gemeinsam aufsetzen
+                Häufige Fragen zum individuellen CRM{isRegional ? ` in ${regionName}` : ''}
               </motion.h2>
-              <motion.p
-                className=" text-lg mb-8 max-w-xl mx-auto"
+
+              <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
+                transition={{ duration: 0.45, delay: 0.08 }}
                 viewport={{ once: true }}
               >
-                Kostenlose Erstberatung – wir analysieren Ihre aktuelle Situation und zeigen, wie ein CRM Ihren Arbeitsalltag konkret vereinfacht.
-              </motion.p>
-              <p className="text-xs font-semibold mb-4 flex items-center justify-center gap-1.5" style={{ color: '#0E7C72' }}>
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="#0E7C72" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                Wir nehmen maximal 3 Neukunden pro Monat an
-              </p>
-              <motion.button
-                onClick={scrollToContact}
-                className="inline-flex items-center px-10 py-4 rounded-xl bg-primary-500 text-dark-500 font-heading font-bold text-lg shadow-lg shadow-primary-500/20 hover:bg-primary-400 hover:shadow-primary-glow transition-all duration-300"
+                <Accordion items={allFaqs} />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── ABSCHLUSS-CTA ────────────────────────────────────────────────────── */}
+        <section className="py-20" style={{ background: PAPER }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <motion.h2
+                className="text-2xl md:text-3xl font-heading font-bold mb-4"
+                style={{ color: INK }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
               >
-                <ArrowRight className="mr-2" size={24} />
-                Jetzt CRM-Beratung anfragen
-              </motion.button>
+                Ihre Abläufe passen in keine Standardsoftware?
+              </motion.h2>
+              <motion.p
+                className="text-lg mb-8 max-w-xl mx-auto leading-relaxed"
+                style={{ color: BODY }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.45, delay: 0.08 }}
+                viewport={{ once: true }}
+              >
+                Dann entwickeln wir ein System, das zu Ihrem Unternehmen passt. Im kostenlosen Erstgespräch analysieren wir, welche Prozesse zentralisiert, vereinfacht oder automatisiert werden können.
+              </motion.p>
 
-              <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
-                <a href="/automatisierungen" className="text-primary-400 hover:underline">Automatisierungslösungen entdecken</a>
-                <a href="/ki-chatbots" className="text-primary-400 hover:underline">KI-Chatbots für Ihr Unternehmen</a>
-                <a href="/seo-top-3-in-google" className="text-primary-400 hover:underline">Mit SEO mehr Anfragen generieren</a>
+              <motion.div
+                className="flex flex-col sm:flex-row gap-3 justify-center mb-6"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.14 }}
+                viewport={{ once: true }}
+              >
+                <button onClick={scrollToContact} className="btn-primary">
+                  Individuelles CRM besprechen
+                  <ArrowRight size={18} />
+                </button>
+                <button onClick={scrollToContact} className="btn-secondary">
+                  Kostenloses Erstgespräch sichern
+                </button>
+              </motion.div>
+
+              <motion.div
+                className="flex flex-wrap justify-center gap-x-6 gap-y-2"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                {['Kostenlos und unverbindlich', 'Persönliche Beratung', 'Rückmeldung innerhalb von 24 Stunden'].map(
+                  (chip) => (
+                    <span key={chip} className="flex items-center gap-1.5 text-sm font-medium" style={{ color: PETROL }}>
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                        <path d="M2 6.5l3 3 5-5.5" stroke={PETROL} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      {chip}
+                    </span>
+                  ),
+                )}
+              </motion.div>
+
+              <div className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+                <a href="/automatisierungen" style={{ color: PETROL }} className="hover:underline">
+                  Prozessautomatisierungen
+                </a>
+                <a href="/ki-chatbots" style={{ color: PETROL }} className="hover:underline">
+                  KI-Chatbots
+                </a>
+                <a href="/telefonassistenten" style={{ color: PETROL }} className="hover:underline">
+                  Telefonassistenten
+                </a>
+                <a href="/individuelle-softwareloesungen" style={{ color: PETROL }} className="hover:underline">
+                  Individuelle Software
+                </a>
               </div>
             </div>
           </div>
@@ -775,33 +1364,37 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
 
         <RelatedServices currentSlug="crm-systeme" />
 
-        <section className="py-20" style={{ background: '#F4F7F6' }}>
+        {/* ── REGION LINKS ─────────────────────────────────────────────────────── */}
+        <section className="py-20" style={{ background: SURFACE }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               {isRegional ? (
-                <div className="mt-10 text-left max-w-2xl mx-auto">
-                  <h3 className="text-xl font-heading font-bold mb-4" style={{ color: '#0C1210' }}>
+                <div className="text-left max-w-2xl mx-auto">
+                  <h3 className="text-xl font-heading font-bold mb-4" style={{ color: INK }}>
                     Weitere Leistungen in {regionName}
                   </h3>
-                  <p className=" mb-3">
-                    <a href={regionUrl} className="text-primary-400 hover:underline font-heading font-bold">
+                  <p className="mb-3" style={{ color: BODY }}>
+                    <a href={regionUrl} className="hover:underline font-heading font-bold" style={{ color: PETROL }}>
                       Alle Leistungen in {regionName}
-                    </a>
-                    {' – '}Übersicht unserer Angebote in Ihrer Region.
+                    </a>{' '}
+                    – Übersicht unserer Angebote in Ihrer Region.
                   </p>
-                  <p className=" mb-6">
-                    <a href="/crm-systeme" className="text-primary-400 hover:underline">
-                      Mehr zu CRM-Systemen im Überblick
-                    </a>
-                    {' – '}alle Details auf unserer Service-Seite.
+                  <p className="mb-6" style={{ color: BODY }}>
+                    <a href="/crm-systeme" className="hover:underline" style={{ color: PETROL }}>
+                      Mehr zu individuellen CRM-Systemen im Überblick
+                    </a>{' '}
+                    – alle Details auf unserer Service-Seite.
                   </p>
-                  <p className=" text-sm mb-3">CRM-Systeme in anderen Gebieten:</p>
+                  <p className="text-sm mb-3" style={{ color: MUTED }}>
+                    Individuelle CRM-Systeme in anderen Gebieten:
+                  </p>
                   <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
                     {otherRegions.map((city, i) => (
                       <li key={city.slug}>
                         <a
                           href={`/leistungsgebiete/${city.slug}/crm-systeme`}
-                          className="text-primary-400 hover:underline"
+                          className="hover:underline"
+                          style={{ color: PETROL }}
                         >
                           {getRegionServiceLinkText('crm-systeme', city.name, i)}
                         </a>
@@ -812,46 +1405,25 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
               ) : (
                 <>
                   <ServicedRegionsBlock />
-                  <RegionServiceLinksBlock serviceSlug="crm-systeme" title="CRM-Systeme in Ihrem Gebiet" />
+                  <RegionServiceLinksBlock serviceSlug="crm-systeme" title="Individuelles CRM in Ihrem Gebiet" />
                 </>
               )}
             </div>
           </div>
         </section>
 
-        <ContactForm service="crm-systeme" heading="CRM-Beratung vereinbaren" subheading="In 20 Minuten klären wir, welches CRM zu Ihren Abläufen passt und was es kostet." />
+        <ContactForm
+          service="crm-systeme"
+          heading="Individuelles CRM besprechen"
+          subheading="Wir analysieren Ihre Abläufe und zeigen, welche Prozesse sich sinnvoll digitalisieren lassen."
+        />
         <GoogleMapsSection />
       </div>
-      <StickyCtaBar ctaLabel="CRM-Beratung vereinbaren" />
+
+      <StickyCtaBar ctaLabel="Kostenloses Erstgespräch sichern" />
     </>
   );
 };
-
-function FaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  return (
-    <motion.div
-      className="border border-dark-200 bg-white overflow-hidden rounded-2xl shadow-card"
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      viewport={{ once: true }}
-    >
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-5 text-left hover:bg-dark-400/50 transition-colors"
-        aria-expanded={isOpen}
-      >
-        <span className="text-light-100 font-heading font-bold pr-4">{question}</span>
-        <CheckCircle className={`w-5 h-5 text-primary-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-90' : ''}`} />
-      </button>
-      {isOpen && (
-        <div className="px-5 pb-5 text-light-200 leading-relaxed">{answer}</div>
-      )}
-    </motion.div>
-  );
-}
 
 export default CrmSysteme;
 export type { CrmSystemeProps };

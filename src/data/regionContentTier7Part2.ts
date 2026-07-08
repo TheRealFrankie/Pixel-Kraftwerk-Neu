@@ -13,7 +13,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Für die produzierenden Mittelständler im Tal sind KI-Chatbots und Telefonassistenten praktische Effizienzwerkzeuge: Technische Anfragen werden samt Rahmendaten erfasst, bevor der Vertrieb übernimmt, und kein Anruf geht mehr verloren, wenn das Büro unterbesetzt ist. Kultureinrichtungen und Veranstalter beantworten mit Chatbots Fragen zu Programm, Tickets und Anfahrt automatisch – auch auf Englisch für internationale Gäste des Tanztheaters.',
       'Bei Automatisierungen setzen wir in Wuppertal auf den Dreiklang aus Anfragenerfassung, Vertrieb und Terminplanung: Webformulare, E-Mails und Telefonnotizen fließen automatisch ins CRM, Angebote werden systematisch nachgefasst, Servicetermine ohne Rückruf-Schleifen vergeben. Gerade Handwerksbetriebe an den Hängen zwischen Elberfeld und Barmen gewinnen so täglich Arbeitszeit zurück, die bisher in Verwaltung versickerte.',
       'Local SEO verschafft Wuppertaler Betrieben Sichtbarkeit im gesamten Bergischen Städtedreieck: Wer bei „Sanitär Elberfeld“, „Zahnarzt Barmen“ oder „Werkzeugbau Wuppertal“ vorne steht, gewinnt auch Kunden aus Remscheid und Solingen. Wir optimieren Ihr Google-Unternehmensprofil, bauen orts- und branchenbezogene Inhalte auf und entwickeln ein Bewertungsmanagement, das Vertrauen schafft, bevor der erste Kontakt entsteht.',
-      'Mit der Webseite im Mietmodell erhalten Wuppertaler Unternehmen einen modernen, schnellen und suchmaschinenoptimierten Auftritt ohne hohe Einmalinvestition: Eine feste Monatsrate deckt Design, Hosting, Pflege, Sicherheitsupdates und laufende Anpassungen ab. Das passt zur bergischen Kaufmannslogik – kalkulierbare Kosten, verlässliche Leistung.',
+      'Mit der Professionelle Webseite erhalten Wuppertaler Unternehmen einen modernen, schnellen und suchmaschinenoptimierten Auftritt ohne hohe Einmalinvestition: Eine feste Monatsrate deckt Design, Hosting, Pflege, Sicherheitsupdates und laufende Anpassungen ab. Das passt zur bergischen Kaufmannslogik – kalkulierbare Kosten, verlässliche Leistung.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig, rund 385 Kilometer von Wuppertal entfernt, und arbeitet mit Kunden in ganz Deutschland vollständig remote. Analyse, Einrichtung und Schulung laufen per Videocall und Fernzugriff – verbindlich geplant und sauber dokumentiert. Der erste Schritt ist ein kostenloses Erstgespräch, in dem wir konkrete Potenziale für Ihren Betrieb aufzeigen.',
     ],
     faqs: [
@@ -43,7 +43,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für Kultur, Tanztheater und Veranstalter',
       'KI-Telefonassistenten für Handwerk zwischen Elberfeld und Barmen',
       'Local SEO für Wuppertal und das Bergische Städtedreieck',
-      'Webseiten im Mietmodell für den bergischen Mittelstand',
+      'Professionelle Webseiten für den bergischen Mittelstand',
     ],
   },
 
@@ -59,7 +59,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'In diesem Umfeld zahlt sich mehrsprachige, professionelle Kommunikation direkt aus: Dienstleister mit internationaler Kundschaft setzen Chatbots ein, die auf Deutsch und Englisch Anfragen erfassen und vorqualifizieren. Kanzleien, Beratungen und Praxen sichern mit KI-Telefonassistenten ihre Erreichbarkeit – wichtig in einer Stadt, in der Mandanten und Patienten kurze Reaktionszeiten aus dem Konzernumfeld gewohnt sind.',
       'Automatisierungen entlasten Bonner Unternehmen entlang des gesamten Kundenprozesses: Anfragen aus Website und E-Mail fließen automatisch ins CRM, werden kategorisiert und mit passenden Antwortvorlagen bedient. IT-Dienstleister im Telekom-Umfeld automatisieren Ticket-Eingänge und Angebotsprozesse, Bildungs- und Beratungsanbieter ihre Termin- und Kursverwaltung. Das Ergebnis: kürzere Reaktionszeiten bei geringerem Personalaufwand.',
       'Local SEO funktioniert in Bonn über die starken Stadtteilidentitäten: „Steuerberater Bad Godesberg“, „Zahnarzt Beuel“ oder „Physiotherapie Poppelsdorf“ sind typische Suchanfragen mit klarer Absicht. Wir optimieren Ihr Google-Unternehmensprofil, bauen stadtteilbezogene Inhalte auf und etablieren systematisches Bewertungsmanagement – damit Ihr Betrieb gefunden wird, bevor Suchende bei der Konkurrenz landen.',
-      'Mit der Webseite im Mietmodell erhalten Bonner Betriebe einen modernen, schnellen und suchmaschinenoptimierten Auftritt zur planbaren Monatsrate – inklusive Hosting, Pflege, Sicherheitsupdates und laufender Anpassungen. Auf Wunsch auch zweisprachig, was im internationalen Bonner Umfeld oft den Unterschied macht.',
+      'Mit der Professionelle Webseite erhalten Bonner Betriebe einen modernen, schnellen und suchmaschinenoptimierten Auftritt zur planbaren Monatsrate – inklusive Hosting, Pflege, Sicherheitsupdates und laufender Anpassungen. Auf Wunsch auch zweisprachig, was im internationalen Bonner Umfeld oft den Unterschied macht.',
       'Pixel Kraftwerk arbeitet von Groitzsch bei Leipzig aus – rund 380 Kilometer von Bonn entfernt – und richtet alle Lösungen vollständig remote ein. Von der Analyse über die Umsetzung bis zur Schulung läuft alles per Videocall und Fernzugriff, transparent dokumentiert und verbindlich getaktet. Den Anfang macht ein kostenloses Erstgespräch mit konkreten Vorschlägen für Ihren Anwendungsfall.',
     ],
     faqs: [
@@ -89,7 +89,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Automatisierte Anfrage- und Ticketprozesse für IT-Dienstleister',
       'KI-Telefonassistenten für Kanzleien, Beratungen und Praxen',
       'Local SEO für Bonner Stadtteile von Bad Godesberg bis Beuel',
-      'Webseiten im Mietmodell – auf Wunsch zweisprachig',
+      'Professionelle Webseiten – auf Wunsch zweisprachig',
     ],
   },
 
@@ -105,7 +105,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Für Solarteure, Energieberater und Heizungsbauer ist die Energiewende ein Anfragen-Boom – und genau hier helfen KI-Lösungen: Chatbots erfassen Anfragen zu Photovoltaik, Wärmepumpen und Fördermitteln strukturiert samt Dachdaten und Verbrauchswerten, Telefonassistenten nehmen Anrufe an, während das Team auf Montage ist. So entsteht aus dem Anfragechaos eine sortierte, priorisierte Auftragsliste.',
       'Automatisierungen führen diese Anfragen nahtlos weiter: Leads landen automatisch im CRM, erhalten binnen Minuten eine erste Antwort und werden bis zum Vor-Ort-Termin systematisch begleitet. Auch Gastronomie und Hotellerie rund um die Arena profitieren – Reservierungs- und Verfügbarkeitsanfragen an Spieltagen beantwortet ein Chatbot automatisch, statt im überlasteten Telefon unterzugehen.',
       'Local SEO hat in Gelsenkirchen einen handfesten Vorteil: Der Online-Wettbewerb ist geringer als in Essen oder Dortmund, vordere Plätze sind schneller erreichbar. Suchen wie „Photovoltaik Gelsenkirchen“, „Dachdecker Buer“ oder „Physiotherapie Horst“ bringen Anfragen mit echter Kaufabsicht. Wir optimieren Ihr Google-Unternehmensprofil, bauen lokale Inhalte auf und entwickeln Bewertungsmanagement, das Neukunden überzeugt.',
-      'Mit der Webseite im Mietmodell modernisieren Gelsenkirchener Betriebe ihren Auftritt ohne hohe Einmalkosten: feste Monatsrate, professionelles Design, schnelle Ladezeiten, saubere Suchmaschinenoptimierung – Hosting, Pflege und Anpassungen inklusive. Gerade für Handwerks- und Energiebetriebe mit vollem Auftragsbuch die unkomplizierteste Lösung.',
+      'Mit der Professionelle Webseite modernisieren Gelsenkirchener Betriebe ihren Auftritt ohne hohe Einmalkosten: feste Monatsrate, professionelles Design, schnelle Ladezeiten, saubere Suchmaschinenoptimierung – Hosting, Pflege und Anpassungen inklusive. Gerade für Handwerks- und Energiebetriebe mit vollem Auftragsbuch die unkomplizierteste Lösung.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig, rund 370 Kilometer von Gelsenkirchen entfernt, und arbeitet vollständig remote: Analyse, Einrichtung und Schulung laufen per Videocall und Fernzugriff. Sie bekommen verbindliche Zeitpläne, transparente Festpreise und Ergebnisse, die Sie im Tagesgeschäft sofort merken. Der Einstieg ist ein kostenloses Erstgespräch.',
     ],
     faqs: [
@@ -135,7 +135,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'KI-Telefonassistenten für Handwerk im Energiewende-Boom',
       'KI-Chatbots für Gastronomie und Hotels rund um die Veltins-Arena',
       'Local SEO für Gelsenkirchen von Buer bis Horst',
-      'Webseiten im Mietmodell für Handwerks- und Energiebetriebe',
+      'Professionelle Webseiten für Handwerks- und Energiebetriebe',
     ],
   },
 
@@ -151,7 +151,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Für Mode- und Handelsunternehmen sind Chatbots direkte Umsatzhelfer: Produktfragen, Verfügbarkeiten und Bestellstatus werden automatisch beantwortet – auf Wunsch auch auf Niederländisch für Kundschaft aus der Grenzregion. Logistikdienstleister entlasten ihre Disposition mit automatisierten Statusauskünften, und Handwerksbetriebe sichern mit KI-Telefonassistenten ihre Erreichbarkeit, während das Team unterwegs ist.',
       'Automatisierungen verbinden in Mönchengladbach die Kanäle zu durchgängigen Prozessen: Anfragen aus Website, Shop und E-Mail fließen automatisch ins CRM, Angebote werden systematisch nachgefasst, Liefer- und Servicetermine ohne Telefonschleifen koordiniert. Für B2B-Betriebe mit niederländischen Geschäftspartnern automatisieren wir auch zweisprachige Korrespondenz – ein spürbarer Vorteil im Grenzhandel.',
       'Local SEO positioniert Gladbacher Betriebe klar im Dreieck zwischen Düsseldorf, Krefeld und der Grenze: Suchen wie „Schreiner Rheydt“, „Physiotherapie Mönchengladbach“ oder „Logistikdienstleister Niederrhein“ haben überschaubaren Wettbewerb und echte Kaufabsicht. Wir optimieren Ihr Google-Unternehmensprofil, bauen lokal relevante Inhalte auf und entwickeln Bewertungsstrategien, die Vertrauen schaffen.',
-      'Mit der Webseite im Mietmodell erhalten Betriebe am Niederrhein einen modernen, schnellen und suchmaschinenoptimierten Auftritt zur festen Monatsrate – inklusive Hosting, Pflege, Sicherheitsupdates und laufender Anpassungen. Keine hohe Anfangsinvestition, keine Technik-Sorgen, dafür ein Auftritt, der dauerhaft aktuell bleibt.',
+      'Mit der Professionelle Webseite erhalten Betriebe am Niederrhein einen modernen, schnellen und suchmaschinenoptimierten Auftritt professionell geplant und umgesetzt – inklusive Hosting, Pflege, Sicherheitsupdates und laufender Anpassungen. Keine hohe Anfangsinvestition, keine Technik-Sorgen, dafür ein Auftritt, der dauerhaft aktuell bleibt.',
       'Pixel Kraftwerk arbeitet von Groitzsch bei Leipzig aus – rund 405 Kilometer von Mönchengladbach entfernt – und richtet alle Lösungen vollständig remote ein. Analyse, Umsetzung und Schulung laufen per Videocall und Fernzugriff, mit verbindlichen Zeitplänen und transparenten Festpreisen. Der Einstieg ist ein kostenloses Erstgespräch mit konkreten Vorschlägen für Ihren Betrieb.',
     ],
     faqs: [
@@ -181,7 +181,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Automatisierte Auftrags- und Statuskommunikation für Logistik im Regiopark',
       'KI-Chatbots für Mode- und Einzelhandel in Gladbach und Rheydt',
       'Local SEO für Mönchengladbach und den Niederrhein',
-      'Webseiten im Mietmodell für Handel und Handwerk',
+      'Professionelle Webseiten für Handel und Handwerk',
     ],
   },
 
@@ -197,7 +197,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Im Tech-Ökosystem sind KI-gestützte Prozesse Standard – und genau deshalb erwarten auch die Kunden von Aachener Dienstleistern dieses Niveau: Start-ups und Ingenieurbüros qualifizieren Projektanfragen per Chatbot vor, Automatisierungen halten das CRM aktuell und fassen Angebote nach. Für Praxen, Kanzleien und Handwerksbetriebe sichern KI-Telefonassistenten die Erreichbarkeit – in einer Studierendenstadt, in der digital kommuniziert wird, ein klarer Vorteil.',
       'Die Dreiländereck-Lage macht Mehrsprachigkeit zum Geschäftsfaktor: Chatbots auf Deutsch, Niederländisch, Französisch und Englisch bedienen Kundschaft aus Belgien und den Niederlanden genauso selbstverständlich wie Aachener. Einzelhändler, Gastronomen und Dienstleister erschließen so das grenzüberschreitende Einzugsgebiet von Maastricht bis Lüttich – ein Potenzial, das die wenigsten Wettbewerber systematisch nutzen.',
       'Local SEO entscheidet in Aachen über die Sichtbarkeit bei Studierenden, Touristen und Grenzgängern gleichermaßen: Suchen wie „Zahnarzt Aachen-Brand“, „Restaurant Pontstraße“ oder „Werkzeugbau Aachen“ haben klare Absicht. Wir optimieren Ihr Google-Unternehmensprofil, bauen lokal und mehrsprachig relevante Inhalte auf und entwickeln Bewertungsmanagement, das in einer kritischen, akademischen Zielgruppe überzeugt.',
-      'Mit der Webseite im Mietmodell starten Aachener Betriebe ohne hohe Anfangsinvestition: moderner Auftritt, schnelle Ladezeiten, saubere Suchmaschinenoptimierung – zur festen Monatsrate inklusive Hosting, Pflege und laufender Anpassungen. Auf Wunsch mehrsprachig, passend zum grenzüberschreitenden Einzugsgebiet.',
+      'Mit der Professionelle Webseite starten Aachener Betriebe ohne technischen Aufwand für Ihr Team: moderner Auftritt, schnelle Ladezeiten, saubere Suchmaschinenoptimierung – professionell geplant und umgesetzt inklusive Hosting, Pflege und laufender Anpassungen. Auf Wunsch mehrsprachig, passend zum grenzüberschreitenden Einzugsgebiet.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig – mit rund 420 Kilometern ist Aachen einer der westlichsten Punkte unseres Leistungsgebiets, und genau dafür ist unser Remote-Modell gemacht: Analyse, Einrichtung und Schulung laufen vollständig per Videocall und Fernzugriff, verbindlich geplant und transparent dokumentiert. Der Einstieg ist ein kostenloses Erstgespräch.',
     ],
     faqs: [
@@ -227,7 +227,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Vertriebsautomatisierung für RWTH-Spin-offs und Tech-Unternehmen',
       'KI-Chatbots für Dom-Tourismus, Hotels und Gastronomie',
       'Local SEO für Aachen und das grenzüberschreitende Einzugsgebiet',
-      'Webseiten im Mietmodell – auf Wunsch mehrsprachig',
+      'Professionelle Webseiten – auf Wunsch mehrsprachig',
     ],
   },
 
@@ -243,7 +243,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Für Tourismus- und Eventbetriebe sind Chatbots in Kiel direkte Umsatzbringer: Während der Kieler Woche und in der Kreuzfahrtsaison vervielfachen sich die Anfragen zu Unterkünften, Liegeplätzen, Reservierungen und Programm – ein mehrsprachiger Chatbot beantwortet sie auf Deutsch, Englisch, Dänisch und Schwedisch rund um die Uhr. Maritime Dienstleister, Bootsvermieter und Segelschulen automatisieren Buchungsanfragen, statt sie im Saisonstress zu verlieren.',
       'Automatisierungen entlasten Kieler Unternehmen das ganze Jahr: Anfragen aus Website und E-Mail fließen automatisch ins CRM, Buchungsbestätigungen und Erinnerungen laufen ohne Zutun, Angebote werden systematisch nachgefasst. Zulieferer und technische Dienstleister im Werften-Umfeld strukturieren so ihre B2B-Kommunikation – wichtig in Lieferketten, in denen Verlässlichkeit über Folgeaufträge entscheidet.',
       'Local SEO bringt Kieler Betrieben planbare Sichtbarkeit: Suchen wie „Segelschule Kiel“, „Zahnarzt Kiel-Gaarden“ oder „Restaurant Kiellinie“ haben klare Absicht und überschaubaren Wettbewerb. Wir optimieren Ihr Google-Unternehmensprofil, bauen saisonal und lokal relevante Inhalte auf und entwickeln Bewertungsmanagement – damit Sie gefunden werden, wenn Einheimische und Gäste suchen.',
-      'Mit der Webseite im Mietmodell erhalten Betriebe an der Förde einen modernen, schnellen und suchmaschinenoptimierten Auftritt zur festen Monatsrate – Hosting, Pflege, Sicherheitsupdates und Anpassungen inklusive. Gerade für saisonabhängige Betriebe ist das ideal: Die Seite bleibt aktuell, ohne dass in der Hochsaison jemand Zeit dafür opfern muss.',
+      'Mit der Professionelle Webseite erhalten Betriebe an der Förde einen modernen, schnellen und suchmaschinenoptimierten Auftritt professionell geplant und umgesetzt – Hosting, Pflege, Sicherheitsupdates und Anpassungen inklusive. Gerade für saisonabhängige Betriebe ist das ideal: Die Seite bleibt aktuell, ohne dass in der Hochsaison jemand Zeit dafür opfern muss.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig, rund 420 Kilometer von Kiel entfernt, und arbeitet vollständig remote: Analyse, Einrichtung und Schulung laufen per Videocall und Fernzugriff. Kieler Unternehmen erhalten verbindliche Zeitpläne, transparente Festpreise und Lösungen, die im Saisongeschäft sofort spürbar entlasten. Der Einstieg ist ein kostenloses Erstgespräch.',
     ],
     faqs: [
@@ -273,7 +273,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'B2B-Automatisierungen für Werft-Zulieferer und maritime Dienstleister',
       'Buchungsautomatisierung für Segelschulen und Bootsvermieter',
       'Local SEO für Kiel und die Förderegion',
-      'Webseiten im Mietmodell für saisonabhängige Betriebe',
+      'Professionelle Webseiten für saisonabhängige Betriebe',
     ],
   },
 
@@ -289,7 +289,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Für Zulieferer und Dienstleister im Chemie- und Stahlumfeld zählt strukturierte B2B-Kommunikation: KI-Chatbots erfassen Anfragen samt technischer Rahmendaten, Telefonassistenten sichern die Erreichbarkeit auch während Schichtbetrieb und Projektspitzen. Einzelhändler und Gastronomen in der Innenstadt beantworten mit Chatbots Fragen zu Sortiment, Öffnungszeiten und Reservierungen – bevor Kundschaft nach Düsseldorf abwandert.',
       'Automatisierungen schaffen in Krefeld messbare Entlastung: Anfragen aus Website und E-Mail fließen automatisch ins CRM, werden priorisiert und mit passenden Vorlagen beantwortet. Handwerksbetriebe vergeben Termine ohne Telefon-Pingpong, B2B-Anbieter fassen Angebote systematisch nach. So reagiert auch ein kleines Team schnell und professionell – oft der entscheidende Unterschied bei der Auftragsvergabe.',
       'Local SEO ist für Krefelder Betriebe die Antwort auf die Düsseldorfer Nachbarschaft: Statt im Schatten der Landeshauptstadt zu verschwinden, positionieren wir Sie für eigenständige Suchen wie „Heizungsbau Krefeld“, „Zahnarzt Uerdingen“ oder „Steuerberater Hüls“. Optimiertes Google-Unternehmensprofil, lokale Inhalte und systematischer Bewertungsaufbau sorgen dafür, dass Krefelder Kunden Krefelder Anbieter finden.',
-      'Mit der Webseite im Mietmodell modernisieren Betriebe am Niederrhein ihren Auftritt ohne hohe Einmalkosten: professionelles Design, schnelle Ladezeiten, saubere Suchmaschinenoptimierung – zur festen Monatsrate inklusive Hosting, Pflege und laufender Anpassungen. Ideal für Mittelständler, die einen starken Auftritt wollen, ohne sich um Technik zu kümmern.',
+      'Mit der Professionelle Webseite modernisieren Betriebe am Niederrhein ihren Auftritt ohne hohe Einmalkosten: professionelles Design, schnelle Ladezeiten, saubere Suchmaschinenoptimierung – professionell geplant und umgesetzt inklusive Hosting, Pflege und laufender Anpassungen. Ideal für Mittelständler, die einen starken Auftritt wollen, ohne sich um Technik zu kümmern.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig, rund 400 Kilometer von Krefeld entfernt, und arbeitet vollständig remote: Analyse, Einrichtung und Schulung laufen per Videocall und Fernzugriff, verbindlich geplant und transparent dokumentiert. Der Einstieg ist ein kostenloses Erstgespräch, in dem wir die wirkungsvollsten Ansatzpunkte für Ihren Betrieb identifizieren.',
     ],
     faqs: [
@@ -319,7 +319,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'KI-Telefonassistenten für Handwerk und Dienstleister',
       'KI-Chatbots für Einzelhandel und Gastronomie rund um die Vier Wälle',
       'Local SEO für Krefeld von Uerdingen bis Hüls',
-      'Webseiten im Mietmodell für den niederrheinischen Mittelstand',
+      'Professionelle Webseiten für den niederrheinischen Mittelstand',
     ],
   },
 
@@ -335,7 +335,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Für Einzelhändler und Gastronomen im CentrO-Umfeld sind Chatbots praktische Umsatzhelfer: Fragen zu Sortiment, Verfügbarkeiten, Öffnungszeiten und Reservierungen werden automatisch beantwortet – auch auf Niederländisch für die zahlreichen Gäste aus dem Nachbarland. Freizeit- und Kultureinrichtungen automatisieren Ticket- und Gruppenanfragen, statt sie im E-Mail-Postfach zu stapeln.',
       'Automatisierungen entlasten Oberhausener Betriebe im Tagesgeschäft: Anfragen fließen automatisch ins CRM, Buchungsbestätigungen und Erinnerungen laufen ohne Zutun, Angebote werden systematisch nachgefasst. Handwerksbetriebe profitieren doppelt – ein KI-Telefonassistent nimmt Anrufe an, während das Team auf Montage ist, und die Terminvergabe läuft ohne Rückruf-Schleifen. So bleibt mehr Zeit für die eigentliche Arbeit.',
       'Local SEO verschafft Oberhausener Betrieben Sichtbarkeit im dichten Ruhrgebiets-Wettbewerb: Suchen wie „Friseur Sterkrade“, „Physiotherapie Osterfeld“ oder „Elektriker Oberhausen“ haben klare Kaufabsicht und überschaubare Konkurrenz. Wir optimieren Ihr Google-Unternehmensprofil, bauen stadtteilbezogene Inhalte auf und entwickeln Bewertungsmanagement, das Neukunden Vertrauen gibt – gerade gegenüber den Ketten der Neuen Mitte.',
-      'Mit der Webseite im Mietmodell erhalten Oberhausener Unternehmen einen modernen, schnellen und suchmaschinenoptimierten Auftritt ohne hohe Anfangsinvestition: feste Monatsrate, Hosting, Pflege, Sicherheitsupdates und Anpassungen inklusive. Ideal für lokale Betriebe, die professionell auftreten wollen, ohne Technik-Aufwand zu schultern.',
+      'Mit der Professionelle Webseite erhalten Oberhausener Unternehmen einen modernen, schnellen und suchmaschinenoptimierten Auftritt ohne technischen Aufwand für Ihr Team: feste Monatsrate, Hosting, Pflege, Sicherheitsupdates und Anpassungen inklusive. Ideal für lokale Betriebe, die professionell auftreten wollen, ohne Technik-Aufwand zu schultern.',
       'Pixel Kraftwerk arbeitet von Groitzsch bei Leipzig aus – rund 385 Kilometer von Oberhausen entfernt – und richtet alle Lösungen vollständig remote ein: Analyse, Umsetzung und Schulung per Videocall und Fernzugriff, mit verbindlichen Zeitplänen und transparenten Festpreisen. Der Einstieg ist ein kostenloses Erstgespräch mit konkreten Vorschlägen für Ihren Betrieb.',
     ],
     faqs: [
@@ -365,7 +365,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Ticket- und Gruppenanfragen-Automation für Gasometer und Freizeitcluster',
       'KI-Telefonassistenten für Handwerk und Sanierungsbetriebe',
       'Local SEO für Oberhausen von Sterkrade bis Osterfeld',
-      'Webseiten im Mietmodell für lokale Betriebe',
+      'Professionelle Webseiten für lokale Betriebe',
     ],
   },
 
@@ -381,7 +381,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Für die Metall- und Industriebetriebe sind KI-gestützte Prozesse handfeste Effizienzwerkzeuge: Chatbots erfassen technische Anfragen samt Spezifikationen und Stückzahlen, bevor der Vertrieb übernimmt, Telefonassistenten sichern die Erreichbarkeit während der Produktionszeiten. Bildungs- und Weiterbildungsanbieter im FernUni-Umfeld automatisieren Kursanfragen und Anmeldungen – eine Zielgruppe, die ohnehin vollständig digital kommuniziert.',
       'Automatisierungen entlasten Hagener Betriebe entlang des gesamten Auftragswegs: Anfragen aus Website und E-Mail fließen automatisch ins CRM, Angebote werden systematisch nachgefasst, Liefer- und Servicetermine ohne Telefonschleifen koordiniert. Handwerksbetriebe, deren Auftragsbücher seit der Flutkatastrophe voll sind, gewinnen durch automatische Anfragenerfassung und Priorisierung täglich Arbeitszeit zurück.',
       'Local SEO verschafft Hagener Betrieben Sichtbarkeit in zwei Richtungen: ins Ruhrgebiet und ins Sauerland. Suchen wie „Metallbau Hagen“, „Dachdecker Hohenlimburg“ oder „Physiotherapie Haspe“ haben klare Kaufabsicht und geringen Wettbewerb. Wir optimieren Ihr Google-Unternehmensprofil, bauen orts- und branchenbezogene Inhalte auf und entwickeln ein Bewertungsmanagement, das Vertrauen schafft.',
-      'Mit der Webseite im Mietmodell modernisieren Hagener Unternehmen ihren Auftritt zur festen Monatsrate: professionelles Design, schnelle Ladezeiten, saubere Suchmaschinenoptimierung – Hosting, Pflege und Anpassungen inklusive. Gerade für Industriebetriebe mit veralteten Webauftritten ein schneller Weg zu zeitgemäßer Außendarstellung ohne Projektaufwand.',
+      'Mit der Professionelle Webseite modernisieren Hagener Unternehmen ihren Auftritt professionell geplant und umgesetzt: professionelles Design, schnelle Ladezeiten, saubere Suchmaschinenoptimierung – Hosting, Pflege und Anpassungen inklusive. Gerade für Industriebetriebe mit veralteten Webauftritten ein schneller Weg zu zeitgemäßer Außendarstellung ohne Projektaufwand.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig, rund 365 Kilometer von Hagen entfernt, und arbeitet vollständig remote: Analyse, Einrichtung und Schulung laufen per Videocall und Fernzugriff, verbindlich geplant und transparent dokumentiert. Der Einstieg ist ein kostenloses Erstgespräch, in dem wir die wirkungsvollsten Automatisierungspotenziale für Ihren Betrieb aufzeigen.',
     ],
     faqs: [
@@ -411,7 +411,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für Bildungsanbieter im FernUniversitäts-Umfeld',
       'KI-Telefonassistenten für Handwerk mit vollen Auftragsbüchern',
       'Local SEO für Hagen, Hohenlimburg und das Tor zum Sauerland',
-      'Webseiten im Mietmodell für Industrie und Mittelstand',
+      'Professionelle Webseiten für Industrie und Mittelstand',
     ],
   },
 
@@ -427,7 +427,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'Im Tourismus sind Chatbots für Lübecker Betriebe direkte Umsatzbringer: Hotels, Restaurants und Stadtführungsanbieter beantworten Fragen zu Verfügbarkeiten, Reservierungen und Öffnungszeiten automatisch – auf Deutsch, Englisch, Dänisch und Schwedisch für die skandinavische Kundschaft. Auch Marzipan- und Spezialitätenversender profitieren: Produktfragen und Bestellstatus klärt der Bot, das Team kümmert sich ums Geschäft.',
       'Für Medizintechnik-Zulieferer und technische Dienstleister im Dräger-Umfeld automatisieren wir B2B-Prozesse: Anfragen werden samt Rahmendaten erfasst, ins CRM übertragen und systematisch nachgefasst. Logistiker und Speditionen rund um den Hafen Travemünde entlasten ihre Disposition mit automatisierten Statusauskünften und Buchungsbestätigungen – gerade im Fährverkehr mit festen Taktungen ein spürbarer Gewinn.',
       'Local SEO bringt Lübecker Betrieben planbare Sichtbarkeit bei Einheimischen und Gästen: Suchen wie „Restaurant Lübeck Altstadt“, „Zahnarzt St. Jürgen“ oder „Hotel Travemünde“ haben starkes Volumen mit saisonalen Spitzen. Wir optimieren Ihr Google-Unternehmensprofil, bauen lokal und saisonal relevante Inhalte auf und entwickeln Bewertungsmanagement, das in einer tourismusgeprägten Stadt über Buchungen entscheidet.',
-      'Mit der Webseite im Mietmodell erhalten Lübecker Unternehmen einen modernen, schnellen und suchmaschinenoptimierten Auftritt zur festen Monatsrate – Hosting, Pflege, Sicherheitsupdates und Anpassungen inklusive. Auf Wunsch mehrsprachig, passend zum internationalen Publikum der Hansestadt.',
+      'Mit der Professionelle Webseite erhalten Lübecker Unternehmen einen modernen, schnellen und suchmaschinenoptimierten Auftritt professionell geplant und umgesetzt – Hosting, Pflege, Sicherheitsupdates und Anpassungen inklusive. Auf Wunsch mehrsprachig, passend zum internationalen Publikum der Hansestadt.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig, rund 415 Kilometer von Lübeck entfernt, und arbeitet vollständig remote: Analyse, Einrichtung und Schulung laufen per Videocall und Fernzugriff, verbindlich geplant und sauber dokumentiert. Der Einstieg ist ein kostenloses Erstgespräch – dort klären wir, welche Lösung Ihrem Betrieb am schnellsten messbaren Nutzen bringt.',
     ],
     faqs: [
@@ -457,7 +457,7 @@ export const tier7Part2RegionContent: Record<string, RegionContent> = {
       'B2B-Automatisierungen für Medizintechnik und Dräger-Zulieferer',
       'Automatisierte Versand- und Bestellkommunikation für Spezialitätenhändler',
       'Local SEO für Lübeck, Altstadt und Travemünde',
-      'Webseiten im Mietmodell – auf Wunsch mehrsprachig',
+      'Professionelle Webseiten – auf Wunsch mehrsprachig',
     ],
   },
 };

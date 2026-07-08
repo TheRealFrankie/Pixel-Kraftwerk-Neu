@@ -25,7 +25,7 @@ export const tier5Part4RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für Kultur und lokale Betriebe',
       'Local SEO für Arnstadt und den Ilm-Kreis',
       'Telefonassistenten für Handwerk und Dienstleister',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -53,7 +53,7 @@ export const tier5Part4RegionContent: Record<string, RegionContent> = {
       'Chatbots für Hochschulumfeld und Gastronomie',
       'Local SEO für die Thüringer Wald-Region',
       'CRM-Integration für strukturiertes Lead-Management',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -81,7 +81,7 @@ export const tier5Part4RegionContent: Record<string, RegionContent> = {
       'Saisonale Automatisierungen für Stoßzeiten',
       'Local SEO für Erzgebirge-Suchen',
       'Telefonassistenten für Handwerk und Gesundheitsversorgung',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -109,7 +109,7 @@ export const tier5Part4RegionContent: Record<string, RegionContent> = {
       'Local SEO für Hotels, Restaurants und Kultureinrichtungen',
       'Automatisierte Buchungsanfragen für Tourismusbetriebe',
       'Telefonassistenten für lokale Dienstleister',
-      'Webseiten im Mietmodell – international ausgerichtet',
+      'Professionelle Webseiten – international ausgerichtet',
     ],
   },
 
@@ -138,7 +138,7 @@ export const tier5Part4RegionContent: Record<string, RegionContent> = {
       'Local SEO für Hotels, Pensionen und Restaurants',
       'Saisonale Automatisierungen für Stoßzeiten',
       'Telefonassistenten für Handwerk und lokale Dienstleister',
-      'Webseiten im Mietmodell – mobiloptimiert',
+      'Professionelle Webseiten – mobiloptimiert',
     ],
   },
 
@@ -167,7 +167,7 @@ export const tier5Part4RegionContent: Record<string, RegionContent> = {
       'Local SEO für Hotels, Museen und Gastronomie',
       'Automatisierte Buchungsanfragen für Tourismusbetriebe',
       'Telefonassistenten für Handwerk und Dienstleister',
-      'Webseiten im Mietmodell – international ausgerichtet',
+      'Professionelle Webseiten – international ausgerichtet',
     ],
   },
 
@@ -196,7 +196,7 @@ export const tier5Part4RegionContent: Record<string, RegionContent> = {
       'CRM-Integration und Lead-Management-Automatisierung',
       'Messe- und Event-Anfragenautomatisierung',
       'Local SEO für Thüringens Landeshauptstadt',
-      'Webseiten im Mietmodell – modern und skalierbar',
+      'Professionelle Webseiten – modern und skalierbar',
     ],
   },
 
@@ -225,7 +225,7 @@ export const tier5Part4RegionContent: Record<string, RegionContent> = {
       'Automatisierungen für Start-ups und Kreativunternehmen',
       'Local SEO für Hotels, Restaurants und Kultureinrichtungen',
       'Telefonassistenten für Handwerk und Dienstleister',
-      'Webseiten im Mietmodell – international ausgerichtet',
+      'Professionelle Webseiten – international ausgerichtet',
     ],
   },
 
@@ -252,7 +252,7 @@ export const tier5Part4RegionContent: Record<string, RegionContent> = {
       'Local SEO für Betriebe im Dresdner Umland in Freital',
       'KI-Chatbots für Handwerk, Dienstleistung und Einzelhandel',
       'Telefonassistenten für zuverlässige Erreichbarkeit',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
       'Automatisierungen für Terminplanung',
     ],
   },
@@ -281,7 +281,7 @@ export const tier5Part4RegionContent: Record<string, RegionContent> = {
       'CRM-Automatisierung für Industrie und Maschinenbau im Vogtland',
       'Local SEO für den Vogtlandkreis',
       'Mehrsprachige Chatbots für Grenzregion Bayern-Tschechien',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 };

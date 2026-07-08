@@ -25,7 +25,7 @@ export const tier6RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für Gastronomie, Tourismus und Dienstleister',
       'Local SEO für Sachsen-Anhalts Landeshauptstadt',
       'Telefonassistenten für Handwerk und Praxen',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -53,7 +53,7 @@ export const tier6RegionContent: Record<string, RegionContent> = {
       'Skalierbare Automatisierungen für wachsende Betriebe',
       'Chatbots für BTU-Umfeld und Start-ups',
       'Local SEO für die Lausitz',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -80,7 +80,7 @@ export const tier6RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für Wassertourismus und Gastronomie in Brandenburg an der Havel',
       'Local SEO für Berliner Tagestourismus',
       'Telefonassistenten für Industrie und Handwerk',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
       'CRM-Automatisierung für Vertriebsprozesse',
     ],
   },
@@ -108,7 +108,7 @@ export const tier6RegionContent: Record<string, RegionContent> = {
       'Zweisprachige KI-Chatbots für sorbisches und deutsches Publikum',
       'Local SEO für Tourismus in der Oberlausitz',
       'Telefonassistenten für Handwerk und Dienstleister',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
       'Automatisierungen für Anfragen und Terminplanung',
     ],
   },
@@ -137,7 +137,7 @@ export const tier6RegionContent: Record<string, RegionContent> = {
       'Polnischsprachige Optionen für die Grenzregion',
       'Local SEO für internationale Suchen',
       'Telefonassistenten für lokale Betriebe',
-      'Webseiten im Mietmodell – mehrsprachig',
+      'Professionelle Webseiten – mehrsprachig',
     ],
   },
 
@@ -165,7 +165,7 @@ export const tier6RegionContent: Record<string, RegionContent> = {
       'Mehrsprachige Chatbots für Sanssouci-Tourismus',
       'CRM-Integration für Forschungseinrichtungen',
       'Local SEO für Brandenburgs Landeshauptstadt',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -193,7 +193,7 @@ export const tier6RegionContent: Record<string, RegionContent> = {
       'Local SEO für Frankfurt (Oder) und Słubice',
       'CRM-Automatisierung für Logistik und B2B',
       'Telefonassistenten für lokale Betriebe',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -221,7 +221,7 @@ export const tier6RegionContent: Record<string, RegionContent> = {
       'Saisonale Automatisierungen für Festspiel-Stoßzeiten',
       'CRM-Integration für mittelständische Industrie',
       'Local SEO für Bayreuth und Oberfranken',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -249,7 +249,7 @@ export const tier6RegionContent: Record<string, RegionContent> = {
       'Brauereitourismus-Automatisierungen',
       'Local SEO für UNESCO-Welterbe-Suchanfragen',
       'Telefonassistenten für Handwerk und Dienstleister',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -278,7 +278,7 @@ export const tier6RegionContent: Record<string, RegionContent> = {
       'Mehrsprachige Chatbots für internationales Berliner Publikum',
       'CRM-Integration und Lead-Management für schnell wachsende Unternehmen',
       'Local SEO für hochkompetitive Berliner Suchbegriffe',
-      'Webseiten im Mietmodell – modern, mobil, international',
+      'Professionelle Webseiten – modern, mobil, international',
     ],
   },
 };

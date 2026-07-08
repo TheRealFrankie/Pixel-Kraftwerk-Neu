@@ -329,7 +329,7 @@ const content: SubpageContent = {
   ],
   crossServiceLinks: [
     { text: 'E-Mail Automatisierung', href: '/automatisierungen/email-automatisierung' },
-    { text: 'Webseiten im Mietmodell', href: '/webseite' },
+    { text: 'Professionelle Webseiten', href: '/webseite' },
   ],
   areaLinks: buildTier1AreaLinks('CRM für Vermietung'),
 };

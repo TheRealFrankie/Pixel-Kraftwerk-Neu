@@ -1,14 +1,28 @@
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
+  AlertTriangle,
   CheckCircle,
   Shield,
-  ListChecks,
+  BarChart2,
+  FileText,
+  Users,
+  Inbox,
+  Repeat2,
+  Settings,
+  Megaphone,
+  UserPlus,
+  Mail,
+  Filter,
+  Database,
+  Send,
+  BellRing,
+  CalendarCheck,
 } from 'lucide-react';
+
 import ContactForm from '../../components/ContactForm';
 import GoogleMapsSection from '../../components/GoogleMapsSection';
 import RelatedServices from '../../components/RelatedServices';
@@ -21,18 +35,190 @@ import BreadcrumbNav from '../../components/BreadcrumbNav';
 import TrustLine from '../../components/TrustLine';
 import StickyCtaBar from '../../components/StickyCtaBar';
 import ServiceJsonLd from '../../components/ServiceJsonLd';
+import SubpageLinksBlock from '../../components/SubpageLinksBlock';
+import CheckList from '../../components/ui/CheckList';
+import Accordion from '../../components/Accordion';
+import AutomationWorkflowVisual, { type WorkflowStep } from '../../components/AutomationWorkflowVisual';
 import { getRegionServiceContent } from '../../data/regionServiceContent';
 import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
 import { getRegionServiceLinkText, SERVICE_TITLE_KEYWORDS } from '../../data/services';
-import SubpageLinksBlock from '../../components/SubpageLinksBlock';
-import HeroScrollIndicator from '../../components/HeroScrollIndicator';
 import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
 
+/* ─── Theme ────────────────────────────────────────────────────────────────── */
+const INK    = '#0C1210';
+const BODY   = '#404B48';
+const MUTED  = '#68746F';
+const PETROL = '#0E7C72';
+const BORDER = '#E4E9E7';
+const SURFACE = '#F3F5F4';
+const PAPER  = '#FAFAF9';
+
+/* ─── Props ─────────────────────────────────────────────────────────────────── */
 interface AutomatisierungenProps {
   regionSlug?: string;
   regionName?: string;
 }
 
+/* ─── Hero-Workflow-Visual (passend zur Leistung Automatisierungen) ─────────── */
+const heroWorkflowSteps: WorkflowStep[] = [
+  { icon: <Mail size={18} />, title: 'Neue Anfrage', badge: 'Eingang erfasst' },
+  { icon: <Filter size={18} />, title: 'Daten prüfen & sortieren', badge: 'automatisch geprüft' },
+  { icon: <Database size={18} />, title: 'CRM-Kontakt erstellen', badge: 'CRM aktualisiert' },
+  { icon: <Send size={18} />, title: 'Automatische Antwort senden', badge: 'Nachricht versendet' },
+  { icon: <BellRing size={18} />, title: 'Team benachrichtigen', badge: 'Aufgabe erstellt' },
+  { icon: <CalendarCheck size={18} />, title: 'Follow-up planen', badge: 'Termin vorbereitet' },
+];
+
+/* ─── Automatisierungsbereiche ───────────────────────────────────────────────── */
+const automationAreas = [
+  {
+    icon: <Inbox size={20} />,
+    title: 'Kundenanfragen & Vertrieb',
+    items: [
+      'Anfragen aus Website, E-Mail, WhatsApp und Werbung zentral erfassen',
+      'Interessenten automatisch vorqualifizieren',
+      'Leads nach Leistung, Region oder Dringlichkeit sortieren',
+      'Anfragen Mitarbeitern oder Standorten zuweisen',
+      'Eingangsbestätigungen versenden',
+      'Rückrufaufgaben erstellen',
+      'Angebote nachfassen',
+      'Unbearbeitete Anfragen erkennen',
+      'Kontakte reaktivieren',
+    ],
+  },
+  {
+    icon: <CheckCircle size={20} />,
+    title: 'Termine & Kunden-Onboarding',
+    items: [
+      'Termine rund um die Uhr buchen',
+      'Bestätigungen und Erinnerungen versenden',
+      'Kundendaten vor einem Termin abfragen',
+      'Benötigte Dokumente anfordern',
+      'Neue Kunden im CRM anlegen',
+      'Projektordner erstellen',
+      'Willkommensnachrichten versenden',
+      'Mitarbeiter informieren',
+    ],
+  },
+  {
+    icon: <Megaphone size={20} />,
+    title: 'E-Mail & Kundenservice',
+    items: [
+      'Eingehende E-Mails kategorisieren',
+      'Nachrichten nach Dringlichkeit priorisieren',
+      'Standardanfragen beantworten',
+      'Antwortentwürfe vorbereiten',
+      'Support-Tickets erstellen',
+      'Nachrichten weiterleiten',
+      'Unbeantwortete Anliegen überwachen',
+      'Beschwerden sofort melden',
+    ],
+  },
+  {
+    icon: <FileText size={20} />,
+    title: 'Angebote, Rechnungen & Dokumente',
+    items: [
+      'Daten in Angebote übernehmen',
+      'Dokumente aus Vorlagen erstellen',
+      'Angebote versenden und nachverfolgen',
+      'Rechnungsdaten aus E-Mails auslesen',
+      'Zahlungseingänge zuordnen',
+      'Zahlungserinnerungen vorbereiten',
+      'Dateien automatisch sortieren',
+      'Dokumente zur Freigabe senden',
+    ],
+  },
+  {
+    icon: <Settings size={20} />,
+    title: 'Interne Prozesse',
+    items: [
+      'Aufgaben automatisch erstellen und zuweisen',
+      'Mitarbeiter über E-Mail, Teams, Slack oder Telegram informieren',
+      'Freigaben einholen',
+      'Daten zwischen Programmen synchronisieren',
+      'Übergaben organisieren',
+      'Projekt-Checklisten erstellen',
+      'Fristen überwachen',
+      'Wiederkehrende Aufgaben starten',
+    ],
+  },
+  {
+    icon: <BarChart2 size={20} />,
+    title: 'Reporting & Controlling',
+    items: [
+      'Tägliche oder wöchentliche Zusammenfassungen erstellen',
+      'Daten aus mehreren Programmen zusammenführen',
+      'Vertriebskennzahlen aufbereiten',
+      'Offene Aufgaben anzeigen',
+      'Abweichungen erkennen und melden',
+      'Berichte automatisch versenden',
+      'Ausgefallene Abläufe protokollieren',
+    ],
+  },
+  {
+    icon: <Repeat2 size={20} />,
+    title: 'Marketing & Kundenbindung',
+    items: [
+      'Kontakte in E-Mail-Sequenzen eintragen',
+      'Interessenten segmentieren',
+      'Bewertungsanfragen versenden',
+      'Newsletter-Anmeldungen verarbeiten',
+      'Kunden erneut kontaktieren',
+      'Werbeanfragen weiterverarbeiten',
+    ],
+  },
+  {
+    icon: <UserPlus size={20} />,
+    title: 'Personal & Recruiting',
+    items: [
+      'Bewerbungen zentral erfassen',
+      'Eingangsbestätigungen versenden',
+      'Bewerbungen vorsortieren',
+      'Gesprächstermine koordinieren',
+      'Onboarding-Aufgaben erstellen',
+      'Unterlagen anfordern',
+      'An Fristen und Schulungen erinnern',
+    ],
+  },
+];
+
+/* ─── FAQs ───────────────────────────────────────────────────────────────────── */
+const faqs = [
+  {
+    question: 'Müssen wir unsere bisherigen Programme ersetzen?',
+    answer: 'In vielen Fällen nicht. Wir prüfen zuerst, welche bestehenden Programme weiter genutzt und miteinander verbunden werden können.',
+  },
+  {
+    question: 'Kann man nur einen einzelnen Ablauf automatisieren?',
+    answer: 'Ja. Ein klar abgegrenzter Prozess ist häufig der sinnvollste Einstieg. Weitere Abläufe können später ergänzt werden.',
+  },
+  {
+    question: 'Funktioniert Automatisierung auch ohne künstliche Intelligenz?',
+    answer: 'Ja. Viele zuverlässige Automatisierungen basieren auf festen Regeln. KI wird nur dort eingesetzt, wo sie einen echten Vorteil bietet.',
+  },
+  {
+    question: 'Was passiert, wenn ein Ablauf fehlschlägt?',
+    answer: 'Für wichtige Prozesse können Fehlerüberwachung, Benachrichtigungen und alternative Abläufe eingerichtet werden.',
+  },
+  {
+    question: 'Können Mitarbeiter einzelne Schritte freigeben?',
+    answer: 'Ja. Kritische Aktionen können so eingerichtet werden, dass zunächst ein Mitarbeiter zustimmen muss.',
+  },
+  {
+    question: 'Lohnt sich das auch für kleine Unternehmen?',
+    answer: 'Ja, wenn ein Ablauf regelmäßig wiederkehrt oder unnötig viel Zeit kostet.',
+  },
+  {
+    question: 'Wie lange dauert die Umsetzung?',
+    answer: 'Das hängt von den beteiligten Programmen, Regeln und Sonderfällen ab. Ein einzelner klar definierter Ablauf lässt sich schneller umsetzen als ein unternehmensweiter Prozess.',
+  },
+  {
+    question: 'Ist eine DSGVO-bewusste Umsetzung möglich?',
+    answer: 'Ja. Dabei berücksichtigen wir, welche Daten verarbeitet werden, wo sie gespeichert werden und wer darauf zugreifen kann.',
+  },
+];
+
+/* ─── Component ─────────────────────────────────────────────────────────────── */
 const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regionName }) => {
   const isRegional = !!regionSlug && !!regionName;
   const baseUrl = 'https://pixelkraftwerk-ai.com';
@@ -48,965 +234,1063 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
   const otherRegions = isRegional
     ? LEISTUNGSGEBIETE_CITIES.filter((c) => c.slug !== regionSlug).slice(0, 6)
     : [];
+
+  const [activeAreaIndex, setActiveAreaIndex] = useState(0);
+
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const processSteps = [
-    {
-      title: 'Anfragen automatisch erfassen (alle Kanäle)',
-      description:
-        'Egal ob Anfrage über Kontaktformular, E-Mail, Telefonnotiz oder WhatsApp – das System sorgt dafür, dass alles zentral ankommt und nicht in Einzelkanälen versackt. Typische Kanäle: Website-Formulare, E-Mail, Telefon, WhatsApp/Messenger, Ads-Leads, Google Business Profile. Ergebnis: Jede Anfrage wird als „Fall“ oder „Lead“ angelegt – mit Name, Kontakt, Anliegen, Quelle.',
-    },
-    {
-      title: 'Automatisch sortieren, priorisieren & zuständig zuweisen',
-      description:
-        'Statt „alle bekommen alles“ entscheidet ein Workflow automatisch: Worum geht es? Wie dringend? Wer ist zuständig? Das kann simpel sein (Regeln & Tags) oder smarter mit künstlicher Intelligenz zur Klassifizierung. Beispiel: „Angebot Photovoltaik“ → Tag „PV“ → Zuständig: Max → Aufgabe: Rückruf heute → optional Terminlink schicken.',
-    },
-    {
-      title: 'Nachfassen & Erinnern – ohne dass jemand dran denken muss',
-      description:
-        'Viele Deals sterben nicht wegen Preis – sondern wegen fehlendem Follow-up. Automatisierungen übernehmen das: Nach 24h keine Antwort → Erinnerung an Team + Follow-up-Mail; Angebot raus → Nachfass-Aufgabe nach 2 Tagen; Lead „warm“ → automatisch Terminoptionen schicken; Kunde reagiert nicht → freundliche Sequenz (2–3 Nachrichten). Sauber getaktet wirkt es professionell.',
-    },
-    {
-      title: 'Terminplanung, Bestätigung, Reminder – ohne Hin-und-Her',
-      description:
-        'Kunden buchen selbst (24/7), nur freie Zeiten werden angezeigt, Pufferzeiten & Terminarten sind geregelt, Bestätigung und Reminder laufen automatisch, Umbuchung/Storno ohne Telefonstress. Intern: Kalender synchronisiert, Zuständigkeiten fest, Infos am Termin.',
-    },
+  /* Merge base FAQs with regional FAQs for schema */
+  const allFaqsForSchema = [
+    ...faqs.map((f) => ({ question: f.question, answer: f.answer })),
+    ...(regionContent?.localFaqs?.map((f) => ({ question: f.q, answer: f.a })) || []),
   ];
 
-  const practiceExamples = [
-    {
-      title: 'Kontaktformular → automatische Lead-Anlage + Sofortantwort',
-      points: ['Anfrage kommt rein', 'Lead wird angelegt', 'Kunde bekommt sofort Bestätigung + „Nächster Schritt“', 'Zuständiger wird benachrichtigt'],
-    },
-    {
-      title: 'Angebotsanfrage → Qualifizierung + Terminlink',
-      points: ['System erkennt: „Angebot“', '3–5 kurze Rückfragen (Mail/Formular)', 'Wenn passend: Terminlink anbieten', 'Wenn unklar: Rückruf-Aufgabe erstellen'],
-    },
-    {
-      title: 'Rückruf-Workflow',
-      points: ['Telefonnotiz / verpasster Anruf wird erfasst', 'Aufgabe „Rückruf“ mit Deadline', 'Wenn nicht erledigt: Reminder an Team/Owner'],
-    },
-    {
-      title: 'Follow-up nach Angebot',
-      points: ['Angebot gesendet → Status „Angebot raus“', 'Nach 48h: freundliche Nachfrage', 'Nach 5 Tagen: „Soll ich\'s für Sie parken?“ (sauberer Exit)'],
-    },
-    {
-      title: 'Terminbuchung mit Regeln (Puffer, Dauer, Mitarbeiter)',
-      points: ['Terminarten: Erstgespräch/Bestand/Notfall', 'Pufferzeiten, Urlaubszeiten, Ausnahmen', 'Mitarbeiter & Ressourcen (Räume/Geräte) berücksichtigt'],
-    },
-    {
-      title: 'Termin → automatische Vorbereitung intern',
-      points: ['Bei Buchung: interner Hinweis (Slack/Teams/WhatsApp)', 'Checkliste wird erstellt (z. B. Unterlagen anfordern)', 'Kalendertermin enthält alle Infos'],
-    },
-    {
-      title: 'No-Show senken mit Erinnerungen',
-      points: ['24h vorher: Reminder', '2h vorher: kurze Erinnerung', 'Optional: „Bitte bestätigen“ bei kritischen Terminen'],
-    },
-    {
-      title: 'Nach Termin: Bewertung / nächste Schritte',
-      points: ['Nach dem Termin: Follow-up Mail', 'Optional: Bewertungslink', 'Falls „nicht abgeschlossen“: nächster Schritt als Aufgabe'],
-    },
+  const accordionFaqs = [
+    ...faqs,
+    ...(regionContent?.localFaqs?.map((f) => ({ question: f.q, answer: f.a })) || []),
   ];
 
-  const ourApproachSteps = [
-    { step: '01', title: 'Bedarfsanalyse', description: 'Welche Anfragen kommen rein? Was kostet am meisten Zeit? Wo geht Umsatz verloren?' },
-    { step: '02', title: 'Ablauf-Design', description: 'Wir skizzieren den Prozess in Kundensprache: „Wenn X passiert, dann Y“.' },
-    { step: '03', title: 'Umsetzung & Anbindung', description: 'Formulare, E-Mail, Kalender, ggf. CRM – alles sauber verbunden und getestet.' },
-    { step: '04', title: 'Go-Live + Team-Einweisung', description: 'Kurz und pragmatisch: Was sieht wer, wo sind Aufgaben, was passiert automatisch?' },
-    { step: '05', title: 'Optimierung', description: 'Automatisierung ist nie „fertig“. Kleine Verbesserungen bringen oft den größten ROI.' },
-  ];
-
-  const checklistItems = [
-    'Ihr habt wiederkehrende Abläufe (Anfragen, Termine, Angebote, Rückrufe)',
-    'Es gibt klare Zuständigkeiten (oder ihr wollt sie endlich sauber machen)',
-    'Ihr nutzt E-Mail & Kalender verlässlich',
-    'Ihr wollt weniger „Kopfchaos“ und mehr System',
-    'Ihr seid offen für einen schlanken, pragmatischen Start (1–2 Workflows zuerst)',
-  ];
-
-  const faqs = [
-    {
-      q: 'Was kostet so eine Automatisierung?',
-      a: 'Das hängt davon ab, wie viele Kanäle, Regeln und Integrationen nötig sind. Oft starten Unternehmen mit einem Kernprozess (z. B. Anfrage → Follow-up → Termin) und erweitern dann Schritt für Schritt.',
-    },
-    {
-      q: 'Muss ich dafür ein neues CRM nutzen?',
-      a: 'Nicht zwingend. Man kann bestehende Systeme oft anbinden oder eine einfache Pipeline aufsetzen. Entscheidend ist: Übersicht + Verbindlichkeit.',
-    },
-    {
-      q: 'Funktioniert das auch mit mehreren Mitarbeitern oder Standorten?',
-      a: 'Ja – genau dann lohnt es sich besonders. Zuständigkeiten, Ressourcen und Kalender können sauber abgebildet werden.',
-    },
-    {
-      q: 'Können Kunden wirklich selbst Termine buchen?',
-      a: 'Ja – und es reduziert extrem viel Hin-und-Her. Du legst Regeln fest (Dauer, Puffer, Zeiten, Leistungen), und Kunden sehen nur verfügbare Slots.',
-    },
-    {
-      q: 'Was ist, wenn jemand nicht erscheint?',
-      a: 'Automatische Erinnerungen (E-Mail/SMS) senken No-Shows deutlich. Zusätzlich kann man Bestätigungen oder Storno-Regeln integrieren.',
-    },
-    {
-      q: 'Wie schnell kann das live gehen?',
-      a: 'Ein schlanker erster Workflow ist oft schnell umgesetzt – wichtig ist aber, dass es sauber getestet wird und dein Team weiß, wie es damit arbeitet.',
-    },
-    {
-      q: 'Ist das DSGVO-konform möglich?',
-      a: 'Ja, wenn man es korrekt aufsetzt: klare Datenflüsse, Zugriffsrechte, AVVs, Datensparsamkeit und Dokumentation.',
-    },
-    {
-      q: 'Was, wenn unsere Prozesse aktuell „chaotisch“ sind?',
-      a: 'Dann ist Automatisierung sogar besonders wertvoll. Wir starten mit einem klaren, einfachen Ablauf und bauen Struktur auf – ohne Overengineering.',
-    },
-  ];
-
+  /* ── Render ── */
   return (
     <>
-      <div style={{ background: '#FAFAF9' }}>
+      <div style={{ background: PAPER }}>
+        {/* ── Schema ── */}
         <LocalBusinessSchema
           pageType="service"
           customDescription={isRegional
-            ? `Automatisierungen für Anfragen, Vertrieb & Terminplanung in ${regionName} und Umgebung. Pixel Kraftwerk aus Groitzsch baut Workflows, die Anfragen sortieren, Termine buchen und Follow-ups automatisch auslösen.`
-            : 'Automatisierungen für Anfragen, Vertrieb & Terminplanung. Pixel Kraftwerk aus Groitzsch baut Workflows, die Anfragen sortieren, Termine buchen und Follow-ups automatisch auslösen.'}
+            ? `Prozessautomatisierung für Unternehmen in ${regionName} und Umgebung. Pixel Kraftwerk verbindet bestehende Systeme und entwickelt individuelle Automatisierungen, durch die Informationen automatisch erfasst, verarbeitet und weitergegeben werden.`
+            : 'Prozessautomatisierung für Unternehmen: Pixel Kraftwerk verbindet bestehende Systeme und entwickelt individuelle Automatisierungen, durch die Informationen automatisch erfasst, verarbeitet und weitergegeben werden.'}
         />
         {isRegional ? (
           <BreadcrumbSchemaRegionService
             regionName={regionName}
             regionUrl={regionUrl}
-            serviceName="Automatisierungen"
+            serviceName="Prozessautomatisierung"
             serviceUrl={currentPageUrl}
           />
         ) : (
           <BreadcrumbSchema
-            serviceName="Automatisierungen für Anfragen, Vertrieb & Terminplanung"
+            serviceName="Prozessautomatisierung für Unternehmen"
             serviceUrl="https://pixelkraftwerk-ai.com/automatisierungen"
           />
         )}
         <ServiceJsonLd
-          name={isRegional ? `Automatisierungen in ${regionName}` : 'Automatisierungen für Anfragen, Vertrieb & Terminplanung'}
+          name={isRegional ? `Prozessautomatisierung in ${regionName}` : 'Prozessautomatisierung für Unternehmen'}
           serviceType="BusinessProcessAutomation"
           description={isRegional
-            ? `Automatisierungen für Anfragen, Vertrieb & Terminplanung in ${regionName} und Umgebung. Mehr Überblick, weniger Stress – von Pixel Kraftwerk aus Groitzsch.`
-            : 'Anfragen erfassen, sortieren, nachfassen und Termine buchen – automatisch. Mehr Überblick, weniger Stress und klarere Abläufe für Vertrieb und Service-Teams.'}
+            ? `Prozessautomatisierung für Unternehmen in ${regionName}. Wiederkehrende Aufgaben erledigen sich von selbst – Pixel Kraftwerk verbindet Ihre bestehenden Programme und automatisiert die Abläufe, die täglich Zeit kosten.`
+            : 'Wiederkehrende Aufgaben erledigen sich von selbst: Pixel Kraftwerk verbindet Ihre bestehenden Programme und automatisiert die Abläufe, die täglich Zeit kosten, Fehler verursachen oder immer wieder liegen bleiben.'}
           url={currentPageUrl}
           areaServed={isRegional ? [regionName] : undefined}
-          faqs={[
-            ...faqs.map((item) => ({
-              question: item.q,
-              answer: item.a,
-            })),
-            ...(regionContent?.localFaqs?.map((f) => ({ question: f.q, answer: f.a })) || []),
-          ]}
-          pageName={isRegional ? `Automatisierungen in ${regionName}` : 'Automatisierungen'}
+          faqs={allFaqsForSchema}
+          pageName={isRegional ? `Prozessautomatisierung in ${regionName}` : 'Prozessautomatisierung'}
         />
-      {/* HERO */}
-      <section
-        id="ki-automatisierung-fur-anfragen-termine"
-        className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
-        style={{ background: '#FAFAF9' }}
-      >
-        <div className="absolute inset-0">
-          <Image
-            src="/images/automatisierungen-anfragen-vertrieb-terminplanung.webp"
-            alt="Automatisierungen für Anfragen, Vertrieb und Terminplanung"
-            fill
-            className="object-cover object-right"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(250,250,249,0.97) 0%, rgba(250,250,249,0.88) 38%, rgba(250,250,249,0.3) 65%, rgba(250,250,249,0.0) 80%)' }} aria-hidden />
-        </div>
-        <div className="relative z-20 container mx-auto px-4 md:px-8 pt-20 md:pt-24">
-          <BreadcrumbNav items={isRegional ? [
-            { label: 'Startseite', href: '/' },
-            { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
-            { label: regionName!, href: regionUrl },
-            { label: 'Automatisierungen' },
-          ] : [
-            { label: 'Startseite', href: '/' },
-            { label: 'Leistungen', href: '/leistungen' },
-            { label: 'Automatisierungen' },
-          ]} />
-        </div>
-        <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
-            <div>
-              <motion.h1 className="text-xs md:text-sm font-heading font-bold uppercase tracking-widest mb-3" style={{ color: '#0E7C72' }} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                {isRegional ? `Automatisierungen in ${regionName}` : 'Automatisierungen Groitzsch & Leipzig'}
-              </motion.h1>
-              <motion.h2 className="font-heading font-bold tracking-tight mb-2 leading-[1.08]" style={{ color: '#0C1210', fontSize: 'clamp(1.75rem, 4vw, 3rem)' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.6 }}>
-                {regionContent?.localHook || 'Damit Abläufe automatisch laufen'}
-              </motion.h2>
-              <motion.h3 className="sr-only md:not-sr-only text-sm md:text-base max-w-xl mb-3 leading-snug font-semibold" style={{ color: '#0E7C72' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-                {SERVICE_TITLE_KEYWORDS['automatisierungen']}
-              </motion.h3>
-              <motion.p className="text-base md:text-lg max-w-xl mb-4 leading-relaxed" style={{ color: '#404B48' }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-                Wir bauen Abläufe, die Arbeit abnehmen, Fehler reduzieren und für Überblick sorgen – ohne dass Ihr Team ständig manuell nachhaken muss.
-              </motion.p>
-              <motion.div className="flex flex-col sm:flex-row gap-3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }}>
-                <button onClick={scrollToContact} className="btn-primary">
-                  Kostenlosen Automations-Check anfragen
-                  <ArrowRight size={18} />
-                </button>
-                <a href="tel:+491785844460" className="inline-flex items-center justify-center gap-2 py-3 text-sm font-semibold underline underline-offset-4 sm:no-underline sm:justify-start sm:px-6 sm:py-3 sm:rounded-xl sm:border" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                  Jetzt anrufen
-                </a>
-              </motion.div>
-              <div className="hidden sm:block">
-                <TrustLine className="mt-5" />
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            1. HERO
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section
+          id="prozessautomatisierung-fuer-unternehmen"
+          className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
+          style={{ background: PAPER }}
+        >
+          <div className="relative z-20 container mx-auto px-4 md:px-8 pt-20 md:pt-24">
+            <BreadcrumbNav items={isRegional ? [
+              { label: 'Startseite', href: '/' },
+              { label: 'Leistungsgebiete', href: '/leistungsgebiete' },
+              { label: regionName!, href: regionUrl },
+              { label: 'Automatisierungen' },
+            ] : [
+              { label: 'Startseite', href: '/' },
+              { label: 'Leistungen', href: '/leistungen' },
+              { label: 'Automatisierungen' },
+            ]} />
+          </div>
+
+          <div className="flex-1 flex items-center container mx-auto px-4 md:px-8 relative z-10 pb-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-16 w-full">
+
+              {/* Left: Copy */}
+              <div>
+                {/* H1 – SEO-Kicker (klein, uppercase) – identisches Pattern wie alle anderen Seiten */}
+                <motion.h1
+                  className="text-xs md:text-sm font-heading font-bold uppercase tracking-widest mb-3"
+                  style={{ color: PETROL }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  {isRegional
+                    ? `Prozessautomatisierung in ${regionName}`
+                    : 'Prozessautomatisierung Groitzsch & Leipzig'}
+                </motion.h1>
+
+                {/* H2 – visuelle Hauptüberschrift */}
+                <motion.h2
+                  className="font-heading font-bold tracking-tight mb-3 leading-[1.08]"
+                  style={{ color: INK, fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35, duration: 0.6 }}
+                >
+                  {regionContent?.localHook || 'Wiederkehrende Aufgaben erledigen sich von selbst.'}
+                </motion.h2>
+
+                {/* H3 – Keyword-Zeile (sr-only auf Mobile) */}
+                <motion.h3
+                  className="sr-only md:not-sr-only text-sm md:text-base font-heading font-semibold mb-3 leading-snug"
+                  style={{ color: PETROL }}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  {SERVICE_TITLE_KEYWORDS['automatisierungen']}
+                </motion.h3>
+
+                <motion.p
+                  className="text-base md:text-lg max-w-xl mb-2 leading-relaxed"
+                  style={{ color: BODY }}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  Wir verbinden Ihre bestehenden Programme und automatisieren die Abläufe, die täglich Zeit kosten, Fehler verursachen oder immer wieder liegen bleiben.
+                </motion.p>
+
+                <motion.p
+                  className="text-sm md:text-base max-w-xl mb-5 leading-relaxed"
+                  style={{ color: MUTED }}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.55 }}
+                >
+                  Von der ersten Kundenanfrage über Termine und Angebote bis zu Dokumenten, Aufgaben und internen Benachrichtigungen.
+                </motion.p>
+
+                {/* Primary CTA */}
+                <motion.div
+                  className="flex flex-col sm:flex-row gap-3 mb-4"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.65 }}
+                >
+                  <button onClick={scrollToContact} className="btn-primary">
+                    Kostenlosen Automations-Check sichern
+                    <ArrowRight size={18} />
+                  </button>
+                </motion.div>
+
+                {/* CTA Erklärzeile */}
+                <motion.p
+                  className="text-xs mb-4"
+                  style={{ color: MUTED }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.75 }}
+                >
+                  Wir identifizieren gemeinsam die drei Abläufe, bei denen eine Automatisierung in Ihrem Unternehmen den größten Hebel hat.
+                </motion.p>
+
+                {/* Trust-Chips */}
+                <motion.div
+                  className="hidden sm:flex flex-wrap gap-x-4 gap-y-1.5 mb-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.85 }}
+                >
+                  {['Persönliche Betreuung', 'Bestehende Tools weiter nutzen', 'Individuell umgesetzt', 'DSGVO-bewusst geplant'].map((item) => (
+                    <span key={item} className="flex items-center gap-1 text-xs" style={{ color: MUTED }}>
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                        <path d="M2 6l3 3 5-5" stroke={PETROL} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      {item}
+                    </span>
+                  ))}
+                </motion.div>
+
+                <div className="hidden sm:block">
+                  <TrustLine />
+                </div>
               </div>
-            </div>
-            <div className="hidden lg:block" aria-hidden />
-          </div>
-        </div>
-      </section>
 
-      <section className="py-20" style={{ background: '#FAFAF9' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Kurz erklärt: Was wir mit „KI-Automatisierung“ wirklich meinen
-            </motion.h2>
-            <motion.p
-              className="text-light-200 mb-4"
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              Wenn wir von <strong style={{ color: '#0C1210' }}>KI-Automatisierung</strong> sprechen, geht es nicht um „noch ein Tool“. Es geht darum, dass eure Systeme so miteinander verbunden sind, dass Abläufe automatisch passieren.
-            </motion.p>
-            <p className="mb-2" style={{ color: '#404B48' }}>Typisch ist ein Setup wie:</p>
-            <ul className="space-y-2 text-light-200 mb-6">
-              <li><strong style={{ color: '#0C1210' }}>Eingänge</strong> (Website, E-Mail, Telefonnotiz, WhatsApp, Ads, Google Business Profile)</li>
-              <li><strong style={{ color: '#0C1210' }}>Logik</strong> (Regeln, Prioritäten, Zuständigkeiten – optional mit künstlicher Intelligenz zur Klassifizierung)</li>
-              <li><strong style={{ color: '#0C1210' }}>Aktionen</strong> (Sofortantwort, Aufgaben, CRM-Eintrag, Terminbuchung, Follow-up, Reminder)</li>
-            </ul>
-            <motion.p
-              className="text-light-200 mb-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Technisch bauen wir das häufig mit <strong style={{ color: '#0C1210' }}>n8n</strong>, APIs und Webhooks. Für dich zählt aber nur: Anfragen werden erfasst, sortiert, bearbeitet und nachverfolgt – automatisch.
-            </motion.p>
-            <motion.p
-              className="text-light-200"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              <strong style={{ color: '#0C1210' }}>Wichtig:</strong> Sobald es um komplexe Integrationen (CRM, Kalenderlogik, mehrere Standorte, Datenqualität) geht, ist ein <strong style={{ color: '#0C1210' }}>Software-Entwickler</strong> ein echter Hebel: stabiler, sauberer, weniger Fehler.
-            </motion.p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20" style={{ background: '#F4F7F6' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Für wen lohnt sich das – und was wird konkret automatisiert?
-            </motion.h2>
-            <motion.p
-              className="text-light-200 mb-4"
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              Automatisierungen lohnen sich besonders, wenn mindestens einer dieser Punkte zutrifft:
-            </motion.p>
-            <ul className="space-y-2 text-light-200 mb-8">
-              {[
-                'Ihr bekommt regelmäßig Anfragen (Website, E-Mail, Telefon, WhatsApp, Social Media, Ads)',
-                'Reaktionszeiten schwanken, weil „der Alltag dazwischen kommt“',
-                'Follow-ups passieren unregelmäßig (und Umsatz bleibt liegen)',
-                'Termine werden manuell koordiniert und kosten unnötig Zeit',
-                'Informationen liegen verteilt in Postfächern, Notizen oder Excel-Listen',
-                'Mehrere Mitarbeiter/Standorte müssen koordiniert werden',
-              ].map((item, i) => (
-                <motion.li
-                  key={i}
-                  className="flex items-start gap-2"
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <CheckCircle className="text-primary-500 mt-1 flex-shrink-0" size={18} />
-                  {item}
-                </motion.li>
-              ))}
-            </ul>
-            <motion.p
-              className="text-light-100 font-heading font-bold mb-2"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Was wird automatisiert?
-            </motion.p>
-            <p className="mb-2" style={{ color: '#404B48' }}>
-              Nicht „alles auf einmal“, sondern genau die Schritte, die euch heute Zeit, Nerven und Umsatz kosten – z. B.:
-            </p>
-            <ul className="space-y-2.5">
-                <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>Anfragen automatisch erfassen &amp; ordnen</span></li>
-                <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>Zuständigkeiten zuweisen</span></li>
-                <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>Nachfassen, Erinnern, Aufgaben erstellen</span></li>
-                <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>Termine buchen, bestätigen, umbuchen, erinnern</span></li>
-                <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>Daten zwischen Systemen synchronisieren (z. B. Website → CRM → Kalender → Team)</span></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20" style={{ background: '#FAFAF9' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Die 3 häufigsten Probleme (und wie Automatisierungen sie lösen)
-            </motion.h2>
-            <div className="space-y-6">
-              {[
-                {
-                  problem: '„Anfragen gehen unter.“',
-                  solution:
-                    'Passiert schneller als man denkt: ein volles Postfach, ein stressiger Tag, mehrere Kanäle. Automatisierung sorgt dafür, dass jede Anfrage ankommt, korrekt gespeichert wird und nicht mehr „verloren“ geht.',
-                },
-                {
-                  problem: '„Wir sind zu langsam – und verlieren Kunden.“',
-                  solution:
-                    'Viele Kunden schreiben mehrere Anbieter gleichzeitig. Wer schnell und strukturiert reagiert, gewinnt. Automatisierung sorgt für Sofort-Reaktion, klare Zuständigkeit und konsequentes Nachfassen.',
-                },
-                {
-                  problem: '„Terminplanung frisst Zeit.“',
-                  solution:
-                    'Hin-und-Her, Rückfragen, Ausfälle, Doppelbuchungen. Automatisierung bringt eine Logik rein: nur freie Slots anzeigen, Bestätigung automatisch, Reminder automatisch, Umbuchung möglich.',
-                },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="bg-white p-6 border border-dark-200 rounded-2xl shadow-card"
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="text-lg font-heading font-bold text-primary-500 mb-2">{item.problem}</h3>
-                  <p className="" style={{ color: '#404B48' }}>{item.solution}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20" style={{ background: '#F4F7F6' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              So sieht ein automatisierter Ablauf aus: Anfrage → Termin → Umsetzung
-            </motion.h2>
-            <motion.p
-              className="text-light-200 mb-8"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Ihr baut nicht „ein Tool“, sondern einen durchgehenden Ablauf. Kunden erleben es wie einen „professionellen Prozess“, bei euch intern fühlt es sich an wie: weniger Arbeit.
-            </motion.p>
-            <div className="space-y-8">
-              {processSteps.map((step, i) => (
-                <motion.div
-                  key={i}
-                  className="flex gap-4 bg-white p-6 border border-dark-200 rounded-2xl shadow-card"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <span className="text-2xl font-heading font-bold text-primary-500 flex-shrink-0">
-                    Schritt {i + 1}:
-                  </span>
-                  <div>
-                    <h3 className="text-lg font-heading font-bold text-light-100 mb-2">{step.title}</h3>
-                    <p className="text-light-200 text-sm leading-relaxed">{step.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16" style={{ background: '#FAFAF9' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Passt das zu Ihrem Alltag?
-            </motion.h2>
-            <motion.p
-              className="text-light-200 mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              In einem kurzen Gespräch prüfen wir gemeinsam, welche 1–2 Automatisierungen bei Ihnen den größten Hebel haben – konkret, ohne Technik-Geschwurbel.
-            </motion.p>
-            <motion.button
-              onClick={scrollToContact}
-              className="inline-flex items-center px-8 py-4 bg-primary-500 text-dark-500 font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300 rounded-xl"
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Welche Abläufe kosten Sie die meiste Zeit? In 15 Min klären.
-              <ArrowRight className="ml-2" size={22} />
-            </motion.button>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20" style={{ background: '#FAFAF9' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Vorher vs. Nachher (typischer Alltag)
-            </motion.h2>
-            <div className="overflow-x-auto rounded-2xl border shadow-card" style={{ borderColor: '#E4E9E7' }}>
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr>
-                      <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Bereich</th>
-                      <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Manuell (vorher)</th>
-                      <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Automatisiert (nachher)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-sm">
-                    <tr style={{ background: '#fff' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Anfragen</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>verteilt in E-Mail/WhatsApp/Notizen</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>zentral erfasst & sauber sortiert</td></tr>
-                    <tr style={{ background: '#FAFAF9' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Reaktion</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>abhängig von Zeit/Stress</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>Sofort-Bestätigung + klare Zuständigkeit</td></tr>
-                    <tr style={{ background: '#fff' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Follow-ups</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>„machen wir später“ → oft vergessen</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>automatisch geplant + Aufgaben erstellt</td></tr>
-                    <tr style={{ background: '#FAFAF9' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Termine</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Hin-und-Her am Telefon</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>self-service Buchung + Regeln + Reminder</td></tr>
-                    <tr style={{ background: '#fff' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Überblick</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>„Wo stehen wir gerade?“</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>Pipeline/Status auf einen Blick</td></tr>
-                  </tbody>
-                </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20" style={{ background: '#F4F7F6' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Beispiele aus der Praxis: 8 typische Automatisierungen
-            </motion.h2>
-            <p className="mb-8" style={{ color: '#404B48' }}>
-              {isRegional
-                ? `Damit du ein Gefühl bekommst, was realistisch ist – gerade für Unternehmen in ${regionName} und Umgebung.`
-                : 'Damit du ein Gefühl bekommst, was realistisch ist – gerade für Unternehmen in Leipzig, Markkleeberg, Borna, Zwenkau, Groitzsch & Umgebung.'}
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {practiceExamples.map((ex, i) => (
-                <motion.div
-                  key={i}
-                  className="bg-white p-6 border border-dark-200 rounded-2xl shadow-card"
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="text-lg font-heading font-bold text-primary-500 mb-3">{i + 1}) {ex.title}</h3>
-                  <ul className="space-y-1 text-light-200 text-sm">
-                    {ex.points.map((p, j) => (
-                      <li key={j} className="flex items-start gap-2">
-                        <svg className="flex-shrink-0 mt-1 mr-2.5" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20" style={{ background: '#FAFAF9' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Welche Automatisierung passt zu welchem Kanal?
-            </motion.h2>
-            <div className="overflow-x-auto rounded-2xl border shadow-card" style={{ borderColor: '#E4E9E7' }}>
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr>
-                      <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Kanal</th>
-                      <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Typische Automatisierung</th>
-                      <th className="py-3 px-4 font-heading font-bold text-sm border-b text-left" style={{ background: '#F4F7F6', color: '#0C1210', borderColor: '#E4E9E7' }}>Ergebnis</th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm">
-                  <tr style={{ background: '#fff' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Website</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Formular → Lead + Sofortantwort + Zuweisung</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>schnellerer Erstkontakt</td></tr>
-                  <tr style={{ background: '#FAFAF9' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>E-Mail</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Mails taggen/sortieren → Aufgaben & Status</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>weniger Chaos im Postfach</td></tr>
-                  <tr style={{ background: '#fff' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Telefon</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>verpasster Anruf → Rückruf-Task + Reminder</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>keine verpassten Chancen</td></tr>
-                  <tr style={{ background: '#FAFAF9' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Ads</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Leadform → Quali-Fragen → Terminlink</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>bessere Lead-Qualität</td></tr>
-                  <tr style={{ background: '#fff' }}><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Kalender</td><td className="py-3 px-4 border-b" style={{ color: '#404B48', borderColor: '#E4E9E7' }}>Buchung → Termin + Vorbereitung + Reminder</td><td className="py-3 px-4 border-b font-semibold" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>weniger No-Shows</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20" style={{ background: '#F4F7F6' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Was braucht man dafür? (Tools, Schnittstellen, Voraussetzungen)
-            </motion.h2>
-            <p className="mb-4" style={{ color: '#404B48' }}>
-              Viele denken bei Automatisierung an „neues CRM“ oder „noch ein Tool“. In der Praxis geht es um drei Bausteine:
-            </p>
-            <ul className="space-y-2 text-light-200 mb-6">
-              <li><strong style={{ color: '#0C1210' }}>Eingänge</strong> – wo Anfragen herkommen</li>
-              <li><strong style={{ color: '#0C1210' }}>Logik</strong> – Regeln, Zuständigkeiten, Priorisierung</li>
-              <li><strong style={{ color: '#0C1210' }}>Aktionen</strong> – Benachrichtigen, Aufgaben erstellen, buchen, erinnern</li>
-            </ul>
-            <p className="mb-4" style={{ color: '#404B48' }}>
-              Im Hintergrund werden dafür Tools über Schnittstellen verbunden (APIs). Für dich als Kunde zählt aber nur: Es läuft automatisch und dein Team hat Überblick.
-            </p>
-            <p className="mb-6" style={{ color: '#404B48' }}>
-              Gute Automatisierungen müssen: stabil laufen, verständlich für dein Team sein, sauber dokumentiert sein und skalieren können (wenn mehr Anfragen kommen).
-            </p>
-            <motion.h3
-              className="text-lg font-heading font-bold text-light-100 mb-3"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              Wann ein Software-Entwickler sinnvoll ist
-            </motion.h3>
-            <p className="mb-2" style={{ color: '#404B48' }}>
-              Ein MVP kann schlank starten. Aber sobald ihr:
-            </p>
-            <ul className="space-y-2.5 mb-3">
-              <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>mehrere Systeme sauber synchronisieren wollt,</span></li>
-              <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>komplexe Regeln (Teams, Standorte, Kalender) habt,</span></li>
-              <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>Datenqualität wichtig ist (Dubletten, Felder, Validierung),</span></li>
-              <li className="flex items-start gap-2.5 text-sm" style={{ color: '#404B48' }}><svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.5" stroke="#E4E9E7"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#0E7C72" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg><span>oder Monitoring/Fehler-Handling braucht,</span></li>
-            </ul>
-            <p className="" style={{ color: '#404B48' }}>
-              … ist ein <strong style={{ color: '#0C1210' }}>Software-Entwickler</strong> (bzw. Softwareentwickler) extrem wertvoll, weil der Unterschied dann im Detail steckt.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20" style={{ background: '#FAFAF9' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6 flex items-center gap-2"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <Shield className="text-primary-500" size={28} />
-              Sicherheit & Datenschutz (DSGVO) – was wichtig ist
-            </motion.h2>
-            <p className="mb-4" style={{ color: '#404B48' }}>
-              Automatisierung heißt nicht „Daten wild rumschieben“. Saubere Umsetzung beinhaltet:
-            </p>
-            <ul className="space-y-2 text-light-200">
-              <li>klare Datenflüsse (was geht wohin, warum)</li>
-              <li>Zugriffskonzepte (wer darf was sehen)</li>
-              <li>Auftragsverarbeitung (AVV) mit relevanten Tools</li>
-              <li>Datensparsamkeit (nur speichern, was nötig ist)</li>
-              <li>Logging & Dokumentation (für Nachvollziehbarkeit)</li>
-            </ul>
-            <p className="mt-4" style={{ color: '#404B48' }}>
-              Wenn ihr sensible Daten verarbeitet (z. B. Gesundheitsdaten), planen wir die Architektur entsprechend konservativ.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20" style={{ background: '#F4F7F6' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Unser Vorgehen: In 5 Schritten zur funktionierenden Automatisierung
-            </motion.h2>
-            <div className="space-y-6">
-              {ourApproachSteps.map((s, i) => (
-                <motion.div
-                  key={i}
-                  className="flex gap-4 bg-white p-6 border border-dark-200 rounded-2xl shadow-card"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <span className="text-2xl font-heading font-bold text-primary-500 flex-shrink-0">{s.step}</span>
-                  <div>
-                    <h3 className="text-lg font-heading font-bold text-light-100 mb-1">{s.title}</h3>
-                    <p className="text-light-200 text-sm">{s.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20" style={{ background: '#FAFAF9' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6 flex items-center gap-2"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <ListChecks className="text-primary-500" size={28} />
-              Mini-Checkliste: Ist Ihr Betrieb bereit für Automatisierung?
-            </motion.h2>
-            <p className="mb-4" style={{ color: '#404B48' }}>
-              Haken dran = perfekt. Wenn nicht, kein Problem – dann starten wir eben kleiner.
-            </p>
-            <ul className="space-y-3">
-              {checklistItems.map((item, i) => (
-                <motion.li
-                  key={i}
-                  className="flex items-start gap-2 text-light-200"
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <CheckCircle className="text-primary-500 mt-0.5 flex-shrink-0" size={18} />
-                  {item}
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20" style={{ background: '#F4F7F6' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              {isRegional ? `FAQ – Automatisierungen in ${regionName}` : 'FAQs'}
-            </motion.h2>
-            <div className="space-y-6">
-              {faqs.map((faq, i) => (
-                <motion.div
-                  key={i}
-                  className="rounded-2xl border bg-white p-5 shadow-card" style={{ borderColor: '#E4E9E7' }}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="text-base font-heading font-bold mb-2 flex items-start gap-2"><span className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold" style={{ background: 'rgba(14,124,114,0.08)', color: '#0E7C72' }}>?</span>{faq.q}</h3>
-                  <p className="text-sm mt-2" style={{ color: '#404B48' }}>{faq.a}</p>
-                </motion.div>
-              ))}
-              {regionContent?.localFaqs?.map((faq, index) => (
-                <motion.div
-                  key={`local-${index}`}
-                  className="rounded-2xl border bg-white p-5 shadow-card" style={{ borderColor: '#E4E9E7' }}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: (faqs.length + index) * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="text-base font-heading font-bold mb-2 flex items-start gap-2"><span className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold" style={{ background: 'rgba(14,124,114,0.08)', color: '#0E7C72' }}>?</span>{faq.q}</h3>
-                  <p className="" style={{ color: '#404B48' }}>{faq.a}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20" style={{ background: '#FAFAF9' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <motion.h2
-              className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Fazit: Wenn Abläufe automatisch laufen, wird der Alltag leichter
-            </motion.h2>
-            <motion.p
-              className="text-light-200 mb-6"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Automatisierungen sind kein Luxus. Sie sind der schnellste Weg zu: weniger Stress im Tagesgeschäft, schnelleren Reaktionen, mehr Terminen und weniger verpassten Chancen, klaren Zuständigkeiten statt Chaos.
-            </motion.p>
-            <motion.p
-              className="text-light-200 mb-8"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Wenn du willst, schauen wir gemeinsam auf deinen aktuellen Ablauf und sagen dir ehrlich, welche 1–2 Automatisierungen bei euch am meisten bringen.
-            </motion.p>
-            <p className="text-light-300 text-sm mb-6">
-              Passend dazu: <a href="/ki-chatbots" className="text-primary-400 hover:underline">KI-Chatbot integrieren</a>,{' '}
-              <a href="/telefonassistenten" className="text-primary-400 hover:underline">Telefonassistent einrichten</a>,{' '}
-              <a href="/webseite" className="text-primary-400 hover:underline">Website erstellen lassen</a>,{' '}
-              <a href="/seo-top-3-in-google" className="text-primary-400 hover:underline">lokales SEO Leipzig</a>,{' '}
-              <a href="/kontakt" className="text-primary-400 hover:underline">Erstgespräch anfragen</a>.
-            </p>
-            <p className="text-xs font-semibold mb-4 flex items-center gap-1.5" style={{ color: '#0E7C72' }}>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="#0E7C72" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              Wir nehmen maximal 3 Neukunden pro Monat an
-            </p>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-3"
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <button onClick={scrollToContact} className="btn-primary">
-                Kostenlosen Automations-Check anfragen
-                <ArrowRight size={18} />
-              </button>
-              <a href="tel:+491785844460" className="btn-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                Jetzt anrufen
-              </a>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {(isRegional || true) && (
-        <section className="py-16" style={{ background: '#F4F7F6' }}>
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
+              {/* Right: Workflow-Visual */}
               <motion.div
+                className="w-full"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4, duration: 0.7 }}
+              >
+                <AutomationWorkflowVisual
+                  steps={heroWorkflowSteps}
+                  footerLabel="Automatisierter Ablauf – kein manueller Schritt nötig"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+        {/* ══════════════════════════════════════════════════════════════════════
+            2. VERTRAUENSLEISTE
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section aria-label="Vorteile der Automatisierung" style={{ background: SURFACE, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
+          <div className="container mx-auto px-4 md:px-8 py-5">
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+              {[
+                'Weniger manuelle Arbeit',
+                'Schnellere Reaktionszeiten',
+                'Weniger Übertragungsfehler',
+                'Klare Zuständigkeiten',
+                'Bestehende Systeme verbinden',
+              ].map((item) => (
+                <span key={item} className="flex items-center gap-2 text-sm font-medium" style={{ color: MUTED }}>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <circle cx="7" cy="7" r="6.5" stroke={BORDER} />
+                    <path d="M4.5 7l2 2L9.5 5" stroke={PETROL} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            3. PAS-SEKTION
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section className="section-padding" style={{ background: PAPER }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-3xl mx-auto mb-14">
+              <motion.h2
+                className="font-heading font-bold mb-5 leading-snug"
+                style={{ color: INK, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4" style={{ color: '#0C1210' }}>
-                  {isRegional
-                    ? `Automatisierungen für Unternehmen in ${regionName}`
-                    : 'Lokal in Leipzig & Region: Warum das bei Automatisierungen hilft'}
-                </h2>
-                {isRegional && regionContent?.localSection ? (
-                  regionContent.localSection.map((p, i) => (
-                    <motion.p
-                      key={i}
-                      className="text-light-200 max-w-3xl mx-auto mb-4 text-left"
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: i * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      {p}
-                    </motion.p>
-                  ))
-                ) : isRegional ? (
-                  <p className="text-light-200 max-w-3xl mx-auto">
-                    Gerade bei Prozessautomatisierung zählt das Verständnis für den lokalen Alltag: typische Anfragen, Abläufe und Kundenkanäle. Als Agentur mit Sitz in Groitzsch kennen wir die Anforderungen von Unternehmen in {regionName} und der Region. Einrichtung und Optimierung Ihrer Automatisierungen erfolgen nah an Ihrem Alltag – persönlich, praxisnah und mit kurzen Wegen.
-                  </p>
-                ) : (
-                  <p className="text-light-200 max-w-3xl mx-auto">
-                    Gerade bei Prozessautomatisierung zählt das Verständnis für den lokalen Alltag: typische Anfragen, Abläufe und Kundenkanäle. Deshalb ist es ein Vorteil, wenn Einrichtung und Optimierung nah am Alltag lokaler Unternehmen passieren.
-                  </p>
-                )}
+                Jeden Tag dieselben Aufgaben – obwohl sie längst automatisch laufen könnten.
+              </motion.h2>
+              <motion.p
+                className="text-base md:text-lg leading-relaxed mb-5"
+                style={{ color: BODY }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                Eine Anfrage kommt über die Website rein und wird manuell in eine Tabelle übertragen. Ein Mitarbeiter muss daran denken, einen Interessenten zurückzurufen. Daten werden aus einer E-Mail kopiert und in ein anderes Programm eingefügt. Angebote werden verschickt, aber nicht konsequent nachgefasst.
+              </motion.p>
+              {/* Callout */}
+              <motion.div
+                className="rounded-xl px-5 py-4 border-l-4 mb-5"
+                style={{ background: 'rgba(14,124,114,0.05)', borderLeftColor: PETROL }}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                viewport={{ once: true }}
+              >
+                <p className="text-base font-semibold leading-snug" style={{ color: INK }}>
+                  Jede einzelne Aufgabe dauert vielleicht nur wenige Minuten. Zusammengerechnet kosten diese Unterbrechungen jedoch jeden Monat viele Arbeitsstunden.
+                </p>
               </motion.div>
-              {!isRegional && (
-                <motion.p
-                  className="text-light-200 text-center mt-4"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
+            </div>
+
+            {/* Agitation */}
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide border mb-6"
+                style={{ background: 'rgba(239,68,68,0.06)', color: '#B91C1C', borderColor: 'rgba(239,68,68,0.18)' }}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                viewport={{ once: true }}
+              >
+                <AlertTriangle size={12} aria-hidden />
+                Das eigentliche Problem
+              </motion.div>
+
+              <motion.h2
+                className="font-heading font-bold mb-8"
+                style={{ color: INK, fontSize: 'clamp(1.35rem, 2.5vw, 2rem)' }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Das eigentliche Problem beginnt dort, wo der Alltag dazwischenkommt.
+              </motion.h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+                {[
+                  { label: 'Aufgaben werden vergessen', sub: 'Weil gerade zu viel gleichzeitig passiert.' },
+                  { label: 'Kunden warten unnötig lange', sub: 'Weil niemand sofort zuständig ist.' },
+                  { label: 'Informationen werden doppelt eingetragen', sub: 'Weil die Systeme nicht miteinander sprechen.' },
+                  { label: 'Mitarbeiter suchen nach dem aktuellen Stand', sub: 'Weil Informationen verteilt in Postfächern liegen.' },
+                  { label: 'Übergaben funktionieren nicht zuverlässig', sub: 'Weil alles über Zuruf geregelt wird.' },
+                  { label: 'Wichtige Anfragen bleiben liegen', sub: 'Weil kein System den Überblick behält.' },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    className="bg-white rounded-2xl p-5 border"
+                    style={{ borderColor: BORDER, boxShadow: '0 1px 4px rgba(12,18,16,0.06)' }}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.06 }}
+                    viewport={{ once: true }}
+                  >
+                    <p className="text-sm font-heading font-bold mb-1" style={{ color: '#B91C1C' }}>
+                      {item.label}
+                    </p>
+                    <p className="text-xs" style={{ color: MUTED }}>{item.sub}</p>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Solution */}
+              <div
+                className="rounded-2xl p-6 md:p-8 border"
+                style={{ background: 'rgba(14,124,114,0.04)', borderColor: 'rgba(14,124,114,0.2)' }}
+              >
+                <motion.h2
+                  className="font-heading font-bold mb-3"
+                  style={{ color: INK, fontSize: 'clamp(1.2rem, 2vw, 1.6rem)' }}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  Wir unterstützen Unternehmen in Leipzig, Markkleeberg, Zwenkau, Borna, Böhlen, Rötha, Neukieritzsch, Pegau, Lucka, Meuselwitz, Regis-Breitingen, Elstertrebnitz und Groitzsch – und kennen die typischen Anforderungen in der Region.
-                </motion.p>
-              )}
+                  Ihr Unternehmen sollte nicht von manuellen Erinnerungen abhängig sein.
+                </motion.h2>
+                <p className="text-base leading-relaxed mb-6" style={{ color: BODY }}>
+                  Automatisierungen sorgen dafür, dass ein definierter Ablauf selbstständig startet, sobald etwas Bestimmtes passiert. Ihr Team behält die Kontrolle, muss aber nicht mehr jeden einzelnen Schritt selbst ausführen.
+                </p>
+                <button
+                  onClick={scrollToContact}
+                  className="btn-primary"
+                >
+                  Automatisierungsmöglichkeiten besprechen
+                  <ArrowRight size={18} />
+                </button>
+              </div>
             </div>
           </div>
         </section>
-      )}
 
-      {isRegional && regionContent?.paragraphs && regionContent.paragraphs.length > 0 && (
-        <section className="py-16" style={{ background: '#F4F7F6' }}>
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-6" style={{ color: '#0C1210' }}>
-                Automatisierungen für Unternehmen in {regionName}
+        {/* ══════════════════════════════════════════════════════════════════════
+            4. WORKFLOW-BEISPIEL (Timeline)
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section className="section-padding" style={{ background: SURFACE }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <motion.div
+              className="text-center max-w-2xl mx-auto mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="font-heading font-bold mb-3" style={{ color: INK, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
+                So kann ein automatisierter Ablauf aussehen
               </h2>
-              {regionContent.paragraphs.map((p, i) => (
-                <p key={i} className="text-light-200 text-lg leading-relaxed mb-5">{p}</p>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+              <p className="text-base" style={{ color: MUTED }}>
+                Beispiel: Neue Kundenanfrage
+              </p>
+            </motion.div>
 
-      {!isRegional && (
-        <section className="py-12" style={{ background: '#F4F7F6' }}>
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <p className="text-light-200 text-lg leading-relaxed">
-                Unsere Automatisierungslösungen setzen wir besonders häufig für Unternehmen in{' '}
-                <a href="/leistungsgebiete/leipzig" className="text-primary-400 hover:underline">Leipzig</a> und{' '}
-                <a href="/leistungsgebiete/zwenkau" className="text-primary-400 hover:underline">Zwenkau</a> um.
-                Von <a href="/leistungsgebiete/groitzsch" className="text-primary-400 hover:underline">Groitzsch</a> aus arbeiten wir direkt mit Ihrem Team – persönlich, transparent und praxisnah.
+            <div className="max-w-2xl mx-auto relative">
+              {/* Vertical line */}
+              <div
+                className="absolute left-[27px] top-4 bottom-4 w-0.5 hidden md:block"
+                style={{ background: `linear-gradient(to bottom, ${PETROL}99, rgba(14,124,114,0.1))` }}
+                aria-hidden
+              />
+
+              {[
+                {
+                  step: '01',
+                  title: 'Anfrage wird erfasst',
+                  desc: 'Eine Anfrage kommt über Ihre Website, eine Werbeanzeige, WhatsApp oder E-Mail rein.',
+                },
+                {
+                  step: '02',
+                  title: 'Daten werden geprüft und sortiert',
+                  desc: 'Das System erkennt das Anliegen, prüft die Angaben und ordnet die Anfrage der passenden Leistung zu.',
+                },
+                {
+                  step: '03',
+                  title: 'Kunde erhält eine direkte Rückmeldung',
+                  desc: 'Der Interessent bekommt sofort eine Bestätigung und erfährt, wie es weitergeht.',
+                },
+                {
+                  step: '04',
+                  title: 'Anfrage wird zentral gespeichert',
+                  desc: 'Die Kontaktdaten werden automatisch in Ihrem CRM, Ihrer Tabelle oder Ihrem gewünschten System angelegt.',
+                },
+                {
+                  step: '05',
+                  title: 'Zuständiger Mitarbeiter wird informiert',
+                  desc: 'Je nach Anliegen, Standort oder Leistung wird die Anfrage der richtigen Person zugewiesen.',
+                },
+                {
+                  step: '06',
+                  title: 'Follow-up wird vorbereitet',
+                  desc: 'Wurde die Anfrage noch nicht bearbeitet, erinnert das System Ihr Team oder startet einen festgelegten Nachfassprozess.',
+                },
+              ].map((s, i) => (
+                <motion.div
+                  key={i}
+                  className="relative flex items-start gap-6 bg-white p-5 md:p-6 border rounded-2xl mb-4 group"
+                  style={{ borderColor: BORDER, boxShadow: '0 1px 4px rgba(12,18,16,0.06)' }}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
+                  viewport={{ once: true }}
+                  whileHover={{ borderColor: `${PETROL}50`, boxShadow: '0 4px 16px rgba(14,124,114,0.1)', transition: { duration: 0.15 } }}
+                >
+                  <div
+                    className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center border-2 font-heading font-bold text-base"
+                    style={{ borderColor: `${PETROL}50`, background: 'rgba(14,124,114,0.07)', color: PETROL }}
+                  >
+                    {s.step}
+                  </div>
+                  <div>
+                    <h3 className="font-heading font-bold mb-1" style={{ color: INK, fontSize: '1rem' }}>
+                      {s.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: BODY }}>{s.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+
+              <p className="text-sm text-center mt-2" style={{ color: MUTED }}>
+                Aus mehreren manuellen Einzelschritten entsteht ein durchgängiger und nachvollziehbarer Ablauf.
               </p>
             </div>
           </div>
         </section>
-      )}
 
-      <SubpageLinksBlock
-        serviceSlug="automatisierungen"
-        regionSlug={isRegional ? regionSlug : undefined}
-        title="Automatisierung im Detail"
-      />
+        {/* ══════════════════════════════════════════════════════════════════════
+            5. AUTOMATISIERUNGSBEREICHE
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section className="section-padding" style={{ background: PAPER }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <motion.div
+              className="text-center max-w-2xl mx-auto mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="font-heading font-bold mb-3" style={{ color: INK, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
+                Was lässt sich in Ihrem Unternehmen automatisieren?
+              </h2>
+              <p className="text-base" style={{ color: MUTED }}>
+                Automatisierung endet nicht bei Kontaktformularen. Nahezu jeder klar definierte und regelmäßig wiederkehrende Ablauf kann überprüft und verbessert werden.
+              </p>
+            </motion.div>
 
-      <RelatedServices currentSlug="automatisierungen" />
-
-      <section className="py-20" style={{ background: '#F4F7F6' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            {isRegional ? (
-              <div className="mt-10 text-left max-w-2xl mx-auto">
-                <h3 className="text-xl font-heading font-bold mb-4" style={{ color: '#0C1210' }}>
-                  Weitere Leistungen in {regionName}
-                </h3>
-                <p className="text-light-200 mb-3">
-                  <a href={regionUrl} className="text-primary-400 hover:underline font-heading font-bold">
-                    Alle Leistungen in {regionName}
-                  </a>
-                  {' – '}Übersicht unserer Angebote in Ihrer Region.
-                </p>
-                <p className="mb-6" style={{ color: '#404B48' }}>
-                  <a href="/automatisierungen" className="text-primary-400 hover:underline">
-                    Mehr zu Automatisierungen im Überblick
-                  </a>
-                  {' – '}alle Details auf unserer Service-Seite.
-                </p>
-                <p className="text-light-300 text-sm mb-3">Automatisierungen in anderen Gebieten:</p>
-                <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
-                  {otherRegions.map((city, i) => (
-                    <li key={city.slug}>
-                      <a
-                        href={`/leistungsgebiete/${city.slug}/automatisierungen`}
-                        className="text-primary-400 hover:underline"
-                      >
-                        {getRegionServiceLinkText('automatisierungen', city.name, i)}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+            {/* Desktop: Sticky-Nav + Content */}
+            <div className="hidden md:grid grid-cols-[220px_1fr] gap-8 max-w-5xl mx-auto">
+              {/* Nav */}
+              <div className="sticky top-24 self-start space-y-1">
+                {automationAreas.map((area, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveAreaIndex(i)}
+                    className="flex items-center gap-2.5 w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
+                    style={{
+                      background: activeAreaIndex === i ? 'rgba(14,124,114,0.09)' : 'transparent',
+                      color: activeAreaIndex === i ? PETROL : BODY,
+                      fontWeight: activeAreaIndex === i ? 600 : 400,
+                    }}
+                    aria-pressed={activeAreaIndex === i}
+                  >
+                    <span style={{ color: PETROL, opacity: activeAreaIndex === i ? 1 : 0.5 }}>{area.icon}</span>
+                    {area.title}
+                  </button>
+                ))}
               </div>
-            ) : (
-              <>
-                <ServicedRegionsBlock />
-                <RegionServiceLinksBlock serviceSlug="automatisierungen" title="Automatisierungen in Ihrem Gebiet" />
-              </>
-            )}
+
+              {/* Content */}
+              <div className="bg-white rounded-2xl border p-6 md:p-8 min-h-[320px]" style={{ borderColor: BORDER, boxShadow: '0 1px 4px rgba(12,18,16,0.06)' }}>
+                <motion.div
+                  key={activeAreaIndex}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <div className="flex items-center gap-2.5 mb-5">
+                    <span
+                      className="w-9 h-9 rounded-lg flex items-center justify-center"
+                      style={{ background: 'rgba(14,124,114,0.09)', color: PETROL }}
+                    >
+                      {automationAreas[activeAreaIndex].icon}
+                    </span>
+                    <h3 className="font-heading font-bold text-lg" style={{ color: INK }}>
+                      {automationAreas[activeAreaIndex].title}
+                    </h3>
+                  </div>
+                  <CheckList items={automationAreas[activeAreaIndex].items} />
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Mobile: Accordion */}
+            <div className="md:hidden max-w-2xl mx-auto">
+              <Accordion
+                allowMultiple={false}
+                items={automationAreas.map((area) => ({
+                  question: area.title,
+                  answer: area.items.join(' · '),
+                }))}
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <ContactForm service="automatisierungen" heading="Kostenlosen Automations-Check anfragen" subheading="Wir schauen auf Ihre Abläufe und sagen Ihnen ehrlich, welche 1–2 Automatisierungen am meisten bringen." />
-      <GoogleMapsSection />
+        {/* ══════════════════════════════════════════════════════════════════════
+            6. VORHER / NACHHER
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section className="section-padding" style={{ background: SURFACE }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <motion.h2
+              className="font-heading font-bold text-center mb-10"
+              style={{ color: INK, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Was sich durch einen klaren automatisierten Ablauf verändert
+            </motion.h2>
 
-      <StickyCtaBar ctaLabel="Automations-Check anfragen" />
-    </div>
-  </>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {/* Vorher */}
+              <motion.div
+                className="bg-white rounded-2xl border p-6"
+                style={{ borderColor: BORDER, boxShadow: '0 1px 4px rgba(12,18,16,0.06)' }}
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="font-heading font-bold mb-4 flex items-center gap-2 text-base" style={{ color: '#B91C1C' }}>
+                  <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: 'rgba(239,68,68,0.1)', color: '#B91C1C' }}>✕</span>
+                  Bisher
+                </h3>
+                <CheckList
+                  variant="red"
+                  items={[
+                    'Informationen liegen in E-Mails, Tabellen und Notizen',
+                    'Daten werden manuell übertragen',
+                    'Aufgaben werden über Zuruf verteilt',
+                    'Follow-ups hängen vom Gedächtnis ab',
+                    'Kunden warten auf Rückmeldungen',
+                    'Fehler fallen erst spät auf',
+                  ]}
+                />
+              </motion.div>
+
+              {/* Nachher */}
+              <motion.div
+                className="bg-white rounded-2xl border p-6"
+                style={{ borderColor: PETROL, boxShadow: `0 0 0 1px ${PETROL}30, 0 4px 20px rgba(14,124,114,0.12)` }}
+                initial={{ opacity: 0, x: 16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="font-heading font-bold mb-4 flex items-center gap-2 text-base" style={{ color: PETROL }}>
+                  <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: 'rgba(14,124,114,0.1)', color: PETROL }}>✓</span>
+                  Mit Automatisierung
+                </h3>
+                <CheckList
+                  variant="green"
+                  items={[
+                    'Informationen werden automatisch erfasst',
+                    'Daten fließen zwischen den benötigten Systemen',
+                    'Aufgaben werden nach klaren Regeln verteilt',
+                    'Follow-ups starten zum richtigen Zeitpunkt',
+                    'Kunden erhalten sofort eine Rückmeldung',
+                    'Fehler werden erkannt und gemeldet',
+                  ]}
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            7. NUTZEN
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section className="section-padding" style={{ background: PAPER }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-4xl mx-auto">
+              <motion.h2
+                className="font-heading font-bold mb-3"
+                style={{ color: INK, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                Automatisierung bedeutet nicht einfach mehr Technik
+              </motion.h2>
+              <p className="text-base mb-8 leading-relaxed" style={{ color: BODY }}>
+                Eine gute Automatisierung muss nicht möglichst groß oder kompliziert sein. Sie muss ein konkretes Problem lösen.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { icon: '⏱', label: 'Weniger wiederkehrende Handarbeit' },
+                  { icon: '⚡', label: 'Schnellere Reaktionszeiten' },
+                  { icon: '✓', label: 'Weniger Übertragungsfehler' },
+                  { icon: '📋', label: 'Nachvollziehbare Abläufe' },
+                  { icon: '👤', label: 'Klare Zuständigkeiten' },
+                  { icon: '📈', label: 'Bessere Skalierbarkeit' },
+                  { icon: '💼', label: 'Mehr Zeit für Kunden und wertschöpfende Aufgaben' },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    className="flex items-start gap-3 bg-white rounded-xl border p-4"
+                    style={{ borderColor: BORDER, boxShadow: '0 1px 3px rgba(12,18,16,0.05)' }}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.06 }}
+                    viewport={{ once: true }}
+                  >
+                    <span className="text-lg" aria-hidden>{item.icon}</span>
+                    <span className="text-sm font-medium leading-snug" style={{ color: BODY }}>{item.label}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            8. WAS PIXEL KRAFTWERK ÜBERNIMMT
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section className="section-padding" style={{ background: SURFACE }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <motion.h2
+              className="font-heading font-bold text-center mb-10"
+              style={{ color: INK, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Von der ersten Analyse bis zum laufenden Ablauf
+            </motion.h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+              {[
+                {
+                  title: 'Analyse Ihrer aktuellen Abläufe',
+                  desc: 'Wir betrachten gemeinsam, welche Prozesse aktuell Zeit, Nerven oder Umsatz kosten.',
+                },
+                {
+                  title: 'Klare Prozessdarstellung',
+                  desc: 'Sie sehen verständlich, was künftig automatisch passiert und an welchen Stellen Ihr Team eingebunden bleibt.',
+                },
+                {
+                  title: 'Individuelle Umsetzung',
+                  desc: 'Wir verbinden die benötigten Formulare, E-Mail-Postfächer, Kalender, CRM-Systeme, Tabellen und weiteren Anwendungen.',
+                },
+                {
+                  title: 'Tests und Fehlerbehandlung',
+                  desc: 'Der Ablauf wird mit verschiedenen Situationen getestet. Zusätzlich planen wir Benachrichtigungen und sinnvolle Alternativen für mögliche Fehlerfälle.',
+                },
+                {
+                  title: 'Dokumentation und Einweisung',
+                  desc: 'Ihr Team weiß, was automatisch passiert, wo Informationen ankommen und wie der Ablauf genutzt wird.',
+                },
+                {
+                  title: 'Laufende Optimierung',
+                  desc: 'Nach dem Start können Prozesse anhand der tatsächlichen Nutzung weiter verbessert und erweitert werden.',
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  className="bg-white rounded-2xl border p-5 hover:-translate-y-1 transition-transform duration-200"
+                  style={{ borderColor: BORDER, boxShadow: '0 1px 4px rgba(12,18,16,0.06)' }}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: i * 0.07 }}
+                  viewport={{ once: true }}
+                >
+                  <div
+                    className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold mb-3"
+                    style={{ background: 'rgba(14,124,114,0.09)', color: PETROL }}
+                    aria-hidden
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <h3 className="font-heading font-bold text-sm mb-2" style={{ color: INK }}>{item.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: MUTED }}>{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            9. VORGEHENSWEISE (5 Schritte)
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section className="section-padding" style={{ background: PAPER }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <motion.h2
+              className="font-heading font-bold text-center mb-12"
+              style={{ color: INK, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              So starten wir gemeinsam
+            </motion.h2>
+
+            <div className="max-w-2xl mx-auto relative">
+              <div
+                className="absolute left-[27px] top-4 bottom-4 w-0.5 hidden md:block"
+                style={{ background: `linear-gradient(to bottom, ${PETROL}99, rgba(14,124,114,0.1))` }}
+                aria-hidden
+              />
+
+              {[
+                {
+                  step: '01',
+                  title: 'Kostenloser Automations-Check',
+                  desc: 'Wir betrachten Ihre aktuellen Abläufe und identifizieren die sinnvollsten Automatisierungsmöglichkeiten.',
+                },
+                {
+                  step: '02',
+                  title: 'Prozess und Lösungskonzept',
+                  desc: 'Wir stellen verständlich dar, was den Ablauf auslöst, was automatisch passiert und wann ein Mitarbeiter eingebunden wird.',
+                },
+                {
+                  step: '03',
+                  title: 'Umsetzung und Systemverbindung',
+                  desc: 'Die benötigten Programme werden verbunden und die einzelnen Schritte eingerichtet.',
+                },
+                {
+                  step: '04',
+                  title: 'Tests und Freigabe',
+                  desc: 'Wir prüfen unterschiedliche Situationen und mögliche Fehlerfälle, bevor der Ablauf live geschaltet wird.',
+                },
+                {
+                  step: '05',
+                  title: 'Einführung und Optimierung',
+                  desc: 'Sie erhalten eine verständliche Einweisung. Anschließend kann die Automatisierung erweitert werden.',
+                },
+              ].map((s, i) => (
+                <motion.div
+                  key={i}
+                  className="relative flex items-start gap-6 bg-white p-5 md:p-6 border rounded-2xl mb-4"
+                  style={{ borderColor: BORDER, boxShadow: '0 1px 4px rgba(12,18,16,0.06)' }}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
+                  viewport={{ once: true }}
+                >
+                  <div
+                    className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center border-2 font-heading font-bold text-base"
+                    style={{ borderColor: `${PETROL}50`, background: 'rgba(14,124,114,0.07)', color: PETROL }}
+                  >
+                    {s.step}
+                  </div>
+                  <div>
+                    <h3 className="font-heading font-bold mb-1 text-base" style={{ color: INK }}>{s.title}</h3>
+                    <p className="text-sm leading-relaxed" style={{ color: BODY }}>{s.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            10. KONTROLLE & SICHERHEIT
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section className="section-padding" style={{ background: SURFACE }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-3xl mx-auto">
+              <motion.div
+                className="flex items-center gap-3 mb-5"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <Shield size={28} style={{ color: PETROL }} aria-hidden />
+                <h2 className="font-heading font-bold" style={{ color: INK, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
+                  Automatisierung bedeutet nicht Kontrollverlust
+                </h2>
+              </motion.div>
+
+              <p className="text-base leading-relaxed mb-6" style={{ color: BODY }}>
+                Nicht jede Entscheidung sollte vollständig automatisch getroffen werden. Wichtige Schritte können weiterhin eine Freigabe durch einen Mitarbeiter benötigen.
+              </p>
+
+              <CheckList
+                items={[
+                  'Welche Schritte automatisch laufen',
+                  'Wann eine Freigabe erforderlich ist',
+                  'Welche Mitarbeiter informiert werden',
+                  'Welche Daten verarbeitet werden',
+                  'Was bei einem Fehler passiert',
+                  'Welche Aktionen protokolliert werden',
+                ]}
+                className="mb-6"
+              />
+
+              <div
+                className="rounded-xl px-5 py-4 border-l-4"
+                style={{ background: 'rgba(14,124,114,0.05)', borderLeftColor: PETROL }}
+              >
+                <p className="text-base font-semibold" style={{ color: INK }}>
+                  So entsteht keine unkontrollierbare Blackbox, sondern ein klarer und nachvollziehbarer Unternehmensprozess.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            11. ZIELGRUPPEN
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section className="section-padding" style={{ background: PAPER }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-3xl mx-auto">
+              <motion.h2
+                className="font-heading font-bold mb-4"
+                style={{ color: INK, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                Für welche Unternehmen lohnt sich Prozessautomatisierung?
+              </motion.h2>
+              <p className="text-base mb-6 leading-relaxed" style={{ color: BODY }}>
+                Besonders sinnvoll ist sie für Unternehmen, die regelmäßig Kundenanfragen erhalten, wiederkehrende Verwaltungsaufgaben erledigen oder Informationen zwischen mehreren Programmen übertragen.
+              </p>
+
+              <CheckList
+                items={[
+                  'Viele wiederkehrende Aufgaben',
+                  'Regelmäßige Kundenanfragen',
+                  'Manuelle Datenübertragung zwischen Programmen',
+                  'Termin- und Angebotskoordination',
+                  'Mehrere Mitarbeiter oder Standorte',
+                  'Langsame Reaktionszeiten',
+                  'Fehlende Nachverfolgung',
+                  'Wachstum ohne mehr Verwaltungsaufwand',
+                ]}
+                className="mb-6"
+              />
+
+              <p className="text-sm" style={{ color: MUTED }}>
+                Entscheidend ist nicht die Unternehmensgröße, sondern wie häufig ein Prozess wiederholt wird und wie viel Aufwand er verursacht.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            12. FAQ
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section className="section-padding" style={{ background: SURFACE }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <motion.h2
+              className="font-heading font-bold text-center mb-10"
+              style={{ color: INK, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              {isRegional ? `Häufige Fragen zu Automatisierungen in ${regionName}` : 'Häufige Fragen'}
+            </motion.h2>
+
+            <div className="max-w-3xl mx-auto">
+              <Accordion items={accordionFaqs} allowMultiple={false} />
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            13. ABSCHLUSS-CTA
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section className="section-padding" style={{ background: PAPER }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <motion.div
+              className="max-w-2xl mx-auto text-center rounded-2xl border p-8 md:p-12"
+              style={{ borderColor: `${PETROL}30`, background: 'rgba(14,124,114,0.03)', boxShadow: `0 0 0 1px rgba(14,124,114,0.12), 0 8px 32px rgba(14,124,114,0.08)` }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <span
+                className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-5"
+                style={{ background: 'rgba(14,124,114,0.09)', color: PETROL }}
+              >
+                Kostenloser Automations-Check
+              </span>
+
+              <h2 className="font-heading font-bold mb-4" style={{ color: INK, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
+                Welche Aufgaben kosten Sie jede Woche unnötig Zeit?
+              </h2>
+              <p className="text-base mb-3 leading-relaxed" style={{ color: BODY }}>
+                In einem unverbindlichen Gespräch betrachten wir Ihre aktuellen Abläufe und zeigen Ihnen konkret, welche Prozesse sich sinnvoll automatisieren lassen.
+              </p>
+              <p className="text-sm mb-8" style={{ color: MUTED }}>
+                Sie erhalten keine allgemeine Tool-Präsentation, sondern konkrete Vorschläge passend zu Ihrem Unternehmen.
+              </p>
+
+              <button onClick={scrollToContact} className="btn-primary mb-4">
+                Kostenlosen Automations-Check sichern
+                <ArrowRight size={18} />
+              </button>
+
+              <p className="text-xs" style={{ color: MUTED }}>
+                Unverbindlich · Persönlich · Verständlich erklärt
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            14. REGIONALE INHALTE
+        ══════════════════════════════════════════════════════════════════════ */}
+        <section className="py-16" style={{ background: SURFACE }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="font-heading font-bold text-2xl md:text-3xl mb-4" style={{ color: INK }}>
+                {isRegional
+                  ? `Prozessautomatisierung für Unternehmen in ${regionName}`
+                  : 'Lokal in Leipzig & Region'}
+              </h2>
+
+              {isRegional && regionContent?.localSection ? (
+                regionContent.localSection.map((p, i) => (
+                  <p key={i} className="max-w-3xl mx-auto mb-4 text-left" style={{ color: BODY }}>{p}</p>
+                ))
+              ) : isRegional ? (
+                <p className="max-w-3xl mx-auto" style={{ color: BODY }}>
+                  Als Agentur mit Sitz in Groitzsch kennen wir die Anforderungen von Unternehmen in {regionName} und der Region. Einrichtung und Optimierung Ihrer Automatisierungen erfolgen nah an Ihrem Alltag – persönlich, praxisnah und mit kurzen Wegen.
+                </p>
+              ) : (
+                <p className="max-w-3xl mx-auto" style={{ color: BODY }}>
+                  Gerade bei Prozessautomatisierung zählt das Verständnis für den lokalen Alltag: typische Anfragen, Abläufe und Kundenkanäle. Wir unterstützen Unternehmen in{' '}
+                  <a href="/leistungsgebiete/leipzig" style={{ color: PETROL }} className="hover:underline">Leipzig</a>,{' '}
+                  <a href="/leistungsgebiete/markkleeberg" style={{ color: PETROL }} className="hover:underline">Markkleeberg</a>,{' '}
+                  <a href="/leistungsgebiete/zwenkau" style={{ color: PETROL }} className="hover:underline">Zwenkau</a>,{' '}
+                  <a href="/leistungsgebiete/groitzsch" style={{ color: PETROL }} className="hover:underline">Groitzsch</a> und weiteren Städten in Mitteldeutschland.
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {isRegional && regionContent?.paragraphs && regionContent.paragraphs.length > 0 && (
+          <section className="py-16" style={{ background: SURFACE }}>
+            <div className="container mx-auto px-4 md:px-8">
+              <div className="max-w-3xl mx-auto">
+                <h2 className="font-heading font-bold text-2xl md:text-3xl mb-6" style={{ color: INK }}>
+                  Prozessautomatisierung für Unternehmen in {regionName}
+                </h2>
+                {regionContent.paragraphs.map((p, i) => (
+                  <p key={i} className="text-lg leading-relaxed mb-5" style={{ color: BODY }}>{p}</p>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {!isRegional && (
+          <section className="py-10" style={{ background: SURFACE }}>
+            <div className="container mx-auto px-4 md:px-8">
+              <div className="max-w-3xl mx-auto">
+                <p className="text-lg leading-relaxed" style={{ color: BODY }}>
+                  Unsere Automatisierungslösungen setzen wir besonders häufig für Unternehmen in{' '}
+                  <a href="/leistungsgebiete/leipzig" style={{ color: PETROL }} className="hover:underline">Leipzig</a> und{' '}
+                  <a href="/leistungsgebiete/zwenkau" style={{ color: PETROL }} className="hover:underline">Zwenkau</a> um.
+                  Von <a href="/leistungsgebiete/groitzsch" style={{ color: PETROL }} className="hover:underline">Groitzsch</a> aus arbeiten wir direkt mit Ihrem Team – persönlich, transparent und praxisnah.
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            15. CROSS-LINKS & KONTAKT
+        ══════════════════════════════════════════════════════════════════════ */}
+        <SubpageLinksBlock
+          serviceSlug="automatisierungen"
+          regionSlug={isRegional ? regionSlug : undefined}
+          title="Automatisierung im Detail"
+        />
+
+        <RelatedServices currentSlug="automatisierungen" />
+
+        <section className="py-20" style={{ background: SURFACE }}>
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-3xl mx-auto text-center">
+              {isRegional ? (
+                <div className="mt-10 text-left max-w-2xl mx-auto">
+                  <h3 className="font-heading font-bold text-xl mb-4" style={{ color: INK }}>
+                    Weitere Leistungen in {regionName}
+                  </h3>
+                  <p className="mb-3" style={{ color: BODY }}>
+                    <a href={regionUrl} className="hover:underline font-heading font-bold" style={{ color: PETROL }}>
+                      Alle Leistungen in {regionName}
+                    </a>
+                    {' – '}Übersicht unserer Angebote in Ihrer Region.
+                  </p>
+                  <p className="mb-6" style={{ color: BODY }}>
+                    <a href="/automatisierungen" className="hover:underline" style={{ color: PETROL }}>
+                      Mehr zu Automatisierungen im Überblick
+                    </a>
+                    {' – '}alle Details auf unserer Service-Seite.
+                  </p>
+                  <p className="text-sm mb-3" style={{ color: MUTED }}>Automatisierungen in anderen Gebieten:</p>
+                  <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                    {otherRegions.map((city, i) => (
+                      <li key={city.slug}>
+                        <a
+                          href={`/leistungsgebiete/${city.slug}/automatisierungen`}
+                          className="hover:underline"
+                          style={{ color: PETROL }}
+                        >
+                          {getRegionServiceLinkText('automatisierungen', city.name, i)}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <>
+                  <ServicedRegionsBlock />
+                  <RegionServiceLinksBlock serviceSlug="automatisierungen" title="Prozessautomatisierung in Ihrem Gebiet" />
+                </>
+              )}
+            </div>
+          </div>
+        </section>
+
+        <ContactForm
+          service="automatisierungen"
+          heading="Kostenlosen Automations-Check sichern"
+          subheading="Wir schauen auf Ihre Abläufe und zeigen Ihnen konkret, welche Prozesse sich sinnvoll automatisieren lassen."
+        />
+        <GoogleMapsSection />
+
+        <StickyCtaBar ctaLabel="Automations-Check sichern" />
+      </div>
+    </>
   );
 };
 

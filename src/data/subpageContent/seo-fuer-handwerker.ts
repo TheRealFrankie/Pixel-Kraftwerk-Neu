@@ -191,7 +191,7 @@ const content: SubpageContent = {
       paragraphs: [
         'Ihr Google Business Profil bringt Sichtbarkeit, aber ohne eine professionelle Website fehlt das Fundament. Google bewertet Ihre Website als zentrales Qualitätssignal: Stimmen die Inhalte? Lädt die Seite schnell? Funktioniert sie auf dem Smartphone? Finden Besucher, was sie suchen?',
         'Für Handwerker sind dabei einige Punkte besonders wichtig: Jede Leistung, die Sie anbieten, braucht eine eigene, gut strukturierte Unterseite mit relevantem Text. „Wir machen alles" auf einer einzigen Seite reicht nicht – weder für Google noch für Ihre Kunden. Eine klare Struktur mit separaten Seiten für Sanitärinstallation, Heizungswartung und Badsanierung zeigt Kompetenz und liefert Google die Signale, die für gute Rankings sorgen.',
-        'Mit einer <a href="/webseite" class="text-primary-400 hover:underline">Webseite im Mietmodell</a> von Pixel Kraftwerk erhalten Sie genau diese professionelle Grundlage: technisch sauber, mobiloptimiert und von Anfang an auf SEO ausgelegt – ohne hohe Einmalinvestition.',
+        'Mit einer <a href="/webseite" class="text-primary-400 hover:underline">Professionelle Webseite</a> von Pixel Kraftwerk erhalten Sie genau diese professionelle Grundlage: technisch sauber, mobiloptimiert und von Anfang an auf SEO ausgelegt – ohne hohe Einmalinvestition.',
       ],
     },
     {
@@ -278,7 +278,7 @@ const content: SubpageContent = {
     },
     {
       q: 'Brauche ich eine professionelle Website oder reicht ein Google Business Profil?',
-      a: 'Ein Google Business Profil allein kann erste Sichtbarkeit bringen, aber ohne eigene Website verschenken Sie erhebliches Potenzial. Google bewertet die Inhalte und technische Qualität Ihrer Website als wichtiges Ranking-Signal. Mit einer professionellen <a href="/webseite" class="text-primary-400 hover:underline">Webseite im Mietmodell</a> schaffen Sie die optimale Grundlage für langfristiges SEO – technisch sauber, mobiloptimiert und ohne hohe Einmalkosten.',
+      a: 'Ein Google Business Profil allein kann erste Sichtbarkeit bringen, aber ohne eigene Website verschenken Sie erhebliches Potenzial. Google bewertet die Inhalte und technische Qualität Ihrer Website als wichtiges Ranking-Signal. Mit einer professionellen <a href="/webseite" class="text-primary-400 hover:underline">Professionelle Webseite</a> schaffen Sie die optimale Grundlage für langfristiges SEO – technisch sauber, mobiloptimiert und ohne hohe Einmalkosten.',
     },
     {
       q: 'Was kostet SEO für Handwerker?',
@@ -316,7 +316,7 @@ const content: SubpageContent = {
   ],
   crossServiceLinks: [
     { text: 'CRM für Handwerker', href: '/crm-systeme/crm-fuer-handwerker' },
-    { text: 'Webseiten im Mietmodell', href: '/webseite' },
+    { text: 'Professionelle Webseiten', href: '/webseite' },
   ],
   areaLinks: buildTier1AreaLinks('SEO für Handwerker'),
 };

@@ -13,7 +13,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'Für Hanauer Betriebe mit erklärungsbedürftigen Produkten sind KI-Chatbots besonders wirksam: Ein Zulieferer für Materialtechnik kann technische Erstfragen, Datenblatt-Anfragen und Lieferzeiten automatisiert beantworten, bevor ein Vertriebsmitarbeiter übernimmt. Handwerksbetriebe und Praxen profitieren von KI-Telefonassistenten, die Anrufe auch während der Montage oder Behandlung annehmen, Anliegen strukturiert erfassen und Rückrufe priorisieren – statt dass Anrufer beim Anrufbeantworter auflegen und beim nächsten Anbieter in Frankfurt landen.',
       'Automatisierungen entlasten Hanauer Unternehmen dort, wo Rhein-Main-Tempo herrscht: Eingehende Anfragen aus Webformular, E-Mail und Telefon laufen automatisch in ein zentrales System, werden nach Dringlichkeit qualifiziert und lösen Folgeschritte aus – vom Angebotsentwurf für den Industriezulieferer bis zur Terminbestätigung für den SHK-Betrieb. Gerade bei Fachkräftemangel ersetzt das keine Mitarbeiter, sondern verschafft ihnen Zeit für die eigentliche Arbeit.',
       'Local SEO entscheidet in Hanau über Sichtbarkeit im Schatten Frankfurts: Wer bei „Elektriker Hanau", „Zahnarzt Hanau" oder „Steuerberater Hanau" nicht in den ersten Treffern und im Google-Maps-Dreierpack erscheint, verliert Kunden an die Nachbarstädte. Wir optimieren Google-Unternehmensprofil, lokale Landingpages und Bewertungsmanagement so, dass Hanauer Betriebe in ihrer Stadt und in Umlandgemeinden wie Maintal, Bruchköbel oder Großauheim gefunden werden.',
-      'Viele Betriebe schieben den Website-Relaunch jahrelang vor sich her, weil hohe Agenturkosten abschrecken. Mit unserem Mietmodell erhalten Hanauer Unternehmen eine professionelle, schnelle und suchmaschinenoptimierte Webseite zur monatlichen Rate – inklusive Hosting, Pflege, Sicherheitsupdates und laufender Anpassungen. So bleibt die Liquidität im Betrieb, und die Webseite veraltet nicht mehr.',
+      'Hanauer Unternehmen erhalten von uns eine professionelle, schnelle und suchmaschinenoptimierte Webseite – individuell geplant und professionell umgesetzt. Auf Wunsch übernehmen wir Hosting, Pflege und laufende Anpassungen, damit die Webseite dauerhaft aktuell bleibt.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig und betreut Kunden in ganz Deutschland – die Einrichtung von Chatbots, Telefonassistenten und Automatisierungen erfolgt vollständig remote. Für Hanauer Betriebe heißt das: kostenloses Erstgespräch per Video, klares Konzept, transparente Umsetzung und persönliche Betreuung ohne Anfahrtskosten. Die meisten Lösungen sind innerhalb weniger Wochen produktiv.',
     ],
     faqs: [
@@ -34,7 +34,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
         a: 'Der Assistent nimmt jeden Anruf an – auch auf der Baustelle, im Feierabend oder am Wochenende. Er erfasst Name, Anliegen und Rückrufnummer, beantwortet Standardfragen zu Leistungen und Preisen und priorisiert Notfälle. So geht kein Auftrag mehr verloren, nur weil gerade niemand ans Telefon gehen konnte.',
       },
       {
-        q: 'Was kostet eine Webseite im Mietmodell für einen Hanauer Betrieb?',
+        q: 'Was kostet eine Professionelle Webseite für einen Hanauer Betrieb?',
         a: 'Statt einer hohen Einmalinvestition zahlen Sie eine planbare monatliche Rate, in der Design, Umsetzung, Hosting, Wartung und Anpassungen enthalten sind. Die genaue Höhe hängt vom Umfang ab – im kostenlosen Erstgespräch kalkulieren wir ein konkretes Angebot für Ihren Betrieb.',
       },
       {
@@ -47,7 +47,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für Handel, Gastronomie und Grimm-Tourismus',
       'Local SEO für Hanau und die Rhein-Main-Region',
       'KI-Telefonassistenten für Handwerk und Praxen',
-      'Webseiten im Mietmodell für Hanauer Betriebe',
+      'Professionelle Webseiten für Hanauer Betriebe',
     ],
   },
 
@@ -63,7 +63,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots zahlen sich in Ludwigsburg gleich doppelt aus: Tourismus- und Veranstaltungsbetriebe rund um Schloss, Blühendes Barock und die Schlossfestspiele beantworten damit Fragen zu Öffnungszeiten, Tickets und Anfahrt rund um die Uhr – auch auf Englisch. Technologie- und Medienunternehmen nutzen Chatbots zur Vorqualifizierung von Projektanfragen, sodass nur ernsthafte Leads beim Vertrieb landen. KI-Telefonassistenten fangen zusätzlich Anrufspitzen ab, die kleine Teams sonst überlasten.',
       'Bei Automatisierungen geht es im Raum Stuttgart vor allem um Geschwindigkeit: Wer auf eine Anfrage erst nach zwei Tagen reagiert, hat sie meist schon verloren. Wir verbinden Webformulare, E-Mail-Postfächer und Telefonate mit Ihrem CRM, automatisieren Angebotsentwürfe, Terminvereinbarungen und Nachfass-Sequenzen – vom Automotive-Zulieferer mit langen B2B-Zyklen bis zum Sanitärbetrieb, der Wartungstermine planen muss.',
       'Local SEO ist in Ludwigsburg ein Verdrängungswettbewerb: Zwischen Stuttgart, Kornwestheim und Bietigheim-Bissingen konkurrieren viele Anbieter um dieselben Suchanfragen. Wir sorgen dafür, dass Ihr Betrieb bei Suchen wie „Physiotherapie Ludwigsburg" oder „Werbeagentur Ludwigsburg" prominent erscheint – mit optimiertem Google-Unternehmensprofil, lokal relevanten Inhalten, sauberer technischer Basis und systematischem Bewertungsaufbau.',
-      'Unsere Webseiten im Mietmodell passen zur schwäbischen Kaufmannslogik: keine fünfstellige Einmalinvestition, sondern eine kalkulierbare Monatsrate, die Design, Entwicklung, Hosting, Wartung und laufende Änderungen abdeckt. Ihre Webseite bleibt technisch aktuell, sicher und schnell – und wächst mit, wenn Ihr Betrieb neue Leistungen oder Standorte ergänzt.',
+      'Unsere professionell entwickelten Webseiten passen zur schwäbischen Kaufmannslogik: keine fünfstellige Einmalinvestition, sondern eine kalkulierbare Monatsrate, die Design, Entwicklung, Hosting, Wartung und laufende Änderungen abdeckt. Ihre Webseite bleibt technisch aktuell, sicher und schnell – und wächst mit, wenn Ihr Betrieb neue Leistungen oder Standorte ergänzt.',
       'Pixel Kraftwerk arbeitet von Groitzsch bei Leipzig aus für Kunden in ganz Deutschland. Die Zusammenarbeit mit Ludwigsburger Betrieben läuft vollständig remote: Erstgespräch und Konzeption per Video, transparente Festpreise, Einrichtung und Schulung über Bildschirmübertragung. Sie bekommen die Leistung einer spezialisierten KI-Agentur, ohne dass Stuttgarter Agenturpreise oder Anfahrtspauschalen anfallen.',
     ],
     faqs: [
@@ -84,7 +84,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
         a: 'Der Wettbewerb im Raum Stuttgart ist hoch, aber mit sauberem Handwerk gut zu gewinnen: optimiertes Google-Unternehmensprofil, lokale Landingpages, schnelle Webseite und kontinuierlicher Bewertungsaufbau. Viele Mitbewerber vernachlässigen genau diese Grundlagen – das ist Ihre Chance, ins Maps-Dreierpack aufzusteigen.',
       },
       {
-        q: 'Was beinhaltet die Webseite im Mietmodell?',
+        q: 'Was beinhaltet die Professionelle Webseite?',
         a: 'Konzeption, Design, Umsetzung, Hosting, SSL, Sicherheitsupdates, Pflege und laufende inhaltliche Anpassungen – alles in einer monatlichen Rate. Sie haben keinen Aufwand mit Technik oder Updates und keine hohe Anfangsinvestition. Im kostenlosen Erstgespräch erstellen wir ein konkretes Angebot für Ihren Betrieb.',
       },
     ],
@@ -93,7 +93,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für Schloss-Tourismus, Events und Kreativwirtschaft',
       'Local SEO für Ludwigsburg und den Großraum Stuttgart',
       'KI-Telefonassistenten für Handwerk und Dienstleister',
-      'Webseiten im Mietmodell mit planbarer Monatsrate',
+      'Professionelle Webseiten mit planbarer Monatsrate',
     ],
   },
 
@@ -109,7 +109,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'Genau hier wirken KI-Lösungen: Ein Chatbot auf der Webseite eines Werkzeugherstellers beantwortet Händler- und Endkundenfragen zu Sortiment, Verfügbarkeit und technischen Daten – auch nachts und am Wochenende, wenn internationale Kunden anfragen. KI-Telefonassistenten sind für Remscheider Handwerksbetriebe Gold wert: Sie nehmen Anrufe an, während das Team auf Montage ist, erfassen das Anliegen strukturiert und sorgen dafür, dass kein Auftrag an die Konkurrenz in Solingen oder Wuppertal geht.',
       'Automatisierungen setzen bei den zähen Routineprozessen an: Anfragen aus E-Mail, Webformular und Telefon fließen automatisch in ein zentrales System, Angebotsentwürfe entstehen aus Vorlagen, Nachfass-Erinnerungen laufen von selbst, und Wartungs- oder Liefertermine werden ohne Telefon-Pingpong koordiniert. Für produzierende Betriebe verbinden wir das mit dem bestehenden CRM- oder ERP-System – pragmatisch und ohne Großprojekt.',
       'Bei Local SEO hat Remscheid einen Vorteil: Viele Betriebe im Bergischen Land vernachlässigen ihre digitale Sichtbarkeit, sodass schon solide Optimierung große Wirkung zeigt. Wir bringen Ihr Google-Unternehmensprofil in Form, bauen lokale Suchbegriffe wie „Werkzeugbau Remscheid" oder „Dachdecker Remscheid" in Ihre Webseite ein und etablieren systematisches Bewertungsmanagement – damit Sie im Maps-Dreierpack erscheinen, wenn Kunden in Lennep, Lüttringhausen oder Hückeswagen suchen.',
-      'Eine moderne Webseite muss keine Großinvestition sein: Im Mietmodell erhalten Remscheider Betriebe eine professionelle, schnelle und für Google optimierte Webseite gegen eine feste Monatsrate – Hosting, Sicherheit, Pflege und Anpassungen inklusive. Das passt zur bodenständigen Kalkulation bergischer Unternehmer: planbare Kosten, kein Wartungsstau, jederzeit aktuell.',
+      'Remscheider Betriebe erhalten von uns eine professionelle, schnelle und für Google optimierte Webseite – individuell geplant und transparent angeboten. Hosting, Sicherheit und Pflege lassen sich auf Wunsch als laufende Betreuung organisieren.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig und arbeitet deutschlandweit remote. Für Remscheider Unternehmen bedeutet das: kostenloses Erstgespräch per Video, ehrliche Einschätzung, was KI für Ihren Betrieb wirklich bringt, und eine Einrichtung, die Ihren Arbeitsalltag nicht unterbricht. Die meisten Lösungen sind binnen weniger Wochen im Einsatz – inklusive Einweisung Ihres Teams.',
     ],
     faqs: [
@@ -139,7 +139,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'KI-Telefonassistenten für Handwerksbetriebe im Bergischen Land',
       'Local SEO für Remscheid, Lennep und Lüttringhausen',
       'CRM- und Angebotsautomatisierung für Industriemittelstand',
-      'Webseiten im Mietmodell für bergische Betriebe',
+      'Professionelle Webseiten für bergische Betriebe',
     ],
   },
 
@@ -155,7 +155,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots passen zu diesem Profil besonders gut: Technologie- und Industriebetriebe lassen wiederkehrende Fragen zu Produkten, Spezifikationen und Lieferzeiten automatisiert beantworten und qualifizieren B2B-Leads, bevor der Vertrieb Zeit investiert. Einzelhändler und Dienstleister in der Innenstadt nutzen Chatbots für Öffnungszeiten, Verfügbarkeiten und Terminbuchungen. KI-Telefonassistenten ergänzen das im Handwerk: Sie nehmen Anrufe an, während das Team auf der Baustelle zwischen Reutlingen, Pfullingen und Metzingen unterwegs ist.',
       'Automatisierungen wirken in Reutlingen vor allem gegen den Fachkräftemangel: Wenn Anfragen aus Webformular, E-Mail und Telefon automatisch erfasst, sortiert und mit Vorlagen beantwortet werden, gewinnt ein kleines Büroteam mehrere Stunden pro Tag zurück. Terminplanung, Angebotsnachverfolgung und Rechnungs-Workflows lassen sich an bestehende Systeme anbinden – schwäbisch-pragmatisch, ohne überdimensionierte IT-Projekte.',
       'Local SEO entscheidet im Albvorland über Kundengewinnung: Zwischen Reutlingen, Tübingen und Metzingen mit seiner Outletcity suchen täglich tausende Menschen nach Handwerkern, Ärzten, Restaurants und Geschäften. Wir optimieren Ihr Google-Unternehmensprofil, bauen lokal relevante Inhalte auf und sorgen für kontinuierliche Bewertungen – damit Ihr Betrieb bei „Schreiner Reutlingen" oder „Physiotherapie Reutlingen" oben steht und nicht der Wettbewerber.',
-      'Mit unserer Webseite im Mietmodell vermeiden Reutlinger Betriebe die typische Investitionsfalle: Statt einmal viel Geld für eine Seite auszugeben, die nach drei Jahren veraltet ist, zahlen Sie eine feste Monatsrate für eine dauerhaft gepflegte, schnelle und suchmaschinenoptimierte Webseite – inklusive Hosting, Updates und inhaltlicher Anpassungen, wann immer sich etwas ändert.',
+      'Mit unserer Professionelle Webseite vermeiden Reutlinger Betriebe die typische Investitionsfalle: Statt einmal viel Geld für eine Seite auszugeben, die nach drei Jahren veraltet ist, zahlen Sie eine feste Monatsrate für eine dauerhaft gepflegte, schnelle und suchmaschinenoptimierte Webseite – inklusive Hosting, Updates und inhaltlicher Anpassungen, wann immer sich etwas ändert.',
       'Pixel Kraftwerk arbeitet von Groitzsch bei Leipzig aus deutschlandweit – die Betreuung Reutlinger Kunden erfolgt vollständig remote per Video und Bildschirmübertragung. Sie profitieren von spezialisierter KI-Kompetenz zu fairen Konditionen, einem kostenlosen Erstgespräch und einer Umsetzung, die in Wochen statt Monaten produktiv ist. Persönliche Ansprechpartner inklusive.',
     ],
     faqs: [
@@ -177,7 +177,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       },
       {
         q: 'Wie läuft der Einstieg ab und was kostet er?',
-        a: 'Sie starten mit einem kostenlosen Erstgespräch, in dem wir Bedarf und Potenzial ehrlich einschätzen. Danach erhalten Sie ein transparentes Angebot mit Festpreisen oder monatlichen Raten. Chatbots und Telefonassistenten sind meist innerhalb von zwei bis vier Wochen einsatzbereit – Webseiten im Mietmodell ähnlich schnell.',
+        a: 'Sie starten mit einem kostenlosen Erstgespräch, in dem wir Bedarf und Potenzial ehrlich einschätzen. Danach erhalten Sie ein transparentes Angebot mit Festpreisen oder monatlichen Raten. Chatbots und Telefonassistenten sind meist innerhalb von zwei bis vier Wochen einsatzbereit – Professionelle Webseiten ähnlich schnell.',
       },
     ],
     servicesHighlight: [
@@ -185,7 +185,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für Handel und Dienstleister in der Einkaufsstadt',
       'Local SEO für Reutlingen und die Region Neckar-Alb',
       'KI-Telefonassistenten für Handwerksbetriebe',
-      'Webseiten im Mietmodell mit laufender Pflege',
+      'Professionelle Webseiten mit laufender Pflege',
     ],
   },
 
@@ -201,7 +201,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'Für die wissenschaftsnahe Wirtschaft sind KI-Chatbots und Automatisierungen ein natürlicher Schritt: Sie beantworten Produkt- und Serviceanfragen mehrsprachig, qualifizieren B2B-Leads aus aller Welt und entlasten Vertriebsteams von Routinekommunikation. Für Praxen, Kanzleien und Dienstleister in der Innenstadt übernehmen KI-Telefonassistenten die Anrufannahme: Termine, Rezeptanfragen und Rückrufbitten werden strukturiert erfasst, statt in der Warteschleife verloren zu gehen – gerade in Stoßzeiten ein spürbarer Unterschied.',
       'Automatisierungen lohnen sich in Göttingen überall dort, wo wiederkehrende Abläufe Personal binden: Terminbuchung und -erinnerung in Praxen, Bewerberkommunikation in wachsenden Unternehmen, Angebotserstellung im Handwerk, Anfragenmanagement in der studentisch geprägten Wohnungs- und Dienstleistungswirtschaft. Wir verketten Ihre bestehenden Werkzeuge – E-Mail, Kalender, CRM – zu Abläufen, die ohne manuelles Zutun funktionieren.',
       'Local SEO hat in einer Universitätsstadt besondere Dynamik: Jedes Semester kommen tausende neue Menschen nach Göttingen, die Ärzte, Friseure, Fahrradwerkstätten, Restaurants und Umzugshelfer suchen – fast ausschließlich über Google. Wer dort mit gepflegtem Unternehmensprofil, guten Bewertungen und lokal optimierter Webseite präsent ist, gewinnt diese Kunden zuerst. Wir richten Ihre digitale Präsenz konsequent darauf aus, auch für Suchen aus dem südniedersächsischen Umland.',
-      'Mit der Webseite im Mietmodell erhalten Göttinger Betriebe einen professionellen Auftritt ohne Investitionshürde: Design, Entwicklung, Hosting, Sicherheit und laufende Pflege sind in einer festen Monatsrate enthalten. Das ist ideal für Praxen, Gastronomen und Handwerker, die eine moderne, schnelle Webseite wollen, ohne sich um Technik oder Updates zu kümmern.',
+      'Mit der Professionelle Webseite erhalten Göttinger Betriebe einen professionellen Auftritt ohne Investitionshürde: Design, Entwicklung, Hosting, Sicherheit und laufende Pflege sind in einer festen Monatsrate enthalten. Das ist ideal für Praxen, Gastronomen und Handwerker, die eine moderne, schnelle Webseite wollen, ohne sich um Technik oder Updates zu kümmern.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig – nur rund 290 Kilometer von Göttingen entfernt – und betreut Kunden in ganz Deutschland remote. Erstgespräch, Konzeption und Einrichtung laufen per Video, die Betreuung übernimmt ein fester Ansprechpartner. Das Erstgespräch ist kostenlos und unverbindlich: Wir prüfen gemeinsam, welche KI-Lösung für Ihren Betrieb den größten Nutzen bringt.',
     ],
     faqs: [
@@ -223,7 +223,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       },
       {
         q: 'Was kostet der Einstieg bei Pixel Kraftwerk?',
-        a: 'Das hängt von der Lösung ab – ein Chatbot als Einstieg ist deutlich günstiger als viele erwarten, Webseiten gibt es im Mietmodell zur festen Monatsrate. Im kostenlosen Erstgespräch analysieren wir Ihren Bedarf und nennen Ihnen transparente Preise ohne versteckte Kosten.',
+        a: 'Das hängt von der Lösung ab – ein Chatbot als Einstieg ist deutlich günstiger als viele erwarten. Im kostenlosen Erstgespräch analysieren wir Ihren Bedarf und nennen Ihnen transparente Preise ohne versteckte Kosten.',
       },
     ],
     servicesHighlight: [
@@ -231,7 +231,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'KI-Telefonassistenten für Praxen, Kanzleien und Dienstleister',
       'Local SEO für Göttingen und Südniedersachsen',
       'KI-Chatbots für Handel, Gastronomie und Uni-Umfeld',
-      'Webseiten im Mietmodell ohne Investitionshürde',
+      'Professionelle Webseiten ohne Investitionshürde',
     ],
   },
 
@@ -247,7 +247,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'Im Tourismus wirken KI-Chatbots unmittelbar: Hotels und Restaurants rund um die Havenwelten beantworten damit Fragen zu Zimmern, Tischen, Öffnungszeiten von Klimahaus und Auswandererhaus oder Parkmöglichkeiten – mehrsprachig und rund um die Uhr, auch wenn Kreuzfahrtgäste am Columbus Cruise Center spontan anfragen. Für Hafen- und Logistikdienstleister übernehmen Chatbots und Telefonassistenten die Erstaufnahme von Anfragen zu Kapazitäten, Terminen und Abläufen.',
       'Automatisierungen sparen in der maritimen Wirtschaft besonders viel Zeit: Anfragen, Auftragsbestätigungen, Statusmeldungen und Dokumentenflüsse zwischen Spediteuren, Kunden und Behörden lassen sich digital verketten, statt per Telefon und E-Mail-Pingpong abgewickelt zu werden. Auch Handwerksbetriebe und Werkstätten profitieren: Terminplanung, Angebotsnachverfolgung und Anrufannahme laufen automatisiert, während das Team arbeitet.',
       'Local SEO entscheidet an der Wesermündung über Sichtbarkeit: Touristen suchen „Restaurant Bremerhaven" oder „Hotel Havenwelten", Einheimische suchen Handwerker, Ärzte und Dienstleister. Wir optimieren Google-Unternehmensprofile, Bewertungsmanagement und lokale Webseiteninhalte so, dass Bremerhavener Betriebe diese Suchen gewinnen – auch gegen Wettbewerber aus Bremen und dem niedersächsischen Umland von Langen bis Nordenham.',
-      'Eine professionelle Webseite gibt es bei uns im Mietmodell: feste Monatsrate statt hoher Einmalkosten, inklusive Design, Hosting, Wartung, Sicherheitsupdates und laufenden Anpassungen – etwa wenn sich Saisonzeiten, Speisekarten oder Leistungen ändern. Gerade für Gastronomie und Tourismusbetriebe mit wechselnden Inhalten ist das ideal.',
+      'Eine professionelle Webseite von uns wird individuell geplant und umgesetzt – inklusive Design und technischer Grundlage. Auf Wunsch übernehmen wir Hosting, Wartung und laufende Anpassungen, etwa wenn sich Saisonzeiten, Speisekarten oder Leistungen ändern. Gerade für Gastronomie und Tourismusbetriebe mit wechselnden Inhalten ist das ideal.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig und arbeitet für Kunden in ganz Deutschland – die Zusammenarbeit mit Bremerhavener Betrieben läuft komplett remote. Im kostenlosen Erstgespräch per Video klären wir, welche Lösung den größten Hebel für Ihren Betrieb hat, danach folgen transparentes Angebot, zügige Einrichtung und persönliche Betreuung durch feste Ansprechpartner.',
     ],
     faqs: [
@@ -277,7 +277,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'Mehrsprachige KI-Chatbots für Havenwelten-Tourismus und Gastronomie',
       'Local SEO für Bremerhaven und die Unterweser-Region',
       'KI-Telefonassistenten für Handwerk und Werkstätten',
-      'Webseiten im Mietmodell für maritime Betriebe',
+      'Professionelle Webseiten für maritime Betriebe',
     ],
   },
 
@@ -293,7 +293,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'Für Weingüter und Vinotheken sind KI-Chatbots ein direkter Umsatzkanal: Sie beantworten Anfragen zu Weinproben, Verfügbarkeiten und Versand auf Deutsch, Englisch, Französisch und Niederländisch – passend zum internationalen Publikum der Mosel. Hotels und Gastronomie nutzen Chatbots für Reservierungen und Fragen zu Sehenswürdigkeiten, während KI-Telefonassistenten in Stoßzeiten Anrufe annehmen, die sonst im Tagesgeschäft untergehen würden.',
       'Automatisierungen entschärfen den Personalmangel im Trierer Mittelstand: Terminbuchungen, Angebotsnachverfolgung, Rechnungsworkflows und Anfragenmanagement laufen automatisch, sodass kleine Teams mehr Kunden bedienen können. Handwerksbetriebe, die zwischen Trier, Konz und Schweich unterwegs sind, lassen Anrufe vom KI-Assistenten erfassen; Praxen automatisieren Terminerinnerungen und reduzieren Ausfälle spürbar.',
       'Local SEO hat in Trier zwei Zielgruppen: Touristen, die „Restaurant Trier Altstadt" oder „Weinprobe Mosel" suchen, und Einheimische samt Luxemburg-Pendlern mit hoher Kaufkraft, die Handwerker, Ärzte und Dienstleister brauchen. Wir optimieren Ihr Google-Unternehmensprofil, bauen lokale Suchbegriffe in Ihre Webseite ein und etablieren Bewertungsmanagement – damit Sie beide Gruppen erreichen, bevor es der Wettbewerb tut.',
-      'Unsere Webseiten im Mietmodell passen zu saisonal geprägten Betrieben an der Mosel: feste Monatsrate, professionelles Design, schnelle Ladezeiten und laufende Pflege inklusive. Speisekarten, Veranstaltungen, Weinproben-Termine – Änderungen setzen wir fortlaufend um, ohne dass Zusatzkosten entstehen oder Sie sich mit Technik beschäftigen müssen.',
+      'Unsere professionell entwickelten Webseiten passen zu saisonal geprägten Betrieben an der Mosel: feste Monatsrate, professionelles Design, schnelle Ladezeiten und laufende Pflege inklusive. Speisekarten, Veranstaltungen, Weinproben-Termine – Änderungen setzen wir fortlaufend um, ohne dass Zusatzkosten entstehen oder Sie sich mit Technik beschäftigen müssen.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig und betreut Kunden deutschlandweit – auch in Trier und der Region Mosel-Eifel-Hunsrück vollständig remote. Das kostenlose Erstgespräch führen wir per Video, danach folgen ein klares Angebot und eine zügige Einrichtung. Sie erhalten moderne KI-Lösungen ohne Großstadt-Agenturpreise und mit festen Ansprechpartnern.',
     ],
     faqs: [
@@ -323,7 +323,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'Local SEO für Trier, Mosel und Eifel',
       'Automatisierungen gegen Personalmangel im Trierer Mittelstand',
       'KI-Telefonassistenten für Handwerk, Praxen und Gastronomie',
-      'Webseiten im Mietmodell mit laufender Pflege',
+      'Professionelle Webseiten mit laufender Pflege',
     ],
   },
 
@@ -339,7 +339,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'Für Zulieferer und Engineering-Dienstleister sind KI-Chatbots und CRM-Automatisierungen das passende Werkzeug: Projektanfragen, Lieferantenkommunikation und Bewerbermanagement laufen strukturiert und schnell, statt in E-Mail-Postfächern zu versanden. Lokale Dienstleister – vom Autohaus über die Fahrschule bis zur Physiotherapie – setzen Chatbots ein, um die Erwartung der technikaffinen Ingolstädter Kundschaft zu erfüllen: sofortige Antworten, einfache Online-Terminbuchung, professionelle Kommunikation.',
       'KI-Telefonassistenten und Automatisierungen entlasten besonders das Handwerk: In einer Stadt mit hoher Bautätigkeit und kaufkräftigen Privatkunden gehen Elektrikern, SHK-Betrieben und Schreinern täglich Anrufe verloren, weil das Team auf Baustellen steht. Der Assistent nimmt jeden Anruf an, erfasst das Anliegen und priorisiert Notfälle; nachgelagerte Automatisierungen erstellen Angebotsentwürfe und erinnern an offene Vorgänge.',
       'Local SEO lohnt sich in Ingolstadt wegen der Kaufkraft doppelt: Jede gewonnene Suchanfrage – ob „Küchenstudio Ingolstadt", „Zahnarzt Ingolstadt" oder „Steuerberater Ingolstadt" – ist hier überdurchschnittlich viel wert. Wir optimieren Ihr Google-Unternehmensprofil, Ihre Webseite und Ihr Bewertungsprofil so, dass Sie im Maps-Dreierpack erscheinen und Kunden aus der gesamten Region 10 gewinnen, von Neuburg bis Pfaffenhofen.',
-      'Mit der Webseite im Mietmodell erhalten Ingolstädter Betriebe einen Auftritt, der zum Premiumanspruch der Stadt passt – ohne Premiumpreis: modernes Design, schnelle Ladezeiten, Suchmaschinenoptimierung, Hosting, Wartung und laufende Anpassungen, alles in einer planbaren Monatsrate. Ihre Webseite bleibt dauerhaft aktuell, statt nach wenigen Jahren wieder ersetzt werden zu müssen.',
+      'Mit der Professionelle Webseite erhalten Ingolstädter Betriebe einen Auftritt, der zum Premiumanspruch der Stadt passt – ohne Premiumpreis: modernes Design, schnelle Ladezeiten, Suchmaschinenoptimierung, Hosting, Wartung und laufende Anpassungen, alles in einer planbaren Monatsrate. Ihre Webseite bleibt dauerhaft aktuell, statt nach wenigen Jahren wieder ersetzt werden zu müssen.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig und arbeitet deutschlandweit remote – auch für Kunden in Ingolstadt und der Region 10. Das Erstgespräch ist kostenlos und läuft per Video; danach erhalten Sie ein transparentes Angebot, eine zügige Einrichtung und persönliche Betreuung. So bekommen Sie spezialisierte KI-Kompetenz zu fairen Konditionen.',
     ],
     faqs: [
@@ -361,7 +361,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       },
       {
         q: 'Wie schnell kann mein Betrieb starten?',
-        a: 'Nach dem kostenlosen Erstgespräch per Video erhalten Sie ein konkretes Angebot. Chatbots und Telefonassistenten sind in der Regel innerhalb von zwei bis vier Wochen einsatzbereit, Webseiten im Mietmodell ähnlich schnell. Die Einrichtung läuft remote und stört Ihren Betriebsalltag nicht.',
+        a: 'Nach dem kostenlosen Erstgespräch per Video erhalten Sie ein konkretes Angebot. Chatbots und Telefonassistenten sind in der Regel innerhalb von zwei bis vier Wochen einsatzbereit, Professionelle Webseiten ähnlich schnell. Die Einrichtung läuft remote und stört Ihren Betriebsalltag nicht.',
       },
     ],
     servicesHighlight: [
@@ -369,7 +369,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für Autohäuser, Dienstleister und Handel',
       'Local SEO für Ingolstadt und die Region 10',
       'KI-Telefonassistenten für Handwerksbetriebe',
-      'Webseiten im Mietmodell mit Premiumanspruch',
+      'Professionelle Webseiten mit Premiumanspruch',
     ],
   },
 
@@ -385,7 +385,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots verschaffen hier messbare Vorteile: Industrieunternehmen beantworten Produkt- und Verarbeitungsfragen automatisiert – ein Modell, das gerade für erklärungsbedürftige Bauchemie- und Stahlprodukte funktioniert. Praxen, Therapeuten und Gesundheitsdienstleister im Umfeld der Universität nutzen Chatbots für Terminanfragen und häufige Patientenfragen. KI-Telefonassistenten sichern parallel die Erreichbarkeit: Jeder Anruf wird angenommen, erfasst und priorisiert, auch in Stoßzeiten.',
       'Automatisierungen zielen in Witten auf die Engpässe des Mittelstands: Anfragen aus mehreren Kanälen landen automatisch in einem System, Angebote werden aus Vorlagen erstellt und nachverfolgt, Termine ohne Telefonketten koordiniert. Für Handwerksbetriebe, die im gesamten Ennepe-Ruhr-Kreis unterwegs sind, bedeutet das: weniger Büroabende, mehr abgerechnete Aufträge – ohne zusätzliches Personal, das ohnehin schwer zu finden ist.',
       'Local SEO ist im Ruhrgebiet anspruchsvoll, weil Stadtgrenzen für Kunden kaum eine Rolle spielen: Wer in Witten sucht, bekommt auch Anbieter aus Bochum und Dortmund angezeigt. Wir positionieren Ihren Betrieb gezielt für Suchanfragen wie „Sanitär Witten" oder „Physiotherapie Witten-Annen" – mit optimiertem Google-Unternehmensprofil, stadtteilbezogenen Inhalten und systematischem Bewertungsaufbau, damit Sie den Heimvorteil tatsächlich ausspielen.',
-      'Unsere Webseiten im Mietmodell nehmen Wittener Betrieben die Investitionshürde: Statt mehrerer tausend Euro auf einen Schlag zahlen Sie eine feste Monatsrate für eine professionelle, schnelle und suchmaschinenoptimierte Webseite – Hosting, Sicherheit, Pflege und Änderungen inklusive. So bleibt Ihr Auftritt dauerhaft aktuell, ohne dass Sie sich darum kümmern müssen.',
+      'Unsere professionell entwickelten Webseiten nehmen Wittener Betrieben die Investitionshürde: Statt mehrerer tausend Euro auf einen Schlag zahlen Sie eine feste Monatsrate für eine professionelle, schnelle und suchmaschinenoptimierte Webseite – Hosting, Sicherheit, Pflege und Änderungen inklusive. So bleibt Ihr Auftritt dauerhaft aktuell, ohne dass Sie sich darum kümmern müssen.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig und betreut Kunden in ganz Deutschland remote – auch in Witten und dem Ennepe-Ruhr-Kreis. Der Einstieg ist unkompliziert: kostenloses Erstgespräch per Video, ehrliche Potenzialanalyse, transparentes Angebot. Die Einrichtung erfolgt über Bildschirmübertragung, Ihr Team wird eingewiesen, und ein fester Ansprechpartner bleibt erreichbar.',
     ],
     faqs: [
@@ -407,7 +407,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       },
       {
         q: 'Was kostet der Einstieg?',
-        a: 'Das Erstgespräch ist kostenlos und unverbindlich. Danach erhalten Sie ein transparentes Angebot – Chatbots und Telefonassistenten starten bei überschaubaren monatlichen Raten, Webseiten gibt es im Mietmodell ohne hohe Anfangsinvestition. Versteckte Kosten gibt es bei uns nicht.',
+        a: 'Das Erstgespräch ist kostenlos und unverbindlich. Danach erhalten Sie ein transparentes Angebot – Chatbots und Telefonassistenten starten bei überschaubaren monatlichen Raten, Webseiten werden individuell geplant und professionell umgesetzt. Versteckte Kosten gibt es bei uns nicht.',
       },
     ],
     servicesHighlight: [
@@ -415,7 +415,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für Gesundheitswirtschaft und Praxen',
       'Local SEO für Witten und den Ennepe-Ruhr-Kreis',
       'KI-Telefonassistenten für Handwerksbetriebe',
-      'Webseiten im Mietmodell ohne Investitionshürde',
+      'Professionelle Webseiten ohne Investitionshürde',
     ],
   },
 
@@ -431,7 +431,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'KI-Telefonassistenten sind für Delmenhorster Handwerks- und Servicebetriebe der wirkungsvollste Einstieg: Wer zwischen Delmenhorst, Ganderkesee und Stuhr auf Baustellen unterwegs ist, kann nicht jeden Anruf annehmen – der Assistent schon. Er erfasst Anliegen, Rückrufnummern und Dringlichkeit, beantwortet Standardfragen zu Leistungen und Einsatzgebiet und sorgt dafür, dass Aufträge nicht beim nächsten Google-Treffer aus Bremen landen.',
       'KI-Chatbots ergänzen das auf der Webseite: Sie beantworten Kundenfragen zu Öffnungszeiten, Leistungen und Preisen rund um die Uhr, nehmen Termin- und Angebotsanfragen strukturiert auf und entlasten das Büro. Für Logistik- und Gewerbebetriebe automatisieren wir darüber hinaus die Auftragskommunikation: Statusanfragen, Avise und Dokumente laufen automatisiert statt per Telefonkette – das spart Disponenten täglich Stunden.',
       'Local SEO ist für Delmenhorst eine echte Chance: Die Stadt hat eigenständige Suchvolumina – „Dachdecker Delmenhorst", „Zahnarzt Delmenhorst", „Autowerkstatt Delmenhorst" – und viele lokale Anbieter pflegen ihre Google-Präsenz kaum. Mit optimiertem Unternehmensprofil, lokalen Webseiteninhalten und systematischem Bewertungsaufbau erscheinen Sie im Maps-Dreierpack und gewinnen Kunden aus Delmenhorst und den Umlandgemeinden, bevor Bremer Anbieter zum Zug kommen.',
-      'Unsere Webseiten im Mietmodell sind auf den Mittelstand zugeschnitten: professionelles Design, schnelle Ladezeiten und Suchmaschinenoptimierung zur festen Monatsrate – inklusive Hosting, Sicherheitsupdates und laufender Anpassungen. Gerade kleinere Betriebe erhalten so einen Auftritt auf Großstadtniveau, ohne eine vierstellige Einmalinvestition stemmen zu müssen.',
+      'Unsere professionell entwickelten Webseiten sind auf den Mittelstand zugeschnitten: professionelles Design, schnelle Ladezeiten und Suchmaschinenoptimierung professionell geplant und umgesetzt – inklusive Hosting, Sicherheitsupdates und laufender Anpassungen. Gerade kleinere Betriebe erhalten so einen Auftritt auf Großstadtniveau, ohne eine vierstellige Einmalinvestition stemmen zu müssen.',
       'Pixel Kraftwerk sitzt in Groitzsch bei Leipzig und betreut Kunden in ganz Deutschland remote – auch in Delmenhorst und der Region zwischen Bremen und Oldenburg. Der Start ist einfach: kostenloses Erstgespräch per Video, ehrliche Einschätzung des Potenzials, transparentes Angebot. Einrichtung und Schulung erfolgen über Bildschirmübertragung, danach bleibt ein fester Ansprechpartner an Ihrer Seite.',
     ],
     faqs: [
@@ -453,7 +453,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       },
       {
         q: 'Was kostet der Einstieg und wie schnell geht es?',
-        a: 'Das Erstgespräch ist kostenlos. Chatbots und Telefonassistenten starten bei überschaubaren monatlichen Raten und sind meist in zwei bis vier Wochen einsatzbereit. Webseiten im Mietmodell haben keine hohe Anfangsinvestition – Sie zahlen eine feste, planbare Monatsrate inklusive Pflege.',
+        a: 'Das Erstgespräch ist kostenlos. Chatbots und Telefonassistenten starten bei überschaubaren monatlichen Raten und sind meist in zwei bis vier Wochen einsatzbereit. Professionelle Webseiten haben keine hohe Anfangsinvestition – Sie zahlen eine feste, planbare Monatsrate inklusive Pflege.',
       },
     ],
     servicesHighlight: [
@@ -461,7 +461,7 @@ export const tier8RegionContent: Record<string, RegionContent> = {
       'Local SEO für Delmenhorst und das Bremer Umland',
       'Automatisierungen für Logistik- und Gewerbebetriebe an A1 und A28',
       'KI-Chatbots für Handel, Praxen und Dienstleister',
-      'Webseiten im Mietmodell zur festen Monatsrate',
+      'Professionelle Webseiten professionell geplant und umgesetzt',
     ],
   },
 };

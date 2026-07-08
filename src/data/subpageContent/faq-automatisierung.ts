@@ -344,7 +344,7 @@ const content: SubpageContent = {
     { text: 'Telegram Chatbot', href: '/ki-chatbots/telegram-chatbot' },
   ],
   crossServiceLinks: [
-    { text: 'Webseiten im Mietmodell', href: '/webseite' },
+    { text: 'Professionelle Webseiten', href: '/webseite' },
     { text: 'Automatisierungen', href: '/automatisierungen' },
   ],
   areaLinks: buildTier1AreaLinks('FAQ Automatisierung'),

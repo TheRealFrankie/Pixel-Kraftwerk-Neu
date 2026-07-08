@@ -25,7 +25,7 @@ export const tier6Part2RegionContent: Record<string, RegionContent> = {
       'B2B-Automatisierungen für Medizintechnik und Industrie',
       'Local SEO für Franken und Würzburg',
       'Telefonassistenten für Handwerk und Dienstleister',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -53,7 +53,7 @@ export const tier6Part2RegionContent: Record<string, RegionContent> = {
       'B2B-Automatisierungen für Automotive und Industrie',
       'Local SEO für Nordhessen',
       'Telefonassistenten für Handwerk und Dienstleister',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -81,7 +81,7 @@ export const tier6Part2RegionContent: Record<string, RegionContent> = {
       'Automatisierungen für Praxen und Gesundheitsdienstleister',
       'Local SEO für Südniedersachsen',
       'Telefonassistenten für Handwerk und Dienstleister',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -109,7 +109,7 @@ export const tier6Part2RegionContent: Record<string, RegionContent> = {
       'Mehrsprachige Kommunikation für internationale Messebesucher',
       'CRM-Automatisierung für B2B-Vertrieb',
       'Local SEO für Niedersachsens Landeshauptstadt',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -137,7 +137,7 @@ export const tier6Part2RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für lokale Betriebe',
       'Local SEO für Niedersachsen',
       'Telefonassistenten für Handwerk und Dienstleister',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -165,7 +165,7 @@ export const tier6Part2RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für Dienstleistung und Gastronomie',
       'CRM-Integration für B2B-Vertriebsprozesse',
       'Local SEO für Wolfsburg',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -193,7 +193,7 @@ export const tier6Part2RegionContent: Record<string, RegionContent> = {
       'B2B-Lead-Management für Messeaussteller',
       'CRM-Automatisierung für Nürnberger Mittelstand',
       'Local SEO für Nordbayern',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 
@@ -220,7 +220,7 @@ export const tier6Part2RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für lokale Betriebe in Fürth',
       'Local SEO für klare Positionierung neben Nürnberg',
       'Telefonassistenten für Handwerk und Dienstleister',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
       'Automatisierungen für Terminplanung',
     ],
   },
@@ -249,7 +249,7 @@ export const tier6Part2RegionContent: Record<string, RegionContent> = {
       'KI-Chatbots für Hochschulumfeld und lokale Betriebe',
       'CRM-Integration für Forschungsunternehmen',
       'Local SEO für Mittelfranken',
-      'Webseiten im Mietmodell',
+      'Professionelle Webseiten',
     ],
   },
 };

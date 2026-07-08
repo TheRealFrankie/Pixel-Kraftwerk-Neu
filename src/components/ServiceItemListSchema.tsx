@@ -20,7 +20,7 @@ const ServiceItemListSchema: React.FC = () => {
     {
       name: "Webseiten",
       url: "https://pixelkraftwerk-ai.com/webseite",
-      description: "Moderne Webseiten im Mietmodell. Professioneller Webauftritt für lokale Unternehmen mit klarer Struktur und laufender Betreuung."
+      description: "Moderne Unternehmenswebseiten mit klarer Nutzerführung, individuellem Design, mobiler Optimierung und SEO-freundlicher Grundlage. Von Pixel Kraftwerk aus Groitzsch."
     },
     {
       name: "SEO: Top 3 in Google",

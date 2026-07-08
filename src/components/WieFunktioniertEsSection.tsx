@@ -7,21 +7,39 @@ import { ArrowRight } from 'lucide-react';
 const STEPS = [
   {
     step: '01',
-    title: 'Kostenlose Analyse',
+    title: 'Kostenlose Potenzialanalyse',
     description:
-      'Wir prüfen, wie groß das Potenzial für Ihr Unternehmen in Ihrer Region ist – und ob Top-3-Rankings realistisch erreichbar sind.',
+      'Wir prüfen Ihre aktuelle Sichtbarkeit, relevante Suchbegriffe, Ihr Google-Unternehmensprofil und die technischen Grundlagen Ihrer Website.',
   },
   {
     step: '02',
-    title: 'Onboarding',
+    title: 'Strategie & Prioritäten',
     description:
-      'Sie erhalten alles, was wir für den Start brauchen. Wir arbeiten sauber, transparent und ohne fragwürdige Methoden.',
+      'Auf Basis der Analyse legen wir fest, welche Suchbegriffe realistisch verbesserbar sind und in welcher Reihenfolge Maßnahmen den größten Effekt haben.',
   },
   {
     step: '03',
-    title: 'Umsetzung',
+    title: 'Technische & inhaltliche Optimierung',
     description:
-      'Wir kümmern uns um alles. Von Ihrem Online-Profil bis zu den entscheidenden Faktoren, die Google für die Platzierung berücksichtigt.',
+      'Seitentitel, Überschriften, Inhalte, interne Verlinkung und technische Fehler werden gezielt verbessert – sauber und nachvollziehbar.',
+  },
+  {
+    step: '04',
+    title: 'Lokale Signale stärken',
+    description:
+      'Google-Unternehmensprofil, Standortseiten, Einsatzgebiete, Bewertungen und konsistente Unternehmensdaten werden optimiert.',
+  },
+  {
+    step: '05',
+    title: 'Entwicklung messen',
+    description:
+      'Wir beobachten die Entwicklung relevanter Suchbegriffe, Klicks, Anrufe und Anfragen – und machen Veränderungen für Sie sichtbar.',
+  },
+  {
+    step: '06',
+    title: 'Weiter optimieren',
+    description:
+      'Suchverhalten und Wettbewerb verändern sich. Wir passen die Strategie regelmäßig an, damit die Sichtbarkeit erhalten bleibt und weiter wächst.',
   },
 ];
 
@@ -32,7 +50,7 @@ interface WieFunktioniertEsSectionProps {
 
 const WieFunktioniertEsSection: React.FC<WieFunktioniertEsSectionProps> = ({
   onCtaClick,
-  ctaLabel = 'Kostenlose SEO-Analyse anfordern',
+  ctaLabel = 'Kostenlose SEO-Potenzialanalyse anfragen',
 }) => {
   const scrollToContact = () => {
     if (onCtaClick) {
@@ -58,26 +76,27 @@ const WieFunktioniertEsSection: React.FC<WieFunktioniertEsSectionProps> = ({
               className="text-2xl md:text-3xl font-heading font-bold mb-4"
               style={{ color: '#0C1210' }}
             >
-              Wie kommen Sie in die <span style={{ color: '#0E7C72' }}>Top 3?</span>
+              So verbessern wir Ihre{' '}
+              <span style={{ color: '#0E7C72' }}>lokale Sichtbarkeit</span>
             </h2>
             <p className="max-w-2xl mx-auto" style={{ color: '#404B48' }}>
-              Es ist einfacher, als die meisten denken. Der Weg in die Top 3 – Schritt für Schritt.
+              Schritt für Schritt – transparent, nachvollziehbar und auf Ihre Ausgangslage abgestimmt.
             </p>
           </motion.div>
 
-          <div className="space-y-4 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
             {STEPS.map((item, index) => (
               <motion.div
                 key={item.step}
-                className="flex items-start gap-5 rounded-2xl border bg-white p-6 shadow-card"
-                style={{ borderColor: '#E4E9E7' }}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex items-start gap-5 rounded-2xl border bg-white p-6"
+                style={{ borderColor: '#E4E9E7', boxShadow: '0 1px 4px rgba(12,18,16,0.06)' }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: index * 0.07 }}
                 viewport={{ once: true }}
               >
                 <div
-                  className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl font-heading font-bold text-lg"
+                  className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl font-heading font-bold text-base"
                   style={{ background: 'rgba(14,124,114,0.08)', color: '#0E7C72', border: '1px solid rgba(14,124,114,0.2)' }}
                 >
                   {item.step}
@@ -100,10 +119,11 @@ const WieFunktioniertEsSection: React.FC<WieFunktioniertEsSectionProps> = ({
             <button
               type="button"
               onClick={scrollToContact}
-              className="inline-flex items-center px-8 py-4 bg-primary-500 text-white font-heading font-bold text-lg hover:bg-primary-400 transition-colors duration-300 rounded-xl"
+              className="inline-flex items-center gap-2 px-8 py-4 font-heading font-bold text-base rounded-xl transition-all duration-300"
+              style={{ background: '#0E7C72', color: '#FFFFFF' }}
             >
-              <ArrowRight className="mr-2" size={24} />
               {ctaLabel}
+              <ArrowRight size={20} />
             </button>
           </motion.div>
         </div>

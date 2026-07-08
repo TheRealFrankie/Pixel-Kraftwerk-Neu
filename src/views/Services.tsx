@@ -83,7 +83,7 @@ const Services: React.FC = () => {
     },
     {
       icon: <Globe size={24} />,
-      title: "Webseiten im Mietmodell",
+      title: "Professionelle Webseiten",
       slug: "webseite",
       imageSrc: "/images/webseiten-mietmodell-agentur.webp",
       imageAlt: "Moderne Websites: verkaufsstark, suchmaschinenoptimiert, in Tagen statt Wochen",
@@ -149,12 +149,12 @@ const Services: React.FC = () => {
     },
     {
       icon: <Globe size={40} strokeWidth={1.5} />,
-      title: "Website-Entwicklung im Mietmodell",
-      description: "Wir entwickeln moderne, schnelle Websites im Mietmodell – mit Rundum-Betreuung und ohne technische Sorgen. Auf Wunsch können diese Websites gezielt mit Automatisierung und digitaler Kundenkommunikation erweitert werden.",
+      title: "Professionelle Webseiten",
+      description: "Wir entwickeln moderne, individuell geplante Unternehmenswebseiten mit klarer Nutzerführung, überzeugendem Design und technisch sauberer Umsetzung. Auf Wunsch mit Automatisierung und digitaler Kundenkommunikation erweitert.",
       benefits: [
         "Starke Außenwirkung und klare Positionierung",
         "Zeitgemäßer Auftritt für Ihr Unternehmen – auch auf dem Smartphone",
-        "Full-Service-Betreuung mit Änderungen in 48 Stunden"
+        "Individuell entwickelt, mobil optimiert und SEO-technisch vorbereitet"
       ],
       slug: "webseite"
     },

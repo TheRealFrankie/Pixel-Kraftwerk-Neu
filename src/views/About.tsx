@@ -121,7 +121,7 @@ const About: React.FC = () => {
               <li><a href="/ki-chatbots" className="text-primary-400 hover:underline">KI-Chatbots</a> – digitale Kundenassistenz für Ihre Website</li>
               <li><a href="/telefonassistenten" className="text-primary-400 hover:underline">Telefonassistenten</a> – Anrufe automatisch annehmen und qualifizieren</li>
               <li><a href="/automatisierungen" className="text-primary-400 hover:underline">Automatisierungen</a> – Anfragen, Vertrieb &amp; Terminplanung</li>
-              <li><a href="/webseite" className="text-primary-400 hover:underline">Webseiten im Mietmodell</a> – modern, schnell, SEO-optimiert</li>
+              <li><a href="/webseite" className="text-primary-400 hover:underline">Professionelle Webseiten</a> – modern, schnell, SEO-optimiert</li>
               <li><a href="/seo-top-3-in-google" className="text-primary-400 hover:underline">SEO: Top 3 in Google</a> – lokale Sichtbarkeit in 90 Tagen</li>
             </ul>
             <p className="text-sm text-body">

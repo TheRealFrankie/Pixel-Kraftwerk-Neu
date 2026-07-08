@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import Automatisierungen from '@/views/services/Automatisierungen';
 
 export const metadata: Metadata = {
-  title: 'Automatisierungen Groitzsch & Leipzig – Leadgenerierung, Terminbuchung & E-Mail-Workflows in meiner Nähe',
+  title: 'Prozessautomatisierung Groitzsch & Leipzig – Workflow-Automatisierung für Unternehmen | Pixel Kraftwerk',
   description:
-    'Wir bauen Automatisierungen, die Anfragen sortieren, nachfassen und Termine buchen – automatisch. Mehr Überblick, weniger Stress. Leipzig & Region.',
+    'Wiederkehrende Aufgaben automatisch erledigen: Pixel Kraftwerk verbindet Ihre bestehenden Systeme und entwickelt individuelle Prozessautomatisierungen für Unternehmen in Leipzig & Region.',
   alternates: { canonical: 'https://pixelkraftwerk-ai.com/automatisierungen' },
 };
 

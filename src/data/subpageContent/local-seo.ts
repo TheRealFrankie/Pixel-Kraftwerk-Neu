@@ -198,7 +198,7 @@ const content: SubpageContent = {
       paragraphs: [
         'Backlinks sind auch im Local SEO ein zentraler Rankingfaktor. Entscheidend ist dabei nicht die schiere Menge, sondern die lokale Relevanz der verlinkenden Seiten.',
         'Ein Link von der Leipziger Volkszeitung, vom Gewerbeverein Groitzsch oder von einer regionalen Handwerkskammer ist für Ihre lokale Sichtbarkeit deutlich wertvoller als ein Link von einem thematisch passenden, aber überregionalen Blog. Wir identifizieren Möglichkeiten für lokale Kooperationen, Sponsorings und Partnerschaften, die natürliche Verlinkungen erzeugen.',
-        'Dieser Ansatz passt auch perfekt zu einer professionellen <a href="/webseite" class="text-primary-400 hover:underline">Webseite im Mietmodell</a>, die technisch sauber aufgebaut ist und von externen Quellen gerne verlinkt wird.',
+        'Dieser Ansatz passt auch perfekt zu einer professionellen <a href="/webseite" class="text-primary-400 hover:underline">Professionelle Webseite</a>, die technisch sauber aufgebaut ist und von externen Quellen gerne verlinkt wird.',
       ],
     },
     {
@@ -277,7 +277,7 @@ const content: SubpageContent = {
     },
     {
       q: 'Brauche ich eine eigene Website für Local SEO?',
-      a: 'Ein Google Business Profil allein kann erste Sichtbarkeit bringen, aber ohne eigene Website verschenken Sie enormes Potenzial. Google bewertet die Inhalte und technische Qualität Ihrer Website als wichtiges Ranking-Signal. Mit einer professionellen <a href="/webseite" class="text-primary-400 hover:underline">Webseite im Mietmodell</a> schaffen Sie die ideale Grundlage für nachhaltiges Local SEO.',
+      a: 'Ein Google Business Profil allein kann erste Sichtbarkeit bringen, aber ohne eigene Website verschenken Sie enormes Potenzial. Google bewertet die Inhalte und technische Qualität Ihrer Website als wichtiges Ranking-Signal. Mit einer professionellen <a href="/webseite" class="text-primary-400 hover:underline">Professionelle Webseite</a> schaffen Sie die ideale Grundlage für nachhaltiges Local SEO.',
     },
     {
       q: 'Was kostet Local SEO?',
@@ -313,7 +313,7 @@ const content: SubpageContent = {
     { text: 'SEO für Dienstleister', href: '/seo-top-3-in-google/seo-fuer-dienstleister' },
   ],
   crossServiceLinks: [
-    { text: 'Webseiten im Mietmodell', href: '/webseite' },
+    { text: 'Professionelle Webseiten', href: '/webseite' },
     { text: 'CRM-Systeme', href: '/crm-systeme' },
   ],
   areaLinks: buildTier1AreaLinks('Local SEO'),

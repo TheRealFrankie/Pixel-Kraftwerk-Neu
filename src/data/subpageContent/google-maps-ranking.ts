@@ -311,7 +311,7 @@ const content: SubpageContent = {
     { text: 'SEO für Dienstleister', href: '/seo-top-3-in-google/seo-fuer-dienstleister' },
   ],
   crossServiceLinks: [
-    { text: 'Webseiten im Mietmodell', href: '/webseite' },
+    { text: 'Professionelle Webseiten', href: '/webseite' },
     { text: 'KI-Chatbots für Ihre Website', href: '/ki-chatbots' },
   ],
   areaLinks: buildTier1AreaLinks('Google Maps Ranking'),

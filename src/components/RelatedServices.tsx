@@ -41,8 +41,8 @@ const allServices: ServiceInfo[] = [
   },
   {
     slug: 'webseite',
-    title: 'Webseiten im Mietmodell',
-    shortDescription: 'Moderne, schnelle Websites im Mietmodell – mit Rundum-Betreuung.',
+    title: 'Professionelle Webseiten',
+    shortDescription: 'Moderne, individuell entwickelte Unternehmenswebseiten mit klarer Nutzerführung und technisch sauberer Umsetzung.',
     image: '/images/webseiten-mietmodell-agentur.webp',
   },
   {

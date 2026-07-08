@@ -867,7 +867,7 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                             aufnehmen können.
                           </p>
                           <div className="flex items-center text-primary-500 text-sm font-heading font-bold group-hover:text-primary-400 transition-colors duration-200">
-                            Moderne Webseiten im Mietmodell
+                            Professionelle Webseiten
                             <ArrowRight
                               size={16}
                               className="ml-2 group-hover:translate-x-1 transition-transform duration-200"

@@ -28,7 +28,7 @@ export const SERVICE_TITLE_KEYWORDS: Record<ServiceSlug, string> = {
   'ki-chatbots': 'digitale Kundenassistenz, Website-Chatbot oder KI-Chatbot',
   telefonassistenten: 'KI-Telefonassistenz, Anrufannahme oder Telefonservice',
   automatisierungen: 'Leadgenerierung, Terminbuchung oder Prozessautomatisierung',
-  webseiten: 'moderne Website, Firmenhomepage oder Webdesign im Mietmodell',
+  webseiten: 'moderne Website, professionelle Unternehmenswebseite oder individuelles Webdesign',
   'seo-top-3': 'Local SEO, Google-Maps-Ranking oder Top-3-Platzierungen',
   'crm-systeme': 'Kundenverwaltung, Lead-Management oder Vertriebspipeline',
 };

@@ -1,11 +1,20 @@
 import type { Metadata } from 'next';
 import Website from '@/views/services/Website';
 
+const baseUrl = 'https://pixelkraftwerk-ai.com';
+
 export const metadata: Metadata = {
-  title: 'Webdesign Groitzsch & Leipzig – Moderne Webseiten, Firmenhomepages & Website-Mietmodell in meiner Nähe',
+  title: 'Webdesign Groitzsch & Leipzig – Moderne Unternehmenswebseiten | Pixel Kraftwerk',
   description:
-    'Moderne, schnelle Webseiten im Mietmodell – ohne hohe Startkosten, mit Full-Service-Betreuung und schnellen Anpassungen. Ideal für lokale Unternehmen rund um Leipzig.',
-  alternates: { canonical: 'https://pixelkraftwerk-ai.com/webseite' },
+    'Moderne Unternehmenswebseiten mit klarer Nutzerführung, individuellem Design, mobiler Optimierung und SEO-freundlicher Grundlage. Jetzt Projekt besprechen.',
+  alternates: { canonical: `${baseUrl}/webseite` },
+  openGraph: {
+    title: 'Webdesign Groitzsch & Leipzig – Moderne Unternehmenswebseiten | Pixel Kraftwerk',
+    description:
+      'Moderne Unternehmenswebseiten mit klarer Nutzerführung, individuellem Design, mobiler Optimierung und SEO-freundlicher Grundlage. Jetzt Projekt besprechen.',
+    url: `${baseUrl}/webseite`,
+    type: 'website',
+  },
 };
 
 export default function Page() {

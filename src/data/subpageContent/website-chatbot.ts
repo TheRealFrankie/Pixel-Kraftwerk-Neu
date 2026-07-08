@@ -207,7 +207,7 @@ const content: SubpageContent = {
       heading: 'Integration in Ihre Website und bestehende Systeme',
       headingLevel: 'h2',
       paragraphs: [
-        'Ein Chatbot bringt nur dann echten Mehrwert, wenn er nahtlos in Ihre bestehende Infrastruktur eingebunden ist. Wir integrieren den Chatbot direkt in Ihre <a href="/webseite" class="text-primary-400 hover:underline">Website</a> – egal ob WordPress, Webflow, individuelle Lösung oder eine von uns betreute Seite im Mietmodell.',
+        'Ein Chatbot bringt nur dann echten Mehrwert, wenn er nahtlos in Ihre bestehende Infrastruktur eingebunden ist. Wir integrieren den Chatbot direkt in Ihre <a href="/webseite" class="text-primary-400 hover:underline">Website</a> – egal ob WordPress, Webflow, individuelle Lösung oder eine von uns professionell entwickelte Webseite.',
         'Die technische Einbindung erfolgt über ein leichtgewichtiges Widget, das Ihre Ladezeiten nicht beeinträchtigt. Design, Farben und Tonalität passen wir an Ihr Corporate Design an, sodass der Chatbot wie ein natürlicher Teil Ihrer Seite wirkt.',
         'Darüber hinaus verbinden wir den Chatbot mit Ihren bestehenden Tools: CRM-System, E-Mail-Marketing, Kalender für Terminbuchungen oder Projektmanagement. Erfasste Leads und Gesprächsprotokolle landen automatisch dort, wo Ihr Team damit arbeitet.',
       ],
@@ -313,7 +313,7 @@ const content: SubpageContent = {
   ],
   crossServiceLinks: [
     { text: 'Automatisierungen für Anfragen & Termine', href: '/automatisierungen' },
-    { text: 'Webseiten im Mietmodell', href: '/webseite' },
+    { text: 'Professionelle Webseiten', href: '/webseite' },
   ],
   areaLinks: buildTier1AreaLinks('Website Chatbot'),
 };

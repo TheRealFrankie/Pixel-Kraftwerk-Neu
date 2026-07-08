@@ -189,21 +189,20 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
     serviceSlug: 'webseiten',
     serviceLabel: 'Webseiten',
     metaDescription:
-      'Moderne Webseiten für Leipziger Unternehmen im Mietmodell – Pixel Kraftwerk erstellt schnelle, mobiloptimierte Seiten ohne hohe Startkosten.',
+      'Professionelle Webseiten für Leipziger Unternehmen – Pixel Kraftwerk entwickelt schnelle, mobiloptimierte Websites mit klarer Nutzerführung und individuell gestaltetem Design.',
     intro:
-      'Wer in Leipzig nach einem Dienstleister, Handwerker oder Geschäft sucht, landet fast immer zuerst auf der Webseite. Wenn die veraltet wirkt, langsam lädt oder auf dem Handy kaum bedienbar ist, klicken Besuchende weiter – zur Konkurrenz in Connewitz, Plagwitz oder Zentrum-Süd. Wir erstellen moderne, schnelle Webseiten im Mietmodell, die zu Ihrem Leipziger Unternehmen passen.',
+      'Wer in Leipzig nach einem Dienstleister, Handwerker oder Geschäft sucht, landet fast immer zuerst auf der Webseite. Wenn die veraltet wirkt, langsam lädt oder auf dem Handy kaum bedienbar ist, klicken Besuchende weiter – zur Konkurrenz in Connewitz, Plagwitz oder Zentrum-Süd. Wir entwickeln moderne, professionell geplante Webseiten, die zu Ihrem Leipziger Unternehmen passen.',
     paragraphs: [
       'Der Leipziger Markt ist kompetitiv – ob Gastronomie rund um die Karl-Liebknecht-Straße, Kreativwirtschaft im Westen oder Gesundheitsdienstleister in den Wohnvierteln. Eine professionelle Webseite ist dabei kein Nice-to-have, sondern Ihr wichtigstes Schaufenster. Sie entscheidet darüber, ob ein potenzieller Kunde Vertrauen fasst und Kontakt aufnimmt oder innerhalb von Sekunden zur nächsten Option weiterzieht.',
-      'Unser Mietmodell macht den Einstieg einfach: Statt einer hohen Einmalinvestition zahlen Sie einen planbaren monatlichen Betrag, der Design, Entwicklung, Hosting, Sicherheitsupdates und laufende Betreuung umfasst. Für viele Leipziger Gründer, Freiberufler und Kleinunternehmer ist das der entscheidende Unterschied – kein finanzielles Risiko, aber eine Webseite, die professionell aussieht und technisch auf dem neuesten Stand ist.',
-      'Jede Webseite wird individuell konzipiert. Gemeinsam klären wir, was Ihr Leipziger Publikum erwartet, welche Informationen auf der Startseite stehen müssen und wie der Weg von der ersten Impression zur Kontaktaufnahme möglichst kurz und überzeugend wird. Dabei achten wir auf saubere Struktur, schnelle Ladezeiten und eine Darstellung, die auf Smartphone, Tablet und Desktop gleichermaßen funktioniert.',
-      'Auf Wunsch integrieren wir direkt einen KI-Chatbot, ein Terminbuchungssystem oder automatisierte Kontaktformulare. So wird Ihre Webseite nicht nur Visitenkarte, sondern ein aktiver Vertriebskanal, der Anfragen erfasst, vorqualifiziert und an Ihr Team weiterleitet. Für Leipziger Unternehmen mit saisonalem Geschäft – etwa Eventlocations oder Gastronomie – lassen sich Inhalte und Angebote flexibel anpassen, ohne dass Sie selbst Hand an den Code legen müssen.',
+      'Jede Webseite wird individuell geplant und umgesetzt. Gemeinsam klären wir, was Ihr Leipziger Publikum erwartet, welche Informationen auf der Startseite stehen müssen und wie der Weg von der ersten Impression zur Kontaktaufnahme möglichst kurz und überzeugend wird. Dabei achten wir auf saubere Struktur, schnelle Ladezeiten und eine Darstellung, die auf Smartphone, Tablet und Desktop gleichermaßen funktioniert.',
+      'Auf Wunsch integrieren wir direkt einen KI-Chatbot, ein Terminbuchungssystem oder automatisierte Kontaktformulare. So wird Ihre Webseite nicht nur Visitenkarte, sondern ein aktiver Vertriebskanal, der Anfragen erfasst, vorqualifiziert und an Ihr Team weiterleitet. Für Leipziger Unternehmen mit saisonalem Geschäft – etwa Eventlocations oder Gastronomie – lassen sich Inhalte und Angebote flexibel ergänzen.',
       'Bereits bei der Erstellung legen wir das Fundament für gute Auffindbarkeit bei Google: saubere URL-Strukturen, Meta-Tags, strukturierte Daten und optimierte Ladegeschwindigkeit. Für Leipziger Unternehmen, die lokal gefunden werden wollen, bieten wir ergänzend gezielte SEO-Pakete an – damit Ihre Webseite nicht nur gut aussieht, sondern auch bei Suchanfragen wie „Friseur Leipzig Südvorstadt" oder „Steuerberater Leipzig Zentrum" sichtbar wird.',
       'Von unserem Standort in Groitzsch betreuen wir Leipziger Unternehmen persönlich. Änderungswünsche an Texten, Bildern oder Seitenstruktur setzen wir in kurzer Frist um. Kein Ticketsystem, kein Warten – ein Anruf oder eine kurze Nachricht genügt. Viele unserer Leipziger Kunden schätzen genau diese Verbindung aus professioneller Webentwicklung und persönlicher Erreichbarkeit.',
     ],
     faqs: [
       {
-        q: 'Was kostet eine Webseite im Mietmodell für ein Leipziger Unternehmen?',
-        a: 'Die monatlichen Kosten hängen vom Umfang ab – Anzahl der Seiten, gewünschte Funktionen, Integrationen. Nach einem kostenlosen Erstgespräch erhalten Sie ein transparentes Angebot. Typische Leipziger Kunden starten mit Paketen, die Hosting, Design und laufende Betreuung enthalten.',
+        q: 'Was kostet eine professionelle Webseite für ein Leipziger Unternehmen?',
+        a: 'Die Kosten hängen vom Umfang ab – Anzahl der Seiten, gewünschte Funktionen, Integrationen. Nach einem kostenlosen Erstgespräch erhalten Sie ein transparentes Angebot passend zu Ihrem Projekt.',
       },
       {
         q: 'Kann ich meine bestehende Domain und E-Mail-Adresse behalten?',
@@ -211,11 +210,11 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
       },
       {
         q: 'Wie lange dauert es, bis meine neue Webseite online ist?',
-        a: 'In der Regel ist eine Webseite innerhalb von drei bis sechs Wochen live – je nach Umfang und Geschwindigkeit bei der inhaltlichen Abstimmung. Eilige Projekte können wir nach Absprache priorisieren.',
+        a: 'In der Regel ist eine Webseite innerhalb von einigen Wochen live – je nach Umfang und Geschwindigkeit bei der inhaltlichen Abstimmung. Eilige Projekte können wir nach Absprache priorisieren.',
       },
       {
         q: 'Kann ich Inhalte selbst ändern?',
-        a: 'Ja, wenn gewünscht richten wir ein einfaches Content-Management ein. Alternativ übernehmen wir Anpassungen für Sie – im Mietmodell sind regelmäßige Änderungen bereits enthalten.',
+        a: 'Ja, wenn gewünscht richten wir ein einfaches Content-Management ein. Alternativ übernehmen wir Anpassungen für Sie – auf Wunsch auch laufend im Rahmen einer Betreuungsvereinbarung.',
       },
       {
         q: 'Wird meine Webseite auch für Google optimiert?',
@@ -228,8 +227,8 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
     ],
     highlights: [
       'Individuelles Design für den Leipziger Markt',
-      'Mietmodell ohne hohe Einmalkosten – planbar und flexibel',
-      'Mobiloptimiert, schnell und suchmaschinenfreundlich',
+      'Mobil optimiert, schnell und suchmaschinenfreundlich',
+      'Klare Nutzerführung und überzeugendes Webdesign',
       'Persönliche Betreuung mit kurzen Reaktionszeiten aus Groitzsch',
     ],
   },
@@ -266,7 +265,7 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
       },
       {
         q: 'Brauche ich für SEO eine neue Webseite?',
-        a: 'Nicht zwingend. Oft lässt sich mit der bestehenden Seite arbeiten. Falls die Technik veraltet oder die Struktur ungünstig ist, empfehlen wir eine Modernisierung – die können wir im Mietmodell gleich miterledigen.',
+        a: 'Nicht zwingend. Oft lässt sich mit der bestehenden Seite arbeiten. Falls die Technik veraltet oder die Struktur ungünstig ist, empfehlen wir eine gezielte Modernisierung oder einen kompletten Neuaufbau.',
       },
       {
         q: 'Für welche Branchen in Leipzig macht SEO Sinn?',
@@ -482,20 +481,20 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
     serviceSlug: 'webseiten',
     serviceLabel: 'Webseiten',
     metaDescription:
-      'Moderne Webseiten für Unternehmen in Groitzsch im Mietmodell – direkt von Pixel Kraftwerk vor Ort. Schnell, mobiloptimiert und ohne hohe Startkosten.',
+      'Professionelle Webseiten für Unternehmen in Groitzsch – direkt von Pixel Kraftwerk vor Ort. Schnell, mobiloptimiert und individuell geplant für lokale Betriebe.',
     intro:
-      'Wenn Kunden in Groitzsch oder dem Landkreis Leipzig nach einem Anbieter suchen, landen sie fast immer zuerst auf der Webseite. Ist die veraltet, langsam oder auf dem Handy kaum nutzbar, geht der Kontakt verloren. Wir erstellen direkt von unserem Standort am Neuer Weg moderne Webseiten im Mietmodell – professionell, schnell und ohne große Einmalinvestition.',
+      'Wenn Kunden in Groitzsch oder dem Landkreis Leipzig nach einem Anbieter suchen, landen sie fast immer zuerst auf der Webseite. Ist die veraltet, langsam oder auf dem Handy kaum nutzbar, geht der Kontakt verloren. Wir entwickeln direkt von unserem Standort am Neuer Weg moderne, professionell geplante Webseiten für Ihr Groitzscher Unternehmen.',
     paragraphs: [
-      'Viele Betriebe in Groitzsch haben eine Webseite, die irgendwann mal „gemacht wurde" und seitdem kaum angefasst wird. Die Folge: veraltetes Design, fehlende mobile Optimierung, keine Kontaktmöglichkeiten außer einer E-Mail-Adresse – und Kunden, die stattdessen beim Mitbewerber landen. Unser Mietmodell macht es einfach, das zu ändern: planbare monatliche Kosten statt hoher Einmalzahlung, inklusive Design, Hosting, Sicherheit und laufender Betreuung.',
+      'Viele Betriebe in Groitzsch haben eine Webseite, die irgendwann mal „gemacht wurde" und seitdem kaum angefasst wird. Die Folge: veraltetes Design, fehlende mobile Optimierung, keine Kontaktmöglichkeiten außer einer E-Mail-Adresse – und Kunden, die stattdessen beim Mitbewerber landen. Das lässt sich ändern: mit einer professionell geplanten und individuell umgesetzten Unternehmenswebseite.',
       'Jede Webseite wird individuell für Ihr Unternehmen konzipiert. In einem persönlichen Gespräch – direkt bei uns in Groitzsch oder bei Ihnen – klären wir, was Ihre Kunden erwarten, welche Informationen auf die Startseite gehören und wie der Weg vom ersten Eindruck zur Kontaktaufnahme möglichst kurz wird. Dabei achten wir auf saubere Struktur, schnelle Ladezeit und eine Darstellung, die auf jedem Gerät funktioniert.',
-      'Auf Wunsch integrieren wir direkt einen KI-Chatbot, ein Terminbuchungssystem oder automatisierte Kontaktformulare. So wird Ihre Webseite nicht nur Visitenkarte, sondern ein aktiver Kanal für Anfragen – auch abends und am Wochenende, wenn Ihr Betrieb geschlossen ist. Für Groitzscher Unternehmen mit saisonalem Geschäft lassen sich Inhalte und Angebote flexibel anpassen, ohne dass Sie an den Code müssen.',
+      'Auf Wunsch integrieren wir direkt einen KI-Chatbot, ein Terminbuchungssystem oder automatisierte Kontaktformulare. So wird Ihre Webseite nicht nur Visitenkarte, sondern ein aktiver Kanal für Anfragen – auch abends und am Wochenende, wenn Ihr Betrieb geschlossen ist.',
       'Schon bei der Erstellung legen wir das Fundament für gute Auffindbarkeit bei Google: saubere URLs, Meta-Tags, strukturierte Daten und optimierte Ladegeschwindigkeit. Für Betriebe in Groitzsch, die bei Suchanfragen wie „Elektriker Groitzsch" oder „Physiotherapie Groitzsch" gefunden werden wollen, bieten wir ergänzend gezielte lokale SEO-Pakete an.',
       'Der größte Vorteil für Groitzscher Unternehmen: Wir sind Ihr Nachbar. Änderungswünsche besprechen wir persönlich, Anpassungen setzen wir in kurzer Frist um. Kein Ticketsystem, kein anonymer Support – ein Anruf oder eine Nachricht genügt. Viele unserer Groitzscher Kunden schätzen genau diese Kombination aus professioneller Webentwicklung und der Erreichbarkeit eines lokalen Partners.',
     ],
     faqs: [
       {
-        q: 'Was kostet eine Webseite im Mietmodell für ein Groitzscher Unternehmen?',
-        a: 'Die monatlichen Kosten richten sich nach Umfang und Funktionen. Im kostenlosen Erstgespräch klären wir Ihren Bedarf und erstellen ein transparentes Angebot – direkt bei uns am Neuer Weg oder bei Ihnen.',
+        q: 'Was kostet eine professionelle Webseite für ein Groitzscher Unternehmen?',
+        a: 'Die Kosten richten sich nach Umfang und Funktionen. Im kostenlosen Erstgespräch klären wir Ihren Bedarf und erstellen ein transparentes Angebot – direkt bei uns am Neuer Weg oder bei Ihnen.',
       },
       {
         q: 'Kann ich meine bestehende Domain behalten?',
@@ -503,7 +502,7 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
       },
       {
         q: 'Wie lange dauert es, bis die Webseite online ist?',
-        a: 'Typischerweise drei bis fünf Wochen. Da wir direkt vor Ort sind, geht die Abstimmung zu Inhalten und Design besonders schnell.',
+        a: 'Typischerweise einige Wochen. Da wir direkt vor Ort sind, geht die Abstimmung zu Inhalten und Design besonders schnell.',
       },
       {
         q: 'Wird meine Webseite auch für Google optimiert?',
@@ -511,13 +510,13 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
       },
       {
         q: 'Kann ich selbst Inhalte ändern?',
-        a: 'Wenn gewünscht, ja. Alternativ übernehmen wir Anpassungen für Sie – im Mietmodell sind regelmäßige Änderungen bereits enthalten. Die meisten Groitzscher Kunden nutzen diesen Service.',
+        a: 'Wenn gewünscht, ja. Wir richten ein einfaches Content-Management ein. Alternativ übernehmen wir Anpassungen für Sie – auf Wunsch auch laufend.',
       },
     ],
     highlights: [
       'Persönliche Beratung und Betreuung direkt in Groitzsch',
-      'Mietmodell ohne hohe Einmalkosten – planbar und flexibel',
-      'Mobiloptimiert, schnell und suchmaschinenfreundlich',
+      'Individuell geplant, mobil optimiert und SEO-freundlich',
+      'Klare Nutzerführung und professionelles Design',
       'Schnelle Anpassungen durch kurze Wege vom Hauptsitz',
     ],
   },
@@ -554,7 +553,7 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
       },
       {
         q: 'Brauche ich dafür eine neue Webseite?',
-        a: 'Nicht zwingend. Oft reicht die Optimierung der bestehenden Seite. Falls die Technik veraltet ist, können wir im Mietmodell eine neue Webseite gleich mit aufsetzen.',
+        a: 'Nicht zwingend. Oft reicht die Optimierung der bestehenden Seite. Falls die Technik veraltet ist, empfehlen wir eine professionell neu entwickelte Webseite – die können wir direkt bei uns in Groitzsch für Sie planen.',
       },
       {
         q: 'Was kostet lokales SEO für ein Groitzscher Unternehmen?',
@@ -717,20 +716,19 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
     serviceSlug: 'webseiten',
     serviceLabel: 'Webseiten',
     metaDescription:
-      'Moderne Webseiten für Unternehmen in Borna im Mietmodell – Pixel Kraftwerk erstellt schnelle, mobiloptimierte Seiten ohne hohe Startkosten.',
+      'Professionelle Webseiten für Unternehmen in Borna – Pixel Kraftwerk entwickelt schnelle, mobiloptimierte Websites mit klarer Nutzerführung für Handwerk, Praxen und Dienstleister im Landkreis Leipzig.',
     intro:
-      'Wer in Borna oder im Landkreis Leipzig nach einem Handwerker, einer Praxis oder einem Dienstleister sucht, landet fast immer zuerst auf der Webseite. Wenn die veraltet wirkt oder auf dem Handy kaum bedienbar ist, klicken Besuchende weiter. Wir erstellen moderne, schnelle Webseiten im Mietmodell – professionell, planbar und ohne hohe Einmalinvestition.',
+      'Wer in Borna oder im Landkreis Leipzig nach einem Handwerker, einer Praxis oder einem Dienstleister sucht, landet fast immer zuerst auf der Webseite. Wenn die veraltet wirkt oder auf dem Handy kaum bedienbar ist, klicken Besuchende weiter. Wir entwickeln moderne, professionell geplante Webseiten für Ihr Bornaer Unternehmen.',
     paragraphs: [
       'Viele Betriebe rund um den Bornaer Marktplatz und in den Gewerbegebieten haben Webseiten, die irgendwann „gemacht wurden" und seitdem kaum aktualisiert werden. Das Problem: veraltetes Design, keine mobile Optimierung, kaum Möglichkeiten zur Kontaktaufnahme außer einer E-Mail-Adresse – und potenzielle Kunden, die stattdessen beim Mitbewerber landen.',
-      'Unser Mietmodell macht den Einstieg einfach: planbare monatliche Kosten statt hoher Einmalzahlung, inklusive Design, Hosting, Sicherheitsupdates und laufende Betreuung. Für Bornaer Betriebe – vom Handwerker bis zur Praxis – ist das oft der entscheidende Unterschied: professioneller Webauftritt ohne finanzielles Risiko.',
       'Jede Webseite wird individuell konzipiert. Im persönlichen Gespräch – bei Ihnen in Borna oder bei uns in Groitzsch – klären wir, was Ihre Kunden erwarten und wie der Weg vom ersten Eindruck zur Kontaktaufnahme möglichst kurz wird. Saubere Struktur, schnelle Ladezeit und eine Darstellung, die auf Smartphone, Tablet und Desktop gleichermaßen funktioniert.',
       'Auf Wunsch integrieren wir direkt einen KI-Chatbot, ein Terminbuchungssystem oder automatisierte Kontaktformulare. So wird Ihre Webseite zum aktiven Vertriebskanal, der Anfragen erfasst und weiterleitet – auch abends und am Wochenende. Bereits bei der Erstellung legen wir das Fundament für gute Google-Auffindbarkeit: saubere URLs, Meta-Tags, strukturierte Daten und optimierte Ladegeschwindigkeit.',
       'Von Groitzsch nach Borna sind es rund 20 Minuten. Änderungswünsche an Texten, Bildern oder Seitenstruktur setzen wir in kurzer Frist um – ein Anruf oder eine Nachricht genügt. Kein Ticketsystem, kein anonymer Support, sondern persönliche Betreuung für Ihr Bornaer Unternehmen.',
     ],
     faqs: [
       {
-        q: 'Was kostet eine Webseite im Mietmodell für ein Bornaer Unternehmen?',
-        a: 'Die monatlichen Kosten hängen vom Umfang ab. Im kostenlosen Erstgespräch erhalten Sie ein transparentes Angebot, das Hosting, Design und Betreuung umfasst.',
+        q: 'Was kostet eine professionelle Webseite für ein Bornaer Unternehmen?',
+        a: 'Die Kosten hängen vom Umfang ab. Im kostenlosen Erstgespräch erhalten Sie ein transparentes Angebot passend zu Ihrem Projekt.',
       },
       {
         q: 'Kann ich meine bestehende Domain behalten?',
@@ -738,7 +736,7 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
       },
       {
         q: 'Wie lange dauert es, bis die Webseite online ist?',
-        a: 'Typischerweise drei bis sechs Wochen. Durch unsere Nähe geht die inhaltliche Abstimmung besonders schnell.',
+        a: 'Typischerweise einige Wochen, je nach Umfang. Durch unsere Nähe geht die inhaltliche Abstimmung besonders schnell.',
       },
       {
         q: 'Wird meine Webseite auch für Google optimiert?',
@@ -751,8 +749,8 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
     ],
     highlights: [
       'Individuelles Design für Bornaer Unternehmen',
-      'Mietmodell ohne hohe Einmalkosten – planbar und flexibel',
-      'Mobiloptimiert, schnell und suchmaschinenfreundlich',
+      'Mobil optimiert, schnell und suchmaschinenfreundlich',
+      'Klare Nutzerführung und professionelles Webdesign',
       'Persönliche Betreuung aus Groitzsch – kurze Wege, schnelle Anpassungen',
     ],
   },
@@ -947,28 +945,27 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
     serviceSlug: 'webseiten',
     serviceLabel: 'Webseiten',
     metaDescription:
-      'Moderne Webseiten für Unternehmen in Markkleeberg im Mietmodell – Pixel Kraftwerk erstellt schnelle, mobiloptimierte Seiten für Dienstleister, Praxen und Gastronomiebetriebe am Neuseenland.',
+      'Professionelle Webseiten für Unternehmen in Markkleeberg – Pixel Kraftwerk entwickelt schnelle, mobiloptimierte Websites für Dienstleister, Praxen und Gastronomiebetriebe am Neuseenland.',
     intro:
-      'Ob Gastronomie am Markkleeberger See, Praxis in Oetzsch oder Handwerk in Gaschwitz – wer in Markkleeberg online nicht professionell auftritt, verliert Kunden an Mitbewerber. Wir erstellen moderne Webseiten im Mietmodell: individuell gestaltet, mobiloptimiert und ohne hohe Einmalkosten.',
+      'Ob Gastronomie am Markkleeberger See, Praxis in Oetzsch oder Handwerk in Gaschwitz – wer in Markkleeberg online nicht professionell auftritt, verliert Kunden an Mitbewerber. Wir entwickeln moderne Webseiten für Ihr Unternehmen: individuell gestaltet, mobiloptimiert und mit klarer Nutzerführung.',
     paragraphs: [
       'Markkleeberg ist direkt an Leipzig angebunden und zieht eine anspruchsvolle Kundschaft an. Das gilt auch für den digitalen Auftritt: Veraltete Webseiten mit Fax-Nummern und Stock-Fotos überzeugen hier niemanden mehr. Eine moderne, schnelle Webseite ist das Minimum – und gleichzeitig der effektivste Weg, um neue Kunden zu gewinnen.',
-      'Unser Mietmodell macht den Einstieg einfach: planbare monatliche Kosten statt hoher Einmalinvestition, inklusive Design, Entwicklung, Hosting, Sicherheitsupdates und laufende Betreuung. Für Markkleeberger Betriebe – von der Physiotherapie über die Gastronomie bis zum Architekturbüro – ist das eine Investition mit kalkulierbarem Risiko und sofort sichtbarem Ergebnis.',
       'Jede Webseite wird individuell konzipiert. Im persönlichen Gespräch klären wir, was Ihr Markkleeberger Publikum erwartet: welche Informationen sofort sichtbar sein müssen, wie der Weg zur Kontaktaufnahme aussieht und welche Besonderheiten Ihr Standort am Neuseenland mit sich bringt. Saisonale Angebote, Veranstaltungskalender oder Buchungsfunktionen? Alles möglich.',
       'Auf Wunsch integrieren wir direkt einen KI-Chatbot, Terminbuchung oder automatisierte Kontaktformulare. So wird Ihre Webseite zum aktiven Vertriebskanal. Schon bei der Erstellung achten wir auf saubere Technik, schnelle Ladezeiten und Suchmaschinenfreundlichkeit – damit Ihre Seite bei Suchanfragen wie „Restaurant Markkleeberg" oder „Zahnarzt Markkleeberg" sichtbar wird.',
       'Von Groitzsch aus betreuen wir Markkleeberger Unternehmen persönlich. Änderungswünsche setzen wir zeitnah um, Fragen klären wir direkt – kein Ticketsystem, kein Warten. Viele unserer Kunden in Markkleeberg schätzen diese Mischung aus professioneller Webentwicklung und lokaler Erreichbarkeit.',
     ],
     faqs: [
       {
-        q: 'Was kostet eine Webseite im Mietmodell für ein Markkleeberger Unternehmen?',
-        a: 'Die monatlichen Kosten hängen vom Umfang ab. Im kostenlosen Erstgespräch erhalten Sie ein transparentes Angebot, das Hosting, Design und Betreuung umfasst.',
+        q: 'Was kostet eine professionelle Webseite für ein Markkleeberger Unternehmen?',
+        a: 'Die Kosten hängen vom Umfang ab. Im kostenlosen Erstgespräch erhalten Sie ein transparentes Angebot passend zu Ihrem Projekt.',
       },
       {
         q: 'Kann ich saisonale Inhalte flexibel ändern?',
-        a: 'Ja. Gerade für Betriebe am Markkleeberger See oder im agra-Park passen wir Inhalte saisonal an – im Mietmodell sind regelmäßige Änderungen enthalten.',
+        a: 'Ja. Gerade für Betriebe am Markkleeberger See oder im agra-Park passen wir Inhalte saisonal an – auf Wunsch als laufende Betreuungsleistung.',
       },
       {
         q: 'Wie lange dauert es, bis die Webseite online ist?',
-        a: 'Typischerweise drei bis fünf Wochen, je nach Umfang und Geschwindigkeit bei der inhaltlichen Abstimmung.',
+        a: 'Typischerweise einige Wochen, je nach Umfang und Geschwindigkeit bei der inhaltlichen Abstimmung.',
       },
       {
         q: 'Wird meine Webseite für Google optimiert?',
@@ -981,7 +978,7 @@ const customRegionServiceContent: Partial<Record<RegionServiceKey, RegionService
     ],
     highlights: [
       'Individuelles Design für den Markkleeberger Markt',
-      'Mietmodell ohne hohe Einmalkosten – planbar und flexibel',
+      'Mobil optimiert, schnell und suchmaschinenfreundlich',
       'Saisonale Anpassungen für Tourismus und Gastronomie',
       'Persönliche Betreuung aus Groitzsch mit kurzen Reaktionszeiten',
     ],
@@ -1056,7 +1053,7 @@ function getTemplateRegionServiceContent(
       : serviceSlug === 'telefonassistenten'
         ? 'automatisierte Telefonassistenten und Anrufannahme'
         : serviceSlug === 'webseiten'
-          ? 'moderne Webseiten im Mietmodell und lokale Präsenz'
+          ? 'professionelle Webseiten und individuelle Webentwicklung'
           : serviceSlug === 'seo-top-3'
             ? 'SEO und Top-3-Platzierung in Google für lokale Sichtbarkeit'
             : serviceSlug === 'automatisierungen'
@@ -1070,19 +1067,19 @@ function getTemplateRegionServiceContent(
       regionName,
       serviceSlug,
       serviceLabel,
-      metaDescription: `${baseMeta} – ${serviceFocus} für Unternehmen in ${regionName} und Umgebung durch Pixel Kraftwerk aus Groitzsch.`,
-      intro: `${baseMeta} für Unternehmen in ${regionName} und der Region: Wir erstellen und betreuen moderne, mobiloptimierte Webseiten – im Mietmodell ohne hohe Startkosten. So haben Sie eine professionelle Präsenz und bleiben für Kundinnen und Kunden in Ihrer Region sichtbar.`,
+      metaDescription: `Professionelle Webseiten für Unternehmen in ${regionName} – Pixel Kraftwerk entwickelt schnelle, mobiloptimierte Websites mit klarer Nutzerführung und individuellem Design.`,
+      intro: `Wer in ${regionName} nach einem lokalen Anbieter sucht, landet fast immer zuerst auf der Webseite. Wir entwickeln moderne, professionell geplante Webseiten für Unternehmen in ${regionName} – mit klarer Nutzerführung, überzeugendem Design und technisch sauberer Umsetzung.`,
       paragraphs: [
-        `In ${regionName} und Umgebung suchen Kunden zunehmend online nach lokalen Anbietern. Eine klare, moderne Webseite ist oft der erste Eindruck Ihres Unternehmens. ${baseMeta} hilft Ihnen dabei, sich professionell zu präsentieren: mit übersichtlicher Struktur, schneller Ladezeit und Darstellung auf allen Geräten – ohne dass Sie sich um Technik oder Hosting kümmern müssen.`,
-        `Gemeinsam mit Ihnen entwickeln wir Konzept und Design für Ihre Webseite: Welche Inhalte sind wichtig? Wen wollen Sie erreichen? Auf dieser Basis setzen wir Ihre Seite um – mit optionaler Anbindung an Formulare, Kalender oder Buchungssysteme. Das Mietmodell ermöglicht planbare monatliche Kosten und laufende Betreuung inklusive.`,
-        `Nach dem Launch bleiben wir an Ihrer Seite. Änderungen an Texten, Bildern oder Angeboten erledigen wir auf Wunsch in kurzer Frist. So bleibt Ihre Webseite aktuell und unterstützt Ihre Sichtbarkeit in ${regionName} und der Region dauerhaft.`,
-        `Eine moderne Webseite ist gleichzeitig die Grundlage für gute Auffindbarkeit in Suchmaschinen. Bereits bei der Erstellung achten wir auf saubere Technik, schnelle Ladezeiten und suchmaschinenfreundliche Strukturen – damit Ihre Seite in ${regionName} und Umgebung bei Google sichtbar wird. In Kombination mit gezielter lokaler SEO-Optimierung wird Ihre Webseite zum stärksten Akquise-Kanal für Anfragen aus der Region.`,
-        `Pixel Kraftwerk arbeitet aus Groitzsch heraus und betreut Unternehmen in ${regionName} und der gesamten Region persönlich. Das bedeutet kurze Wege, direkte Ansprechpartner und ein tiefes Verständnis für die lokalen Gegebenheiten. Ob Erstgespräch vor Ort oder Abstimmung per Videocall – wir passen uns Ihrem Alltag an und sorgen dafür, dass Ihre Webseite nicht nur technisch überzeugt, sondern auch Ihre regionale Identität widerspiegelt.`,
+        `In ${regionName} und Umgebung suchen Kunden zunehmend online nach lokalen Anbietern. Eine klare, moderne Webseite ist oft der erste Eindruck Ihres Unternehmens. Wir helfen Ihnen, sich professionell zu präsentieren: mit übersichtlicher Struktur, schneller Ladezeit und Darstellung auf allen Geräten.`,
+        `Gemeinsam mit Ihnen entwickeln wir Konzept und Design für Ihre Webseite: Welche Inhalte sind wichtig? Wen wollen Sie erreichen? Auf dieser Basis setzen wir Ihre Seite individuell um – mit optionaler Anbindung an Formulare, Kalender oder Buchungssysteme.`,
+        `Nach dem Launch bleiben wir auf Wunsch an Ihrer Seite. Änderungen an Texten, Bildern oder Angeboten erledigen wir zeitnah. So bleibt Ihre Webseite aktuell und unterstützt Ihre Sichtbarkeit in ${regionName} und der Region dauerhaft.`,
+        `Eine moderne Webseite ist gleichzeitig die Grundlage für gute Auffindbarkeit in Suchmaschinen. Bereits bei der Erstellung achten wir auf saubere Technik, schnelle Ladezeiten und suchmaschinenfreundliche Strukturen – damit Ihre Seite in ${regionName} und Umgebung bei Google sichtbar wird.`,
+        `Pixel Kraftwerk arbeitet aus Groitzsch heraus und betreut Unternehmen in ${regionName} und der gesamten Region persönlich. Das bedeutet kurze Wege, direkte Ansprechpartner und ein tiefes Verständnis für die lokalen Gegebenheiten. Ob Erstgespräch vor Ort oder Abstimmung per Videocall – wir passen uns Ihrem Alltag an.`,
       ],
       faqs: [
         {
-          q: `Für welche Unternehmen in ${regionName} eignet sich eine Webseite im Mietmodell?`,
-          a: `Vor allem für Praxen, Handwerksbetriebe, Dienstleister, Agenturen und lokale Händler in ${regionName}, die eine professionelle Präsenz ohne hohe Einmalkosten wünschen. Das Mietmodell enthält Hosting, Sicherheit, Updates und auf Wunsch regelmäßige Anpassungen.`,
+          q: `Für welche Unternehmen in ${regionName} eignet sich eine professionelle Webseite?`,
+          a: `Vor allem für Praxen, Handwerksbetriebe, Dienstleister, Agenturen und lokale Händler in ${regionName}, die einen professionellen Webauftritt benötigen. Nach dem Erstgespräch erhalten Sie ein Angebot passend zu Ihrem Projekt und Ihren Zielen.`,
         },
         {
           q: `Müssen wir für eine neue Webseite unsere bestehende Domain oder E-Mails aufgeben?`,
@@ -1094,26 +1091,26 @@ function getTemplateRegionServiceContent(
         },
         {
           q: 'Was passiert bei Änderungswünschen nach dem Launch?',
-          a: 'Im Mietmodell sind regelmäßige Anpassungen eingeplant. Texte, Bilder oder neue Seiten können wir schrittweise ergänzen – ohne dass Sie in Technik investieren müssen.',
+          a: 'Änderungen an Texten, Bildern oder Seitenstruktur setzen wir auf Wunsch zeitnah um. Auf Wunsch betreuen wir Ihre Webseite auch laufend.',
         },
         {
-          q: 'Gibt es laufende Kosten für Hosting und Betreuung?',
-          a: 'Ja. Das Mietmodell umfasst Hosting, Sicherheit, Backups und auf Wunsch inhaltliche Betreuung. Die monatlichen Kosten sind planbar; das genaue Modell klären wir im Angebot.',
+          q: 'Was kostet eine professionelle Webseite?',
+          a: 'Die Kosten hängen von Umfang und gewünschten Funktionen ab. Nach einem kostenlosen Erstgespräch erhalten Sie ein transparentes Angebot.',
         },
         {
           q: `Kann ich auf meiner Webseite auch einen Chatbot oder Automatisierungen einbinden?`,
           a: `Ja, das ist sogar eine unserer Stärken. Ihre Webseite lässt sich nahtlos mit einem KI-Chatbot, einem Terminbuchungssystem oder automatisierten Formularen verbinden. So werden Anfragen direkt erfasst und weiterverarbeitet – ohne manuellen Aufwand für Ihr Team.`,
         },
         {
-          q: `Ist lokale SEO-Optimierung im Webseiten-Paket für ${regionName} enthalten?`,
+          q: `Ist lokale SEO-Optimierung im Webseiten-Projekt für ${regionName} enthalten?`,
           a: `Grundlegende SEO-Maßnahmen wie saubere Seitenstruktur, Meta-Tags und schnelle Ladezeiten sind bereits Teil jeder Webseite. Für eine gezielte lokale SEO-Strategie mit Keyword-Recherche, Google-Business-Profil-Optimierung und laufendem Monitoring bieten wir ergänzende Pakete an.`,
         },
       ],
       highlights: [
         `${serviceLabel} speziell für Unternehmen in ${regionName}`,
-        'Mietmodell ohne hohe Startkosten',
-        'Mobiloptimiert, schnell und sicher',
-        'Laufende Betreuung und Anpassungen auf Wunsch',
+        'Individuell geplant, mobil optimiert und SEO-freundlich',
+        'Klare Nutzerführung und professionelles Design',
+        'Persönliche Betreuung aus Groitzsch',
       ],
     };
   }
@@ -1241,7 +1238,7 @@ function getTemplateRegionServiceContent(
       `Gemeinsam schauen wir uns Ihre bestehenden Prozesse in ${regionName} an: Wo entstehen Engpässe? Welche Aufgaben wiederholen sich täglich? Auf dieser Basis planen wir eine Lösung, die zu Ihrer Realität passt – mit klar definierten Dialogen, sinnvollen Übergaben an Ihr Team und Integration in vorhandene Systeme wie CRM, Kalender oder Website. Ziel ist kein technisches Prestigeprojekt, sondern spürbare Entlastung im Alltag.`,
       `Unsere Lösungen sind darauf ausgelegt, sich nahtlos in Ihre bestehende Infrastruktur in ${regionName} einzufügen. Ob CRM-System, Terminkalender, Branchensoftware oder E-Mail-Postfach – wir schaffen Verbindungen zwischen Ihren Tools, damit Daten nicht doppelt gepflegt werden müssen und Informationen dort ankommen, wo sie gebraucht werden. So entstehen durchgängige Abläufe statt isolierter Insellösungen.`,
       `Nach der Einführung bleiben wir an Ihrer Seite. Wir beobachten mit Ihnen, wie ${serviceLabel} in ${regionName} genutzt wird, welche Fragen besonders häufig auftreten und wo Optimierungspotenzial liegt. Auf Wunsch erweitern wir die Lösung Schritt für Schritt – etwa um zusätzliche Standorte, weitere Services oder tiefergehende Automatisierungsschritte im Hintergrund.`,
-      `Automatisierung wirkt am stärksten, wenn sie mit einer modernen, gut auffindbaren Webseite kombiniert wird. Denn was nützt ein Chatbot oder Telefonassistent, wenn potenzielle Kunden in ${regionName} Ihr Unternehmen gar nicht erst finden? Deshalb bieten wir ergänzend Webseiten im Mietmodell und gezielte SEO-Optimierung an – damit Sichtbarkeit und Automatisierung Hand in Hand gehen und Ihnen messbar mehr Anfragen bringen.`,
+      `Automatisierung wirkt am stärksten, wenn sie mit einer modernen, gut auffindbaren Webseite kombiniert wird. Denn was nützt ein Chatbot oder Telefonassistent, wenn potenzielle Kunden in ${regionName} Ihr Unternehmen gar nicht erst finden? Deshalb bieten wir ergänzend professionelle Webseiten und gezielte SEO-Optimierung an – damit Sichtbarkeit und Automatisierung Hand in Hand gehen und Ihnen messbar mehr Anfragen bringen.`,
       `Pixel Kraftwerk ist in Groitzsch bei Leipzig verwurzelt und betreut Unternehmen in ${regionName} und der gesamten Region mit persönlichem Engagement. Wir verstehen die Herausforderungen lokaler Betriebe, kennen die Strukturen vor Ort und bieten kurze Kommunikationswege. Ob persönliches Treffen oder Videocall – wir sind nah dran an Ihrem Geschäft und setzen auf langfristige Partnerschaften statt anonymer Projektabwicklung.`,
     ],
     faqs: [

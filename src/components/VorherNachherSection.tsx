@@ -2,29 +2,31 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Eye, Coins, TrendingUp } from 'lucide-react';
+import { Eye, Zap, TrendingUp } from 'lucide-react';
 
 const IMG_VORHER = '/images/seo-top-3-vorher-karte.webp';
 const IMG_NACHHER = '/images/seo-top-3-nachher-karte.webp';
 
-const KPI_VORHER = [
-  { label: 'Ø Ranking', value: '86' },
-  { label: 'Marktanteil', value: '1 %' },
-  { label: 'Klicks pro Monat', value: '5' },
-  { label: 'Kunden pro Monat', value: '1–2' },
+const VORHER_PUNKTE = [
+  'Website rankt hauptsächlich für den Firmennamen',
+  'Leistungen sind allgemein beschrieben',
+  'Standort und Einsatzgebiet sind unklar',
+  'Unternehmensprofil ist unvollständig',
+  'Wettbewerber erscheinen häufiger in den Ergebnissen',
 ];
 
-const KPI_NACHHER = [
-  { label: 'Ø Ranking', value: '3' },
-  { label: 'Marktanteil', value: '40–60 %' },
-  { label: 'Klicks pro Monat', value: '50–80' },
-  { label: 'Kunden pro Monat', value: '10–20' },
+const NACHHER_PUNKTE = [
+  'Leistungen besitzen klare Seitenschwerpunkte',
+  'Standort und Einsatzgebiet sind nachvollziehbar',
+  'Unternehmensprofil ist vollständig gepflegt',
+  'Inhalte orientieren sich an Suchabsichten',
+  'Technische Grundlagen sind sauber umgesetzt',
 ];
 
-const NUTZENPUNKTE = [
-  { icon: Eye, title: 'Sichtbarkeit', text: '75 % der Klicks gehen an die Top 3.' },
-  { icon: Coins, title: 'Kosten pro Klick: Keine', text: 'Organischer Traffic – kein Budget pro Klick.' },
-  { icon: TrendingUp, title: 'Langfristig', text: 'Top 3 bleibt oft über Jahre stabil.' },
+const ASPEKTE = [
+  { icon: Eye, title: 'Sichtbarkeit', text: 'Relevante lokale Suchanfragen erreichen Ihr Unternehmen.' },
+  { icon: Zap, title: 'Qualifizierte Anfragen', text: 'Organische Sichtbarkeit erzeugt passgenaue Kontaktanfragen.' },
+  { icon: TrendingUp, title: 'Langfristige Grundlage', text: 'Sauber optimierte Seiten behalten ihre Relevanz dauerhaft.' },
 ];
 
 type TabId = 'vorher' | 'nachher';
@@ -40,10 +42,9 @@ const VorherNachherSection: React.FC = () => {
     nachher: false,
   });
 
-  // Beide Bilder beim Mount vorladen, damit beim ersten Besuch sofort die echten Karten sichtbar sind
   useEffect(() => {
     const preload = (src: string, tab: TabId) => {
-      const img = new Image();
+      const img = new window.Image();
       img.onload = () => setImageLoaded((prev) => ({ ...prev, [tab]: true }));
       img.onerror = () => setImageError((prev) => ({ ...prev, [tab]: true }));
       img.src = src;
@@ -53,20 +54,18 @@ const VorherNachherSection: React.FC = () => {
   }, []);
 
   const showPlaceholder = !imageLoaded[activeTab] || imageError[activeTab];
-
-  const kpis = activeTab === 'vorher' ? KPI_VORHER : KPI_NACHHER;
   const isVorher = activeTab === 'vorher';
-  const badgeColor = isVorher
-    ? 'border'
-    : 'border';
+
+  const punkte = isVorher ? VORHER_PUNKTE : NACHHER_PUNKTE;
+
   const badgeStyle = isVorher
     ? { background: 'rgba(239,68,68,0.08)', borderColor: 'rgba(239,68,68,0.25)', color: '#B91C1C' }
     : { background: 'rgba(14,124,114,0.08)', borderColor: 'rgba(14,124,114,0.25)', color: '#0E7C72' };
 
-  const title = isVorher ? 'Ihr Unternehmen – Vorher' : 'Ihr Unternehmen – Nachher';
+  const title = isVorher ? 'Ihr Unternehmen – Bisher' : 'Ihr Unternehmen – Optimiert';
   const conclusion = isVorher
-    ? 'Kaum gefunden – Aufträge gehen an die Konkurrenz.'
-    : 'Sie dominieren die lokale Suche.';
+    ? 'Kaum lokal gefunden – Anfragen gehen an die Konkurrenz.'
+    : 'Klare Sichtbarkeit bei relevanten lokalen Suchanfragen.';
 
   const mapAlt =
     activeTab === 'vorher'
@@ -77,7 +76,6 @@ const VorherNachherSection: React.FC = () => {
     <section className="vorher-nachher-section py-20" style={{ background: '#FAFAF9' }} aria-labelledby="vorher-nachher-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
-          {/* Einleitende Copy – reduziert */}
           <motion.div
             className="text-center mb-8"
             initial={{ opacity: 0, y: 20 }}
@@ -87,12 +85,13 @@ const VorherNachherSection: React.FC = () => {
           >
             <h2
               id="vorher-nachher-heading"
-              className="text-2xl md:text-3xl font-heading font-bold mb-2" style={{ color: '#0C1210' }}
+              className="text-2xl md:text-3xl font-heading font-bold mb-2"
+              style={{ color: '#0C1210' }}
             >
-              Der Unterschied, wenn Sie in den <span className="text-primary-500">Top 3</span> sind
+              Was sich durch eine klare Local-SEO-Strategie verändert
             </h2>
             <p className="max-w-2xl mx-auto" style={{ color: '#404B48' }}>
-              Top 3 bei Google in 90 Tagen – garantiert. Die Grafik zeigt Vorher vs. Nachher.
+              Bisher vs. optimiert – der Unterschied in der lokalen Sichtbarkeit.
             </p>
           </motion.div>
 
@@ -114,8 +113,9 @@ const VorherNachherSection: React.FC = () => {
                   ? 'border-2 border-red-400 font-semibold'
                   : 'border border-gray-200 hover:border-gray-300'
               }`}
+              style={{ color: activeTab === 'vorher' ? '#B91C1C' : '#404B48' }}
             >
-              Vorher
+              Bisher
             </button>
             <button
               type="button"
@@ -129,14 +129,19 @@ const VorherNachherSection: React.FC = () => {
                   ? 'border-2 font-semibold'
                   : 'border border-gray-200 hover:border-gray-300'
               }`}
+              style={{
+                borderColor: activeTab === 'nachher' ? '#0E7C72' : undefined,
+                color: activeTab === 'nachher' ? '#0E7C72' : '#404B48',
+              }}
             >
-              Nachher
+              Optimiert
             </button>
           </div>
 
-          {/* Karten-Box: Links KPIs, rechts Karte – Grafikbereich volle Breite, nicht abgeschnitten */}
+          {/* Karten-Box */}
           <motion.div
-            className="rounded-2xl border bg-white shadow-card" style={{ borderColor: '#E4E9E7' }}
+            className="rounded-2xl border bg-white shadow-card"
+            style={{ borderColor: '#E4E9E7' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -148,9 +153,9 @@ const VorherNachherSection: React.FC = () => {
               aria-labelledby={activeTab === 'vorher' ? 'tab-vorher' : 'tab-nachher'}
               className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 md:p-8"
             >
-              {/* Linke Spalte: KPIs & Copy – fester Hintergrund für Lesbarkeit */}
+              {/* Linke Spalte: Inhalt */}
               <div className="min-w-0 rounded-lg p-1">
-                <h3 className="text-xl font-heading font-bold mb-2" style={{ color: '#0C1210' }}>{title}</h3>
+                <h3 className="text-xl font-heading font-bold mb-3" style={{ color: '#0C1210' }}>{title}</h3>
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeTab}
@@ -158,31 +163,42 @@ const VorherNachherSection: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -6 }}
                     transition={{ duration: 0.2 }}
-                    className="flex flex-wrap gap-2 mb-3"
+                    className="space-y-2 mb-4"
                   >
-                    {kpis.map((kpi, index) => (
-                      <motion.span
-                        key={kpi.label}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                    {punkte.map((punkt, index) => (
+                      <motion.div
+                        key={punkt}
+                        initial={{ opacity: 0, x: -6 }}
+                        animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.2, delay: index * 0.05 }}
-                        className={`inline-block px-3 py-1.5 rounded-lg text-sm font-semibold ${badgeColor}`} style={badgeStyle}
+                        className="flex items-start gap-2.5 text-sm"
+                        style={{ color: '#404B48' }}
                       >
-                        {kpi.label}: {kpi.value}
-                      </motion.span>
+                        <span
+                          className="flex-shrink-0 mt-1 w-3.5 h-3.5 rounded-full border flex items-center justify-center text-xs font-bold"
+                          style={badgeStyle}
+                          aria-hidden
+                        >
+                          {isVorher ? '✕' : '✓'}
+                        </span>
+                        {punkt}
+                      </motion.div>
                     ))}
                   </motion.div>
                 </AnimatePresence>
                 <p
-                  className={`text-base font-medium`}
+                  className="text-base font-medium"
                   style={{ color: isVorher ? '#B91C1C' : '#0E7C72' }}
                 >
                   {conclusion}
                 </p>
               </div>
 
-              {/* Rechte Spalte: Karte – vollständig sichtbar, object-contain (Original-Assets: Not_Top_3 / Top_3) */}
-              <div className="rounded-xl border min-h-[260px] lg:min-h-[320px] relative flex items-center justify-center w-full" style={{ borderColor: '#E4E9E7', background: '#F4F7F6' }}>
+              {/* Rechte Spalte: Karte */}
+              <div
+                className="rounded-xl border min-h-[260px] lg:min-h-[320px] relative flex items-center justify-center w-full"
+                style={{ borderColor: '#E4E9E7', background: '#F4F7F6' }}
+              >
                 <img
                   src={activeTab === 'vorher' ? IMG_VORHER : IMG_NACHHER}
                   alt={mapAlt}
@@ -199,7 +215,8 @@ const VorherNachherSection: React.FC = () => {
                 />
                 {showPlaceholder && (
                   <div
-                    className="absolute inset-2 flex flex-col items-center justify-center rounded-lg p-4" style={{ background: '#FAFAF9' }}
+                    className="absolute inset-2 flex flex-col items-center justify-center rounded-lg p-4"
+                    style={{ background: '#FAFAF9' }}
                     aria-hidden="true"
                   >
                     <div className="w-full h-full min-h-[140px] grid grid-cols-6 sm:grid-cols-8 gap-1.5 place-content-center place-items-center">
@@ -227,7 +244,7 @@ const VorherNachherSection: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Nutzenpunkte – kompakt */}
+          {/* Aspekte – kompakt */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8"
             initial={{ opacity: 0, y: 20 }}
@@ -235,12 +252,13 @@ const VorherNachherSection: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            {NUTZENPUNKTE.map((item) => (
+            {ASPEKTE.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border bg-white p-4 shadow-card hover:border-primary-500/30 transition-colors flex items-center gap-3" style={{ borderColor: '#E4E9E7' }}
+                className="rounded-2xl border bg-white p-4 hover:border-primary-500/30 transition-colors flex items-center gap-3"
+                style={{ borderColor: '#E4E9E7' }}
               >
-                <div className="flex-shrink-0" style={{ color: '#0E7C72' }}>{<item.icon size={20} />}</div>
+                <div className="flex-shrink-0" style={{ color: '#0E7C72' }}><item.icon size={20} /></div>
                 <div>
                   <h4 className="font-heading font-bold text-sm" style={{ color: '#0C1210' }}>{item.title}</h4>
                   <p className="text-sm" style={{ color: '#404B48' }}>{item.text}</p>

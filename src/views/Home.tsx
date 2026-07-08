@@ -139,7 +139,7 @@ const Home: React.FC = () => {
       badge: 'In Tagen statt Wochen',
       h2: 'Webseiten für lokale Unternehmen mit klarer Nutzerführung',
       desc: 'Moderne Webseiten, die leicht verständlich sind und bei Suchmaschinen sichtbar werden, damit Kunden Sie schneller finden und direkt Kontakt aufnehmen können.',
-      cta: 'Moderne Webseiten im Mietmodell',
+      cta: 'Moderne Unternehmenswebseiten',
       href: '/webseite',
       delay: 0.3,
     },
