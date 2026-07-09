@@ -240,7 +240,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4, duration: 0.7 }}
               >
-                <div className="relative w-full max-w-[320px] select-none">
+                <div className="relative w-full max-w-[500px] select-none">
                   {/* Hintergrund-Aura */}
                   <div
                     className="absolute inset-0 rounded-[2.5rem] pointer-events-none scale-110"
@@ -254,22 +254,22 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                     style={{
                       border: `1px solid ${BORDER}`,
                       boxShadow: '0 20px 50px rgba(12,18,16,0.16), 0 4px 16px rgba(12,18,16,0.08)',
-                      aspectRatio: '1206 / 2622',
+                      aspectRatio: '819 / 772',
                     }}
                   >
                     <Image
-                      src="/images/seo-top3-in-google.webp"
-                      alt="Google-Suchergebnis mit Local Pack – lokale Suchmaschinenoptimierung auf dem Smartphone"
+                      src="/images/seo-top3-google-suche-maps-mockup.webp"
+                      alt="Beispielhafte Google-Suche und Google-Maps-Ergebnis für eine lokale Suchanfrage – Local Pack und Google-Unternehmensprofil als Beispiel für lokale Sichtbarkeit"
                       fill
                       className="object-cover object-top"
                       priority
-                      sizes="(max-width: 1024px) 0px, 320px"
+                      sizes="(max-width: 1024px) 0px, 500px"
                     />
                   </div>
 
                   {/* Schwebende Badges */}
                   <motion.div
-                    className="absolute -top-3 -left-6 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white"
+                    className="absolute -top-3 -left-5 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white"
                     style={{ border: `1px solid ${BORDER}`, boxShadow: '0 2px 10px rgba(12,18,16,0.10)', color: PETROL }}
                     initial={{ opacity: 0, y: -8 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -280,7 +280,7 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
                   </motion.div>
 
                   <motion.div
-                    className="absolute bottom-10 -right-7 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white"
+                    className="absolute bottom-6 -right-6 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white"
                     style={{ border: `1px solid ${BORDER}`, boxShadow: '0 2px 10px rgba(12,18,16,0.10)', color: PETROL }}
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
