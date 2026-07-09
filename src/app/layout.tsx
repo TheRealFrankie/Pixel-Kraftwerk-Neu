@@ -4,6 +4,7 @@ import { buildOrganizationSchema } from '@/lib/jsonld';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
+import ClientProviders from '@/components/ClientProviders';
 import AnalyticsScripts from '@/components/AnalyticsScripts';
 import VoiceflowChat from '@/components/VoiceflowChat';
 import ExitIntentModal from '@/components/ExitIntentModal';
@@ -64,12 +65,14 @@ export default function RootLayout({
           Zum Inhalt springen
         </a>
         <AnalyticsScripts />
+        <ClientProviders>
           <Header />
           <main id="main" className="flex-grow">{children}</main>
           <Footer />
           <CookieBanner />
           <ExitIntentModal />
           <VoiceflowChat />
+        </ClientProviders>
       </body>
     </html>
   );

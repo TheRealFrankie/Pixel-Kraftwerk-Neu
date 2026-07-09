@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { businessInfo } from '@/data/businessInfo';
+import { useStickyCtaVisibility } from '@/hooks/useStickyCtaVisibility';
 
 interface StickyCtaBarProps {
   ctaLabel?: string;
@@ -15,6 +16,7 @@ const StickyCtaBar: React.FC<StickyCtaBarProps> = ({
 }) => {
   const [visible, setVisible] = useState(false);
   const [cookieBannerVisible, setCookieBannerVisible] = useState(true);
+  const { setStickyCtaVisible } = useStickyCtaVisibility();
 
   useEffect(() => {
     const checkCookieConsent = () => {
@@ -47,6 +49,11 @@ const StickyCtaBar: React.FC<StickyCtaBarProps> = ({
   };
 
   const shown = visible && !cookieBannerVisible;
+
+  useEffect(() => {
+    setStickyCtaVisible(shown);
+    return () => setStickyCtaVisible(false);
+  }, [shown, setStickyCtaVisible]);
 
   return (
     <div

@@ -8,7 +8,6 @@ import {
 } from 'lucide-react';
 import Logo from './Logo';
 import { getSubpagesForService, getGlobalRoutePrefix } from '../data/serviceSubpages';
-import { businessInfo } from '../data/businessInfo';
 
 interface MegaService {
   title: string;
@@ -288,15 +287,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* Mobile Toggle */}
-          <div className="flex lg:hidden items-center gap-1">
-            <a
-              href={`tel:${businessInfo.contact.telephoneE164}`}
-              className="transition-colors duration-200 p-2 rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center"
-              style={{ color: PETROL }}
-              aria-label={`Anrufen: ${businessInfo.contact.telephone}`}
-            >
-              <Phone size={20} />
-            </a>
+          <div className="flex lg:hidden items-center">
             <button
               className="transition-colors duration-200 p-2 rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center"
               style={{ color: INK }}

@@ -222,8 +222,15 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
             priority
             sizes="100vw"
           />
+          {/* Mobile: fast deckend damit Text lesbar bleibt */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 md:hidden"
+            style={{ background: 'linear-gradient(100deg, rgba(250,250,249,0.99) 0%, rgba(250,250,249,0.97) 60%, rgba(250,250,249,0.88) 78%, rgba(250,250,249,0.5) 92%, rgba(250,250,249,0.15) 100%)' }}
+            aria-hidden
+          />
+          {/* Desktop: Original-Verlauf */}
+          <div
+            className="absolute inset-0 hidden md:block"
             style={{ background: 'linear-gradient(95deg, rgba(250,250,249,0.98) 0%, rgba(250,250,249,0.93) 35%, rgba(250,250,249,0.6) 55%, rgba(250,250,249,0.08) 75%, rgba(250,250,249,0.0) 88%)' }}
             aria-hidden
           />

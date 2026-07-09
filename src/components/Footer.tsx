@@ -5,6 +5,7 @@ import { Instagram, Facebook, Settings, MapPin, Phone, Mail, Clock } from 'lucid
 import Logo from './Logo';
 import { businessInfo } from '@/data/businessInfo';
 import type { NavItem, SocialLink } from '../types';
+import { useStickyCtaVisibility } from '@/hooks/useStickyCtaVisibility';
 
 const INK_BG    = '#0B1512';
 const INK_TEXT  = '#E7F4F2';
@@ -58,6 +59,7 @@ const getSocialIcon = (icon: string) => {
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const { stickyCtaVisible } = useStickyCtaVisibility();
 
   const linkStyle: React.CSSProperties = { color: INK_MUTED, fontSize: '0.875rem' };
   const hoverLink = (e: React.MouseEvent<HTMLAnchorElement>) =>
@@ -242,7 +244,10 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Datenschutz-Einstellrad */}
-      <div className="fixed bottom-20 left-4 z-[9999] md:bottom-4" style={{ marginBottom: 'env(safe-area-inset-bottom)' }}>
+      <div
+        className={`fixed bottom-6 left-3 z-[9999] md:bottom-4 transition-opacity duration-300 ${stickyCtaVisible ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        style={{ marginBottom: 'env(safe-area-inset-bottom)' }}
+      >
         <a
           href="/datenschutz-einstellungen"
           className="flex items-center justify-center w-12 h-12 rounded-full shadow-elevation transition-colors duration-200 focus:outline-none"
