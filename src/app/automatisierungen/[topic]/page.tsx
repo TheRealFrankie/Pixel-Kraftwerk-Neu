@@ -7,6 +7,7 @@ import AutomatisierungenAngebotsprozesse from '@/views/services/subpages/Automat
 import AutomatisierungenEmailAutomatisierung from '@/views/services/subpages/AutomatisierungenEmailAutomatisierung';
 import { getSubpagesForService, getSubpageBySlug, getGlobalRoutePrefix } from '@/data/serviceSubpages';
 import { getSubpageContent } from '@/data/subpageContent';
+import { buildSeoTitle } from '@/lib/seoTitle';
 
 const SERVICE_SLUG = 'automatisierungen';
 const SERVICE_LABEL = 'Anfragen, Vertrieb & Terminplanung';
@@ -14,24 +15,28 @@ const baseUrl = 'https://pixelkraftwerk-ai.com';
 
 type Props = { params: Promise<{ topic: string }> };
 
-const AUTOMATISIERUNGEN_META: Record<string, { title: string; description: string }> = {
+const AUTOMATISIERUNGEN_META: Record<string, { label: string; keywords: string; description: string }> = {
   leadgenerierung: {
-    title: 'Leadgenerierung automatisieren | Pixel Kraftwerk',
+    label: 'Leadgenerierung automatisieren',
+    keywords: 'Lead-Automatisierung & CRM-Anbindung',
     description:
       'Neue Anfragen automatisch erfassen, qualifizieren und nachverfolgen. Pixel Kraftwerk entwickelt individuelle Lead-Automatisierungen für Unternehmen.',
   },
   terminbuchung: {
-    title: 'Terminbuchung automatisieren | Pixel Kraftwerk',
+    label: 'Terminbuchung automatisieren',
+    keywords: 'Online-Terminbuchung & Kalender-Automatisierung',
     description:
       'Termine automatisch buchen, bestätigen und vorbereiten. Pixel Kraftwerk verbindet Kalender, Kundendaten und interne Abläufe.',
   },
   angebotsprozesse: {
-    title: 'Angebotsprozesse automatisieren | Pixel Kraftwerk',
+    label: 'Angebotsprozesse automatisieren',
+    keywords: 'Angebotserstellung & Angebotsautomatisierung',
     description:
       'Vom Kundenwunsch zum professionellen Angebot: Pixel Kraftwerk automatisiert Datenerfassung, Freigaben, Versand und Follow-ups.',
   },
   'email-automatisierung': {
-    title: 'E-Mail-Automatisierung für Unternehmen | Pixel Kraftwerk',
+    label: 'E-Mail-Automatisierung',
+    keywords: 'E-Mail-Workflows & Postfach-Automatisierung',
     description:
       'E-Mails automatisch sortieren, zuweisen und weiterverarbeiten. Pixel Kraftwerk entwickelt individuelle E-Mail-Workflows für Unternehmen.',
   },
@@ -46,12 +51,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const customMeta = AUTOMATISIERUNGEN_META[topic];
   if (customMeta) {
+    const title = buildSeoTitle({
+      category: customMeta.label,
+      city: 'Groitzsch & Leipzig',
+      services: customMeta.keywords,
+    });
     return {
-      title: customMeta.title,
+      title,
       description: customMeta.description,
       alternates: { canonical: `${baseUrl}/automatisierungen/${topic}` },
       openGraph: {
-        title: customMeta.title,
+        title: title.absolute,
         description: customMeta.description,
         url: `${baseUrl}/automatisierungen/${topic}`,
         type: 'website',
@@ -59,13 +69,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  // Fallback für alle anderen Subpages (sollte nicht vorkommen, da nur 4 Slugs bekannt)
+  // Fallback für alle anderen Subpages
   const subpageDef = getSubpageBySlug(SERVICE_SLUG, topic);
   const content = getSubpageContent(SERVICE_SLUG, topic);
   if (!subpageDef || !content) return { title: 'Seite nicht gefunden' };
   const globalRoute = getGlobalRoutePrefix(SERVICE_SLUG);
   return {
-    title: subpageDef.label ? `${subpageDef.label} | Pixel Kraftwerk` : 'Automatisierungen | Pixel Kraftwerk',
+    title: buildSeoTitle({ category: subpageDef.label, city: 'Groitzsch & Leipzig', services: subpageDef.titleKeywords }),
     description: content.metaDescription,
     alternates: { canonical: `${baseUrl}${globalRoute}/${topic}` },
   };

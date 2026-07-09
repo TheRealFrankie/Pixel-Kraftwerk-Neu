@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { businessInfo } from '@/data/businessInfo';
+import { buildOrganizationSchema } from '@/lib/jsonld';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
@@ -34,6 +35,10 @@ export default function RootLayout({
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildOrganizationSchema()) }}
+        />
         <meta name="theme-color" content="#0E7C72" />
         <link rel="icon" type="image/png" href="/pixelkraftwerk-logo-quadrat.png" />
         <link rel="apple-touch-icon" href="/pixelkraftwerk-logo-quadrat.png" />

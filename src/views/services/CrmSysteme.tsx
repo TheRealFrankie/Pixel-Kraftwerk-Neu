@@ -382,52 +382,37 @@ const CrmSysteme: React.FC<CrmSystemeProps> = ({ regionSlug, regionName }) => {
             <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16">
               {/* Left column: copy */}
               <div>
-                {/* Eyebrow */}
-                <motion.span
-                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest mb-4"
-                  style={{
-                    background: `rgba(14,124,114,0.08)`,
-                    color: PETROL,
-                    border: `1px solid rgba(14,124,114,0.20)`,
-                  }}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                >
-                  Individuelle Unternehmenssoftware
-                </motion.span>
-
-                {/* H1 */}
+                {/* H1 – Category + City (SEO-Schema) */}
                 <motion.h1
-                  className="font-heading font-bold tracking-tight leading-[1.08] mb-4"
-                  style={{ color: INK, fontSize: 'clamp(1.9rem, 4.2vw, 3rem)' }}
-                  initial={{ opacity: 0, y: 18 }}
+                  className="text-xs md:text-sm font-heading font-bold uppercase tracking-widest mb-3"
+                  style={{ color: PETROL }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.22, duration: 0.55 }}
+                  transition={{ delay: 0.2 }}
                 >
-                  Ein CRM-System, das sich Ihren Abläufen anpasst.
+                  CRM-Agentur Groitzsch & Leipzig
                 </motion.h1>
 
-                {/* H2 – highlighted subheadline */}
+                {/* H2 – Benefit subheadline */}
                 <motion.h2
-                  className="text-base md:text-lg font-semibold leading-snug mb-4 max-w-xl"
-                  style={{ color: PETROL }}
-                  initial={{ opacity: 0, y: 12 }}
+                  className="font-heading font-bold tracking-tight mb-4 leading-[1.08] max-w-xl"
+                  style={{ color: INK, fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.32 }}
+                  transition={{ delay: 0.35, duration: 0.6 }}
                 >
-                  Beenden Sie das tägliche Durcheinander aus Excel-Listen, E-Mails, Notizen und unpassender Standardsoftware.
+                  Kein Lead geht mehr verloren – jede Anfrage landet automatisch am richtigen Ort.
                 </motion.h2>
 
-                {/* H3 – SEO keyword line (sr-only on mobile) */}
+                {/* H3 – Agitation / SEO keyword line */}
                 <motion.h3
-                  className="sr-only md:not-sr-only text-sm font-medium mb-4"
-                  style={{ color: MUTED }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                  className="text-base md:text-lg font-semibold leading-snug mb-4 max-w-xl"
+                  style={{ color: PETROL }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.38 }}
                 >
-                  {SERVICE_TITLE_KEYWORDS['crm-systeme']}
+                  Beenden Sie das tägliche Durcheinander aus Excel-Listen, E-Mails, Notizen und unpassender Standardsoftware.
                 </motion.h3>
 
                 {/* Description */}

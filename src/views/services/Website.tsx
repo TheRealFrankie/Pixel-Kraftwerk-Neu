@@ -214,7 +214,7 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35, duration: 0.6 }}
               >
-                {regionContent?.localHook || 'Ihre Website sollte nicht nur gut aussehen. Sie sollte Kunden überzeugen.'}
+                {regionContent?.localHook || 'Aus jedem Besuch auf Ihrer Website wird eine Anfrage – nicht nur ein guter Eindruck.'}
               </motion.h2>
 
               {/* H3 – Keywords, sr-only auf Mobile */}

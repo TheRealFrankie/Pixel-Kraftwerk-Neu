@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import RegionPage from '@/views/RegionPage';
 import { getRegionContent, getValidRegionSlug } from '@/data/regionContent';
 import { LEISTUNGSGEBIETE_SLUGS } from '@/data/leistungsgebiete';
+import { buildSeoTitle } from '@/lib/seoTitle';
 
 const baseUrl = 'https://pixelkraftwerk-ai.com';
 
@@ -11,9 +12,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { region } = await params;
   const slug = getValidRegionSlug(region);
   const content = getRegionContent(slug);
-  const title = `KI-Agentur ${content.name} – KI-Chatbots, Telefonassistenten, Automatisierungen, Webseiten, SEO & CRM in meiner Nähe`;
   return {
-    title,
+    title: buildSeoTitle({
+      category: 'KI-Agentur',
+      city: content.name,
+      services: 'KI-Chatbots, Telefonassistenten, Automatisierungen, Webseiten, SEO & CRM',
+    }),
     description: content.metaDescription,
     alternates: { canonical: `${baseUrl}/leistungsgebiete/${slug}` },
   };

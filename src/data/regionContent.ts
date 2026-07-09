@@ -2,7 +2,7 @@
  * Inhalte für Leistungsgebiete-Seiten (Stadt-Seiten).
  * Shared für generateMetadata (Server) und RegionPage (Client).
  */
-import { LEISTUNGSGEBIETE_SLUGS, LEISTUNGSGEBIETE_CITIES } from './leistungsgebiete';
+import { LEISTUNGSGEBIETE_SLUGS, LEISTUNGSGEBIETE_CITIES, getNeighborCities } from './leistungsgebiete';
 import type { LeistungsgebietSlug } from './leistungsgebiete';
 import type { ServiceSlug } from './services';
 import { tier1RegionContent } from './regionContentTier1';
@@ -961,19 +961,27 @@ const SLUG_TO_NAME: Record<string, string> = Object.fromEntries(
   LEISTUNGSGEBIETE_CITIES.map((c) => [c.slug, c.name])
 );
 
-function getTemplateRegionContent(cityName: string): RegionContent {
+function getTemplateRegionContent(
+  cityName: string,
+  subtitle?: string,
+  neighbors?: string[],
+): RegionContent {
+  const regionLabel = subtitle && subtitle !== 'Hauptsitz' ? subtitle : 'der Region';
+  const n1 = neighbors?.[0] ?? 'Leipzig';
+  const n2 = neighbors?.[1] ?? 'Groitzsch';
+
   return {
     name: cityName,
     title: `KI-Agentur ${cityName} – Automatisierung, Chatbots & SEO`,
-    metaDescription: `Pixel Kraftwerk – KI-Automatisierung, Chatbots, Terminbuchung, CRM und SEO für Unternehmen in ${cityName}. Aus Groitzsch für die Region Leipzig.`,
-    intro: `Für Unternehmen in ${cityName} und Umgebung entwickeln wir KI-gestützte Lösungen für Kundenkommunikation und Vertrieb: digitale und telefonische Kundenassistenz, Terminbuchungssysteme, CRM-Workflows und Websites mit SEO. Von unserem Sitz in Groitzsch aus sind wir schnell in der Region und verbinden lokale Nähe mit moderner Technologie.`,
+    metaDescription: `Pixel Kraftwerk – KI-Automatisierung, Chatbots, Terminbuchung, CRM und SEO für Unternehmen in ${cityName}. Aus Groitzsch für ${regionLabel}.`,
+    intro: `Für Unternehmen in ${cityName} und Umgebung entwickeln wir KI-gestützte Lösungen für Kundenkommunikation und Vertrieb: digitale und telefonische Kundenassistenz, Terminbuchungssysteme, CRM-Workflows und Websites mit SEO. Von unserem Sitz in Groitzsch aus sind wir schnell in ${regionLabel} und verbinden lokale Nähe mit moderner Technologie.`,
     paragraphs: [
       `In ${cityName} sind viele Unternehmen stark im Tagesgeschäft eingebunden – Anrufe, E‑Mails, Formulareingänge und persönliche Anfragen laufen parallel. Oft bleibt wenig Zeit, um jede Anfrage sofort zu beantworten oder strukturiert nachzuverfolgen. Gleichzeitig erwarten Kundinnen und Kunden heute schnelle Reaktionen, klare Kommunikation und eine Erreichbarkeit, die über klassische Bürozeiten hinausgeht. Wenn Anfragen unbeantwortet bleiben oder Informationen zwischen verschiedenen Kanälen verloren gehen, leidet nicht nur der Eindruck nach außen – es gehen auch potenzielle Aufträge verloren, die bei schnellerer Reaktion zum Abschluss geführt hätten.`,
-      `Genau hier setzen wir an: Mit KI-Chatbots auf Ihrer Website und in Messengern, Telefonassistenten für eingehende Anrufe und smarten Buchungssystemen schaffen wir Entlastung für Unternehmen in ${cityName}. Wiederkehrende Fragen werden automatisch und zuverlässig beantwortet, Termine werden ohne Hin-und-Her koordiniert und Anfragen werden sauber dokumentiert und ans richtige Team weitergeleitet. Das Ergebnis: Ihr Team arbeitet fokussierter, Ihre Kunden bekommen schnellere Antworten und nichts geht mehr verloren.`,
+      `Genau hier setzen wir an: Mit KI-Chatbots auf Ihrer Website und in Messengern, Telefonassistenten für eingehende Anrufe und smarten Buchungssystemen schaffen wir Entlastung für Unternehmen in ${cityName}. Als Betrieb in ${regionLabel} sind Sie oft mit Kunden aus ${n1} und ${n2} vernetzt – unsere Lösungen sorgen dafür, dass jede Anfrage aus der gesamten Region zuverlässig erfasst und beantwortet wird.`,
       `Besonders Unternehmen aus Handwerk, Gesundheitswesen, Dienstleistung, Beratung und Handel in ${cityName} profitieren davon, wenn Standardanliegen automatisch abgefangen werden. Statt ständig „im Postfach zu leben“, kann sich Ihr Team auf wertschöpfende Aufgaben konzentrieren – persönliche Gespräche mit Interessentinnen und Interessenten, individuelle Angebote, Projektarbeit oder die Weiterentwicklung des eigenen Geschäfts. Gleichzeitig erleben Ihre Kundinnen und Kunden eine moderne, jederzeit erreichbare Kommunikation, die Vertrauen schafft und Professionalität ausstrahlt.`,
       `Unsere Projekte starten immer mit einem klar umrissenen Anwendungsfall aus Ihrem Alltag in ${cityName}: zum Beispiel die automatisierte Terminvereinbarung, die erste Qualifizierung eingehender Anfragen oder die Entlastung Ihres Empfangs durch einen KI-Telefonassistenten. Auf dieser Basis entwickeln wir ein System, das zu Ihren bestehenden Abläufen passt, anstatt alles auf den Kopf zu stellen. Wo sinnvoll, binden wir vorhandene Tools wie CRM, Terminsoftware, Kalender oder Newsletter-Systeme an, damit Daten nicht doppelt gepflegt werden und alle Informationen an einem zentralen Ort zusammenlaufen.`,
-      `Neben der operativen Automatisierung unterstützen wir Unternehmen in ${cityName} auch bei der digitalen Sichtbarkeit: Professionelle Webseiten, die mobil optimiert sind und überzeugend wirken, kombiniert mit gezielter Suchmaschinenoptimierung für lokale Suchanfragen. Wenn jemand in ${cityName} oder der Region nach einer Leistung sucht, die Sie anbieten, soll Ihr Unternehmen unter den ersten Ergebnissen erscheinen. Dafür optimieren wir Ihre Online-Präsenz, Ihre Google-Signale und Ihre Inhalte – transparent, nachvollziehbar und auf messbare Verbesserungen ausgerichtet.`,
-      `Pixel Kraftwerk arbeitet bewusst regional verankert. Unser Standort ist Neuer Weg 9a, 04539 Groitzsch. Viele unserer Kundinnen und Kunden sitzen in ${cityName}, in Leipzig, im Landkreis Leipzig und darüber hinaus. Das hat einen konkreten Vorteil: Wir denken nicht abstrakt „remote von irgendwo“, sondern kennen die Anforderungen regionaler Betriebe – pragmatisch, ergebnisorientiert und mit Blick auf den tatsächlichen Arbeitsalltag vor Ort. Erstgespräche führen wir online oder bei Ihnen in ${cityName}, Workshops finden je nach Bedarf bei uns in Groitzsch, bei Ihnen oder remote statt.`,
+      `Neben der operativen Automatisierung unterstützen wir Unternehmen in ${cityName} auch bei der digitalen Sichtbarkeit: Professionelle Webseiten, die mobil optimiert sind und überzeugend wirken, kombiniert mit gezielter Suchmaschinenoptimierung für lokale Suchanfragen. Wenn jemand in ${cityName} oder ${regionLabel} nach einer Leistung sucht, die Sie anbieten, soll Ihr Unternehmen unter den ersten Ergebnissen erscheinen. Dafür optimieren wir Ihre Online-Präsenz, Ihre Google-Signale und Ihre Inhalte – transparent, nachvollziehbar und auf messbare Verbesserungen ausgerichtet.`,
+      `Pixel Kraftwerk arbeitet bewusst regional verankert. Unser Standort ist Neuer Weg 9a, 04539 Groitzsch – zentral gelegen für ${cityName}, ${n1} und die gesamte ${regionLabel}. Das hat einen konkreten Vorteil: Wir denken nicht abstrakt „remote von irgendwo“, sondern kennen die Anforderungen regionaler Betriebe – pragmatisch, ergebnisorientiert und mit Blick auf den tatsächlichen Arbeitsalltag vor Ort. Erstgespräche führen wir online oder bei Ihnen in ${cityName}, Workshops finden je nach Bedarf bei uns in Groitzsch, bei Ihnen oder remote statt.`,
       `Nach dem Go-live begleiten wir Sie über den Start hinaus: Wir beobachten gemeinsam, welche Fragen in ${cityName} besonders häufig auftauchen, wie Kundinnen und Kunden mit dem Chatbot oder Telefonassistenten interagieren und wo weitere Automatisierung sinnvoll ist. Auf Wunsch erweitern wir die Lösung Schritt für Schritt – etwa um zusätzliche Kanäle, weitere Automatisierungsschritte im Hintergrund oder tiefere CRM-Integration. So wächst Ihre Lösung vom ersten Use Case hin zu einer ganzheitlichen, aber gut verständlichen Automatisierung Ihrer Kommunikations- und Vertriebsprozesse.`,
     ],
     faqs: [
@@ -1069,7 +1077,14 @@ const allCustomRegionContent: Partial<Record<string, RegionContent>> = {
 };
 
 export function getRegionContent(slug: string): RegionContent {
-  const base = allCustomRegionContent[slug] ?? getTemplateRegionContent(SLUG_TO_NAME[slug] ?? slug);
+  if (allCustomRegionContent[slug]) {
+    return { ...allCustomRegionContent[slug], title: buildRegionTitle(allCustomRegionContent[slug].name) };
+  }
+  const cityData = LEISTUNGSGEBIETE_CITIES.find((c) => c.slug === slug);
+  const cityName = cityData?.name ?? SLUG_TO_NAME[slug] ?? slug;
+  const subtitle = cityData?.subtitle;
+  const neighbors = getNeighborCities(slug as LeistungsgebietSlug, 2).map((c) => c.name);
+  const base = getTemplateRegionContent(cityName, subtitle, neighbors);
   return { ...base, title: buildRegionTitle(base.name) };
 }
 

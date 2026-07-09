@@ -13,6 +13,7 @@ import GoogleMapsSection from '../components/GoogleMapsSection';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import WebSiteSchema from '../components/WebSiteSchema';
 import { businessInfo } from '@/data/businessInfo';
+import { buildFaqSchema } from '@/lib/jsonld';
 
 /* ─── constants ─── */
 const INK = '#0C1210';
@@ -181,10 +182,19 @@ const Home: React.FC = () => {
     },
   ];
 
+  const faqSchema = buildFaqSchema({
+    url: businessInfo.url,
+    faqs: faqs.map((f) => ({ question: f.q, answer: f.a })),
+  });
+
   return (
     <div style={{ background: '#FAFAF9' }}>
       <LocalBusinessSchema pageType="homepage" />
       <WebSiteSchema />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       {/* ─── HERO ─── */}
       <section
@@ -337,9 +347,9 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-10">
             {serviceCards.map((s, i) => (
               <div key={s.href} className="flex flex-col">
-                <h2 className="text-base font-heading font-semibold mb-3 leading-snug" style={{ color: BODY }}>
+                <h3 className="text-base font-heading font-semibold mb-3 leading-snug" style={{ color: BODY }}>
                   {s.h2}
-                </h2>
+                </h3>
                 <motion.a
                   href={s.href}
                   className="group block rounded-2xl bg-white overflow-hidden flex-1 transition-all duration-300 hover:-translate-y-1"
@@ -688,7 +698,7 @@ const Home: React.FC = () => {
               Erzählen Sie uns kurz, wo bei Ihnen der Schuh drückt. Wir melden uns zeitnah und vereinbaren ein kostenloses Erstgespräch – ganz ohne Verpflichtung.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm mb-4" style={{ color: BODY }}>
-              <a href="tel:+491785844460" className="flex items-center gap-2 hover:underline" style={{ color: BODY }}>
+              <a href={`tel:${businessInfo.contact.telephoneE164}`} className="flex items-center gap-2 hover:underline" style={{ color: BODY }}>
                 <Phone size={16} style={{ color: PETROL }} />
                 {businessInfo.contact.telephone}
               </a>

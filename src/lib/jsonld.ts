@@ -119,6 +119,39 @@ export function buildFaqSchema(input: FaqSchemaInput): JsonLd {
 }
 
 /**
+ * Organization-Schema für das Root-Layout.
+ * Ergänzt den LocalBusiness-Graph um einen expliziten Organization-Knoten,
+ * der Google für Knowledge Panel, Sitelinks und Trust-Signale nutzt.
+ */
+export function buildOrganizationSchema(): JsonLd {
+  const sameAs = Object.values(businessInfo.socialMedia).filter(Boolean);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${businessInfo.url}/#organization`,
+    name: businessInfo.name,
+    legalName: businessInfo.legalName,
+    url: businessInfo.url,
+    logo: {
+      '@type': 'ImageObject',
+      url: businessInfo.logo,
+    },
+    email: businessInfo.contact.email,
+    telephone: businessInfo.contact.telephone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: businessInfo.address.streetAddress,
+      addressLocality: businessInfo.address.addressLocality,
+      postalCode: businessInfo.address.postalCode,
+      addressRegion: businessInfo.address.addressRegion,
+      addressCountry: businessInfo.address.addressCountry,
+    },
+    foundingDate: businessInfo.foundingDate,
+    ...(sameAs.length > 0 && { sameAs }),
+  };
+}
+
+/**
  * Dev-only helper: warnt in der Konsole, wenn auf einer Seite kein JSON-LD vorhanden ist.
  */
 export function logMissingJsonLd(pageName: string): void {

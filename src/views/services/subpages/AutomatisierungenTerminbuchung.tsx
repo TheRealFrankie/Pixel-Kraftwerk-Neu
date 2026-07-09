@@ -205,10 +205,10 @@ export default function AutomatisierungenTerminbuchung({ regionSlug, regionName 
                 initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: true }}>
                 <AlertTriangle size={12} aria-hidden /> Das eigentliche Problem
               </motion.div>
-              <motion.h2 className="font-heading font-bold mb-8" style={{ color: INK, fontSize: 'clamp(1.35rem, 2.5vw, 2rem)' }}
+              <motion.h3 className="font-heading font-bold mb-8" style={{ color: INK, fontSize: 'clamp(1.35rem, 2.5vw, 2rem)' }}
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
                 Jeder zusätzliche Abstimmungsschritt belastet Kunden und Mitarbeiter gleichermaßen.
-              </motion.h2>
+              </motion.h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
                 {[
                   { label: 'Anrufe werden verpasst', sub: 'Kunden, die nicht erreichbar sind, buchen woanders.' },
@@ -228,9 +228,9 @@ export default function AutomatisierungenTerminbuchung({ regionSlug, regionName 
               </div>
 
               <div className="rounded-2xl p-6 md:p-8 border" style={{ background: 'rgba(14,124,114,0.04)', borderColor: 'rgba(14,124,114,0.2)' }}>
-                <h2 className="font-heading font-bold mb-3" style={{ color: INK, fontSize: 'clamp(1.2rem, 2vw, 1.6rem)' }}>
+                <h3 className="font-heading font-bold mb-3" style={{ color: INK, fontSize: 'clamp(1.2rem, 2vw, 1.6rem)' }}>
                   Ein klarer Buchungsprozess übernimmt die Koordination.
-                </h2>
+                </h3>
                 <p className="text-base leading-relaxed mb-3" style={{ color: BODY }}>
                   Kunden wählen eine Leistung und einen verfügbaren Termin. Nach der Buchung werden Bestätigung, Kalendereintrag, Erinnerung und interne Benachrichtigung automatisch erstellt.
                 </p>

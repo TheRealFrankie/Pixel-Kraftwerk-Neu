@@ -1,3 +1,4 @@
+import { LEISTUNGSGEBIETE_CITIES, getNeighborCities } from './leistungsgebiete';
 import type { LeistungsgebietSlug } from './leistungsgebiete';
 import type { ServiceSlug } from './services';
 import { additionalCustomContent } from './regionServiceContentCustom';
@@ -1045,6 +1046,12 @@ function getTemplateRegionServiceContent(
   serviceSlug: ServiceSlug,
   serviceLabel: string
 ): RegionServiceContent {
+  const cityData = LEISTUNGSGEBIETE_CITIES.find((c) => c.slug === regionSlug);
+  const regionLabel = cityData?.subtitle && cityData.subtitle !== 'Hauptsitz' ? cityData.subtitle : 'der Region';
+  const neighbors = getNeighborCities(regionSlug, 2).map((c) => c.name);
+  const n1 = neighbors[0] ?? 'Leipzig';
+  const n2 = neighbors[1] ?? 'Groitzsch';
+
   const baseMeta = `${serviceLabel} in ${regionName}`;
 
   const serviceFocus =
@@ -1234,12 +1241,12 @@ function getTemplateRegionServiceContent(
     metaDescription: `${baseMeta} – ${serviceFocus} für Unternehmen in ${regionName} und Umgebung durch Pixel Kraftwerk aus Groitzsch.`,
     intro: `${baseMeta} für Unternehmen in ${regionName} und der Region: Wir kombinieren ${serviceFocus} mit praxisnaher Prozessautomatisierung, damit wiederkehrende Aufgaben zuverlässig im Hintergrund laufen und Ihr Team mehr Zeit für wichtige Gespräche und Projekte gewinnt.`,
     paragraphs: [
-      `In ${regionName} treffen wachsende Kundenerwartungen an Erreichbarkeit und digitale Abläufe auf begrenzte Zeit im Tagesgeschäft. ${baseMeta} hilft Ihnen, diesen Spagat zu meistern: wiederkehrende Fragen werden automatisch beantwortet, Anfragen sauber erfasst und an die richtigen Stellen weitergeleitet. So bleibt Ihr Unternehmen erreichbar – auch dann, wenn gerade niemand direkt ans Telefon gehen oder E‑Mails sofort beantworten kann.`,
+      `In ${regionName} (${regionLabel}) treffen wachsende Kundenerwartungen an Erreichbarkeit und digitale Abläufe auf begrenzte Zeit im Tagesgeschäft. ${baseMeta} hilft Ihnen, diesen Spagat zu meistern: wiederkehrende Fragen werden automatisch beantwortet, Anfragen sauber erfasst und an die richtigen Stellen weitergeleitet. Ob Anfragen aus ${n1}, ${n2} oder direkt aus ${regionName} eintreffen – Ihr Unternehmen bleibt jederzeit erreichbar.`,
       `Gemeinsam schauen wir uns Ihre bestehenden Prozesse in ${regionName} an: Wo entstehen Engpässe? Welche Aufgaben wiederholen sich täglich? Auf dieser Basis planen wir eine Lösung, die zu Ihrer Realität passt – mit klar definierten Dialogen, sinnvollen Übergaben an Ihr Team und Integration in vorhandene Systeme wie CRM, Kalender oder Website. Ziel ist kein technisches Prestigeprojekt, sondern spürbare Entlastung im Alltag.`,
       `Unsere Lösungen sind darauf ausgelegt, sich nahtlos in Ihre bestehende Infrastruktur in ${regionName} einzufügen. Ob CRM-System, Terminkalender, Branchensoftware oder E-Mail-Postfach – wir schaffen Verbindungen zwischen Ihren Tools, damit Daten nicht doppelt gepflegt werden müssen und Informationen dort ankommen, wo sie gebraucht werden. So entstehen durchgängige Abläufe statt isolierter Insellösungen.`,
       `Nach der Einführung bleiben wir an Ihrer Seite. Wir beobachten mit Ihnen, wie ${serviceLabel} in ${regionName} genutzt wird, welche Fragen besonders häufig auftreten und wo Optimierungspotenzial liegt. Auf Wunsch erweitern wir die Lösung Schritt für Schritt – etwa um zusätzliche Standorte, weitere Services oder tiefergehende Automatisierungsschritte im Hintergrund.`,
       `Automatisierung wirkt am stärksten, wenn sie mit einer modernen, gut auffindbaren Webseite kombiniert wird. Denn was nützt ein Chatbot oder Telefonassistent, wenn potenzielle Kunden in ${regionName} Ihr Unternehmen gar nicht erst finden? Deshalb bieten wir ergänzend professionelle Webseiten und gezielte SEO-Optimierung an – damit Sichtbarkeit und Automatisierung Hand in Hand gehen und Ihnen messbar mehr Anfragen bringen.`,
-      `Pixel Kraftwerk ist in Groitzsch bei Leipzig verwurzelt und betreut Unternehmen in ${regionName} und der gesamten Region mit persönlichem Engagement. Wir verstehen die Herausforderungen lokaler Betriebe, kennen die Strukturen vor Ort und bieten kurze Kommunikationswege. Ob persönliches Treffen oder Videocall – wir sind nah dran an Ihrem Geschäft und setzen auf langfristige Partnerschaften statt anonymer Projektabwicklung.`,
+      `Pixel Kraftwerk ist in Groitzsch bei Leipzig verwurzelt und betreut Unternehmen in ${regionName} und dem gesamten ${regionLabel} mit persönlichem Engagement. Wir verstehen die Herausforderungen lokaler Betriebe, kennen die Strukturen von ${n1} bis ${n2} und bieten kurze Kommunikationswege. Ob persönliches Treffen oder Videocall – wir sind nah dran an Ihrem Geschäft und setzen auf langfristige Partnerschaften statt anonymer Projektabwicklung.`,
     ],
     faqs: [
       {

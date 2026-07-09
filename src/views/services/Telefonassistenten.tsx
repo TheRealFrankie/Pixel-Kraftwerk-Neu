@@ -44,6 +44,7 @@ import StickyCtaBar from '../../components/StickyCtaBar';
 import { getRegionServiceContent } from '../../data/regionServiceContent';
 import { LEISTUNGSGEBIETE_CITIES } from '../../data/leistungsgebiete';
 import { getRegionServiceLinkText, SERVICE_TITLE_KEYWORDS } from '../../data/services';
+import { businessInfo } from '../../data/businessInfo';
 import SubpageLinksBlock from '../../components/SubpageLinksBlock';
 import HeroScrollIndicator from '../../components/HeroScrollIndicator';
 import type { LeistungsgebietSlug } from '../../data/leistungsgebiete';
@@ -256,7 +257,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35, duration: 0.6 }}
               >
-                {regionContent?.localHook || 'Kein Anruf mehr verloren – auch wenn Sie gerade nicht ans Telefon können.'}
+                {regionContent?.localHook || 'Aus jedem Anruf wird eine Antwort, ein Rückruf oder ein Termin – automatisch, Tag und Nacht.'}
               </motion.h2>
 
               <motion.h3 className="sr-only md:not-sr-only text-sm md:text-base max-w-xl mb-3 leading-snug font-semibold" style={{ color: '#0E7C72' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
@@ -274,7 +275,7 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
                   Erstgespräch sichern
                   <ArrowRight size={18} />
                 </button>
-                <a href="tel:+491785844460" className="inline-flex items-center justify-center gap-2 py-3 text-sm font-semibold underline underline-offset-4 sm:no-underline sm:justify-start sm:px-6 sm:py-3 sm:rounded-xl sm:border" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>
+                <a href={`tel:${businessInfo.contact.telephoneE164}`} className="inline-flex items-center justify-center gap-2 py-3 text-sm font-semibold underline underline-offset-4 sm:no-underline sm:justify-start sm:px-6 sm:py-3 sm:rounded-xl sm:border" style={{ color: '#0E7C72', borderColor: '#E4E9E7' }}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                   Jetzt anrufen
                 </a>
@@ -1154,9 +1155,9 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
         <section className="py-16" style={{ background: '#F4F7F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
+              <h3 className="text-2xl md:text-3xl font-heading font-bold text-light-100 mb-6">
                 Telefonassistenten für Unternehmen in {regionName}
-              </h2>
+              </h3>
               {regionContent.paragraphs.map((p, i) => (
                 <p key={i} className="text-light-200 text-lg leading-relaxed mb-5">{p}</p>
               ))}

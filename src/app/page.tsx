@@ -1,8 +1,13 @@
 import type { Metadata } from 'next';
 import Home from '@/views/Home';
+import { buildSeoTitle } from '@/lib/seoTitle';
 
 export const metadata: Metadata = {
-  title: 'KI-Agentur Groitzsch & Leipzig – KI-Chatbots, Telefonassistenten, Automatisierungen, Webseiten, SEO & CRM in meiner Nähe',
+  title: buildSeoTitle({
+    category: 'KI-Agentur',
+    city: 'Groitzsch & Leipzig',
+    services: 'KI-Chatbots, Telefonassistenten, Automatisierungen, Webseiten, SEO & CRM',
+  }),
   description: 'KI-Automatisierung und Chatbots aus Groitzsch für Leipzig und Sachsen. Terminbuchung, CRM, Webseiten und SEO: Top 3 in Google. Jetzt Beratung sichern.',
   openGraph: {
     title: 'KI-Automatisierung & Chatbots für Unternehmen | Pixel Kraftwerk Leipzig',

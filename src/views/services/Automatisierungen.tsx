@@ -335,7 +335,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.35, duration: 0.6 }}
                 >
-                  {regionContent?.localHook || 'Wiederkehrende Aufgaben erledigen sich von selbst.'}
+                  {regionContent?.localHook || 'Jede Anfrage findet automatisch ihren Weg – ohne dass jemand daran denken muss.'}
                 </motion.h2>
 
                 {/* H3 – Keyword-Zeile (sr-only auf Mobile) */}
@@ -510,7 +510,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
                 Das eigentliche Problem
               </motion.div>
 
-              <motion.h2
+              <motion.h3
                 className="font-heading font-bold mb-8"
                 style={{ color: INK, fontSize: 'clamp(1.35rem, 2.5vw, 2rem)' }}
                 initial={{ opacity: 0, y: 16 }}
@@ -519,7 +519,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
                 viewport={{ once: true }}
               >
                 Das eigentliche Problem beginnt dort, wo der Alltag dazwischenkommt.
-              </motion.h2>
+              </motion.h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
                 {[
@@ -552,7 +552,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
                 className="rounded-2xl p-6 md:p-8 border"
                 style={{ background: 'rgba(14,124,114,0.04)', borderColor: 'rgba(14,124,114,0.2)' }}
               >
-                <motion.h2
+                <motion.h3
                   className="font-heading font-bold mb-3"
                   style={{ color: INK, fontSize: 'clamp(1.2rem, 2vw, 1.6rem)' }}
                   initial={{ opacity: 0, y: 12 }}
@@ -561,7 +561,7 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
                   viewport={{ once: true }}
                 >
                   Ihr Unternehmen sollte nicht von manuellen Erinnerungen abhängig sein.
-                </motion.h2>
+                </motion.h3>
                 <p className="text-base leading-relaxed mb-6" style={{ color: BODY }}>
                   Automatisierungen sorgen dafür, dass ein definierter Ablauf selbstständig startet, sobald etwas Bestimmtes passiert. Ihr Team behält die Kontrolle, muss aber nicht mehr jeden einzelnen Schritt selbst ausführen.
                 </p>
@@ -1199,9 +1199,9 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
           <section className="py-16" style={{ background: SURFACE }}>
             <div className="container mx-auto px-4 md:px-8">
               <div className="max-w-3xl mx-auto">
-                <h2 className="font-heading font-bold text-2xl md:text-3xl mb-6" style={{ color: INK }}>
+                <h3 className="font-heading font-bold text-2xl md:text-3xl mb-6" style={{ color: INK }}>
                   Prozessautomatisierung für Unternehmen in {regionName}
-                </h2>
+                </h3>
                 {regionContent.paragraphs.map((p, i) => (
                   <p key={i} className="text-lg leading-relaxed mb-5" style={{ color: BODY }}>{p}</p>
                 ))}

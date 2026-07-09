@@ -17,6 +17,7 @@ import {
 } from '@/data/serviceSubpages';
 import { getSubpageContent } from '@/data/subpageContent';
 import { getRegionalSubpageContent } from '@/data/subpageRegionalContent';
+import { buildSeoTitle } from '@/lib/seoTitle';
 
 const baseUrl = 'https://pixelkraftwerk-ai.com';
 
@@ -53,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Neue Metadaten für Automatisierungen-Subpages
   if (service === 'automatisierungen' && AUTOMATISIERUNGEN_TOPIC_META[topic]) {
     const meta = AUTOMATISIERUNGEN_TOPIC_META[topic];
-    const title = `${meta.label} ${regionData.name} – ${meta.titleKeywords} in meiner Nähe`;
+    const title = buildSeoTitle({ category: meta.label, city: regionData.name, services: meta.titleKeywords });
     const description = `${meta.label} für Unternehmen in ${regionData.name} und Umgebung. ${meta.description.slice(0, 100)}…`;
     const canonical = `${baseUrl}/leistungsgebiete/${regionSlug}/${service}/${topic}`;
     return {
@@ -61,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       alternates: { canonical },
       openGraph: {
-        title,
+        title: title.absolute,
         description,
         url: canonical,
         type: 'website',
@@ -74,12 +75,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!subpageDef || !content) {
     return {
-      title: 'Leistungsgebiete | Pixel Kraftwerk',
+      title: buildSeoTitle({ category: 'Leistungsgebiete', city: 'Leipzig', services: 'KI-Agentur' }),
       description: 'Übersicht unserer Leistungsgebiete in Leipzig, Groitzsch und Umgebung.',
     };
   }
 
-  const title = `${subpageDef.label} ${regionData.name} – ${subpageDef.titleKeywords} in meiner Nähe`;
+  const title = buildSeoTitle({ category: subpageDef.label, city: regionData.name, services: subpageDef.titleKeywords });
   const description = `${subpageDef.label} für Unternehmen in ${regionData.name} und Umgebung. ${content.metaDescription.slice(0, 100)}…`;
   const canonical = `${baseUrl}/leistungsgebiete/${regionSlug}/${service}/${topic}`;
 

@@ -446,11 +446,10 @@ export function getGlobalRoutePrefix(serviceSlug: string): string {
 
 /**
  * Einheitlicher meta-title für globale (nicht-regionale) Subpages.
- * Pattern: "{Label} Groitzsch & Leipzig – wenn Sie nach {titleKeywords} in meiner Nähe suchen – Pixel Kraftwerk"
- * Identisch zum Muster der regionalen Subpage-Titles, damit die Außendarstellung konsistent ist.
+ * Gibt `{ absolute: '...' }` zurück, damit das Layout-Template nicht doppelt greift.
  */
-export function buildGlobalSubpageMetaTitle(def: SubpageDefinition): string {
-  return `${def.label} Groitzsch & Leipzig – ${def.titleKeywords} in meiner Nähe`;
+export function buildGlobalSubpageMetaTitle(def: SubpageDefinition): { absolute: string } {
+  return { absolute: `${def.label} Groitzsch & Leipzig – Pixel Kraftwerk – ${def.titleKeywords} in meiner Nähe` };
 }
 
 /**

@@ -11,6 +11,7 @@ import {
   SERVICE_TITLE_LABELS,
   type ServiceSlug,
 } from '@/data/services';
+import { buildSeoTitle } from '@/lib/seoTitle';
 
 const baseUrl = 'https://pixelkraftwerk-ai.com';
 
@@ -24,14 +25,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!serviceInfo) {
     return {
-      title: 'Leistungsgebiete | Pixel Kraftwerk',
+      title: buildSeoTitle({ category: 'Leistungsgebiete', city: 'Leipzig', services: 'KI-Agentur' }),
       description: 'Übersicht unserer Leistungsgebiete in Leipzig, Groitzsch und Umgebung.',
     };
   }
 
   const keywords = SERVICE_TITLE_KEYWORDS[service as ServiceSlug] ?? serviceInfo.label;
   const titleLabel = SERVICE_TITLE_LABELS[service as ServiceSlug] ?? serviceInfo.label;
-  const title = `${titleLabel} ${content.name} – ${keywords} in meiner Nähe`;
   const canonical = `${baseUrl}/leistungsgebiete/${regionSlug}/${service}`;
 
   const serviceContent = getRegionServiceContent(
@@ -42,12 +42,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   );
   const description = serviceContent.metaDescription;
 
+  const title = buildSeoTitle({ category: titleLabel, city: content.name, services: keywords });
+
   return {
     title,
     description,
     alternates: { canonical },
     openGraph: {
-      title,
+      title: title.absolute,
       description,
       url: canonical,
       type: 'website',

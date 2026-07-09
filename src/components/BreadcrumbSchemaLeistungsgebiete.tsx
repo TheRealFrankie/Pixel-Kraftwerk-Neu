@@ -1,4 +1,5 @@
 import React from 'react';
+import { businessInfo } from '@/data/businessInfo';
 
 const baseUrl = 'https://pixelkraftwerk-ai.com';
 
@@ -8,8 +9,8 @@ const BreadcrumbSchemaLeistungsgebiete: React.FC = () => {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Pixel Kraftwerk', item: baseUrl + '/' },
-      { '@type': 'ListItem', position: 2, name: 'Pixel Kraftwerk – Leistungsgebiete', item: baseUrl + '/leistungsgebiete' },
+      { '@type': 'ListItem', position: 1, name: businessInfo.name, item: baseUrl + '/' },
+      { '@type': 'ListItem', position: 2, name: `${businessInfo.name} – Leistungsgebiete`, item: baseUrl + '/leistungsgebiete' },
     ],
   };
 

@@ -10,7 +10,8 @@
  */
 
 import type { RegionalSubpageContent } from './serviceSubpages';
-import { LEISTUNGSGEBIETE_CITIES } from './leistungsgebiete';
+import { LEISTUNGSGEBIETE_CITIES, getNeighborCities } from './leistungsgebiete';
+import type { LeistungsgebietSlug } from './leistungsgebiete';
 
 type ContentKey = `${string}.${string}.${string}`;
 
@@ -158,17 +159,25 @@ function buildTemplateContent(
 }
 
 // ---------------------------------------------------------------------------
-// Minimal fallback for Tier 3-4 cities
+// Minimal fallback for Tier 3-4 cities – with regional context paragraph
 // ---------------------------------------------------------------------------
 
 function buildMinimalContent(
   regionName: string,
   topicLabel: string,
+  regionSlug: string,
 ): RegionalSubpageContent {
+  const cityData = LEISTUNGSGEBIETE_CITIES.find((c) => c.slug === regionSlug);
+  const regionLabel = cityData?.subtitle && cityData.subtitle !== 'Hauptsitz' ? cityData.subtitle : 'der Region';
+  const neighbors = getNeighborCities(regionSlug as LeistungsgebietSlug, 2).map((c) => c.name);
+  const n1 = neighbors[0] ?? 'Leipzig';
+  const n2 = neighbors[1] ?? 'Groitzsch';
+
   return {
-    localHook: `Auch in ${regionName} verfügbar`,
+    localHook: `Auch in ${regionName} (${regionLabel}) verfügbar`,
     localSection: [
       `Wir unterstützen Unternehmen in ${regionName} bei ${topicLabel}. Von unserem Standort in Groitzsch aus sind wir schnell bei Ihnen – für persönliche Beratung und praxisnahe Umsetzung.`,
+      `Als Betrieb in ${regionLabel} sind Sie häufig mit Kunden und Partnern aus ${n1} und ${n2} vernetzt. Unsere Lösungen berücksichtigen diese regionale Vernetzung: Prozesse werden so aufgesetzt, dass eingehende Anfragen aus der gesamten ${regionLabel} zuverlässig erfasst, beantwortet und weitergeleitet werden. So profitieren Unternehmen in ${regionName} von denselben strukturierten Abläufen wie Betriebe in größeren Städten – ohne Abstriche bei Qualität oder Reaktionsgeschwindigkeit.`,
     ],
   };
 }
@@ -212,5 +221,5 @@ export function getRegionalSubpageContent(
     return buildTemplateContent(regionName, topicLabel, parentLabel);
   }
 
-  return buildMinimalContent(regionName, topicLabel);
+  return buildMinimalContent(regionName, topicLabel, regionSlug);
 }
