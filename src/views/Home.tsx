@@ -157,9 +157,9 @@ const Home: React.FC = () => {
       delay: 0.35,
     },
     {
-      img: '/images/seo-top3-in-google.webp',
-      alt: 'Top 3 in Google – lokale Sichtbarkeit und Google-Rankings',
-      objectPosition: 'center',
+      img: '/images/seo-top3-google-suche-maps-mockup.webp',
+      alt: 'Beispielhafte Google-Suche und Google-Maps-Ergebnis für eine lokale Suchanfrage – Local Pack und Google-Unternehmensprofil',
+      objectPosition: 'top center',
       badgeIcon: <Search size={18} strokeWidth={1.5} />,
       badge: 'Top 3 in 90 Tagen',
       h2: 'Lokales SEO für mehr Sichtbarkeit bei Google',
