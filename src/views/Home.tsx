@@ -527,8 +527,8 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-10">
             {[
-              { initials: 'LF', name: 'Lukas Franke', role: 'Mitgründer · Beratung & Strategie', desc: 'Ihr Ansprechpartner fürs Erstgespräch. Erklärt Technik so, dass sie jeder versteht.' },
-              { initials: 'JB', name: 'John Brause', role: 'Mitgründer · Technik & Umsetzung', desc: 'Sorgt dafür, dass alles reibungslos läuft – von der Website bis zum Telefonassistenten.' },
+              { initials: 'LF', name: 'Lukas Franke', role: 'Mitgründer', desc: 'Berät Sie persönlich und setzt Ihre Lösung mit um – erklärt Technik so, dass sie jeder versteht.' },
+              { initials: 'JB', name: 'John Brause', role: 'Mitgründer', desc: 'Berät Sie persönlich und setzt Ihre Lösung mit um – von der Website bis zum Telefonassistenten.' },
             ].map((p, i) => (
               <motion.div
                 key={p.name}
