@@ -161,8 +161,8 @@ const SeoTop3: React.FC<SeoTop3Props> = ({ regionSlug, regionName }) => {
         ══════════════════════════════════════════════════════════════════ */}
         <section
           id="lokale-sichtbarkeit-ausbauen"
-          className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
-          style={{ background: PAPER }}
+          className="relative flex flex-col"
+          style={{ background: PAPER, minHeight: 'calc(100dvh - 36px)' }}
         >
           <div className="relative z-20 container mx-auto px-4 md:px-8 pt-16 md:pt-20">
             <BreadcrumbNav items={isRegional ? [

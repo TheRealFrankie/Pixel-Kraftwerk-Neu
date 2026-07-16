@@ -68,7 +68,8 @@ const PageHero: React.FC<PageHeroProps> = ({
   return (
     <section
       id={sectionId}
-      className="relative h-screen flex flex-col overflow-hidden"
+      className="relative flex flex-col overflow-hidden"
+      style={{ minHeight: 'calc(100vh - 36px)' }}
       style={{ background: '#FAFAF9' }}
     >
       {anchorId && <span id={anchorId} className="absolute top-0 left-0" aria-hidden="true" />}
@@ -216,8 +217,6 @@ const PageHero: React.FC<PageHeroProps> = ({
                 </a>
                 <span style={{ color: BORDER }}>|</span>
                 <span style={{ color: MUTED }}>Antwort binnen 24 Stunden</span>
-                <span style={{ color: BORDER }}>|</span>
-                <span style={{ color: MUTED }}>Kein Kleingedrucktes</span>
               </motion.div>
             )}
           </div>

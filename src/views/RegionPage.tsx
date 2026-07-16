@@ -28,6 +28,7 @@ import { getNeighborCities } from '../data/leistungsgebiete';
 import { getRegionServiceLinkText } from '../data/services';
 import type { ServiceSlug } from '../data/services';
 import { businessInfo } from '../data/businessInfo';
+import AboutTeamSection from '../components/AboutTeamSection';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import BreadcrumbSchemaRegion from '../components/BreadcrumbSchemaRegion';
 import BreadcrumbNav from '../components/BreadcrumbNav';
@@ -35,6 +36,7 @@ import TrustLine from '../components/TrustLine';
 import Accordion from '../components/Accordion';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsSection from '../components/GoogleMapsSection';
+import GoogleReviewsSection from '../components/GoogleReviewsSection';
 import { buildFaqSchema } from '../lib/jsonld';
 
 /* ─── Design Tokens ─────────────────────────────────────────────────────────── */
@@ -224,8 +226,8 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <section
         data-section-label="Start"
-        className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
-        style={{ background: '#FAFAF9' }}
+        className="relative flex flex-col"
+        style={{ background: '#FAFAF9', minHeight: 'calc(100dvh - 36px)' }}
       >
         <div className="absolute inset-0">
           <Image
@@ -344,6 +346,260 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
           </div>
         </div>
       </section>
+
+      {/* ── LEISTUNGEN / SERVICE HUB ──────────────────────────────────────── */}
+      <section data-section-label="Leistungen" className="section-padding" style={{ background: SURFACE }}>
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="text-center mb-14"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-heading font-bold mb-4" style={{ color: INK }}>
+              Leistungen in {content.name}
+            </h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: MUTED }}>
+              Digitale Lösungen, die Ihr Unternehmen entlasten und den Arbeitsalltag deutlich
+              vereinfachen.
+            </p>
+          </motion.div>
+
+          {/* Kachel-Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-10">
+            {SERVICE_CARDS.map((s, i) => (
+              <motion.a
+                key={s.slug}
+                href={`/leistungsgebiete/${slug}/${s.slug}`}
+                className="group block rounded-2xl bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  border: `1px solid ${BORDER}`,
+                  boxShadow: '0 1px 3px rgba(12,18,16,0.06)',
+                }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: s.delay }}
+                viewport={{ once: true }}
+              >
+                <div
+                  className="relative aspect-[4/3] overflow-hidden"
+                  style={{ background: SURFACE }}
+                >
+                  <Image
+                    src={s.img}
+                    alt={
+                      content.serviceCardAltTexts?.[s.slug] ?? s.alt
+                    }
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    style={{ objectPosition: s.objectPosition }}
+                  />
+                  <div
+                    className="absolute bottom-3 left-4 right-4 flex items-center gap-2"
+                    style={{ color: PETROL }}
+                  >
+                    {SERVICE_BADGE_ICONS[s.slug]}
+                    <span className="text-sm font-heading font-semibold">{s.badge}</span>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: MUTED }}>
+                    {s.desc}
+                  </p>
+                  <div
+                    className="flex items-center gap-2 text-sm font-heading font-semibold"
+                    style={{ color: PETROL }}
+                  >
+                    {getRegionServiceLinkText(s.slug, content.name, i)}
+                    <ArrowRight
+                      size={14}
+                      className="group-hover:translate-x-1 transition-transform duration-200"
+                    />
+                  </div>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+
+          <p className="text-center text-sm" style={{ color: MUTED }}>
+            <a
+              href="/leistungen"
+              className="font-semibold hover:underline"
+              style={{ color: PETROL }}
+            >
+              Alle Leistungen ansehen
+            </a>
+            {' · '}
+            <a
+              href="/leistungsgebiete"
+              className="font-semibold hover:underline"
+              style={{ color: PETROL }}
+            >
+              Alle Leistungsgebiete
+            </a>
+          </p>
+        </div>
+      </section>
+
+      {/* ── ÜBER UNS / TEAM ───────────────────────────────────────────────── */}
+      <AboutTeamSection />
+
+      {/* ── ABLAUF ────────────────────────────────────────────────────────── */}
+      <section data-section-label="Ablauf" className="section-padding" style={{ background: SURFACE }}>
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="text-center mb-14"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-heading font-bold" style={{ color: INK }}>
+              So läuft die Zusammenarbeit mit Pixel Kraftwerk in {content.name} ab
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
+            {[
+              { num: '01', title: 'Erstgespräch', desc: 'Ziele und Potenziale klären – kostenlos und unverbindlich.' },
+              { num: '02', title: 'Planung',       desc: 'Individuelles Konzept entwickeln, passend zu Ihrem Betrieb.' },
+              { num: '03', title: 'Umsetzung',     desc: 'Saubere technische Integration in Ihre bestehenden Systeme.' },
+              { num: '04', title: 'Betreuung',     desc: 'Langfristige Unterstützung und Optimierung im Betrieb.' },
+            ].map((step, i) => (
+              <motion.div
+                key={step.num}
+                className="bg-white rounded-2xl p-6"
+                style={{
+                  border: `1px solid ${BORDER}`,
+                  boxShadow: '0 1px 3px rgba(12,18,16,0.05)',
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="text-3xl font-heading font-bold mb-2" style={{ color: PETROL }}>
+                  {step.num}
+                </div>
+                <div
+                  className="h-0.5 w-8 mb-4 rounded-full"
+                  style={{ background: PETROL }}
+                />
+                <h3 className="font-heading font-bold text-base mb-2" style={{ color: INK }}>
+                  {step.title}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: MUTED }}>
+                  {step.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PRAXISBEISPIELE ────────────────────────────────────────────────── */}
+      <section
+        data-section-label="Praxisbeispiele"
+        className="section-padding"
+        style={{ background: '#FAFAF9' }}
+      >
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-heading font-bold" style={{ color: INK }}>
+              Praxisbeispiele aus dem Unternehmensalltag
+            </h2>
+          </motion.div>
+
+          <div className="max-w-3xl mx-auto space-y-2">
+            {practiceExamples.map((ex, i) => (
+              <motion.div
+                key={i}
+                className="bg-white rounded-xl overflow-hidden"
+                style={{
+                  border: `1px solid ${BORDER}`,
+                  boxShadow: '0 1px 3px rgba(12,18,16,0.05)',
+                }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                viewport={{ once: true }}
+              >
+                <button
+                  onClick={() => setOpenExample(openExample === i ? null : i)}
+                  className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors duration-200 min-h-[56px]"
+                  aria-expanded={openExample === i}
+                >
+                  <span
+                    className="font-heading font-semibold flex items-center gap-3 pr-4"
+                    style={{ color: INK }}
+                  >
+                    {ex.icon}
+                    {ex.title}
+                  </span>
+                  <motion.div
+                    animate={{ rotate: openExample === i ? 180 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="flex-shrink-0"
+                  >
+                    <ChevronDown size={20} style={{ color: PETROL }} />
+                  </motion.div>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: openExample === i ? 'auto' : 0,
+                    opacity: openExample === i ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className="overflow-hidden"
+                >
+                  <div
+                    className="px-5 pb-5 space-y-4"
+                    style={{ borderTop: `1px solid ${BORDER}`, paddingTop: '1rem' }}
+                  >
+                    <div>
+                      <p className="font-semibold mb-1 text-sm" style={{ color: INK }}>
+                        Vorher:
+                      </p>
+                      <p className="text-sm leading-relaxed" style={{ color: BODY }}>
+                        {ex.vorher}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-1 text-sm" style={{ color: INK }}>
+                        Nachher:
+                      </p>
+                      <p className="text-sm leading-relaxed" style={{ color: BODY }}>
+                        {ex.nachher}
+                      </p>
+                    </div>
+                    <div className="pl-3" style={{ borderLeft: `4px solid ${PETROL}` }}>
+                      <p className="font-semibold mb-1 text-sm" style={{ color: INK }}>
+                        Ergebnis:
+                      </p>
+                      <p className="font-medium text-sm leading-relaxed" style={{ color: INK }}>
+                        {ex.ergebnis}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ── REZENSIONEN ─────────────────────────────────────────────────── */}
+      <GoogleReviewsSection />
 
       {/* ── PROBLEM / HERAUSFORDERUNG ─────────────────────────────────────── */}
       <section
@@ -797,290 +1053,6 @@ const RegionPage: React.FC<{ region: string }> = ({ region }) => {
                 <ArrowRight size={16} />
               </button>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── LEISTUNGEN / SERVICE HUB ──────────────────────────────────────── */}
-      <section data-section-label="Leistungen" className="section-padding" style={{ background: SURFACE }}>
-        <div className="container mx-auto px-4 md:px-8">
-          <motion.div
-            className="text-center mb-14"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-heading font-bold mb-4" style={{ color: INK }}>
-              Leistungen in {content.name}
-            </h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: MUTED }}>
-              Digitale Lösungen, die Ihr Unternehmen entlasten und den Arbeitsalltag deutlich
-              vereinfachen.
-            </p>
-          </motion.div>
-
-          {/* servicesHighlight-Pills */}
-          {content.servicesHighlight.length > 0 && (
-            <motion.div
-              className="max-w-3xl mx-auto mb-12 rounded-2xl bg-white p-6"
-              style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 3px rgba(12,18,16,0.05)' }}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex flex-wrap gap-2">
-                {content.servicesHighlight.map((s, i) => (
-                  <span
-                    key={i}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium"
-                    style={{
-                      background: 'rgba(14,124,114,0.06)',
-                      color: PETROL,
-                      border: `1px solid rgba(14,124,114,0.20)`,
-                    }}
-                  >
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                      <path
-                        d="M2 6l3 3 5-5"
-                        stroke={PETROL}
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          )}
-
-          {/* Kachel-Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-10">
-            {SERVICE_CARDS.map((s, i) => (
-              <motion.a
-                key={s.slug}
-                href={`/leistungsgebiete/${slug}/${s.slug}`}
-                className="group block rounded-2xl bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  border: `1px solid ${BORDER}`,
-                  boxShadow: '0 1px 3px rgba(12,18,16,0.06)',
-                }}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: s.delay }}
-                viewport={{ once: true }}
-              >
-                <div
-                  className="relative aspect-[4/3] overflow-hidden"
-                  style={{ background: SURFACE }}
-                >
-                  <Image
-                    src={s.img}
-                    alt={
-                      content.serviceCardAltTexts?.[s.slug] ?? s.alt
-                    }
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    style={{ objectPosition: s.objectPosition }}
-                  />
-                  <div
-                    className="absolute bottom-3 left-4 right-4 flex items-center gap-2"
-                    style={{ color: PETROL }}
-                  >
-                    {SERVICE_BADGE_ICONS[s.slug]}
-                    <span className="text-sm font-heading font-semibold">{s.badge}</span>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: MUTED }}>
-                    {s.desc}
-                  </p>
-                  <div
-                    className="flex items-center gap-2 text-sm font-heading font-semibold"
-                    style={{ color: PETROL }}
-                  >
-                    {getRegionServiceLinkText(s.slug, content.name, i)}
-                    <ArrowRight
-                      size={14}
-                      className="group-hover:translate-x-1 transition-transform duration-200"
-                    />
-                  </div>
-                </div>
-              </motion.a>
-            ))}
-          </div>
-
-          <p className="text-center text-sm" style={{ color: MUTED }}>
-            <a
-              href="/leistungen"
-              className="font-semibold hover:underline"
-              style={{ color: PETROL }}
-            >
-              Alle Leistungen ansehen
-            </a>
-            {' · '}
-            <a
-              href="/leistungsgebiete"
-              className="font-semibold hover:underline"
-              style={{ color: PETROL }}
-            >
-              Alle Leistungsgebiete
-            </a>
-          </p>
-        </div>
-      </section>
-
-      {/* ── PRAXISBEISPIELE ────────────────────────────────────────────────── */}
-      <section
-        data-section-label="Praxisbeispiele"
-        className="section-padding"
-        style={{ background: '#FAFAF9' }}
-      >
-        <div className="container mx-auto px-4 md:px-8">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-heading font-bold" style={{ color: INK }}>
-              Praxisbeispiele aus dem Unternehmensalltag
-            </h2>
-          </motion.div>
-
-          <div className="max-w-3xl mx-auto space-y-2">
-            {practiceExamples.map((ex, i) => (
-              <motion.div
-                key={i}
-                className="bg-white rounded-xl overflow-hidden"
-                style={{
-                  border: `1px solid ${BORDER}`,
-                  boxShadow: '0 1px 3px rgba(12,18,16,0.05)',
-                }}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                viewport={{ once: true }}
-              >
-                <button
-                  onClick={() => setOpenExample(openExample === i ? null : i)}
-                  className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors duration-200 min-h-[56px]"
-                  aria-expanded={openExample === i}
-                >
-                  <span
-                    className="font-heading font-semibold flex items-center gap-3 pr-4"
-                    style={{ color: INK }}
-                  >
-                    {ex.icon}
-                    {ex.title}
-                  </span>
-                  <motion.div
-                    animate={{ rotate: openExample === i ? 180 : 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="flex-shrink-0"
-                  >
-                    <ChevronDown size={20} style={{ color: PETROL }} />
-                  </motion.div>
-                </button>
-                <motion.div
-                  initial={false}
-                  animate={{
-                    height: openExample === i ? 'auto' : 0,
-                    opacity: openExample === i ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  className="overflow-hidden"
-                >
-                  <div
-                    className="px-5 pb-5 space-y-4"
-                    style={{ borderTop: `1px solid ${BORDER}`, paddingTop: '1rem' }}
-                  >
-                    <div>
-                      <p className="font-semibold mb-1 text-sm" style={{ color: INK }}>
-                        Vorher:
-                      </p>
-                      <p className="text-sm leading-relaxed" style={{ color: BODY }}>
-                        {ex.vorher}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="font-semibold mb-1 text-sm" style={{ color: INK }}>
-                        Nachher:
-                      </p>
-                      <p className="text-sm leading-relaxed" style={{ color: BODY }}>
-                        {ex.nachher}
-                      </p>
-                    </div>
-                    <div className="pl-3" style={{ borderLeft: `4px solid ${PETROL}` }}>
-                      <p className="font-semibold mb-1 text-sm" style={{ color: INK }}>
-                        Ergebnis:
-                      </p>
-                      <p className="font-medium text-sm leading-relaxed" style={{ color: INK }}>
-                        {ex.ergebnis}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── ABLAUF ────────────────────────────────────────────────────────── */}
-      <section data-section-label="Ablauf" className="section-padding" style={{ background: SURFACE }}>
-        <div className="container mx-auto px-4 md:px-8">
-          <motion.div
-            className="text-center mb-14"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-heading font-bold" style={{ color: INK }}>
-              So läuft die Zusammenarbeit mit Pixel Kraftwerk in {content.name} ab
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
-            {[
-              { num: '01', title: 'Erstgespräch', desc: 'Ziele und Potenziale klären – kostenlos und unverbindlich.' },
-              { num: '02', title: 'Planung',       desc: 'Individuelles Konzept entwickeln, passend zu Ihrem Betrieb.' },
-              { num: '03', title: 'Umsetzung',     desc: 'Saubere technische Integration in Ihre bestehenden Systeme.' },
-              { num: '04', title: 'Betreuung',     desc: 'Langfristige Unterstützung und Optimierung im Betrieb.' },
-            ].map((step, i) => (
-              <motion.div
-                key={step.num}
-                className="bg-white rounded-2xl p-6"
-                style={{
-                  border: `1px solid ${BORDER}`,
-                  boxShadow: '0 1px 3px rgba(12,18,16,0.05)',
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="text-3xl font-heading font-bold mb-2" style={{ color: PETROL }}>
-                  {step.num}
-                </div>
-                <div
-                  className="h-0.5 w-8 mb-4 rounded-full"
-                  style={{ background: PETROL }}
-                />
-                <h3 className="font-heading font-bold text-base mb-2" style={{ color: INK }}>
-                  {step.title}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: MUTED }}>
-                  {step.desc}
-                </p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>

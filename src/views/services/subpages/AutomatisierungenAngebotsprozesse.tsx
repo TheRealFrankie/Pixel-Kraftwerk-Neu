@@ -117,7 +117,7 @@ export default function AutomatisierungenAngebotsprozesse({ regionSlug, regionNa
         />
 
         {/* ══ HERO ══ */}
-        <section className="relative min-h-[100dvh] md:min-h-screen flex flex-col" style={{ background: PAPER }}>
+        <section className="relative flex flex-col" style={{ background: PAPER, minHeight: 'calc(100dvh - 36px)' }}>
           <div className="relative z-20 container mx-auto px-4 md:px-8 pt-20 md:pt-24">
             <BreadcrumbNav items={breadcrumbItems} />
           </div>

@@ -197,7 +197,7 @@ const Services: React.FC = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesBreadcrumbSchema) }} />
 
       {/* HERO SECTION – Premium Hintergrundbild wie auf den Leistungsseiten */}
-      <section className="relative min-h-[100dvh] md:min-h-screen flex flex-col" style={{ background: '#FAFAF9' }}>
+      <section className="relative flex flex-col" style={{ background: '#FAFAF9', minHeight: 'calc(100dvh - 36px)' }}>
         <div className="relative z-20 container mx-auto px-4 pt-20 md:pt-24">
           <BreadcrumbNav items={[
             { label: 'Startseite', href: '/' },

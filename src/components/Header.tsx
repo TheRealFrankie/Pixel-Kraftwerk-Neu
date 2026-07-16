@@ -7,6 +7,7 @@ import {
   MessageSquare, Phone, Workflow, Globe, Search, MapPin, ArrowRight, Users,
 } from 'lucide-react';
 import Logo from './Logo';
+import GoogleReviewsTopbar from './GoogleReviewsTopbar';
 import { getSubpagesForService, getGlobalRoutePrefix } from '../data/serviceSubpages';
 
 interface MegaService {
@@ -102,6 +103,7 @@ const Header: React.FC = () => {
         borderBottom: scrolled ? `1px solid ${BORDER}` : 'none',
       }}
     >
+      <GoogleReviewsTopbar />
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-[72px]">
           <Logo />

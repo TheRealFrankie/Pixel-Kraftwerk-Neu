@@ -207,8 +207,8 @@ const KiChatbots: React.FC<KiChatbotsProps> = ({ regionSlug, regionName }) => {
       {/* HERO */}
       <section
         id="digitale-kundenassistenz"
-        className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
-        style={{ background: '#FAFAF9' }}
+        className="relative flex flex-col"
+        style={{ background: '#FAFAF9', minHeight: 'calc(100dvh - 36px)' }}
       >
         <span id="ki-chatbot-fur-ihre-website" className="absolute top-0 left-0" aria-hidden="true" />
         <div className="absolute inset-0">

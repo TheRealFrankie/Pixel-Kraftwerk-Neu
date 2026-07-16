@@ -166,8 +166,8 @@ const Website: React.FC<WebsiteProps> = ({ regionSlug, regionName }) => {
         ══════════════════════════════════════════════════════════════════ */}
         <section
           id="webseiten-fuer-unternehmen"
-          className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
-          style={{ background: PAPER }}
+          className="relative flex flex-col"
+          style={{ background: PAPER, minHeight: 'calc(100dvh - 36px)' }}
         >
           {/* Vollbild-Hintergrundbild */}
           <div className="absolute inset-0">

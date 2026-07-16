@@ -424,8 +424,8 @@ function FullscreenHero({
 }: HeroProps) {
   return (
     <section
-      className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
-      style={{ background: '#FAFAF9' }}
+      className="relative flex flex-col"
+      style={{ background: '#FAFAF9', minHeight: 'calc(100dvh - 36px)' }}
     >
       {heroImage && (
         <div className="absolute inset-0">
@@ -530,8 +530,8 @@ function TwoColumnHero({
 }: HeroProps) {
   return (
     <section
-      className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
-      style={{ background: '#FAFAF9' }}
+      className="relative flex flex-col"
+      style={{ background: '#FAFAF9', minHeight: 'calc(100dvh - 36px)' }}
     >
       {heroImage && (
         <div className="absolute inset-0">

@@ -9,6 +9,8 @@ import {
   Mail, Clock, Star, Workflow,
 } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
+import GoogleReviewsSection from '../components/GoogleReviewsSection';
+import AboutTeamSection from '../components/AboutTeamSection';
 import GoogleMapsSection from '../components/GoogleMapsSection';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import WebSiteSchema from '../components/WebSiteSchema';
@@ -20,7 +22,6 @@ const INK = '#0C1210';
 const BODY = '#404B48';
 const MUTED = '#68746F';
 const PETROL = '#0E7C72';
-const PETROL_DARK = '#0A5F58';
 const BORDER = '#E4E9E7';
 const SURFACE = '#F3F5F4';
 
@@ -199,7 +200,8 @@ const Home: React.FC = () => {
       {/* ─── HERO ─── */}
       <section
         data-section-label="Start"
-        className="relative min-h-[100dvh] md:min-h-screen flex items-center"
+        className="relative flex items-center"
+        style={{ minHeight: 'calc(100dvh - 36px)' }}
       >
         {/* Vollbild-Hintergrundbild */}
         <div className="absolute inset-0">
@@ -267,7 +269,6 @@ const Home: React.FC = () => {
                 Wir helfen Unternehmen dabei, mehr Kunden zu gewinnen, ihre Abläufe zu vereinfachen und im Alltag spürbar Zeit zu sparen. Dafür entwickeln wir moderne Webseiten, KI-Chatbots, Telefonagenten und individuelle Softwarelösungen, die mehr Kundenanfragen erzeugen und wiederkehrende Aufgaben automatisch übernehmen.
               </motion.p>
 
-
               <motion.div
                 className="flex flex-col sm:flex-row gap-3 mb-5"
                 initial={{ opacity: 0, y: 12 }}
@@ -314,8 +315,6 @@ const Home: React.FC = () => {
                 </a>
                 <span style={{ color: BORDER }} className="hidden sm:block">·</span>
                 <span className="text-sm" style={{ color: MUTED }}>Antwort binnen 24 Stunden</span>
-                <span style={{ color: BORDER }} className="hidden sm:block">·</span>
-                <span className="text-sm" style={{ color: MUTED }}>Kein Kleingedrucktes</span>
               </motion.div>
             </div>
 
@@ -393,6 +392,50 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* ─── TEAM / REGION ─── */}
+      <AboutTeamSection />
+
+      {/* ─── PROCESS ─── */}
+      <section data-section-label="Ablauf" className="section-padding" style={{ background: SURFACE }}>
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="text-center mb-14"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-heading font-bold" style={{ color: INK }}>
+              So läuft die Zusammenarbeit mit Pixel Kraftwerk ab
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
+            {[
+              { num: '01', title: 'Erstgespräch', desc: 'Ziele und Potenziale klären – kostenlos und unverbindlich.' },
+              { num: '02', title: 'Planung', desc: 'Individuelles Konzept entwickeln, passend zu Ihrem Betrieb.' },
+              { num: '03', title: 'Umsetzung', desc: 'Saubere technische Integration in Ihre bestehenden Systeme.' },
+              { num: '04', title: 'Betreuung', desc: 'Langfristige Unterstützung und Optimierung im Betrieb.' },
+            ].map((step, i) => (
+              <motion.div
+                key={step.num}
+                className="bg-white rounded-2xl p-6"
+                style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 3px rgba(12,18,16,0.05)' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="text-3xl font-heading font-bold mb-2" style={{ color: PETROL }}>{step.num}</div>
+                <div className="h-0.5 w-8 mb-4 rounded-full" style={{ background: PETROL }} />
+                <h3 className="font-heading font-bold text-base mb-2" style={{ color: INK }}>{step.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: MUTED }}>{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── PRACTICE EXAMPLES ─── */}
       <section data-section-label="Praxisbeispiele" className="section-padding" style={{ background: '#FAFAF9' }}>
         <div className="container mx-auto px-4 md:px-8">
@@ -463,137 +506,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ─── PROCESS ─── */}
-      <section data-section-label="Ablauf" className="section-padding" style={{ background: SURFACE }}>
-        <div className="container mx-auto px-4 md:px-8">
-          <motion.div
-            className="text-center mb-14"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-heading font-bold" style={{ color: INK }}>
-              So läuft die Zusammenarbeit mit Pixel Kraftwerk ab
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
-            {[
-              { num: '01', title: 'Erstgespräch', desc: 'Ziele und Potenziale klären – kostenlos und unverbindlich.' },
-              { num: '02', title: 'Planung', desc: 'Individuelles Konzept entwickeln, passend zu Ihrem Betrieb.' },
-              { num: '03', title: 'Umsetzung', desc: 'Saubere technische Integration in Ihre bestehenden Systeme.' },
-              { num: '04', title: 'Betreuung', desc: 'Langfristige Unterstützung und Optimierung im Betrieb.' },
-            ].map((step, i) => (
-              <motion.div
-                key={step.num}
-                className="bg-white rounded-2xl p-6"
-                style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 3px rgba(12,18,16,0.05)' }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="text-3xl font-heading font-bold mb-2" style={{ color: PETROL }}>{step.num}</div>
-                <div className="h-0.5 w-8 mb-4 rounded-full" style={{ background: PETROL }} />
-                <h3 className="font-heading font-bold text-base mb-2" style={{ color: INK }}>{step.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: MUTED }}>{step.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── TEAM / REGION ─── */}
-      <section data-section-label="Über uns" className="section-padding" style={{ background: '#FAFAF9' }}>
-        <div className="container mx-auto px-4 md:px-8">
-          <motion.div
-            className="text-center mb-14"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <p className="font-semibold text-sm tracking-wide uppercase mb-3" style={{ color: PETROL }}>
-              Verwurzelt in Groitzsch &amp; Leipzig
-            </p>
-            <h2 className="font-heading font-bold mb-4" style={{ color: INK }}>
-              Menschen aus der Region,<br />keine anonyme Agentur
-            </h2>
-            <p className="text-lg max-w-xl mx-auto" style={{ color: MUTED }}>
-              Wir sitzen nicht in einem fernen Großraumbüro, sondern direkt bei Ihnen um die Ecke. Bei uns sprechen Sie immer mit denselben zwei Ansprechpartnern – persönlich und auf Augenhöhe.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-10">
-            {[
-              { initials: 'LF', name: 'Lukas Franke', role: 'Mitgründer', desc: 'Berät Sie persönlich und setzt Ihre Lösung mit um.' },
-              { initials: 'JB', name: 'John Brause', role: 'Mitgründer', desc: 'Berät Sie persönlich und setzt Ihre Lösung mit um.' },
-            ].map((p, i) => (
-              <motion.div
-                key={p.name}
-                className="bg-white rounded-2xl p-6 text-center"
-                style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 3px rgba(12,18,16,0.05)' }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
-                viewport={{ once: true }}
-              >
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: '#C4E5E1' }}>
-                  <span className="font-heading font-bold text-xl" style={{ color: PETROL_DARK }}>{p.initials}</span>
-                </div>
-                <h3 className="font-heading font-bold text-base mb-0.5" style={{ color: INK }}>{p.name}</h3>
-                <p className="text-xs font-semibold mb-3" style={{ color: PETROL }}>{p.role}</p>
-                <p className="text-sm leading-relaxed" style={{ color: MUTED }}>{p.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Google Trust */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            viewport={{ once: true }}
-          >
-            <a
-              href={businessInfo.socialMedia.googleReview}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border bg-white hover:opacity-80 transition-opacity"
-              style={{ border: `1px solid ${BORDER}`, boxShadow: '0 1px 3px rgba(12,18,16,0.05)' }}
-            >
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} fill={PETROL} color={PETROL} />
-                ))}
-              </div>
-              <div className="text-left">
-                <p className="text-sm font-heading font-bold" style={{ color: INK }}>5,0 auf Google</p>
-                <p className="text-xs" style={{ color: MUTED }}>Bewertungen ansehen →</p>
-              </div>
-            </a>
-          </motion.div>
-
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <a
-              href="/ueber-uns"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm border transition-all duration-200"
-              style={{ color: INK, borderColor: BORDER, background: 'white' }}
-            >
-              Mehr über uns erfahren
-              <ArrowRight size={16} />
-            </a>
-          </motion.div>
-        </div>
-      </section>
+      {/* ─── REZENSIONEN ─── */}
+      <GoogleReviewsSection />
 
       {/* ─── CTA BAND ─── */}
       <section data-section-label="Jetzt anfragen" className="section-padding" style={{ background: '#0B1512' }}>

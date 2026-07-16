@@ -293,8 +293,8 @@ const Automatisierungen: React.FC<AutomatisierungenProps> = ({ regionSlug, regio
         ══════════════════════════════════════════════════════════════════════ */}
         <section
           id="prozessautomatisierung-fuer-unternehmen"
-          className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
-          style={{ background: PAPER }}
+          className="relative flex flex-col"
+          style={{ background: PAPER, minHeight: 'calc(100dvh - 36px)' }}
         >
           <div className="relative z-20 container mx-auto px-4 md:px-8 pt-20 md:pt-24">
             <BreadcrumbNav items={isRegional ? [

@@ -67,7 +67,7 @@ export default function RootLayout({
         <AnalyticsScripts />
         <ClientProviders>
           <Header />
-          <main id="main" className="flex-grow">{children}</main>
+          <main id="main" className="flex-grow pt-9">{children}</main>
           <Footer />
           <CookieBanner />
           <ExitIntentModal />

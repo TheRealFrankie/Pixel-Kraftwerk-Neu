@@ -207,8 +207,8 @@ const Telefonassistenten: React.FC<TelefonassistentenProps> = ({ regionSlug, reg
       {/* HERO */}
       <section
         id="ki-telefonagent-fur-ihr-unternehmen"
-        className="relative min-h-[100dvh] md:min-h-screen flex flex-col"
-        style={{ background: '#FAFAF9' }}
+        className="relative flex flex-col"
+        style={{ background: '#FAFAF9', minHeight: 'calc(100dvh - 36px)' }}
       >
         <div className="absolute inset-0">
           <Image
