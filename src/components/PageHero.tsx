@@ -69,8 +69,7 @@ const PageHero: React.FC<PageHeroProps> = ({
     <section
       id={sectionId}
       className="relative flex flex-col overflow-hidden"
-      style={{ minHeight: 'calc(100vh - 36px)' }}
-      style={{ background: '#FAFAF9' }}
+      style={{ minHeight: 'calc(100vh - 36px)', background: '#FAFAF9' }}
     >
       {anchorId && <span id={anchorId} className="absolute top-0 left-0" aria-hidden="true" />}
 
