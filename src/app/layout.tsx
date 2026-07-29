@@ -7,7 +7,6 @@ import CookieBanner from '@/components/CookieBanner';
 import ClientProviders from '@/components/ClientProviders';
 import AnalyticsScripts from '@/components/AnalyticsScripts';
 import VoiceflowChat from '@/components/VoiceflowChat';
-import ExitIntentModal from '@/components/ExitIntentModal';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -70,7 +69,6 @@ export default function RootLayout({
           <main id="main" className="flex-grow pt-9">{children}</main>
           <Footer />
           <CookieBanner />
-          <ExitIntentModal />
           <VoiceflowChat />
         </ClientProviders>
       </body>
